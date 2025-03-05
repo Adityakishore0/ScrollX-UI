@@ -1,0 +1,53 @@
+name: Code Check
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+
+concurrency:
+  group: ${{ github.job }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: ⬣ ESLint, ʦ TypeScript, 💅 Prettier, and 🃏 Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🤌 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: 📥 Download deps
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔬 Lint
+        run: |
+          if ! pnpm run lint:strict; then
+            echo "🔄 Running ESLint with --fix..."
+            pnpm eslint . --fix
+          fi
+
+      - name: 🔎 Type check
+        run: pnpm run typecheck
+
+      - name: 💅 Prettier check
+        id: prettier
+        run: |
+          if ! pnpm run format:check; then
+            echo "🔄 Running Prettier to fix formatting..."
+            pnpm prettier --write .
+          fi
+
+      - name: 🃏 Run jest
+        run: pnpm run test
