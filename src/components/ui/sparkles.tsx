@@ -78,8 +78,8 @@ export const SparklesCore = (props: ParticlesProps) => {
                   mode: 'push',
                 },
                 onHover: {
-                  enable: false,
-                  mode: 'repulse',
+                  enable: true,
+                  mode: 'attract',
                 },
                 resize: { enable: true },
               },
@@ -167,7 +167,7 @@ export const SparklesCore = (props: ParticlesProps) => {
                   value: 90,
                 },
                 attract: {
-                  distance: 200,
+                  distance: 300,
                   enable: false,
                   rotate: {
                     x: 3000,

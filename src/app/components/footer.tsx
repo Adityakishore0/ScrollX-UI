@@ -1,35 +1,48 @@
 'use client';
-import React from 'react';
+import { useContext } from 'react';
 
 import { Cover } from '@/components/ui/cover';
+
+import { ThemeContext } from '@/app/context/ThemeContext';
 
 import useFooterScripts from '../hooks/useFooterScripts';
 
 const Footer: React.FC = () => {
+  const { theme } = useContext(ThemeContext);
   useFooterScripts();
   return (
     <div id='root'>
       <footer
         id='footer'
-        className='bg-neutral-900 border-t border-neutral-800'
+        className={`border-t py-20 flex flex-col items-center overflow-hidden ${
+          theme === 'dark'
+            ? 'bg-neutral-900 border-neutral-800 text-neutral-50 '
+            : 'bg-neutral-50 border-neutral-300 text-neutral-900'
+        }`}
       >
-        <div className='container mx-auto px-4 md:px-6'>
+        <div className='container mx-auto px-4 md:px-6 '>
           <div className='py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12'>
             <div>
               <a
                 href='#hero'
-                className='text-2xl font-bold font-primary text-white flex items-center mb-6'
+                className='text-2xl font-bold font-primary text-pink-600 flex items-center mb-6'
               >
                 <Cover>SCROLLX UI</Cover>
               </a>
-              <p className='text-gray-400 mb-6'>
+              <p
+                className={`${
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                } text-semibold mb-6`}
+              >
                 A powerful library of pre-built UI components that helps
                 developers create stunning interactive websites with ease.
               </p>
               <div className='flex space-x-4'>
                 <a
                   href='#'
-                  className='text-gray-400 hover:text-white transition-colors duration-300'
+                  className={`${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                  } hover:text-pink-600 transition-colors duration-300`}
                   aria-label='Twitter'
                 >
                   <svg
@@ -42,7 +55,9 @@ const Footer: React.FC = () => {
                 </a>
                 <a
                   href='#'
-                  className='text-gray-400 hover:text-white transition-colors duration-300'
+                  className={`${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                  } hover:text-pink-600 transition-colors duration-300`}
                   aria-label='GitHub'
                 >
                   <svg
@@ -59,7 +74,9 @@ const Footer: React.FC = () => {
                 </a>
                 <a
                   href='#'
-                  className='text-gray-400 hover:text-white transition-colors duration-300'
+                  className={`${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                  } hover:text-pink-600 transition-colors duration-300`}
                   aria-label='Discord'
                 >
                   <svg
@@ -72,7 +89,9 @@ const Footer: React.FC = () => {
                 </a>
                 <a
                   href='#'
-                  className='text-gray-400 hover:text-white transition-colors duration-300'
+                  className={`${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                  } hover:text-pink-600 transition-colors duration-300`}
                   aria-label='YouTube'
                 >
                   <svg
@@ -87,12 +106,14 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h3 className='text-white font-bold mb-6'>Quick Links</h3>
+              <h3 className=' font-bold mb-6'>Quick Links</h3>
               <ul className='space-y-3'>
                 <li>
                   <a
                     href='#hero'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Home
                   </a>
@@ -100,7 +121,9 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href='#features'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Features
                   </a>
@@ -108,7 +131,9 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href='#components'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Components
                   </a>
@@ -116,7 +141,9 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href='#documentation'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Documentation
                   </a>
@@ -124,7 +151,9 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href='#pricing'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Pricing
                   </a>
@@ -132,7 +161,9 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href='#faq'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     FAQ
                   </a>
@@ -140,7 +171,9 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href='#contact'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Contact
                   </a>
@@ -149,12 +182,14 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h3 className='text-white font-bold mb-6'>Resources</h3>
+              <h3 className=' font-bold mb-6'>Resources</h3>
               <ul className='space-y-3'>
                 <li>
                   <a
                     href='/privacy'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Privacy Policy
                   </a>
@@ -162,7 +197,9 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href='/terms'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Terms of Service
                   </a>
@@ -170,7 +207,9 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href='#'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Documentation
                   </a>
@@ -178,7 +217,9 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href='#'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Changelog
                   </a>
@@ -186,7 +227,9 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href='#'
-                    className='text-gray-400 hover:text-pink-500 transition-colors duration-300'
+                    className={`${
+                      theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                    } text-semibold  hover:text-pink-500 transition-colors duration-300`}
                   >
                     Blog
                   </a>
@@ -195,16 +238,20 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h3 className='text-white font-bold mb-6'>Subscribe</h3>
-              <p className='text-gray-400 mb-4'>
+              <h3 className=' font-bold mb-6'>Subscribe</h3>
+              <p
+                className={`${
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                } text-semibold mb-4  hover:text-pink-500 transition-colors duration-300`}
+              >
                 Join our newsletter to get the latest updates and news directly
                 to your inbox.
               </p>
-              <form className='flex flex-col sm:flex-row gap-2 mb-4'>
+              <form className='flex flex-col  gap-2 mb-4'>
                 <input
                   type='email'
                   placeholder='Your email address'
-                  className='bg-neutral-800 border border-neutral-700 rounded-lg p-3 text-white focus:outline-none focus:border-pink-500 transition-colors duration-300'
+                  className='bg-neutral-800 border border-neutral-700 rounded-lg p-3 text-pink-600 focus:outline-none focus:border-pink-500 transition-colors duration-300'
                 />
                 <button
                   type='submit'
@@ -213,7 +260,11 @@ const Footer: React.FC = () => {
                   Subscribe
                 </button>
               </form>
-              <p className='text-gray-500 text-sm'>
+              <p
+                className={`${
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                } text-semibold  hover:text-pink-500 transition-colors duration-300`}
+              >
                 By subscribing, you agree to our Privacy Policy and consent to
                 receive updates.
               </p>
@@ -223,25 +274,35 @@ const Footer: React.FC = () => {
           <hr className='border-neutral-800' />
 
           <div className='py-8 flex flex-col md:flex-row justify-between items-center'>
-            <div className='text-gray-500 text-sm mb-4 md:mb-0'>
+            <div
+              className={`${
+                theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+              } text-sm mb-4 md:mb-0 hover:text-pink-500 transition-colors duration-300`}
+            >
               © 2025 SCROLLX UI. All rights reserved.
             </div>
             <div className='flex space-x-6'>
               <a
                 href='/privacy'
-                className='text-gray-500 hover:text-white text-sm transition-colors duration-300'
+                className={`${
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                } hover:text-pink-600 transition-colors duration-300`}
               >
                 Privacy Policy
               </a>
               <a
                 href='/terms'
-                className='text-gray-500 hover:text-white text-sm transition-colors duration-300'
+                className={`${
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                } hover:text-pink-600 transition-colors duration-300`}
               >
                 Terms of Service
               </a>
               <a
                 href='#'
-                className='text-gray-500 hover:text-white text-sm transition-colors duration-300'
+                className={`${
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
+                } hover:text-pink-600 transition-colors duration-300`}
               >
                 Cookie Policy
               </a>

@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+
+import { ThemeContext } from '@/app/context/ThemeContext';
 
 interface Testimonial {
   name: string;
@@ -82,7 +84,7 @@ const testimonials: Testimonial[] = [
 
 const Testimonial: React.FC = () => {
   const [reverse, setReverse] = useState<boolean>(false);
-
+  const { theme } = useContext(ThemeContext);
   useEffect(() => {
     const interval = setInterval(() => {
       setReverse((prev) => !prev);
@@ -92,8 +94,14 @@ const Testimonial: React.FC = () => {
   }, []);
 
   return (
-    <section id='testimonials' className='py-20'>
-      <div className='relative w-full bg-gradient-to-b from-neutral-50 to-neutral-50 border text-[#7cff67] py-20 flex flex-col items-center overflow-hidden'>
+    <section id='testimonials' className=''>
+      <div
+        className={`relative w-full bg-gradient-to-b border py-20 flex flex-col items-center overflow-hidden ${
+          theme === 'dark'
+            ? 'from-neutral-900 to-neutral-900 text-neutral-50 border-neutral-800'
+            : 'from-neutral-50 to-neutral-50 text-[#7cff67] border-neutral-300'
+        }`}
+      >
         <h2 className='text-3xl font-bold text-center text-[#7cff67] mb-4'>
           Loved by thousands of people
         </h2>
@@ -127,7 +135,7 @@ const Testimonial: React.FC = () => {
                   ].map((testimonial, index) => (
                     <div
                       key={index}
-                      className='p-4 bg-neutral-900 rounded-lg shadow-md mx-auto w-full'
+                      className='p-4 bg-black rounded-lg shadow-md mx-auto w-full'
                     >
                       <p className='text-lg'>{testimonial.review}</p>
                       <p className='mt-2 font-semibold'>{testimonial.name}</p>
@@ -154,7 +162,7 @@ const Testimonial: React.FC = () => {
             {[...testimonials, ...testimonials].map((testimonial, index) => (
               <div
                 key={index}
-                className='p-4 bg-neutral-900 rounded-lg shadow-md mx-auto w-[90%]'
+                className='p-4 bg-black rounded-lg shadow-md mx-auto w-[90%]'
               >
                 <p className='text-lg'>{testimonial.review}</p>
                 <p className='mt-2 font-semibold'>{testimonial.name}</p>
