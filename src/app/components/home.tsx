@@ -22,7 +22,9 @@ const Home: React.FC = () => {
       <div
         key={key}
         className={`relative flex flex-col items-center justify-start h-screen w-full pt-10 transition-colors duration-500 overflow-hidden ${
-          theme === 'dark' ? 'bg-neutral-900' : 'bg-neutral-50'
+          theme === 'dark'
+            ? 'bg-neutral-900 text-neutral-50'
+            : 'bg-neutral-50 text-neutral-900'
         }`}
       >
         <motion.div
@@ -63,11 +65,12 @@ const Home: React.FC = () => {
           transition={{ duration: 1.2, delay: 0.6, ease: 'easeInOut' }}
           className='absolute bottom-10 left-10 lg:flex flex-col items-start text-left hidden'
         >
-          <p className='text-lg text-white max-w-sm'>
-            Explore the best components and UI elements for your projects.
+          <p className='text-lg max-w-sm'>
+            Explore the prebuilt best components and UI elements for Advanced
+            users.
           </p>
           <button className='mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg'>
-            Get Started
+            Github
           </button>
         </motion.div>
 
@@ -78,11 +81,12 @@ const Home: React.FC = () => {
           transition={{ duration: 1.2, delay: 0.6, ease: 'easeInOut' }}
           className='lg:hidden flex flex-col items-center text-center mt-10'
         >
-          <p className='text-lg text-white max-w-sm'>
-            Explore the best components and UI elements for your projects.
+          <p className='text-lg  max-w-sm'>
+            Explore the prebuilt best components and UI elements for Advanced
+            Coders.
           </p>
           <button className='mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg'>
-            Get Started
+            Github
           </button>
         </motion.div>
       </div>
