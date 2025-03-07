@@ -9,7 +9,13 @@ import { ThemeContext } from '../context/ThemeContext';
 const Sidebar = () => {
   const { theme } = useContext(ThemeContext);
   return (
-    <aside className=' z-30 h-[calc(100vh-3.5rem)] w-64 lg:sticky lg:block lg:self-start'>
+    <aside
+      className={`hidden sm:block z-30 h-[calc(100vh-3.5rem)] w-64 lg:sticky lg:self-start ${
+        theme === 'dark'
+          ? 'bg-[rgb(20,20,20)] text-neutral-50'
+          : 'bg-neutral-50 text-neutral-900'
+      }`}
+    >
       <div dir='ltr' className='relative overflow-hidden h-full  lg:'>
         <style>
           {`
@@ -189,7 +195,7 @@ const Sidebar = () => {
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
                       } text-semibold mb-6`}
                     >
-                      Background Beams
+                      Background Beam
                     </Link>
                   </li>
                   <li>
