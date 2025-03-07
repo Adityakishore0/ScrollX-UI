@@ -31,7 +31,7 @@ const Home: React.FC = () => {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className='absolute right-1 top-[40%] sm:top-[45%] md:top-[15%] w-full sm:w-1/2 h-auto z-10 flex flex-col sm:flex-row items-center justify-center'
+          className='absolute right-1 top-[25%] sm:top-[45%] md:top-[15%] w-full sm:w-1/2 h-auto z-10 flex flex-col sm:flex-row items-center justify-center'
         >
           <CodeCards />
         </motion.div>
