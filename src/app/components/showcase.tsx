@@ -55,7 +55,7 @@ const CopyPasteUI: FC = () => {
       </div>
 
       {/* Buttons in Reverse Order, Slightly Moved Left */}
-      <div className='mt-6 flex  flex-row text-neutral-50 gap-4 w-full justify-end pr-[27rem]'>
+      <div className='mt-6 flex flex-row text-neutral-50 gap-4 w-full justify-end max-w-[1200px] lg:pr-52 md:pr-32 sm:pr-16 px-4 mx-auto'>
         <button
           className='flex items-center gap-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg'
           onClick={() => setIsCodeVisible(false)}
@@ -63,7 +63,7 @@ const CopyPasteUI: FC = () => {
           <Eye size={18} /> Preview
         </button>
         <button
-          className='flex items-center gap-2   bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg'
+          className='flex items-center gap-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg'
           onClick={() => setIsCodeVisible(true)}
         >
           <Code size={18} /> Code
