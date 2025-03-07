@@ -36,7 +36,7 @@ const CopyPasteUI: FC = () => {
           : 'bg-neutral-50 text-neutral-900'
       } p-6`}
     >
-      {/* Header */}
+      
       <div className='text-center'>
         <div className='flex justify-center gap-2 mb-4'></div>
 
