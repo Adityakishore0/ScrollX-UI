@@ -195,7 +195,7 @@ const Sidebar = () => {
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
                       } text-semibold mb-6`}
                     >
-                      Background Beams
+                      Background Beam
                     </Link>
                   </li>
                   <li>
