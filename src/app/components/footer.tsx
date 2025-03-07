@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
     <div id='root'>
       <footer
         id='footer'
-        className={`border-t py-20 flex flex-col items-center overflow-hidden ${
+        className={`border-t  flex flex-col items-center overflow-hidden ${
           theme === 'dark'
             ? 'bg-neutral-900 border-neutral-800 text-neutral-50 '
             : 'bg-neutral-50 border-neutral-300 text-neutral-900'
