@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import React from 'react'; //importing react
 
 const DetailReview: React.FC = () => {
   return (
