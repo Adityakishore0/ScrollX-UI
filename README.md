@@ -21,7 +21,7 @@ After forking, clone the repository to your local machine:
 ```sh
 git clone https://github.com/your-username/ScrollX.git
 ```
-**Alternatively, you can create a GitHub Codespace from your forked repository.**
+Alternatively, you can create a GitHub Codespace from your forked repository.
 
 ## ⚙️ Install Dependencies
 
@@ -31,7 +31,7 @@ Ensure you have **pnpm** installed on your system. If not, install it first:
 npm install -g pnpm
 ```
 
-**Then, navigate to the project directory and install dependencies**
+Then, navigate to the project directory and install dependencies
 
 ```sh
 cd ScrollX
@@ -40,7 +40,7 @@ pnpm install
 
 
 ## 🚀 Run the Project
-**To start the development server and preview the website in your browser, use:**
+To start the development server and preview the website in your browser, use:
 
 ```sh
 pnpm dev
@@ -61,8 +61,11 @@ If you are adding **HTML**, **CSS**, or **JavaScript** effects, place them insid
 For example, if you are adding a **Text Split Effect**, your files should be named:
 
 **contributions**/
+
 │── **textsplit.html**
+
 │── **textsplit.css**
+
 │── **textsplit.js**
 
 ## 📤 Commit & Push Changes
