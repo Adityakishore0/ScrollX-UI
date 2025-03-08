@@ -15,3 +15,7 @@ After forking, clone the repository to your local machine:
 git clone https://github.com/your-username/ScrollX.git
 ```
 **Alternatively, you can create a GitHub Codespace from your forked repository.**
+
+## ⚙️ Install Dependencies
+
+Ensure you have **pnpm** installed on your system. If not, install it first:
