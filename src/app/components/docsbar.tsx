@@ -52,7 +52,7 @@ const Docsbar: React.FC = () => {
                 <span>SCROLLX UI</span>
               </a>
             </div>
-            <div className='hidden md:block'>
+            <div className='hidden sm:block'>
               <ul className='flex space-x-6'>
                 <div className='relative flex items-center'>
                   <div className='relative w-48'>

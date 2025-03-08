@@ -36,7 +36,6 @@ const CopyPasteUI: FC = () => {
           : 'bg-neutral-50 text-neutral-900'
       } p-6`}
     >
-      
       <div className='text-center'>
         <div className='flex justify-center gap-2 mb-4'></div>
 
@@ -132,7 +131,7 @@ const CopyPasteUI: FC = () => {
             background='transparent'
             minSize={0.4}
             maxSize={1}
-            particleDensity={2700}
+            particleDensity={1700}
             className='w-full h-full'
             particleColor='#FFFFFF'
             text='SCROLLX UI'
