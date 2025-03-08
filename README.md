@@ -73,6 +73,8 @@ For example, if you are adding a **Text Split Effect**, your files should be nam
 After adding your files, **stage** and **commit** them:
 ```sh
 git add .
+```
+```sh
 git commit -m "feat: Added Text Split Effect"
 ```
 Push your branch to **GitHub**:
