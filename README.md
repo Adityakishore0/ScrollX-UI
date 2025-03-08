@@ -56,7 +56,7 @@ git checkout -b your-branch-name
 
 ## 📂 Adding Your Contributions
 
-If you are adding **HTML**, **CSS**, or **JavaScript** effects, place them inside the **contributions** folder. Use an appropriate naming convention for your files.
+If you are adding **HTML**, **CSS**, or **JavaScript** effects, place them inside the [contributions](https://github.com/Adityakishore0/ScrollX-UI/tree/main/src/app/contributions) folder. Use an appropriate naming convention for your files.
 
 For example, if you are adding a **Text Split Effect**, your files should be named:
 
