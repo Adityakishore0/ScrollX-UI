@@ -21,7 +21,7 @@ After forking, clone the repository to your local machine:
 ```sh
 git clone https://github.com/your-username/ScrollX.git
 ```
-Alternatively, you can create a GitHub Codespace from your forked repository.
+Alternatively, you can create a **GitHub Codespace** from your forked repository.
 
 ## ⚙️ Install Dependencies
 
@@ -84,8 +84,11 @@ git push origin your-branch-name
 ## 🔄 Create a Pull Request
 
 **1.** Go to your forked repository on GitHub.
+
 **2.** Click on the **Compare & pull request** button.
+
 **3.** Provide a **clear description** of your contribution.
+
 **4.** Submit the pull request for **review**.
 
 ## Once approved, your changes will be merged into the main repository.
