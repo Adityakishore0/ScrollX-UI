@@ -137,11 +137,11 @@ const Testimonial: React.FC = () => {
                       key={index}
                       className='p-4 bg-black rounded-lg shadow-md mx-auto w-full'
                     >
-                      <p className='text-lg'>{testimonial.review}</p>
                       <p className='mt-2 font-semibold'>{testimonial.name}</p>
                       <p className='text-sm text-gray-400'>
                         {testimonial.handle}
                       </p>
+                      <p className='text-lg mt-2'>{testimonial.review}</p>
                     </div>
                   ))}
                 </motion.div>
