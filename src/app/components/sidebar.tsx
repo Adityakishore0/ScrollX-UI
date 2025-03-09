@@ -1,16 +1,21 @@
 'use client';
 import Link from 'next/link';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
-import CopyPasteUI from '@/app/components/showcase';
+import InstallNextJS from '@/app/sidebarmenu/InstallNextJS';
 
 import { ThemeContext } from '../context/ThemeContext';
 
-const Sidebar = () => {
+interface SidebarProps {
+  setActiveComponent: (component: string) => void;
+  activeComponent: string;
+}
+
+const Sidebar = ({ setActiveComponent, activeComponent }: SidebarProps) => {
   const { theme } = useContext(ThemeContext);
   return (
     <aside
-      className={`hidden sm:block z-30 h-[calc(100vh-3.5rem)] w-64 lg:sticky lg:self-start ${
+      className={`hidden [@media(min-width:790px)]:block z-30 h-[calc(100vh-3.5rem)] w-64 lg:sticky lg:self-start ${
         theme === 'dark'
           ? 'bg-[rgb(20,20,20)] text-neutral-50'
           : 'bg-neutral-50 text-neutral-900'
@@ -71,21 +76,25 @@ const Sidebar = () => {
                 <h2 className='text-lg font-bold'>Installation</h2>
                 <ul className='space-y-2'>
                   <li>
-                    <Link
-                      href='#'
+                    <button
+                      onClick={() => setActiveComponent('InstallNextJS')}
                       className={`${
-                        theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                        activeComponent === 'InstallNextJS'
+                          ? 'text-green-500 scale-95'
+                          : theme === 'dark'
+                          ? 'text-gray-400'
+                          : 'text-gray-900'
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Install Next.js
-                    </Link>
+                    </button>
                   </li>
                   <li>
                     <Link
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Install Tailwind CSS
                     </Link>
@@ -95,7 +104,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Add utilities
                     </Link>
@@ -105,7 +114,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       CLI
                     </Link>
@@ -120,7 +129,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       3D Card Effect
                     </Link>
@@ -130,7 +139,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       3D Pin
                     </Link>
@@ -140,7 +149,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Animated Modal
                     </Link>
@@ -150,7 +159,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Animated Testimonials
                     </Link>
@@ -163,7 +172,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Animated Tooltip
                     </Link>
@@ -173,7 +182,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Apple Cards Carousel
                     </Link>
@@ -183,7 +192,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Aurora Background
                     </Link>
@@ -193,7 +202,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Background Beam
                     </Link>
@@ -203,7 +212,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Aurora Background
                     </Link>
@@ -213,7 +222,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Background Beams
                     </Link>
@@ -223,7 +232,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Aurora Background
                     </Link>
@@ -233,7 +242,7 @@ const Sidebar = () => {
                       href='#'
                       className={`${
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6`}
+                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Background Beams
                     </Link>
@@ -250,15 +259,20 @@ const Sidebar = () => {
 
 const Layout = () => {
   const { theme } = useContext(ThemeContext);
+  const [activeComponent, setActiveComponent] = useState('');
+
   return (
     <div className='flex'>
-      <Sidebar />
+      <Sidebar
+        setActiveComponent={setActiveComponent}
+        activeComponent={activeComponent}
+      />
       <main
         className={`flex-1 pt-20 h-[calc(100vh-3.5rem)] overflow-y-auto ${
           theme === 'dark' ? 'bg-neutral-900' : 'bg-neutral-50'
         }`}
       >
-        <CopyPasteUI />
+        {activeComponent === 'InstallNextJS' && <InstallNextJS />}
       </main>
     </div>
   );
