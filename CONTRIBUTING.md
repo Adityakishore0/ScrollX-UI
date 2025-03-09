@@ -50,6 +50,15 @@ To stop the server, press **Ctrl + C**
 ## 🛠️ Creating a Contribution Branch
 
 Before making any changes, create a new **branch**:
+Use an appropriate naming convention for your **branch** 
+
+## Branch Naming
+
+When creating branches for your contributions, please follow the following naming convention:
+
+`feat/<feature-name>`
+
+For example, if you are working on a feature related to adding a new component, your branch name could be `feat/add-new-component`. This naming convention helps us to easily track and associate contributions with their respective features.
 ```sh
 git checkout -b your-branch-name
 ```
