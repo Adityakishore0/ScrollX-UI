@@ -12,5 +12,5 @@ Please review the [Contribution Guide](https://github.com/Adityakishore0/ScrollX
 ## Maintainers
 
 <a href="https://github.com/Adityakishore0">
-  <img src="https://contrib.rocks/image?repo=Adityakishore0/ScrollX-UI&user=Adityakishore0" />
+  <img src="https://github.com/Adityakishore0.png" width="100" />
 </a>
