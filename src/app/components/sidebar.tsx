@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useContext, useState } from 'react';
 
 import InstallNextJS from '@/app/sidebarmenu/InstallNextJS';
+import InstallTailwindCSS from '@/app/sidebarmenu/InstallTailwindCss';
 
 import { ThemeContext } from '../context/ThemeContext';
 
@@ -84,20 +85,24 @@ const Sidebar = ({ setActiveComponent, activeComponent }: SidebarProps) => {
                           : theme === 'dark'
                           ? 'text-gray-400'
                           : 'text-gray-900'
-                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
+                      } text-semibold  transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Install Next.js
                     </button>
                   </li>
                   <li>
-                    <Link
-                      href='#'
+                    <button
+                      onClick={() => setActiveComponent('InstallTailwindCSS')}
                       className={`${
-                        theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
+                        activeComponent === 'InstallTailwindCSS'
+                          ? 'text-green-500 scale-95'
+                          : theme === 'dark'
+                          ? 'text-gray-400'
+                          : 'text-gray-900'
+                      } text-semibold  transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
                       Install Tailwind CSS
-                    </Link>
+                    </button>
                   </li>
                   <li>
                     <Link
@@ -273,6 +278,7 @@ const Layout = () => {
         }`}
       >
         {activeComponent === 'InstallNextJS' && <InstallNextJS />}
+        {activeComponent === 'InstallTailwindCSS' && <InstallTailwindCSS />}
       </main>
     </div>
   );
