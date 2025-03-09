@@ -11,6 +11,4 @@ Please review the [Contribution Guide](https://github.com/Adityakishore0/ScrollX
 
 ## Maintainers
 
-<a href="https://github.com/Adityakishore0">
-  <img src="https://github.com/Adityakishore0.png" />
-</a>
+[Aditya kishore](https://github.com/Adityakishore0)
