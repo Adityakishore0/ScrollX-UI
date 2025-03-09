@@ -60,7 +60,7 @@ When creating branches for your contributions, please follow the following namin
 
 For example, if you are working on a feature related to adding a new component, your branch name could be `feat/add-new-component`. This naming convention helps us to easily track and associate contributions with their respective features.
 ```sh
-git checkout -b your-branch-name
+git checkout -b feat/<your-branch-name>
 ```
 
 ## 📂 Adding Your Contributions
