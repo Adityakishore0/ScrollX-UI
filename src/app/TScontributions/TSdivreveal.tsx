@@ -32,9 +32,9 @@ const TSdivreveal: React.FC<TSdivrevealProps> = ({
 
   return (
     <div
-      className={`flex justify-center items-center min-h-screen bg-${backgroundColour} p-6`}
+      className={`flex justify-center items-center min-h-screen bg-${backgroundColour} p-6 md:p-4 sm:p-2`}
     >
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl'>
+      <div className='grid grid-cols-1 gap-6 max-w-6xl lg:grid-cols-3'>
         {images.map((image, index) => (
           <HoverCard
             key={index}
