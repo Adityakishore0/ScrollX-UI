@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
                       theme === 'dark' ? 'text-neutral-50' : 'text-neutral-900'
                     }`}
                   >
-                    Home
+                    Github
                   </a>
                 </li>
                 <li>
@@ -70,37 +70,17 @@ const Navbar: React.FC = () => {
                       theme === 'dark' ? 'text-neutral-50' : 'text-neutral-900'
                     }`}
                   >
-                    Features
+                    Showcase
                   </a>
                 </li>
                 <li>
                   <a
-                    href='#how-it-works'
+                    href='/Docs'
                     className={`hover:text-primary transition-colors duration-300 ${
                       theme === 'dark' ? 'text-neutral-50' : 'text-neutral-900'
                     }`}
                   >
-                    How It Works
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='#demo'
-                    className={`hover:text-primary transition-colors duration-300 ${
-                      theme === 'dark' ? 'text-neutral-50' : 'text-neutral-900'
-                    }`}
-                  >
-                    Demo
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='#pricing'
-                    className={`hover:text-primary transition-colors duration-300 ${
-                      theme === 'dark' ? 'text-neutral-50' : 'text-neutral-900'
-                    }`}
-                  >
-                    Pricing
+                    Docs
                   </a>
                 </li>
                 <li>
