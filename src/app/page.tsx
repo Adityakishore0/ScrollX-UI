@@ -7,7 +7,6 @@ import Home from '@/app/components/home';
 import Navbar from '@/app/components/navbar';
 import Testimonial from '@/app/components/testimonials';
 import { ThemeProvider } from '@/app/context/ThemeContext';
-import TSdivreveal from '@/app/TScontributions/TSdivreveal';
 
 export default function HomePage() {
   return (
@@ -15,7 +14,6 @@ export default function HomePage() {
       <Navbar />
       <Home />
       <Testimonial />
-      <TSdivreveal />
       <Footer />
     </ThemeProvider>
   );
