@@ -1,16 +1,22 @@
+import clsx from 'clsx';
 import Image from 'next/image';
 import { useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface TSdivrevealProps {
   backgroundColour?: string;
   textColor?: string;
   descriptionColor?: string;
+  cardHeight?: string;
+  cardWidth?: string;
 }
 
 const TSdivreveal: React.FC<TSdivrevealProps> = ({
   backgroundColour = 'white',
   textColor = 'white',
   descriptionColor = 'gray-300',
+  cardHeight = 'h-96',
+  cardWidth = 'w-60',
 }) => {
   const images = [
     {
@@ -32,7 +38,13 @@ const TSdivreveal: React.FC<TSdivrevealProps> = ({
 
   return (
     <div
-      className={`flex justify-center items-center min-h-screen bg-${backgroundColour} p-6 md:p-4 sm:p-2`}
+      className={twMerge(
+        clsx(
+          'mt-6 w-full min-h-[40vh] p-4 bg-black rounded-lg relative flex flex-col sm:flex-row',
+          'sm:justify-center sm:items-center', // Center content smoothly on `sm:` and larger
+          `bg-${backgroundColour}`
+        )
+      )}
     >
       <div className='grid grid-cols-1 gap-6 max-w-6xl lg:grid-cols-3'>
         {images.map((image, index) => (
@@ -41,6 +53,8 @@ const TSdivreveal: React.FC<TSdivrevealProps> = ({
             image={image}
             textColor={textColor}
             descriptionColor={descriptionColor}
+            cardHeight={cardHeight}
+            cardWidth={cardWidth}
           />
         ))}
       </div>
@@ -52,21 +66,30 @@ interface HoverCardProps {
   image: { src: string; name: string; description: string };
   textColor: string;
   descriptionColor: string;
+  cardHeight: string;
+  cardWidth: string;
 }
 
 const HoverCard: React.FC<HoverCardProps> = ({
   image,
   textColor,
   descriptionColor,
+  cardHeight,
+  cardWidth,
 }) => {
   const [isRevealed, setIsRevealed] = useState(false);
-
-  const toggleReveal = () => {
-    setIsRevealed((prev) => !prev);
-  };
+  const toggleReveal = () => setIsRevealed((prev) => !prev);
 
   return (
-    <div className='relative w-80 h-96 bg-white shadow-2xl rounded-xl overflow-hidden group'>
+    <div
+      className={twMerge(
+        clsx(
+          'relative bg-white shadow-2xl rounded-xl overflow-hidden group',
+          cardHeight,
+          cardWidth
+        )
+      )}
+    >
       {/* Image */}
       <div className='absolute inset-0 flex flex-col items-center justify-center text-center'>
         <Image
@@ -78,25 +101,46 @@ const HoverCard: React.FC<HoverCardProps> = ({
         />
       </div>
 
+      {/* Hover Reveal Section */}
       <div
-        className={`absolute bottom-0 left-0 w-full ${
-          isRevealed ? 'h-16' : 'h-full'
-        } flex flex-col justify-center items-center bg-black text-${textColor} transition-all duration-500 rounded-b-xl group-hover:h-16`}
+        className={twMerge(
+          clsx(
+            'absolute bottom-0 left-0 w-full flex flex-col justify-center items-center bg-black transition-all duration-500 rounded-b-xl group-hover:h-16',
+            isRevealed ? 'h-16' : 'h-full'
+          )
+        )}
       >
-        <h2 className='text-lg font-bold transition-all duration-500 group-hover:text-2xl'>
+        <h2
+          className={twMerge(
+            clsx(
+              'text-lg font-bold transition-all duration-500 group-hover:text-2xl',
+              `text-${textColor}`
+            )
+          )}
+        >
           {image.name}
         </h2>
         <p
-          className={`text-sm text-${descriptionColor} transition-opacity duration-500 ${
-            isRevealed ? 'opacity-0' : 'opacity-100'
-          } group-hover:opacity-0`}
+          className={twMerge(
+            clsx(
+              'text-sm transition-opacity duration-500',
+              `text-${descriptionColor}`,
+              isRevealed ? 'opacity-0' : 'opacity-100',
+              'group-hover:opacity-0'
+            )
+          )}
         >
           {image.description}
         </p>
 
         <button
           onClick={toggleReveal}
-          className='absolute bottom-2 flex justify-center items-center text-white text-xl'
+          className={twMerge(
+            clsx(
+              'absolute bottom-2 flex justify-center items-center text-xl',
+              `text-${textColor}`
+            )
+          )}
         >
           {isRevealed ? '▲' : '▼'}
         </button>
