@@ -43,6 +43,7 @@
     "@testing-library/react": "15.0.7",
     "@types/node": "22.13.8",
     "@types/react": "18.3.18",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@types/testing-library__jest-dom": "5.14.9",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",

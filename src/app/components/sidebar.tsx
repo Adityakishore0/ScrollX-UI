@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React, { useContext, useState } from 'react';
 
+import Divreveal from '@/app/sidebarmenu/Divreveal';
 import InstallNextJS from '@/app/sidebarmenu/InstallNextJS';
 import InstallTailwindCSS from '@/app/sidebarmenu/InstallTailwindCss';
 
@@ -111,16 +112,6 @@ const Sidebar = ({ setActiveComponent, activeComponent }: SidebarProps) => {
                         theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
                       } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
-                      Add utilities
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href='#'
-                      className={`${
-                        theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
-                    >
                       CLI
                     </Link>
                   </li>
@@ -130,14 +121,18 @@ const Sidebar = ({ setActiveComponent, activeComponent }: SidebarProps) => {
                 <h2 className='text-lg font-bold'>All Components</h2>
                 <ul className='space-y-2'>
                   <li>
-                    <Link
-                      href='#'
+                    <button
+                      onClick={() => setActiveComponent('Divreveal')}
                       className={`${
-                        theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
+                        activeComponent === 'Divreveal'
+                          ? 'text-green-500 scale-95'
+                          : theme === 'dark'
+                          ? 'text-gray-400'
+                          : 'text-gray-900'
+                      } text-semibold  transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
-                      3D Card Effect
-                    </Link>
+                      Div Reveal Effect
+                    </button>
                   </li>
                   <li>
                     <Link
@@ -264,7 +259,7 @@ const Sidebar = ({ setActiveComponent, activeComponent }: SidebarProps) => {
 
 const Layout = () => {
   const { theme } = useContext(ThemeContext);
-  const [activeComponent, setActiveComponent] = useState('');
+  const [activeComponent, setActiveComponent] = useState('Divreveal');
 
   return (
     <div className='flex'>
@@ -279,6 +274,7 @@ const Layout = () => {
       >
         {activeComponent === 'InstallNextJS' && <InstallNextJS />}
         {activeComponent === 'InstallTailwindCSS' && <InstallTailwindCSS />}
+        {activeComponent === 'Divreveal' && <Divreveal />}
       </main>
     </div>
   );
