@@ -14,6 +14,7 @@ export default function HomePage() {
       <Navbar />
       <Home />
       <Testimonial />
+      <TSkeyboard />
       <Footer />
     </ThemeProvider>
   );
