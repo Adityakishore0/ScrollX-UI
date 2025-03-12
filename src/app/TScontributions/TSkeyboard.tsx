@@ -610,7 +610,7 @@ const TSkeyboard = () => {
               </div>
             </div>
           </div>
-          <div className='p-[0.5px] rounded-[4px] bg-white/[0.2] shadow-md shadow-white/50 hover:shadow-none hover:scale-[0.98] cursor-pointer transition duration-100'>
+          <div className='p-[0.5px] rounded-[4px] bg-white/[0.2] shadow-md shadow-red-600 hover:shadow-none hover:scale-[0.98] cursor-pointer transition duration-100'>
             <div
               className='h-6 w-6 bg-[#0A090D] rounded-[3.5px] flex items-center justify-center'
               style={{
@@ -784,7 +784,7 @@ const TSkeyboard = () => {
               </div>
             </div>
           </div>
-          <div className='p-[0.5px] rounded-[4px] bg-white/[0.2] shadow-md shadow-white/50 hover:shadow-none hover:scale-[0.98] cursor-pointer transition duration-100'>
+          <div className='p-[0.5px] rounded-[4px] bg-white/[0.2] shadow-md shadow-red-600 hover:shadow-none hover:scale-[0.98] cursor-pointer transition duration-100'>
             <div
               className='h-6 w-6 bg-[#0A090D] rounded-[3.5px] flex items-center justify-center'
               style={{
@@ -797,7 +797,7 @@ const TSkeyboard = () => {
               </div>
             </div>
           </div>
-          <div className='p-[0.5px] rounded-[4px] bg-white/[0.2] shadow-md shadow-white/50 hover:shadow-none hover:scale-[0.98] cursor-pointer transition duration-100'>
+          <div className='p-[0.5px] rounded-[4px] bg-white/[0.2] shadow-md shadow-red-600 hover:shadow-none hover:scale-[0.98] cursor-pointer transition duration-100'>
             <div
               className='h-6 w-6 bg-[#0A090D] rounded-[3.5px] flex items-center justify-center'
               style={{
@@ -810,7 +810,7 @@ const TSkeyboard = () => {
               </div>
             </div>
           </div>
-          <div className='p-[0.5px] rounded-[4px] bg-white/[0.2] shadow-md shadow-white/50 hover:shadow-none hover:scale-[0.98] cursor-pointer transition duration-100'>
+          <div className='p-[0.5px] rounded-[4px] bg-white/[0.2] shadow-md shadow-red-600 hover:shadow-none hover:scale-[0.98] cursor-pointer transition duration-100'>
             <div
               className='h-6 w-6 bg-[#0A090D] rounded-[3.5px] flex items-center justify-center'
               style={{
@@ -1213,7 +1213,9 @@ const TSkeyboard = () => {
                   'rgb(13, 13, 15) 0px -0.5px 2px 0px inset, rgb(13, 13, 15) -0.5px 0px 2px 0px inset',
               }}
             >
-              <div className='text-[5px] w-full flex justify-center items-center flex-col text-white'></div>
+              <div className='text-[0.4rem] w-full flex justify-center items-center flex-col text-white'>
+              <span className='block font-bold'>Scrollx UI</span>
+              </div>
             </div>
           </div>
           <div
