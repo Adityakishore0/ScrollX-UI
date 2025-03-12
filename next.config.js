@@ -14,7 +14,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'upload.wikimedia.org',
       },
-    ],
+    ]
   },
 
   webpack(config) {
