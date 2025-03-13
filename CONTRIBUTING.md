@@ -31,7 +31,11 @@ Ensure you have **pnpm** installed on your system. If not, install it first:
 ```sh
 npm install -g pnpm
 ```
+then in powershell run 
 
+```sh
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+```
 Then, navigate to the project directory and install dependencies
 
 ```sh
