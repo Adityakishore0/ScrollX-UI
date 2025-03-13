@@ -5,9 +5,7 @@ Please review the [Contribution Guide](https://github.com/Adityakishore0/ScrollX
 
 ## Contributors
 
-<a href="https://github.com/Adityakishore0/ScrollX-UI/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Adityakishore0/ScrollX-UI" />
-</a>
+
 
 ## Maintainers
 
