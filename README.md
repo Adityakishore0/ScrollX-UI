@@ -7,8 +7,9 @@ Please review the [Contribution Guide](https://github.com/Adityakishore0/ScrollX
 [![GitHub contributors](https://img.shields.io/github/contributors/Adityakishore0/ScrollX-UI)](https://github.com/Adityakishore0/ScrollX-UI/graphs/contributors)    
   
 <a href="https://github.com/Adityakishore0/ScrollX-UI/graphs/contributors">  
-  <img src="https://contrib.rocks/image?repo=Adityakishore0/ScrollX-UI&nocache=1" />
-</a>
+  <img src="https://contrib.rocks/image?repo=Adityakishore0/ScrollX-UI&nocache=1" />  
+</a>  
+  
 [![isouravanand](https://github.com/isouravanand.png?size=66)](https://github.com/Adityakishore0/ScrollX-UI/graphs/contributors)
   
 ## Maintainers
