@@ -4,7 +4,9 @@ Contributions are welcome! Check the [Open Issues](https://github.com/Adityakish
 Please review the [Contribution Guide](https://github.com/Adityakishore0/ScrollX-UI/blob/main/CONTRIBUTING.md) and follow our standards. Thanks for your time!
 
 ## Contributors
-
+<a href="https://github.com/Adityakishore0/ScrollX-UI/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Adityakishore0/ScrollX-UI" />
+</a>
 
 
 ## Maintainers
