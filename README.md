@@ -10,7 +10,7 @@ Please review the [Contribution Guide](https://github.com/Adityakishore0/ScrollX
   <img src="https://contrib.rocks/image?repo=Adityakishore0/ScrollX-UI&nocache=1" />
 </a>
 
-
+[![isouravanand](https://github.com/isouravanand.png?size=66)](https://github.com/Adityakishore0/ScrollX-UI/graphs/contributors)
 
 ## Maintainers
 
