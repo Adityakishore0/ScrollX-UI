@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*for body*/
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #242424;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+.cursor-box {
+  width: 150px;
+  height: 150px;
+  background-color: #333;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cursor-box::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  top: -100%;
+  left: -100%;
+  transition: all 0.5s ease;
+}
+
+.cursor-box:hover::before {
+  top: 100%;
+  left: 100%;
+}
+
+/* Unique styles for each cursor type */
+.pointer {
+  cursor: pointer;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #646cff;
+}
+.pointer:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 0 15px #646cff50;
+}
+
+.help {
+  cursor: help;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #00bcd4;
+}
+.help:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 5px 15px #00bcd450;
+}
+
+.wait {
+  cursor: wait;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #ff4081;
+}
+.wait:hover {
+  animation: pulse 1.5s infinite;
+}
+
+.crosshair {
+  cursor: crosshair;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #4caf50;
+}
+.crosshair:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 5px #4caf5030;
+}
+
+.text {
+  cursor: text;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #ffc107;
+}
+.text:hover {
+  transform: scale(1.05);
+  letter-spacing: 2px;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #f44336;
+}
+.not-allowed:hover {
+  transform: scale(1.05);
+  animation: shake 0.5s ease-in-out;
+}
+
+.grab {
+  cursor: grab;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #9c27b0;
+}
+.grab:hover {
+  transform: scale(1.05) translateX(10px);
+}
+
+.zoom-in {
+  cursor: zoom-in;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #3f51b5;
+}
+.zoom-in:hover {
+  transform: scale(1.15);
+}
+
+.cell {
+  cursor: cell;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #009688;
+}
+.cell:hover {
+  transform: scale(1.05);
+  clip-path: polygon(
+    10% 0%,
+    90% 0%,
+    100% 10%,
+    100% 90%,
+    90% 100%,
+    10% 100%,
+    0% 90%,
+    0% 10%
+  );
+}
+
+.copy {
+  cursor: copy;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #cddc39;
+}
+.copy:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 0 #cddc3950;
+}
+
+.move {
+  cursor: move;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #ff9800;
+}
+.move:hover {
+  animation: moveAround 2s infinite ease-in-out;
+}
+
+.alias {
+  cursor: alias;
+  background: linear-gradient(145deg, #2a2a2a, #383838);
+  border: 2px solid #e91e63;
+}
+.alias:hover {
+  transform: scale(1.05) skew(-5deg);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0) scale(1.05);
+  }
+  25% {
+    transform: translateX(-5px) scale(1.05);
+  }
+  75% {
+    transform: translateX(5px) scale(1.05);
+  }
+}
+
+@keyframes moveAround {
+  0% {
+    transform: translate(0, 0) scale(1.05);
+  }
+  25% {
+    transform: translate(5px, -5px) scale(1.05);
+  }
+  50% {
+    transform: translate(0, 0) scale(1.05);
+  }
+  75% {
+    transform: translate(-5px, 5px) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cursor-box {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cursor-box {
+    width: 140px;
+    height: 140px;
+  }
+}
