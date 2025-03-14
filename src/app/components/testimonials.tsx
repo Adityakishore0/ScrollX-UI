@@ -7,6 +7,7 @@ interface Testimonial {
   name: string;
   handle: string;
   review: string;
+  profilePic: string; // New property for profile picture
 }
 
 const testimonials: Testimonial[] = [
@@ -15,70 +16,82 @@ const testimonials: Testimonial[] = [
     handle: '@ava_thompson',
     review:
       'Scrollout AI is a game-changer! The animations are smooth, and the UI is beyond stunning.',
+      profilePic: 'https://randomuser.me/api/portraits/women/1.jpg',
   },
   {
     name: 'Elijah Carter',
     handle: '@elijah_ui',
     review:
       'Absolutely mesmerizing! The attention to detail in Scrollout AI is incredible.',
+      profilePic: 'https://randomuser.me/api/portraits/women/2.jpg',
   },
   {
     name: 'Sophia Martinez',
     handle: '@sophia_codes',
     review:
       "As a front-end developer, I love how intuitive and powerful Scrollout AI is. It's a must-have tool!",
+      profilePic: 'https://randomuser.me/api/portraits/women/3.jpg',
   },
   {
     name: 'Michael Brown',
     handle: '@michaelb_dev',
     review:
       'This changed the way I build interfaces. The animations are top-notch!',
+      profilePic: 'https://randomuser.me/api/portraits/men/1.jpg',
   },
   {
     name: 'Liam Anderson',
     handle: '@liamdesigns',
     review:
       'The best UI toolkit I’ve ever used! Smooth animations and top-notch performance.',
+      profilePic: 'https://randomuser.me/api/portraits/men/2.jpg',
   },
   {
     name: 'Olivia Hayes',
     handle: '@olivia_h',
     review:
       'This is absolutely mind-blowing. AI-powered UI is the future, and Scrollout AI is leading the way!',
+      profilePic: 'https://randomuser.me/api/portraits/women/4.jpg',
   },
   {
     name: 'Daniel Lee',
     handle: '@daniel_dev',
     review:
       'Brilliant execution! The user experience feels effortless and elegant.',
+      profilePic: 'https://randomuser.me/api/portraits/men/3.jpg',
   },
   {
     name: 'Sarah Green',
     handle: '@sarahgreen',
     review:
       'I can’t stop recommending this. It makes everything feel premium and polished!',
+      profilePic: 'https://randomuser.me/api/portraits/women/5.jpg',
   },
   {
     name: 'Mia Patel',
     handle: '@miapatel',
     review: 'Scrollout AI took my web app to the next level. Highly recommend!',
+    profilePic: 'https://randomuser.me/api/portraits/women/6.jpg',
   },
   {
     name: 'James Walker',
     handle: '@jameswalker',
     review:
       'This is the future of web design! Can’t believe something this good is available for free.',
+      profilePic: 'https://randomuser.me/api/portraits/men/4.jpg',
   },
   {
     name: 'Emma Johnson',
     handle: '@emma_uiux',
     review:
       'Phenomenal work! Every detail is thoughtfully crafted for an amazing experience.',
+      profilePic: 'https://randomuser.me/api/portraits/women/7.jpg',
   },
   {
     name: 'Ethan Roberts',
     handle: '@ethan_rob',
     review: 'This toolkit has completely changed my workflow. Incredible work!',
+    profilePic: 'https://randomuser.me/api/portraits/men/6.jpg',
   },
 ];
 
@@ -135,11 +148,17 @@ const Testimonial: React.FC = () => {
                   ].map((testimonial, index) => (
                     <div
                       key={index}
-                      className='p-4 bg-black rounded-lg shadow-md mx-auto w-full'
+                      className='relative p-4 bg-black rounded-lg shadow-md mx-auto w-full flex flex-col gap-2'
                     >
                       <p className='text-lg'>{testimonial.review}</p>
                       <p className='mt-2 font-semibold'>{testimonial.name}</p>
-                      <p className='text-sm text-gray-400'>
+                      <p className='text-sm text-gray-400'> 
+                         {/*  added profile image in Bottom-Right Corner */}
+                          <img 
+                            src={testimonial.profilePic} 
+                             alt={testimonial.name} 
+                              className="w-12 h-12 rounded-full object-cover absolute bottom-2 right-2 border-2 border-white"
+                              />
                         {testimonial.handle}
                       </p>
                     </div>
