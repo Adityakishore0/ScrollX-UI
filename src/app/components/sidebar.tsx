@@ -5,6 +5,7 @@ import React, { useContext, useState } from 'react';
 import Divreveal from '@/app/sidebarmenu/Divreveal';
 import InstallNextJS from '@/app/sidebarmenu/InstallNextJS';
 import InstallTailwindCSS from '@/app/sidebarmenu/InstallTailwindCss';
+import Smoothkeyboard from '@/app/sidebarmenu/Smoothkeyboard';
 
 import { ThemeContext } from '../context/ThemeContext';
 
@@ -155,14 +156,18 @@ const Sidebar = ({ setActiveComponent, activeComponent }: SidebarProps) => {
                     </Link>
                   </li>
                   <li className='flex items-center gap-2'>
-                    <Link
-                      href='#'
+                    <button
+                      onClick={() => setActiveComponent('Smoothkeyboard')}
                       className={`${
-                        theme === 'dark' ? 'text-gray-400' : 'text-gray-900'
-                      } text-semibold mb-6 transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
+                        activeComponent === 'Smoothkeyboard'
+                          ? 'text-green-500 scale-95'
+                          : theme === 'dark'
+                          ? 'text-gray-400'
+                          : 'text-gray-900'
+                      } text-semibold  transition-transform duration-200 hover:text-green-500 hover:scale-95 active:scale-105 active:font-bold`}
                     >
-                      Animated Testimonials
-                    </Link>
+                      Smooth Keyboard
+                    </button>
                     <span className='bg-green-500 text-black text-xs font-bold px-2 py-0.5 rounded-full'>
                       New
                     </span>
@@ -275,6 +280,7 @@ const Layout = () => {
         {activeComponent === 'InstallNextJS' && <InstallNextJS />}
         {activeComponent === 'InstallTailwindCSS' && <InstallTailwindCSS />}
         {activeComponent === 'Divreveal' && <Divreveal />}
+        {activeComponent === 'Smoothkeyboard' && <Smoothkeyboard />}
       </main>
     </div>
   );
