@@ -1,6 +1,6 @@
 const TSkeyboard = () => {
   return (
-    <div className='bg-neutral-900 h-screen flex items-center justify-center'>
+    <div className='bg-black h-screen flex items-center justify-center'>
       <div className='absolute md:relative rounded-md bg-zinc-800  p-1 scale-[1.7] translate-x-10 w-fit h-fit mx-auto'>
         <div className='flex gap-[2px] mb-[2px] w-full shrink-0'>
           <div className='p-[0.5px] rounded-[4px] bg-white/[0.2] shadow-md shadow-white/50 hover:shadow-none hover:scale-[0.98] hover:translate-y-[1px] cursor-pointer transition duration-100'>
@@ -1214,7 +1214,7 @@ const TSkeyboard = () => {
               }}
             >
               <div className='text-[0.4rem] w-full flex justify-center items-center flex-col text-white'>
-              <span className='block font-bold'>Scrollx UI</span>
+                <span className='block font-bold'>Scrollx UI</span>
               </div>
             </div>
           </div>
