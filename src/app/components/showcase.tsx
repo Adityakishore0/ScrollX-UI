@@ -1,10 +1,10 @@
 import { Code, Eye } from 'lucide-react';
+import Image from 'next/image';
 import { FC, useContext, useState } from 'react';
 
 import SparklesText from '@/components/ui/sparkleText';
 
 import { ThemeContext } from '@/app/context/ThemeContext';
-import Image from 'next/image';
 const CopyPasteUI: FC = () => {
   const [isCodeVisible, setIsCodeVisible] = useState<boolean>(false);
   const [isCopied, setIsCopied] = useState<boolean>(false);
@@ -143,41 +143,85 @@ const CopyPasteUI: FC = () => {
       <div className='overflow-hidden w-full py-4 mt-[12rem]'>
         {' '}
         {/* Increased margin-top from mt-12 to mt-24 */}
-        <div className="flex whitespace-nowrap animate-[scroll_10s_linear_infinite] space-x-48 min-w-max">
-  {Array(2)
-    .fill([
-      { name: 'Google', src: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg'  },
-      { name: 'Microsoft', src: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg' },
-      { name: 'Apple', src: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
-      { name: 'Amazon', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
-      { name: 'Tesla', src: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors.svg' },
-      { name: 'Facebook', src: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png' },
-      { name: 'Samsung', src: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg' },
-      { name: 'IBM', src: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
-      { name: 'Intel', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Intel_logo_%282020%2C_dark_blue%29.svg/1623px-Intel_logo_%282020%2C_dark_blue%29.svg.png' },
-      { name: 'Adobe', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Adobe_Corporate_wordmark.svg/1920px-Adobe_Corporate_wordmark.svg.png' },
-      { name: 'Oracle', src: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg' },
-      { name: 'Nvidia', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/NVIDIA_logo.svg/1920px-NVIDIA_logo.svg.png' },
-      { name: 'Sony', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Sony_logo.svg/800px-Sony_logo.svg.png' },
-      { name: 'Coca-Cola', src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/1920px-Coca-Cola_logo.svg.png' },
-      { name: 'Pepsi', src: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Pepsi_2023.svg' },
-    ])
-    .flat()
-    .map((company, index) => (
-      <Image
-        key={index}
-        src={company.src}
-        alt={company.name}
-        width={100}
-        height={40} 
-        className="h-10 w-auto object-contain" 
-      />
-    ))}
-</div>
-
+        <div className='flex whitespace-nowrap animate-[scroll_10s_linear_infinite] space-x-48 min-w-max'>
+          {Array(2)
+            .fill([
+              {
+                name: 'Google',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
+              },
+              {
+                name: 'Microsoft',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+              },
+              {
+                name: 'Apple',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
+              },
+              {
+                name: 'Amazon',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',
+              },
+              {
+                name: 'Tesla',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors.svg',
+              },
+              {
+                name: 'Facebook',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png',
+              },
+              {
+                name: 'Samsung',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg',
+              },
+              {
+                name: 'IBM',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg',
+              },
+              {
+                name: 'Intel',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Intel_logo_%282020%2C_dark_blue%29.svg/1623px-Intel_logo_%282020%2C_dark_blue%29.svg.png',
+              },
+              {
+                name: 'Adobe',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Adobe_Corporate_wordmark.svg/1920px-Adobe_Corporate_wordmark.svg.png',
+              },
+              {
+                name: 'Oracle',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg',
+              },
+              {
+                name: 'Nvidia',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/NVIDIA_logo.svg/1920px-NVIDIA_logo.svg.png',
+              },
+              {
+                name: 'Sony',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Sony_logo.svg/800px-Sony_logo.svg.png',
+              },
+              {
+                name: 'Coca-Cola',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/1920px-Coca-Cola_logo.svg.png',
+              },
+              {
+                name: 'Pepsi',
+                src: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Pepsi_2023.svg',
+              },
+            ])
+            .flat()
+            .map((company, index) => (
+              <Image
+                key={index}
+                src={company.src}
+                alt={company.name}
+                width={100}
+                height={40}
+                className='h-10 w-auto object-contain'
+              />
+            ))}
+        </div>
       </div>
       <style>
-  {`
+        {`
     @keyframes scroll {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); } /* Moves full duplicated content */
@@ -188,7 +232,7 @@ const CopyPasteUI: FC = () => {
       width: max-content;
     }
   `}
-</style>
+      </style>
     </div>
   );
 };
