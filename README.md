@@ -1,3 +1,21 @@
+<div align="center">
+	<br>
+	<br>
+    <picture>
+      <source media="(prefers-color-scheme: light)" srcset="src/svg/Scrollxdark.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="src/svg/Scrollxx.svg">
+      <img src="src/svg/Scrollxdark.svg" alt="ScrollX-UI logo" width="1000">
+    </picture>
+	<br>
+	<br>
+</div>
+<br />
+
+<div align="center">
+  <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-red.svg"></a>
+  <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/CONTRIBUTING.md"><img alt="Open-Source" src="https://img.shields.io/badge/Open-Source-red.svg"></a>
+</div>
+
 ## How To Contribute?
 
 Contributions are welcome! Check the [Open Issues](https://github.com/Adityakishore0/ScrollX-UI/issues) to see how you can help or submit ideas using the [Feature Request template](https://github.com/Adityakishore0/ScrollX-UI/issues/new?template=2-feature-request.yml).</br>
