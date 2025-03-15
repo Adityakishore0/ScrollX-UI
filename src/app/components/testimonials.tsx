@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
 
 import { ThemeContext } from '@/app/context/ThemeContext';
@@ -7,7 +8,7 @@ interface Testimonial {
   name: string;
   handle: string;
   review: string;
-  profilePic: string; // New property for profile picture
+  profilePic: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -16,56 +17,56 @@ const testimonials: Testimonial[] = [
     handle: '@ava_thompson',
     review:
       'Scrollout AI is a game-changer! The animations are smooth, and the UI is beyond stunning.',
-      profilePic: 'https://randomuser.me/api/portraits/women/1.jpg',
+    profilePic: 'https://randomuser.me/api/portraits/women/1.jpg',
   },
   {
     name: 'Elijah Carter',
     handle: '@elijah_ui',
     review:
       'Absolutely mesmerizing! The attention to detail in Scrollout AI is incredible.',
-      profilePic: 'https://randomuser.me/api/portraits/women/2.jpg',
+    profilePic: 'https://randomuser.me/api/portraits/women/2.jpg',
   },
   {
     name: 'Sophia Martinez',
     handle: '@sophia_codes',
     review:
       "As a front-end developer, I love how intuitive and powerful Scrollout AI is. It's a must-have tool!",
-      profilePic: 'https://randomuser.me/api/portraits/women/3.jpg',
+    profilePic: 'https://randomuser.me/api/portraits/women/3.jpg',
   },
   {
     name: 'Michael Brown',
     handle: '@michaelb_dev',
     review:
       'This changed the way I build interfaces. The animations are top-notch!',
-      profilePic: 'https://randomuser.me/api/portraits/men/1.jpg',
+    profilePic: 'https://randomuser.me/api/portraits/men/1.jpg',
   },
   {
     name: 'Liam Anderson',
     handle: '@liamdesigns',
     review:
       'The best UI toolkit I’ve ever used! Smooth animations and top-notch performance.',
-      profilePic: 'https://randomuser.me/api/portraits/men/2.jpg',
+    profilePic: 'https://randomuser.me/api/portraits/men/2.jpg',
   },
   {
     name: 'Olivia Hayes',
     handle: '@olivia_h',
     review:
       'This is absolutely mind-blowing. AI-powered UI is the future, and Scrollout AI is leading the way!',
-      profilePic: 'https://randomuser.me/api/portraits/women/4.jpg',
+    profilePic: 'https://randomuser.me/api/portraits/women/4.jpg',
   },
   {
     name: 'Daniel Lee',
     handle: '@daniel_dev',
     review:
       'Brilliant execution! The user experience feels effortless and elegant.',
-      profilePic: 'https://randomuser.me/api/portraits/men/3.jpg',
+    profilePic: 'https://randomuser.me/api/portraits/men/3.jpg',
   },
   {
     name: 'Sarah Green',
     handle: '@sarahgreen',
     review:
       'I can’t stop recommending this. It makes everything feel premium and polished!',
-      profilePic: 'https://randomuser.me/api/portraits/women/5.jpg',
+    profilePic: 'https://randomuser.me/api/portraits/women/5.jpg',
   },
   {
     name: 'Mia Patel',
@@ -78,14 +79,14 @@ const testimonials: Testimonial[] = [
     handle: '@jameswalker',
     review:
       'This is the future of web design! Can’t believe something this good is available for free.',
-      profilePic: 'https://randomuser.me/api/portraits/men/4.jpg',
+    profilePic: 'https://randomuser.me/api/portraits/men/4.jpg',
   },
   {
     name: 'Emma Johnson',
     handle: '@emma_uiux',
     review:
       'Phenomenal work! Every detail is thoughtfully crafted for an amazing experience.',
-      profilePic: 'https://randomuser.me/api/portraits/women/7.jpg',
+    profilePic: 'https://randomuser.me/api/portraits/women/7.jpg',
   },
   {
     name: 'Ethan Roberts',
@@ -150,16 +151,19 @@ const Testimonial: React.FC = () => {
                       key={index}
                       className='relative p-4 bg-black rounded-lg shadow-md mx-auto w-full flex flex-col gap-2'
                     >
-                      <p className='mt-2 font-semibold'>{testimonial.name}</p>
-                      <p className='text-sm text-gray-400'> 
-                         {/*  added profile image in Bottom-Right Corner */}
-                          <img 
-                            src={testimonial.profilePic} 
-                             alt={testimonial.name} 
-                              className="w-12 h-12 rounded-full object-cover absolute bottom-2 right-2 border-2 border-white"
-                              />
-                        {testimonial.handle}
-                      </p>
+                      <div className='flex items-center space-x-3 text-sm text-gray-400'>
+                        <Image
+                          src={testimonial.profilePic}
+                          alt={testimonial.name}
+                          width={40}
+                          height={40}
+                          className='rounded-full object-cover border-2 border-white'
+                        />
+                        <div>
+                          <p className='font-semibold'>{testimonial.name}</p>
+                          <p>{testimonial.handle}</p>
+                        </div>
+                      </div>
                       <p className='text-lg mt-2'>{testimonial.review}</p>
                     </div>
                   ))}
