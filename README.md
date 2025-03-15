@@ -15,3 +15,7 @@ Please review the [Contribution Guide](https://github.com/Adityakishore0/ScrollX
 ## Maintainers
 
 [Aditya kishore](https://github.com/Adityakishore0)
+
+## License
+
+Licensed under the [MIT license](https://github.com/Adityakishore0/ScrollX-UI/blob/main/LICENSE.md).
