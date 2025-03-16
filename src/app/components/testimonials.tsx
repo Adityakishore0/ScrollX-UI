@@ -16,21 +16,21 @@ const testimonials: Testimonial[] = [
     name: 'Ava Thompson',
     handle: '@ava_thompson',
     review:
-      'Scrollout AI is a game-changer! The animations are smooth, and the UI is beyond stunning.',
+      'ScrollX UI is a game-changer! The animations are smooth, and the UI is beyond stunning.',
     profilePic: 'https://randomuser.me/api/portraits/women/1.jpg',
   },
   {
     name: 'Elijah Carter',
     handle: '@elijah_ui',
     review:
-      'Absolutely mesmerizing! The attention to detail in Scrollout AI is incredible.',
+      'Absolutely mesmerizing! The attention to detail in ScrollX UI is incredible.',
     profilePic: 'https://randomuser.me/api/portraits/women/2.jpg',
   },
   {
     name: 'Sophia Martinez',
     handle: '@sophia_codes',
     review:
-      "As a front-end developer, I love how intuitive and powerful Scrollout AI is. It's a must-have tool!",
+      "As a front-end developer, I love how intuitive and powerful ScrollX UI is. It's a must-have tool!",
     profilePic: 'https://randomuser.me/api/portraits/women/3.jpg',
   },
   {
@@ -51,7 +51,7 @@ const testimonials: Testimonial[] = [
     name: 'Olivia Hayes',
     handle: '@olivia_h',
     review:
-      'This is absolutely mind-blowing. AI-powered UI is the future, and Scrollout AI is leading the way!',
+      'This is absolutely mind-blowing. AI-powered UI is the future, and ScrollX UI is leading the way!',
     profilePic: 'https://randomuser.me/api/portraits/women/4.jpg',
   },
   {
@@ -71,7 +71,7 @@ const testimonials: Testimonial[] = [
   {
     name: 'Mia Patel',
     handle: '@miapatel',
-    review: 'Scrollout AI took my web app to the next level. Highly recommend!',
+    review: 'ScrollX UI took my web app to the next level. Highly recommend!',
     profilePic: 'https://randomuser.me/api/portraits/women/6.jpg',
   },
   {
@@ -120,7 +120,7 @@ const Testimonial: React.FC = () => {
           Loved by thousands of people
         </h2>
         <p className='text-gray-400 mb-10 text-center w-full max-w-2xl px-4'>
-          Here's what some of our users have to say about Scrollout AI.
+          Here's what some of our users have to say about ScrollX UI.
         </p>
 
         <div className='hidden md:flex gap-10 w-full max-w-6xl text-white overflow-hidden relative'>
