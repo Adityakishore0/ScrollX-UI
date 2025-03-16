@@ -1,7 +1,7 @@
 export const siteConfig = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'ScrollX UI',
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
+    'An open source collection of animated, interactive & fully customizable components for building stunning, memorable user interfaces.',
   /** Without additional '/' on the end, e.g. https://aditya.is-cool.dev/ */
   url: 'https://nextjs-advancestarter.vercel.app',
 };
