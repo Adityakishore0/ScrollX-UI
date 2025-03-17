@@ -46,24 +46,54 @@ const InstallNextJS: React.FC = () => {
               On installation, you'll see the following prompts:
             </h2>
             <div className='bg-black p-3 rounded-md text-neutral-50 font-mono text-sm'>
-              <p className='mt-1'>What is your project named? my-app</p>
-              <p className='mt-1'>Would you like to use TypeScript? No / Yes</p>
-              <p className='mt-1'>Would you like to use ESLint? No / Yes</p>
               <p className='mt-1'>
-                Would you like to use Tailwind CSS? No / Yes
+                <span className='text-yellow-400'>What</span> is your
+                <span className='text-teal-400'> project</span> named?
+                <span className='text-green-400'> "my-app"</span>
               </p>
               <p className='mt-1'>
-                Would you like to use `src/` directory? No / Yes
+                <span className='text-blue-400'>Would you like to use</span>
+                <span className='text-purple-400'> TypeScript</span>?
+                <span className='text-red-400'> No</span> /
+                <span className='text-green-400'> Yes</span>
               </p>
               <p className='mt-1'>
-                Would you like to use App Router? (recommended) No / Yes
+                <span className='text-blue-400'>Would you like to use</span>
+                <span className='text-yellow-400'> ESLint</span>?
+                <span className='text-red-400'> No</span> /
+                <span className='text-green-400'> Yes</span>
               </p>
               <p className='mt-1'>
-                Would you like to customize the default import alias (@/*)? No /
-                Yes
+                <span className='text-blue-400'>Would you like to use</span>
+                <span className='text-teal-400'> Tailwind CSS</span>?
+                <span className='text-red-400'> No</span> /
+                <span className='text-green-400'> Yes</span>
               </p>
               <p className='mt-1'>
-                What import alias would you like configured? @/*
+                <span className='text-blue-400'>Would you like to use</span>
+                <span className='text-purple-400'> `src/`</span> directory?
+                <span className='text-red-400'> No</span> /
+                <span className='text-green-400'> Yes</span>
+              </p>
+              <p className='mt-1'>
+                <span className='text-blue-400'>Would you like to use</span>
+                <span className='text-teal-400'> App Router</span>? (
+                <span className='text-yellow-400'>recommended</span>)
+                <span className='text-red-400'> No</span> /
+                <span className='text-green-400'> Yes</span>
+              </p>
+              <p className='mt-1'>
+                <span className='text-blue-400'>Would you like to</span>
+                <span className='text-green-400'> customize</span> the default
+                import alias
+                <span className='text-yellow-400'> (@/*)</span>?
+                <span className='text-red-400'> No</span> /
+                <span className='text-green-400'> Yes</span>
+              </p>
+              <p className='mt-1'>
+                <span className='text-yellow-400'>What</span> import alias would
+                you like configured?
+                <span className='text-teal-400'> "@/*"</span>
               </p>
             </div>
           </div>
@@ -73,8 +103,16 @@ const InstallNextJS: React.FC = () => {
               Start the app
             </h2>
             <div className='bg-black p-2 rounded-md text-neutral-50 font-mono'>
-              <p>cd my-app</p>
-              <p>npm run dev</p>
+              <p>
+                <span className='text-green-400'>$</span>
+                <span className='text-yellow-400'> cd</span>
+                <span className='text-teal-400'> my-app</span>
+              </p>
+              <p>
+                <span className='text-green-400'>$</span>
+                <span className='text-yellow-400'> npm</span>
+                <span className='text-teal-400'> run dev</span>
+              </p>
             </div>
           </div>
         </div>
