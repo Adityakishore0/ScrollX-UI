@@ -1,11 +1,33 @@
 'use client';
 
 import React, { useContext } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { ThemeContext } from '../context/ThemeContext';
 
 const InstallTailwindCss: React.FC = () => {
   const { theme } = useContext(ThemeContext);
+
+  const codeString = `/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: { extend: {} },
+  plugins: [],
+};`;
+
+  const codeString1 = `@tailwind base; 
+@tailwind components;
+@tailwind utilities;`;
+
+  const codeStringtype = `export default function Home() { 
+  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+}`;
 
   return (
     <div
@@ -49,9 +71,16 @@ const InstallTailwindCss: React.FC = () => {
               Install Tailwind CSS
             </h2>
             <div className='bg-black p-3 rounded-md text-neutral-50 font-mono text-sm'>
-              npm install -D tailwindcss postcss autoprefixer
-              <br />
-              npx tailwindcss init -p
+              <p>
+                <span className='text-yellow-300'>npm</span> install -D
+                <span className='text-teal-300'>
+                  {' '}
+                  tailwindcss postcss autoprefixer
+                </span>
+              </p>
+              <p>
+                <span className='text-yellow-300'>npx</span> tailwindcss init -p
+              </p>
             </div>
           </div>
 
@@ -60,30 +89,29 @@ const InstallTailwindCss: React.FC = () => {
               Configure your template paths
             </h2>
             <div className='bg-black p-2 rounded-md text-neutral-50 font-mono'>
-              <p>
-                {`/** @type {import('tailwindcss').Config} */`}
-                <br />
-                {`module.exports = {`}
-                <br />
-                &nbsp;&nbsp;content: [
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;{`"./app/**/*.{js,ts,jsx,tsx,mdx}",`}
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;{`"./pages/**/*.{js,ts,jsx,tsx,mdx}",`}
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                {`"./components/**/*.{js,ts,jsx,tsx,mdx}",`}
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;{`"./src/**/*.{js,ts,jsx,tsx,mdx}",`}
-                <br />
-                &nbsp;&nbsp;],
-                <br />
-                &nbsp;&nbsp;{`theme: { extend: {} },`}
-                <br />
-                &nbsp;&nbsp;plugins: [],
-                <br />
-                {`};`}
-              </p>
+              <SyntaxHighlighter
+                language='javascript'
+                style={dracula}
+                wrapLongLines={false} // Ensures horizontal scrolling
+                customStyle={{
+                  background: '#000',
+                  overflowX: 'auto', // Enables horizontal scrolling
+                  whiteSpace: 'pre', // Ensures proper code formatting
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                }}
+              >
+                {codeString}
+              </SyntaxHighlighter>
+
+              {/* Hide scrollbar for Chrome/Safari */}
+              <style>
+                {`
+                 ::-webkit-scrollbar {
+                   display: none;
+                 }
+               `}
+              </style>
             </div>
           </div>
 
@@ -92,10 +120,29 @@ const InstallTailwindCss: React.FC = () => {
               Add Tailwind directives to your CSS
             </h2>
             <div className='bg-black p-2 rounded-md text-neutral-50 font-mono'>
-              <p>globals.css</p>
-              <p>@tailwind base;</p>
-              <p>@tailwind components;</p>
-              <p>@tailwind utilities;</p>
+              <SyntaxHighlighter
+                language='css'
+                style={dracula}
+                wrapLongLines={false} // Ensures horizontal scrolling
+                customStyle={{
+                  background: '#000',
+                  overflowX: 'auto', // Enables horizontal scrolling
+                  whiteSpace: 'pre', // Ensures proper code formatting
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                }}
+              >
+                {codeString1}
+              </SyntaxHighlighter>
+
+              {/* Hide scrollbar for Chrome/Safari */}
+              <style>
+                {`
+                 ::-webkit-scrollbar {
+                   display: none;
+                 }
+               `}
+              </style>
             </div>
           </div>
 
@@ -113,13 +160,29 @@ const InstallTailwindCss: React.FC = () => {
               Start using Tailwind
             </h2>
             <div className='bg-black p-2 rounded-md text-neutral-50 font-mono'>
-              <p>index.tsx</p>
-              <p>export default function Home() &#123;</p>
-              <p>
-                &nbsp;&nbsp;return &lt;h1 className="text-3xl font-bold
-                underline"&gt;Hello world!&lt;/h1&gt;;
-              </p>
-              <p>&#125;</p>
+              <SyntaxHighlighter
+                language='typescript'
+                style={dracula}
+                wrapLongLines={false} // Ensures horizontal scrolling
+                customStyle={{
+                  background: '#000',
+                  overflowX: 'auto', // Enables horizontal scrolling
+                  whiteSpace: 'pre', // Ensures proper code formatting
+                  scrollbarWidth: 'none', // Hides scrollbar in Firefox
+                  msOverflowStyle: 'none', // Hides scrollbar in IE/Edge
+                }}
+              >
+                {codeStringtype}
+              </SyntaxHighlighter>
+
+              {/* Hide scrollbar for Chrome/Safari */}
+              <style>
+                {`
+                  ::-webkit-scrollbar {
+                    display: none;
+                  }
+                `}
+              </style>
             </div>
           </div>
         </div>
