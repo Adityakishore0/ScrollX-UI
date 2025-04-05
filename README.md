@@ -3,7 +3,7 @@
 	<br>
     <picture>
       <source media="(prefers-color-scheme: light)" srcset="src/svg/Scrollxdark.svg">
-      <source media="(prefers-color-scheme: dark)" srcset="src/svg/Scrollxx.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="src/svg/Scrollx.svg">
       <img src="src/svg/Scrollxdark.svg" alt="ScrollX-UI logo" width="1000">
     </picture>
 	<br>
