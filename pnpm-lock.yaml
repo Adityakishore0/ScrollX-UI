@@ -78,6 +78,9 @@ importers:
       sonner:
         specifier: ^2.0.3
         version: 2.0.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      styled-jsx:
+        specifier: ^5.1.6
+        version: 5.1.6(@babel/core@7.26.10)(react@18.2.0)
       tailwind-merge:
         specifier: ^3.0.1
         version: 3.1.0
