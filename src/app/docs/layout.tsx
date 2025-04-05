@@ -11,13 +11,13 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
       <Navbar />
 
       <div className="flex flex-1">
-        {/* Sidebar */}
-        <div className="w-64 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 fixed inset-y-0 overflow-y-auto">
+        {/* Sidebar - hidden on mobile */}
+        <div className="hidden md:block w-64 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 fixed inset-y-0 overflow-y-auto">
           <Sidebar />
         </div>
 
-        {/* Main content */}
-        <div className="flex-1 ml-64">
+        {/* Main content - full width on mobile, adjusted margin on larger screens */}
+        <div className="flex-1 md:ml-64">
           <div className="container mx-auto flex">
             <div className="flex-1 max-w-3xl px-4 py-8">{children}</div>
 
