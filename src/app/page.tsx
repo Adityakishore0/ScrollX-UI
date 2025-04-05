@@ -1,21 +1,21 @@
-'use client';
+import { Navbar } from "@/components/Navbar";
+import { HeroSection } from "@/components/HeroSection";
+import { FeaturesSection } from "@/components/FeaturesSection";
+import { ComponentShowcase } from "@/components/ComponentShowcase";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { Footer } from "@/components/Footer";
 
-import React from 'react';
-
-import Footer from '@/app/components/footer';
-import Home from '@/app/components/home';
-import Navbar from '@/app/components/navbar';
-import Testimonial from '@/app/components/testimonials';
-import { ThemeProvider } from '@/app/context/ThemeContext';
-
-
-export default function HomePage() {
+export default function Home() {
   return (
-    <ThemeProvider>
+    <>
       <Navbar />
-      <Home />
-      <Testimonial />
+      <main className="flex flex-col min-h-screen">
+        <HeroSection />
+        <FeaturesSection />
+        <ComponentShowcase />
+        <TestimonialsSection />
+      </main>
       <Footer />
-    </ThemeProvider>
+    </>
   );
 }

@@ -1,39 +1,36 @@
-<div align="center">
-	<br>
-	<br>
-    <picture>
-      <source media="(prefers-color-scheme: light)" srcset="src/svg/Scrollxdark.svg">
-      <source media="(prefers-color-scheme: dark)" srcset="src/svg/Scrollxx.svg">
-      <img src="src/svg/Scrollxdark.svg" alt="ScrollX-UI logo" width="1000">
-    </picture>
-	<br>
-	<br>
-</div>
-<br />
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-<div align="center">
-  <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-red.svg"></a>
-  <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/CONTRIBUTING.md"><img alt="Open-Source" src="https://img.shields.io/badge/Open-Source-red.svg"></a>
-</div>
+## Getting Started
 
-## How To Contribute?
+First, run the development server:
 
-Contributions are welcome! Check the [Open Issues](https://github.com/Adityakishore0/ScrollX-UI/issues) to see how you can help or submit ideas using the [Feature Request template](https://github.com/Adityakishore0/ScrollX-UI/issues/new?template=2-feature-request.yml).</br>
-Please review the [Contribution Guide](https://github.com/Adityakishore0/ScrollX-UI/blob/main/CONTRIBUTING.md) and follow our standards. Thanks for your time!
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Contributors
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-[![GitHub contributors](https://img.shields.io/github/contributors/Adityakishore0/ScrollX-UI)](https://github.com/Adityakishore0/ScrollX-UI/graphs/contributors)
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-<a href="https://github.com/Adityakishore0/ScrollX-UI/graphs/contributors">  
-  <img src="https://contrib.rocks/image?repo=Adityakishore0/ScrollX-UI&random=476" />  
-</a>  
-  
-  
-## Maintainers
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-[Aditya kishore](https://github.com/Adityakishore0)
+## Learn More
 
-## License
+To learn more about Next.js, take a look at the following resources:
 
-Licensed under the [MIT license](https://github.com/Adityakishore0/ScrollX-UI/blob/main/LICENSE.md).
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

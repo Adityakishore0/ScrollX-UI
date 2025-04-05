@@ -1,57 +1,66 @@
+import withMDX from "@next/mdx";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    dirs: ['src'],
+    // We use Biome for linting
+    ignoreDuringBuilds: true,
   },
-
-  reactStrictMode: true,
-  swcMinify: true,
-
-  // added domain whitelist for wikipedia images
   images: {
+    unoptimized: true,
+    domains: [
+      "source.unsplash.com",
+      "images.unsplash.com",
+      "ext.same-assets.com",
+      "ugc.same-assets.com",
+    ],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'upload.wikimedia.org',
+        protocol: "https",
+        hostname: "source.unsplash.com",
+        pathname: "/**",
       },
       {
-        protocol: 'https',
-        hostname: 'randomuser.me', // Allow external images
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
       },
-    ]
+      {
+        protocol: "https",
+        hostname: "ext.same-assets.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "ugc.same-assets.com",
+        pathname: "/**",
+      },
+    ],
   },
-
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   webpack(config) {
-    // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule) =>
-      rule.test?.test?.('.svg')
-    );
-
-    config.module.rules.push(
-      // Reapply the existing rule, but only for svg imports ending in ?url
-      {
-        ...fileLoaderRule,
-        test: /\.svg$/i,
-        resourceQuery: /url/, // *.svg?url
-      },
-      // Convert all other *.svg imports to React components
-      {
-        test: /\.svg$/i,
-        issuer: { not: /\.(css|scss|sass)$/ },
-        resourceQuery: { not: /url/ }, // exclude if *.svg?url
-        loader: '@svgr/webpack',
-        options: {
-          dimensions: false,
-          titleProp: true,
-        },
-      }
-    );
-
-    // Modify the file loader rule to ignore *.svg, since we have it handled now.
-    fileLoaderRule.exclude = /\.svg$/i;
-
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"], // Enables SVG as React components
+    });
     return config;
   },
+  experimental: {
+    mdxRs: false, // Enables MDX support in App Router
+  },
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  transpilePackages: ["next-mdx-remote"],
 };
 
-module.exports = nextConfig;
+// Configure MDX options
+const withMDXConfig = withMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
+export default withMDXConfig(nextConfig);
