@@ -73,8 +73,13 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         </div>
         <div className="mt-4 border-t border-neutral-700 pt-3">
           <p className="text-neutral-400 text-sm">Follow for updates</p>
-          <button className="w-full flex items-center p-2 hover:bg-neutral-800 rounded-lg">
-            Twitter @mannupaaji
+          <button
+            className="w-full flex items-center p-2 hover:bg-neutral-800 rounded-lg"
+            onClick={() =>
+              window.open("https://x.com/AdityaFullstack", "_blank")
+            }
+          >
+            Twitter @AdityaFullstack
           </button>
         </div>
         <div className="mt-3">
