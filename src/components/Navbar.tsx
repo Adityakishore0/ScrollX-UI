@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Github } from "lucide-react";
@@ -16,6 +16,25 @@ interface NavbarProps {
 export function Navbar({ className }: NavbarProps) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
+
+  // Add keyboard shortcut handler
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Check for Ctrl+K or Cmd+K
+      if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+        event.preventDefault(); // Prevent default browser behavior
+        setIsSearchOpen(true);
+      }
+    };
+
+    // Add event listener
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const routes = [
     {
