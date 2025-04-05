@@ -1,0 +1,6 @@
+auto-install-peers=true
+overrides.react=18.2.0
+overrides.react-dom=18.2.0
+shamefully-hoist=true
+public-hoist-pattern[]=*react*
+public-hoist-pattern[]=*react-dom*

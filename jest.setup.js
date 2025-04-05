@@ -1,5 +1,7 @@
-import '@testing-library/jest-dom/extend-expect';
+import "@testing-library/jest-dom/extend-expect";
 
 // Allow router mocks.
-// eslint-disable-next-line no-undef
-jest.mock('next/router', () => require('next-router-mock'));
+import { jest } from "@jest/globals";
+
+// Mock next/router with next-router-mock
+jest.mock("next/router", () => import("next-router-mock"));
