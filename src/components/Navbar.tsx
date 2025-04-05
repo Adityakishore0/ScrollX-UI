@@ -119,7 +119,7 @@ export function Navbar({ className }: NavbarProps) {
             <nav className="flex items-center space-x-2">
               <Button variant="ghost" size="icon" asChild>
                 <Link
-                  href="https://github.com/scrollx-ui/scrollx-ui"
+                  href="https://github.com/Adityakishore0/ScrollX-UI"
                   target="_blank"
                   rel="noreferrer"
                 >
