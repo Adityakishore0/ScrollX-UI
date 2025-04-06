@@ -34,6 +34,9 @@ Please review the [Contribution Guide](https://github.com/Adityakishore0/ScrollX
 
 [Aditya kishore](https://github.com/Adityakishore0)
 
+## Stats
+![Alt](https://repobeats.axiom.co/api/embed/15619c3dbdb1173fd11f6c159b23c8d684e88370.svg "Repobeats analytics image")
+
 ## License
 
 Licensed under the [MIT license](https://github.com/Adityakishore0/ScrollX-UI/blob/main/LICENSE.md).
