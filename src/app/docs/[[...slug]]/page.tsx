@@ -56,6 +56,6 @@ export async function generateMetadata({ params }: PageProps) {
       slug[slug.length - 1]?.slice(1) || "Introduction";
 
   return {
-    title: `${title} | Documentation`,
+    title: `ScrollX UI | ${title} `,
   };
 }
