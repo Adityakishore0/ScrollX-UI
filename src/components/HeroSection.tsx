@@ -8,13 +8,18 @@ import Scrollxdark from "@/svg/Scrollxdark.svg";
 import { useState, useEffect } from "react";
 
 export function HeroSection() {
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
 
   // Set isMounted to true when component mounts on client
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  // Determine if we should show the dark theme
+  const isDarkMode =
+    isMounted &&
+    (theme === "dark" || (theme === "system" && systemTheme === "dark"));
 
   return (
     <section className="relative w-full py-8 md:py-12 lg:py-16 overflow-hidden bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
@@ -47,7 +52,7 @@ export function HeroSection() {
         <div className="flex justify-center mb-6 md:mb-8">
           <div className="w-11/12 max-w-3xl h-24 sm:h-28 md:h-32 lg:h-40 relative flex items-center justify-center">
             {isMounted ? (
-              theme === "dark" ? (
+              isDarkMode ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -182,7 +187,7 @@ export function HeroSection() {
                       y1="75"
                       x2="600"
                       y2="75"
-                      stroke={isMounted && theme === "dark" ? "white" : "#333"}
+                      stroke={isDarkMode ? "white" : "#333"}
                       strokeWidth="1"
                       strokeDasharray="5,5"
                     />
@@ -191,7 +196,7 @@ export function HeroSection() {
                       y1="150"
                       x2="600"
                       y2="150"
-                      stroke={isMounted && theme === "dark" ? "white" : "#333"}
+                      stroke={isDarkMode ? "white" : "#333"}
                       strokeWidth="1"
                       strokeDasharray="5,5"
                     />
@@ -200,7 +205,7 @@ export function HeroSection() {
                       y1="225"
                       x2="600"
                       y2="225"
-                      stroke={isMounted && theme === "dark" ? "white" : "#333"}
+                      stroke={isDarkMode ? "white" : "#333"}
                       strokeWidth="1"
                       strokeDasharray="5,5"
                     />
@@ -223,7 +228,7 @@ export function HeroSection() {
                     d="M0,180 C70,200 140,190 210,170 C280,150 350,180 420,170 C490,160 530,180 600,160"
                     fill="none"
                     stroke={
-                      isMounted && theme === "dark"
+                      isDarkMode
                         ? "rgba(255,255,255,0.4)"
                         : "rgba(100,100,100,0.5)"
                     }
@@ -258,31 +263,31 @@ export function HeroSection() {
                       cx="0"
                       cy="220"
                       r="4"
-                      fill={isMounted && theme === "dark" ? "white" : "#6366f1"}
+                      fill={isDarkMode ? "white" : "#6366f1"}
                     />
                     <circle
                       cx="180"
                       cy="50"
                       r="4"
-                      fill={isMounted && theme === "dark" ? "white" : "#6366f1"}
+                      fill={isDarkMode ? "white" : "#6366f1"}
                     />
                     <circle
                       cx="360"
                       cy="120"
                       r="4"
-                      fill={isMounted && theme === "dark" ? "white" : "#6366f1"}
+                      fill={isDarkMode ? "white" : "#6366f1"}
                     />
                     <circle
                       cx="520"
                       cy="100"
                       r="4"
-                      fill={isMounted && theme === "dark" ? "white" : "#6366f1"}
+                      fill={isDarkMode ? "white" : "#6366f1"}
                     />
                     <circle
                       cx="600"
                       cy="100"
                       r="4"
-                      fill={isMounted && theme === "dark" ? "white" : "#6366f1"}
+                      fill={isDarkMode ? "white" : "#6366f1"}
                     />
                   </motion.g>
 
@@ -297,7 +302,7 @@ export function HeroSection() {
                       cy="180"
                       r="3"
                       fill={
-                        isMounted && theme === "dark"
+                        isDarkMode
                           ? "rgba(255,255,255,0.6)"
                           : "rgba(100,100,100,0.7)"
                       }
@@ -307,7 +312,7 @@ export function HeroSection() {
                       cy="170"
                       r="3"
                       fill={
-                        isMounted && theme === "dark"
+                        isDarkMode
                           ? "rgba(255,255,255,0.6)"
                           : "rgba(100,100,100,0.7)"
                       }
@@ -317,7 +322,7 @@ export function HeroSection() {
                       cy="170"
                       r="3"
                       fill={
-                        isMounted && theme === "dark"
+                        isDarkMode
                           ? "rgba(255,255,255,0.6)"
                           : "rgba(100,100,100,0.7)"
                       }
@@ -327,7 +332,7 @@ export function HeroSection() {
                       cy="160"
                       r="3"
                       fill={
-                        isMounted && theme === "dark"
+                        isDarkMode
                           ? "rgba(255,255,255,0.6)"
                           : "rgba(100,100,100,0.7)"
                       }
