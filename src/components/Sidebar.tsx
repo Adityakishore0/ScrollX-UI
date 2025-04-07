@@ -38,10 +38,10 @@ export default function Sidebar() {
               <Link
                 href={item.href}
                 className={cn(
-                  "block px-3 py-2 font-semibold rounded-md transition-all",
-                  "hover:bg-gray-100 dark:hover:bg-gray-800",
+                  "block px-3 py-2 font-semibold rounded-md transition-all relative",
+                  "hover:bg-gray-100 dark:hover:bg-gray-800 hover:underline hover:decoration-2 hover:underline-offset-4",
                   pathname === item.href
-                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 translate-x-1 shadow-inner pl-4"
                     : "text-gray-700 dark:text-gray-400"
                 )}
               >
@@ -59,10 +59,10 @@ export default function Sidebar() {
                 key={child.href}
                 href={child.href}
                 className={cn(
-                  "block px-6 py-2 text-sm rounded-md transition-all",
-                  "hover:bg-gray-100 dark:hover:bg-gray-800",
+                  "block px-6 py-2 text-sm rounded-md transition-all relative",
+                  "hover:bg-gray-100 dark:hover:bg-gray-800 hover:underline hover:decoration-2 hover:underline-offset-4",
                   pathname === child.href
-                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 translate-x-1 shadow-inner pl-7"
                     : "text-gray-700 dark:text-gray-400"
                 )}
               >
