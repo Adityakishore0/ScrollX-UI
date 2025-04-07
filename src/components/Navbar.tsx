@@ -38,9 +38,9 @@ export function Navbar({ className }: NavbarProps) {
 
   const routes = [
     {
-      href: "/components",
+      href: "/docs/components/accordion",
       label: "Components",
-      active: pathname === "/components",
+      active: pathname === "/docs/components/accordion",
     },
     {
       href: "/templates",
