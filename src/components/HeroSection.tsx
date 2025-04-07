@@ -118,7 +118,7 @@ export function HeroSection() {
                 size="lg"
                 className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-medium px-6 py-2 rounded-md shadow-md hover:shadow-lg transition-all duration-300"
               >
-                <Link href="/components">Browse Components</Link>
+                <Link href="/docs/components/accordion">Browse Components</Link>
               </Button>
               <Button
                 variant="outline"
