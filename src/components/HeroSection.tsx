@@ -11,12 +11,10 @@ export function HeroSection() {
   const { theme, systemTheme } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
 
-  // Set isMounted to true when component mounts on client
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Determine if we should show the dark theme
   const isDarkMode =
     isMounted &&
     (theme === "dark" || (theme === "system" && systemTheme === "dark"));
@@ -48,7 +46,6 @@ export function HeroSection() {
       </div>
 
       <div className="container relative px-4 md:px-6 mx-auto max-w-7xl">
-        {/* SVG positioned at top and center with reduced spacing */}
         <div className="flex justify-center mb-6 md:mb-8">
           <div className="w-11/12 max-w-3xl h-24 sm:h-28 md:h-32 lg:h-40 relative flex items-center justify-center">
             {isMounted ? (
@@ -72,15 +69,12 @@ export function HeroSection() {
                 </motion.div>
               )
             ) : (
-              // Placeholder during server-side rendering
               <div className="w-full h-full flex items-center justify-center" />
             )}
           </div>
         </div>
 
-        {/* Split layout with description on left and graph on right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left side: Text and buttons */}
           <motion.div
             className="text-left space-y-6 order-2 lg:order-1"
             initial={{ opacity: 0, x: -20 }}
@@ -136,16 +130,13 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right side: Graph and statistics */}
           <motion.div
             className="order-1 lg:order-2 flex flex-col space-y-4"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Graph container with overlay text */}
             <div className="relative h-48 sm:h-56 md:h-64 lg:h-80 w-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800/50 dark:to-gray-900/50 backdrop-blur-sm rounded-2xl p-4 overflow-hidden border border-gray-200 dark:border-white/10 shadow-md">
-              {/* Graph title */}
               <div className="absolute top-3 left-4 z-10">
                 <h3 className="text-sm font-medium text-gray-700 dark:text-gray-100">
                   Performance Metrics
@@ -155,7 +146,6 @@ export function HeroSection() {
                 </p>
               </div>
 
-              {/* Graph legend */}
               <div className="absolute top-3 right-4 flex items-center space-x-4 z-10">
                 <div className="flex items-center space-x-1">
                   <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
@@ -171,7 +161,6 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* The graph SVG */}
               {isMounted ? (
                 <svg
                   viewBox="0 0 600 300"
@@ -180,7 +169,6 @@ export function HeroSection() {
                     overflow: "visible",
                   }}
                 >
-                  {/* Grid lines (subtle) */}
                   <g className="opacity-20">
                     <line
                       x1="0"
@@ -211,7 +199,6 @@ export function HeroSection() {
                     />
                   </g>
 
-                  {/* Main graph line (animated productivity line) */}
                   <motion.path
                     d="M0,220 C60,240 100,100 180,50 C240,20 300,150 360,120 C420,90 480,130 520,100 C560,70 600,100 600,100"
                     fill="none"
@@ -222,8 +209,6 @@ export function HeroSection() {
                     animate={{ pathLength: 1, opacity: 1 }}
                     transition={{ duration: 2, ease: "easeInOut" }}
                   />
-
-                  {/* Secondary graph line */}
                   <motion.path
                     d="M0,180 C70,200 140,190 210,170 C280,150 350,180 420,170 C490,160 530,180 600,160"
                     fill="none"
@@ -243,7 +228,6 @@ export function HeroSection() {
                     }}
                   />
 
-                  {/* Area under the main graph line for visual effect */}
                   <motion.path
                     d="M0,220 C60,240 100,100 180,50 C240,20 300,150 360,120 C420,90 480,130 520,100 C560,70 600,100 600,100 L600,300 L0,300 Z"
                     fill="url(#areaGradient)"
@@ -253,7 +237,6 @@ export function HeroSection() {
                     transition={{ duration: 1, delay: 1 }}
                   />
 
-                  {/* Data points for main graph */}
                   <motion.g
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -291,7 +274,6 @@ export function HeroSection() {
                     />
                   </motion.g>
 
-                  {/* Data points for secondary graph */}
                   <motion.g
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -339,7 +321,6 @@ export function HeroSection() {
                     />
                   </motion.g>
 
-                  {/* Gradient definitions */}
                   <defs>
                     <linearGradient
                       id="lineGradient"
@@ -365,12 +346,10 @@ export function HeroSection() {
                   </defs>
                 </svg>
               ) : (
-                // Placeholder for server-side rendering
                 <div className="w-full h-full" />
               )}
             </div>
 
-            {/* Stats below the graph */}
             <div className="grid grid-cols-3 gap-3">
               <motion.div
                 className="bg-white dark:bg-gray-800/40 backdrop-blur-sm rounded-xl p-3 border border-gray-200 dark:border-white/10 shadow-sm"

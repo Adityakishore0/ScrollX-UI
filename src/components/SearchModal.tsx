@@ -16,16 +16,13 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<NavItem[]>([]);
 
-  // Process navigation to flatten for search
   const allNavigationItems = useRef<NavItem[]>([]);
 
   useEffect(() => {
-    // Flatten the navigation structure
     const items: NavItem[] = [];
 
     const processItems = (navItems: NavItem[]) => {
       navItems.forEach((item) => {
-        // Include all items, even those without href
         items.push(item);
         if (item.children) {
           processItems(item.children);
@@ -37,7 +34,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     allNavigationItems.current = items;
   }, []);
 
-  // Handle search
   useEffect(() => {
     if (!searchQuery.trim()) {
       setSearchResults([]);
@@ -49,10 +45,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
       item.title.toLowerCase().includes(query)
     );
 
-    setSearchResults(results); // Show all results, no limit
+    setSearchResults(results);
   }, [searchQuery]);
 
-  // Close on outside click
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -70,7 +65,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     };
   }, [isOpen, onClose]);
 
-  // Close on ESC key
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -85,7 +79,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     };
   }, [isOpen, onClose]);
 
-  // Navigate to page
   const handleNavigate = (href: string) => {
     if (href) {
       window.location.href = href;
@@ -93,13 +86,11 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     }
   };
 
-  // Get all top-level navigation items and their children for display
   const renderNavigationItems = () => {
     return navigation.map((item) => (
       <div key={item.title} className="mb-3">
         <p className="text-neutral-400 text-sm mb-1">{item.title}</p>
         <div className="pl-2">
-          {/* Show item itself if it has a href */}
           {item.href && (
             <button
               className="w-full text-left p-2 hover:bg-neutral-800 rounded-lg group"
@@ -111,7 +102,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             </button>
           )}
 
-          {/* Show children */}
           {item.children?.map((child) => (
             <button
               key={child.href}
@@ -160,11 +150,10 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
           </button>
         </div>
 
-        {/* Custom scrollbar area */}
         <div
           className="mt-4 border-t border-neutral-700 pt-3 overflow-y-auto"
           style={{
-            maxHeight: "300px", // Fixed height as in original
+            maxHeight: "300px",
             scrollbarWidth: "thin",
             scrollbarColor: "#444 transparent",
           }}
@@ -200,7 +189,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
           `}</style>
 
           <div className="custom-scrollbar overflow-y-auto pr-1">
-            {/* Search Results */}
             {searchQuery && searchResults.length > 0 && (
               <div className="mb-4">
                 <p className="text-neutral-400 text-sm mb-2">Search Results</p>
@@ -226,7 +214,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               </div>
             )}
 
-            {/* Show all navigation when not searching */}
             {!searchQuery && (
               <>
                 <div className="mb-4">
@@ -243,7 +230,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   </button>
                 </div>
 
-                {/* All navigation items */}
                 {renderNavigationItems()}
               </>
             )}

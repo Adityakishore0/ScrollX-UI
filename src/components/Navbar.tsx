@@ -17,20 +17,16 @@ export function Navbar({ className }: NavbarProps) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
 
-  // Add keyboard shortcut handler
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      // Check for Ctrl+K or Cmd+K
       if ((event.ctrlKey || event.metaKey) && event.key === "k") {
-        event.preventDefault(); // Prevent default browser behavior
+        event.preventDefault();
         setIsSearchOpen(true);
       }
     };
 
-    // Add event listener
     window.addEventListener("keydown", handleKeyDown);
 
-    // Clean up event listener on component unmount
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
@@ -139,7 +135,6 @@ export function Navbar({ className }: NavbarProps) {
               </kbd>
             </button>
 
-            {/* GitHub & Mode Toggle */}
             <nav className="flex items-center space-x-2">
               <Button variant="ghost" size="icon" asChild>
                 <Link
