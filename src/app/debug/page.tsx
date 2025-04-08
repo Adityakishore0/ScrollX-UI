@@ -1,9 +1,7 @@
-// src/app/debug/page.tsx
 import fs from "fs";
 import path from "path";
 
 export default function DebugPage() {
-  // Check if content directory exists
   const contentDir = path.join(process.cwd(), "content");
   const docsDir = path.join(contentDir, "docs");
 

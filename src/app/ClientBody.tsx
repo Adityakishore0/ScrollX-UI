@@ -10,7 +10,6 @@ export default function ClientBody({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    // Ensure hydration consistency by setting a base class on the body
     document.body.classList.add("antialiased");
   }, []);
 

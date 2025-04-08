@@ -3,7 +3,6 @@ import withMDX from "@next/mdx";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    // We use Biome for linting
     ignoreDuringBuilds: true,
   },
   images: {
@@ -43,18 +42,17 @@ const nextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"], // Enables SVG as React components
+      use: ["@svgr/webpack"],
     });
     return config;
   },
   experimental: {
-    mdxRs: false, // Enables MDX support in App Router
+    mdxRs: false,
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["next-mdx-remote"],
 };
 
-// Configure MDX options
 const withMDXConfig = withMDX({
   extension: /\.mdx?$/,
   options: {
