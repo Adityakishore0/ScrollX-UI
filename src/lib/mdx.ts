@@ -1,19 +1,15 @@
-// src/lib/mdx.ts
 import fs from "fs";
 import path from "path";
 
-// Utility to list all available MDX files
 export function getAllDocs() {
   const docsDirectory = path.join(process.cwd(), "content/docs");
 
   try {
-    // Check if directory exists
     if (!fs.existsSync(docsDirectory)) {
       console.error(`MDX directory does not exist: ${docsDirectory}`);
       return [];
     }
 
-    // Get all files recursively
     const getAllFiles = (dir: string): string[] => {
       const files = fs.readdirSync(dir);
 

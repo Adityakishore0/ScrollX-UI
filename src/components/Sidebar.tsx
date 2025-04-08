@@ -24,16 +24,13 @@ export default function Sidebar() {
         overflowY: "auto",
       }}
     >
-      {/* Sidebar Title */}
       <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">
         📖 Docs
       </h2>
 
-      {/* Navigation */}
       <nav className="space-y-3">
         {navigation.map((item) => (
           <div key={item.title}>
-            {/* Check if item has an href, wrap it with Link */}
             {item.href ? (
               <Link
                 href={item.href}
@@ -53,7 +50,6 @@ export default function Sidebar() {
               </span>
             )}
 
-            {/* Child Items (Indented & Dimmer) */}
             {item.children?.map((child) => (
               <Link
                 key={child.href}
@@ -73,7 +69,6 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      {/* Custom Scrollbar Styling */}
       <style jsx>{`
         aside::-webkit-scrollbar {
           width: ${isHovered ? "6px" : "0px"};
