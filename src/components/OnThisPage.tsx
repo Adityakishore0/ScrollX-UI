@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation"; // ✅ Import Next.js hook
+import { usePathname } from "next/navigation";
 
 export default function OnThisPage() {
   const [headings, setHeadings] = useState<
     { id: string; text: string; level: number }[]
   >([]);
-  const pathname = usePathname(); // ✅ Get the current route
+  const pathname = usePathname();
 
   useEffect(() => {
     const seen = new Set<string>();
@@ -28,7 +28,7 @@ export default function OnThisPage() {
     );
 
     setHeadings(elements);
-  }, [pathname]); // ✅ Rerun effect when pathname changes
+  }, [pathname]);
 
   if (headings.length === 0) {
     return null;
