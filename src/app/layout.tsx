@@ -11,6 +11,29 @@ export const metadata: Metadata = {
     shortcut: "/favicon/favicon-16x16.png",
     apple: "/favicon/apple-touch-icon.png",
   },
+  openGraph: {
+    title: "ScrollX UI",
+    description:
+      "An open source collection of animated, interactive components",
+    url: "https://scrollx-ui.vercel.app",
+    siteName: "ScrollX UI",
+    images: [
+      {
+        url: "/images/ui.png",
+        width: 1200,
+        height: 630,
+        alt: "ScrollX UI Preview",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ScrollX UI",
+    description:
+      "An open source collection of animated, interactive components",
+    images: ["/images/ui.png"],
+  },
 };
 
 const geistSans = Geist({
