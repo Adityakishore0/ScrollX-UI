@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import fs from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
+import { mdxComponents } from "@/components/mdx-components";
 
 async function getDocBySlug(slug: string[]) {
   const filePath = path.join(
@@ -17,6 +18,7 @@ async function getDocBySlug(slug: string[]) {
     const { content } = await compileMDX({
       source: fileContent,
       options: { parseFrontmatter: true },
+      components: mdxComponents,
     });
 
     return content;

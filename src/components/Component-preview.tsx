@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
@@ -47,14 +48,6 @@ export default function ComponentPreview({
 
   return (
     <div className="my-6 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800">
-      {description && (
-        <div className="p-4 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            {description}
-          </p>
-        </div>
-      )}
-
       <Tabs.Root value={activeTab} onValueChange={setActiveTab}>
         <Tabs.List className="flex border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
           <Tabs.Trigger
