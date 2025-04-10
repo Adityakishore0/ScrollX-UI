@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     shortcut: "/favicon/favicon-16x16.png",
     apple: "/favicon/apple-touch-icon.png",
   },
+  manifest: "/favicon/site.webmanifest",
+  keywords: ["ScrollX", "UI", "components", "react", "tailwindcss"],
   openGraph: {
     title: "ScrollX UI",
     description:
