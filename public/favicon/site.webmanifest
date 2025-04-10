@@ -1,6 +1,7 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "ScrollX UI",
+  "short_name": "ScrollX",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
