@@ -55,14 +55,7 @@ pnpm dev
 
 To stop the server, press **Ctrl + C**
 
-
-
-
 https://github.com/user-attachments/assets/e6e71169-29c0-4390-956c-56706b2fd412
-
-
-
-
 
 ## 🛠️ Creating a Contribution Branch
 
@@ -85,7 +78,6 @@ git checkout -b feat/<your-branch-name>
 
 All contributions must be made as React components in the src/components/ui/ directory &
 src\content\docs\components
-
 
 ## 📤 Commit & Push Changes
 
