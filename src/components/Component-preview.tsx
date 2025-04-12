@@ -1,8 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { Copy } from "lucide-react";
+import componentsRegistry from "@/app/registry/registry";
+import { getComponentSourceAction } from "../actions/getComponentSourceAction";
 
 type ComponentPreviewProps = {
   name: string;
@@ -11,20 +13,6 @@ type ComponentPreviewProps = {
   children?: React.ReactNode;
 };
 
-// Define a more specific component type
-type RegisteredComponent = React.ComponentType<Record<string, unknown>>;
-
-// Registry to store components for dynamic lookup
-const componentsRegistry: Record<string, RegisteredComponent> = {};
-
-// Export a function to register components
-export function registerComponent(
-  name: string,
-  component: React.ComponentType<unknown>
-) {
-  componentsRegistry[name] = component as RegisteredComponent;
-}
-
 export default function ComponentPreview({
   name,
   description,
@@ -32,18 +20,36 @@ export default function ComponentPreview({
   children,
 }: ComponentPreviewProps) {
   const [activeTab, setActiveTab] = useState("preview");
+  const [sourceCode, setSourceCode] = useState<string>(
+    "Loading source code..."
+  );
+  const [copySuccess, setCopySuccess] = useState(false);
   const Component = componentsRegistry[name];
 
-  // Function to handle code copying
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-  };
+  useEffect(() => {
+    const fetchSourceCode = async () => {
+      if (activeTab === "code") {
+        try {
+          const result = await getComponentSourceAction(name);
+          setSourceCode(result.source);
+        } catch (error) {
+          console.error("Error fetching source code:", error);
+          setSourceCode(`// Error loading source code for ${name}`);
+        }
+      }
+    };
 
-  // Get source code from registry (you'll need to implement this)
-  const getSourceCode = (componentName: string) => {
-    // This is a placeholder. You would need to actually implement
-    // a way to fetch the source code for your components
-    return `// Source code for ${componentName}\n// Replace with actual component code`;
+    fetchSourceCode();
+  }, [name, activeTab]);
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(sourceCode);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
   };
 
   return (
@@ -91,13 +97,16 @@ export default function ComponentPreview({
             <ScrollArea.Viewport className="h-full max-h-[350px] w-full">
               <div className="relative">
                 <button
-                  onClick={() => copyToClipboard(getSourceCode(name))}
+                  onClick={copyToClipboard}
                   className="absolute right-4 top-4 z-10 rounded-md bg-gray-100 p-2 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+                  title={copySuccess ? "Copied!" : "Copy code"}
                 >
-                  <Copy className="h-4 w-4" />
+                  <Copy
+                    className={`h-4 w-4 ${copySuccess ? "text-green-500" : ""}`}
+                  />
                 </button>
                 <pre className="language-tsx p-4 text-sm overflow-x-auto">
-                  <code>{getSourceCode(name)}</code>
+                  <code>{sourceCode}</code>
                 </pre>
               </div>
             </ScrollArea.Viewport>
@@ -110,6 +119,11 @@ export default function ComponentPreview({
           </ScrollArea.Root>
         </Tabs.Content>
       </Tabs.Root>
+      {description && (
+        <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400">
+          {description}
+        </div>
+      )}
     </div>
   );
 }
