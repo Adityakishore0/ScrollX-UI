@@ -20,27 +20,23 @@ export default function ComponentPreview({
   children,
 }: ComponentPreviewProps) {
   const [activeTab, setActiveTab] = useState("preview");
-  const [sourceCode, setSourceCode] = useState<string>(
-    "Loading source code..."
-  );
+  const [sourceCode, setSourceCode] = useState("");
   const [copySuccess, setCopySuccess] = useState(false);
   const Component = componentsRegistry[name];
 
   useEffect(() => {
     const fetchSourceCode = async () => {
-      if (activeTab === "code") {
-        try {
-          const result = await getComponentSourceAction(name);
-          setSourceCode(result.source);
-        } catch (error) {
-          console.error("Error fetching source code:", error);
-          setSourceCode(`// Error loading source code for ${name}`);
-        }
+      try {
+        const result = await getComponentSourceAction(name);
+        setSourceCode(result.source);
+      } catch (error) {
+        console.error("Error fetching source code:", error);
+        setSourceCode(`// Error loading source code for ${name}`);
       }
     };
 
     fetchSourceCode();
-  }, [name, activeTab]);
+  }, [name]);
 
   const copyToClipboard = async () => {
     try {
@@ -96,18 +92,24 @@ export default function ComponentPreview({
           <ScrollArea.Root className="relative">
             <ScrollArea.Viewport className="h-full max-h-[350px] w-full">
               <div className="relative">
-                <button
-                  onClick={copyToClipboard}
-                  className="absolute right-4 top-4 z-10 rounded-md bg-gray-100 p-2 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
-                  title={copySuccess ? "Copied!" : "Copy code"}
-                >
-                  <Copy
-                    className={`h-4 w-4 ${copySuccess ? "text-green-500" : ""}`}
-                  />
-                </button>
-                <pre className="language-tsx p-4 text-sm overflow-x-auto">
-                  <code>{sourceCode}</code>
-                </pre>
+                {activeTab === "code" && (
+                  <>
+                    <button
+                      onClick={copyToClipboard}
+                      className="absolute right-4 top-4 z-10 rounded-md bg-gray-100 p-2 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+                      title={copySuccess ? "Copied!" : "Copy code"}
+                    >
+                      <Copy
+                        className={`h-4 w-4 ${
+                          copySuccess ? "text-green-500" : ""
+                        }`}
+                      />
+                    </button>
+                    <pre className="language-tsx p-4 text-sm overflow-x-auto">
+                      <code>{sourceCode}</code>
+                    </pre>
+                  </>
+                )}
               </div>
             </ScrollArea.Viewport>
             <ScrollArea.Scrollbar
