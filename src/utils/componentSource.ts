@@ -1,21 +1,36 @@
 import fs from "fs";
 import path from "path";
 
-export async function getComponentSource(name: string): Promise<string> {
+const sourceCache = new Map<string, string>();
+
+export function getComponentSource(name: string): string {
+  if (sourceCache.has(name)) {
+    return sourceCache.get(name)!;
+  }
+
   try {
-    const componentPath = path.join(
-      process.cwd(),
-      "src",
-      "components",
-      "demos",
-      `${name}.tsx`
-    );
-    if (!fs.existsSync(componentPath)) {
+    const paths = [
+      path.join(
+        process.cwd(),
+        ".next",
+        "server",
+        "app",
+        "components",
+        "demos",
+        `${name}.tsx`
+      ),
+      path.join(process.cwd(), "src", "components", "demos", `${name}.tsx`),
+    ];
+
+    const existingPath = paths.find((p) => fs.existsSync(p));
+    if (!existingPath) {
       return `// Component ${name} not found`;
     }
-    return fs.readFileSync(componentPath, "utf8");
+
+    const source = fs.readFileSync(existingPath, "utf8");
+    sourceCache.set(name, source);
+    return source;
   } catch (error) {
-    console.error("Error reading component source:", error);
     return `// Error loading source code for ${name}`;
   }
 }
