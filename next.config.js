@@ -40,10 +40,17 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
+    config.module.rules.push(
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        resourceQuery: /raw/, // Load .ts or .tsx files as raw text
+        use: "raw-loader",
+      }
+    );
     return config;
   },
   experimental: {

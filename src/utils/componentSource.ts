@@ -1,36 +1,19 @@
-import fs from "fs";
-import path from "path";
+const sources: Record<string, () => Promise<string>> = {
+  "accordion-demo": async () =>
+    (await import("@/components/demos/accordion-demo.tsx?raw")).default,
 
-const sourceCache = new Map<string, string>();
+  // ...
+};
 
-export function getComponentSource(name: string): string {
-  if (sourceCache.has(name)) {
-    return sourceCache.get(name)!;
-  }
-
+export async function getComponentSource(name: string): Promise<string> {
   try {
-    const paths = [
-      path.join(
-        process.cwd(),
-        ".next",
-        "server",
-        "app",
-        "components",
-        "demos",
-        `${name}.tsx`
-      ),
-      path.join(process.cwd(), "src", "components", "demos", `${name}.tsx`),
-    ];
-
-    const existingPath = paths.find((p) => fs.existsSync(p));
-    if (!existingPath) {
-      return `// Component ${name} not found`;
+    if (sources[name]) {
+      const mod = await sources[name]();
+      return mod;
+    } else {
+      return `// Source for ${name} not found`;
     }
-
-    const source = fs.readFileSync(existingPath, "utf8");
-    sourceCache.set(name, source);
-    return source;
   } catch (error) {
-    return `// Error loading source code for ${name}`;
+    return `// Error loading source for ${name}`;
   }
 }
