@@ -43,7 +43,7 @@ export default async function DocsPage({ params }: PageProps) {
   }
 
   return (
-    <article className="prose prose-lg mx-auto dark:prose-invert">
+    <article className="prose prose-lg mx-auto dark:prose-invert [&_h2,&_h3,&_h4]:scroll-mt-24">
       {content}
     </article>
   );
