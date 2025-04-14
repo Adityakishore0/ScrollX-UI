@@ -3,6 +3,14 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9 -]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
 export default function OnThisPage() {
   const [headings, setHeadings] = useState<
     { id: string; text: string; level: number }[]
@@ -10,18 +18,23 @@ export default function OnThisPage() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const seen = new Set<string>();
+    const slugCountMap = new Map<string, number>();
+
     const elements = Array.from(document.querySelectorAll("h2, h3, h4")).map(
-      (element, index) => {
-        let id = element.id || `heading-${index}`;
-        if (seen.has(id)) {
-          id += `-${index}`;
-        }
-        seen.add(id);
+      (element) => {
+        const text = element.textContent || "";
+        const slug = slugify(text);
+
+        const count = slugCountMap.get(slug) || 0;
+        slugCountMap.set(slug, count + 1);
+        const id = count === 0 ? slug : `${slug}-${count}`;
+
+        element.id = id;
+        (element as HTMLElement).style.scrollMarginTop = "100px";
 
         return {
           id,
-          text: element.textContent || "",
+          text,
           level: parseInt(element.tagName.charAt(1)),
         };
       }
@@ -29,6 +42,22 @@ export default function OnThisPage() {
 
     setHeadings(elements);
   }, [pathname]);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+      history.pushState({}, "", `#${id}`);
+    }
+  };
 
   if (headings.length === 0) {
     return null;
@@ -42,6 +71,7 @@ export default function OnThisPage() {
           <a
             key={heading.id}
             href={`#${heading.id}`}
+            onClick={(e) => handleClick(e, heading.id)}
             className={`block text-sm py-1 px-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 
             ${
               heading.level === 2
