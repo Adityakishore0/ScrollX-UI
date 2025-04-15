@@ -90,21 +90,19 @@ export default function ComponentPreview({
 
         <Tabs.Content value="code" asChild>
           <ScrollArea.Root className="relative">
+            <button
+              onClick={copyToClipboard}
+              className="absolute right-4 top-4 z-10 rounded-md bg-gray-100 p-2 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+              title={copySuccess ? "Copied!" : "Copy code"}
+            >
+              <Copy
+                className={`h-4 w-4 ${copySuccess ? "text-green-500" : ""}`}
+              />
+            </button>
             <ScrollArea.Viewport className="h-full max-h-[350px] w-full">
               <div className="relative">
                 {activeTab === "code" && (
                   <>
-                    <button
-                      onClick={copyToClipboard}
-                      className="absolute right-4 top-4 z-10 rounded-md bg-gray-100 p-2 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
-                      title={copySuccess ? "Copied!" : "Copy code"}
-                    >
-                      <Copy
-                        className={`h-4 w-4 ${
-                          copySuccess ? "text-green-500" : ""
-                        }`}
-                      />
-                    </button>
                     <pre className="language-tsx p-4 text-sm overflow-x-auto">
                       <code>{sourceCode}</code>
                     </pre>
