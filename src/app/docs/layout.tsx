@@ -16,10 +16,10 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
         <div className="flex-1 md:ml-64">
           <div className="container mx-auto flex">
             <div className="flex-1 px-4 py-8">
-             <div className="prose prose-lg dark:prose-invert max-w-none">
-               {children}
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                {children}
               </div>
-              </div>
+            </div>
 
             <div className="w-64 hidden lg:block sticky top-16 self-start pl-4 pr-8 py-8">
               <OnThisPage />
