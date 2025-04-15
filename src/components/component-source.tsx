@@ -28,7 +28,7 @@ export function ComponentSource({
 
   return (
     <CodeBlockWrapper
-      expandButtonTitle="View Source"
+      expandButtonTitle="Expand"
       className={cn("my-6 overflow-hidden rounded-md", className)}
       content={source}
     >

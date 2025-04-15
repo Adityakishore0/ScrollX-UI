@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { Copy } from "lucide-react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import componentsRegistry from "@/app/registry/registry";
 import { getComponentSourceAction } from "../actions/getComponentSourceAction";
 
@@ -102,11 +104,26 @@ export default function ComponentPreview({
             <ScrollArea.Viewport className="h-full max-h-[350px] w-full">
               <div className="relative">
                 {activeTab === "code" && (
-                  <>
-                    <pre className="language-tsx p-4 text-sm overflow-x-auto">
-                      <code>{sourceCode}</code>
-                    </pre>
-                  </>
+                  <div className="h-full w-full bg-[#1f2937] dark:bg-black">
+                    <SyntaxHighlighter
+                      language="tsx"
+                      style={vscDarkPlus}
+                      customStyle={{
+                        fontSize: "12px",
+                        backgroundColor: "transparent",
+                        color: "#d4d4d4",
+                        borderRadius: "8px",
+                        padding: "1rem",
+                        width: "100%",
+                        height: "100%",
+                        margin: 0,
+                      }}
+                      wrapLines={true}
+                      wrapLongLines={true}
+                    >
+                      {sourceCode}
+                    </SyntaxHighlighter>
+                  </div>
                 )}
               </div>
             </ScrollArea.Viewport>
