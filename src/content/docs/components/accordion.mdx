@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import PkgOptions from "@/components/pkgoptions";
 
 # Accordion
 
@@ -15,7 +16,20 @@ A vertically stacked set of interactive headings that each reveal a section of c
   description="An accessible accordion component built with Radix UI"
 />
 
-<ComponentSource name="accordion" />
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="accordion" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <ComponentSource name="accordion" />
+  </TabsContent>
+</Tabs>
 
 ## Usage
 
