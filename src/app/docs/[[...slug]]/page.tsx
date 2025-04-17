@@ -22,7 +22,7 @@ const getDocBySlug = cache(async (slug: string[]) => {
   );
 
   try {
-    const fileContent = fs.readFileSync(filePath, "utf8");
+    const fileContent = await fs.promises.readFile(filePath, "utf8");
 
     const { content, frontmatter } = await compileMDX<DocFrontmatter>({
       source: fileContent,
@@ -88,4 +88,33 @@ export async function generateMetadata({ params }: PageProps) {
     title: `ScrollX UI | ${doc.frontmatter.title}`,
     description: doc.frontmatter.description,
   };
+}
+
+export async function generateStaticParams() {
+  const docsPath = path.join(process.cwd(), "src/content/docs");
+
+  function getAllMdxFiles(dir: string): string[][] {
+    const files = fs.readdirSync(dir);
+    let paths: string[][] = [];
+
+    for (const file of files) {
+      const filePath = path.join(dir, file);
+      const stat = fs.statSync(filePath);
+
+      if (stat.isDirectory()) {
+        paths = [...paths, ...getAllMdxFiles(filePath)];
+      } else if (file.endsWith(".mdx")) {
+        const relativePath = path.relative(docsPath, filePath);
+        const slug = relativePath.replace(/\.mdx$/, "").split(path.sep);
+        paths.push(slug);
+      }
+    }
+
+    return paths;
+  }
+
+  const paths = getAllMdxFiles(docsPath);
+  return paths.map((slug) => ({
+    slug: slug,
+  }));
 }

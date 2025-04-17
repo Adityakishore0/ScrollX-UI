@@ -4,6 +4,7 @@ import ClientBody from "./ClientBody";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://scrollx-ui.vercel.app"),
   title: "ScrollX UI",
   description: "An open source collection of animated, interactive components",
   icons: {
