@@ -14,7 +14,7 @@ const navigation: NavItem[] = [
     href: "",
     children: [
       { title: "Accordion", href: "/docs/components/accordion" },
-      { title: "Alert", href: "/docs/components/alert" },
+      { title: "Alert Dialog", href: "/docs/components/alert-dialog" },
       { title: "Avatar", href: "/docs/components/avatar" },
       { title: "Badge", href: "/docs/components/badge" },
       { title: "Button", href: "/docs/components/button" },

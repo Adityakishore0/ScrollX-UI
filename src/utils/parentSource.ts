@@ -1,9 +1,13 @@
-const sources: Record<string, () => Promise<string>> = {
-  accordion: async () =>
-    (await import("@/components/ui/accordion.tsx?raw")).default,
+import { parentComponents } from "@/app/registry/parents";
 
-  // ...
-};
+const sources: Record<string, () => Promise<string>> = parentComponents.reduce(
+  (acc, name) => {
+    acc[name] = async () =>
+      (await import(`@/components/ui/${name}.tsx?raw`)).default;
+    return acc;
+  },
+  {} as Record<string, () => Promise<string>>
+);
 
 export async function getParentSource(name: string): Promise<string> {
   try {

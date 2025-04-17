@@ -1,23 +1,18 @@
-// registry/registry.tsx
 import dynamic from "next/dynamic";
 import React from "react";
-
-// Define the registry type
+import { demoComponents } from "./demos";
+// This file is responsible for dynamically importing demo components.
 export type RegisteredComponent = React.ComponentType<Record<string, unknown>>;
 
-// Use dynamic imports for better code splitting
-const componentsRegistry: Record<string, RegisteredComponent> = {
-  "accordion-demo": dynamic(() => import("@/components/demos/accordion-demo"), {
-    loading: () => <div>Loading component...</div>,
-  }),
-  // Add other demos with their corresponding keys as needed
-  // Examples:
-  // 'button-demo': dynamic(() => import('../src/components/demos/button-demo'), {
-  //   loading: () => <div>Loading component...</div>,
-  // }),
-  // 'card-demo': dynamic(() => import('../src/components/demos/card-demo'), {
-  //   loading: () => <div>Loading component...</div>,
-  // }),
-};
+const componentsRegistry: Record<string, RegisteredComponent> =
+  demoComponents.reduce((acc, componentName) => {
+    acc[componentName] = dynamic(
+      () => import(`@/components/demos/${componentName}`),
+      {
+        loading: () => <div>Loading component...</div>,
+      }
+    );
+    return acc;
+  }, {} as Record<string, RegisteredComponent>);
 
 export default componentsRegistry;

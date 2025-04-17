@@ -1,0 +1,143 @@
+---
+title: Alert Dialog
+description: A modal dialog used to convey critical information and require a user response before proceeding..
+---
+
+<ComponentPreview
+  name="alertdialog-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An accessible Alert Dialog component built with Radix UI"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="alert-dialog" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="@radix-ui/react-alert-dialog framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource name="alert-dialog" />
+
+  <Step>Add util file</Step>
+<div className="ml-10 mt-2">
+  <p><code>lib/utils.ts</code></p>
+
+<pre className="mt-3 p-3 rounded overflow-x-auto bg-[#1f2937] dark:bg-black">
+  <code className="language-typescript">
+    {`
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+      `}
+  </code>
+</pre>
+
+</div>
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```jsx
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+```
+
+```jsx
+<AlertDialog>
+  <AlertDialogTrigger>Open</AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Continue</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+## API Reference
+
+### AlertDialog
+
+The root container for the alert dialog component.
+
+### AlertDialogTrigger
+
+The button that triggers the alert dialog.
+
+- `asChild` - When `true`, the trigger will be rendered as its child element.
+
+### AlertDialogContent
+
+The container for alert dialog content.
+
+- `className` - Optional class name for custom styling.
+
+### AlertDialogHeader
+
+A container for grouping the title and description.
+
+- `className` - Optional class name for styling the header section.
+
+### AlertDialogFooter
+
+A container for grouping the dialog buttons.
+
+- `className` - Optional class name for styling the footer section.
+
+### AlertDialogTitle
+
+The title content of the alert dialog.
+
+- `className` - Optional class name for styling the title.
+
+### AlertDialogDescription
+
+The description content of the alert dialog.
+
+- `className` - Optional class name for styling the description.
+
+### AlertDialogAction
+
+The confirm button of the alert dialog.
+
+- `className` - Optional class name for styling.
+- Contains animated hover effects using Framer Motion.
+
+### AlertDialogCancel
+
+The cancel button of the alert dialog.
+
+- `className` - Optional class name for styling.
+- Appears before the action button on mobile devices.
