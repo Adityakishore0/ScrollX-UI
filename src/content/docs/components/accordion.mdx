@@ -19,7 +19,77 @@ A vertically stacked set of interactive headings that each reveal a section of c
     <PkgOptions name="accordion" />
   </TabsContent>
   <TabsContent value="manual">
-    <ComponentSource name="accordion" />
+    <Steps>
+
+{" "}
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="@radix-ui/react-accordion" />
+
+{" "}
+
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource name="accordion" />
+
+  <Step>Add util file</Step>
+<div className="ml-10 mt-2">
+  <p><code>lib/utils.ts</code></p>
+
+{" "}
+
+<pre className="mt-3 p-3 rounded overflow-x-auto bg-[#1f2937] dark:bg-black">
+  <code className="language-typescript">
+    {`
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+      `}
+  </code>
+</pre>
+
+</div>
+
+{" "}
+
+<Step>Update tailwind.config.js</Step>
+
+  <div className="ml-10 mt-2">
+  <p>Add the following animations to your <code>tailwind.config.js</code> file:</p>
+
+{" "}
+
+<pre className="mt-3 p-3 rounded overflow-x-auto bg-[#1f2937] dark:bg-black">
+  <code className="language-javascript">
+    {`/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+}`}
+  </code>
+</pre>
+
+</div>
+
+</Steps>
   </TabsContent>
 </Tabs>
 
@@ -71,13 +141,3 @@ import {
 ### AccordionContent
 
 `AccordionContent` is the content that appears when the accordion item is expanded.
-
-## Component Installation
-
-If you're using a component library like scrollx/ui, you may need to install the Accordion component:
-
-```bash
-npx scrollx-ui@latest add accordion
-```
-
-This will add the required component files to your project.
