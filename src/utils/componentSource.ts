@@ -1,9 +1,13 @@
-const sources: Record<string, () => Promise<string>> = {
-  "accordion-demo": async () =>
-    (await import("@/components/demos/accordion-demo.tsx?raw")).default,
+import { demoComponents } from "@/app/registry/demos";
 
-  // ...
-};
+const sources: Record<string, () => Promise<string>> = demoComponents.reduce(
+  (acc, name) => {
+    acc[name] = async () =>
+      (await import(`@/components/demos/${name}.tsx?raw`)).default;
+    return acc;
+  },
+  {} as Record<string, () => Promise<string>>
+);
 
 export async function getComponentSource(name: string): Promise<string> {
   try {
