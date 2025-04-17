@@ -1,6 +1,7 @@
-# Accordion
-
-A vertically stacked set of interactive headings that each reveal a section of content.
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+---
 
 <ComponentPreview
   name="accordion-demo"
@@ -21,12 +22,8 @@ A vertically stacked set of interactive headings that each reveal a section of c
   <TabsContent value="manual">
     <Steps>
 
-{" "}
-
 <Step>Install the following dependencies:</Step>
 <DepsOptions name="@radix-ui/react-accordion" />
-
-{" "}
 
 <Step>Copy and paste the following code into your project.</Step>
 <ComponentSource name="accordion" />
@@ -34,8 +31,6 @@ A vertically stacked set of interactive headings that each reveal a section of c
   <Step>Add util file</Step>
 <div className="ml-10 mt-2">
   <p><code>lib/utils.ts</code></p>
-
-{" "}
 
 <pre className="mt-3 p-3 rounded overflow-x-auto bg-[#1f2937] dark:bg-black">
   <code className="language-typescript">
@@ -52,14 +47,10 @@ export function cn(...inputs: ClassValue[]) {
 
 </div>
 
-{" "}
-
 <Step>Update tailwind.config.js</Step>
 
   <div className="ml-10 mt-2">
   <p>Add the following animations to your <code>tailwind.config.js</code> file:</p>
-
-{" "}
 
 <pre className="mt-3 p-3 rounded overflow-x-auto bg-[#1f2937] dark:bg-black">
   <code className="language-javascript">

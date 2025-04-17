@@ -3,8 +3,18 @@ import fs from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx-components";
+import { cache } from "react";
 
-async function getDocBySlug(slug: string[]) {
+interface DocFrontmatter {
+  title: string;
+  description: string;
+  category?: string;
+  version?: string;
+  status?: "draft" | "published";
+  lastUpdated?: string;
+}
+
+const getDocBySlug = cache(async (slug: string[]) => {
   const filePath = path.join(
     process.cwd(),
     "src/content/docs",
@@ -14,19 +24,31 @@ async function getDocBySlug(slug: string[]) {
   try {
     const fileContent = fs.readFileSync(filePath, "utf8");
 
-    // Compile the MDX content properly
-    const { content } = await compileMDX({
+    const { content, frontmatter } = await compileMDX<DocFrontmatter>({
       source: fileContent,
-      options: { parseFrontmatter: true },
+      options: {
+        parseFrontmatter: true,
+        mdxOptions: {
+          remarkPlugins: [],
+          rehypePlugins: [],
+          format: "mdx",
+        },
+      },
       components: mdxComponents,
     });
 
-    return content;
+    return {
+      content,
+      frontmatter: frontmatter as DocFrontmatter,
+      slug,
+    };
   } catch (error) {
-    console.error(`Failed to load MDX file: ${filePath}`, error);
-    return null;
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return null;
+    }
+    throw error;
   }
-}
+});
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>;
@@ -36,15 +58,21 @@ export default async function DocsPage({ params }: PageProps) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug || ["introduction"];
 
-  const content = await getDocBySlug(slug);
+  const doc = await getDocBySlug(slug);
 
-  if (!content) {
+  if (!doc) {
     notFound();
   }
 
   return (
     <article className="prose prose-lg mx-auto dark:prose-invert [&_h2,&_h3,&_h4]:scroll-mt-24 px-4 sm:px-6 md:px-8 max-w-[calc(100vw-2rem)] sm:max-w-3xl overflow-hidden">
-      {content}
+      <h1>{doc.frontmatter.title}</h1>
+      {doc.frontmatter.description && (
+        <p className="prose prose-lg mx-auto dark:prose-invert mt-4">
+          {doc.frontmatter.description}
+        </p>
+      )}
+      {doc.content}
     </article>
   );
 }
@@ -52,12 +80,12 @@ export default async function DocsPage({ params }: PageProps) {
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug || ["introduction"];
+  const doc = await getDocBySlug(slug);
 
-  const title =
-    slug[slug.length - 1]?.charAt(0).toUpperCase() +
-      slug[slug.length - 1]?.slice(1) || "Introduction";
+  if (!doc) return { title: "Not Found" };
 
   return {
-    title: `ScrollX UI | ${title} `,
+    title: `ScrollX UI | ${doc.frontmatter.title}`,
+    description: doc.frontmatter.description,
   };
 }
