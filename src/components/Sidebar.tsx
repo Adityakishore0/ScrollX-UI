@@ -62,7 +62,14 @@ export default function Sidebar() {
                     : "text-gray-700 dark:text-gray-400"
                 )}
               >
-                {child.title}
+                <div className="flex items-center gap-2">
+                  {child.title}
+                  {child.category === "new" && (
+                    <span className="bg-green-900 text-green-400 text-xs font-medium px-2 py-0.5 rounded-full border border-green-500">
+                      New
+                    </span>
+                  )}
+                </div>
               </Link>
             ))}
           </div>
