@@ -1,6 +1,7 @@
 export interface NavItem {
   title: string;
   href: string;
+  category?: string;
   children?: NavItem[];
 }
 
@@ -15,6 +16,11 @@ const navigation: NavItem[] = [
     children: [
       { title: "Accordion", href: "/docs/components/accordion" },
       { title: "Alert Dialog", href: "/docs/components/alert-dialog" },
+      {
+        title: "Spotlight Card",
+        href: "/docs/components/spotlightcard",
+        category: "new",
+      },
       { title: "Avatar", href: "/docs/components/avatar" },
       { title: "Badge", href: "/docs/components/badge" },
       { title: "Button", href: "/docs/components/button" },
