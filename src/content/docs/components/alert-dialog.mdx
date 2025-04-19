@@ -28,24 +28,16 @@ description: A modal dialog used to convey critical information and require a us
 <Step>Copy and paste the following code into your project.</Step>
 <ComponentSource name="alert-dialog" />
 
-  <Step>Add util file</Step>
-<div className="ml-10 mt-2">
-  <p><code>lib/utils.ts</code></p>
 
-<pre className="mt-3 p-3 rounded overflow-x-auto bg-[#1f2937] dark:bg-black">
-  <code className="language-typescript">
-    {`
+<Step>Add util file</Step>
+```jsx
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-      `}
-  </code>
-</pre>
-
-</div>
+```
 
 </Steps>
   </TabsContent>
@@ -53,7 +45,7 @@ export function cn(...inputs: ClassValue[]) {
 
 ## Usage
 
-```jsx
+```tsx
 import {
   AlertDialog,
   AlertDialogAction,
@@ -67,7 +59,7 @@ import {
 } from "@/components/ui/alert-dialog";
 ```
 
-```jsx
+```tsx
 <AlertDialog>
   <AlertDialogTrigger>Open</AlertDialogTrigger>
   <AlertDialogContent>

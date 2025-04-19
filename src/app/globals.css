@@ -94,3 +94,38 @@ button.copy:hover {
 .frontmatter {
   display: none;
 }
+
+/* Add this to your existing CSS */
+[data-rehype-pretty-code-fragment] {
+  @apply relative;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
+  @apply text-[12px] leading-6;
+  @apply text-[#d4d4d4];
+}
+
+[data-language] {
+  @apply text-[#d4d4d4];
+}
+
+/* VSCode Dark Plus Theme tokens */
+.token.comment {
+  @apply text-[#6A9955];
+}
+.token.string {
+  @apply text-[#CE9178];
+}
+.token.function {
+  @apply text-[#DCDCAA];
+}
+.token.keyword {
+  @apply text-[#569CD6];
+}
+.token.number {
+  @apply text-[#B5CEA8];
+}
+.token.class-name {
+  @apply text-[#4EC9B0];
+}
