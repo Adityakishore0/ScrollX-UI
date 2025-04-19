@@ -106,11 +106,42 @@ export async function generateMetadata({ params }: PageProps) {
   const slug = resolvedParams.slug || ["introduction"];
   const doc = await getDocBySlug(slug);
 
-  if (!doc) return { title: "Not Found" };
+  if (!doc) {
+    return {
+      title: "Not Found",
+      description: "The page you are looking for does not exist.",
+      openGraph: {
+        title: "Not Found",
+        description: "The page you are looking for does not exist.",
+        url: `https://scrollx-ui.vercel.app/docs/${slug.join("/")}`,
+        images: [
+          {
+            url: "https://scrollx-ui.vercel.app/images/ui.png", // Default image for all components
+            width: 1200,
+            height: 630,
+            alt: "ScrollX UI",
+          },
+        ],
+      },
+    };
+  }
 
   return {
     title: `ScrollX UI | ${doc.frontmatter.title}`,
     description: doc.frontmatter.description,
+    openGraph: {
+      title: `ScrollX UI | ${doc.frontmatter.title}`,
+      description: doc.frontmatter.description,
+      url: `https://scrollx-ui.vercel.app/docs/${slug.join("/")}`,
+      images: [
+        {
+          url: "https://scrollx-ui.vercel.app/images/ui.png",
+          width: 1200,
+          height: 630,
+          alt: "ScrollX UI",
+        },
+      ],
+    },
   };
 }
 
