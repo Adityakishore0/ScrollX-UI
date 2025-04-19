@@ -1,18 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
+import { Copy } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface CodeBlockProps {
+  children: React.ReactNode;
+  language?: string;
+  className?: string;
+}
 
 export default function CodeBlock({
   children,
   language,
-}: {
-  children: string;
-  language?: string;
-}) {
+  className,
+}: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
+  const extractText = (node: React.ReactNode): string => {
+    if (typeof node === "string") {
+      return node;
+    }
+    if (React.isValidElement(node) && node.props.children) {
+      return extractText(node.props.children);
+    }
+    if (Array.isArray(node)) {
+      return node.map(extractText).join("");
+    }
+    return "";
+  };
+
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(children);
+    const textToCopy = extractText(children);
+    navigator.clipboard.writeText(textToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -21,14 +41,22 @@ export default function CodeBlock({
     <div className="relative">
       <button
         onClick={copyToClipboard}
-        className="absolute top-2 right-2 bg-gray-700 text-white px-2 py-1 rounded text-sm"
+        className="absolute right-4 top-4 z-20 rounded-md bg-gray-100 p-2 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+        title={copied ? "Copied!" : "Copy code"}
       >
-        {copied ? "Copied!" : "Copy"}
+        <Copy className={cn("h-4 w-4", copied ? "text-green-500" : "")} />
       </button>
       <pre
-        className={`language-${language} p-4 rounded bg-gray-900 text-white overflow-x-auto`}
+        className={cn(
+          "my-4 overflow-x-auto rounded-lg border border-neutral-800",
+          "bg-[#1f2937] dark:bg-black p-4",
+          "text-[12px] text-[#d4d4d4]",
+          className
+        )}
       >
-        <code>{children}</code>
+        <code className={language ? `language-${language}` : undefined}>
+          {children}
+        </code>
       </pre>
     </div>
   );

@@ -28,33 +28,25 @@ description: A vertically stacked set of interactive headings that each reveal a
 <Step>Copy and paste the following code into your project.</Step>
 <ComponentSource name="accordion" />
 
-  <Step>Add util file</Step>
-<div className="ml-10 mt-2">
-  <p><code>lib/utils.ts</code></p>
+<Step>Add util file</Step>
 
-<pre className="mt-3 p-3 rounded overflow-x-auto bg-[#1f2937] dark:bg-black">
-  <code className="language-typescript">
-    {`
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-      `}
-  </code>
-</pre>
-
-</div>
+```
 
 <Step>Update tailwind.config.js</Step>
 
-  <div className="ml-10 mt-2">
-  <p>Add the following animations to your <code>tailwind.config.js</code> file:</p>
-
-<pre className="mt-3 p-3 rounded overflow-x-auto bg-[#1f2937] dark:bg-black">
-  <code className="language-javascript">
-    {`/** @type {import('tailwindcss').Config} */
+```tsx
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     extend: {
@@ -74,11 +66,8 @@ module.exports = {
       },
     },
   },
-}`}
-  </code>
-</pre>
-
-</div>
+};
+```
 
 </Steps>
   </TabsContent>
@@ -86,7 +75,7 @@ module.exports = {
 
 ## Usage
 
-```jsx
+```tsx
 import {
   Accordion,
   AccordionContent,
@@ -95,7 +84,7 @@ import {
 } from "@/components/ui/accordion";
 ```
 
-```jsx
+```tsx
 <Accordion type="single" collapsible>
   <AccordionItem value="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>

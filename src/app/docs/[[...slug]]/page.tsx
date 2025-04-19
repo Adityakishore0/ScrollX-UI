@@ -1,9 +1,12 @@
 import { notFound } from "next/navigation";
+import React from "react";
 import fs from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx-components";
 import { cache } from "react";
+import rehypePrettyCode from "rehype-pretty-code";
+import CodeBlock from "@/components/CodeBlock";
 
 interface DocFrontmatter {
   title: string;
@@ -24,17 +27,38 @@ const getDocBySlug = cache(async (slug: string[]) => {
   try {
     const fileContent = await fs.promises.readFile(filePath, "utf8");
 
+    const prettyCodeOptions = {
+      theme: "github-dark",
+      keepBackground: false,
+      onVisitLine(node: { children: { type: string; value: string }[] }) {
+        if (node.children.length === 0) {
+          node.children = [{ type: "text", value: " " }];
+        }
+      },
+    };
+
     const { content, frontmatter } = await compileMDX<DocFrontmatter>({
       source: fileContent,
       options: {
         parseFrontmatter: true,
         mdxOptions: {
           remarkPlugins: [],
-          rehypePlugins: [],
+          rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
           format: "mdx",
         },
       },
-      components: mdxComponents,
+      components: {
+        ...mdxComponents,
+        pre: ({ children, className }) => {
+          const language = className?.replace("language-", "");
+          const code = React.Children.toArray(
+            children
+          )[0] as React.ReactElement;
+          return (
+            <CodeBlock language={language}>{code.props.children}</CodeBlock>
+          );
+        },
+      },
     });
 
     return {

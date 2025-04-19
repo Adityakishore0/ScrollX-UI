@@ -46,12 +46,16 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-syntax-highlighter": "^15.6.1",
+    "rehype-parse": "^9.0.1",
     "rehype-pretty-code": "^0.14.1",
     "rehype-prism-plus": "^2.0.1",
+    "rehype-stringify": "^10.0.1",
+    "shiki": "^3.2.2",
     "sonner": "^2.0.3",
     "styled-jsx": "^5.1.6",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
+    "unified": "^11.0.5",
     "vaul": "^1.1.2"
   },
   "devDependencies": {

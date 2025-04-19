@@ -5,7 +5,7 @@ export default function SpotlightCardDemo() {
     <SpotlightCard
       title="Spotlight Card"
       description="Hover over this card to see the spotlight effect"
-      spotlightColor="14, 165, 233"
+      spotlightColor="34, 197, 94"
     />
   );
 }
