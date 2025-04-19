@@ -80,6 +80,7 @@ const config: Config = {
         "glow-border": "glow-border 1.5s infinite alternate",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        typing: "typing 2s steps(10, end) infinite",
       },
       keyframes: {
         tilt: {
@@ -104,6 +105,10 @@ const config: Config = {
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
+        },
+        typing: {
+          from: { width: "0%" }, // Start with no text visible
+          to: { width: "100%" }, // Reveal the full text
         },
       },
     },
