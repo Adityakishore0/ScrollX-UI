@@ -15,7 +15,6 @@
     "format:check": "prettier -c .",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
-    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -82,7 +81,6 @@
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "13.3.0",
     "next-router-mock": "^0.9.13",
-    "next-sitemap": "2.5.28",
     "postcss": "^8",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.5.0",
