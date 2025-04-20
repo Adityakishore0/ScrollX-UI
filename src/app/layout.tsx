@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://scrollx-ui.vercel.app"),
   title: "ScrollX-UI – Interactive React Components for Modern UIs",
   description:
-    "ScrollX-UI is an open-source library offering customizable, animated, and interactive React components that help developers create fast, visually appealing user interfaces.",
+    "ScrollX-UI is an open-source library with customizable, animated, interactive React components to help developers build fast, visually appealing UIs.",
   icons: {
     icon: "/favicon/favicon.ico",
     shortcut: "/favicon/favicon-16x16.png",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ScrollX-UI – Interactive React Components for Modern UIs",
     description:
-      "ScrollX-UI is an open-source library offering customizable, animated, and interactive React components that help developers create fast, visually appealing user interfaces.",
+      "ScrollX-UI is an open-source library with customizable, animated, interactive React components to help developers build fast, visually appealing UIs.",
     url: "https://scrollx-ui.vercel.app",
     siteName: "ScrollX UI",
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ScrollX-UI – Interactive React Components for Modern UIs",
     description:
-      "ScrollX-UI is an open-source library offering customizable, animated, and interactive React components that help developers create fast, visually appealing user interfaces.",
+      "ScrollX-UI is an open-source library with customizable, animated, interactive React components to help developers build fast, visually appealing UIs.",
     images: ["/images/ui.png"],
   },
 };
