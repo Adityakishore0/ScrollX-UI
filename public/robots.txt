@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://scrollx-ui.vercel.app/sitemap.xml
