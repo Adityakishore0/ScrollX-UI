@@ -5,8 +5,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://scrollx-ui.vercel.app"),
-  title: "ScrollX-UI – Modern React Components for Fast, Interactive UIs",
-  description: "An open source collection of animated, interactive components",
+  title: "ScrollX-UI – Interactive React Components for Modern UIs",
+  description:
+    "ScrollX-UI is an open-source library offering customizable, animated, and interactive React components that help developers create fast, visually appealing user interfaces.",
   icons: {
     icon: "/favicon/favicon.ico",
     shortcut: "/favicon/favicon-16x16.png",
@@ -27,9 +28,9 @@ export const metadata: Metadata = {
     "tailwind UI",
   ],
   openGraph: {
-    title: "ScrollX-UI – Modern React Components for Fast, Interactive UIs",
+    title: "ScrollX-UI – Interactive React Components for Modern UIs",
     description:
-      "An open source collection of animated, interactive components",
+      "ScrollX-UI is an open-source library offering customizable, animated, and interactive React components that help developers create fast, visually appealing user interfaces.",
     url: "https://scrollx-ui.vercel.app",
     siteName: "ScrollX UI",
     images: [
@@ -44,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ScrollX-UI – Modern React Components for Fast, Interactive UIs",
+    title: "ScrollX-UI – Interactive React Components for Modern UIs",
     description:
-      "An open source collection of animated, interactive components",
+      "ScrollX-UI is an open-source library offering customizable, animated, and interactive React components that help developers create fast, visually appealing user interfaces.",
     images: ["/images/ui.png"],
   },
 };
