@@ -1,0 +1,124 @@
+---
+title: Avatar
+description: Customizable Avatar component with animated borders for status indicators like "close friends" or "normal story".
+---
+
+<ComponentPreview
+  name="avatar-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An accessible Avatar component built with Radix UI"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="avatar" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="@radix-ui/react-avatar" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<ComponentSource name="avatar" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+
+```tsx
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+```
+
+```tsx
+<Avatar variant="close-friends">
+  <AvatarImage src="https://github.com/Adityakishore0.png" alt="@Ahdeetai" />
+  <AvatarFallback>AK</AvatarFallback>
+</Avatar>
+```
+
+## Examples
+
+### Default
+
+```tsx
+<Avatar variant="none">
+  <AvatarImage src="https://github.com/Adityakishore0.png" alt="@Ahdeetai" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+```
+
+### Close Friends
+
+```tsx
+<Avatar variant="close-friends">
+  <AvatarImage src="https://github.com/Adityakishore0.png" alt="@Ahdeetai" />
+  <AvatarFallback>AK</AvatarFallback>
+</Avatar>
+```
+
+### Normal (Instagram style)
+
+```tsx
+<Avatar variant="normal">
+  <AvatarImage src="https://github.com/Adityakishore0.png" alt="@Ahdeetai" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+```
+
+## API Reference
+
+### Avatar
+
+The root container for the `Avatar` component.
+
+#### AvatarProps
+
+Props that can be passed to the `Avatar` component.
+
+- `variant` - The style variant of the avatar. Can be `"close-friends"`, `"normal"`, or `"none"` (default).
+- `className` - Optional class name for custom styling of the avatar container.
+- `children` - The content of the avatar (typically `AvatarImage` and `AvatarFallback`).
+
+### AvatarImage
+
+The image component inside the `Avatar` container.
+
+#### AvatarImageProps
+
+- `src` - The source URL for the avatar image.
+- `alt` - Accessible alt text for the avatar image.
+- `className` - Optional class name for custom styling of the avatar image.
+
+### AvatarFallback
+
+A fallback element displayed when the avatar image fails to load.
+
+#### AvatarFallbackProps
+
+- `className` - Optional class name for custom styling of the fallback element.
+- `children` - The content of the fallback element (typically initials or an icon).
