@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "ScrollX-UI is an open-source library with customizable, animated, interactive React components to help developers build fast, visually appealing UIs.",
   icons: {
-    icon: "/favicon/favicon.ico",
+    icon: "/favicon.ico",
     shortcut: "/favicon/favicon-16x16.png",
     apple: "/favicon/apple-touch-icon.png",
   },
