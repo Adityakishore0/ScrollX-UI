@@ -16,11 +16,7 @@ const navigation: NavItem[] = [
     children: [
       { title: "Accordion", href: "/docs/components/accordion" },
       { title: "Alert Dialog", href: "/docs/components/alert-dialog" },
-      {
-        title: "Spotlight Card",
-        href: "/docs/components/spotlightcard",
-        category: "new",
-      },
+      { title: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
       { title: "Avatar", href: "/docs/components/avatar" },
       { title: "Badge", href: "/docs/components/badge" },
       { title: "Button", href: "/docs/components/button" },
@@ -28,6 +24,11 @@ const navigation: NavItem[] = [
       { title: "Dropdown", href: "/docs/components/dropdown" },
       { title: "Modal", href: "/docs/components/modal" },
       { title: "Popover", href: "/docs/components/popover" },
+      {
+        title: "Spotlight Card",
+        href: "/docs/components/spotlightcard",
+        category: "new",
+      },
       { title: "Tooltip", href: "/docs/components/tooltip" },
       { title: "Tabs", href: "/docs/components/tabs" },
       { title: "Toast", href: "/docs/components/toast" },
