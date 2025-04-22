@@ -47,7 +47,7 @@ export function Footer() {
           </nav>
           <div className="flex items-center gap-2">
             <Link
-              href="https://github.com/scrollx-ui/scrollx-ui"
+              href="https://github.com/Adityakishore0/ScrollX-UI"
               target="_blank"
               rel="noreferrer"
             >
@@ -88,7 +88,7 @@ export function Footer() {
                   : "none",
               }}
             />{" "}
-            by the community.
+            by the Ahdeetai.
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
           </span>
         </Link>
