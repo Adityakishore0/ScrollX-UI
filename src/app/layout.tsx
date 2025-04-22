@@ -62,6 +62,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="GlvuJNImpIf6gGikeYMVgWIke1V-hohlZaKI_blBh_s"
         />
+        <meta name="msvalidate.01" content="3ED2A565E4F3172BA1CC3F2ECAF63CFE" />
         <Script
           id="json-ld"
           type="application/ld+json"
