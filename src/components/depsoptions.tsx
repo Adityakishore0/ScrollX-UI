@@ -63,7 +63,7 @@ export default function DepsOptions({ name }: DepsOptionsProps) {
           <Copy className={`h-4 w-4 ${copySuccess ? "text-green-500" : ""}`} />
         </button>
       </div>
-      <pre className="overflow-x-auto px-4 py-3 text-sm font-mono text-white">
+      <pre className="overflow-x-auto not-prose  px-4 py-3 text-sm font-mono text-white">
         <code>{installCommand}</code>
       </pre>
     </div>
