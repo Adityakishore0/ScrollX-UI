@@ -137,7 +137,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               type="text"
               placeholder="Type a command or search..."
               className="w-full bg-transparent border-none outline-none text-lg placeholder-neutral-400"
-              autoFocus
+              autoFocus={!/Mobi|Android/i.test(navigator.userAgent)}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
