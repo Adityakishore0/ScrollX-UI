@@ -1,0 +1,89 @@
+---
+title: Button
+description: Reusable button component with multiple variants and sizes.
+---
+
+<ComponentPreview
+  name="button-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An accessible Button component built with Radix UI"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="button" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="@radix-ui/react-slot" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>button.tsx</code>
+</p>
+<ComponentSource name="button" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button";
+```
+
+```tsx
+<Button>Default</Button>
+<Button variant="link">Link</Button>
+<Button variant="success">Success</Button>
+```
+```tsx
+<Button variant="gradient" size="lg">
+  Get Started
+</Button>
+```
+
+
+## API Reference
+
+### Button
+
+`Button` is the main component used to render a customizable button.
+
+- `variant` – Controls the visual style of the button.  
+  Options include: `default`, `destructive`, `outline`, `secondary`, `ghost`, `link`, `success`, `warning`, `info`, `dark`, `light`, `gradient`, `glass`.
+
+- `size` – Adjusts the button size.  
+  Options include: `sm`, `default`, `lg`, `icon`.
+
+- `asChild` – When set to `true`, renders the button as a child component using `Slot`. Useful for customizing the rendered element.
+
+- `className` – Additional custom class names to apply to the button.
+
+- `...props` – Inherits all standard HTML button attributes and event handlers.
