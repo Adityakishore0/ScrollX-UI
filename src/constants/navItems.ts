@@ -11,6 +11,15 @@ const navigation: NavItem[] = [
   { title: "Installation", href: "/docs/installation" },
 
   {
+    title: "Installation Guide",
+    href: "",
+    children: [
+      { title: "CLI", href: "/docs/installation/cli" },
+      { title: "Manual", href: "/docs/installation/manual" },
+    ],
+  },
+
+  {
     title: "Components",
     href: "",
     children: [

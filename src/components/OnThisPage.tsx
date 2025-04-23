@@ -20,25 +20,25 @@ export default function OnThisPage() {
   useEffect(() => {
     const slugCountMap = new Map<string, number>();
 
-    const elements = Array.from(document.querySelectorAll("h2, h3, h4")).map(
-      (element) => {
-        const text = element.textContent || "";
-        const slug = slugify(text);
+    const elements = Array.from(
+      document.querySelectorAll("h1, h2, h3, h4")
+    ).map((element) => {
+      const text = element.textContent || "";
+      const slug = slugify(text);
 
-        const count = slugCountMap.get(slug) || 0;
-        slugCountMap.set(slug, count + 1);
-        const id = count === 0 ? slug : `${slug}-${count}`;
+      const count = slugCountMap.get(slug) || 0;
+      slugCountMap.set(slug, count + 1);
+      const id = count === 0 ? slug : `${slug}-${count}`;
 
-        element.id = id;
-        (element as HTMLElement).style.scrollMarginTop = "100px";
+      element.id = id;
+      (element as HTMLElement).style.scrollMarginTop = "100px";
 
-        return {
-          id,
-          text,
-          level: parseInt(element.tagName.charAt(1)),
-        };
-      }
-    );
+      return {
+        id,
+        text,
+        level: parseInt(element.tagName.charAt(1)),
+      };
+    });
 
     setHeadings(elements);
   }, [pathname]);
