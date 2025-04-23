@@ -25,7 +25,7 @@ export default function Sidebar() {
       }}
     >
       <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-        📖 Docs
+        Docs
       </h2>
 
       <nav className="space-y-3">
