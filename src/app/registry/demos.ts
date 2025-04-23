@@ -4,6 +4,7 @@ export const demoComponents = [
   "aspectratio-demo",
   "avatar-demo",
   "button-demo",
+  "card-demo",
   "spotlightcard-demo",
   // Add more demo components here
 ] as const;

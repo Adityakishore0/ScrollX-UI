@@ -1,0 +1,105 @@
+---
+title: card
+description: Renders a card component comprising a header, content section, and footer...
+---
+
+<ComponentPreview
+  name="card-demo"
+  description="A subscription card for email and topic selection."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="card" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>card.tsx</code>
+</p>
+<ComponentSource name="card" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+```tsx
+import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+```
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>This is a description of the card.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Some content for the card goes here.</p>
+  </CardContent>
+  <CardFooter>
+    <Button variant="primary">Action</Button>
+  </CardFooter>
+</Card>
+```
+
+```tsx
+<Card className="custom-card-style">
+  <CardHeader>
+    <CardTitle>Custom Card</CardTitle>
+    <CardDescription>This card has a custom style.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Additional content with custom styles.</p>
+  </CardContent>
+  <CardFooter>
+    <Button variant="link">Learn More</Button>
+  </CardFooter>
+</Card>
+```
+
+## API Reference
+
+### Card
+
+The `Card` component is used to create a customizable container with content sections such as title, description, and footer.
+
+`className` – Optional custom class names to apply to the card.
+
+`...props` – Inherits all standard HTML div attributes and event handlers.
+
+`CardHeader` - used for the header section of the card.
+
+`CardTitle`- used for the title inside the CardHeader.
+
+`CardDescription` - used for the description inside the CardHeader.
+
+`CardContent` - main content of the card, placed below the header and above the footer.
+
+`CardFooter` section of the card, typically for actions such as buttons or links.
