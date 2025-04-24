@@ -107,8 +107,41 @@ const config: Config = {
           to: { height: "0" },
         },
         typing: {
-          from: { width: "0%" }, // Start with no text visible
-          to: { width: "100%" }, // Reveal the full text
+          from: { width: "0%" },
+          to: { width: "100%" },
+        },
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            ":not(pre) > code": {
+              backgroundColor: "rgb(30, 30, 30)",
+              color: "white",
+              borderRadius: "0.25rem",
+              padding: "0.2em 0.4em",
+              fontWeight: "400",
+            },
+            ":not(pre) > code::before": {
+              content: '""',
+            },
+            ":not(pre) > code::after": {
+              content: '""',
+            },
+          },
+        },
+        dark: {
+          css: {
+            ":not(pre) > code": {
+              backgroundColor: "rgb(30, 30, 30)",
+              color: "white",
+            },
+            ":not(pre) > code::before": {
+              content: '""',
+            },
+            ":not(pre) > code::after": {
+              content: '""',
+            },
+          },
         },
       },
     },
