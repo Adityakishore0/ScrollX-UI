@@ -54,7 +54,7 @@ export default function CodeBlock({
           className
         )}
       >
-        <code className={language ? `language-${language}` : undefined}>
+        <code className={`not-prose ${language ? `language-${language}` : ""}`}>
           {children}
         </code>
       </pre>
