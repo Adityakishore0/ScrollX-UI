@@ -129,3 +129,31 @@ button.copy:hover {
 .token.class-name {
   @apply text-[#4EC9B0];
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-left: 1px solid transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--border, 215 16% 47% / 0.2));
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--border, 215 16% 47% / 0.4));
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--border, 215 16% 47% / 0.2)) transparent;
+}
