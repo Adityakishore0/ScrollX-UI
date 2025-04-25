@@ -5,6 +5,7 @@ export const parentComponents = [
   "avatar",
   "button",
   "card",
+  "profilecard",
   "spotlightcard",
   // Add more parent component names here
 ] as const;
