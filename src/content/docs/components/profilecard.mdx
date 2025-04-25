@@ -1,0 +1,78 @@
+---
+title: Profile Card
+description:  A reusable profile card component displaying a user's image, name, bio, skills, and social links with interactive animations.
+---
+
+<ComponentPreview
+  name="profilecard-demo"
+  description="Animated reusable profile card component"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+    <PkgOptions name="profilecard" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion lucide-react" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>profilecard.tsx</code>
+</p>
+<ComponentSource name="profilecard" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+```tsx
+import CenteredImageCard from "@/components/ui/profilecard";
+```
+
+```tsx
+<CenteredImageCard
+      img="https://github.com/Adityakishore0.png"
+      name="Ahdeetai"
+      bio="Creator of ScrolIX UI a modern component library built for speed and scalability."
+      skills={["N", "Ts", "Js", "Ex"]}
+      githubUrl="https://github.com/Adityakishore0"
+      twitterUrl="https://x.com/Ahdeetai"
+      position="Senior Software Engineer"
+    />
+```
+
+
+
+## API Reference
+
+### ProfileCard
+
+The `ProfileCard` component is used to create an interactive profile card with user image, name, role, bio, skills, and social links.
+
+`img` – Profile image URL or path.
+
+`name` – User’s name shown on reveal.
+
+`position` – Job title or role.
+
+`bio` – Short description or bio.
+
+`skills` – Array of skill names shown as badges.
+
+`githubUrl` – Optional GitHub profile link.
+
+`twitterUrl` – Optional Twitter/X profile link.
