@@ -111,6 +111,11 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               <span className="group-hover:border-b group-hover:border-white pb-px transition-all duration-200">
                 {child.title}
               </span>
+              {child.category === "new" && (
+                <span className="ml-2 bg-green-900 text-green-400 text-xs font-medium px-2 py-0.5 rounded-full border border-green-500">
+                  New
+                </span>
+              )}
             </button>
           ))}
         </div>
