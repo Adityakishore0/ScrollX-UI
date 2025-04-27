@@ -39,9 +39,11 @@ export default function Navigator() {
     pathname.endsWith("/") && pathname !== "/"
       ? pathname.slice(0, -1)
       : pathname;
-  const currentIndex = allPages.findIndex(
-    (item) => item.href === normalizedPathname
-  );
+
+  const currentPath =
+    normalizedPathname === "/docs" ? "/docs/introduction" : normalizedPathname;
+
+  const currentIndex = allPages.findIndex((item) => item.href === currentPath);
 
   if (currentIndex === -1) return null;
 
