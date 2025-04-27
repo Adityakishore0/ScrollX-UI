@@ -7,6 +7,7 @@ import { mdxComponents } from "@/components/mdx-components";
 import { cache } from "react";
 import rehypePrettyCode from "rehype-pretty-code";
 import CodeBlock from "@/components/CodeBlock";
+import ComponentNavigator from "@/components/ui/Navigator";
 
 interface DocFrontmatter {
   title: string;
@@ -97,6 +98,7 @@ export default async function DocsPage({ params }: PageProps) {
         </p>
       )}
       {doc.content}
+      <ComponentNavigator />
     </article>
   );
 }
