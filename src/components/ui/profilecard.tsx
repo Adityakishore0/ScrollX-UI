@@ -12,11 +12,17 @@ import {
   AnimatePresence,
 } from "framer-motion";
 
+// Updated to include URL for each skill
+interface Skill {
+  name: string;
+  iconUrl: string;
+}
+
 interface ProfileCardProps {
   img: string;
   name: string;
   bio: string;
-  skills: string[];
+  skills: Skill[];
   githubUrl?: string;
   twitterUrl?: string;
   position: string;
@@ -146,10 +152,15 @@ export default function ProfileCard({
                     <div
                       key={index}
                       className="bg-gray-300 dark:bg-gray-800 rounded-md p-1 flex items-center justify-center w-8 h-8"
+                      title={skill.name}
                     >
-                      <span className="text-black dark:text-white">
-                        {skill}
-                      </span>
+                      <Image
+                        src={skill.iconUrl}
+                        alt={skill.name}
+                        width={20}
+                        height={20}
+                        className="text-black dark:text-white"
+                      />
                     </div>
                   ))}
                 </div>
