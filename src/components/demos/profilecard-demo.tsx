@@ -5,7 +5,7 @@ export default function ProfileCard() {
     <CenteredImageCard
       img="https://github.com/Adityakishore0.png"
       name="Ahdeetai"
-      bio="Creator of ScrolIX UI a modern component library built for speed and scalability."
+      bio="Creator of ScrolIX UI, a modern component library built for speed and scalability."
       skills={[
         {
           name: "TypeScript",
