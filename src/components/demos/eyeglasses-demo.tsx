@@ -13,9 +13,9 @@ export default function EyeglassesDemo() {
           green: "bg-green-700 border-green-700",
           pink: "bg-pink-500 border-pink-500",
         }}
-        initialColor="silver"
+        initialColor="brown"
         className="rounded-lg"
-        showColorPicker={true}
+        showColorPicker={false}
         size="md"
       />
     </div>
