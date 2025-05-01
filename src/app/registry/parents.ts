@@ -6,6 +6,7 @@ export const parentComponents = [
   "avatar",
   "button",
   "card",
+  "lamphome",
   "profilecard",
   "spotlightcard",
   // Add more parent component names here
