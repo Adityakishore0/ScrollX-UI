@@ -4,20 +4,36 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 
-const HomeStyle = () => {
+interface LamphomeProps {
+  title?: string;
+  description?: string;
+  children?: React.ReactNode;
+}
+
+export function Lamphome({
+  title = "SCROLLX UI",
+  description = "An open-source collection of animated, interactive & fully customizable components for building stunning, memorable user interfaces.",
+  children,
+}: LamphomeProps) {
   const [pulled, setPulled] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (pulled) {
-      document.documentElement.classList.add("dark");
-      setDarkMode(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-      setDarkMode(false);
+    setMounted(true);
+
+    if (theme === "dark") {
+      setPulled(true);
     }
-  }, [pulled]);
+  }, [theme]);
+
+  useEffect(() => {
+    if (mounted) {
+      setTheme(pulled ? "dark" : "light");
+    }
+  }, [pulled, setTheme, mounted]);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-start pt-6 md:pt-10 transition-colors duration-500 bg-white text-black dark:bg-slate-950 dark:text-white">
@@ -96,61 +112,68 @@ const HomeStyle = () => {
           </button>
         </div>
 
-        <motion.div
-          initial={{ height: 0 }}
-          animate={{ height: pulled ? "4.5rem" : "3rem" }}
-          transition={{ duration: 1 }}
-          className="absolute right-2 top-12 w-1 cursor-pointer z-[999] transition-colors duration-500 bg-black dark:bg-white"
-          onClick={() => setPulled((prev) => !prev)}
-        >
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full transition-colors duration-500 bg-black dark:bg-white"></div>
-        </motion.div>
+        {mounted && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: pulled ? "4.5rem" : "3rem" }}
+            transition={{ duration: 1 }}
+            className="absolute right-2 top-12 w-1 cursor-pointer z-[999] transition-colors duration-500 bg-black dark:bg-white"
+            onClick={() => setPulled((prev) => !prev)}
+          >
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full transition-colors duration-500 bg-black dark:bg-white"></div>
+          </motion.div>
+        )}
       </motion.div>
 
       <motion.div
         initial={{ width: 0, opacity: 0 }}
-        animate={{ width: darkMode ? "75%" : 0, opacity: darkMode ? 1 : 0 }}
+        animate={{
+          width: mounted && theme === "dark" ? "75%" : 0,
+          opacity: mounted && theme === "dark" ? 1 : 0,
+        }}
         transition={{ duration: 1, delay: 0.5 }}
         className="relative border-t border-cyan-400 mt-4 transition-all duration-500"
         style={{
-          boxShadow: darkMode
-            ? "0 0 1.875rem #00FFFF, 0 0 3.75rem rgba(0, 255, 255, 0.8), 0 0 6.25rem rgba(0, 255, 255, 0.6), 0 0 9.375rem rgba(0, 255, 255, 0.3)"
-            : "none",
+          boxShadow:
+            mounted && theme === "dark"
+              ? "0 0 1.875rem #00FFFF, 0 0 3.75rem rgba(0, 255, 255, 0.8), 0 0 6.25rem rgba(0, 255, 255, 0.6), 0 0 9.375rem rgba(0, 255, 255, 0.3)"
+              : "none",
         }}
       >
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: darkMode ? 1 : 0 }}
+          animate={{ opacity: mounted && theme === "dark" ? 1 : 0 }}
           transition={{ duration: 1, delay: 0.5 }}
           className="absolute top-full left-1/2 transform -translate-x-1/2 w-full h-32"
           style={{
-            background: darkMode
-              ? "radial-gradient(circle, rgba(0, 255, 255, 0.7) 0%, rgba(0, 255, 255, 0.3) 50%, rgba(0, 255, 255, 0) 100%)"
-              : "none",
-            filter: darkMode ? "blur(1.875rem)" : "none",
+            background:
+              mounted && theme === "dark"
+                ? "radial-gradient(circle, rgba(0, 255, 255, 0.7) 0%, rgba(0, 255, 255, 0.3) 50%, rgba(0, 255, 255, 0) 100%)"
+                : "none",
+            filter: mounted && theme === "dark" ? "blur(1.875rem)" : "none",
           }}
         ></motion.div>
       </motion.div>
 
       <h1 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-center px-4">
-        SCROLLX UI
+        {title}
       </h1>
 
       <motion.div
         initial={{ width: "75%", opacity: 1 }}
-        animate={{ width: darkMode ? 0 : "75%", opacity: darkMode ? 0 : 1 }}
+        animate={{
+          width: mounted && theme === "dark" ? 0 : "75%",
+          opacity: mounted && theme === "dark" ? 0 : 1,
+        }}
         transition={{ duration: 1 }}
         className="border-t mt-4 transition-colors duration-500 border-black dark:border-white"
       ></motion.div>
 
       <p className="mt-4 text-center text-base sm:text-lg max-w-xs sm:max-w-md md:max-w-xl px-4">
-        An open-source collection of animated, interactive & fully customizable
-        components for building stunning, memorable user interfaces.
+        {description}
       </p>
 
-      <div className="mt-8">{/* Your component here */}</div>
+      <div className="mt-8">{children}</div>
     </div>
   );
-};
-
-export default HomeStyle;
+}

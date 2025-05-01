@@ -1,0 +1,160 @@
+---
+title: Lamphome
+description: A stylish, animated header component with dark/light mode toggle functionality.
+---
+
+<ComponentPreview
+  name="lamphome-demo"
+  className=""
+  description="An accessible Lamphome component built with ScrollX UI"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="lamphome" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>lamphome.tsx</code>
+</p>
+<ComponentSource name="lamphome" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import { Lamphome } from "@/components/ui/Lamphome";
+
+export default function MyPage() {
+  return <Lamphome />;
+}
+```
+
+### With Custom Title and Description
+
+```tsx
+import { Lamphome } from "@/components/ui/Lamphome";
+
+export default function MyPage() {
+  return (
+    <Lamphome 
+      title="My Custom Header" 
+      description="This is a custom description for my page" 
+    />
+  );
+}
+```
+
+### With Child Components
+
+```tsx
+import { Lamphome } from "@/components/ui/Lamphome";
+import { MyComponent } from "@/components/MyComponent";
+
+export default function MyPage() {
+  return (
+    <Lamphome>
+      <MyComponent />
+      <div className="my-custom-content">
+        Additional content here
+      </div>
+    </Lamphome>
+  );
+}
+```
+
+
+
+## API Reference
+
+## Lamphome
+
+The root container for the `Lamphome` component. A stylish, animated header component with dark/light mode toggle functionality.
+
+### LamphomeProps
+
+Props that can be passed to the `Lamphome` component.
+
+- `title` - The main heading displayed in the component (default: "SCROLLX UI").
+- `description` - The descriptive text displayed below the title (default: "An open-source collection of animated, interactive & fully customizable components for building stunning, memorable user interfaces.").
+- `children` - Optional content to be rendered in the component's body area.
+
+## Features
+
+### Theme Toggle
+
+The `Lamphome` component includes a unique theme toggle mechanism:
+
+- A pull tab on the right side of the navigation bar that can be clicked to toggle between light and dark modes
+- Automatically detects and syncs with the system theme preference
+- Smooth animations transition between theme states
+- Glowing cyan line effect in dark mode
+
+### Responsive Design
+
+The component is fully responsive with:
+
+- Mobile-optimized navigation
+- Adaptive search bar (hidden on mobile, expanded on desktop)
+- Fluid typography scaling
+- Properly spaced elements on all screen sizes
+
+
+
+## Integration with next-themes
+
+This component is designed to work with the `ThemeProvider` from `next-themes`. Ensure you have this provider set up in your layout file:
+
+```tsx
+// In your layout.tsx
+import { ThemeProvider } from "next-themes";
+
+export default function RootLayout({ children }) {
+  return (
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      {children}
+    </ThemeProvider>
+  );
+}
+```
+
+## Styling
+
+The component uses Tailwind CSS for styling with automatic dark mode support via the `dark:` variant. It leverages CSS transitions and Framer Motion animations for smooth visual effects.
