@@ -48,7 +48,7 @@ export function Lamphome({
           alt="Logo"
           width={24}
           height={24}
-          className="cursor-pointer bg-black"
+          className="cursor-pointer "
         />
 
         <div className="flex space-x-2 md:space-x-6 justify-center items-center">
@@ -59,7 +59,7 @@ export function Lamphome({
             Home
           </Link>
           <Link
-            href="/Docs"
+            href="/docs"
             className="text-base md:text-lg font-medium hover:underline"
           >
             Docs
