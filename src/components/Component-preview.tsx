@@ -76,7 +76,7 @@ export default function ComponentPreview({
           </Tabs.Trigger>
         </Tabs.List>
 
-        <Tabs.Content value="preview" className="p-4">
+        <Tabs.Content value="preview" className="">
           <div
             className={`preview flex min-h-[350px] w-full justify-center items-center p-10 ${className}`}
           >
