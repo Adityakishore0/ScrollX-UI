@@ -9,7 +9,6 @@ import {
   AnimatePresence,
 } from "framer-motion";
 
-// Utility function for conditional class names
 const cn = (...classes: string[]): string => {
   return classes.filter(Boolean).join(" ");
 };
@@ -22,11 +21,17 @@ interface ImageType {
 
 interface LightTrailProps {
   className?: string;
+  title?: string;
+  description?: string;
   images?: ImageType[];
+  containerHeight?: string;
+  scrollHeight?: string;
 }
 
 export const LightTrail: React.FC<LightTrailProps> = ({
   className = "",
+  title = "Mountains",
+  description = "Mountains are large natural elevations of the earth's surface that rise prominently above their surroundings.",
   images = [
     {
       id: 1,
@@ -44,11 +49,15 @@ export const LightTrail: React.FC<LightTrailProps> = ({
       alt: "Dramatic mountain landscape with clouds",
     },
   ],
+  containerHeight = "100%",
+  scrollHeight = "200vh",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const prevScrollY = useRef<number>(0);
+  const isInViewRef = useRef<boolean>(false);
 
   const [svgWidth, setSvgWidth] = useState<number>(0);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
@@ -56,17 +65,47 @@ export const LightTrail: React.FC<LightTrailProps> = ({
   const [showTealLine, setShowTealLine] = useState<boolean>(false);
   const [stickyTranslateY, setStickyTranslateY] = useState<number>(0);
   const [isExitingSticky, setIsExitingSticky] = useState<boolean>(false);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
-  const progressPerImage = 1 / images.length;
+  const scrollableRange = 0.85;
+  const progressPerImage = scrollableRange / images.length;
 
   const { scrollYProgress, scrollY } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
+    container: wrapperRef,
   });
 
+  
+  useEffect(() => {
+    if (wrapperRef.current) {
+      const wrapper = wrapperRef.current;
+
+      const updateSize = () => {
+        if (wrapper) {
+          setContainerSize({
+            width: wrapper.offsetWidth,
+            height: wrapper.offsetHeight,
+          });
+        }
+      };
+
+      updateSize();
+      const resizeObserver = new ResizeObserver(updateSize);
+      resizeObserver.observe(wrapper);
+
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }
+  }, []);
+
+  
   useEffect(() => {
     if (contentRef.current) {
-      setSvgWidth(contentRef.current.offsetWidth);
+      const content = contentRef.current;
+
+      setSvgWidth(content.offsetWidth);
 
       const resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
@@ -74,13 +113,39 @@ export const LightTrail: React.FC<LightTrailProps> = ({
         }
       });
 
-      resizeObserver.observe(contentRef.current);
+      resizeObserver.observe(content);
       return () => resizeObserver.disconnect();
+    }
+  }, [containerSize]);
+
+  
+  useEffect(() => {
+    if (stickyRef.current) {
+      const stickyElement = stickyRef.current;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            isInViewRef.current = entry.isIntersecting;
+          });
+        },
+        { threshold: 0.5 } 
+      );
+
+      observer.observe(stickyElement);
+
+      return () => {
+        observer.disconnect();
+      };
     }
   }, []);
 
+  
   useEffect(() => {
     const handleScroll = () => {
+      
+      if (!isInViewRef.current) return;
+
       const currentScrollY = scrollY.get();
 
       if (currentScrollY > prevScrollY.current) {
@@ -96,19 +161,18 @@ export const LightTrail: React.FC<LightTrailProps> = ({
       }
 
       const progress = scrollYProgress.get();
-      const contentProgress = Math.min(progress / 0.9, 1);
-      const newIndex = Math.min(
-        Math.floor(contentProgress / progressPerImage),
+      const normalizedProgress = Math.min(progress / scrollableRange, 1);
+      const imageIndex = Math.min(
+        Math.floor(normalizedProgress * images.length),
         images.length - 1
       );
 
-      if (newIndex >= 0 && newIndex !== currentImageIndex) {
-        setCurrentImageIndex(newIndex);
+      if (imageIndex >= 0 && imageIndex !== currentImageIndex) {
+        setCurrentImageIndex(imageIndex);
       }
 
       if (progress > 0.95) {
         setIsExitingSticky(false);
-
         const exitProgress = (progress - 0.85) / 0.15;
         const translateY = Math.min(exitProgress * -100, 0);
         setStickyTranslateY(translateY);
@@ -129,43 +193,50 @@ export const LightTrail: React.FC<LightTrailProps> = ({
     showTealLine,
   ]);
 
-  const x2 = useTransform(scrollYProgress, [0, 0.85], [0, svgWidth - 100]);
-  const tealLineWidth = useTransform(scrollYProgress, [0, 0.85], [0, svgWidth]);
+  const x2 = useTransform(
+    scrollYProgress,
+    [0, scrollableRange],
+    [0, svgWidth - 100]
+  );
+  const tealLineWidth = useTransform(
+    scrollYProgress,
+    [0, scrollableRange],
+    [0, svgWidth]
+  );
 
   const springX2 = useSpring(x2, {
-    stiffness: 500,
-    damping: 90,
+    stiffness: 700,
+    damping: 70,
   });
 
   const springTealLineWidth = useSpring(tealLineWidth, {
-    stiffness: 500,
-    damping: 90,
+    stiffness: 700,
+    damping: 70,
   });
 
   const imageVariants = {
     enter: (customDirection: "up" | "down") => ({
-      x: customDirection === "down" ? 100 : -100,
+      x: customDirection === "down" ? 50 : -50,
       opacity: 0,
-      scale: 0.95,
     }),
     center: {
       x: 0,
       opacity: 1,
-      scale: 1,
       transition: {
         type: "spring",
-        stiffness: 300,
-        damping: 20,
+        stiffness: 500,
+        damping: 30,
+        duration: 0.2,
       },
     },
     exit: (customDirection: "up" | "down") => ({
-      x: customDirection === "down" ? -100 : 100,
+      x: customDirection === "down" ? -50 : 50,
       opacity: 0,
-      scale: 0.95,
       transition: {
         type: "spring",
-        stiffness: 300,
-        damping: 20,
+        stiffness: 500,
+        damping: 30,
+        duration: 0.2,
       },
     }),
   };
@@ -174,20 +245,47 @@ export const LightTrail: React.FC<LightTrailProps> = ({
     return svgWidth - value * ((currentImageIndex + 1) / images.length);
   };
 
-  return (
-    <div className="min-h-[300vh]   relative">
-      <div className="mx-auto max-w-5xl px-4 py-20">
-        <div className="h-screen"></div>
+  const getStickyStyle = () => {
+    if (containerSize.height < 500) {
+      return {
+        position: "relative" as const,
+        top: 0,
+        height: "auto",
+      };
+    }
 
-        <div ref={containerRef} className="relative h-[200vh]">
+    return {
+      position: "sticky" as const,
+      top: 0,
+      height: containerSize.height
+        ? `${Math.min(containerSize.height, 600)}px`
+        : "auto",
+    };
+  };
+
+  return (
+    <div
+      ref={wrapperRef}
+      className="relative overflow-auto w-full"
+      style={{ height: containerHeight }}
+    >
+      <div className="w-full px-4 py-6">
+        <div
+          ref={containerRef}
+          className="relative"
+          style={{ height: scrollHeight }}
+        >
           <motion.div
             ref={stickyRef}
             className={cn(
-              "sticky top-0 h-screen flex items-center justify-center",
+              "flex items-center justify-center w-full",
               isExitingSticky ? "" : "transition-opacity duration-300"
             )}
             style={{
-              translateY: `${stickyTranslateY}vh`,
+              ...getStickyStyle(),
+              translateY: containerSize.height
+                ? `${(stickyTranslateY * containerSize.height) / 100}px`
+                : 0,
               opacity: isExitingSticky
                 ? 1 - Math.abs(stickyTranslateY) / 100
                 : 1,
@@ -195,27 +293,28 @@ export const LightTrail: React.FC<LightTrailProps> = ({
           >
             <motion.div
               className={cn(
-                "relative mx-auto h-full w-full max-w-4xl flex items-center",
+                "relative mx-auto w-full h-full flex items-center",
                 className
               )}
             >
               <div ref={contentRef} className="relative overflow-hidden w-full">
-                <h1 className="mb-8 text-5xl font-bold italic ">Mountains</h1>
-                <p className="mb-12 text-xl  hover:underline">
-                  Mountains are large natural elevations of the earth's surface
-                  that rise prominently above their surroundings.
+                <h1 className="mb-4 text-3xl md:text-5xl font-bold italic">
+                  {title}
+                </h1>
+                <p className="mb-6 md:mb-12 text-lg md:text-xl hover:underline">
+                  {description}
                 </p>
 
-                <div className="w-full mb-8 flex items-center">
+                <div className="w-full mb-6 flex items-center">
                   <motion.div
                     transition={{
-                      duration: 0.2,
+                      duration: 0.1,
                     }}
                     className="flex h-4 w-4 items-center justify-center rounded-full border border-neutral-200 shadow-sm bg-white mr-0 z-10"
                   >
                     <motion.div
                       transition={{
-                        duration: 0.2,
+                        duration: 0.1,
                       }}
                       animate={{
                         backgroundColor: showTealLine ? "#10b981" : "#FFFFFF",
@@ -290,28 +389,14 @@ export const LightTrail: React.FC<LightTrailProps> = ({
                     animate="center"
                     exit="exit"
                     className="w-full"
-                    transition={{
-                      type: "spring",
-                      stiffness: 500,
-                      damping: 15,
-                    }}
                   >
-                    <motion.div
-                      className="relative aspect-[16/9] w-full overflow-hidden rounded-lg"
-                      animate={{
-                        rotate: [0, -1, 1, -1, 0],
-                      }}
-                      transition={{
-                        duration: 0.5,
-                        ease: "easeInOut",
-                      }}
-                    >
+                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
                       <img
                         src={images[currentImageIndex].src}
                         alt={images[currentImageIndex].alt}
                         className="h-full w-full object-cover"
                       />
-                    </motion.div>
+                    </div>
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -322,7 +407,3 @@ export const LightTrail: React.FC<LightTrailProps> = ({
     </div>
   );
 };
-
-export default function StickyScrollGallery() {
-  return <LightTrail />;
-}

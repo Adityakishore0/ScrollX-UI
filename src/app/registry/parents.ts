@@ -7,6 +7,7 @@ export const parentComponents = [
   "button",
   "card",
   "lamphome",
+  "light-trail",
   "profilecard",
   "spotlightcard",
   // Add more parent component names here
