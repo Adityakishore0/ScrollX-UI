@@ -76,7 +76,7 @@ export const LightTrail: React.FC<LightTrailProps> = ({
     container: wrapperRef,
   });
 
-  // Set up container size observer
+  
   useEffect(() => {
     if (wrapperRef.current) {
       const wrapper = wrapperRef.current;
@@ -100,7 +100,7 @@ export const LightTrail: React.FC<LightTrailProps> = ({
     }
   }, []);
 
-  // Set up content width observer
+  
   useEffect(() => {
     if (contentRef.current) {
       const content = contentRef.current;
@@ -118,7 +118,7 @@ export const LightTrail: React.FC<LightTrailProps> = ({
     }
   }, [containerSize]);
 
-  // Setup intersection observer to detect when component is in view
+  
   useEffect(() => {
     if (stickyRef.current) {
       const stickyElement = stickyRef.current;
@@ -129,7 +129,7 @@ export const LightTrail: React.FC<LightTrailProps> = ({
             isInViewRef.current = entry.isIntersecting;
           });
         },
-        { threshold: 0.5 } // Requires 50% of the element to be visible
+        { threshold: 0.5 } 
       );
 
       observer.observe(stickyElement);
@@ -140,10 +140,10 @@ export const LightTrail: React.FC<LightTrailProps> = ({
     }
   }, []);
 
-  // Handle scroll effects
+  
   useEffect(() => {
     const handleScroll = () => {
-      // Only process scroll if the element is in view
+      
       if (!isInViewRef.current) return;
 
       const currentScrollY = scrollY.get();
