@@ -7,6 +7,7 @@ export const demoComponents = [
   "button-demo",
   "card-demo",
   "lamphome-demo",
+  "lighttrail-demo",
   "profilecard-demo",
   "spotlightcard-demo",
   // Add more demo components here
