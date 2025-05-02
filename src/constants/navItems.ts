@@ -39,7 +39,7 @@ const navigation: NavItem[] = [
       { title: "Lamphome", href: "/docs/components/lamphome", category: "new" },
       {
         title: "Light Trail",
-        href: "/docs/components/Light-trail",
+        href: "/docs/components/light-trail",
         category: "new",
       },
       { title: "Modal", href: "/docs/components/modal" },
