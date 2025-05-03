@@ -36,6 +36,10 @@ const navigation: NavItem[] = [
       { title: "Button", href: "/docs/components/button" },
       { title: "Card", href: "/docs/components/card" },
       { title: "Dropdown", href: "/docs/components/dropdown" },
+      {
+        title: "GlowingBorderCard",
+        href: "/docs/components/glowingbordercard",
+      },
       { title: "Lamphome", href: "/docs/components/lamphome", category: "new" },
       {
         title: "Light Trail",
