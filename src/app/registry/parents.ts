@@ -6,6 +6,7 @@ export const parentComponents = [
   "avatar",
   "button",
   "card",
+  "glowingbordercard",
   "lamphome",
   "light-trail",
   "profilecard",

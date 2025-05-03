@@ -1,0 +1,75 @@
+---
+title: Glowing Border Card
+description: A customizable card with a glowing border effect that changes colors based on light and dark modes.
+---
+
+<ComponentPreview
+  name="glowingbordercard-demo"
+  description="A card with a glowing border that changes colors in light and dark modes."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="glowingbordercard" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>glowingbordercard.tsx</code>
+</p>
+<ComponentSource name="glowingbordercard" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import GlowingBorderCard from "@/components/ui/glowingbordercard";
+```
+
+```tsx
+<GlowingBorderCard
+  title="Glowing Border Card"
+  description="Hover over this card to see the glowing border effect"
+  fromColor="pink-600"
+  toColor="purple-600"
+/>
+```
+
+## API Reference
+
+### GlowingBorderCard
+
+The `GlowingBorderCard` component is used to create a customizable card with a glowing border effect that changes colors based on light and dark modes. The card can display a title and description, and it also supports animation and hover effects.
+
+#### Props
+
+- **`title`** ( `string` ) – The title text displayed inside the card.
+- **`description`** ( `string` ) – The description text displayed inside the card.
+- **`fromColor`** ( `string` ) – The starting color of the gradient in light mode. Accepts Tailwind CSS color names (e.g., `red-500` , `green-500` , etc.).
+- **`toColor`** ( `string` ) – The ending color of the gradient in light mode. Accepts Tailwind CSS color names (e.g., `blue-500` , `teal-500` , etc.).

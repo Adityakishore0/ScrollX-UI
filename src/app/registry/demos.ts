@@ -6,6 +6,7 @@ export const demoComponents = [
   "avatar-demo",
   "button-demo",
   "card-demo",
+  "glowingbordercard-demo",
   "lamphome-demo",
   "lighttrail-demo",
   "profilecard-demo",
