@@ -3,31 +3,72 @@ title: Installation
 description: This guide will help you install and configure the library in your project.
 ---
 
-## Requirements
+<Steps>
 
-Before you begin, make sure you have:
+Welcome to **ScrollX-UI** — a modern component library built on **Next.js**, **TypeScript**, and **Tailwind CSS**.  
+This guide walks you through setting up the environment.
 
-- Node.js 16 or higher
-- npm, yarn, or pnpm installed
+ 
+##  Install Next.js
 
-## Basic Installation
+To get started, create a new **Next.js** project using your preferred package manager:
 
-```sh
-npm install @mylib/core
+<Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+  
+  <Step>Create a new project</Step>
+
+  <TabsContent value="npm">
+    ```tsx
+    npx create-next-app@latest
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```tsx
+    npx create-next-app@latest
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```tsx
+    pnpm create next-app@latest
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```tsx
+    bun x --bun create-next-app@latest
+    ```
+  </TabsContent> 
+</Tabs>
+
+  <Step>On installation, you'll see the following prompts:</Step>
+    ```tsx
+What is your project named? my-app
+Would you like to use TypeScript? No / Yes
+Would you like to use ESLint? No / Yes
+Would you like to use Tailwind CSS? No / Yes
+Would you like to use `src/` directory? No / Yes
+Would you like to use App Router? (recommended) No / Yes
+Would you like to customize the default import alias (@/*)? No / Yes
+What import alias would you like configured? @/*
 ```
+  <Step>Start the app</Step>
+  ```tsx
+  cd my-app
+  npm run dev
+  ```
+  
+</Steps>
 
-## Configuration
-
-Create a configuration file in your project root:
-
-```js
-// mylib.config.js
-module.exports = {
-  theme: "light",
-  components: ["button", "card", "input"],
-};
-```
+  
 
 ## Next Steps
 
-After installation, check out our [Getting Started](/docs/introduction) guide.
+After installation, check out our [Installation Guide](/docs/installation/manual) .

@@ -1,0 +1,235 @@
+---
+title: Install Tailwind CSS
+description: Install Tailwind CSS with Next.js (v3 and v4).
+---
+
+<Steps>
+ 
+##  Tailwind CSS v3 Installation (Legacy)
+
+<Step>Create a new project</Step>
+
+To get started, create a new **Next.js** project using your preferred package manager:
+
+<Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+
+  <TabsContent value="npm">
+    ```tsx
+    npx create-next-app@latest my-project --typescript --eslint
+    cd my-project
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```tsx
+    yarn create next-app@latest my-project --typescript --eslint
+    cd my-project
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```tsx
+    pnpm create next-app@latest my-project --typescript --eslint
+    cd my-project
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```tsx
+    bun x --bun create-next-app@latest my-project --typescript --eslint
+    cd my-project
+    ```
+  </TabsContent> 
+</Tabs>
+
+  <Step>Install Tailwind CSS</Step>
+   <Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="npm">
+    ```tsx
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```tsx
+    yarn add -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```tsx
+    pnpm add -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```tsx
+     bun add -D tailwindcss postcss autoprefixer
+     npx tailwindcss init -p
+    ```
+  </TabsContent> 
+</Tabs>
+
+  <Step>Configure your template paths</Step>
+
+  `tailwind.config.ts`
+  ```tsx
+  /** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+      ],
+     theme: {
+     extend: {},
+    },
+   plugins: [],
+ };
+```
+
+<Step>Add the Tailwind directives to your CSS</Step>
+
+
+`global.css`
+```tsx
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+```
+<Step>Start using Tailwind</Step>
+
+`page.tsx`
+```tsx
+export default function Home() {
+  return <h1 className="text-4xl font-semibold italic text-blue-600">Welcome!</h1>;
+}
+```
+
+
+---
+##  Tailwind CSS v4 Installation 
+
+<Step>Create a new project</Step>
+
+To get started, create a new **Next.js** project using your preferred package manager:
+
+<Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+
+  <TabsContent value="npm">
+    ```tsx
+    npx create-next-app@latest my-project --typescript --eslint
+    cd my-project
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```tsx
+    yarn create next-app@latest my-project --typescript --eslint
+    cd my-project
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```tsx
+    pnpm create next-app@latest my-project --typescript --eslint
+    cd my-project
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```tsx
+    bun x --bun create-next-app@latest my-project --typescript --eslint
+    cd my-project
+    ```
+  </TabsContent> 
+</Tabs>
+
+  <Step>Install Tailwind CSS</Step>
+   <Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="npm">
+    ```tsx
+    npm install tailwindcss @tailwindcss/postcss @tailwindcss/cli
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```tsx
+    yarn add tailwindcss @tailwindcss/postcss @tailwindcss/cli
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```tsx
+    pnpm add tailwindcss @tailwindcss/postcss @tailwindcss/cli
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```tsx
+    bun add tailwindcss @tailwindcss/postcss @tailwindcss/cli
+    ```
+  </TabsContent> 
+</Tabs>
+
+## Next Steps
+
+After installation, check out our [globals.css](/docs/installation/manual#set-up-styles) .
+
+ <Step>Configure PostCSS</Step>
+ 
+ `postcss.config.js`
+ ```tsx
+ module.exports = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+    },
+  };
+```
+
+<Step>Start using Tailwind</Step>
+
+`page.tsx`
+```tsx
+export default function Home() {
+  return <h1 className="text-4xl font-semibold italic text-blue-600">Welcome!</h1>;
+}
+```
+
+</Steps>
+
+## Done , All Set

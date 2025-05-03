@@ -16,6 +16,10 @@ const navigation: NavItem[] = [
     children: [
       { title: "CLI", href: "/docs/installation/cli" },
       { title: "Manual", href: "/docs/installation/manual" },
+      {
+        title: "Tailwind Setup",
+        href: "/docs/installation/install-tailwindcss",
+      },
     ],
   },
 
