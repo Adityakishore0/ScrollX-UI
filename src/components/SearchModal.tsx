@@ -226,11 +226,11 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <button
                     className="w-full text-left p-2 hover:bg-neutral-800 rounded-lg group"
                     onClick={() =>
-                      window.open("https://x.com/AdityaFullstack", "_blank")
+                      window.open("https://x.com/Ahdeetai", "_blank")
                     }
                   >
                     <span className="group-hover:border-b group-hover:border-white pb-px transition-all duration-200">
-                      Twitter @AdityaFullstack
+                      Twitter @Ahdeetai
                     </span>
                   </button>
                 </div>
