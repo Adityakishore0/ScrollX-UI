@@ -21,7 +21,7 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
 
-            <div className="w-64 hidden lg:block fixed right-0 top-16 pl-4 pr-8 py-8 h-[calc(100vh-4rem)] overflow-y-auto">
+            <div className="w-64 hidden lg:block fixed right-0 top-16 border-l border-gray-200 dark:border-gray-800 pl-8 pr-8 py-8 h-[calc(100vh-4rem)] overflow-y-auto">
               <OnThisPage />
             </div>
           </div>
