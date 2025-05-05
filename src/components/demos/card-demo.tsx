@@ -18,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { AnimatedButton } from "@/components/ui/animated-button";
 
 export default function NewsletterCard() {
   return (
@@ -51,7 +52,7 @@ export default function NewsletterCard() {
         </form>
       </CardContent>
       <CardFooter className="flex justify-end">
-        <Button>Subscribe</Button>
+        <AnimatedButton>Subscribe</AnimatedButton>
       </CardFooter>
     </Card>
   );
