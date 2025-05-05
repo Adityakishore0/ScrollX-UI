@@ -30,9 +30,13 @@ const navigation: NavItem[] = [
       { title: "Accordion", href: "/docs/components/accordion" },
       { title: "Alert Dialog", href: "/docs/components/alert-dialog" },
       {
+        title: "Animated Button",
+        href: "/docs/components/animated-button",
+        category: "new",
+      },
+      {
         title: "Animated Showcase",
         href: "/docs/components/animated-showcase",
-        category: "new",
       },
       { title: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
       { title: "Avatar", href: "/docs/components/avatar" },

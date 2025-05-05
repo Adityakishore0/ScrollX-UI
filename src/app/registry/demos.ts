@@ -1,6 +1,7 @@
 export const demoComponents = [
   "accordion-demo",
   "alertdialog-demo",
+  "animatedbutton-demo",
   "animatedshowcase-demo",
   "aspectratio-demo",
   "avatar-demo",

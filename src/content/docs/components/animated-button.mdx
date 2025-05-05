@@ -1,0 +1,130 @@
+---
+title: Animated Button
+description: AnimatedButton is a highly customizable animated button component with shimmer effects, glow, and visual styling options.
+---
+
+<ComponentPreview
+  name="animatedbutton-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An accessible Button component built with Radix UI"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="Animated-button" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="@radix-ui/react-slot" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>animated-button.tsx</code>
+</p>
+<ComponentSource name="animated-button" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+
+```tsx
+import { AnimatedButton } from "@/components/ui/animated-button";
+```
+
+```tsx
+<AnimatedButton
+        className="bg-green-500 text-white"
+        variant="default"
+        size="default"
+        glow={true}
+        textEffect="normal"
+        uppercase={true}
+        rounded="custom"
+        asChild={false}
+        hideAnimations={false}
+        shimmerColor="#39FF14"
+        shimmerSize="0.15em"
+        shimmerDuration="3s"
+        borderRadius="100px"
+        background="rgba(0, 0, 0, 1)"
+      >
+        ScrollX UI
+      </AnimatedButton>
+```
+
+
+## API Reference
+
+### Animated Button
+
+`AnimatedButton` is a customizable button component with animation, shimmer, and visual styling options.
+
+- **`variant`** – Controls the visual style of the button.  
+  **Options:** `default`, `destructive`, `outline`, `secondary`, `ghost`, `link`, `success`, `warning`, `info`, `dark`, `light`, `gradient`, `glass`.
+
+- **`size`** – Adjusts the button size.  
+  **Options:** `sm`, `default`, `lg`, `icon`.
+
+- **`glow`** – Enables glowing animation around the button.  
+  **Type:** `boolean`.
+
+- **`textEffect`** – Applies a text animation or effect.  
+  **Options:** `normal`, `shimmer`, `gradient`, `glitch`, etc.
+
+- **`uppercase`** – Renders button text in uppercase.  
+  **Type:** `boolean`.
+
+- **`rounded`** – Controls border radius style.  
+  **Options:** `none`, `sm`, `md`, `lg`, `xl`, `full`, `custom`.
+
+- **`borderRadius`** – Custom border radius (applies if `rounded="custom"`).  
+  **Type:** `string` (e.g. `"100px"`).
+
+- **`background`** – Sets custom background color or gradient.  
+  **Type:** `string` (e.g. `"rgba(0,0,0,1)"` or `"linear-gradient(...)"`).
+
+- **`shimmerColor`** – Defines the color used in shimmer effect.  
+  **Type:** `string` (e.g. `"#39FF14"` for neon green).
+
+- **`shimmerSize`** – Sets the size/thickness of the shimmer.  
+  **Type:** `string` (e.g. `"0.15em"`).
+
+- **`shimmerDuration`** – Duration of shimmer animation.  
+  **Type:** `string` (e.g. `"3s"`).
+
+- **`asChild`** – Renders the button as a child component using `Slot`.  
+  **Type:** `boolean`.
+
+- **`hideAnimations`** – Disables all visual animations when `true`.  
+  **Type:** `boolean`.
+
+- **`className`** – Additional custom class names.
+
+- **`...props`** – Inherits all standard HTML button attributes and event handlers.
