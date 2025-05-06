@@ -8,6 +8,7 @@ export const parentComponents = [
   "button",
   "card",
   "glowingbordercard",
+  "interactive-input",
   "lamphome",
   "light-trail",
   "profilecard",

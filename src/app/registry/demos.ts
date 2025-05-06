@@ -8,6 +8,7 @@ export const demoComponents = [
   "button-demo",
   "card-demo",
   "glowingbordercard-demo",
+  "interactiveinput-demo",
   "lamphome-demo",
   "lighttrail-demo",
   "profilecard-demo",
