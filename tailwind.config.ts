@@ -81,6 +81,7 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         typing: "typing 2s steps(10, end) infinite",
+        shine: "shine 5s linear infinite",
       },
       keyframes: {
         tilt: {
@@ -109,6 +110,10 @@ const config: Config = {
         typing: {
           from: { width: "0%" },
           to: { width: "100%" },
+        },
+        shine: {
+          "0%": { backgroundPosition: "100%" },
+          "100%": { backgroundPosition: "-100%" },
         },
       },
       typography: {
