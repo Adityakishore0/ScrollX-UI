@@ -44,6 +44,31 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
+<Step>Add Utilities</Step>
+
+<p>
+  <code>tailwind.config.ts</code>
+</p>
+
+```tsx
+module.exports = { 
+   theme: { 
+     extend: { 
+       keyframes: { 
+         shine: { 
+           '0%': { 'background-position': '100%' }, 
+          '100%': { 'background-position': '-100%' }, 
+         }, 
+      }, 
+       animation: { 
+        shine: 'shine 5s linear infinite', 
+       }, 
+     }, 
+    }, 
+    plugins: [], 
+ };
+```
+
 </Steps>
   </TabsContent>
 </Tabs>
