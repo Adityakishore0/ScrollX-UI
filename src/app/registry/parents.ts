@@ -5,6 +5,7 @@ export const parentComponents = [
   "animated-showcase",
   "aspect-ratio",
   "avatar",
+  "badge",
   "button",
   "card",
   "glowingbordercard",
