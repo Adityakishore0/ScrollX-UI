@@ -40,7 +40,7 @@ const navigation: NavItem[] = [
       },
       { title: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
       { title: "Avatar", href: "/docs/components/avatar" },
-      { title: "Badge", href: "/docs/components/badge" },
+      { title: "Badge", href: "/docs/components/badge", category: "new" },
       { title: "Button", href: "/docs/components/button" },
       { title: "Card", href: "/docs/components/card" },
       { title: "Dropdown", href: "/docs/components/dropdown" },
@@ -53,10 +53,15 @@ const navigation: NavItem[] = [
         href: "/docs/components/interactive-input",
         category: "new",
       },
-      { title: "Lamphome", href: "/docs/components/lamphome", category: "new" },
+      { title: "Lamphome", href: "/docs/components/lamphome" },
       {
         title: "Light Trail",
         href: "/docs/components/light-trail",
+        category: "new",
+      },
+      {
+        title: "lustre Text",
+        href: "/docs/components/lustretext",
         category: "new",
       },
       { title: "Modal", href: "/docs/components/modal" },
@@ -69,7 +74,6 @@ const navigation: NavItem[] = [
       {
         title: "Spotlight Card",
         href: "/docs/components/spotlightcard",
-        category: "new",
       },
       { title: "Tooltip", href: "/docs/components/tooltip" },
       { title: "Tabs", href: "/docs/components/tabs" },
