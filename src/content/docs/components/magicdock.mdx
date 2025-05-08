@@ -1,0 +1,152 @@
+---
+title: Magic Dock
+description: MacOS-style React dock with smooth animation and customizable magnification.
+---
+
+<ComponentPreview
+  name="magicdock-demo"
+  className=""
+  description="Animated dock with smooth animations, interactive hover effects"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="magicdock" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion lucide-react" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>magicdock.tsx</code>
+</p>
+<ComponentSource name="magicdock" />
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import StylishDock from "@/components/ui/magicdock";
+import { Home as HomeIcon, Settings as SettingsIcon } from "lucide-react";
+
+const dockItems = [
+  {
+    id: 1,
+    icon: <HomeIcon size={24} />,
+    label: "Home",
+    description: "Go to homepage",
+    onClick: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+  },
+  {
+    id: 2,
+    icon: <SettingsIcon size={24} />,
+    label: "Settings",
+    description: "Customize options",
+    onClick: () => console.log("Settings clicked"),
+  },
+];
+
+function App() {
+  return (
+    <div className="relative">
+      <StylishDock
+        items={dockItems}
+        distance={150}
+        panelHeight={64}
+        baseItemSize={50}
+        magnification={70}
+        variant="default"
+      />
+    </div>
+  );
+}
+```
+### With NextRouter
+
+```tsx
+import StylishDock from "@/components/ui/magicdock";
+import { Home as HomeIcon, Docs as DocsIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+const dockItems = [
+  {
+    id: 1,
+    icon: <HomeIcon size={24} />,
+    label: "Home",
+    description: "Go to homepage",
+    onClick: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+  },
+  {
+    id: 2,
+    icon: <DocsIcon size={24} />,
+    label: "Docs",
+    description: "Read documentation",
+    onClick: () => router.push("/docs"),
+  },
+];
+
+function App() {
+  return (
+    <div className="relative">
+      <StylishDock
+        items={dockItems}
+        distance={150}
+        panelHeight={64}
+        baseItemSize={50}
+        magnification={70}
+        variant="tooltip"
+      />
+    </div>
+  );
+}
+```
+
+## Custom Styling Variants
+
+```tsx
+  // Default variant
+<MagicDock items={dockItems} variant="default" />
+
+// Gradient variant
+<MagicDock items={dockItems} variant="gradient" />
+
+// Tooltip variant with custom magnification
+<MagicDock 
+  items={dockItems} 
+  variant="tooltip" 
+  magnification={90}
+  baseItemSize={60}
+/>
+```
+
+
+# API Reference
+
+## MagicDock
+
+The `MagicDock` component provides a customizable, animated dock.
+
+* **`items`** (`DockItemData[]`): Required. Array of dock items (with `id`, `icon`, `label`, `description`, and `onClick`).
+* **`className`** (`string`): Custom CSS classes for the dock container.
+* **`distance`** (`number`): Default `150`. Distance for magnification effect.
+* **`panelHeight`** (`number`): Default `64`. Height of the dock panel.
+* **`baseItemSize`** (`number`): Default `50`. Base size of each dock item.
+* **`dockHeight`** (`number`): Default `256`. Maximum height of the expanded dock.
+* **`magnification`** (`number`): Default `70`. Max size increase on hover.
+* **`spring`** (`SpringOptions`): Default `{ mass: 0.1, stiffness: 150, damping: 12 }`. Spring animation options.
+* **`variant`** (`"default" | "gradient" | "tooltip"`): Default `"default"`. Visual style variant.
