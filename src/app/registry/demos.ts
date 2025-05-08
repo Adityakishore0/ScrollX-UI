@@ -16,6 +16,7 @@ export const demoComponents = [
   "lamphome-demo",
   "lighttrail-demo",
   "lustretext-demo",
+  "magicdock-demo",
   "profilecard-demo",
   "spotlightcard-demo",
   // Add more demo components here

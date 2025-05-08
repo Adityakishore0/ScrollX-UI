@@ -64,6 +64,7 @@ const navigation: NavItem[] = [
         href: "/docs/components/lustretext",
         category: "new",
       },
+      { title: "Magic Dock", href: "/docs/components/magicdock" },
       { title: "Modal", href: "/docs/components/modal" },
       { title: "Popover", href: "/docs/components/popover" },
       {

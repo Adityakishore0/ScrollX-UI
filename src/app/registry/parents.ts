@@ -13,6 +13,7 @@ export const parentComponents = [
   "lamphome",
   "light-trail",
   "lustretext",
+  "magicdock",
   "profilecard",
   "spotlightcard",
   // Add more parent component names here
