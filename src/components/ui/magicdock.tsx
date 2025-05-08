@@ -54,6 +54,7 @@ type DockItemProps = {
   variant: "default" | "gradient" | "tooltip";
   setHoveredIndex: React.Dispatch<React.SetStateAction<number | null>>;
   hoveredIndex: number | null;
+  isTouchDevice: boolean;
 };
 
 function DockItem({
@@ -66,6 +67,7 @@ function DockItem({
   variant,
   setHoveredIndex,
   hoveredIndex,
+  isTouchDevice,
 }: DockItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const mouseXMotion = useMotionValue(0);
@@ -91,6 +93,8 @@ function DockItem({
   }, [hoveredIndex, item.id, isHovered]);
 
   useEffect(() => {
+    if (isTouchDevice) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!ref.current) return;
       const rect = ref.current.getBoundingClientRect();
@@ -102,11 +106,12 @@ function DockItem({
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [mouseXMotion]);
+  }, [mouseXMotion, isTouchDevice]);
 
   const handleItemMouseMove = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
+    if (isTouchDevice) return;
     const halfWidth = event.currentTarget.offsetWidth / 2;
     x.set(event.nativeEvent.offsetX - halfWidth);
   };
@@ -114,7 +119,7 @@ function DockItem({
   const targetSize = useTransform(
     mouseXMotion,
     [-distance, 0, distance],
-    [baseItemSize, magnification, baseItemSize]
+    [baseItemSize, isTouchDevice ? baseItemSize : magnification, baseItemSize]
   );
   const size = useSpring(targetSize, spring);
 
@@ -137,8 +142,8 @@ function DockItem({
         width: size,
         height: size,
       }}
-      onMouseEnter={() => setHoveredIndex(item.id)}
-      onMouseLeave={() => setHoveredIndex(null)}
+      onMouseEnter={() => !isTouchDevice && setHoveredIndex(item.id)}
+      onMouseLeave={() => !isTouchDevice && setHoveredIndex(null)}
       onMouseMove={handleItemMouseMove}
       onClick={item.onClick}
       tabIndex={0}
@@ -163,50 +168,52 @@ function DockItem({
         )}
       </motion.div>
 
-      <AnimatePresence>
-        {hoveredIndex === item.id && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.8 }}
-            animate={{
-              opacity: 1,
-              y: -20,
-              scale: 1,
-              transition: {
-                type: "spring",
-                stiffness: 260,
-                damping: 10,
-              },
-            }}
-            exit={{ opacity: 0, y: -10, scale: 0.8 }}
-            style={
-              variant === "tooltip"
-                ? {
-                    translateX: translateX,
-                    rotate: rotate,
-                    whiteSpace: "nowrap",
-                  }
-                : { whiteSpace: "nowrap" }
-            }
-            className={cn(
-              "absolute  z-50 -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl",
-              variant === "tooltip" ? "-top-16" : "-top-12"
-            )}
-          >
-            {variant === "tooltip" && (
-              <>
-                <div className="absolute inset-x-10 -bottom-px z-30 h-px w-[20%] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
-                <div className="absolute -bottom-px  z-30 h-px w-[40%] bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
-              </>
-            )}
-            <div className="relative z-30 text-base font-bold text-white">
-              {item.label}
-            </div>
-            {item.description && (
-              <div className="text-xs text-white/70">{item.description}</div>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {!isTouchDevice && (
+        <AnimatePresence>
+          {hoveredIndex === item.id && (
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.8 }}
+              animate={{
+                opacity: 1,
+                y: -20,
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 10,
+                },
+              }}
+              exit={{ opacity: 0, y: -10, scale: 0.8 }}
+              style={
+                variant === "tooltip"
+                  ? {
+                      translateX: translateX,
+                      rotate: rotate,
+                      whiteSpace: "nowrap",
+                    }
+                  : { whiteSpace: "nowrap" }
+              }
+              className={cn(
+                "absolute  z-50 -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl",
+                variant === "tooltip" ? "-top-16" : "-top-12"
+              )}
+            >
+              {variant === "tooltip" && (
+                <>
+                  <div className="absolute inset-x-10 -bottom-px z-30 h-px w-[20%] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
+                  <div className="absolute -bottom-px  z-30 h-px w-[40%] bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
+                </>
+              )}
+              <div className="relative z-30 text-base font-bold text-white">
+                {item.label}
+              </div>
+              {item.description && (
+                <div className="text-xs text-white/70">{item.description}</div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </motion.div>
   );
 }
@@ -223,8 +230,22 @@ export default function MagicDock({
   variant = "default",
 }: MagicDockProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const mouseX = useRef<number>(Infinity as number);
   const isHovered = useMotionValue(0);
+
+  useEffect(() => {
+    // Reliable touch device detection
+    const checkTouchDevice = () => {
+      return (
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        ((navigator as Navigator & { msMaxTouchPoints?: number })
+          .msMaxTouchPoints ?? 0) > 0
+      );
+    };
+    setIsTouchDevice(checkTouchDevice());
+  }, []);
 
   const maxHeight = Math.max(dockHeight, magnification + magnification / 2 + 4);
   const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);
@@ -248,12 +269,16 @@ export default function MagicDock({
     >
       <motion.div
         onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-          isHovered.set(1);
-          mouseX.current = e.pageX;
+          if (!isTouchDevice) {
+            isHovered.set(1);
+            mouseX.current = e.pageX;
+          }
         }}
         onMouseLeave={() => {
-          isHovered.set(0);
-          mouseX.current = Infinity;
+          if (!isTouchDevice) {
+            isHovered.set(0);
+            mouseX.current = Infinity;
+          }
         }}
         className={cn(
           `absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-end w-fit gap-4 rounded-2xl border-neutral-700/50 border-2 pb-2 px-4 ${getBgStyles()}`,
@@ -275,6 +300,7 @@ export default function MagicDock({
             variant={variant}
             setHoveredIndex={setHoveredIndex}
             hoveredIndex={hoveredIndex}
+            isTouchDevice={isTouchDevice}
           />
         ))}
       </motion.div>
