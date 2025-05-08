@@ -194,14 +194,14 @@ function DockItem({
                   : { whiteSpace: "nowrap" }
               }
               className={cn(
-                "absolute  z-50 -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl",
+                "absolute z-50 -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl",
                 variant === "tooltip" ? "-top-16" : "-top-12"
               )}
             >
               {variant === "tooltip" && (
                 <>
                   <div className="absolute inset-x-10 -bottom-px z-30 h-px w-[20%] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
-                  <div className="absolute -bottom-px  z-30 h-px w-[40%] bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
+                  <div className="absolute -bottom-px z-30 h-px w-[40%] bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
                 </>
               )}
               <div className="relative z-30 text-base font-bold text-white">
@@ -235,16 +235,19 @@ export default function MagicDock({
   const isHovered = useMotionValue(0);
 
   useEffect(() => {
-    // Reliable touch device detection
-    const checkTouchDevice = () => {
-      return (
-        "ontouchstart" in window ||
-        navigator.maxTouchPoints > 0 ||
-        ((navigator as Navigator & { msMaxTouchPoints?: number })
-          .msMaxTouchPoints ?? 0) > 0
-      );
+    const mediaQuery = window.matchMedia("(pointer: coarse)");
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsTouchDevice(e.matches);
     };
-    setIsTouchDevice(checkTouchDevice());
+
+    setIsTouchDevice(mediaQuery.matches);
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
   }, []);
 
   const maxHeight = Math.max(dockHeight, magnification + magnification / 2 + 4);
