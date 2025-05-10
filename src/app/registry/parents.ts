@@ -17,6 +17,7 @@ export const parentComponents = [
   "magicdock",
   "profilecard",
   "spotlightcard",
+  "theme-switch",
   // Add more parent component names here
 ] as const;
 
