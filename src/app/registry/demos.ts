@@ -21,6 +21,13 @@ export const demoComponents = [
   "magicdock-demo",
   "profilecard-demo",
   "spotlightcard-demo",
+  "themeswitch-demo",
+  "thswitchhideinactive",
+  "thswitchstdall",
+  "thswitchtwonext",
+  "thswitchthreenext",
+  "thsinglecentredtwo",
+  "thsinglecentredthree",
   // Add more demo components here
 ] as const;
 
