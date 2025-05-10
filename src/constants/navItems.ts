@@ -76,7 +76,7 @@ const navigation: NavItem[] = [
         title: "Spotlight Card",
         href: "/docs/components/spotlightcard",
       },
-      { title: "Theme Switch", href: "/docs/components/theme-switch" },
+      { title: "Theme Switch", href: "/docs/components/theme-switch", category: "new" },
       { title: "Tooltip", href: "/docs/components/tooltip" },
       { title: "Tabs", href: "/docs/components/tabs" },
       { title: "Toast", href: "/docs/components/toast" },
