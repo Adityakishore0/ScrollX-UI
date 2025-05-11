@@ -1,0 +1,123 @@
+---
+title: Carousel
+description:  A carousel component with card stack visualization for cycling through content.
+---
+
+<ComponentPreview
+  name="carousel-demo"
+  className=""
+  description="A vertical card stack carousel with navigation controls."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="carousel" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>carousel.tsx</code>
+</p>
+<ComponentSource name="carousel" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Carousel, CarouselContent, CarouselItem, } from "@/components/ui/carousel"
+```
+
+```tsx
+<Carousel className="w-full max-w-xs">
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index}>
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <span className="text-4xl font-semibold">{index + 1}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+    </Carousel>
+```
+
+## Examples
+
+---
+
+<Step>Carousel with Image</Step>
+
+<ComponentPreview
+  name="carouselimage-demo"
+  className=""
+  description="A carousel displaying images in a stacked format."
+/>
+
+---
+
+## API Reference
+
+### Carousel
+
+The `Carousel` component is the main container for the card stack carousel.
+
+### Props
+
+- **className**: *(optional)* CSS classes to apply to the container.
+- **children**: The carousel content, typically wrapped in `CarouselContent`.
+
+
+## CarouselContent
+
+The `CarouselContent` component manages the card stack behavior and navigation.
+
+### Props
+
+- **children**: The carousel items to be displayed, usually a list of `CarouselItem`.
+
+
+## CarouselItem
+
+The `CarouselItem` component represents individual items within the carousel.
+
+### Props
+
+- **children**: The content to be displayed inside each item.
+
+
+## CarouselPrevious
+
+The `CarouselPrevious` component renders the "previous" navigation button.
+
+### Props
+
+- **onClick**: *(optional)* Function to override the default navigation behavior.
+- **disabled**: *(optional)* Boolean to disable the button when at the first item.
+
+
+## CarouselNext
+
+The `CarouselNext` component renders the "next" navigation button.
+
+### Props
+
+- **onClick**: *(optional)* Function to override the default navigation behavior.
+- **disabled**: *(optional)* Boolean to disable the button when at the last item.

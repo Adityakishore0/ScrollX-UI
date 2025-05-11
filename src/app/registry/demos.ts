@@ -11,8 +11,10 @@ export const demoComponents = [
   "badge-outline",
   "button-demo",
   "card-demo",
-  "dropdownnotifications-demo",
+  "carousel-demo",
+  "carouselimage-demo",
   "dropdownuser-demo",
+  "dropdownnotifications-demo",
   "glowingbordercard-demo",
   "interactiveinput-demo",
   "lamphome-demo",
@@ -32,3 +34,4 @@ export const demoComponents = [
 ] as const;
 
 export type DemoComponentKeys = (typeof demoComponents)[number];
+
