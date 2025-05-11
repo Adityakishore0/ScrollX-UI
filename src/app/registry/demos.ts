@@ -11,6 +11,8 @@ export const demoComponents = [
   "badge-outline",
   "button-demo",
   "card-demo",
+  "carousel-demo",
+  "carouselimage-demo",
   "dropdownuser-demo",
   "dropdownnotifications-demo",
   "glowingbordercard-demo",

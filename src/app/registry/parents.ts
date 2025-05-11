@@ -8,6 +8,7 @@ export const parentComponents = [
   "badge",
   "button",
   "card",
+  "carousel",
   "dropdown",
   "glowingbordercard",
   "interactive-input",
