@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import type { PluginAPI } from "tailwindcss/types/config";
 import tailwindcssAnimate from "tailwindcss-animate";
 import typography from "@tailwindcss/typography";
 
@@ -82,6 +83,11 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         typing: "typing 2s steps(10, end) infinite",
         shine: "shine 5s linear infinite",
+        // Toast animations
+        "slide-in-right": "slide-in-right 0.3s ease-out",
+        "slide-in-left": "slide-in-left 0.3s ease-out",
+        "slide-out-right": "slide-out-right 0.3s ease-in",
+        "slide-out-left": "slide-out-left 0.3s ease-in",
       },
       keyframes: {
         tilt: {
@@ -114,6 +120,23 @@ const config: Config = {
         shine: {
           "0%": { backgroundPosition: "100%" },
           "100%": { backgroundPosition: "-100%" },
+        },
+        // Toast slide animations
+        "slide-in-right": {
+          "0%": { transform: "translateX(100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-in-left": {
+          "0%": { transform: "translateX(-100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-out-right": {
+          "0%": { transform: "translateX(0)", opacity: "1" },
+          "100%": { transform: "translateX(100%)", opacity: "0" },
+        },
+        "slide-out-left": {
+          "0%": { transform: "translateX(0)", opacity: "1" },
+          "100%": { transform: "translateX(-100%)", opacity: "0" },
         },
       },
       typography: {
@@ -151,7 +174,20 @@ const config: Config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate, typography],
+  plugins: [
+    tailwindcssAnimate,
+    typography,
+    // Add toast-specific base styles with proper typing
+    function ({ addBase }: PluginAPI) {
+      addBase({
+        ".toast-base": {
+          "touch-action": "none",
+          "user-select": "none",
+          "-webkit-user-select": "none",
+        },
+      });
+    },
+  ],
 };
 
 export default config satisfies Config;
