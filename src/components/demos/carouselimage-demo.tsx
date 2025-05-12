@@ -1,6 +1,3 @@
-"use client";
-import * as React from "react";
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -8,32 +5,14 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
-const images = [
-  "https://images.unsplash.com/photo-1467493330285-2fe6a9f97483?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
-  "https://images.unsplash.com/photo-1611558709798-e009c8fd7706?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
-  "https://plus.unsplash.com/premium_photo-1677553954020-68ac75b4e1b4?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
-  "https://plus.unsplash.com/premium_photo-1692340973636-6f2ff926af39?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
-  "https://images.unsplash.com/photo-1687795975521-825a47419cc8?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
-];
-
-export default function CarouselImageDemo() {
-  const [loaded, setLoaded] = React.useState(false);
-
-  React.useEffect(() => {
-    let loadedCount = 0;
-    images.forEach((url) => {
-      const img = new Image();
-      img.src = url;
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === images.length) {
-          setLoaded(true);
-        }
-      };
-    });
-  }, []);
-
-  if (!loaded) return <p className="text-center"></p>;
+export default function CarouselDemo() {
+  const images = [
+    "https://images.unsplash.com/photo-1467493330285-2fe6a9f97483?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
+    "https://images.unsplash.com/photo-1611558709798-e009c8fd7706?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
+    "https://plus.unsplash.com/premium_photo-1677553954020-68ac75b4e1b4?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
+    "https://plus.unsplash.com/premium_photo-1692340973636-6f2ff926af39?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
+    "https://images.unsplash.com/photo-1687795975521-825a47419cc8?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
+  ];
 
   return (
     <Carousel className="w-full max-w-xs">
