@@ -30,6 +30,13 @@ export const demoComponents = [
   "thswitchthreenext",
   "thsinglecentredtwo",
   "thsinglecentredthree",
+  "toastaddtocart-demo",
+  "toastdelete-demo",
+  "toasterror-demo",
+  "toastinfo-demo",
+  "toastdefault-demo",
+  "toastwarning-demo",
+  "toastsuccess-demo",
   // Add more demo components here
 ] as const;
 

@@ -55,17 +55,19 @@ export default function Sidebar() {
                 key={child.href}
                 href={child.href}
                 className={cn(
-                  "block px-6 py-2 text-sm rounded-md transition-all relative",
+                  "block px-4 py-2 text-sm rounded-md transition-all relative",
                   "hover:bg-gray-100 dark:hover:bg-gray-800 hover:underline hover:decoration-2 hover:underline-offset-4",
                   pathname === child.href
-                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 translate-x-1 shadow-inner pl-7"
+                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 translate-x-1 shadow-inner pl-5"
                     : "text-gray-700 dark:text-gray-400"
                 )}
               >
-                <div className="flex items-center gap-2">
-                  {child.title}
+                <div className="flex items-center gap-1 whitespace-nowrap overflow-hidden">
+                  <span className="text-xs sm:text-sm truncate">
+                    {child.title}
+                  </span>
                   {child.category === "new" && (
-                    <span className="bg-green-900 text-green-400 text-xs font-medium px-2 py-0.5 rounded-full border border-green-500">
+                    <span className="flex-shrink-0 bg-green-900 text-green-400 text-xs font-medium px-1 py-0.5 rounded-full border border-green-500">
                       New
                     </span>
                   )}
