@@ -1,0 +1,199 @@
+---
+title: Toast
+description: A customizable and responsive toast notification system...
+---
+
+<ComponentPreview
+  name="toastaddtocart-demo"
+  className=""
+  description="Shows confirmation when product added to shopping cart."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="toast" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>toast.tsx</code>
+</p>
+<ComponentSource name="toast" />
+
+
+
+<Step>Add Utilities</Step>
+
+<p>
+  <code>tailwind.config.ts</code>
+</p>
+
+```tsx
+module.exports = { 
+   theme: { 
+     extend: { 
+       keyframes: { 
+        "slide-in-right": {
+          "0%": { transform: "translateX(100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-in-left": {
+          "0%": { transform: "translateX(-100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-out-right": {
+          "0%": { transform: "translateX(0)", opacity: "1" },
+          "100%": { transform: "translateX(100%)", opacity: "0" },
+        },
+        "slide-out-left": {
+          "0%": { transform: "translateX(0)", opacity: "1" },
+          "100%": { transform: "translateX(-100%)", opacity: "0" },
+        }, 
+      }, 
+       animation: { 
+        "slide-in-right": "slide-in-right 0.3s ease-out",
+        "slide-in-left": "slide-in-left 0.3s ease-out",
+        "slide-out-right": "slide-out-right 0.3s ease-in",
+        "slide-out-left": "slide-out-left 0.3s ease-in", 
+       }, 
+     }, 
+    }, 
+    plugins: [
+    function ({ addBase }: PluginAPI) {
+      addBase({
+        ".toast-base": {
+          "touch-action": "none",
+          "user-select": "none",
+          "-webkit-user-select": "none",
+        },
+      });
+    },
+  ],
+ };
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+//First, wrap your application with the ToastProvider:
+import { ToastProvider } from "@/components/ui/toast";
+
+function App() {
+  return (
+    <ToastProvider>
+      <YourApp />
+    </ToastProvider>
+  );
+}
+```
+
+```tsx
+import { useToast } from "@/components/ui/toast";
+
+function MyComponent() {
+  const { toast } = useToast();
+  
+  const showToast = () => {
+    toast({
+      title: "Success!",
+      description: "Your action was completed successfully.",
+      variant: "success",
+    });
+  };
+  
+  return (
+    <button onClick={showToast}>
+      Show Toast
+    </button>
+  );
+}
+```
+
+## Examples
+
+---
+
+<Step>Default</Step>
+
+<ComponentPreview
+  name="toastdefault-demo"
+  className=""
+  description="Standard notification with neutral styling and tone."
+/>
+
+---
+
+<Step>Warning</Step>
+
+<ComponentPreview
+  name="toastwarning-demo"
+  className=""
+  description="Alerts user to potential issues needing attention."
+/>
+
+---
+
+<Step>Error</Step>
+
+<ComponentPreview
+  name="toasterror-demo"
+  className=""
+  description="Indicates action failure with prominent styling."
+/>
+
+---
+
+<Step>Delete</Step>
+
+<ComponentPreview
+  name="toastdelete-demo"
+  className=""
+  description="Confirms removal of content with destructive tone."
+/>
+
+---
+
+<Step>Info</Step>
+
+<ComponentPreview
+  name="toastinfo-demo"
+  className=""
+  description="Provides contextual information in a subtle way."
+/>
+
+---
+
+<Step>Success</Step>
+
+<ComponentPreview
+  name="toastsuccess-demo"
+  className=""
+  description="Confirms positive outcome with affirmative styling."
+/>
+
+## API Reference
+
+### toast
+
+Triggers a toast notification.
+
+- `title` – Toast title
+- `description` – Toast message
+- `variant` – `'default' | 'success' | 'destructive' | 'warning' | 'info'`
+- `position` – `'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'`
+- `duration` – Auto-dismiss time in ms (default: `5000`)
+- `action` – Optional React element (e.g., a button)

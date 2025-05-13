@@ -19,6 +19,7 @@ export const parentComponents = [
   "profilecard",
   "spotlightcard",
   "theme-switch",
+  "toast",
   // Add more parent component names here
 ] as const;
 

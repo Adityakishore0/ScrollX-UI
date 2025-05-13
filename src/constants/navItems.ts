@@ -63,9 +63,12 @@ const navigation: NavItem[] = [
       {
         title: "lustre Text",
         href: "/docs/components/lustretext",
+      },
+      {
+        title: "Magic Dock",
+        href: "/docs/components/magicdock",
         category: "new",
       },
-      { title: "Magic Dock", href: "/docs/components/magicdock" },
       { title: "Modal", href: "/docs/components/modal" },
       { title: "Popover", href: "/docs/components/popover" },
       {
@@ -77,10 +80,14 @@ const navigation: NavItem[] = [
         title: "Spotlight Card",
         href: "/docs/components/spotlightcard",
       },
-      { title: "Theme Switch", href: "/docs/components/theme-switch" },
+      {
+        title: "Theme Switch",
+        href: "/docs/components/theme-switch",
+        category: "new",
+      },
       { title: "Tooltip", href: "/docs/components/tooltip" },
       { title: "Tabs", href: "/docs/components/tabs" },
-      { title: "Toast", href: "/docs/components/toast" },
+      { title: "Toast", href: "/docs/components/toast", category: "new" },
     ],
   },
 
