@@ -10,6 +10,7 @@ export const parentComponents = [
   "card",
   "carousel",
   "dropdown",
+  "followcursor",
   "glowingbordercard",
   "interactive-input",
   "lamphome",
