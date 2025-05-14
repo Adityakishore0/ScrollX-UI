@@ -23,6 +23,9 @@ export const demoComponents = [
   "magicdock-demo",
   "profilecard-demo",
   "spotlightcard-demo",
+  "seperatorpro-demo",
+  "seperatorprodotted",
+  "seperatorprowavy",
   "themeswitch-demo",
   "thswitchhideinactive",
   "thswitchstdall",
@@ -41,4 +44,3 @@ export const demoComponents = [
 ] as const;
 
 export type DemoComponentKeys = (typeof demoComponents)[number];
-

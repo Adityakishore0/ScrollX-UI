@@ -81,9 +81,13 @@ const navigation: NavItem[] = [
         href: "/docs/components/spotlightcard",
       },
       {
+        title: "Seperator Pro",
+        href: "/docs/components/seperatorpro",
+        category: "new",
+      },
+      {
         title: "Theme Switch",
         href: "/docs/components/theme-switch",
-        category: "new",
       },
       { title: "Tooltip", href: "/docs/components/tooltip" },
       { title: "Tabs", href: "/docs/components/tabs" },
