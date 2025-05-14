@@ -15,6 +15,7 @@ export const demoComponents = [
   "carouselimage-demo",
   "dropdownuser-demo",
   "dropdownnotifications-demo",
+  "followcursor-demo",
   "glowingbordercard-demo",
   "interactiveinput-demo",
   "lamphome-demo",
