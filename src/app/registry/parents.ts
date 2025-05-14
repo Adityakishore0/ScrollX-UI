@@ -18,6 +18,7 @@ export const parentComponents = [
   "magicdock",
   "profilecard",
   "spotlightcard",
+  "seperatorpro",
   "theme-switch",
   "toast",
   // Add more parent component names here
