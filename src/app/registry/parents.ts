@@ -19,6 +19,7 @@ export const parentComponents = [
   "magicdock",
   "pagination",
   "profilecard",
+  "radialflow",
   "spotlightcard",
   "seperatorpro",
   "theme-switch",

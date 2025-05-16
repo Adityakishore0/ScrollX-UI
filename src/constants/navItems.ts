@@ -84,6 +84,10 @@ const navigation: NavItem[] = [
       {
         title: "Profile Card",
         href: "/docs/components/profilecard",
+      },
+      {
+        title: "Radial Flow",
+        href: "/docs/components/radialflow",
         category: "new",
       },
       {

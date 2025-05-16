@@ -24,6 +24,7 @@ export const demoComponents = [
   "magicdock-demo",
   "pagination-demo",
   "profilecard-demo",
+  "radialflow-demo",
   "spotlightcard-demo",
   "seperatorpro-demo",
   "seperatorprodotted",
