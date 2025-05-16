@@ -1,0 +1,92 @@
+---
+title: Radial Flow
+description: Dynamic radial graph for visualizing networks & hierarchies with animated nodes.
+---
+
+<ComponentPreview
+  name="radialflow-demo"
+  className=""
+  description="Interactive radial graph visualization with animated nodes and connection paths."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="radialflow" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>radialflow.tsx</code>
+</p>
+<ComponentSource name="radialflow" />
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Topic, RadialFlow } from "@/components/ui/Radialflow";
+
+const demoTopics: Topic[] = [
+  { id: "chatgpt", name: "ChatGPT", position: { x: 10, y: 20 }, color: "#F0DB4F", highlighted: true },
+  { id: "deepseek", name: "DeepSeek", position: { x: 10, y: 35 }, color: "#F0DB4F", highlighted: true },
+  { id: "gemini", name: "Gemini", position: { x: 10, y: 50 }, color: "#F0DB4F", highlighted: true },
+  { id: "claude", name: "Claude", position: { x: 10, y: 65 }, color: "#F0DB4F", highlighted: true },
+  { id: "mistral", name: "Mistral", position: { x: 10, y: 80 }, color: "#F0DB4F", highlighted: true },
+  { id: "grok", name: "Grok", position: { x: 90, y: 20 }, color: "#F0DB4F", highlighted: true },
+  { id: "llama", name: "LLaMA", position: { x: 90, y: 35 }, color: "#F0DB4F", highlighted: true },
+  { id: "copilot", name: "Copilot", position: { x: 90, y: 50 }, color: "#F0DB4F", highlighted: true },
+  { id: "perplexity", name: "Perplexity", position: { x: 90, y: 65 }, color: "#F0DB4F", highlighted: true },
+  { id: "anthropic", name: "Anthropic", position: { x: 90, y: 80 }, color: "#F0DB4F", highlighted: true },
+];
+```
+
+```tsx
+<RadialFlow
+  topics={demoTopics}
+  badgeName="Productivity"
+  centralDotColor="#FFFFFF"
+/>
+```
+
+## API Reference
+
+### Radial Flow
+
+`Radial Flow` - displays connected nodes in a radial layout. Configure topics, colors, and center badge via props.
+
+### Props
+
+#### `topics`
+
+Required An array of topic `objects` that define each node in the visualization.
+
+Each object in the array must have:
+
+- `id`: `string` – Unique identifier for the topic
+- `name`: `string` – Display text for the node
+- `position`: `{ x: number, y: number }` – Position as percentages
+- `color`: `string` – Hex code for the node and connection color
+- `highlighted`: `boolean` – Whether the node is in an active (highlighted) state
+
+`badgeName`- Required
+
+- `string` – The label text displayed at the center of the badge (central node).
+
+`centralDotColor`- Optional
+
+- `string` – Hex color code for the center point of the badge.
+- **Default:** `#FFFFFF`

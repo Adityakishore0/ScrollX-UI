@@ -189,3 +189,28 @@ button.copy:hover {
     );
   }
 }
+
+.bg-gradient-radial {
+  background: linear-gradient(
+    to bottom,
+    rgba(12, 12, 14, 1) 0%,
+    rgba(8, 8, 12, 1) 100%
+  );
+  background-size: 100% 100%;
+}
+
+@keyframes pulse-glow {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(240, 219, 79, 0.1));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(240, 219, 79, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 5px rgba(240, 219, 79, 0.1));
+  }
+}
+
+.animate-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
