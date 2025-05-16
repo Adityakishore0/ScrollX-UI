@@ -22,6 +22,7 @@ export const demoComponents = [
   "lighttrail-demo",
   "lustretext-demo",
   "magicdock-demo",
+  "pagination-demo",
   "profilecard-demo",
   "spotlightcard-demo",
   "seperatorpro-demo",

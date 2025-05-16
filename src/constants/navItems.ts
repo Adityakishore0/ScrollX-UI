@@ -75,6 +75,11 @@ const navigation: NavItem[] = [
         category: "new",
       },
       { title: "Modal", href: "/docs/components/modal" },
+      {
+        title: "Pagination",
+        href: "/docs/components/pagination",
+        category: "new",
+      },
       { title: "Popover", href: "/docs/components/popover" },
       {
         title: "Profile Card",
