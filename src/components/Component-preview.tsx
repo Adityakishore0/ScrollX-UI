@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
+import { twMerge } from "tailwind-merge";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { Copy } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -78,7 +79,10 @@ export default function ComponentPreview({
 
         <Tabs.Content value="preview" className="">
           <div
-            className={`preview flex min-h-[350px] w-full justify-center items-center p-10 ${className}`}
+            className={twMerge(
+              "preview flex min-h-[350px] w-full justify-center items-center p-10",
+              className
+            )}
           >
             {Component ? (
               <Component />

@@ -23,6 +23,7 @@ export const demoComponents = [
   "lustretext-demo",
   "magicdock-demo",
   "pagination-demo",
+  "particles-demo",
   "profilecard-demo",
   "radialflow-demo",
   "spotlightcard-demo",

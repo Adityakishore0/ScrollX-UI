@@ -1,0 +1,107 @@
+---
+title: Particles
+description: Dynamic 3D particle system with customizable properties
+---
+
+<ComponentPreview name="particles-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+    <PkgOptions name="particles" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="three @types/three" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>particles.tsx</code>
+</p>
+<ComponentSource name="particles" />
+
+<Step>Add types file</Step>
+<p>
+  <code>stats-js.d.ts</code>
+</p>
+```jsx
+declare module 'stats.js' {
+  class Stats {
+    constructor(config?: { maxFPS?: number, maxMem?: number, maxCpu?: number });
+    
+    // Properties
+    dom: HTMLDivElement;
+    domElement: HTMLDivElement;
+    REVISION: number;
+    
+    // Methods
+    addPanel(panel: Stats.Panel): Stats.Panel;
+    showPanel(id: number): void;
+    begin(): void;
+    end(): number;
+    update(): void;
+    setMode(id: number): void;
+    
+    // Panel types
+    static Panel: {
+      new (name: string, foreground: string, background: string): Stats.Panel;
+    };
+  }
+
+  namespace Stats {
+    interface Panel {
+      dom: HTMLCanvasElement;
+      update(value: number, maxValue: number): void;
+      name: string;
+      fg: string;
+      bg: string;
+    }
+  }
+
+  export = Stats;
+}
+````
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+```tsx
+import { Particles } from "@/components/ui/particles";
+````
+
+```tsx
+<div className="relative bg-black w-full h-[400px]">
+  <Particles
+    color="#fffff"
+    particleCount={25000}
+    particleSize={5}
+    animate={false}
+    className="z-0"
+  />
+</div>
+```
+
+## API Reference
+
+### Particles
+
+Interactive particle visualization with mouse-responsive movement
+
+- **`color`** ( `string` , default: `#ff3366`) - Base particle color in HEX format
+- **`particleCount`** ( `number` , default: `10000`) - Total rendered particles
+- **`particleSize`** ( `number` , default: `35`) - Individual particle size
+- **`animate`** ( `boolean` , default: `true`) - Toggle color transitions
+- **`className`** ( `string` , default: `''`) - Container CSS classes
+
+`Type Notes` : The included type declaration file is only necessary if using Stats.js performance monitoring. For basic particle functionality without performance stats, you can omit the type file.

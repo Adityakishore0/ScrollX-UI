@@ -18,6 +18,7 @@ export const parentComponents = [
   "lustretext",
   "magicdock",
   "pagination",
+  "particles",
   "profilecard",
   "radialflow",
   "spotlightcard",

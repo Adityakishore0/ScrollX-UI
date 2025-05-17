@@ -82,6 +82,11 @@ const navigation: NavItem[] = [
       },
       { title: "Popover", href: "/docs/components/popover" },
       {
+        title: "Particles",
+        href: "/docs/components/particles",
+        category: "new",
+      },
+      {
         title: "Profile Card",
         href: "/docs/components/profilecard",
       },
