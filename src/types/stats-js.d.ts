@@ -1,4 +1,3 @@
-// src/types/stats-js.d.ts
 declare module "stats.js" {
   class Stats {
     constructor(config?: { maxFPS?: number; maxMem?: number; maxCpu?: number });
