@@ -5,6 +5,7 @@ import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ParticlesDemo from "@/components/demos/particles-demo";
 
 export function ComponentShowcase() {
   return (
@@ -175,35 +176,7 @@ function ParticleEffect() {
   return (
     <div className="relative h-72 overflow-hidden rounded-lg">
       <div className="absolute inset-0 bg-gradient-to-br from-black to-slate-900">
-        {particles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className={`absolute rounded-full ${particle.color}`}
-            style={{
-              width: particle.size,
-              height: particle.size,
-              x: `${particle.x}%`,
-              y: `${particle.y}%`,
-              opacity: 0.6,
-            }}
-            animate={{
-              x: [
-                `${particle.x}%`,
-                `${particle.x + (Math.random() * 20 - 10)}%`,
-              ],
-              y: [
-                `${particle.y}%`,
-                `${particle.y + (Math.random() * 20 - 10)}%`,
-              ],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-            }}
-          />
-        ))}
+        <ParticlesDemo />
       </div>
       <div className="relative z-10 flex flex-col justify-center items-center h-full p-6 text-center">
         <h3 className="text-xl font-bold mb-2 text-white">Particle Effect</h3>
