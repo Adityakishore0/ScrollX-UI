@@ -1,3 +1,4 @@
+"use client";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -5,7 +6,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
-export default function CarouselDemo() {
+export default function CarouselImageDemo() {
   const images = [
     "https://images.unsplash.com/photo-1467493330285-2fe6a9f97483?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
     "https://images.unsplash.com/photo-1611558709798-e009c8fd7706?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3",
