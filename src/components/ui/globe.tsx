@@ -37,6 +37,10 @@ const locationToAngles = (lat: number, long: number): [number, number] => [
   (lat * Math.PI) / 180,
 ];
 
+interface GlobeRenderer {
+  destroy: () => void;
+}
+
 export default function Globe({
   baseColor = [0.3, 0.3, 0.3],
   markerColor = [0.1, 0.8, 1],
@@ -53,12 +57,15 @@ export default function Globe({
   rotationSpeed = 3000,
 }: GlobeProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
   const focusRef = useRef<[number, number] | null>(null);
   const phiRef = useRef(0);
   const rotationInterval = useRef<NodeJS.Timeout | null>(null);
   const [currentCityIndex, setCurrentCityIndex] = useState(0);
+  const globeRef = useRef<GlobeRenderer | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const [{ r }, api] = useSpring(() => ({
     r: 0,
@@ -69,6 +76,26 @@ export default function Globe({
       precision: 0.001,
     },
   }));
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const container = containerRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.unobserve(container);
+    };
+  }, []);
 
   useEffect(() => {
     if (rotateCities.length === 0) return;
@@ -84,21 +111,22 @@ export default function Globe({
       }
     };
 
-    // Initial rotation
-    const city = rotateCities[currentCityIndex].toLowerCase();
-    const coordinates = cityCoordinates[city];
-    if (coordinates) {
-      focusRef.current = locationToAngles(...coordinates);
-    }
+    if (isVisible) {
+      const city = rotateCities[currentCityIndex].toLowerCase();
+      const coordinates = cityCoordinates[city];
+      if (coordinates) {
+        focusRef.current = locationToAngles(...coordinates);
+      }
 
-    rotationInterval.current = setInterval(rotateToNextCity, rotationSpeed);
+      rotationInterval.current = setInterval(rotateToNextCity, rotationSpeed);
+    }
 
     return () => {
       if (rotationInterval.current) {
         clearInterval(rotationInterval.current);
       }
     };
-  }, [rotateCities, currentCityIndex, rotationSpeed]);
+  }, [rotateCities, currentCityIndex, rotationSpeed, isVisible]);
 
   useEffect(() => {
     if (!rotateToLocation) {
@@ -118,73 +146,98 @@ export default function Globe({
   }, [rotateToLocation]);
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    if (!isVisible || !canvasRef.current) return;
 
-    let width = 0;
+    let width = canvasRef.current.offsetWidth || 300;
     const doublePi = Math.PI * 2;
     let currentPhi = 0;
     let currentTheta = 0;
+    const animationFrame: number | null = null;
 
     const onResize = () => {
-      if (canvasRef.current) width = canvasRef.current.offsetWidth;
+      if (canvasRef.current) {
+        width = canvasRef.current.offsetWidth || 300;
+      }
     };
 
     window.addEventListener("resize", onResize);
-    onResize();
 
-    const globe = createGlobe(canvasRef.current, {
-      devicePixelRatio: 2,
-      width: width * 2,
-      height: width * 2,
-      phi: 0,
-      theta: 0,
-      dark: 1,
-      diffuse: 1.2,
-      mapSamples: 16000,
-      mapBrightness: 6,
-      baseColor,
-      markerColor,
-      glowColor,
-      markers,
-      scale,
-      onRender: (state) => {
-        if (autoRotate && !pointerInteracting.current && !focusRef.current) {
-          phiRef.current += 0.01;
-        }
+    try {
+      globeRef.current = createGlobe(canvasRef.current, {
+        devicePixelRatio: 2,
+        width: width * 2,
+        height: width * 2,
+        phi: 0,
+        theta: 0,
+        dark: 1,
+        diffuse: 1.2,
+        mapSamples: 16000,
+        mapBrightness: 6,
+        baseColor: baseColor || [0.3, 0.3, 0.3],
+        markerColor: markerColor || [0.1, 0.8, 1],
+        glowColor: glowColor || [1, 1, 1],
+        markers: markers || [],
+        scale: scale || 1,
+        onRender: (state) => {
+          if (!state) return;
 
-        if (focusRef.current) {
-          const [focusPhi, focusTheta] = focusRef.current;
-          const distPositive = (focusPhi - currentPhi + doublePi) % doublePi;
-          const distNegative = (currentPhi - focusPhi + doublePi) % doublePi;
+          if (autoRotate && !pointerInteracting.current && !focusRef.current) {
+            phiRef.current += 0.01;
+          }
 
-          currentPhi +=
-            distPositive < distNegative
-              ? distPositive * 0.08
-              : -distNegative * 0.08;
-          currentTheta = currentTheta * 0.92 + focusTheta * 0.08;
-        } else {
-          currentPhi = phiRef.current + r.get();
-        }
+          if (focusRef.current) {
+            const [focusPhi, focusTheta] = focusRef.current;
+            const distPositive = (focusPhi - currentPhi + doublePi) % doublePi;
+            const distNegative = (currentPhi - focusPhi + doublePi) % doublePi;
 
-        state.phi = currentPhi;
-        state.theta = focusRef.current ? currentTheta : 0;
-        state.width = width * 2;
-        state.height = width * 2;
-      },
-    });
+            currentPhi +=
+              distPositive < distNegative
+                ? distPositive * 0.08
+                : -distNegative * 0.08;
+            currentTheta = currentTheta * 0.92 + focusTheta * 0.08;
+          } else {
+            currentPhi = phiRef.current + r.get();
+          }
 
-    setTimeout(() => {
-      if (canvasRef.current) canvasRef.current.style.opacity = "1";
-    });
+          state.phi = currentPhi;
+          state.theta = focusRef.current ? currentTheta : 0;
+          state.width = width * 2;
+          state.height = width * 2;
+        },
+      });
+
+      if (canvasRef.current) {
+        setTimeout(() => {
+          if (canvasRef.current) canvasRef.current.style.opacity = "1";
+        }, 100);
+      }
+    } catch (error) {
+      console.error("Error creating globe:", error);
+    }
 
     return () => {
-      globe.destroy();
+      if (globeRef.current) {
+        globeRef.current.destroy();
+        globeRef.current = null;
+      }
       window.removeEventListener("resize", onResize);
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
     };
-  }, [baseColor, markerColor, glowColor, markers, scale, r, autoRotate]);
+  }, [
+    baseColor,
+    markerColor,
+    glowColor,
+    markers,
+    scale,
+    r,
+    autoRotate,
+    isVisible,
+  ]);
 
   return (
-    <div className={`relative ${className}`}>
+    <div ref={containerRef} className={`relative ${className}`}>
       <canvas
         ref={canvasRef}
         onPointerDown={(e) => {
