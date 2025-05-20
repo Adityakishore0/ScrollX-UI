@@ -84,7 +84,7 @@ export function HeroSection() {
       dark:from-[#0c0c0c] dark:via-[#000000] dark:to-[#0c0c0c]"
     >
       <div className="absolute inset-0 overflow-hidden">
-        <LuminescentFlows className="z-0 opacity-40 dark:opacity-30" />
+        <LuminescentFlows className="z-0 opacity-40 dark:opacity-30 hidden lg:block" />
 
         {isDarkMode && (
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
