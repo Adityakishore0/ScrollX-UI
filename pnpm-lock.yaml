@@ -66,6 +66,9 @@ importers:
       '@radix-ui/react-toast':
         specifier: ^1.2.13
         version: 1.2.13(@types/react-dom@18.2.0)(@types/react@18.2.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@react-spring/web':
+        specifier: ^10.0.0
+        version: 10.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@20.17.30)(typescript@5.2.2)))
@@ -78,6 +81,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      cobe:
+        specifier: ^0.6.3
+        version: 0.6.3
       embla-carousel-react:
         specifier: ^8.6.0
         version: 8.6.0(react@18.2.0)
@@ -2281,6 +2287,33 @@ packages:
   '@radix-ui/rect@1.1.1':
     resolution: {integrity: sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==}
 
+  '@react-spring/animated@10.0.0':
+    resolution: {integrity: sha512-GQbUaPP4Q+KNBlr3xc2b+qpvttWxBDr6SL+48FNFbxLoACM9GUbHgDzU+LrjSMYVzftpFo2zfu+cf+r8EoFc7g==}
+    peerDependencies:
+      react: 18.2.0
+
+  '@react-spring/core@10.0.0':
+    resolution: {integrity: sha512-FbakR0e79MI3IW6KcPWnuLePNLudgNwQMbDVqxjX2E4gLpruI2ZTZu3Z/d6mB/gUOtOqELUMo5ueckzXZwyu7A==}
+    peerDependencies:
+      react: 18.2.0
+
+  '@react-spring/rafz@10.0.0':
+    resolution: {integrity: sha512-j8cwCiJKGNDw1DQLYo/3Z+RIGC+6yZiyDqmvwv3uAJHjL0b+xnLwpKz4SW94kIJcJBNetkYDrwzTMFv4U3JVQA==}
+
+  '@react-spring/shared@10.0.0':
+    resolution: {integrity: sha512-MQThixU7zP89+UHfgdsl6ceN9aMU1HQ0zPDAZ6Z1qHghIpmocZvPf3L+y08wS7SefkreRNqoIuv/XdlG5uVReQ==}
+    peerDependencies:
+      react: 18.2.0
+
+  '@react-spring/types@10.0.0':
+    resolution: {integrity: sha512-dCvBpZA38MGfOqLVvsfOrmKig1NR9jD0BjEmFn5dPPaGgtgEU8QjBrxTnU282Fgf+SOBJfPtOsHRa/uHGBza5Q==}
+
+  '@react-spring/web@10.0.0':
+    resolution: {integrity: sha512-3fVXEMcqqMLDFDZ9hKQP7GEW9sJ1uX37/G9IYA4dBSR/vgWg6DJR+hN+iSCALPUXAfRiKt38LosTQ8aBUfnrXA==}
+    peerDependencies:
+      react: 18.2.0
+      react-dom: 18.2.0
+
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
@@ -3128,6 +3161,9 @@ packages:
   co@4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
+
+  cobe@0.6.3:
+    resolution: {integrity: sha512-WHr7X4o1ym94GZ96h7b1pNemZJacbOzd02dZtnVwuC4oWBaLg96PBmp2rIS1SAhUDhhC/QyS9WEqkpZIs/ZBTg==}
 
   collapse-white-space@2.1.0:
     resolution: {integrity: sha512-loKTxY1zCOuG4j9f6EPnuyyYkf58RnhhWTvRoZEokgB+WbdXehfjFviyOVYkqzEWz1Q5kRiZdBYS5SwxbQYwzw==}
@@ -5104,6 +5140,9 @@ packages:
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
+
+  phenomenon@1.6.0:
+    resolution: {integrity: sha512-7h9/fjPD3qNlgggzm88cY58l9sudZ6Ey+UmZsizfhtawO6E3srZQXywaNm2lBwT72TbpHYRPy7ytIHeBUD/G0A==}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -8551,6 +8590,38 @@ snapshots:
 
   '@radix-ui/rect@1.1.1': {}
 
+  '@react-spring/animated@10.0.0(react@18.2.0)':
+    dependencies:
+      '@react-spring/shared': 10.0.0(react@18.2.0)
+      '@react-spring/types': 10.0.0
+      react: 18.2.0
+
+  '@react-spring/core@10.0.0(react@18.2.0)':
+    dependencies:
+      '@react-spring/animated': 10.0.0(react@18.2.0)
+      '@react-spring/shared': 10.0.0(react@18.2.0)
+      '@react-spring/types': 10.0.0
+      react: 18.2.0
+
+  '@react-spring/rafz@10.0.0': {}
+
+  '@react-spring/shared@10.0.0(react@18.2.0)':
+    dependencies:
+      '@react-spring/rafz': 10.0.0
+      '@react-spring/types': 10.0.0
+      react: 18.2.0
+
+  '@react-spring/types@10.0.0': {}
+
+  '@react-spring/web@10.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@react-spring/animated': 10.0.0(react@18.2.0)
+      '@react-spring/core': 10.0.0(react@18.2.0)
+      '@react-spring/shared': 10.0.0(react@18.2.0)
+      '@react-spring/types': 10.0.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
   '@rtsao/scc@1.1.0': {}
 
   '@rushstack/eslint-patch@1.11.0': {}
@@ -9522,6 +9593,10 @@ snapshots:
   clsx@2.1.1: {}
 
   co@4.6.0: {}
+
+  cobe@0.6.3:
+    dependencies:
+      phenomenon: 1.6.0
 
   collapse-white-space@2.1.0: {}
 
@@ -12126,6 +12201,8 @@ snapshots:
       minipass: 7.1.2
 
   path-type@4.0.0: {}
+
+  phenomenon@1.6.0: {}
 
   picocolors@1.1.1: {}
 
