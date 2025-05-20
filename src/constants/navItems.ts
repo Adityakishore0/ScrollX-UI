@@ -32,7 +32,6 @@ const navigation: NavItem[] = [
       {
         title: "Animated Button",
         href: "/docs/components/animated-button",
-        category: "new",
       },
       {
         title: "Animated Showcase",
@@ -40,10 +39,10 @@ const navigation: NavItem[] = [
       },
       { title: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
       { title: "Avatar", href: "/docs/components/avatar" },
-      { title: "Badge", href: "/docs/components/badge", category: "new" },
+      { title: "Badge", href: "/docs/components/badge" },
       { title: "Button", href: "/docs/components/button" },
       { title: "Card", href: "/docs/components/card" },
-      { title: "Carousel", href: "/docs/components/carousel", category: "new" },
+      { title: "Carousel", href: "/docs/components/carousel" },
       { title: "Dropdown", href: "/docs/components/dropdown" },
       {
         title: "Follow Cursor",
@@ -55,15 +54,22 @@ const navigation: NavItem[] = [
         href: "/docs/components/glowingbordercard",
       },
       {
+        title: "Globe",
+        href: "/docs/components/globe",
+      },
+      {
+        title: "Hero Sections",
+        href: "/docs/components/hero-sections",
+        category: "new",
+      },
+      {
         title: "Interactive Input",
         href: "/docs/components/interactive-input",
-        category: "new",
       },
       { title: "Lamphome", href: "/docs/components/lamphome" },
       {
         title: "Light Trail",
         href: "/docs/components/light-trail",
-        category: "new",
       },
       {
         title: "lustre Text",
@@ -72,13 +78,11 @@ const navigation: NavItem[] = [
       {
         title: "Magic Dock",
         href: "/docs/components/magicdock",
-        category: "new",
       },
       { title: "Modal", href: "/docs/components/modal" },
       {
         title: "Pagination",
         href: "/docs/components/pagination",
-        category: "new",
       },
       { title: "Popover", href: "/docs/components/popover" },
       {
@@ -102,7 +106,6 @@ const navigation: NavItem[] = [
       {
         title: "Seperator Pro",
         href: "/docs/components/seperatorpro",
-        category: "new",
       },
       {
         title: "Theme Switch",
@@ -110,7 +113,7 @@ const navigation: NavItem[] = [
       },
       { title: "Tooltip", href: "/docs/components/tooltip" },
       { title: "Tabs", href: "/docs/components/tabs" },
-      { title: "Toast", href: "/docs/components/toast", category: "new" },
+      { title: "Toast", href: "/docs/components/toast" },
     ],
   },
 

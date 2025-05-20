@@ -12,6 +12,8 @@ export const parentComponents = [
   "dropdown",
   "followcursor",
   "glowingbordercard",
+  "globe",
+  "heroui",
   "interactive-input",
   "lamphome",
   "light-trail",

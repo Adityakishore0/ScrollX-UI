@@ -1,0 +1,101 @@
+---
+title: Globe
+description:  5kb WebGL Globe
+---
+
+<ComponentPreview name="globe-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="globe" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="@react-spring/web cobe" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>globe.tsx</code>
+</p>
+<ComponentSource name="globe" />
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Globe } from "@/components/ui/globe";
+```
+
+```tsx
+  <Globe
+    rotateCities={["new york", "london", "tokyo", "dubai"]}
+    rotationSpeed={3000}
+    markers={[
+      { location: [40.7128, -74.006], size: 0.1 },
+      { location: [51.5074, -0.1278], size: 0.1 },
+      { location: [35.6762, 139.6503], size: 0.1 },
+      { location: [25.2048, 55.2708], size: 0.1 }
+    ]}
+    glowColor={[0.1, 0.8, 1]}
+    markerColor={[0.1, 0.8, 1]}
+    className="max-w-[800px]"
+  />
+```
+
+
+
+## API Reference
+
+### Globe
+
+### `baseColor`  
+`[number, number, number]` | Default: `[0.3, 0.3, 0.3]`  
+Base globe color in RGB
+
+### `markerColor`  
+`[number, number, number]` | Default: `[0.1, 0.8, 1]`  
+Marker points color in RGB
+
+### `glowColor`  
+`[number, number, number]` | Default: `[1, 1, 1]`  
+Glow effect color in RGB
+
+### `markers`  
+`Array<{location: [lat, lng], size: number}>` | Default: SF/NY markers  
+Array of coordinate markers
+
+### `scale`  
+`number` | Default: `1`  
+Globe size multiplier
+
+### `className`  
+`string` | Default: `''`  
+Container CSS classes
+
+### `rotateToLocation`  
+`string | [number, number]` | Optional  
+Immediate rotation target (city name or coordinates)
+
+### `autoRotate`  
+`boolean` | Default: `true`  
+Toggle idle rotation
+
+### `rotateCities`  
+`string[]` | Default: `[]`  
+City names array for auto rotation
+
+### `rotationSpeed`  
+`number` | Default: `3000`  
+Milliseconds between city rotations
