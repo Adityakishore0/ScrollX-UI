@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import Scrollxx from "@/svg/Scrollx.svg";
 import Scrollxdark from "@/svg/Scrollxdark.svg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import BadgeDemo from "@/components/demos/badge-demo";
 import LustreTextDemo from "@/components/demos/lustretext-demo";
 import ThemeSwitchDemo from "@/components/demos/themeswitch-demo";
@@ -26,57 +26,108 @@ export function HeroSection() {
     isMounted &&
     (theme === "dark" || (theme === "system" && systemTheme === "dark"));
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
-    },
-  };
+  const containerVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+      },
+    }),
+    []
+  );
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", damping: 15 },
-    },
-  };
+  const itemVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 20 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { type: "spring", damping: 15 },
+      },
+    }),
+    []
+  );
 
-  const textRevealVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", damping: 20, stiffness: 100 },
-    },
-  };
+  const textRevealVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 50 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { type: "spring", damping: 20, stiffness: 100 },
+      },
+    }),
+    []
+  );
 
-  const componentCardVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { type: "spring", damping: 15, stiffness: 70 },
-    },
-    hover: {
-      scale: 1.05,
-      transition: { type: "spring", damping: 15, stiffness: 300 },
-    },
-  };
+  const componentCardVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, scale: 0.9 },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        transition: { type: "spring", damping: 15, stiffness: 70 },
+      },
+      hover: {
+        scale: 1.05,
+        transition: { type: "spring", damping: 15, stiffness: 300 },
+      },
+    }),
+    []
+  );
 
   return (
     <section
       className="relative w-full py-8 md:py-12 overflow-hidden min-h-[90vh] flex items-center justify-center 
-  bg-gradient-to-b from-white to-gray-50 
-  dark:from-[#0c0c0c] dark:via-[#000000] dark:to-[#0c0c0c]"
+      bg-gradient-to-b from-white to-gray-50 
+      dark:from-[#0c0c0c] dark:via-[#000000] dark:to-[#0c0c0c]"
     >
       <div className="absolute inset-0 overflow-hidden">
-        <LuminescentFlows className="z-0 opacity-50 dark:opacity-60" />
-        <div className="absolute w-full h-full opacity-10 dark:opacity-20">
+        <LuminescentFlows className="z-0 opacity-40 dark:opacity-30" />
+
+        {isDarkMode && (
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div className="relative w-full h-full">
+              <img
+                src="https://site-assets.plasmic.app/1224f19c59fb4925a4b32af4aac4d43f.svg"
+                alt=""
+                className="w-full h-auto absolute top-0 left-0 opacity-[0.18]"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "top",
+                  maskImage:
+                    "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0))",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0))",
+                }}
+              />
+              <div className="absolute inset-0 w-full h-full overflow-hidden">
+                <div
+                  className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_70%)] 
+                  mix-blend-screen opacity-40 
+                  blur-[20px] animate-pulse-subtle"
+                />
+
+                <div
+                  className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.3)_0%,rgba(255,255,255,0)_60%)] 
+                  mix-blend-lighten opacity-30 
+                  blur-[15px]"
+                />
+              </div>
+              <div
+                className="absolute inset-0 border border-white/5 
+                mix-blend-overlay pointer-events-none"
+              />
+            </div>
+          </div>
+        )}
+
+        <div className="absolute w-full h-full opacity-15 dark:opacity-25">
           <svg
             viewBox="0 0 1024 1024"
-            className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
+            className="absolute left-1/2 top-1/2 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
+            aria-hidden="true"
           >
             <circle cx="512" cy="512" r="512" fill="url(#gradient)" />
             <defs>
@@ -90,7 +141,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="container relative px-4 md:px-6 mx-auto max-w-6xl">
+      <div className="container relative px-4 md:px-6 mx-auto max-w-6xl z-10">
         <motion.div
           className="flex justify-center mb-8 md:mb-12"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -203,7 +254,6 @@ export function HeroSection() {
                 orientation="vertical"
                 className="h-14"
               />
-
               <SeparatorPro
                 variant="default"
                 className="my-4 w-full block lg:hidden"
@@ -270,7 +320,6 @@ export function HeroSection() {
                 orientation="vertical"
                 className="h-14"
               />
-
               <SeparatorPro
                 variant="default"
                 className="my-4 w-full block lg:hidden"
