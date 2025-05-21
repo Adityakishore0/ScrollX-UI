@@ -15,7 +15,7 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
 
         <div className="flex-1 md:ml-64">
           <div className="max-w-[90rem] w-full mx-auto flex">
-            <div className="flex-1 px-4 py-8 pr-64">
+            <div className="flex-1 px-4 py-8 lg:pr-64">
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 {children}
               </div>
