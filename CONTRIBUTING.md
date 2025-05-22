@@ -19,7 +19,7 @@ Before making any contributions, **open an issue** describing the feature or bug
 After forking, clone the repository to your local machine:
 
 ```sh
-git clone https://github.com/your-username/ScrollX.git
+git clone https://github.com/your-username/ScrollX-UI.git
 ```
 
 Alternatively, you can create a **GitHub Codespace** from your forked repository.
@@ -41,7 +41,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 Then, navigate to the project directory and install dependencies
 
 ```sh
-cd ScrollX
+cd ScrollX-UI
 pnpm install
 ```
 
