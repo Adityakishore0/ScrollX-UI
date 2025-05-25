@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import { twMerge } from "tailwind-merge";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
-import { Copy } from "lucide-react";
+import { Copy, Check, AlertCircle } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import componentsRegistry from "@/app/registry/registry";
@@ -24,7 +24,9 @@ export default function ComponentPreview({
 }: ComponentPreviewProps) {
   const [activeTab, setActiveTab] = useState("preview");
   const [sourceCode, setSourceCode] = useState("");
-  const [copySuccess, setCopySuccess] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
   const Component = componentsRegistry[name];
 
   useEffect(() => {
@@ -37,18 +39,99 @@ export default function ComponentPreview({
         setSourceCode(`// Error loading source code for ${name}`);
       }
     };
-
     fetchSourceCode();
   }, [name]);
 
-  const copyToClipboard = async () => {
+  const isClipboardSupported = (): boolean => {
     try {
-      await navigator.clipboard.writeText(sourceCode);
-      setCopySuccess(true);
-      setTimeout(() => setCopySuccess(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
+      return !!(
+        typeof navigator !== "undefined" &&
+        navigator.clipboard &&
+        typeof navigator.clipboard.writeText === "function"
+      );
+    } catch {
+      return false;
     }
+  };
+
+  const modernCopy = async (text: string): Promise<boolean> => {
+    try {
+      if (!isClipboardSupported()) return false;
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const legacyCopy = (text: string): boolean => {
+    try {
+      if (typeof document === "undefined") return false;
+
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.cssText = `
+        position: fixed;
+        top: -9999px;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+        z-index: -1;
+      `;
+
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      textArea.setSelectionRange(0, text.length);
+
+      const success = document.execCommand && document.execCommand("copy");
+      document.body.removeChild(textArea);
+      return !!success;
+    } catch {
+      return false;
+    }
+  };
+
+  const copyToClipboard = async () => {
+    const textToCopy = sourceCode;
+
+    if (!textToCopy.trim()) {
+      setCopyFailed(true);
+      setShowMessage(true);
+      setTimeout(() => {
+        setCopyFailed(false);
+        setShowMessage(false);
+      }, 2000);
+      return;
+    }
+
+    let success = false;
+    try {
+      success = await modernCopy(textToCopy);
+      if (!success) {
+        success = legacyCopy(textToCopy);
+      }
+    } catch (err) {
+      console.error("Copy failed:", err);
+      success = false;
+    }
+
+    if (success) {
+      setCopied(true);
+      setCopyFailed(false);
+    } else {
+      setCopied(false);
+      setCopyFailed(true);
+    }
+
+    setShowMessage(true);
+    setTimeout(() => {
+      setCopied(false);
+      setCopyFailed(false);
+      setShowMessage(false);
+    }, 2000);
   };
 
   return (
@@ -98,13 +181,56 @@ export default function ComponentPreview({
           <ScrollArea.Root className="relative">
             <button
               onClick={copyToClipboard}
-              className="absolute right-4 top-4 z-10 rounded-md bg-gray-100 p-2 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
-              title={copySuccess ? "Copied!" : "Copy code"}
+              className={`absolute right-4 top-4 z-10 rounded-md p-2 transition-colors ${
+                copied
+                  ? "bg-green-100 dark:bg-green-900/30"
+                  : copyFailed
+                  ? "bg-red-100 dark:bg-red-900/30"
+                  : "bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+              }`}
+              title={
+                copied ? "Copied!" : copyFailed ? "Copy failed" : "Copy code"
+              }
             >
-              <Copy
-                className={`h-4 w-4 ${copySuccess ? "text-green-500" : ""}`}
-              />
+              {copied ? (
+                <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
+              ) : copyFailed ? (
+                <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+              ) : (
+                <Copy className="h-4 w-4" />
+              )}
             </button>
+
+            {(copied || copyFailed) && (
+              <div className="absolute right-4 top-12 z-30 animate-in fade-in-0 slide-in-from-top-2 duration-300">
+                <div
+                  className={`rounded-md border px-3 py-2 shadow-lg backdrop-blur-sm ${
+                    copied
+                      ? "bg-green-100/90 dark:bg-green-900/80 border-green-200 dark:border-green-700"
+                      : "bg-red-100/90 dark:bg-red-900/80 border-red-200 dark:border-red-700"
+                  }`}
+                >
+                  <div className="flex items-center space-x-2">
+                    {copied ? (
+                      <>
+                        <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
+                        <span className="text-sm font-medium text-green-800 dark:text-green-200">
+                          Copied!
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+                        <span className="text-sm font-medium text-red-800 dark:text-red-200">
+                          Copy failed
+                        </span>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
             <ScrollArea.Viewport className="h-full max-h-[350px] w-full">
               <div className="relative">
                 {activeTab === "code" && (
