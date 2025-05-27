@@ -37,6 +37,10 @@ const navigation: NavItem[] = [
         title: "Animated Showcase",
         href: "/docs/components/animated-showcase",
       },
+      {
+        title: "Animated Testimonials",
+        href: "/docs/components/animated-testimonials",
+      },
       { title: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
       { title: "Avatar", href: "/docs/components/avatar" },
       { title: "Badge", href: "/docs/components/badge" },

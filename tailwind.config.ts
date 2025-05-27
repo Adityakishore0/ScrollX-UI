@@ -88,6 +88,8 @@ const config: Config = {
         "slide-in-left": "slide-in-left 0.3s ease-out",
         "slide-out-right": "slide-out-right 0.3s ease-in",
         "slide-out-left": "slide-out-left 0.3s ease-in",
+        "canopy-horizontal": "canopy-x var(--duration) infinite linear",
+        "canopy-vertical": "canopy-y var(--duration) linear infinite",
       },
       keyframes: {
         tilt: {
@@ -137,6 +139,14 @@ const config: Config = {
         "slide-out-left": {
           "0%": { transform: "translateX(0)", opacity: "1" },
           "100%": { transform: "translateX(-100%)", opacity: "0" },
+        },
+        "canopy-x": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "canopy-y": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
       },
       typography: {
