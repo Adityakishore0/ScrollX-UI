@@ -40,6 +40,7 @@ const navigation: NavItem[] = [
       {
         title: "Animated Testimonials",
         href: "/docs/components/animated-testimonials",
+        category: "new",
       },
       { title: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
       { title: "Avatar", href: "/docs/components/avatar" },
