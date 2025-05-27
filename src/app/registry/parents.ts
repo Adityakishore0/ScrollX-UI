@@ -3,6 +3,7 @@ export const parentComponents = [
   "alert-dialog",
   "animated-button",
   "animated-showcase",
+  "animated-testimonials",
   "aspect-ratio",
   "avatar",
   "badge",
