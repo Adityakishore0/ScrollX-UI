@@ -81,7 +81,7 @@ export default function ProfileCard({
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center">
       <div className="relative w-[17rem] h-[21.1875rem] rounded-[15px] overflow-hidden shadow-lg bg-neutral-50 dark:bg-black">
         <motion.div
           initial={{ width: "100%", height: "100%" }}
