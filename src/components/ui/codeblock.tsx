@@ -117,7 +117,6 @@ export const CodeBlock = ({
         theme === "dark" ? "bg-slate-900" : "bg-white"
       } border ${theme === "dark" ? "border-slate-700" : "border-gray-200"}`}
     >
-      {/* Header - Flexible Layout */}
       <div
         className={`flex items-stretch min-h-[3rem] ${
           theme === "dark"
@@ -227,7 +226,6 @@ export const CodeBlock = ({
         </div>
       </div>
 
-      {/* Tabs Section */}
       {tabsExist && (
         <div
           className={`flex border-b ${
@@ -257,7 +255,6 @@ export const CodeBlock = ({
         </div>
       )}
 
-      {/* Filename Section */}
       {!tabsExist && filename && (
         <div
           className={`flex items-center px-3 py-2 border-b ${
@@ -279,7 +276,6 @@ export const CodeBlock = ({
         </div>
       )}
 
-      {/* Code Display */}
       <div
         className={`relative ${
           isExpanded ? "max-h-screen overflow-auto" : "max-h-96 overflow-auto"
@@ -327,7 +323,6 @@ export const CodeBlock = ({
         </SyntaxHighlighter>
       </div>
 
-      {/* Footer */}
       {showStats && stats && (
         <div
           className={`px-3 py-2 border-t text-xs ${
