@@ -1,151 +1,73 @@
-"use client";
-
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
-
-const testimonials = [
-  {
-    id: 1,
-    content:
-      "ScrollX-UI has completely transformed how I build interfaces. The animations are smooth and the components are incredibly flexible.",
-    author: "Sarah Johnson",
-    role: "Senior Frontend Developer",
-  },
-  {
-    id: 2,
-    content:
-      "As a UI/UX designer, I've found ScrollX-UI to be the perfect bridge between design and implementation. My developers love it too!",
-    author: "Michael Chen",
-    role: "Product Designer at TechCorp",
-  },
-  {
-    id: 3,
-    content:
-      "The best UI library I've used in years. The animations are butter-smooth and the API is so intuitive. Highly recommended!",
-    author: "Alex Rivera",
-    role: "Indie Developer",
-  },
-  {
-    id: 4,
-    content:
-      "ScrollX-UI helped us reduce development time by 40%. The pre-built components allowed us to focus on business logic instead.",
-    author: "Priya Sharma",
-    role: "CTO at StartupX",
-  },
-  {
-    id: 5,
-    content:
-      "Our landing page conversion rates increased by 30% after we implemented ScrollX-UI components. Users love the smooth interactions.",
-    author: "David Wilson",
-    role: "Marketing Lead",
-  },
-  {
-    id: 6,
-    content:
-      "I was blown away by how easy it was to customize everything. The documentation is excellent too!",
-    author: "Emma Thompson",
-    role: "Frontend Engineer",
-  },
-];
+import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
 export function TestimonialsSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const visibleTestimonials = testimonials.slice(activeIndex, activeIndex + 3);
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 3 >= testimonials.length ? 0 : prev + 3));
-  };
-
-  const handlePrev = () => {
-    setActiveIndex((prev) =>
-      prev - 3 < 0 ? Math.max(0, testimonials.length - 3) : prev - 3
-    );
-  };
-
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/40">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-              What developers are saying
-            </h2>
-            <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-              Hear from the developer community about their experience with
-              ScrollX-UI
-            </p>
-          </div>
+    <section className="w-full py-12 md:py-20 lg:py-24 bg-muted/40">
+      <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="space-y-2">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+            What developers are saying
+          </h2>
+          <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+            Hear from the developer community about their experience with
+            ScrollX-UI
+          </p>
         </div>
-        <div className="mx-auto max-w-5xl mt-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {visibleTestimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-col p-6 bg-background rounded-lg shadow-sm border"
-              >
-                <div className="mb-4 text-primary">
-                  <Quote size={24} />
-                </div>
-                <p className="text-foreground mb-4 flex-grow">
-                  "{testimonial.content}"
-                </p>
-                <div>
-                  <h4 className="font-medium">{testimonial.author}</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.role}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <div className="flex justify-center mt-8 space-x-4">
-            <button
-              onClick={handlePrev}
-              className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-5 w-5"
-              >
-                <path d="m15 18-6-6 6-6" />
-              </svg>
-              <span className="sr-only">Previous</span>
-            </button>
-            <button
-              onClick={handleNext}
-              className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-5 w-5"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-              <span className="sr-only">Next</span>
-            </button>
-          </div>
-        </div>
+      </div>
+
+      <div className="mt-12">
+        <AnimatedTestimonials
+          data={[
+            {
+              description:
+                "ScrollX-UI has completely transformed how I build interfaces. The animations are silky smooth, and the components are modular and responsive.",
+              image:
+                "https://images.unsplash.com/photo-1611558709798-e009c8fd7706?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+              name: "Isabelle Carlos",
+              handle: "@isabellecarlos",
+            },
+            {
+              description:
+                "I love how ScrollX-UI makes my projects look professional with minimal effort. The documentation is clear and the community is super helpful.",
+              image:
+                "https://plus.unsplash.com/premium_photo-1692340973636-6f2ff926af39?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+              name: "Lana Akash",
+              handle: "@lanaakash",
+            },
+            {
+              description:
+                "The smooth scrolling animations and intuitive components in ScrollX-UI save me hours of development time!",
+              image:
+                "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+              name: "Liam O’Connor",
+              handle: "@liamoc",
+            },
+            {
+              description:
+                "Using ScrollX-UI feels like magic — it’s so easy to create beautiful, interactive UIs without writing complex code.",
+              image:
+                "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+              name: "Isabella Mendes",
+              handle: "@isamendes",
+            },
+            {
+              description:
+                "ScrollX-UI’s open-source nature means I can customize components exactly how I want them — plus, the performance is outstanding.",
+              image:
+                "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+              name: "Meera Patel",
+              handle: "@meerapatel",
+            },
+            {
+              description:
+                "I recommend ScrollX-UI to everyone looking for a powerful, flexible UI library with stunning animation support.",
+              image:
+                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3",
+              name: "Emily Chen",
+              handle: "@emchen",
+            },
+          ]}
+        />
       </div>
     </section>
   );
