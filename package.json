@@ -40,6 +40,7 @@
     "@react-three/fiber": "^8.17.14",
     "@tailwindcss/typography": "^0.5.16",
     "@types/prismjs": "^1.26.5",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
