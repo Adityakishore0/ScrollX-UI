@@ -6,6 +6,7 @@ export const parentComponents = [
   "animated-testimonials",
   "aspect-ratio",
   "avatar",
+  "backgroundmeteors",
   "badge",
   "button",
   "card",
