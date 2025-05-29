@@ -11,6 +11,7 @@ export const parentComponents = [
   "button",
   "card",
   "carousel",
+  "codeblock",
   "dropdown",
   "followcursor",
   "glowingbordercard",
