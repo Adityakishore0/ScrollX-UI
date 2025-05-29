@@ -1,0 +1,66 @@
+---
+title: Background Meteors
+description:  Grid Background with Meteors 
+---
+
+<ComponentPreview
+  name="backgroundmeteors-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+    <PkgOptions name="backgroundmeteors" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>backgroundmeteors.tsx</code>
+</p>
+<ComponentSource name="backgroundmeteors" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+```tsx
+import BackgroundMeteors from "@/components/ui/backgroundmeteors";
+```
+
+```tsx
+<BackgroundMeteors>
+  <h1 className="text-xl text-center text-gray-800 dark:text-gray-100">
+    Welcome to the Meteor Show
+  </h1>
+</BackgroundMeteors>
+```
+
+
+## API Reference
+
+### BackgroundMeteors
+
+`BackgroundMeteors` is a React component that creates an animated background featuring vertical meteor-like beams falling from the top to the bottom of the screen over a grid pattern. It supports light and dark mode styling and automatically regenerates beams to keep the animation continuous.
+
+#### Props
+
+- **children** (`ReactNode`, optional):  
+  Any React elements passed as children will be rendered centered above the meteor animation. This is useful for placing content such as headings, buttons, or other UI elements on top of the background effect.
+

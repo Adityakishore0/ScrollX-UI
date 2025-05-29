@@ -44,6 +44,10 @@ const navigation: NavItem[] = [
       },
       { title: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
       { title: "Avatar", href: "/docs/components/avatar" },
+      {
+        title: "Background Meteors",
+        href: "/docs/components/backgroundmeteors",
+      },
       { title: "Badge", href: "/docs/components/badge" },
       { title: "Button", href: "/docs/components/button" },
       { title: "Card", href: "/docs/components/card" },
