@@ -32,7 +32,7 @@ export function HeroSection() {
       hidden: { opacity: 0 },
       visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+        transition: { staggerChildren: 0.1, delayChildren: 0.2 },
       },
     }),
     []
@@ -40,11 +40,11 @@ export function HeroSection() {
 
   const itemVariants = useMemo(
     () => ({
-      hidden: { opacity: 0, y: 20 },
+      hidden: { opacity: 0, y: 10 },
       visible: {
         opacity: 1,
         y: 0,
-        transition: { type: "spring", damping: 15 },
+        transition: { type: "spring", damping: 25, stiffness: 150 },
       },
     }),
     []
@@ -52,11 +52,11 @@ export function HeroSection() {
 
   const textRevealVariants = useMemo(
     () => ({
-      hidden: { opacity: 0, y: 50 },
+      hidden: { opacity: 0, y: 20 },
       visible: {
         opacity: 1,
         y: 0,
-        transition: { type: "spring", damping: 20, stiffness: 100 },
+        transition: { type: "spring", damping: 25, stiffness: 150 },
       },
     }),
     []
@@ -159,7 +159,7 @@ export function HeroSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center mx-auto">
           <motion.div
-            className="lg:col-span-6 space-y-6 text-center lg:text-left"
+            className="lg:col-span-6 space-y-6 text-center lg:text-left min-h-[300px] flex flex-col justify-center"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -184,7 +184,7 @@ export function HeroSection() {
             </motion.p>
 
             <motion.div
-              className="flex gap-3 justify-center lg:justify-start"
+              className="flex gap-3 justify-center lg:justify-start flex-wrap"
               variants={itemVariants}
             >
               <Button
