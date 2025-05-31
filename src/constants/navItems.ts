@@ -38,6 +38,10 @@ const navigation: NavItem[] = [
         href: "/docs/components/animated-showcase",
       },
       {
+        title: "Animated Tabs",
+        href: "/docs/components/animated-tabs",
+      },
+      {
         title: "Animated Testimonials",
         href: "/docs/components/animated-testimonials",
         category: "new",
@@ -122,49 +126,9 @@ const navigation: NavItem[] = [
         href: "/docs/components/theme-switch",
       },
       { title: "Tooltip", href: "/docs/components/tooltip" },
-      { title: "Tabs", href: "/docs/components/tabs" },
       { title: "Toast", href: "/docs/components/toast" },
     ],
   },
-
-  {
-    title: "Forms",
-    href: "",
-    children: [
-      { title: "Checkbox", href: "/docs/forms/checkbox" },
-      { title: "Input", href: "/docs/forms/input" },
-      { title: "Radio", href: "/docs/forms/radio" },
-      { title: "Select", href: "/docs/forms/select" },
-      { title: "Slider", href: "/docs/forms/slider" },
-      { title: "Switch", href: "/docs/forms/switch" },
-      { title: "Textarea", href: "/docs/forms/textarea" },
-    ],
-  },
-
-  {
-    title: "Utilities",
-    href: "",
-    children: [
-      { title: "Typography", href: "/docs/utilities/typography" },
-      { title: "Grid", href: "/docs/utilities/grid" },
-      { title: "Flexbox", href: "/docs/utilities/flexbox" },
-      { title: "Spacing", href: "/docs/utilities/spacing" },
-      { title: "Colors", href: "/docs/utilities/colors" },
-      { title: "Shadows", href: "/docs/utilities/shadows" },
-    ],
-  },
-
-  {
-    title: "Theming",
-    href: "",
-    children: [
-      { title: "Dark Mode", href: "/docs/theming/dark-mode" },
-      { title: "Custom Themes", href: "/docs/theming/custom-themes" },
-    ],
-  },
-
-  { title: "CLI", href: "/docs/cli" },
-  { title: "Changelog", href: "/docs/changelog" },
 ];
 
 export default navigation;
