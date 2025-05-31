@@ -1,0 +1,83 @@
+---
+title: Animated Tabs
+description: A headless and styled tab UI component set for switching content views.
+---
+
+<ComponentPreview
+  name="animatedtabs-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="animated-tabs" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>animated-tabs.tsx</code>
+</p>
+<ComponentSource name="animated-tabs" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Tabs,TabsList,TabsTrigger,TabsContent } from "@/components/ui/animated-tabs";
+```
+
+```tsx
+<Tabs defaultValue="profile" className="w-[400px]">
+  <TabsList>
+    <TabsTrigger value="profile">Profile</TabsTrigger>
+    <TabsTrigger value="settings">Settings</TabsTrigger>
+  </TabsList>
+  <TabsContent value="profile">Make changes to your profile here.</TabsContent>
+  <TabsContent value="settings">Look at your settings here.</TabsContent>
+</Tabs>
+```
+
+
+## API Reference
+
+### Tabs
+
+A headless and styled tab UI component set for switching content views.
+
+#### `<Tabs />`
+
+Wrapper component that provides the tab context.
+**Props:** `defaultValue` `string` (required) – initial active tab, `children` `ReactNode` (required) – nested `TabsList`, `TabsTrigger`, and `TabsContent`.
+
+
+#### `<TabsList />`
+
+Renders the tab triggers inside a horizontal flex container with a bottom border.
+**Props:** `children` `ReactNode` (required) – a list of `TabsTrigger` elements.
+
+
+#### `<TabsTrigger />`
+
+Button component to activate a specific tab.
+**Props:** `value` `string` (required) – tab identifier (matches `TabsContent`), `children` `ReactNode` (required) – tab label/content.
+
+#### `<TabsContent />`
+
+Conditionally rendered content panel shown when its value matches the active tab.
+**Props:** `value` `string` (required) – matches `TabsTrigger` value, `children` `ReactNode` (required) – content shown when tab is active.
+
