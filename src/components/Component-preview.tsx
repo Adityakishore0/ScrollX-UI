@@ -135,142 +135,137 @@ export default function ComponentPreview({
   };
 
   return (
-    <div className="my-6 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800">
+    <>
       <Tabs.Root value={activeTab} onValueChange={setActiveTab}>
-        <Tabs.List className="flex border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
-          <Tabs.Trigger
-            value="preview"
-            className={`px-4 py-2 text-sm font-medium transition-colors ${
-              activeTab === "preview"
-                ? "border-b-2 border-gray-900 dark:border-gray-100 text-gray-900 dark:text-gray-100"
-                : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
-            }`}
-          >
-            Preview
-          </Tabs.Trigger>
-          <Tabs.Trigger
-            value="code"
-            className={`px-4 py-2 text-sm font-medium transition-colors ${
-              activeTab === "code"
-                ? "border-b-2 border-gray-900 dark:border-gray-100 text-gray-900 dark:text-gray-100"
-                : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
-            }`}
-          >
-            Code
-          </Tabs.Trigger>
-        </Tabs.List>
-
-        <Tabs.Content value="preview" className="">
-          <div
-            className={twMerge(
-              "preview flex min-h-[350px] w-full justify-center items-center p-10",
-              className
-            )}
-          >
-            {Component ? (
-              <Component />
-            ) : children ? (
-              children
-            ) : (
-              <p>Component "{name}" not found in registry</p>
-            )}
-          </div>
-        </Tabs.Content>
-
-        <Tabs.Content value="code" asChild>
-          <ScrollArea.Root className="relative">
-            <button
-              onClick={copyToClipboard}
-              className={`absolute right-4 top-4 z-10 rounded-md p-2 transition-colors ${
-                copied
-                  ? "bg-green-100 dark:bg-green-900/30"
-                  : copyFailed
-                  ? "bg-red-100 dark:bg-red-900/30"
-                  : "bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
-              }`}
-              title={
-                copied ? "Copied!" : copyFailed ? "Copy failed" : "Copy code"
-              }
-            >
-              {copied ? (
-                <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
-              ) : copyFailed ? (
-                <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
-              ) : (
-                <Copy className="h-4 w-4" />
+        <Tabs.List className="flex border-b border-gray-200 dark:border-gray-800">
+          {["preview", "code"].map((tab) => (
+            <Tabs.Trigger
+              key={tab}
+              value={tab}
+              className={twMerge(
+                "relative px-4 py-2 text-sm font-medium rounded-t-md overflow-hidden transition-colors duration-500",
+                activeTab === tab
+                  ? "text-white dark:text-black"
+                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
               )}
-            </button>
-
-            {(copied || copyFailed) && (
-              <div className="absolute right-4 top-12 z-30 animate-in fade-in-0 slide-in-from-top-2 duration-300">
-                <div
-                  className={`rounded-md border px-3 py-2 shadow-lg backdrop-blur-sm ${
-                    copied
-                      ? "bg-green-100/90 dark:bg-green-900/80 border-green-200 dark:border-green-700"
-                      : "bg-red-100/90 dark:bg-red-900/80 border-red-200 dark:border-red-700"
-                  }`}
-                >
-                  <div className="flex items-center space-x-2">
-                    {copied ? (
-                      <>
-                        <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
-                        <span className="text-sm font-medium text-green-800 dark:text-green-200">
-                          Copied!
-                        </span>
-                      </>
-                    ) : (
-                      <>
-                        <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
-                        <span className="text-sm font-medium text-red-800 dark:text-red-200">
-                          Copy failed
-                        </span>
-                      </>
-                    )}
+            >
+              <span className="relative z-10 capitalize">{tab}</span>
+              <span
+                className={twMerge(
+                  "absolute bottom-0 left-0 h-full w-full origin-bottom scale-y-0 transition-transform duration-500 ease-out z-0",
+                  activeTab === tab
+                    ? "scale-y-100 bg-black dark:bg-white"
+                    : "bg-transparent"
+                )}
+              />
+            </Tabs.Trigger>
+          ))}
+        </Tabs.List>
+        <div className="my-6 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800">
+          <Tabs.Content value="preview">
+            <div
+              className={twMerge(
+                "preview flex min-h-[350px] w-full justify-center items-center p-10",
+                className
+              )}
+            >
+              {Component ? (
+                <Component />
+              ) : children ? (
+                children
+              ) : (
+                <p>Component "{name}" not found in registry</p>
+              )}
+            </div>
+          </Tabs.Content>
+          <Tabs.Content value="code" asChild>
+            <ScrollArea.Root className="relative">
+              <button
+                onClick={copyToClipboard}
+                className={`absolute right-4 top-4 z-10 rounded-md p-2 transition-colors ${
+                  copied
+                    ? "bg-green-100 dark:bg-green-900/30"
+                    : copyFailed
+                    ? "bg-red-100 dark:bg-red-900/30"
+                    : "bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+                }`}
+                title={
+                  copied ? "Copied!" : copyFailed ? "Copy failed" : "Copy code"
+                }
+              >
+                {copied ? (
+                  <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
+                ) : copyFailed ? (
+                  <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )}
+              </button>
+              {(copied || copyFailed) && (
+                <div className="absolute right-4 top-12 z-30 animate-in fade-in-0 slide-in-from-top-2 duration-300">
+                  <div
+                    className={`rounded-md border px-3 py-2 shadow-lg backdrop-blur-sm ${
+                      copied
+                        ? "bg-green-100/90 dark:bg-green-900/80 border-green-200 dark:border-green-700"
+                        : "bg-red-100/90 dark:bg-red-900/80 border-red-200 dark:border-red-700"
+                    }`}
+                  >
+                    <div className="flex items-center space-x-2">
+                      {copied ? (
+                        <>
+                          <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
+                          <span className="text-sm font-medium text-green-800 dark:text-green-200">
+                            Copied!
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+                          <span className="text-sm font-medium text-red-800 dark:text-red-200">
+                            Copy failed
+                          </span>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-
-            <ScrollArea.Viewport className="h-full max-h-[350px] w-full">
-              <div className="relative">
-                {activeTab === "code" && (
-                  <div className="h-full w-full bg-[#1f2937] dark:bg-black">
-                    <SyntaxHighlighter
-                      language="tsx"
-                      style={vscDarkPlus}
-                      customStyle={{
-                        fontSize: "12px",
-                        backgroundColor: "transparent",
-                        color: "#d4d4d4",
-                        borderRadius: "8px",
-                        padding: "1rem",
-                        width: "100%",
-                        height: "100%",
-                        margin: 0,
-                      }}
-                      wrapLines={true}
-                      wrapLongLines={true}
-                    >
-                      {sourceCode}
-                    </SyntaxHighlighter>
-                  </div>
-                )}
-              </div>
-            </ScrollArea.Viewport>
-            <ScrollArea.Scrollbar
-              orientation="vertical"
-              className="flex w-2.5 touch-none select-none bg-gray-100 dark:bg-gray-800 p-0.5"
-            >
-              <ScrollArea.Thumb className="relative flex-1 rounded-full bg-gray-300 dark:bg-gray-600" />
-            </ScrollArea.Scrollbar>
-          </ScrollArea.Root>
-        </Tabs.Content>
-      </Tabs.Root>
-      {description && (
-        <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400">
-          {description}
+              )}
+              <ScrollArea.Viewport className="h-full max-h-[350px] w-full">
+                <div className="relative">
+                  {activeTab === "code" && (
+                    <div className="h-full w-full bg-[#1f2937] dark:bg-black">
+                      <SyntaxHighlighter
+                        language="tsx"
+                        style={vscDarkPlus}
+                        customStyle={{
+                          fontSize: "12px",
+                          backgroundColor: "transparent",
+                          color: "#d4d4d4",
+                          borderRadius: "8px",
+                          padding: "1rem",
+                          width: "100%",
+                          height: "100%",
+                          margin: 0,
+                        }}
+                        wrapLines={true}
+                        wrapLongLines={true}
+                      >
+                        {sourceCode}
+                      </SyntaxHighlighter>
+                    </div>
+                  )}
+                </div>
+              </ScrollArea.Viewport>
+              <ScrollArea.Scrollbar
+                orientation="vertical"
+                className="flex w-2.5 touch-none select-none bg-gray-100 dark:bg-gray-800 p-0.5"
+              >
+                <ScrollArea.Thumb className="relative flex-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+              </ScrollArea.Scrollbar>
+            </ScrollArea.Root>
+          </Tabs.Content>
         </div>
-      )}
-    </div>
+      </Tabs.Root>
+    </>
   );
 }
