@@ -184,13 +184,13 @@ export function HeroSection() {
             </motion.p>
 
             <motion.div
-              className="flex gap-3 justify-center lg:justify-start flex-wrap"
+              className="flex flex-col sm:flex-row items-center sm:items-start gap-3 justify-center lg:justify-start"
               variants={itemVariants}
             >
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:to-pink-500 text-white"
+                className="w-max bg-gradient-to-r from-blue-500 to-purple-500 hover:to-pink-500 text-white"
               >
                 <Link href="/docs/components/accordion">Browse Components</Link>
               </Button>
@@ -198,7 +198,7 @@ export function HeroSection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="border-gray-300 dark:border-gray-700"
+                className="w-max border-gray-300 dark:border-gray-700"
               >
                 <Link href="/docs">Documentation</Link>
               </Button>
