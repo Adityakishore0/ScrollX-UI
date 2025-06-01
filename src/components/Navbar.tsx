@@ -3,11 +3,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Github } from "lucide-react";
+import { Github, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "./mode-toggle";
 import { SearchModal } from "@/components/SearchModal";
+import { NavSheet } from "@/components/navsheet";
 
 interface NavbarProps {
   className?: string;
@@ -15,12 +16,14 @@ interface NavbarProps {
 
 export function Navbar({ className }: NavbarProps) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key === "k") {
         event.preventDefault();
+        setIsMobileMenuOpen(false);
         setIsSearchOpen(true);
       }
     };
@@ -31,6 +34,16 @@ export function Navbar({ className }: NavbarProps) {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  const handleSearchOpen = () => {
+    setIsMobileMenuOpen(false);
+    setIsSearchOpen(true);
+  };
+
+  const handleMobileMenuOpen = () => {
+    setIsSearchOpen(false);
+    setIsMobileMenuOpen(true);
+  };
 
   const routes = [
     {
@@ -106,9 +119,10 @@ export function Navbar({ className }: NavbarProps) {
               </Link>
             ))}
           </nav>
+
           <div className="flex flex-1 items-center justify-end space-x-4">
             <button
-              onClick={() => setIsSearchOpen(true)}
+              onClick={handleSearchOpen}
               className="flex relative justify-start items-center text-sm text-muted-foreground dark:text-white py-2 w-fit border border-transparent shadow-md dark:shadow-none px-4 rounded-xl bg-white dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
             >
               <svg
@@ -146,14 +160,35 @@ export function Navbar({ className }: NavbarProps) {
                   <span className="sr-only">GitHub</span>
                 </Link>
               </Button>
-              <ModeToggle />
+
+              <div className="hidden md:block">
+                <ModeToggle />
+              </div>
+
+              <div className="block md:hidden">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={handleMobileMenuOpen}
+                >
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </div>
             </nav>
           </div>
         </div>
       </header>
+
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
+      />
+
+      <NavSheet
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        pathname={pathname}
       />
     </>
   );
