@@ -9,6 +9,7 @@ interface ThemeSwitchProps extends React.HTMLAttributes<HTMLDivElement> {
   icons?: React.ReactNode[];
   showActiveIconOnly?: boolean;
   showInactiveIcons?: "all" | "none" | "next";
+  variant?: "default" | "icon-click";
 }
 
 const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
@@ -19,6 +20,7 @@ const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
       icons = [],
       showActiveIconOnly = false,
       showInactiveIcons = "all",
+      variant = "default",
       ...props
     },
     ref
@@ -40,9 +42,7 @@ const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
       setIsClient(true);
     }, []);
 
-    if (!isClient) {
-      return null;
-    }
+    if (!isClient) return null;
 
     const switchWidth = modes.length === 2 ? "w-14" : "w-20";
 
@@ -66,7 +66,7 @@ const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
           switchWidth,
           className
         )}
-        onClick={handleToggle}
+        onClick={variant === "default" ? handleToggle : undefined}
         ref={ref}
         {...props}
       >
@@ -81,18 +81,24 @@ const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
             <div className="flex w-full h-full items-center justify-between">
               {icons.map((icon, idx) => {
                 const key = `theme-icon-${idx}`;
-                const isVisible = isIconVisible(idx);
+                const visible = isIconVisible(idx);
 
                 return (
                   <div
                     key={key}
                     className={cn(
-                      "flex h-6 w-6 items-center justify-center rounded-full z-10 transition-opacity duration-200",
+                      "flex h-6 w-6 cursor-pointer items-center justify-center rounded-full z-10 transition-opacity duration-200",
                       currentModeIndex === idx
                         ? "text-background"
                         : "text-muted-foreground",
-                      isVisible ? "opacity-100" : "opacity-0"
+                      visible ? "opacity-100" : "opacity-0"
                     )}
+                    onClick={(e) => {
+                      if (variant === "icon-click") {
+                        e.stopPropagation();
+                        setTheme(modes[idx]);
+                      }
+                    }}
                   >
                     {React.isValidElement(icon)
                       ? React.cloneElement(icon, { key: `icon-element-${idx}` })

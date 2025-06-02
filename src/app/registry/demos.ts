@@ -40,6 +40,7 @@ export const demoComponents = [
   "seperatorprodotted",
   "seperatorprowavy",
   "themeswitch-demo",
+  "themeswitchicon",
   "thswitchhideinactive",
   "thswitchstdall",
   "thswitchtwonext",

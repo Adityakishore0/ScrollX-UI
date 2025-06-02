@@ -124,6 +124,16 @@ import { Sun, Moon, Laptop } from "lucide-react";
 
 ---
 
+<Step>Three Mode with any Icon Click</Step>
+
+<ComponentPreview
+  name="themeswitchicon"
+  className=""
+  description="supports three theme modes."
+/>
+
+---
+
 <Step>Single Centred with Two modes</Step>
 
 <ComponentPreview
@@ -173,4 +183,32 @@ A flexible and accessible theme mode switcher component for Next.js projects usi
 - **Animated indicator** highlights the current mode.
 - **Accessible**: Uses button-like semantics and focus styles.
 
+
+## Changelog
 ---
+#### 2025-06-02 `ThemeSwitch` - `icon-click` Variant
+
+<div style={{ marginTop: '0.5rem' }}>
+  Added a new `variant="icon-click"` prop to the `ThemeSwitch` component that allows users to directly select a theme by clicking on its corresponding icon.
+</div>
+
+This provides a more intuitive UX compared to the default sequential toggle.
+
+Use this variant when you want users to **set the theme directly** instead of cycling through options.
+
+Add the `variant` prop as shown below:
+
+`ThemeSwitch.tsx`
+
+```tsx 
+<ThemeSwitch
+  variant="icon-click"
+  modes={["light", "dark", "system"]}
+  icons={[
+    <Sun key="sun-icon" size={16} />,
+    <Moon key="moon-icon" size={16} />,
+    <Laptop key="laptop-icon" size={16} />,
+  ]}
+  showInactiveIcons="all"
+/>
+```
