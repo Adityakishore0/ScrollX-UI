@@ -4,7 +4,7 @@ import { Drawer } from "vaul";
 import Link from "next/link";
 import { X, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import ThemeSwitchIcon from "@/components/demos/themeswitchicon";
 
 const navigationItems = [
@@ -23,6 +23,8 @@ export function NavSheet({
   onClose: () => void;
   pathname: string;
 }) {
+  const timeoutRef = useRef<NodeJS.Timeout>();
+
   const navigationElements = useMemo(() => {
     return navigationItems.map((item) => {
       const isActive =
@@ -63,10 +65,29 @@ export function NavSheet({
     }
   }, [isOpen]);
 
+  const handleOpenChange = (open: boolean) => {
+    if (!open) {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        onClose();
+      }, 50);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <Drawer.Root
       open={isOpen}
-      onOpenChange={(open) => !open && onClose()}
+      onOpenChange={handleOpenChange}
       modal={true}
       dismissible={true}
       preventScrollRestoration={false}
