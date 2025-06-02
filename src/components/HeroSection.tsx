@@ -8,12 +8,11 @@ import Scrollxdark from "@/svg/Scrollxdark.svg";
 import { useState, useEffect, useMemo } from "react";
 import BadgeDemo from "@/components/demos/badge-demo";
 import LustreTextDemo from "@/components/demos/lustretext-demo";
-import ThemeSwitchDemo from "@/components/demos/themeswitch-demo";
 import { SeparatorPro } from "@/components/ui/seperatorpro";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AnimatedButton } from "@/components/ui/animated-button";
-import { LuminescentFlows } from "@/components/ui/luminescentflows";
 import BackgroundMeteors from "@/components/ui/backgroundmeteors";
+import ThemeSwitchIcon from "@/components/demos/themeswitchicon";
 
 export function HeroSection() {
   const { theme, systemTheme } = useTheme();
@@ -224,7 +223,7 @@ export function HeroSection() {
                 whileHover="hover"
               >
                 <div className="backdrop-blur-lg rounded-xl p-2">
-                  <ThemeSwitchDemo />
+                  <ThemeSwitchIcon />
                 </div>
               </motion.div>
 
