@@ -40,9 +40,14 @@ export function Navbar({ className }: NavbarProps) {
     setIsSearchOpen(true);
   };
 
-  const handleMobileMenuOpen = () => {
+  const handleMobileMenuOpen = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsSearchOpen(false);
-    setIsMobileMenuOpen(true);
+
+    setTimeout(() => {
+      setIsMobileMenuOpen(true);
+    }, 10);
   };
 
   const routes = [
