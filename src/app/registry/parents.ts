@@ -13,6 +13,7 @@ export const parentComponents = [
   "card",
   "carousel",
   "codeblock",
+  "cursorimagetrail",
   "dropdown",
   "followcursor",
   "glowingbordercard",
