@@ -13,6 +13,8 @@ export const demoComponents = [
   "badge-secondary",
   "badge-outline",
   "button-demo",
+  "cursorimagetrail-demo",
+  "cursorimagetraildynamic",
   "codeblock-demo",
   "codeblocklight",
   "codeblockmultitab",

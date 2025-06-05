@@ -1,0 +1,89 @@
+---
+title: CursorImageTrail
+description: mouse trail component with animated image effects on hover.
+---
+
+<ComponentPreview
+  name="cursorimagetrail-demo"
+  className="p-0"
+  description="A vertical card stack carousel with navigation controls."
+/>
+
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="cursorimagetrail" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>cursorimagetrail.tsx</code>
+</p>
+<ComponentSource name="cursorimagetrail" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import CursorImageTrail from "@/components/ui/cursorimagetrail";
+```
+
+```tsx
+<CursorImageTrail
+      renderImageBuffer={50}
+      rotationRange={25}
+      animationStyle="dynamic" 
+      images={Array.from({ length: 16 }, (_, i) => `/images/active/${i + 1}.jpg`)}
+    >
+      <section className="grid h-screen w-full place-content-center bg-white text-black dark:bg-black dark:text-neutral-200 antialiased">
+        <p className="flex items-center gap-2 text-5xl font-extrabold uppercase tracking-wide transition-colors duration-500">
+          <MousePointer className="w-10 h-10" />
+          <span>Hover me</span>
+        </p>
+      </section>
+    </CursorImageTrail>
+```
+
+
+## API Reference
+
+### CursorImageTrail
+
+The `CursorImageTrail` component creates an interactive mouse trail effect with animated images. It tracks mouse movement and renders images along the cursor path with configurable animation styles.
+
+
+### Props
+
+- **`children`** (`ReactNode`, **required**)  
+  Content that triggers the image trail effect when hovered.
+
+- **`images`** (`string[]`, **required**)  
+  Array of image paths to use in the trail.
+
+- **`renderImageBuffer`** (`number`, **required**)  
+  Minimum pixel distance between consecutive image renders (controls trail density).
+
+- **`rotationRange`** (`number`, **required**)  
+  Maximum rotation angle (`in degrees`) applied to images. 
+
+- **`animationStyle`** (`"dynamic"` | `"minimal"`, default: `"dynamic"`)  
+  Animation variant:
+  - `"dynamic"`: Complex animations .
+  - `"minimal"`: Simpler animations without complex transforms.
+

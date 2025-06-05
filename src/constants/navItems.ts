@@ -56,6 +56,7 @@ const navigation: NavItem[] = [
       { title: "Card", href: "/docs/components/card" },
       { title: "Carousel", href: "/docs/components/carousel" },
       { title: "CodeBlock", href: "/docs/components/codeblock" },
+      { title: "CursorImageTrail", href: "/docs/components/cursorimagetrail" },
       { title: "Dropdown", href: "/docs/components/dropdown" },
       {
         title: "Follow Cursor",
