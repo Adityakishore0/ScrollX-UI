@@ -8,7 +8,7 @@ export default function StatsCountDemo() {
   return (
     <StatsCount
       stats={stats}
-      title="CREATE STUNNING INTERFACES WITH SCROLLX-UI COMPONENTS"
+      title="CREATE STUNNING INTERFACES WITH SCROLLX UI COMPONENTS"
       showDividers={true}
       className=""
     />
