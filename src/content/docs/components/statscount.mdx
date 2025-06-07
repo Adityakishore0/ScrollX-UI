@@ -1,0 +1,93 @@
+---
+title: StatsCount
+description: Animated statistics counter with responsive layout and scroll triggers.
+---
+
+<ComponentPreview
+  name="statscount-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An Animated statistics counter"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="statscount" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>statscount.tsx</code>
+</p>
+<ComponentSource name="statscount" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import StatsCount from "@/components/ui/statscount";
+
+ const stats = [
+   { value: 30, suffix: "+", label: "Handcrafted animated components" },
+   { value: 12, suffix: "K+", label: "Developers building with ScrollX-UI"},
+   { value: 99, suffix: "%", label: "Performance optimized for web"},
+ ];
+```
+
+```tsx
+<StatsCount
+    stats={stats}
+    title="CREATE STUNNING INTERFACES WITH SCROLLX-UI COMPONENTS"
+    showDividers={true}
+    className=""
+  />
+```
+
+## API Reference
+
+### StatsCount
+
+The root component for displaying animated, responsive statistics counters with optional scroll-triggered animations.
+
+- **stats** – Optional array of stat items to display.  
+  Each item contains:
+  - **value** – The numeric `value` to animate to.
+  - **suffix** – Optional text `suffix` (e.g., "+", "K+", "%").
+  - **label** – Descriptive text shown below the `stat`.
+  - **duration** – Optional `animation` duration in `seconds`.
+
+- **title** – Optional custom title text.  
+  If the title contains "WITH", it will automatically split for responsive styling.
+
+- **showDividers** – Optional `boolean` to show or hide vertical `divider` lines between stats.  
+  Default: `true`.
+
+- **className** – Optional additional CSS classes for the main container.

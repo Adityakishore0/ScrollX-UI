@@ -114,6 +114,10 @@ const navigation: NavItem[] = [
         category: "new",
       },
       {
+        title: "Stats Count",
+        href: "/docs/components/statscount",
+      },
+      {
         title: "Spotlight Card",
         href: "/docs/components/spotlightcard",
       },

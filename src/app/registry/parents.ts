@@ -28,6 +28,7 @@ export const parentComponents = [
   "particles",
   "profilecard",
   "radialflow",
+  "statscount",
   "spotlightcard",
   "seperatorpro",
   "theme-switch",
