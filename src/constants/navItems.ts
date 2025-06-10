@@ -93,7 +93,7 @@ const navigation: NavItem[] = [
         title: "Magic Dock",
         href: "/docs/components/magicdock",
       },
-      { title: "Morpho Text Flip", href: "/docs/components/morphotextflip" },
+      { title: "MorphoText Flip", href: "/docs/components/morphotextflip" },
       { title: "Modal", href: "/docs/components/modal" },
       {
         title: "Pagination",
