@@ -33,6 +33,7 @@ export const demoComponents = [
   "lighttrail-demo",
   "lustretext-demo",
   "magicdock-demo",
+  "morphotextflip-demo",
   "pagination-demo",
   "particles-demo",
   "profilecard-demo",
