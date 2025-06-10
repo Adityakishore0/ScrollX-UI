@@ -127,7 +127,7 @@ export function MorphoTextFlip({
                   : "easeInOut",
             }}
             className={cn(
-              "text-4xl font-bold text-black md:text-7xl dark:text-white whitespace-nowrap",
+              "text-4xl font-bold text-rose-600 dark:text-rose-400 md:text-7xl  whitespace-nowrap",
               textClassName
             )}
             ref={textRef}
