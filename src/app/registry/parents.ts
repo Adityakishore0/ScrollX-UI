@@ -24,6 +24,7 @@ export const parentComponents = [
   "light-trail",
   "lustretext",
   "magicdock",
+  "morphotextflip",
   "pagination",
   "particles",
   "profilecard",
