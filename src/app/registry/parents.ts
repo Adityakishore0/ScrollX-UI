@@ -34,6 +34,7 @@ export const parentComponents = [
   "seperatorpro",
   "theme-switch",
   "toast",
+  "typeanimation",
   // Add more parent component names here
 ] as const;
 

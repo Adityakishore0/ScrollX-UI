@@ -1,0 +1,83 @@
+---
+title: Type Animation
+description: Displays an animated typing effect.
+---
+
+<ComponentPreview
+  name="typeanimation-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="typeanimation" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion react-type-animation" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>typeanimation.tsx</code>
+</p>
+<ComponentSource name="typeanimation" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import Typeanimation from '@/components/ui/typeanimation';
+```
+
+```tsx
+<Typeanimation
+    words={[' possibilities', ' opportunities', ' potential']}
+    typingSpeed="slow"
+    deletingSpeed="slow"
+    pauseDuration={2000}
+    className="text-3xl md:text-5xl font-extrabold text-teal-600"
+  />
+```
+
+
+## API Reference
+
+### `Typeanimation`
+
+Displays an animated typing effect with gradient text.
+
+* `words` – Array of words to animate
+* `className` – Optional class name for custom styling
+* `typingSpeed` – Typing speed in ms or `'slow' | 'normal' | 'fast'` (default: `50`)
+* `deletingSpeed` – Deleting speed in ms or `'slow' | 'normal' | 'fast'` (default: `50`)
+* `pauseDuration` – Delay between each word in ms (default: `1000`)
+* `gradientFrom` – Tailwind color suffix for gradient start (default: `'blue-500'`)
+* `gradientTo` – Tailwind color suffix for gradient end (default: `'purple-600'`)
+
