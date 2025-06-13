@@ -118,7 +118,7 @@ export async function generateMetadata({ params }: PageProps) {
         url: `https://scrollx-ui.vercel.app/docs/${slug.join("/")}`,
         images: [
           {
-            url: "https://scrollx-ui.vercel.app/images/ui.png", // Default image for all components
+            url: "https://scrollx-ui.vercel.app/images/ui.png",
             width: 1200,
             height: 630,
             alt: "ScrollX UI",
@@ -126,6 +126,13 @@ export async function generateMetadata({ params }: PageProps) {
         ],
       },
     };
+  }
+
+  const componentName = slug[slug.length - 1];
+  let imageUrl = "https://scrollx-ui.vercel.app/images/ui.png";
+
+  if (slug.includes("components") && componentName) {
+    imageUrl = `https://scrollx-ui.vercel.app/images/${componentName}.png`;
   }
 
   return {
@@ -137,12 +144,18 @@ export async function generateMetadata({ params }: PageProps) {
       url: `https://scrollx-ui.vercel.app/docs/${slug.join("/")}`,
       images: [
         {
-          url: "https://scrollx-ui.vercel.app/images/ui.png",
+          url: imageUrl,
           width: 1200,
           height: 630,
-          alt: "ScrollX UI",
+          alt: `${doc.frontmatter.title} - ScrollX UI`,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `ScrollX UI | ${doc.frontmatter.title}`,
+      description: doc.frontmatter.description,
+      images: [imageUrl],
     },
   };
 }
