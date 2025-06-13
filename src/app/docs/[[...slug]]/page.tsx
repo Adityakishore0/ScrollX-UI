@@ -132,7 +132,7 @@ export async function generateMetadata({ params }: PageProps) {
   let imageUrl = "https://scrollx-ui.vercel.app/images/ui.png";
 
   if (slug.includes("components") && componentName) {
-    imageUrl = `https://scrollx-ui.vercel.app/images/${componentName}.png`;
+    imageUrl = `https://scrollx-ui.vercel.app/images/internal/${componentName}.png`;
   }
 
   return {
