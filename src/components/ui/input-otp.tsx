@@ -228,11 +228,11 @@ function InputOTP({
       <div
         data-slot="input-otp"
         className={cn(
-          "flex items-center gap-2 has-disabled:opacity-50",
+          "flex items-center gap-1 sm:gap-2 has-disabled:opacity-50",
           containerClassName
         )}
       >
-        <div className={cn("flex items-center gap-2", className)}>
+        <div className={cn("flex items-center gap-1 sm:gap-2", className)}>
           {children}
         </div>
       </div>
@@ -249,7 +249,7 @@ function InputOTPGroup({
     <div
       data-slot="input-otp-group"
       className={cn(
-        "flex items-center gap-2 px-1 py-0.5 rounded-lg",
+        "flex items-center gap-1 sm:gap-2 px-1 py-0.5 rounded-md sm:rounded-lg",
         "bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10",
         className
       )}
@@ -290,8 +290,8 @@ function InputOTPSlot({
     <motion.div
       className="relative"
       initial={{ scale: 1 }}
-      whileFocus={{ scale: 1.08 }}
-      whileHover={{ scale: 1.05 }}
+      whileFocus={{ scale: 1.05 }}
+      whileHover={{ scale: 1.02 }}
     >
       <input
         ref={(el) => (inputsRef.current[index] = el)}
@@ -305,11 +305,14 @@ function InputOTPSlot({
         onBlur={() => handleBlur(index)}
         onPaste={(e) => handlePaste(e, index)}
         className={cn(
-          "w-12 h-14 rounded-xl text-center font-semibold outline-none transition-all duration-200",
+          "w-8 h-10 sm:w-10 sm:h-12 md:w-12 md:h-14",
+          "rounded-lg sm:rounded-xl text-center font-semibold outline-none transition-all duration-200",
           "border border-transparent bg-white/60 dark:bg-white/10 shadow-inner",
           "focus:ring-2 focus:ring-primary/70 dark:focus:ring-primary/40 focus:border-primary/30",
           "backdrop-blur-md text-black dark:text-white placeholder-transparent",
-          visibleValues[index] === maskSymbol ? "text-2xl" : "text-lg",
+          visibleValues[index] === maskSymbol
+            ? "text-lg sm:text-xl md:text-2xl"
+            : "text-sm sm:text-base md:text-lg",
           "font-mono",
           inputClassName,
           className
@@ -317,8 +320,8 @@ function InputOTPSlot({
       />
       <motion.div
         layoutId={`glow-${index}`}
-        className="absolute inset-0 rounded-xl pointer-events-none"
-        style={{ boxShadow: "0 0 8px 3px rgba(0,0,0,0.08)" }}
+        className="absolute inset-0 rounded-lg sm:rounded-xl pointer-events-none"
+        style={{ boxShadow: "0 0 4px 1px rgba(0,0,0,0.06)" }}
       />
     </motion.div>
   );
@@ -338,7 +341,7 @@ function InputOTPSeparator({
       className={cn("flex items-center justify-center", className)}
       {...props}
     >
-      {separatorSymbol || <MinusIcon className="w-4 h-4" />}
+      {separatorSymbol || <MinusIcon className="w-3 h-3 sm:w-4 sm:h-4" />}
     </div>
   );
 }
