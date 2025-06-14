@@ -19,6 +19,7 @@ export const parentComponents = [
   "glowingbordercard",
   "globe",
   "heroui",
+  "input-otp",
   "interactive-input",
   "lamphome",
   "light-trail",

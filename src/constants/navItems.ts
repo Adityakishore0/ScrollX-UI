@@ -76,6 +76,7 @@ const navigation: NavItem[] = [
         href: "/docs/components/hero-sections",
         category: "new",
       },
+      { title: "Input OTP", href: "/docs/components/input-otp" },
       {
         title: "Interactive Input",
         href: "/docs/components/interactive-input",

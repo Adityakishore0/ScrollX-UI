@@ -1,0 +1,88 @@
+---
+title: Input Otp
+description:  A flexible Accessible one-time password component
+---
+
+<ComponentPreview
+  name="inputotp-demo"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+    <PkgOptions name="input-otp" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion lucide-react" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>input-otp.tsx</code>
+</p>
+<ComponentSource name="input-otp" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+ import {(ClassValue, clsx)} from "clsx";
+  import {twMerge} from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+```tsx
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+```
+
+```tsx
+<InputOTP maxLength={6} mask={true} maskDelay={1200}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+  </InputOTPGroup>
+  <InputOTPSeparator separatorSymbol="+"  />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>
+```
+
+
+## API Reference
+
+ ### Input Otp
+
+The `InputOTP` is a root component that creates an animated OTP input field with masking support and paste functionality.
+
+* **InputOTP** — `maxLength`, `onComplete`, `className`, `containerClassName`, `inputClassName`, `mask`, `maskSymbol`, `maskDelay`, `children`
+* **InputOTPGroup** — `className`, `children`
+* **InputOTPSlot** — `index`, `className`
+* **InputOTPSeparator** — `separatorSymbol`, `className`
