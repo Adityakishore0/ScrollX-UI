@@ -28,6 +28,7 @@ export const demoComponents = [
   "globe-demo",
   "globecities",
   "heroui-demo",
+  "inputotp-demo",
   "interactiveinput-demo",
   "lamphome-demo",
   "lighttrail-demo",
