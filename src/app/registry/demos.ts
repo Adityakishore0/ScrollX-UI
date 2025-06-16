@@ -41,6 +41,7 @@ export const demoComponents = [
   "morphotextsliderotate",
   "pagination-demo",
   "particles-demo",
+  "parallaxcards-demo",
   "profilecard-demo",
   "radialflow-demo",
   "statscount-demo",
