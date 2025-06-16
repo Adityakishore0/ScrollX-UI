@@ -27,6 +27,7 @@ export const parentComponents = [
   "magicdock",
   "morphotextflip",
   "pagination",
+  "parallaxcards",
   "particles",
   "profilecard",
   "radialflow",

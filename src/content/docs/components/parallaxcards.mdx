@@ -1,0 +1,68 @@
+---
+title: ParallaxCards
+description: A vertical sticky-scroll component that displays stacked cards with parallax behavior.
+---
+
+<ComponentPreview
+  name="parallaxcards-demo"
+  className="p-0 h-screen overflow-auto"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="parallaxcards" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>parallaxcards.tsx</code>
+</p>
+<ComponentSource name="parallaxcards" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import ParallaxCards from "@/components/ui/parallaxcards";
+```
+
+```tsx
+<CardContent className="flex flex-col items-center justify-center h-full not-prose text-inherit">
+  <div className="mb-4">{card.icon}</div>
+      <h2 className="text-3xl sm:text-4xl font-bold mb-4">{card.title}</h2>
+      <p className="text-lg max-w-2xl mb-6">{card.description}</p>
+    <Button variant={card.variant}>Learn More →</Button>
+</CardContent>
+```
+
+
+## API Reference
+
+### `ParallaxCards`
+
+A vertical sticky-scroll component that displays stacked cards with parallax behavior.
+
+#### Props
+
+- `cards?: { lightBg: string; darkBg: string; content: React.ReactNode; }[]`  
+  Array of card objects with light/dark background classes and JSX content.
+
+- `height?: number | string`  
+  Sets the container height. Defaults to `"100vh"`.
+
+ - Each card is sticky (`70vh` tall), scrolls into view one by one, and supports dark/light modes via Tailwind classes.

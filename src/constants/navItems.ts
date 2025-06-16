@@ -107,6 +107,10 @@ const navigation: NavItem[] = [
         category: "new",
       },
       {
+        title: "Parallax Cards",
+        href: "/docs/components/parallaxcards",
+      },
+      {
         title: "Profile Card",
         href: "/docs/components/profilecard",
       },
