@@ -37,6 +37,7 @@ export const parentComponents = [
   "theme-switch",
   "toast",
   "typeanimation",
+  "whitestripes",
   // Add more parent component names here
 ] as const;
 

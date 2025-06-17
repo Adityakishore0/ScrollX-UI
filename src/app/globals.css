@@ -235,3 +235,13 @@ video {
   background: black;
   transition: opacity 0.4s ease;
 }
+
+.text-stroke-light {
+  color: white;
+  -webkit-text-stroke: 1px black;
+}
+
+.dark .text-stroke-light {
+  color: black;
+  -webkit-text-stroke: 1px white;
+}

@@ -138,6 +138,7 @@ const navigation: NavItem[] = [
       { title: "Tooltip", href: "/docs/components/tooltip" },
       { title: "Toast", href: "/docs/components/toast" },
       { title: "Type Animation", href: "/docs/components/typeanimation" },
+      { title: "Whitestripes", href: "/docs/components/whitestripes" },
     ],
   },
 ];
