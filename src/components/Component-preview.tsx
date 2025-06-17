@@ -201,6 +201,7 @@ export default function ComponentPreview({
                   <Copy className="h-4 w-4" />
                 )}
               </button>
+
               {(copied || copyFailed) && (
                 <div className="absolute right-4 top-12 z-30 animate-in fade-in-0 slide-in-from-top-2 duration-300">
                   <div
@@ -230,8 +231,9 @@ export default function ComponentPreview({
                   </div>
                 </div>
               )}
-              <ScrollArea.Viewport className="h-full max-h-[350px] w-full">
-                <div className="relative">
+
+              <ScrollArea.Viewport className="h-full max-h-[350px] w-full overflow-auto">
+                <div className="relative min-w-full">
                   {activeTab === "code" && (
                     <div className="h-full w-full bg-[#1f2937] dark:bg-black">
                       <SyntaxHighlighter
@@ -246,9 +248,11 @@ export default function ComponentPreview({
                           width: "100%",
                           height: "100%",
                           margin: 0,
+                          overflowX: "auto",
+                          whiteSpace: "pre",
                         }}
-                        wrapLines={true}
-                        wrapLongLines={true}
+                        wrapLines={false}
+                        wrapLongLines={false}
                       >
                         {sourceCode}
                       </SyntaxHighlighter>
@@ -256,10 +260,15 @@ export default function ComponentPreview({
                   )}
                 </div>
               </ScrollArea.Viewport>
+
               <ScrollArea.Scrollbar
                 orientation="vertical"
                 className="flex w-2.5 touch-none select-none bg-gray-100 dark:bg-gray-800 p-0.5"
               >
+                <ScrollArea.Thumb className="relative flex-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+              </ScrollArea.Scrollbar>
+
+              <ScrollArea.Scrollbar orientation="horizontal" className="hidden">
                 <ScrollArea.Thumb className="relative flex-1 rounded-full bg-gray-300 dark:bg-gray-600" />
               </ScrollArea.Scrollbar>
             </ScrollArea.Root>

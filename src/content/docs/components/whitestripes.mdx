@@ -1,0 +1,66 @@
+---
+title: Whitestripes
+description: Dynamic motion background for hero sections and modern layouts.
+---
+
+<ComponentPreview
+  name="whitestripes-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="whitestripes" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>whitestripes.tsx</code>
+</p>
+<ComponentSource name="whitestripes" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import WhiteStripes from "@/components/ui/whitestripes";
+```
+
+```tsx
+<WhiteStripes>
+  <div className="text-center space-y-6">
+      <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-stroke-light">
+        Interface Is the Product.
+      </h1>
+    </div>
+  </WhiteStripes>
+```
+
+
+## API Reference
+
+### WhiteStripes
+
+The `WhiteStripes` component provides a smooth, animated striped background ideal for use in modern hero sections, landing pages, or immersive UI experiences. It loops continuously and adapts to light and dark themes.
+
+#### Props
+
+- **`className`** (`string`) – Optional additional Tailwind or custom classes to modify the container’s styling.
+- **`children`** (`React.ReactNode`) – Optional content to render centered above the animated background (like text or call-to-actions).
