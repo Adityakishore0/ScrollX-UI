@@ -152,10 +152,13 @@ function AnimatedButton({
 
 function BackgroundGradient({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative group rounded-lg p-[1px] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-50 group-hover:opacity-80 blur-sm transition duration-500" />
-      <div className="absolute inset-[1px] bg-black rounded-lg" />
-      <div className="relative text-white">{children}</div>
+    <div className="relative group rounded-lg p-[2px] overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-30 group-hover:opacity-90 transition-all duration-300" />
+      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-20 blur-md group-hover:blur-xl group-hover:opacity-60 rounded-xl pointer-events-none transition-all duration-300" />
+      <div className="absolute inset-[2px] bg-white dark:bg-black rounded-md transition-colors duration-500" />
+      <div className="relative text-black dark:text-white mt-7 transition-colors duration-500">
+        {children}
+      </div>
     </div>
   );
 }
