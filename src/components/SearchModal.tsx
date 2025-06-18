@@ -1,9 +1,16 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+  memo,
+  startTransition,
+} from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { X, Search } from "lucide-react";
-import { cn } from "@/lib/utils";
 import navigation, { NavItem } from "@/constants/navItems";
 
 interface SearchModalProps {
@@ -11,119 +18,337 @@ interface SearchModalProps {
   onClose: () => void;
 }
 
-export function SearchModal({ isOpen, onClose }: SearchModalProps) {
-  const modalRef = useRef<HTMLDivElement | null>(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<NavItem[]>([]);
+const ANIMATION_CONFIG = Object.freeze({
+  modal: { duration: 0.15 },
+  content: { duration: 0.15, ease: "easeOut" as const },
+});
 
-  const allNavigationItems = useRef<NavItem[]>([]);
+export function SearchModal(props: SearchModalProps) {
+  return <SearchModalComponent {...props} />;
+}
 
-  useEffect(() => {
-    const items: NavItem[] = [];
+const STYLES = Object.freeze({
+  maxHeight: "300px",
+  scrollbarWidth: "thin" as const,
+  scrollbarColor: "#ccc transparent",
+});
 
-    const processItems = (navItems: NavItem[]) => {
-      navItems.forEach((item) => {
-        items.push(item);
-        if (item.children) {
-          processItems(item.children);
+const CSS_CLASSES = Object.freeze({
+  button:
+    "w-full text-left p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg group",
+  span: "group-hover:border-b group-hover:border-black dark:group-hover:border-white pb-px transition-all duration-200",
+  newBadge:
+    "ml-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-400 text-xs font-medium px-2 py-0.5 rounded-full border border-green-300 dark:border-green-500",
+});
+
+let flattenedItems: NavItem[] | null = null;
+let searchIndex: Map<string, NavItem[]> | null = null;
+
+const getFlattenedNavigation = (): NavItem[] => {
+  if (flattenedItems) return flattenedItems;
+
+  const result: NavItem[] = [];
+  const stack = [...navigation];
+
+  while (stack.length > 0) {
+    const item = stack.pop()!;
+    result.push(item);
+    if (item.children) {
+      stack.push(...item.children);
+    }
+  }
+
+  flattenedItems = result;
+  return result;
+};
+
+const buildSearchIndex = (items: NavItem[]): Map<string, NavItem[]> => {
+  if (searchIndex) return searchIndex;
+
+  const index = new Map<string, NavItem[]>();
+
+  for (const item of items) {
+    const title = item.title.toLowerCase();
+    for (let i = 0; i < title.length; i++) {
+      for (let j = i + 1; j <= title.length; j++) {
+        const substring = title.slice(i, j);
+        if (!index.has(substring)) {
+          index.set(substring, []);
         }
-      });
-    };
+        const arr = index.get(substring)!;
+        if (!arr.includes(item)) {
+          arr.push(item);
+        }
+      }
+    }
+  }
 
-    processItems(navigation);
-    allNavigationItems.current = items;
+  searchIndex = index;
+  return index;
+};
+
+const searchItems = (query: string): NavItem[] => {
+  if (!query) return [];
+
+  const items = getFlattenedNavigation();
+  const index = buildSearchIndex(items);
+  const lowerQuery = query.toLowerCase();
+
+  const results = index.get(lowerQuery);
+  if (results && results.length <= 10) return results;
+
+  const fallbackResults: NavItem[] = [];
+  for (const item of items) {
+    if (item.title.toLowerCase().includes(lowerQuery)) {
+      fallbackResults.push(item);
+      if (fallbackResults.length >= 10) break;
+    }
+  }
+
+  return fallbackResults;
+};
+
+const NavigationItem = memo(
+  ({ item, onClick }: { item: NavItem; onClick: (href: string) => void }) => {
+    const handleClick = useCallback(() => {
+      if (item.href) onClick(item.href);
+    }, [item.href, onClick]);
+
+    return (
+      <button
+        className={CSS_CLASSES.button}
+        onClick={handleClick}
+        disabled={!item.href}
+      >
+        <span className={item.href ? CSS_CLASSES.span : ""}>{item.title}</span>
+        {item.category === "new" && (
+          <span className={CSS_CLASSES.newBadge}>New</span>
+        )}
+      </button>
+    );
+  }
+);
+
+NavigationItem.displayName = "NavigationItem";
+
+const NavigationSection = memo(
+  ({
+    item,
+    onNavigate,
+  }: {
+    item: NavItem;
+    onNavigate: (href: string) => void;
+  }) => (
+    <div className="mb-3">
+      <p className="text-gray-600 dark:text-neutral-400 text-sm mb-1">
+        {item.title}
+      </p>
+      <div className="pl-2">
+        {item.href && <NavigationItem item={item} onClick={onNavigate} />}
+        {item.children?.map((child) => (
+          <NavigationItem
+            key={child.href || child.title}
+            item={child}
+            onClick={onNavigate}
+          />
+        ))}
+      </div>
+    </div>
+  )
+);
+
+NavigationSection.displayName = "NavigationSection";
+
+const SearchResults = memo(
+  ({
+    results,
+    onNavigate,
+  }: {
+    results: NavItem[];
+    onNavigate: (href: string) => void;
+  }) => (
+    <>
+      <p className="text-gray-600 dark:text-neutral-400 text-sm mb-2">
+        Search Results
+      </p>
+      {results.map((item) => (
+        <NavigationItem
+          key={`${item.title}-${item.href}`}
+          item={item}
+          onClick={onNavigate}
+        />
+      ))}
+    </>
+  )
+);
+
+SearchResults.displayName = "SearchResults";
+
+const TwitterLink = memo(() => {
+  const handleClick = useCallback(() => {
+    window.open("https://x.com/Ahdeetai", "_blank");
   }, []);
 
+  return (
+    <button className={CSS_CLASSES.button} onClick={handleClick}>
+      <span className={CSS_CLASSES.span}>Twitter @Ahdeetai</span>
+    </button>
+  );
+});
+
+TwitterLink.displayName = "TwitterLink";
+
+const DefaultContent = memo(
+  ({ onNavigate }: { onNavigate: (href: string) => void }) => (
+    <>
+      <div className="mb-4">
+        <p className="text-gray-600 dark:text-neutral-400 text-sm">
+          Follow for updates
+        </p>
+        <TwitterLink />
+      </div>
+      {navigation.map((item) => (
+        <NavigationSection
+          key={item.title}
+          item={item}
+          onNavigate={onNavigate}
+        />
+      ))}
+    </>
+  )
+);
+
+DefaultContent.displayName = "DefaultContent";
+
+const NoResults = memo(() => (
+  <div className="text-center py-8">
+    <p className="text-gray-800 dark:text-white">No results found</p>
+  </div>
+));
+
+NoResults.displayName = "NoResults";
+
+const ModalContent = memo(
+  ({
+    hasSearchQuery,
+    hasSearchResults,
+    searchResults,
+    onNavigate,
+  }: {
+    hasSearchQuery: boolean;
+    hasSearchResults: boolean;
+    searchResults: NavItem[];
+    onNavigate: (href: string) => void;
+  }) => (
+    <AnimatePresence mode="wait">
+      {hasSearchQuery ? (
+        <motion.div
+          key="search-results"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={ANIMATION_CONFIG.content}
+          className="mb-4"
+        >
+          {hasSearchResults ? (
+            <SearchResults results={searchResults} onNavigate={onNavigate} />
+          ) : (
+            <NoResults />
+          )}
+        </motion.div>
+      ) : (
+        <motion.div
+          key="default-content"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={ANIMATION_CONFIG.content}
+        >
+          <DefaultContent onNavigate={onNavigate} />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+);
+
+ModalContent.displayName = "ModalContent";
+
+const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [deferredQuery, setDeferredQuery] = useState("");
+
+  const searchResults = useMemo(
+    () => searchItems(deferredQuery),
+    [deferredQuery]
+  );
+
+  const handleNavigate = useCallback(
+    (href: string) => {
+      window.location.href = href;
+      onClose();
+    },
+    [onClose]
+  );
+
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+      setSearchQuery(value);
+
+      startTransition(() => {
+        setDeferredQuery(value.trim());
+      });
+    },
+    []
+  );
+
+  const handleClose = useCallback(() => {
+    setSearchQuery("");
+    setDeferredQuery("");
+    onClose();
+  }, [onClose]);
+
   useEffect(() => {
-    if (!searchQuery.trim()) {
-      setSearchResults([]);
-      return;
-    }
+    if (!isOpen) return;
 
-    const query = searchQuery.toLowerCase();
-    const results = allNavigationItems.current.filter((item) =>
-      item.title.toLowerCase().includes(query)
-    );
-
-    setSearchResults(results);
-  }, [searchQuery]);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         modalRef.current &&
         !modalRef.current.contains(event.target as Node)
       ) {
-        onClose();
+        handleClose();
       }
-    }
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        handleClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside, {
+      passive: true,
+    });
+    document.addEventListener("keydown", handleKeyDown, { passive: true });
+
+    requestAnimationFrame(() => {
+      if (inputRef.current && !/Mobi|Android/i.test(navigator.userAgent)) {
+        inputRef.current.focus();
+      }
+    });
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen, onClose]);
-
-  useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    }
-    if (isOpen) {
-      document.addEventListener("keydown", handleKeyDown);
-    }
-    return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, onClose]);
-
-  const handleNavigate = (href: string) => {
-    if (href) {
-      window.location.href = href;
-      onClose();
-    }
-  };
-
-  const renderNavigationItems = () => {
-    return navigation.map((item) => (
-      <div key={item.title} className="mb-3">
-        <p className="text-neutral-400 text-sm mb-1">{item.title}</p>
-        <div className="pl-2">
-          {item.href && (
-            <button
-              className="w-full text-left p-2 hover:bg-neutral-800 rounded-lg group"
-              onClick={() => handleNavigate(item.href)}
-            >
-              <span className="group-hover:border-b group-hover:border-white pb-px transition-all duration-200">
-                {item.title}
-              </span>
-            </button>
-          )}
-
-          {item.children?.map((child) => (
-            <button
-              key={child.href}
-              className="w-full text-left p-2 hover:bg-neutral-800 rounded-lg group"
-              onClick={() => handleNavigate(child.href)}
-            >
-              <span className="group-hover:border-b group-hover:border-white pb-px transition-all duration-200">
-                {child.title}
-              </span>
-              {child.category === "new" && (
-                <span className="ml-2 bg-green-900 text-green-400 text-xs font-medium px-2 py-0.5 rounded-full border border-green-500">
-                  New
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
-      </div>
-    ));
-  };
+  }, [isOpen, handleClose]);
 
   if (!isOpen) return null;
+
+  const hasSearchQuery = deferredQuery.length > 0;
+  const hasSearchResults = searchResults.length > 0;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
@@ -132,115 +357,77 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
-        transition={{ duration: 0.2 }}
-        className="w-full max-w-md bg-neutral-900 text-white rounded-xl shadow-lg p-5"
+        transition={ANIMATION_CONFIG.modal}
+        className="w-full max-w-md bg-white dark:bg-neutral-900 text-black dark:text-white rounded-xl shadow-lg p-5"
       >
         <div className="flex justify-between items-center">
           <div className="flex items-center w-full">
-            <Search className="w-4 h-4 text-neutral-400 mr-2 flex-shrink-0" />
+            <Search className="w-4 h-4 text-gray-600 dark:text-neutral-400 mr-2 flex-shrink-0" />
             <input
+              ref={inputRef}
               type="text"
               placeholder="Type a command or search..."
-              className="w-full bg-transparent border-none outline-none text-lg placeholder-neutral-400"
-              autoFocus={!/Mobi|Android/i.test(navigator.userAgent)}
+              className="w-full bg-transparent border-none outline-none text-lg placeholder-gray-600 dark:placeholder-neutral-400"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={handleInputChange}
             />
           </div>
           <button
-            onClick={onClose}
-            className="text-neutral-400 hover:text-white flex-shrink-0"
+            onClick={handleClose}
+            className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-white flex-shrink-0"
+            aria-label="Close search"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         <div
-          className="mt-4 border-t border-neutral-700 pt-3 overflow-y-auto"
-          style={{
-            maxHeight: "300px",
-            scrollbarWidth: "thin",
-            scrollbarColor: "#444 transparent",
-          }}
+          className="mt-4 border-t border-gray-300 dark:border-neutral-700 pt-3 overflow-y-auto relative custom-scrollbar"
+          style={STYLES}
         >
           <style jsx global>{`
-            /* Custom scrollbar styles */
             .custom-scrollbar::-webkit-scrollbar {
               width: 4px;
             }
-
             .custom-scrollbar::-webkit-scrollbar-track {
               background: transparent;
             }
-
             .custom-scrollbar::-webkit-scrollbar-thumb {
-              background-color: #444;
+              background-color: #ccc;
               border-radius: 4px;
             }
-
             .custom-scrollbar {
               scrollbar-width: thin;
-              scrollbar-color: #444 transparent;
+              scrollbar-color: #ccc transparent;
             }
-
-            /* Hide scrollbar when not hovering */
             .custom-scrollbar:not(:hover)::-webkit-scrollbar-thumb {
               background: transparent;
             }
-
             .custom-scrollbar:not(:hover) {
               scrollbar-color: transparent transparent;
             }
+            @media (prefers-color-scheme: dark) {
+              .custom-scrollbar::-webkit-scrollbar-thumb {
+                background-color: #444;
+              }
+              .custom-scrollbar {
+                scrollbar-color: #444 transparent;
+              }
+            }
           `}</style>
 
-          <div className="custom-scrollbar overflow-y-auto pr-1">
-            {searchQuery && searchResults.length > 0 && (
-              <div className="mb-4">
-                <p className="text-neutral-400 text-sm mb-2">Search Results</p>
-                {searchResults.map((item, index) => (
-                  <button
-                    key={`${item.title}-${index}`}
-                    className="w-full text-left p-2 hover:bg-neutral-800 rounded-lg group"
-                    onClick={() => item.href && handleNavigate(item.href)}
-                    disabled={!item.href}
-                  >
-                    <span
-                      className={cn(
-                        "transition-all duration-200",
-                        item.href
-                          ? "group-hover:border-b group-hover:border-white pb-px"
-                          : ""
-                      )}
-                    >
-                      {item.title}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {!searchQuery && (
-              <>
-                <div className="mb-4">
-                  <p className="text-neutral-400 text-sm">Follow for updates</p>
-                  <button
-                    className="w-full text-left p-2 hover:bg-neutral-800 rounded-lg group"
-                    onClick={() =>
-                      window.open("https://x.com/Ahdeetai", "_blank")
-                    }
-                  >
-                    <span className="group-hover:border-b group-hover:border-white pb-px transition-all duration-200">
-                      Twitter @Ahdeetai
-                    </span>
-                  </button>
-                </div>
-
-                {renderNavigationItems()}
-              </>
-            )}
+          <div className="overflow-y-auto pr-1">
+            <ModalContent
+              hasSearchQuery={hasSearchQuery}
+              hasSearchResults={hasSearchResults}
+              searchResults={searchResults}
+              onNavigate={handleNavigate}
+            />
           </div>
         </div>
       </motion.div>
     </div>
   );
-}
+});
+
+SearchModalComponent.displayName = "SearchModalComponent";
