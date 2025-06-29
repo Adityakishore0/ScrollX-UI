@@ -9,7 +9,7 @@ import ThemeSwitchIcon from "@/components/demos/themeswitchicon";
 
 const navigationItems = [
   { href: "/docs", label: "Docs" },
-  { href: "/docs/components/accordion", label: "Components" },
+  { href: "/docs/components", label: "Components" },
   { href: "/templates", label: "Templates" },
   { href: "/showcase", label: "Showcase" },
 ];
