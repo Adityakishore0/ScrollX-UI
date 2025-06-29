@@ -1,0 +1,101 @@
+import navigation from "@/constants/navItems";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Link from "next/link";
+import Image from "next/image";
+import { compileMDX } from "next-mdx-remote/rsc";
+import fs from "fs";
+import path from "path";
+
+interface DocFrontmatter {
+  title: string;
+  description: string;
+}
+
+async function getAllComponentMeta() {
+  const dir = path.join(process.cwd(), "src/content/docs/components");
+  const files = fs.readdirSync(dir).filter((file) => file.endsWith(".mdx"));
+
+  const metadata = await Promise.all(
+    files.map(async (file) => {
+      const filePath = path.join(dir, file);
+      const source = await fs.promises.readFile(filePath, "utf8");
+
+      const { frontmatter } = await compileMDX<DocFrontmatter>({
+        source,
+        options: { parseFrontmatter: true },
+      });
+
+      const slug = file.replace(/\.mdx$/, "");
+
+      return {
+        href: `/docs/components/${slug}`,
+        title: frontmatter.title,
+        description: frontmatter.description || "",
+      };
+    })
+  );
+
+  return metadata;
+}
+
+export default async function ComponentsPage() {
+  const componentsSection = navigation.find(
+    (item) => item.title === "Components"
+  );
+  const baseComponents = componentsSection?.children || [];
+  const metadata = await getAllComponentMeta();
+
+  const enrichedComponents = baseComponents.map((component) => {
+    const meta = metadata.find((m) =>
+      m.href.endsWith(component.href.split("/").pop() || "")
+    );
+    return {
+      ...component,
+      description: meta?.description || "",
+    };
+  });
+
+  return (
+    <section className="flex-1 px-4 py-16 md:py-10 lg:py-10 max-w-7xl mx-auto">
+      <div className="mb-12 max-w-3xl">
+        <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-5xl">
+          Components
+        </h1>
+        <p className="mt-4 text-base text-zinc-600 dark:text-zinc-400">
+          Here you can explore the available components in our library. Ongoing
+          development will bring more soon.
+        </p>
+      </div>
+
+      <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        {enrichedComponents.map((component) => {
+          const imageUrl = `https://scrollx-ui.vercel.app/api/og?title=${encodeURIComponent(
+            component.title
+          )}&description=${encodeURIComponent(
+            component.description
+          )}&logo=https://scrollx-ui.vercel.app/favicon.ico`;
+
+          return (
+            <Link
+              key={component.href}
+              href={component.href}
+              className="group block rounded-3xl overflow-hidden shadow-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 transition-all hover:shadow-xl hover:scale-[1.015]"
+            >
+              <AspectRatio ratio={1200 / 628}>
+                <Image
+                  src={imageUrl}
+                  alt={component.title}
+                  fill
+                  className="object-cover not-prose rounded-t-3xl transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+              </AspectRatio>
+              <h3 className="text-lg font-semibold leading-none px-4  text-zinc-900 dark:text-white">
+                {component.title}
+              </h3>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
