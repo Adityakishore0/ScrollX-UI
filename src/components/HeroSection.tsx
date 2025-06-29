@@ -191,7 +191,7 @@ export function HeroSection() {
                 size="lg"
                 className="w-max bg-gradient-to-r from-blue-500 to-purple-500 hover:to-pink-500 text-white"
               >
-                <Link href="/docs/components/accordion">Browse Components</Link>
+                <Link href="/docs/components">Browse Components</Link>
               </Button>
               <Button
                 variant="outline"
