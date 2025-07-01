@@ -28,13 +28,13 @@ export function NavSheet({
   const navigationElements = useMemo(() => {
     return navigationItems.map((item) => {
       const isActive =
-        (item.href === "/docs/components/accordion" &&
+        (item.href === "/docs/components" &&
           pathname.startsWith("/docs/components")) ||
         (item.href === "/docs" &&
           pathname.startsWith("/docs") &&
           !pathname.startsWith("/docs/components")) ||
         (item.href !== "/docs" &&
-          item.href !== "/docs/components/accordion" &&
+          item.href !== "/docs/components" &&
           pathname === item.href);
 
       return (
