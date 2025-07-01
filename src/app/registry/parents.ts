@@ -8,6 +8,7 @@ export const parentComponents = [
   "aspect-ratio",
   "avatar",
   "backgroundmeteors",
+  "background-paths",
   "badge",
   "button",
   "card",
