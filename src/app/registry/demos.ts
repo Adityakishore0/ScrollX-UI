@@ -8,6 +8,7 @@ export const demoComponents = [
   "aspectratio-demo",
   "avatar-demo",
   "backgroundmeteors-demo",
+  "backgroundpaths-demo",
   "badge-demo",
   "badge-destructive",
   "badge-secondary",

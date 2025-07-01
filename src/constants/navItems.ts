@@ -51,6 +51,17 @@ const navigation: NavItem[] = [
         title: "Background Meteors",
         href: "/docs/components/backgroundmeteors",
       },
+      {
+        title: "Background Paths",
+        href: "/docs/components/background-paths",
+        category: "new",
+      },
+      {
+        title: "Badge Destructive",
+        href: "/docs/components/badge-destructive",
+      },
+      { title: "Badge Secondary", href: "/docs/components/badge-secondary" },
+      { title: "Badge Outline", href: "/docs/components/badge-outline" },
       { title: "Badge", href: "/docs/components/badge" },
       { title: "Button", href: "/docs/components/button" },
       { title: "Card", href: "/docs/components/card" },

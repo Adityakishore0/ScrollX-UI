@@ -1,0 +1,83 @@
+---
+title: Background Paths
+description: A set of SVG paths that animate as if being drawn. Great for tech hero backgrounds.
+---
+
+<ComponentPreview
+  name="backgroundpaths-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="background-paths" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>background-paths.tsx</code>
+</p>
+<ComponentSource name="background-paths" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { BackgroundPaths } from "@/components/ui/background-paths";
+```
+
+```tsx
+<BackgroundPaths
+  className="h-[32rem]"
+  svgOptions={{ duration: 8 }}
+>
+  <h1 className="text-white text-4xl font-bold text-center">Welcome</h1>
+</BackgroundPaths>
+```
+
+
+
+## API Reference
+
+### BackgroundPaths
+
+The `BackgroundPaths` component renders a animated SVG paths ideal for tech-style hero sections. Adapts seamlessly to light and dark themes.
+
+#### Props
+
+* **`className`** (`string`) – Optional Tailwind or custom classes to style the outer container. Defaults to a full-screen responsive container with white/dark background.
+* **`children`** (`React.ReactNode`) – Optional React elements rendered *above* the animated background, usually for overlay content such as text, buttons, or call-to-actions.
+* **`svgOptions`** (`object`) – Optional animation customization for the SVG paths.
+
+  * **`duration`** (`number`) – Controls the total duration (in seconds) of the SVG path animations. Defaults to `6`.
+
