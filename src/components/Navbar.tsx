@@ -52,7 +52,7 @@ export function Navbar({ className }: NavbarProps) {
 
   const routes = [
     {
-      href: "/docs/components/accordion",
+      href: "/docs/components",
       label: "Components",
       active: pathname === "/docs/components/accordion",
     },
