@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import Sidebar from "@/components/Sidebar";
 import OnThisPage from "@/components/OnThisPage";
 import { Navbar } from "@/components/Navbar";
+import { SeparatorPro } from "@/components/ui/seperatorpro";
+import { DocsFooter } from "@/components/docsfooter";
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
   return (
@@ -18,6 +20,8 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
             <div className="flex-1 px-4 py-8 lg:pr-64">
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 {children}
+                <SeparatorPro variant="wave" className="my-4" />
+                <DocsFooter />
               </div>
             </div>
 
