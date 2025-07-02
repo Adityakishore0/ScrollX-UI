@@ -94,22 +94,31 @@ The `AnimatedShowcase` is the root container for displaying a collection of anim
 
 ### Props
 
-#### `components` (required)
-- **Type:** `Array<{ name: string; component: React.ComponentType }>`
-- An array of components to be displayed in the showcase.
-- Each object must contain a unique `name` and a valid React `component`.
-
-#### `title`
-- **Type:** `string`
-- **Default:** `"ScrollX-UI"`
-- Optional title text displayed at the top of the showcase.
-
-#### `subtitle`
-- **Type:** `string`
-- **Default:** `"An open source collection of animated, interactive components"`
-- Optional subtitle displayed below the title.
-
-#### `description`
-- **Type:** `string`
-- **Default:** _A predefined description string_
-- Optional detailed description of the animated component collection.
+<PropsTable
+  rows={[
+    {
+      prop: "components",
+      type: "Array<{ name: string; component: React.ComponentType }>",
+      default: "required",
+      description: "An array of components to be displayed in the showcase."
+    },
+    {
+      prop: "title",
+      type: "string",
+      default: `"ScrollX-UI"`,
+      description: "Optional title text displayed at the top of the showcase."
+    },
+    {
+      prop: "subtitle",
+      type: "string",
+      default: `"An open source collection"`,
+      description: "Optional subtitle displayed below the title."
+    },
+    {
+      prop: "description",
+      type: "string",
+      default: "Predefined description string",
+      description: "Optional detailed description of the animated component collection."
+    }
+  ]}
+/>

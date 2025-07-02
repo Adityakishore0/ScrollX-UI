@@ -68,25 +68,33 @@ const demoTopics: Topic[] = [
 
 `Radial Flow` - displays connected nodes in a radial layout. Configure topics, colors, and center badge via props.
 
-### Props
+## Props
 
-#### `topics`
-
-Required An array of topic `objects` that define each node in the visualization.
-
-Each object in the array must have:
-
-- `id`: `string` – Unique identifier for the topic
-- `name`: `string` – Display text for the node
-- `position`: `{ x: number, y: number }` – Position as percentages
-- `color`: `string` – Hex code for the node and connection color
-- `highlighted`: `boolean` – Whether the node is in an active (highlighted) state
-
-`badgeName`- Required
-
-- `string` – The label text displayed at the center of the badge (central node).
-
-`centralDotColor`- Optional
-
-- `string` – Hex color code for the center point of the badge.
-- **Default:** `#FFFFFF`
+<PropsTable
+  rows={[
+    {
+      prop: "topics",
+      type: `Array<{
+  id: string;
+  name: string;
+  position: { x: number; y: number };
+  color: string;
+  highlighted: boolean;
+}>`,
+      default: "required",
+      description: "Array of topic nodes with ID, label, position, color, and highlight state."
+    },
+    {
+      prop: "badgeName",
+      type: "string",
+      default: "required",
+      description: "Label displayed in the center badge."
+    },
+    {
+      prop: "centralDotColor",
+      type: "string",
+      default: `"#FFFFFF"`,
+      description: "Color of the center badge dot."
+    }
+  ]}
+/>

@@ -111,18 +111,33 @@ import LustreText from "@/components/ui/lustretext";
 
 A lustrous or shiny text component that gives a glowing, reflective appearance using animated gradients.
 
-#### Props
+## Props
 
-- `text` – **(string, required)**  
-  The text content to be displayed with the lustrous shine effect.
-
-- `disabled` – **(boolean, optional)**  
-  Disables the shine animation if set to `true`.  
-  **Default:** `false`
-
-- `speed` – **(number, optional)**  
-  Speed of the shine animation in seconds.  
-  **Default:** `5`
-
-- `className` – **(string, optional)**  
-  Additional Tailwind or custom class names to apply.
+<PropsTable
+  rows={[
+    {
+      prop: "text",
+      type: "string",
+      default: "required",
+      description: "The content to display with shine animation."
+    },
+    {
+      prop: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disables the shine effect if true."
+    },
+    {
+      prop: "speed",
+      type: "number",
+      default: "5",
+      description: "Animation speed in seconds."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional class names for styling."
+    }
+  ]}
+/>

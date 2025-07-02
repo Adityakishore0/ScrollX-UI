@@ -98,10 +98,42 @@ import { Particles } from "@/components/ui/particles";
 
 Interactive particle visualization with mouse-responsive movement
 
-- **`color`** ( `string` , default: `#ff3366`) - Base particle color in HEX format
-- **`particleCount`** ( `number` , default: `10000`) - Total rendered particles
-- **`particleSize`** ( `number` , default: `35`) - Individual particle size
-- **`animate`** ( `boolean` , default: `true`) - Toggle color transitions
-- **`className`** ( `string` , default: `''`) - Container CSS classes
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "color",
+      type: "string",
+      default: `"#ff3366"`,
+      description: "Base color of the particles (HEX)."
+    },
+    {
+      prop: "particleCount",
+      type: "number",
+      default: "10000",
+      description: "Total number of particles rendered."
+    },
+    {
+      prop: "particleSize",
+      type: "number",
+      default: "35",
+      description: "Size of each individual particle."
+    },
+    {
+      prop: "animate",
+      type: "boolean",
+      default: "true",
+      description: "Whether particles animate color transitions."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: `""`,
+      description: "Optional class for the outer container."
+    }
+  ]}
+/>
+
 
 `Type Notes` : The included type declaration file is only necessary if using Stats.js performance monitoring. For basic particle functionality without performance stats, you can omit the type file.

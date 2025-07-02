@@ -84,45 +84,100 @@ import { InteractiveInput } from "@/components/ui/interactive-input";
 
 `InteractiveInput` is a customizable input component with animation, shimmer, and visual styling options.
 
-- **`variant`** – Controls the visual style of the input.  
-  **Options:** `default`, `outline`, `ghost`, `glow`.
+## Props
 
-- **`inputSize`** – Adjusts the input size.  
-  **Options:** `sm`, `default`, `lg`, `icon`.
+<PropsTable
+  rows={[
+    {
+      prop: "variant",
+      type: `"default" | "outline" | "ghost" | "glow"`,
+      default: `"default"`,
+      description: "Visual style of the input."
+    },
+    {
+      prop: "inputSize",
+      type: `"sm" | "default" | "lg" | "icon"`,
+      default: `"default"`,
+      description: "Adjusts the size of the input."
+    },
+    {
+      prop: "rounded",
+      type: `"none" | "default" | "full" | "custom"`,
+      default: `"default"`,
+      description: "Border radius style."
+    },
+    {
+      prop: "borderRadius",
+      type: "string",
+      default: `"—"`,
+      description: "Custom border radius (used when rounded is 'custom')."
+    },
+    {
+      prop: "glow",
+      type: "boolean",
+      default: "false",
+      description: "Enables glowing animation around the input."
+    },
+    {
+      prop: "textEffect",
+      type: `"normal" | "spread"`,
+      default: `"normal"`,
+      description: "Applies animated text styling."
+    },
+    {
+      prop: "uppercase",
+      type: "boolean",
+      default: "false",
+      description: "Transforms text to uppercase."
+    },
+    {
+      prop: "background",
+      type: "string",
+      default: `"—"`,
+      description: "Sets background color or gradient."
+    },
+    {
+      prop: "shimmerColor",
+      type: "string",
+      default: `"—"`,
+      description: "Shimmer color value (e.g., '#39FF14')."
+    },
+    {
+      prop: "shimmerSize",
+      type: "string",
+      default: `"—"`,
+      description: "Size or thickness of shimmer (e.g., '0.15em')."
+    },
+    {
+      prop: "shimmerDuration",
+      type: "string",
+      default: `"—"`,
+      description: "Duration of shimmer animation (e.g., '3s')."
+    },
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "Renders input as a child using Slot."
+    },
+    {
+      prop: "hideAnimations",
+      type: "boolean",
+      default: "false",
+      description: "Disables all input animations."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: `"undefined"`,
+      description: "Additional classes to style the input."
+    },
+    {
+      prop: "...props",
+      type: "HTMLInputElement attributes",
+      default: "—",
+      description: "Inherits all standard input element props."
+    }
+  ]}
+/>
 
-- **`glow`** – Enables glowing animation around the input.  
-  **Type:** `boolean`.
-
-- **`textEffect`** – Applies a text animation or effect.  
-  **Options:** `normal`, `spread`.
-
-- **`uppercase`** – Renders input text in uppercase.  
-  **Type:** `boolean`.
-
-- **`rounded`** – Controls border radius style.  
-  **Options:** `none`, `default`, `full`, `custom`.
-
-- **`borderRadius`** – Custom border radius (applies if `rounded="custom"`).  
-  **Type:** `string` (e.g. `"100px"`).
-
-- **`background`** – Sets custom background color or gradient.  
-  **Type:** `string` (e.g. `"rgba(0,0,0,1)"` or `"linear-gradient(...)"`).
-
-- **`shimmerColor`** – Defines the color used in shimmer effect.  
-  **Type:** `string` (e.g. `"#39FF14"` for neon green).
-
-- **`shimmerSize`** – Sets the size/thickness of the shimmer.  
-  **Type:** `string` (e.g. `"0.15em"`).
-
-- **`shimmerDuration`** – Duration of shimmer animation.  
-  **Type:** `string` (e.g. `"3s"`).
-
-- **`asChild`** – Renders the input as a child component using `Slot`.  
-  **Type:** `boolean`.
-
-- **`hideAnimations`** – Disables all visual animations when `true`.  
-  **Type:** `boolean`.
-
-- **`className`** – Additional custom class names.
-
-- **`...props`** – Inherits all standard HTML input attributes and event handlers.

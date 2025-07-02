@@ -73,6 +73,28 @@ import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 The root component that creates the spotlight effect card.
 
-- `spotlightColor` - Optional RGB color values for the spotlight effect (default: "14, 165, 233")
-- `className` - Optional class name for custom styling
-- `children` - Optional custom content 
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "spotlightColor",
+      type: "string",
+      default: `"14, 165, 233"`,
+      description: "RGB values for spotlight glow."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional class for custom styling."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "optional",
+      description: "Content rendered inside the spotlight container."
+    }
+  ]}
+/>
+

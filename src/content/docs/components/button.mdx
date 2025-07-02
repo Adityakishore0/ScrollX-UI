@@ -76,14 +76,40 @@ import { Button } from "@/components/ui/button";
 
 `Button` is the main component used to render a customizable button.
 
-- `variant` – Controls the visual style of the button.  
-  Options include: `default`, `destructive`, `outline`, `secondary`, `ghost`, `link`, `success`, `warning`, `info`, `dark`, `light`, `gradient`, `glass`.
+## Props
 
-- `size` – Adjusts the button size.  
-  Options include: `sm`, `default`, `lg`, `icon`.
+<PropsTable
+  rows={[
+    {
+      prop: "variant",
+      type: `"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "success" | "warning" | "info" | "dark" | "light" | "gradient" | "glass"`,
+      default: `"default"`,
+      description: "Controls the visual style of the button."
+    },
+    {
+      prop: "size",
+      type: `"sm" | "default" | "lg" | "icon"`,
+      default: `"default"`,
+      description: "Adjusts the button size."
+    },
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "Renders the button as its child using Slot."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Additional custom class names."
+    },
+    {
+      prop: "...props",
+      type: "HTMLButtonElement attributes",
+      default: "—",
+      description: "Inherits all standard button attributes and events."
+    }
+  ]}
+/>
 
-- `asChild` – When set to `true`, renders the button as a child component using `Slot`. Useful for customizing the rendered element.
-
-- `className` – Additional custom class names to apply to the button.
-
-- `...props` – Inherits all standard HTML button attributes and event handlers.

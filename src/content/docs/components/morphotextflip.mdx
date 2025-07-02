@@ -94,9 +94,49 @@ import { MorphoTextFlip } from "@/components/ui/morphotextflip";
 
 ### MorphoTextFlip
 
-- `words` (string[]) – Array of words to animate through.
-- `interval` (number) – Time in ms between word changes.
-- `animationType` ('slideUp', 'fadeScale', 'flipY', 'slideRotate', 'elastic') – Animation style for transitions.
-- `animationDuration` (number) – Duration of each animation in ms.
-- `className, textClassName` (string) – Custom classes for container and text.
+The `MorphoTextFlip` component renders animated text component that flips between words with smooth transitions.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "words",
+      type: "string[]",
+      default: "required",
+      description: "Words to animate through."
+    },
+    {
+      prop: "interval",
+      type: "number",
+      default: "—",
+      description: "Time between word changes (ms)."
+    },
+    {
+      prop: "animationType",
+      type: `"slideUp" | "fadeScale" | "flipY" | "slideRotate" | "elastic"`,
+      default: "—",
+      description: "Transition animation style."
+    },
+    {
+      prop: "animationDuration",
+      type: "number",
+      default: "—",
+      description: "Duration of each animation (ms)."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Class for the outer container."
+    },
+    {
+      prop: "textClassName",
+      type: "string",
+      default: "—",
+      description: "Class for the animated text element."
+    }
+  ]}
+/>
+
 

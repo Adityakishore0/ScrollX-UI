@@ -62,5 +62,19 @@ The `WhiteStripes` component provides a smooth, animated striped background idea
 
 #### Props
 
-- **`className`** (`string`) – Optional additional Tailwind or custom classes to modify the container’s styling.
-- **`children`** (`React.ReactNode`) – Optional content to render centered above the animated background (like text or call-to-actions).
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional class for custom styling."
+    },
+    {
+      prop: "children",
+      type: "React.ReactNode",
+      default: "optional",
+      description: "Content displayed over the animated background."
+    }
+  ]}
+/>

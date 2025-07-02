@@ -57,12 +57,21 @@ import ParallaxCards from "@/components/ui/parallaxcards";
 
 A vertical sticky-scroll component that displays stacked cards with parallax behavior.
 
-#### Props
+## Props
 
-- `cards?: { lightBg: string; darkBg: string; content: React.ReactNode; }[]`  
-  Array of card objects with light/dark background classes and JSX content.
-
-- `height?: number | string`  
-  Sets the container height. Defaults to `"100vh"`.
-
- - Each card is sticky (`70vh` tall), scrolls into view one by one, and supports dark/light modes via Tailwind classes.
+<PropsTable
+  rows={[
+    {
+      prop: "cards",
+      type: `{ lightBg: string; darkBg: string; content: React.ReactNode; }[]`,
+      default: "[]",
+      description: "Array of cards with light/dark background and content."
+    },
+    {
+      prop: "height",
+      type: "number | string",
+      default: `"100vh"`,
+      description: "Height of the scroll container. Each card is sticky (70vh tall)."
+    }
+  ]}
+/>

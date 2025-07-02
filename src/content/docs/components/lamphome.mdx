@@ -103,33 +103,31 @@ export default function MyPage() {
 
 The root container for the `Lamphome` component. A stylish, animated header component with dark/light mode toggle functionality.
 
-### LamphomeProps
+## Props
 
-Props that can be passed to the `Lamphome` component.
+<PropsTable
+  rows={[
+    {
+      prop: "title",
+      type: "string",
+      default: `"SCROLLX UI"`,
+      description: "Main heading displayed in the component."
+    },
+    {
+      prop: "description",
+      type: "string",
+      default: `"An open-source collection."`,
+      description: "Descriptive text below the title."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "optional",
+      description: "Custom content rendered in the body area."
+    }
+  ]}
+/>
 
-- `title` - The main heading displayed in the component (default: "SCROLLX UI").
-- `description` - The descriptive text displayed below the title (default: "An open-source collection of animated, interactive & fully customizable components for building stunning, memorable user interfaces.").
-- `children` - Optional content to be rendered in the component's body area.
-
-## Features
-
-### Theme Toggle
-
-The `Lamphome` component includes a unique theme toggle mechanism:
-
-- A pull tab on the right side of the navigation bar that can be clicked to toggle between light and dark modes
-- Automatically detects and syncs with the system theme preference
-- Smooth animations transition between theme states
-- Glowing cyan line effect in dark mode
-
-### Responsive Design
-
-The component is fully responsive with:
-
-- Mobile-optimized navigation
-- Adaptive search bar (hidden on mobile, expanded on desktop)
-- Fluid typography scaling
-- Properly spaced elements on all screen sizes
 
 
 

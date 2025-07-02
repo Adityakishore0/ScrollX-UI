@@ -86,45 +86,100 @@ import { AnimatedButton } from "@/components/ui/animated-button";
 
 `AnimatedButton` is a customizable button component with animation, shimmer, and visual styling options.
 
-- **`variant`** – Controls the visual style of the button.  
-  **Options:** `default`, `destructive`, `outline`, `secondary`, `ghost`, `link`, `success`, `warning`, `info`, `dark`, `light`, `gradient`, `glass`.
+## Props
 
-- **`size`** – Adjusts the button size.  
-  **Options:** `sm`, `default`, `lg`, `icon`.
+<PropsTable
+  rows={[
+    {
+      prop: "variant",
+      type: `"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "success" | "warning" | "info" | "dark" | "light" | "gradient" | "glass"`,
+      default: `"default"`,
+      description: "Controls the visual style of the button."
+    },
+    {
+      prop: "size",
+      type: `"sm" | "default" | "lg" | "icon"`,
+      default: `"default"`,
+      description: "Adjusts the button size."
+    },
+    {
+      prop: "glow",
+      type: "boolean",
+      default: "false",
+      description: "Enables glowing animation around the button."
+    },
+    {
+      prop: "textEffect",
+      type: `"normal" | "shimmer" | "gradient" | "glitch" | string`,
+      default: `"normal"`,
+      description: "Applies a text animation or effect."
+    },
+    {
+      prop: "uppercase",
+      type: "boolean",
+      default: "false",
+      description: "Renders button text in uppercase."
+    },
+    {
+      prop: "rounded",
+      type: `"none" | "sm" | "md" | "lg" | "xl" | "full" | "custom"`,
+      default: `"md"`,
+      description: "Controls border radius style."
+    },
+    {
+      prop: "borderRadius",
+      type: "string",
+      default: "—",
+      description: "Custom border radius. Applies only when rounded = 'custom'."
+    },
+    {
+      prop: "background",
+      type: "string",
+      default: "—",
+      description: "Custom background color or gradient."
+    },
+    {
+      prop: "shimmerColor",
+      type: "string",
+      default: "—",
+      description: "Color used in shimmer effect (e.g., '#39FF14')."
+    },
+    {
+      prop: "shimmerSize",
+      type: "string",
+      default: `"0.15em"`,
+      description: "Size/thickness of the shimmer effect."
+    },
+    {
+      prop: "shimmerDuration",
+      type: "string",
+      default: `"3s"`,
+      description: "Duration of shimmer animation."
+    },
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "Render the button as a child component using Slot."
+    },
+    {
+      prop: "hideAnimations",
+      type: "boolean",
+      default: "false",
+      description: "Disables all visual animations when true."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "undefined",
+      description: "Additional custom class names for styling."
+    },
+    {
+      prop: "...props",
+      type: "HTMLButtonElement attributes",
+      default: "—",
+      description: "All standard HTML button attributes and events."
+    }
+  ]}
+/>
 
-- **`glow`** – Enables glowing animation around the button.  
-  **Type:** `boolean`.
-
-- **`textEffect`** – Applies a text animation or effect.  
-  **Options:** `normal`, `shimmer`, `gradient`, `glitch`, etc.
-
-- **`uppercase`** – Renders button text in uppercase.  
-  **Type:** `boolean`.
-
-- **`rounded`** – Controls border radius style.  
-  **Options:** `none`, `sm`, `md`, `lg`, `xl`, `full`, `custom`.
-
-- **`borderRadius`** – Custom border radius (applies if `rounded="custom"`).  
-  **Type:** `string` (e.g. `"100px"`).
-
-- **`background`** – Sets custom background color or gradient.  
-  **Type:** `string` (e.g. `"rgba(0,0,0,1)"` or `"linear-gradient(...)"`).
-
-- **`shimmerColor`** – Defines the color used in shimmer effect.  
-  **Type:** `string` (e.g. `"#39FF14"` for neon green).
-
-- **`shimmerSize`** – Sets the size/thickness of the shimmer.  
-  **Type:** `string` (e.g. `"0.15em"`).
-
-- **`shimmerDuration`** – Duration of shimmer animation.  
-  **Type:** `string` (e.g. `"3s"`).
-
-- **`asChild`** – Renders the button as a child component using `Slot`.  
-  **Type:** `boolean`.
-
-- **`hideAnimations`** – Disables all visual animations when `true`.  
-  **Type:** `boolean`.
-
-- **`className`** – Additional custom class names.
-
-- **`...props`** – Inherits all standard HTML button attributes and event handlers.

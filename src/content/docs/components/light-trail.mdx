@@ -94,11 +94,49 @@ const images = [
 ## API Reference  
 
 ### LightTrail  
+
 The `LightTrail` is a root component that creates a scroll-driven image showcase with animated transitions.
 
-`className` - Optional class name for custom styling (default: "")  
-`title` - Optional title text displayed at the top of the component (default: "Mountains")  
-`description` - Optional description text displayed below the title (default: "Mountains are large...")  
-`images` - Optional array of image objects to display while scrolling (default: Array of 3 mountain images)  
-`containerHeight` - Optional height of the viewport container (default: "100%")  
-`scrollHeight` - Optional total scrollable height of the component (default: "200vh")
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: `""`,
+      description: "Optional class for custom styling."
+    },
+    {
+      prop: "title",
+      type: "string",
+      default: `"Mountains"`,
+      description: "Text displayed at the top of the component."
+    },
+    {
+      prop: "description",
+      type: "string",
+      default: `"Mountains are large..."`,
+      description: "Text displayed below the title."
+    },
+    {
+      prop: "images",
+      type: "Array<{ src: string; alt?: string }>",
+      default: "3 default mountain images",
+      description: "Image objects displayed during scroll."
+    },
+    {
+      prop: "containerHeight",
+      type: "string",
+      default: `"100%"`,
+      description: "Height of the fixed scroll container."
+    },
+    {
+      prop: "scrollHeight",
+      type: "string",
+      default: `"200vh"`,
+      description: "Total scrollable height of the page section."
+    }
+  ]}
+/>
+

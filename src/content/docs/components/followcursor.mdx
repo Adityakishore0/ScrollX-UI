@@ -67,18 +67,46 @@ import Followcursor from "@/components/ui/followcursor";
 
 The `FollowCursor` component creates beautiful, fluid lines that follow the user's cursor with smooth animation. It uses **WebGL** for high-performance rendering and provides a visually engaging interactive element.
 
-- `className` – Optional CSS class name to apply to the container `div`.
+## Props
 
-- `style` – Optional inline styles to apply to the container `div`.
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional CSS class for the outer container."
+    },
+    {
+      prop: "style",
+      type: "React.CSSProperties",
+      default: "—",
+      description: "Inline styles for the container."
+    },
+    {
+      prop: "colors",
+      type: "string[]",
+      default: "10 preset vibrant colors",
+      description: "Hex color strings for the lines."
+    },
+    {
+      prop: "thickness",
+      type: "{ min: number; max: number }",
+      default: "{ min: 30, max: 100 }",
+      description: "Line thickness range."
+    },
+    {
+      prop: "count",
+      type: "{ min: number; max: number }",
+      default: "{ min: 15, max: 25 }",
+      description: "Range of points per line."
+    },
+    {
+      prop: "bgColor",
+      type: "string",
+      default: `"rgba(26, 26, 38, 1)"`,
+      description: "Background color of the canvas."
+    }
+  ]}
+/>
 
-- `colors` – An array of color strings in hex format to use for the lines.  
-  **Default**: A preset array of 10 vibrant colors.
-
-- `thickness` – An object defining the range for the thickness of the lines.  
-  **Default**: `{ min: 30, max: 100 }`
-
-- `count` – An object defining the range for the number of points per line.  
-  **Default**: `{ min: 15, max: 25 }`
-
-- `bgColor` – Background color of the canvas.  
-  **Default**: `"rgba(26, 26, 38, 1)"`

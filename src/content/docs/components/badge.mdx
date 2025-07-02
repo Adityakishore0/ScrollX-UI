@@ -131,13 +131,41 @@ import { Badge } from "@/components/ui/badge";
 
 The `Badge` component creates a customizable label with variant styling and optional shiny animation effect.
 
-`variant` – Controls the visual style of the badge. Options include: `default`, `secondary`, `destructive`, and `outline`.
+## Props
 
-`shiny` – Optional boolean to enable animated shine effect.
+<PropsTable
+  rows={[
+    {
+      prop: "variant",
+      type: `"default" | "secondary" | "destructive" | "outline"`,
+      default: `"default"`,
+      description: "Controls the visual style of the badge."
+    },
+    {
+      prop: "shiny",
+      type: "boolean",
+      default: "false",
+      description: "Enables an animated shine effect."
+    },
+    {
+      prop: "shinySpeed",
+      type: "number",
+      default: "—",
+      description: "Controls shine animation speed in seconds."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom class names to style the badge."
+    },
+    {
+      prop: "...props",
+      type: "HTMLDivElement attributes",
+      default: "—",
+      description: "Supports all standard div props and events."
+    }
+  ]}
+/>
 
-`shinySpeed` – Optional number that controls animation speed in seconds.
-
-`className` – Optional custom class names to apply to the badge.
-
-`...props` – Inherits all standard HTML `div` attributes and event handlers.
 

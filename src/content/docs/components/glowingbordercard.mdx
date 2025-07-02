@@ -69,9 +69,33 @@ import GlowingBorderCard from "@/components/ui/glowingbordercard";
 
 The `GlowingBorderCard` component is used to create a customizable card with a glowing border effect that changes colors based on light and dark modes. The card can display a title and description, and it also supports animation and hover effects.
 
-#### Props
+## Props
 
-- `className` - Optional class name for custom styling
-- `children` - Optional custom content 
-- **`fromColor`** ( `string` ) – The starting color of the gradient in light mode. Accepts Tailwind CSS color names (e.g., `red-500` , `green-500` , etc.).
-- **`toColor`** ( `string` ) – The ending color of the gradient in light mode. Accepts Tailwind CSS color names (e.g., `blue-500` , `teal-500` , etc.).
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional class name for custom styling."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Optional content to render inside."
+    },
+    {
+      prop: "fromColor",
+      type: "string",
+      default: "required",
+      description: "Starting gradient color (e.g., 'red-500')."
+    },
+    {
+      prop: "toColor",
+      type: "string",
+      default: "required",
+      description: "Ending gradient color (e.g., 'blue-500')."
+    }
+  ]}
+/>

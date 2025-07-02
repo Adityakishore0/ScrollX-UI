@@ -104,23 +104,58 @@ import {
 
 `Accordion` is the root component.
 
-- `type` - The type of accordion. Can be `single` or `multiple`.
-- `defaultValue` - The default open item value(s).
-- `value` - The controlled open item value(s).
-- `onValueChange` - Event handler called when the value changes.
-- `collapsible` - When `type` is `single`, allows closing content when clicking the trigger.
+## Props
 
-### AccordionItem
+<PropsTable
+  rows={[
+    {
+      prop: "type",
+      type: `"single" | "multiple"`,
+      default: `"single"`,
+      description: "Accordion type; single allows only one item open."
+    },
+    {
+      prop: "defaultValue",
+      type: "string | string[]",
+      default: "—",
+      description: "Initial open item(s)."
+    },
+    {
+      prop: "value",
+      type: "string | string[]",
+      default: "—",
+      description: "Controlled open item(s)."
+    },
+    {
+      prop: "onValueChange",
+      type: "(value: string | string[]) => void",
+      default: "—",
+      description: "Callback triggered on value change."
+    },
+    {
+      prop: "collapsible",
+      type: "boolean",
+      default: "false",
+      description: "If true, allows closing the open item in 'single' mode."
+    },
+    {
+      prop: "value (AccordionItem)",
+      type: "string",
+      default: "required",
+      description: "Unique key for the accordion item."
+    },
+    {
+      prop: "disabled (AccordionItem)",
+      type: "boolean",
+      default: "false",
+      description: "Disables the accordion item."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Used in: Accordion, Trigger, Content — represents nested elements."
+    }
+  ]}
+/>
 
-`AccordionItem` contains a single accordion item.
-
-- `value` - A unique value for the item.
-- `disabled` - Whether the item is disabled or not.
-
-### AccordionTrigger
-
-`AccordionTrigger` is the trigger button that toggles the accordion item.
-
-### AccordionContent
-
-`AccordionContent` is the content that appears when the accordion item is expanded.
