@@ -73,11 +73,52 @@ import Typeanimation from '@/components/ui/typeanimation';
 
 Displays an animated typing effect with gradient text.
 
-* `words` – Array of words to animate
-* `className` – Optional class name for custom styling
-* `typingSpeed` – Typing speed in ms or `'slow' | 'normal' | 'fast'` (default: `50`)
-* `deletingSpeed` – Deleting speed in ms or `'slow' | 'normal' | 'fast'` (default: `50`)
-* `pauseDuration` – Delay between each word in ms (default: `1000`)
-* `gradientFrom` – Tailwind color suffix for gradient start (default: `'blue-500'`)
-* `gradientTo` – Tailwind color suffix for gradient end (default: `'purple-600'`)
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "words",
+      type: "string[]",
+      default: "required",
+      description: "Array of words to animate through the typing effect"
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "undefined",
+      description: "Optional class name for custom styling"
+    },
+    {
+      prop: "typingSpeed",
+      type: "number | 'slow' | 'normal' | 'fast'",
+      default: "50",
+      description: "Typing speed in milliseconds or preset speed values"
+    },
+    {
+      prop: "deletingSpeed", 
+      type: "number | 'slow' | 'normal' | 'fast'",
+      default: "50",
+      description: "Deleting speed in milliseconds or preset speed values"
+    },
+    {
+      prop: "pauseDuration",
+      type: "number",
+      default: "1000",
+      description: "Delay between each word transition in milliseconds"
+    },
+    {
+      prop: "gradientFrom",
+      type: "string",
+      default: "'blue-500'",
+      description: "Tailwind color suffix for gradient start color"
+    },
+    {
+      prop: "gradientTo",
+      type: "string", 
+      default: "'purple-600'",
+      description: "Tailwind color suffix for gradient end color"
+    }
+  ]}
+/>
 

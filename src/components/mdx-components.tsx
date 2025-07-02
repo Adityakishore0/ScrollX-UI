@@ -5,6 +5,7 @@ import PkgOptions from "@/components/pkgoptions";
 import DepsOptions from "@/components/depsoptions";
 import { Step } from "@/components/Step";
 import { Steps } from "@/components/ui/Steps";
+import { PropsTable } from "@/components/propstable";
 
 export const mdxComponents = {
   ComponentPreview,
@@ -17,4 +18,5 @@ export const mdxComponents = {
   DepsOptions,
   Step,
   Steps,
+  PropsTable,
 };
