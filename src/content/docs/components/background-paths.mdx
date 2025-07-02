@@ -73,11 +73,34 @@ import { BackgroundPaths } from "@/components/ui/background-paths";
 
 The `BackgroundPaths` component renders a animated SVG paths ideal for tech-style hero sections. Adapts seamlessly to light and dark themes.
 
-#### Props
+## Props
 
-* **`className`** (`string`) – Optional Tailwind or custom classes to style the outer container. Defaults to a full-screen responsive container with white/dark background.
-* **`children`** (`React.ReactNode`) – Optional React elements rendered *above* the animated background, usually for overlay content such as text, buttons, or call-to-actions.
-* **`svgOptions`** (`object`) – Optional animation customization for the SVG paths.
-
-  * **`duration`** (`number`) – Controls the total duration (in seconds) of the SVG path animations. Defaults to `6`.
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional styling for the outer container."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Overlay content rendered above the animated background."
+    },
+    {
+      prop: "svgOptions",
+      type: "{ duration?: number }",
+      default: "—",
+      description: "Options to customize SVG animation."
+    },
+    {
+      prop: "svgOptions.duration",
+      type: "number",
+      default: "6",
+      description: "Total duration (in seconds) of SVG path animations."
+    }
+  ]}
+/>
 

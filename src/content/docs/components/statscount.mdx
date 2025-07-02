@@ -77,17 +77,34 @@ import StatsCount from "@/components/ui/statscount";
 
 The root component for displaying animated, responsive statistics counters with optional scroll-triggered animations.
 
-- **stats** – Optional array of stat items to display.  
-  Each item contains:
-  - **value** – The numeric `value` to animate to.
-  - **suffix** – Optional text `suffix` (e.g., "+", "K+", "%").
-  - **label** – Descriptive text shown below the `stat`.
-  - **duration** – Optional `animation` duration in `seconds`.
+## Props
 
-- **title** – Optional custom title text.  
-  If the title contains "WITH", it will automatically split for responsive styling.
+<PropsTable
+  rows={[
+    {
+      prop: "stats",
+      type: `Array<{ value: number; suffix?: string; label: string; duration?: number }>`,
+      default: "—",
+      description: "Array of stat items with value, label, optional suffix, and animation duration."
+    },
+    {
+      prop: "title",
+      type: "string",
+      default: "—",
+      description: "Custom title text; splits on 'WITH' for responsiveness."
+    },
+    {
+      prop: "showDividers",
+      type: "boolean",
+      default: "true",
+      description: "Show or hide vertical divider lines."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional class for styling the container."
+    }
+  ]}
+/>
 
-- **showDividers** – Optional `boolean` to show or hide vertical `divider` lines between stats.  
-  Default: `true`.
-
-- **className** – Optional additional CSS classes for the main container.

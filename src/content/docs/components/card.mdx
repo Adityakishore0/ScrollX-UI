@@ -90,16 +90,52 @@ import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 
 The `Card` component is used to create a customizable container with content sections such as title, description, and footer.
 
-`className` – Optional custom class names to apply to the card.
+## Props
 
-`...props` – Inherits all standard HTML div attributes and event handlers.
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional custom class names. Used in: Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter."
+    },
+    {
+      prop: "...props",
+      type: "HTMLDivElement attributes",
+      default: "—",
+      description: "Applies to Card and all subcomponents. Inherits all standard div attributes and events."
+    },
+    {
+      prop: "CardHeader",
+      type: "ReactNode",
+      default: "optional",
+      description: "Header section of the card."
+    },
+    {
+      prop: "CardTitle",
+      type: "ReactNode",
+      default: "optional",
+      description: "Title inside the CardHeader."
+    },
+    {
+      prop: "CardDescription",
+      type: "ReactNode",
+      default: "optional",
+      description: "Description inside the CardHeader."
+    },
+    {
+      prop: "CardContent",
+      type: "ReactNode",
+      default: "optional",
+      description: "Main content area of the card."
+    },
+    {
+      prop: "CardFooter",
+      type: "ReactNode",
+      default: "optional",
+      description: "Footer section, typically for actions."
+    }
+  ]}
+/>
 
-`CardHeader` - used for the header section of the card.
-
-`CardTitle`- used for the title inside the CardHeader.
-
-`CardDescription` - used for the description inside the CardHeader.
-
-`CardContent` - main content of the card, placed below the header and above the footer.
-
-`CardFooter` section of the card, typically for actions such as buttons or links.

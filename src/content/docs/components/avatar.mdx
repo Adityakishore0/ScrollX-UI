@@ -99,29 +99,39 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 The root container for the `Avatar` component.
 
-#### AvatarProps
+## Props
 
-Props that can be passed to the `Avatar` component.
-
-- `variant` - The style variant of the avatar. Can be `"close-friends"`, `"normal"`, or `"none"` (default).
-- `className` - Optional class name for custom styling of the avatar container.
-- `children` - The content of the avatar (typically `AvatarImage` and `AvatarFallback`).
-
-### AvatarImage
-
-The image component inside the `Avatar` container.
-
-#### AvatarImageProps
-
-- `src` - The source URL for the avatar image.
-- `alt` - Accessible alt text for the avatar image.
-- `className` - Optional class name for custom styling of the avatar image.
-
-### AvatarFallback
-
-A fallback element displayed when the avatar image fails to load.
-
-#### AvatarFallbackProps
-
-- `className` - Optional class name for custom styling of the fallback element.
-- `children` - The content of the fallback element (typically initials or an icon).
+<PropsTable
+  rows={[
+    {
+      prop: "variant",
+      type: `"close-friends" | "normal" | "none"`,
+      default: `"none"`,
+      description: "Controls the style variant of the avatar. Used in Avatar."
+    },
+    {
+      prop: "src",
+      type: "string",
+      default: "—",
+      description: "Image source URL. Used in AvatarImage."
+    },
+    {
+      prop: "alt",
+      type: "string",
+      default: "—",
+      description: "Accessible alt text for the image. Used in AvatarImage."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Nested content. Used in Avatar and AvatarFallback."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional styling class. Used in Avatar, AvatarImage, and AvatarFallback."
+    }
+  ]}
+/>

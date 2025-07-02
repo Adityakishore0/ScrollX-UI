@@ -70,16 +70,52 @@ import CenteredImageCard from "@/components/ui/profilecard";
 
 The `ProfileCard` component is used to create an interactive profile card with user image, name, role, bio, skills, and social links.
 
-`img` – Profile image URL or path.
+## Props
 
-`name` – User’s name shown on reveal.
+<PropsTable
+  rows={[
+    {
+      prop: "img",
+      type: "string",
+      default: "required",
+      description: "Profile image URL or path."
+    },
+    {
+      prop: "name",
+      type: "string",
+      default: "required",
+      description: "User’s full name."
+    },
+    {
+      prop: "position",
+      type: "string",
+      default: "required",
+      description: "Job title or role."
+    },
+    {
+      prop: "bio",
+      type: "string",
+      default: "required",
+      description: "Short user bio or description."
+    },
+    {
+      prop: "skills",
+      type: "string[]",
+      default: "[]",
+      description: "List of skill names displayed as badges."
+    },
+    {
+      prop: "githubUrl",
+      type: "string",
+      default: "—",
+      description: "Link to GitHub profile."
+    },
+    {
+      prop: "twitterUrl",
+      type: "string",
+      default: "—",
+      description: "Link to Twitter/X profile."
+    }
+  ]}
+/>
 
-`position` – Job title or role.
-
-`bio` – Short description or bio.
-
-`skills` – Array of skill names shown as badges.
-
-`githubUrl` – Optional GitHub profile link.
-
-`twitterUrl` – Optional Twitter/X profile link.

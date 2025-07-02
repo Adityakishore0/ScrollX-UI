@@ -96,12 +96,41 @@ import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
 The root component for displaying animated testimonial cards.
 
-#### AnimatedTestimonialsProps
+## Props
 
-Props that can be passed to the `AnimatedTestimonials` component.
+<PropsTable
+  rows={[
+    {
+      prop: "data",
+      type: "Array<Testimonial>",
+      default: "required",
+      description: "An array of testimonial objects to display."
+    },
+    {
+      prop: "name",
+      type: "string",
+      default: "required",
+      description: "Name of the person giving the testimonial. Used inside each data item."
+    },
+    {
+      prop: "image",
+      type: "string",
+      default: "required",
+      description: "URL of the profile image. Used inside each data item."
+    },
+    {
+      prop: "description",
+      type: "string",
+      default: "required",
+      description: "Testimonial message or feedback. Used inside each data item."
+    },
+    {
+      prop: "handle",
+      type: "string",
+      default: "required",
+      description: "Social media handle or role (e.g., @john or 'Founder, X')."
+    }
+  ]}
+/>
 
-- `data` – **Required.** An array of testimonial objects to display. Each object must include the following properties:
-  - `name` *(string)* – Author's full name.
-  - `image` *(string)* – URL of the author's profile picture.
-  - `description` *(string)* – The testimonial content text.
-  - `handle` *(string)* – Author's social media handle.
+

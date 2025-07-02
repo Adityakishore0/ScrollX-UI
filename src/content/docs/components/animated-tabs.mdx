@@ -59,25 +59,27 @@ import { Tabs,TabsList,TabsTrigger,TabsContent } from "@/components/ui/animated-
 
 A headless and styled tab UI component set for switching content views.
 
-#### `<Tabs />`
+## Props
 
-Wrapper component that provides the tab context.
-**Props:** `defaultValue` `string` (required) – initial active tab, `children` `ReactNode` (required) – nested `TabsList`, `TabsTrigger`, and `TabsContent`.
-
-
-#### `<TabsList />`
-
-Renders the tab triggers inside a horizontal flex container with a bottom border.
-**Props:** `children` `ReactNode` (required) – a list of `TabsTrigger` elements.
-
-
-#### `<TabsTrigger />`
-
-Button component to activate a specific tab.
-**Props:** `value` `string` (required) – tab identifier (matches `TabsContent`), `children` `ReactNode` (required) – tab label/content.
-
-#### `<TabsContent />`
-
-Conditionally rendered content panel shown when its value matches the active tab.
-**Props:** `value` `string` (required) – matches `TabsTrigger` value, `children` `ReactNode` (required) – content shown when tab is active.
-
+<PropsTable
+  rows={[
+    {
+      prop: "defaultValue",
+      type: "string",
+      default: "required",
+      description: "Initial active tab value. Used in: Tabs."
+    },
+    {
+      prop: "value",
+      type: "string",
+      default: "required",
+      description: "Tab identifier. Used in: TabsTrigger (for selection), TabsContent (for matching)."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Used as nested content or label. Required in: Tabs, TabsList, TabsTrigger, TabsContent."
+    }
+  ]}
+/>

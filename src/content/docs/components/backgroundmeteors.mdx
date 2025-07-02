@@ -59,8 +59,16 @@ import BackgroundMeteors from "@/components/ui/backgroundmeteors";
 
 `BackgroundMeteors` is a React component that creates an animated background featuring vertical meteor-like beams falling from the top to the bottom of the screen over a grid pattern. It supports light and dark mode styling and automatically regenerates beams to keep the animation continuous.
 
-#### Props
+## Props
 
-- **children** (`ReactNode`, optional):  
-  Any React elements passed as children will be rendered centered above the meteor animation. This is useful for placing content such as headings, buttons, or other UI elements on top of the background effect.
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Content rendered centered above the meteor animation."
+    }
+  ]}
+/>
 

@@ -80,20 +80,52 @@ import Dropdown, { MenuItem } from "@/components/ui/dropdown";
 
 The `Dropdown` component displays a clickable trigger that reveals a list of selectable menu items with icons and descriptions.
 
-- `menuItems` – An array of `MenuItem` objects. Each item includes:
+## Props
 
-  - `title`: Text label of the item.
-  - `description`: Optional subtitle or detail.
-  - `icon`: Optional React element (e.g., Lucide icon).
+<PropsTable
+  rows={[
+    {
+      prop: "menuItems",
+      type: "Array<{ title: string; description?: string; icon?: React.ReactNode }>",
+      default: "required",
+      description: "Array of items to display in the menu."
+    },
+    {
+      prop: "triggerText",
+      type: "string",
+      default: "required",
+      description: "Text shown on the dropdown trigger button."
+    },
+    {
+      prop: "menuTitle",
+      type: "string",
+      default: "—",
+      description: "Optional title at the top of the menu."
+    },
+    {
+      prop: "buttonVariant",
+      type: `"default" | "outline" | "ghost" | string`,
+      default: `"default"`,
+      description: "Controls the visual style of the trigger button."
+    },
+    {
+      prop: "buttonSize",
+      type: `"default" | "sm" | "lg" | string`,
+      default: `"default"`,
+      description: "Controls the size of the trigger button."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional custom class for the dropdown container."
+    },
+    {
+      prop: "...props",
+      type: "HTMLButtonElement attributes",
+      default: "—",
+      description: "Standard button props passed to the trigger."
+    }
+  ]}
+/>
 
-- `triggerText` – Text displayed on the dropdown button.
-
-- `menuTitle` – Optional heading shown at the top of the dropdown menu.
-
-- `buttonVariant` – Controls button style. Options include: `default` , `outline` , `ghost` , etc.
-
-- `buttonSize` – Controls button size. Options include: `default` , `sm` , `lg` , etc.
-
-- `className` – Optional custom classes for the dropdown container.
-
-- `...props` – Inherits all standard HTML `button` attributes and event handlers.

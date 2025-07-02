@@ -68,22 +68,41 @@ import CursorImageTrail from "@/components/ui/cursorimagetrail";
 The `CursorImageTrail` component creates an interactive mouse trail effect with animated images. It tracks mouse movement and renders images along the cursor path with configurable animation styles.
 
 
-### Props
+## Props
 
-- **`children`** (`ReactNode`, **required**)  
-  Content that triggers the image trail effect when hovered.
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Trigger content for the image trail on hover."
+    },
+    {
+      prop: "images",
+      type: "string[]",
+      default: "required",
+      description: "Array of image URLs used in the trail."
+    },
+    {
+      prop: "renderImageBuffer",
+      type: "number",
+      default: "required",
+      description: "Minimum pixel distance between image renders."
+    },
+    {
+      prop: "rotationRange",
+      type: "number",
+      default: "required",
+      description: "Maximum rotation (in degrees) for trail images."
+    },
+    {
+      prop: "animationStyle",
+      type: `"dynamic" | "minimal"`,
+      default: `"dynamic"`,
+      description: "Controls animation complexity of the trail."
+    }
+  ]}
+/>
 
-- **`images`** (`string[]`, **required**)  
-  Array of image paths to use in the trail.
-
-- **`renderImageBuffer`** (`number`, **required**)  
-  Minimum pixel distance between consecutive image renders (controls trail density).
-
-- **`rotationRange`** (`number`, **required**)  
-  Maximum rotation angle (`in degrees`) applied to images. 
-
-- **`animationStyle`** (`"dynamic"` | `"minimal"`, default: `"dynamic"`)  
-  Animation variant:
-  - `"dynamic"`: Complex animations .
-  - `"minimal"`: Simpler animations without complex transforms.
 

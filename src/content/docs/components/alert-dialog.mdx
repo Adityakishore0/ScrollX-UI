@@ -90,52 +90,24 @@ import {
 
 The root container for the alert dialog component.
 
-### AlertDialogTrigger
+## Props
 
-The button that triggers the alert dialog.
+<PropsTable
+  rows={[
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "Render the trigger as its child element. Used in: AlertDialogTrigger."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional class name for custom styling. Used in: Content, Header, Footer, Title, Description, Action, Cancel."
+    }
+  ]}
+/>
 
-- `asChild` - When `true`, the trigger will be rendered as its child element.
 
-### AlertDialogContent
 
-The container for alert dialog content.
-
-- `className` - Optional class name for custom styling.
-
-### AlertDialogHeader
-
-A container for grouping the title and description.
-
-- `className` - Optional class name for styling the header section.
-
-### AlertDialogFooter
-
-A container for grouping the dialog buttons.
-
-- `className` - Optional class name for styling the footer section.
-
-### AlertDialogTitle
-
-The title content of the alert dialog.
-
-- `className` - Optional class name for styling the title.
-
-### AlertDialogDescription
-
-The description content of the alert dialog.
-
-- `className` - Optional class name for styling the description.
-
-### AlertDialogAction
-
-The confirm button of the alert dialog.
-
-- `className` - Optional class name for styling.
-- Contains animated hover effects using Framer Motion.
-
-### AlertDialogCancel
-
-The cancel button of the alert dialog.
-
-- `className` - Optional class name for styling.
-- Appears before the action button on mobile devices.

@@ -9,10 +9,10 @@ export function PropsTable({
 }) {
   return (
     <div className={cn("not-prose rounded-lg border", className)}>
-      <div className="overflow-x-auto lg:overflow-x-visible scrollbar-hide rounded-lg">
+      <div className="max-h-[32rem] overflow-auto scrollbar-hide rounded-lg">
         <table className="w-full min-w-[500px] text-sm">
-          <thead>
-            <tr className="border-b bg-muted/50">
+          <thead className="sticky top-0 bg-background z-10">
+            <tr className="border-b bg-muted">
               <th className="h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 sm:px-4 min-w-[120px] lg:min-w-0 lg:w-auto">
                 Property
               </th>

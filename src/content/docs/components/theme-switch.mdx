@@ -160,19 +160,48 @@ A flexible and accessible theme mode switcher component for Next.js projects usi
 
 ---
 
-### Props
+## Props
 
-`modes` – An array of strings representing the available theme modes (e.g., ["light", "dark", "system"]). These should match the modes supported by next-themes. Default is `["light", "dark", "system"]`.
-
-`icons` – An array of React nodes, each representing an icon for a corresponding mode. The order and length should match the `modes` array. Default is an empty array.
-
-`showActiveIconOnly` – A boolean. If true, only the icon for the currently active mode is shown, centered in the switch. Default is `false`.
-
-`showInactiveIcons` – Controls how inactive mode icons are displayed. Accepts `"all"` (show all), `"none"` (hide all), or `"next"` (show only the next mode's icon in the sequence). Default is `"all"`.
-
-`className` – A string of additional CSS classes to apply to the switch container.
-
-`...props` – Any other valid HTML div attributes. These will be passed to the root container of the component.
+<PropsTable
+  rows={[
+    {
+      prop: "modes",
+      type: "string[]",
+      default: `["light", "dark", "system"]`,
+      description: "Available theme modes to cycle through."
+    },
+    {
+      prop: "icons",
+      type: "ReactNode[]",
+      default: "[]",
+      description: "Icons representing each mode (same order as `modes`)."
+    },
+    {
+      prop: "showActiveIconOnly",
+      type: "boolean",
+      default: "false",
+      description: "Show only the active icon centered."
+    },
+    {
+      prop: "showInactiveIcons",
+      type: `"all" | "none" | "next"`,
+      default: `"all"`,
+      description: "How inactive icons are shown."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional class for styling the switch container."
+    },
+    {
+      prop: "...props",
+      type: "HTMLDivElement attributes",
+      default: "—",
+      description: "Additional props passed to the root div."
+    }
+  ]}
+/>
 
 ---
 

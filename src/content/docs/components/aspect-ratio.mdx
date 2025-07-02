@@ -58,18 +58,39 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 
 The root container for the `AspectRatio` component, which helps to maintain a consistent aspect ratio for its child content, like images or videos.
 
-### AspectRatioProps
+## Props
 
-Props that can be passed to the `AspectRatio` component.
-
-- `ratio` - The aspect ratio of the container. Accepts a number (e.g., `16/9`, `4/3`, `1/1`).
-- `className` - Optional class name for custom styling of the aspect ratio container.
-- `children` - The content (e.g., an image, video, or other media) inside the `AspectRatio` container.
-
-### AspectRatioChild
-
-The child component or element inside the `AspectRatio` container.
-
-- `fill` - Used to ensure the child element (like an image) fills the entire aspect ratio container.
-- `className` - Optional class name for custom styling of the child content.
-- `object-cover` - Used to ensure the child element maintains its aspect ratio while covering the container's bounds.
+<PropsTable
+  rows={[
+    {
+      prop: "ratio",
+      type: "number",
+      default: "16 / 9",
+      description: "Aspect ratio of the container (e.g., 4/3, 1/1). Used in AspectRatio."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Content inside the container. Used in AspectRatio and AspectRatioChild."
+    },
+    {
+      prop: "fill",
+      type: "boolean",
+      default: "false",
+      description: "Makes the child fill the entire container. Used in AspectRatioChild."
+    },
+    {
+      prop: "object-cover",
+      type: "boolean",
+      default: "true",
+      description: "Keeps aspect ratio while covering the container. Used in AspectRatioChild."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional styling class. Used in AspectRatio and AspectRatioChild."
+    }
+  ]}
+/>

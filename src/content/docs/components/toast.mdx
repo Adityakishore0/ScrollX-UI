@@ -191,9 +191,45 @@ function MyComponent() {
 
 Triggers a toast notification.
 
-- `title` – Toast title
-- `description` – Toast message
-- `variant` – `'default' | 'success' | 'destructive' | 'warning' | 'info'`
-- `position` – `'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'`
-- `duration` – Auto-dismiss time in ms (default: `5000`)
-- `action` – Optional React element (e.g., a button)
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "title",
+      type: "string",
+      default: "—",
+      description: "Toast title text."
+    },
+    {
+      prop: "description",
+      type: "string",
+      default: "—",
+      description: "Toast message body."
+    },
+    {
+      prop: "variant",
+      type: `"default" | "success" | "destructive" | "warning" | "info"`,
+      default: `"default"`,
+      description: "Visual style of the toast."
+    },
+    {
+      prop: "position",
+      type: `"top-right" | "top-left" | "bottom-right" | "bottom-left"`,
+      default: `"bottom-right"`,
+      description: "Screen position where toast appears."
+    },
+    {
+      prop: "duration",
+      type: "number",
+      default: "5000",
+      description: "Auto-dismiss timeout in milliseconds."
+    },
+    {
+      prop: "action",
+      type: "ReactNode",
+      default: "—",
+      description: "Optional custom action (e.g., a button)."
+    }
+  ]}
+/>

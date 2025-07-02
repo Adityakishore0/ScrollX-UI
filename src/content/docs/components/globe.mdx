@@ -65,42 +65,71 @@ import { Globe } from "@/components/ui/globe";
 
 ### Globe
 
-### `baseColor`  
-`[number, number, number]` | Default: `[0.3, 0.3, 0.3]`  
-Base globe color in RGB
+The `Globe` component creates beautiful 5kb WebGL Globe
 
-### `markerColor`  
-`[number, number, number]` | Default: `[0.1, 0.8, 1]`  
-Marker points color in RGB
+## Props
 
-### `glowColor`  
-`[number, number, number]` | Default: `[1, 1, 1]`  
-Glow effect color in RGB
-
-### `markers`  
-`Array<{location: [lat, lng], size: number}>` | Default: SF/NY markers  
-Array of coordinate markers
-
-### `scale`  
-`number` | Default: `1`  
-Globe size multiplier
-
-### `className`  
-`string` | Default: `''`  
-Container CSS classes
-
-### `rotateToLocation`  
-`string | [number, number]` | Optional  
-Immediate rotation target (city name or coordinates)
-
-### `autoRotate`  
-`boolean` | Default: `true`  
-Toggle idle rotation
-
-### `rotateCities`  
-`string[]` | Default: `[]`  
-City names array for auto rotation
-
-### `rotationSpeed`  
-`number` | Default: `3000`  
-Milliseconds between city rotations
+<PropsTable
+  rows={[
+    {
+      prop: "baseColor",
+      type: "[number, number, number]",
+      default: "[0.3, 0.3, 0.3]",
+      description: "Base color of the globe in RGB."
+    },
+    {
+      prop: "markerColor",
+      type: "[number, number, number]",
+      default: "[0.1, 0.8, 1]",
+      description: "Color of the marker points in RGB."
+    },
+    {
+      prop: "glowColor",
+      type: "[number, number, number]",
+      default: "[1, 1, 1]",
+      description: "Color of the globe glow in RGB."
+    },
+    {
+      prop: "markers",
+      type: "Array<{ location: [number, number]; size: number }>",
+      default: "Default SF/NY markers",
+      description: "Coordinate markers with optional size."
+    },
+    {
+      prop: "scale",
+      type: "number",
+      default: "1",
+      description: "Size multiplier for the globe."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "''",
+      description: "CSS class name for the outer container."
+    },
+    {
+      prop: "rotateToLocation",
+      type: "string | [number, number]",
+      default: "—",
+      description: "Initial rotation target — city name or coordinates."
+    },
+    {
+      prop: "autoRotate",
+      type: "boolean",
+      default: "true",
+      description: "Enable or disable idle globe rotation."
+    },
+    {
+      prop: "rotateCities",
+      type: "string[]",
+      default: "[]",
+      description: "City names to auto-rotate through."
+    },
+    {
+      prop: "rotationSpeed",
+      type: "number",
+      default: "3000",
+      description: "Time (ms) between auto-rotated cities."
+    }
+  ]}
+/>

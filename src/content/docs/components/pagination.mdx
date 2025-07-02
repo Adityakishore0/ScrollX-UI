@@ -96,16 +96,54 @@ import {
 
  Root container (`className`, nav props)
 
-`PaginationContent` - Wraps items (`className`, ul props)
+## Props
 
-`PaginationItem` - Single item wrapper (`className`, li props)
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Applies to: PaginationContent, PaginationItem, PaginationLink, PaginationEllipsis."
+    },
+    {
+      prop: "isActive",
+      type: "boolean",
+      default: "false",
+      description: "Highlights active page. Used in: PaginationLink."
+    },
+    {
+      prop: "shiny",
+      type: "boolean",
+      default: "false",
+      description: "Enables shimmer animation. Used in: PaginationLink."
+    },
+    {
+      prop: "shinySpeed",
+      type: "number",
+      default: "—",
+      description: "Speed of shimmer effect (in seconds). Used in: PaginationLink."
+    },
+    {
+      prop: "size",
+      type: `"sm" | "default" | "lg"`,
+      default: `"default"`,
+      description: "Size of the link. Used in: PaginationLink."
+    },
+    {
+      prop: "variant",
+      type: `"default" | "outline" | "ghost" | "gradient"`,
+      default: `"default"`,
+      description: "Visual style. Used in: PaginationLink."
+    },
+    {
+      prop: "...props",
+      type: "HTML element attributes",
+      default: "—",
+      description: "Passed to: ul (PaginationContent), li (PaginationItem), a (PaginationLink), span (PaginationEllipsis)."
+    }
+  ]}
+/>
 
-`PaginationLink` - Page link (`isActive`, `shiny`, `shinySpeed`, `size`, `variant`, `className`, a props)
-
-`PaginationPrevious` - "Previous" button (PaginationLink props)
-
-`PaginationNext` - "Next" button (PaginationLink props)
-
-`PaginationEllipsis` - Ellipsis ("...") (`className`, span props)
 
 
