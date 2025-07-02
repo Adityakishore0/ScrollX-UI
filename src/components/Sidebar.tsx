@@ -13,9 +13,8 @@ export default function Sidebar() {
   return (
     <aside
       className={cn(
-        "fixed left-0 top-0 h-screen w-64 p-6 transition-all duration-300",
-        "bg-white dark:bg-[#09090b] backdrop-blur-xl border-r border-gray-200 dark:border-gray-800",
-        "overflow-y-auto"
+        "fixed left-0 top-0 h-screen w-64 p-6 transition-all duration-300 overflow-y-auto border-r backdrop-blur-xl",
+        "bg-white dark:bg-[#09090b] border-gray-200 dark:border-gray-800"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -36,10 +35,10 @@ export default function Sidebar() {
                 href={item.href}
                 className={cn(
                   "block px-3 py-2 font-semibold rounded-md transition-all relative",
-                  "hover:bg-gray-100 dark:hover:bg-gray-800 hover:underline hover:decoration-2 hover:underline-offset-4",
                   pathname === item.href
-                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 translate-x-1 shadow-inner pl-4"
-                    : "text-gray-700 dark:text-gray-400"
+                    ? "bg-black text-white dark:bg-white dark:text-black"
+                    : "text-gray-700 dark:text-gray-400",
+                  "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
                 )}
               >
                 {item.title}
@@ -56,10 +55,10 @@ export default function Sidebar() {
                 href={child.href}
                 className={cn(
                   "block px-4 py-2 text-sm rounded-md transition-all relative",
-                  "hover:bg-gray-100 dark:hover:bg-gray-800 hover:underline hover:decoration-2 hover:underline-offset-4",
                   pathname === child.href
-                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 translate-x-1 shadow-inner pl-5"
-                    : "text-gray-700 dark:text-gray-400"
+                    ? "bg-black text-white dark:bg-white dark:text-black"
+                    : "text-gray-700 dark:text-gray-400",
+                  "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
                 )}
               >
                 <div className="flex items-center gap-1 whitespace-nowrap overflow-hidden">
