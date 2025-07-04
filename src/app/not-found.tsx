@@ -44,7 +44,7 @@ export default function NotFound() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full h-screen flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden"
       style={{
         backgroundColor: isDark ? "#000" : "#fff",
         perspective: "1000px",
