@@ -27,6 +27,7 @@ export const parentComponents = [
   "lustretext",
   "magicdock",
   "morphotextflip",
+  "not-found",
   "pagination",
   "parallaxcards",
   "particles",
