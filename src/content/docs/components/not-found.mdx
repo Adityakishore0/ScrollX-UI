@@ -1,0 +1,155 @@
+---
+title: Not Found
+description: A beautifully designed 404 page to guide users when content is missing.
+---
+
+<ComponentPreview
+  name="notfound-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="not-found" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>not-found.tsx</code>
+</p>
+<ComponentSource name="not-found" />
+
+<Step>
+  Download the images & save them in public/images
+</Step>
+
+
+
+<div className="flex flex-row gap-4">
+  <a
+    href="/images/404-darkc.png"
+    download="404-darkc.png"
+    className="bg-primary text-primary-foreground shadow hover:bg-primary/90 
+      inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md 
+      text-sm font-medium transition-colors focus-visible:outline-none 
+      focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none 
+      disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 
+      [&_svg]:shrink-0 h-9 px-4 py-2"
+  >
+    Download 404-darkc.png
+  </a>
+
+  <a
+    href="/images/404-lightc.png"
+    download="404-lightc.png"
+    className="bg-primary text-primary-foreground shadow hover:bg-primary/90 
+      inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md 
+      text-sm font-medium transition-colors focus-visible:outline-none 
+      focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none 
+      disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 
+      [&_svg]:shrink-0 h-9 px-4 py-2"
+  >
+    Download 404-lightc.png
+  </a>
+</div>
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import NotFound from "@/components/ui/not-found";
+```
+
+```tsx
+<NotFound
+  particleCount={10000}
+  particleSize={4}
+  animate={true}
+  buttonText="Go Back"
+  buttonHref="/dashboard"
+  className="custom-shadow"
+/>
+```
+
+
+## API Reference
+
+### Not Found
+
+A polished 404 page created to assist users when a resource is unavailable.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "particleCount",
+      type: "number",
+      default: "12500",
+      description: "Total number of particles rendered in the background animation."
+    },
+    {
+      prop: "particleSize",
+      type: "number",
+      default: "5",
+      description: "Size of each particle in the animation."
+    },
+    {
+      prop: "animate",
+      type: "boolean",
+      default: "false",
+      description: "Whether particles should animate or remain static."
+    },
+    {
+      prop: "imageLight",
+      type: "string",
+      default: '"/images/404-lightc.png"',
+      description: "Image shown in light mode."
+    },
+    {
+      prop: "imageDark",
+      type: "string",
+      default: '"/images/404-darkc.png"',
+      description: "Image shown in dark mode."
+    },
+    {
+      prop: "buttonText",
+      type: "string",
+      default: '"Back to Home"',
+      description: "Label text inside the call-to-action button."
+    },
+    {
+      prop: "buttonHref",
+      type: "string",
+      default: '"/"',
+      description: "URL to navigate when the button is clicked."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: '""',
+      description: "Additional Tailwind classes for customizing the outermost container."
+    },
+    {
+      prop: "onButtonClick",
+      type: "() => void",
+      default: "undefined",
+      description: "Optional click handler function when the button is clicked."
+    }
+  ]}
+/>
+

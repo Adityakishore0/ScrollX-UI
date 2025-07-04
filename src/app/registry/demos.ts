@@ -40,6 +40,7 @@ export const demoComponents = [
   "morphotextfadescale",
   "morphotextelastic",
   "morphotextsliderotate",
+  "notfound-demo",
   "pagination-demo",
   "particles-demo",
   "parallaxcards-demo",
