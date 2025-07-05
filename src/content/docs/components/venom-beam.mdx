@@ -1,0 +1,81 @@
+---
+title: Venom Beam
+description: A glowing particle canvas with motion-reactive trails. Perfect for immersive, high-tech hero sections.
+---
+
+
+<ComponentPreview
+  name="venombeam-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="venom-beam" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>venom-beam.tsx</code>
+</p>
+<ComponentSource name="venom-beam" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+ import VenomBeam from "@/components/ui/venom-beam";
+```
+
+```tsx
+ <VenomBeam className="flex items-center justify-center w-full flex-col px-4">
+      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-4xl md:text-5xl lg:text-7xl font-sans pb-1 md:pb-2 pt-2 md:pt-4 relative z-20 font-bold tracking-tight leading-tight">
+  Light thinks,<br />Venom moves.
+</h2>
+<p className="max-w-xl mx-auto text-base md:text-lg text-neutral-700 dark:text-neutral-400 text-center mt-1">
+  A canvas of chaos. A trail of logic. You’re building the storm — where instinct meets precision.
+</p>
+    </VenomBeam>
+```
+
+
+## API Reference
+
+### Venom Beam
+
+A canvas of light and motion—crafted for bold digital intros.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "optional",
+      description: "Content to render over the animated background. Usually includes headings, text, or buttons."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: '""',
+      description: "Additional Tailwind CSS classes to apply to the overlay container holding the children."
+    }
+  ]}
+/>
+
