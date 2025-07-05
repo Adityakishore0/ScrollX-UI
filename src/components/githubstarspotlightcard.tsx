@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { SpotlightCard } from "@/components/ui/spotlightcard";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
@@ -13,20 +14,20 @@ export default function GithubStarSpotlightCard() {
     >
       <div className="flex flex-col justify-between h-full w-full px-3 py-4">
         <div className="space-y-3">
-          <a
-            href="https://github.com/Adityakishore0"
+          <Link
+            href="https://x.com/scrollx_ui"
             target="_blank"
             rel="noopener noreferrer"
             className="text-base font-semibold underline-offset-4 hover:underline"
           >
             ScrollX UI
-          </a>
+          </Link>
           <p className="text-sm leading-relaxed text-muted-foreground">
             An open-source library available on GitHub — contribute or star the
             repo to support it.
           </p>
         </div>
-        <a
+        <Link
           href="https://github.com/Adityakishore0/ScrollX-UI"
           target="_blank"
           rel="noopener noreferrer"
@@ -43,7 +44,7 @@ export default function GithubStarSpotlightCard() {
               className="text-white dark:text-black font-semibold"
             />
           </Button>
-        </a>
+        </Link>
       </div>
     </SpotlightCard>
   );
