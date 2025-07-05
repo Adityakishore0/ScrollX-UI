@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import GithubStarSpotlightCard from "@/components/githubstarspotlightcard";
 
 function slugify(text: string): string {
   return text
@@ -109,6 +110,14 @@ export default function OnThisPage() {
     window.scrollTo({ top, behavior: "smooth" });
     setTimeout(() => setClickedId(null), 1000);
   };
+
+  if (pathname === "/docs/components") {
+    return (
+      <div className="relative">
+        <GithubStarSpotlightCard />
+      </div>
+    );
+  }
 
   if (!headings.length) return null;
 
