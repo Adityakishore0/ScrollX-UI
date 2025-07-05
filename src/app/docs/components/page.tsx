@@ -89,12 +89,26 @@ export default async function ComponentsPage() {
                   className="object-cover not-prose rounded-t-3xl transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </AspectRatio>
-              <h3 className="text-lg font-semibold leading-none px-4  text-zinc-900 dark:text-white">
+              <h3 className="text-lg font-semibold leading-none px-4 text-zinc-900 dark:text-white">
                 {component.title}
               </h3>
             </Link>
           );
         })}
+        <div className="rounded-3xl overflow-hidden shadow-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 transition-all">
+          <div className="flex flex-col items-center justify-center h-full w-full bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 text-center relative">
+            <div className="flex flex-col items-center justify-center h-full w-full bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 text-center relative">
+              <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent via-white/5 to-transparent dark:via-white/10" />
+              <div className="z-10 px-4">
+                <h2 className="text-2xl font-bold text-white">Coming Soon</h2>
+                <p className="mt-2 text-sm text-zinc-400 dark:text-zinc-400 max-w-xs mx-auto">
+                  We are working hard to bring you more components. <br />
+                  Bookmark this page to stay tuned!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
