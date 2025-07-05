@@ -67,6 +67,7 @@ export const demoComponents = [
   "toastwarning-demo",
   "toastsuccess-demo",
   "typeanimation-demo",
+  "venombeam-demo",
   "whitestripes-demo",
   // Add more demo components here
 ] as const;
