@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Github, Twitter, Heart } from "lucide-react";
 import { useEffect, useState } from "react";
+import ScrollXHeading from "@/components/heading";
 
 export function Footer() {
   const [isHeartHovered, setIsHeartHovered] = useState(false);
@@ -12,9 +13,7 @@ export function Footer() {
       <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
         <div className="flex flex-col items-center gap-4 md:items-start md:gap-2">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-              ScrollX-UI
-            </span>
+            <ScrollXHeading className="text-base sm:text-xl font-bold whitespace-nowrap" />
           </Link>
           <p className="text-center text-sm text-muted-foreground md:text-left">
             An open source collection of animated, interactive & fully

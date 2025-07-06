@@ -44,7 +44,7 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/40">
+    <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-white to-gray-50 dark:bg-gradient-to-r dark:from-[#0c0c0c] dark:via-black dark:to-[#0c0c0c]">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <motion.div

@@ -3,16 +3,15 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
-import Scrollxx from "@/svg/Scrollx.svg";
-import Scrollxdark from "@/svg/Scrollxdark.svg";
 import { useState, useEffect, useMemo } from "react";
 import BadgeDemo from "@/components/demos/badge-demo";
 import LustreTextDemo from "@/components/demos/lustretext-demo";
 import { SeparatorPro } from "@/components/ui/seperatorpro";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AnimatedButton } from "@/components/ui/animated-button";
-import BackgroundMeteors from "@/components/ui/backgroundmeteors";
 import ThemeSwitchIcon from "@/components/demos/themeswitchicon";
+import ScrollXHeading from "@/components/heading";
+import Typeanimation from "@/components/ui/typeanimation";
 
 export function HeroSection() {
   const { theme, systemTheme } = useTheme();
@@ -77,85 +76,31 @@ export function HeroSection() {
     []
   );
 
+  const logoVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, scale: 0.8, y: -20 },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        transition: {
+          type: "spring",
+          damping: 20,
+          stiffness: 100,
+          duration: 1.2,
+        },
+      },
+    }),
+    []
+  );
+
   return (
     <section
       className="relative w-full py-8 md:py-12 overflow-hidden min-h-[90vh] flex items-center justify-center 
       bg-gradient-to-b from-white to-gray-50 
       dark:from-[#0c0c0c] dark:via-[#000000] dark:to-[#0c0c0c]"
     >
-      <div className="absolute inset-0 overflow-hidden">
-        <BackgroundMeteors>
-          {isDarkMode && (
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-              <div className="relative w-full h-full">
-                <img
-                  src="https://site-assets.plasmic.app/1224f19c59fb4925a4b32af4aac4d43f.svg"
-                  alt=""
-                  className="w-full h-auto absolute top-0 left-0 opacity-[0.18]"
-                  style={{
-                    objectFit: "cover",
-                    objectPosition: "top",
-                    maskImage:
-                      "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0))",
-                    WebkitMaskImage:
-                      "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0))",
-                  }}
-                />
-                <div className="absolute inset-0 w-full h-full overflow-hidden">
-                  <div
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0)_70%)] 
-                  mix-blend-screen opacity-40 
-                  blur-[20px] animate-pulse-subtle"
-                  />
-
-                  <div
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.3)_0%,rgba(255,255,255,0)_60%)] 
-                  mix-blend-lighten opacity-30 
-                  blur-[15px]"
-                  />
-                </div>
-                <div
-                  className="absolute inset-0 border border-white/5 
-                mix-blend-overlay pointer-events-none"
-                />
-              </div>
-            </div>
-          )}
-
-          <div className="absolute w-full h-full opacity-15 dark:opacity-25">
-            <svg
-              viewBox="0 0 1024 1024"
-              className="absolute left-1/2 top-1/2 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
-              aria-hidden="true"
-            >
-              <circle cx="512" cy="512" r="512" fill="url(#gradient)" />
-              <defs>
-                <radialGradient id="gradient">
-                  <stop stopColor="#3b82f6" />
-                  <stop offset="0.5" stopColor="#8b5cf6" />
-                  <stop offset="1" stopColor="#ec4899" />
-                </radialGradient>
-              </defs>
-            </svg>
-          </div>
-        </BackgroundMeteors>
-      </div>
-
       <div className="container relative px-4 md:px-6 mx-auto max-w-6xl z-10">
-        <motion.div
-          className="flex justify-center mb-8 md:mb-12"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          {isMounted &&
-            (isDarkMode ? (
-              <Scrollxx className="w-full max-w-3xl h-24 sm:h-32 md:h-40" />
-            ) : (
-              <Scrollxdark className="w-full max-w-3xl h-24 sm:h-32 md:h-40" />
-            ))}
-        </motion.div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center mx-auto">
           <motion.div
             className="lg:col-span-6 space-y-6 text-center lg:text-left min-h-[300px] flex flex-col justify-center"
@@ -163,23 +108,42 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
           >
+            <motion.div
+              className="flex justify-center lg:justify-start mb-4"
+              variants={logoVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <ScrollXHeading className="text-6xl sm:text-7xl font-black" />
+            </motion.div>
             <motion.h1
-              className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl"
+              className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl leading-tight"
               variants={textRevealVariants}
             >
-              An open source collection of{" "}
-              <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                animated, interactive
-              </span>{" "}
+              <span className="block sm:hidden mr-2">
+                An open source collection
+              </span>
+              <span className="hidden sm:inline">An open source</span>
+              <br className="hidden sm:block" />
+              <span className="mr-2 sm:hidden">of</span>
+              <span className="hidden sm:inline mr-2">collection of</span>
+              <Typeanimation
+                words={["animated", "beautiful"]}
+                typingSpeed="slow"
+                deletingSpeed="slow"
+                gradientFrom="red-500"
+                gradientTo="yellow-500"
+                pauseDuration={2000}
+                className="inline font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-yellow-500"
+              />
+              <br />
               components
             </motion.h1>
-
             <motion.p
               className="text-gray-600 dark:text-gray-300 md:text-lg mx-auto lg:mx-0 max-w-lg"
               variants={textRevealVariants}
             >
-              Create stunning interfaces with handcrafted components. ScrollX-UI
-              combines modern UI frameworks for elegant, efficient designs.
+              Create stunning interfaces with handcrafted components.
             </motion.p>
 
             <motion.div
@@ -205,40 +169,44 @@ export function HeroSection() {
           </motion.div>
 
           <motion.div
-            className="lg:col-span-6 flex flex-col gap-4 items-center justify-center text-center"
+            className="relative lg:col-span-6 flex flex-col gap-4 items-center justify-center text-center px-6 py-10 rounded-3xl border border-white/10 bg-gradient-to-br from-neutral-900/60 to-neutral-800/70 shadow-[0_0_40px_-10px_rgba(255,255,255,0.2)] backdrop-blur-xl overflow-hidden"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
+            <div className="absolute top-0 right-0 w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-bl-full opacity-80 pointer-events-none transition-opacity duration-700 ease-out" />
+            <div className="absolute bottom-0 left-0 w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-tr-full opacity-80 pointer-events-none transition-opacity duration-700 ease-out" />
+            <div className="absolute top-0 left-0 w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-br-full pointer-events-none hidden lg:block opacity-0" />
+            <div className="absolute bottom-0 right-0 w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-tl-full pointer-events-none hidden lg:block opacity-0" />
+            <div className="absolute top-0 left-0 w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-br-full pointer-events-none lg:hidden opacity-0 animate-[fadeIn_0.6s_ease-out_forwards_0.2s]" />
+            <div className="absolute bottom-0 right-0 w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-tl-full pointer-events-none lg:hidden opacity-0 animate-[fadeIn_0.6s_ease-out_forwards_0.4s]" />
+
             <div className="flex flex-wrap gap-4 items-center justify-center">
               <SeparatorPro
                 variant="dots"
                 orientation="vertical"
                 className="h-14"
               />
-
               <motion.div
                 className="inline-flex"
                 variants={componentCardVariants}
                 whileHover="hover"
               >
-                <div className="backdrop-blur-lg rounded-xl p-2">
+                <div className="backdrop-blur-lg rounded-xl p-2 border border-white/10 bg-white/5">
                   <ThemeSwitchIcon />
                 </div>
               </motion.div>
-
               <SeparatorPro
                 variant="dots"
                 orientation="vertical"
                 className="h-14"
               />
-
               <motion.div
                 className="inline-flex"
                 variants={componentCardVariants}
                 whileHover="hover"
               >
-                <div className="backdrop-blur-lg rounded-xl p-2">
+                <div className="backdrop-blur-lg rounded-xl p-2 border border-white/10 bg-white/5">
                   <Avatar variant="normal">
                     <AvatarImage
                       src="https://github.com/Adityakishore0.png"
@@ -248,7 +216,6 @@ export function HeroSection() {
                   </Avatar>
                 </div>
               </motion.div>
-
               <SeparatorPro
                 variant="dots"
                 orientation="vertical"
@@ -258,13 +225,12 @@ export function HeroSection() {
                 variant="default"
                 className="my-4 w-full block lg:hidden"
               />
-
               <motion.div
                 className="inline-flex w-full lg:w-auto justify-center"
                 variants={componentCardVariants}
                 whileHover="hover"
               >
-                <div className="backdrop-blur-lg rounded-xl p-2">
+                <div className="backdrop-blur-lg rounded-xl p-2 border border-white/10 bg-white/5">
                   <AnimatedButton
                     className="bg-green-500 text-white"
                     variant="default"
@@ -285,7 +251,6 @@ export function HeroSection() {
                   </AnimatedButton>
                 </div>
               </motion.div>
-
               <SeparatorPro
                 variant="dots"
                 orientation="vertical"
@@ -302,40 +267,49 @@ export function HeroSection() {
               <SeparatorPro
                 variant="dots"
                 orientation="vertical"
-                className="h-14"
+                className="hidden sm:flex h-14"
               />
-
               <motion.div
                 className="inline-flex"
                 variants={componentCardVariants}
                 whileHover="hover"
               >
-                <div className="backdrop-blur-lg rounded-xl p-2">
+                <div className="backdrop-blur-lg rounded-xl p-2 border border-white/10 bg-white/5">
                   <LustreTextDemo />
                 </div>
               </motion.div>
-
               <SeparatorPro
                 variant="dots"
                 orientation="vertical"
-                className="h-14"
+                className="hidden sm:flex h-14"
               />
               <SeparatorPro
                 variant="default"
                 className="my-4 w-full block lg:hidden"
               />
-
               <motion.div
                 className="inline-flex"
                 variants={componentCardVariants}
                 whileHover="hover"
               >
-                <div className="backdrop-blur-lg rounded-xl p-2">
+                <div className="backdrop-blur-lg rounded-xl p-2 border border-white/10 bg-white/5">
                   <BadgeDemo />
                 </div>
               </motion.div>
             </div>
           </motion.div>
+          <style jsx>{`
+            @keyframes fadeIn {
+              0% {
+                opacity: 0;
+                transform: scale(0.95);
+              }
+              100% {
+                opacity: 0.8;
+                transform: scale(1);
+              }
+            }
+          `}</style>
         </div>
       </div>
     </section>
