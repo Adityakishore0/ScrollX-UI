@@ -23,7 +23,7 @@ export function Footer() {
         <div className="flex flex-col items-center gap-4 md:flex-row md:items-start md:gap-6">
           <nav className="flex flex-col items-center gap-2 md:flex-row md:gap-4 lg:gap-6">
             <Link
-              href="/components"
+              href="/docs/components"
               className="text-sm font-medium hover:underline"
             >
               Components
