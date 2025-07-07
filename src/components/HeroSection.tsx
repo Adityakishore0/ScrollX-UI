@@ -114,7 +114,7 @@ export function HeroSection() {
               initial="hidden"
               animate="visible"
             >
-              <ScrollXHeading className="text-6xl sm:text-7xl font-black" />
+              <ScrollXHeading />
             </motion.div>
             <motion.h1
               className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl leading-tight"

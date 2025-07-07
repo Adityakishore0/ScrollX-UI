@@ -13,7 +13,7 @@ export function Footer() {
       <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
         <div className="flex flex-col items-center gap-4 md:items-start md:gap-2">
           <Link href="/" className="flex items-center space-x-2">
-            <ScrollXHeading className="text-base sm:text-xl font-bold whitespace-nowrap" />
+            <ScrollXHeading className="w-auto h-4 sm:h-5 whitespace-nowrap" />
           </Link>
           <p className="text-center text-sm text-muted-foreground md:text-left">
             An open source collection of animated, interactive & fully
