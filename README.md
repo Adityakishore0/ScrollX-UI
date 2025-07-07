@@ -2,9 +2,9 @@
 	<br>
 	<br>
     <picture>
-      <source media="(prefers-color-scheme: light)" srcset="src/svg/Scrollxw.svg">
-      <source media="(prefers-color-scheme: dark)" srcset="src/svg/Scrollxd.svg">
-      <img src="src/svg/Scrollxw.svg" alt="ScrollX UI logo" width="1000">
+      <source media="(prefers-color-scheme: light)" srcset="src/svg/Darkscrollx.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="src/svg/Lightscrollx.svg">
+      <img src="src/svg/Darkscrollx.svg" alt="ScrollX UI logo" width="1000">
     </picture>
 	<br>
 	<br>
