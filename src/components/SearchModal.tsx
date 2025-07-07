@@ -10,7 +10,7 @@ import {
   startTransition,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Search } from "lucide-react";
+import { X, Search, Circle, Sparkle } from "lucide-react";
 import navigation, { NavItem } from "@/constants/navItems";
 
 interface SearchModalProps {
@@ -109,7 +109,15 @@ const searchItems = (query: string): NavItem[] => {
 };
 
 const NavigationItem = memo(
-  ({ item, onClick }: { item: NavItem; onClick: (href: string) => void }) => {
+  ({
+    item,
+    onClick,
+    isChild = false,
+  }: {
+    item: NavItem;
+    onClick: (href: string) => void;
+    isChild?: boolean;
+  }) => {
     const handleClick = useCallback(() => {
       if (item.href) onClick(item.href);
     }, [item.href, onClick]);
@@ -120,10 +128,17 @@ const NavigationItem = memo(
         onClick={handleClick}
         disabled={!item.href}
       >
-        <span className={item.href ? CSS_CLASSES.span : ""}>{item.title}</span>
-        {item.category === "new" && (
-          <span className={CSS_CLASSES.newBadge}>New</span>
-        )}
+        <div className="flex items-center">
+          {isChild && (
+            <Sparkle className="w-3 h-3 text-black dark:text-white opacity-80 mr-2 flex-shrink-0" />
+          )}
+          <span className={item.href ? CSS_CLASSES.span : ""}>
+            {item.title}
+          </span>
+          {item.category === "new" && (
+            <span className={CSS_CLASSES.newBadge}>New</span>
+          )}
+        </div>
       </button>
     );
   }
@@ -140,16 +155,22 @@ const NavigationSection = memo(
     onNavigate: (href: string) => void;
   }) => (
     <div className="mb-3">
-      <p className="text-gray-600 dark:text-neutral-400 text-sm mb-1">
-        {item.title}
-      </p>
+      <div className="flex items-center mb-1">
+        <Circle className="w-3 h-3 text-black dark:text-white opacity-80 mr-2 flex-shrink-0" />
+        <p className="text-gray-600 dark:text-neutral-400 text-sm">
+          {item.title}
+        </p>
+      </div>
       <div className="pl-2">
-        {item.href && <NavigationItem item={item} onClick={onNavigate} />}
+        {item.href && (
+          <NavigationItem item={item} onClick={onNavigate} isChild={true} />
+        )}
         {item.children?.map((child) => (
           <NavigationItem
             key={child.href || child.title}
             item={child}
             onClick={onNavigate}
+            isChild={true}
           />
         ))}
       </div>
@@ -176,6 +197,7 @@ const SearchResults = memo(
           key={`${item.title}-${item.href}`}
           item={item}
           onClick={onNavigate}
+          isChild={true}
         />
       ))}
     </>
@@ -191,7 +213,10 @@ const TwitterLink = memo(() => {
 
   return (
     <button className={CSS_CLASSES.button} onClick={handleClick}>
-      <span className={CSS_CLASSES.span}>Twitter @Ahdeetai</span>
+      <div className="flex items-center">
+        <Sparkle className="w-3 h-3 text-black dark:text-white opacity-80 mr-2 flex-shrink-0" />
+        <span className={CSS_CLASSES.span}>Twitter @Ahdeetai</span>
+      </div>
     </button>
   );
 });
@@ -368,6 +393,7 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
               type="text"
               placeholder="Type a command or search..."
               className="w-full bg-transparent border-none outline-none text-lg placeholder-gray-600 dark:placeholder-neutral-400"
+              autoFocus
               value={searchQuery}
               onChange={handleInputChange}
             />
