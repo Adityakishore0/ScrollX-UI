@@ -12,6 +12,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Search, Circle, Sparkle } from "lucide-react";
 import navigation, { NavItem } from "@/constants/navItems";
+import { SeparatorPro } from "@/components/ui/seperatorpro";
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -233,11 +234,12 @@ const DefaultContent = memo(
         <TwitterLink />
       </div>
       {navigation.map((item) => (
-        <NavigationSection
-          key={item.title}
-          item={item}
-          onNavigate={onNavigate}
-        />
+        <div key={item.title}>
+          {["Components", "Installation Guide", "Getting Started"].includes(
+            item.title
+          ) && <SeparatorPro variant="default" className="my-4" />}
+          <NavigationSection item={item} onNavigate={onNavigate} />
+        </div>
       ))}
     </>
   )
