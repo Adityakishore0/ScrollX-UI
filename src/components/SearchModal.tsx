@@ -339,6 +339,8 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
 
   useEffect(() => {
     if (!isOpen) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -367,6 +369,7 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
     });
 
     return () => {
+      document.body.style.overflow = originalOverflow;
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
     };
