@@ -90,6 +90,7 @@ const config: Config = {
         "slide-out-left": "slide-out-left 0.3s ease-in",
         "canopy-horizontal": "canopy-x var(--duration) infinite linear",
         "canopy-vertical": "canopy-y var(--duration) linear infinite",
+        "shake-smooth": "shake-smooth 0.3s ease-in-out",
       },
       keyframes: {
         tilt: {
@@ -147,6 +148,12 @@ const config: Config = {
         "canopy-y": {
           from: { transform: "translateY(0)" },
           to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
+        "shake-smooth": {
+          "0%, 100%": { transform: "translateX(0)" },
+          "25%": { transform: "translateX(-1px)" },
+          "50%": { transform: "translateX(1px)" },
+          "75%": { transform: "translateX(-1px)" },
         },
       },
       typography: {
