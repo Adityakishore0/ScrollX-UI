@@ -6,6 +6,7 @@ import { X, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useMemo, useRef } from "react";
 import ThemeSwitchIcon from "@/components/demos/themeswitchicon";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const navigationItems = [
   { href: "/docs", label: "Docs" },
@@ -132,7 +133,7 @@ export function NavSheet({
             </Drawer.Close>
 
             <div className="flex justify-center">
-              <ThemeSwitchIcon />
+              <ModeToggle />
             </div>
 
             <nav className="flex-1 overflow-y-auto">
