@@ -57,14 +57,18 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  html,
+  body {
+    @apply transition-colors duration-500 bg-background text-foreground;
   }
 }
 
@@ -95,7 +99,6 @@ button.copy:hover {
   display: none;
 }
 
-/* Add this to your existing CSS */
 [data-rehype-pretty-code-fragment] {
   @apply relative;
 }
@@ -110,7 +113,6 @@ button.copy:hover {
   @apply text-[#d4d4d4];
 }
 
-/* VSCode Dark Plus Theme tokens */
 .token.comment {
   @apply text-[#6A9955];
 }
