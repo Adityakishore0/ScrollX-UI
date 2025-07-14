@@ -11,6 +11,10 @@ export default function ClientBody({
 }) {
   useEffect(() => {
     document.body.classList.add("antialiased");
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/service-worker.js");
+    }
   }, []);
 
   return (
