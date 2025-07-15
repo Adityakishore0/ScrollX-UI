@@ -263,7 +263,7 @@ export default function ComponentPreview({
 
               <ScrollArea.Scrollbar
                 orientation="vertical"
-                className="flex w-2.5 touch-none select-none bg-gray-100 dark:bg-gray-800 p-0.5"
+                className="flex w-2 touch-none select-none bg-[#1f2937] dark:bg-black p-0.5"
               >
                 <ScrollArea.Thumb className="relative flex-1 rounded-full bg-gray-300 dark:bg-gray-600" />
               </ScrollArea.Scrollbar>
