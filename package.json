@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Ahdeetai",
+    "url": "https://twitter.com/Ahdeetai"
+  },
   "scripts": {
     "dev": "next dev",
     "prepare:sw": "cp ./src/utils/service-worker.js ./public/service-worker.js",
