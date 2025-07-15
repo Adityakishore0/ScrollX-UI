@@ -1,9 +1,9 @@
 export const siteConfig = {
-  name: "ScrollX-UI",
-  title: "ScrollX-UI – Interactive React Components for Modern UIs",
+  name: "ScrollX UI",
+  title: "ScrollX UI – Interactive React Components for Modern UIs",
   description:
-    "ScrollX-UI is an open-source library with customizable, animated, interactive React components to help developers build fast, visually appealing UIs.",
-  url: "https://scrollx-ui.vercel.app",
+    "ScrollX UI is an open-source library with customizable, animated, interactive React components to help developers build fast, visually appealing UIs.",
+  url: "https://scrollxui.vercel.app",
   ogImage: "/images/ui.png",
   links: {
     github: "https://github.com/Adityakishore0/ScrollX-UI",
@@ -26,7 +26,7 @@ export const siteConfig = {
   authors: [
     {
       name: "Ahdeetai",
-      url: "https://scrollx-ui.vercel.app",
+      url: "https://scrollxui.vercel.app",
     },
   ],
   icons: {
