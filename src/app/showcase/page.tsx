@@ -1,5 +1,4 @@
-"use client";
-
+import { getMetadata } from "@/lib/getMetadata";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
@@ -7,6 +6,13 @@ import Image from "next/image";
 import { projectList } from "@/constants/project-list";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+
+export const metadata = getMetadata({
+  title: "Showcase",
+  description:
+    "Creative projects and professional interfaces built with ScrollX UI components.",
+  path: "/showcase",
+});
 
 export default function ShowcasePage() {
   return (
