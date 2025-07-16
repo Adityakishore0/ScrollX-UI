@@ -5,6 +5,14 @@ import Image from "next/image";
 import { compileMDX } from "next-mdx-remote/rsc";
 import fs from "fs";
 import path from "path";
+import { getMetadata } from "@/lib/getMetadata";
+
+export const metadata = getMetadata({
+  title: "Components",
+  description:
+    "A collection of beautifully crafted UI components in ScrollX UI.",
+  path: "/components",
+});
 
 interface DocFrontmatter {
   title: string;
