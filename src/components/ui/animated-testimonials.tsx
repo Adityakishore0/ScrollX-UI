@@ -57,8 +57,19 @@ const AnimatedCanopy = ({
   </div>
 );
 
-const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
-  <div className="group mx-2 flex h-32 w-80 shrink-0 cursor-pointer overflow-hidden rounded-xl border border-transparent  p-3 transition-all hover:border-blue-400 hover:shadow-[0_0_10px_#60a5fa] dark:hover:border-blue-400">
+const TestimonialCard = ({
+  testimonial,
+  className,
+}: {
+  testimonial: Testimonial;
+  className?: string;
+}) => (
+  <div
+    className={cn(
+      "group mx-2 flex h-32 w-80 shrink-0 cursor-pointer overflow-hidden rounded-xl border border-transparent p-3 transition-all hover:border-blue-400 hover:shadow-[0_0_10px_#60a5fa] dark:hover:border-blue-400",
+      className
+    )}
+  >
     <div className="flex items-start gap-3">
       <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-gray-200 dark:border-gray-600">
         <img
@@ -84,8 +95,16 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
   </div>
 );
 
-export const AnimatedTestimonials = ({ data }: { data: Testimonial[] }) => (
-  <div className="w-full overflow-x-hidden py-4">
+export const AnimatedTestimonials = ({
+  data,
+  className,
+  cardClassName,
+}: {
+  data: Testimonial[];
+  className?: string;
+  cardClassName?: string;
+}) => (
+  <div className={cn("w-full overflow-x-hidden py-4", className)}>
     {[false, true, false].map((reverse, index) => (
       <AnimatedCanopy
         key={`Canopy-${index}`}
@@ -96,7 +115,11 @@ export const AnimatedTestimonials = ({ data }: { data: Testimonial[] }) => (
         repeat={3}
       >
         {data.map((testimonial) => (
-          <TestimonialCard key={testimonial.name} testimonial={testimonial} />
+          <TestimonialCard
+            key={testimonial.name}
+            testimonial={testimonial}
+            className={cardClassName}
+          />
         ))}
       </AnimatedCanopy>
     ))}
