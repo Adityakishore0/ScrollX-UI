@@ -1,5 +1,12 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { getMetadata } from "@/lib/getMetadata";
+
+export const metadata = getMetadata({
+  title: "Templates",
+  description: "Pre-built templates using ScrollX UI components.",
+  path: "/templates",
+});
 
 export default function TemplatesPage() {
   return (
