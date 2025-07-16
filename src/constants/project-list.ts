@@ -8,7 +8,7 @@ export const projectList = [
   {
     title: "Kumar's Portfolio",
     image: "/assets/showcase/kumar'sportfolio.png",
-    href: "https://kumarshivam.vercel.app/",
+    href: "https://yourcoderfriend.vercel.app/",
     component: "backgroundmeteors",
   },
   {
