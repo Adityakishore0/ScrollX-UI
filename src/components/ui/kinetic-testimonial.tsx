@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -166,85 +166,90 @@ interface KineticTestimonialProps {
   mobileColumns?: number;
 }
 
-const TestimonialCard: React.FC<TestimonialCardProps> = ({
-  testimonial,
-  index,
-}) => {
-  const [isHovered, setIsHovered] = useState<boolean>(false);
+interface TestimonialWithId extends Testimonial {
+  uniqueId: string;
+}
 
-  const gradients = [
-    "from-pink-500 via-purple-500 to-orange-400",
-    "from-blue-500 via-teal-500 to-green-400",
-    "from-purple-500 via-pink-500 to-red-400",
-    "from-indigo-500 via-blue-500 to-cyan-400",
-    "from-orange-500 via-red-500 to-pink-400",
-    "from-emerald-500 via-blue-500 to-purple-400",
-    "from-rose-500 via-fuchsia-500 to-indigo-400",
-    "from-amber-500 via-orange-500 to-red-400",
-  ];
+const TestimonialCard: React.FC<TestimonialCardProps> = React.memo(
+  ({ testimonial, index }) => {
+    const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  const gradientClass = gradients[index % gradients.length];
+    const gradients = [
+      "from-pink-500 via-purple-500 to-orange-400",
+      "from-blue-500 via-teal-500 to-green-400",
+      "from-purple-500 via-pink-500 to-red-400",
+      "from-indigo-500 via-blue-500 to-cyan-400",
+      "from-orange-500 via-red-500 to-pink-400",
+      "from-emerald-500 via-blue-500 to-purple-400",
+      "from-rose-500 via-fuchsia-500 to-indigo-400",
+      "from-amber-500 via-orange-500 to-red-400",
+    ];
 
-  return (
-    <div
-      className="w-full"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <Card
-        className={`transition-all duration-300 pointer-events-none relative overflow-hidden ${
-          isHovered ? "text-white shadow-2xl border-transparent" : ""
-        }`}
+    const gradientClass = gradients[index % gradients.length];
+
+    return (
+      <div
+        className="w-full mb-4 flex-shrink-0"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        {isHovered && (
-          <div
-            className={`absolute inset-0 bg-gradient-to-b ${gradientClass} z-0`}
-            style={{
-              maskImage:
-                "linear-gradient(to bottom, transparent 40%, black 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, transparent 40%, black 100%)",
-            }}
-          />
-        )}
+        <Card
+          className={`transition-all duration-300 pointer-events-none relative overflow-hidden ${
+            isHovered ? "text-white shadow-2xl border-transparent" : ""
+          }`}
+        >
+          {isHovered && (
+            <div
+              className={`absolute inset-0 bg-gradient-to-b ${gradientClass} z-0`}
+              style={{
+                maskImage:
+                  "linear-gradient(to bottom, transparent 40%, black 100%)",
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, transparent 40%, black 100%)",
+              }}
+            />
+          )}
 
-        <CardContent className="p-4 md:p-6 relative z-10">
-          <p className="text-sm md:text-base mb-4 leading-relaxed transition-colors duration-300 text-neutral-800 dark:text-neutral-200">
-            "{testimonial.review}"
-          </p>
+          <CardContent className="p-4 md:p-6 relative z-10">
+            <p className="text-sm md:text-base mb-4 leading-relaxed transition-colors duration-300 text-neutral-800 dark:text-neutral-200">
+              "{testimonial.review}"
+            </p>
 
-          <div className="flex items-center space-x-3">
-            <Avatar className="w-8 md:w-10 h-8 md:h-10">
-              <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-              <AvatarFallback>
-                {testimonial.name
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")}
-              </AvatarFallback>
-            </Avatar>
-            <div className="min-w-0">
-              <p
-                className={`font-semibold text-xs md:text-sm ${
-                  isHovered ? "text-white" : ""
-                }`}
-              >
-                {testimonial.name}
-              </p>
-              <p
-                className={`text-xs ${
-                  isHovered ? "text-white/80" : "text-muted-foreground"
-                }`}
-              >
-                {testimonial.handle}
-              </p>
+            <div className="flex items-center space-x-3">
+              <Avatar className="w-8 md:w-10 h-8 md:h-10">
+                <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                <AvatarFallback>
+                  {testimonial.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </AvatarFallback>
+              </Avatar>
+              <div className="min-w-0">
+                <p
+                  className={`font-semibold text-xs md:text-sm ${
+                    isHovered ? "text-white" : ""
+                  }`}
+                >
+                  {testimonial.name}
+                </p>
+                <p
+                  className={`text-xs ${
+                    isHovered ? "text-white/80" : "text-muted-foreground"
+                  }`}
+                >
+                  {testimonial.handle}
+                </p>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  );
-};
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+);
+
+TestimonialCard.displayName = "TestimonialCard";
 
 const KineticTestimonial: React.FC<KineticTestimonialProps> = ({
   desktopColumns = 6,
@@ -256,7 +261,6 @@ const KineticTestimonial: React.FC<KineticTestimonialProps> = ({
   useEffect(() => {
     const updateColumns = () => {
       const width = window.innerWidth;
-
       if (width < 400) {
         setActualMobileColumns(1);
       } else {
@@ -270,50 +274,94 @@ const KineticTestimonial: React.FC<KineticTestimonialProps> = ({
   }, [mobileColumns]);
 
   const createColumns = useCallback((numColumns: number) => {
-    const testimonialsPerColumn = Math.ceil(testimonials.length / numColumns);
-    const columns = [];
+    const columns: TestimonialWithId[][] = [];
+    const testimonialsPerColumn = 10;
 
     for (let i = 0; i < numColumns; i++) {
-      const columnTestimonials = [];
-      for (let j = 0; j < testimonialsPerColumn + 2; j++) {
-        const testimonialIndex =
-          (i * testimonialsPerColumn + j) % testimonials.length;
-        columnTestimonials.push(testimonials[testimonialIndex]);
+      const columnTestimonials: TestimonialWithId[] = [];
+
+      for (let j = 0; j < testimonialsPerColumn; j++) {
+        const testimonialIndex = (i * 11 + j * 3) % testimonials.length;
+        columnTestimonials.push({
+          ...testimonials[testimonialIndex],
+          uniqueId: `${i}-${j}-${testimonialIndex}`,
+        });
       }
-      columns.push(columnTestimonials);
+
+      columns.push([...columnTestimonials, ...columnTestimonials]);
     }
 
     return columns;
   }, []);
 
-  const desktopColumnsData = createColumns(6);
-  const fiveColumnsData = createColumns(5);
-  const fourColumnsData = createColumns(4);
-  const tabletColumnsData = createColumns(tabletColumns);
-  const mobileColumnsData = createColumns(actualMobileColumns);
+  const desktopColumnsData = useMemo(() => createColumns(6), [createColumns]);
+  const fiveColumnsData = useMemo(() => createColumns(5), [createColumns]);
+  const fourColumnsData = useMemo(() => createColumns(4), [createColumns]);
+  const tabletColumnsData = useMemo(
+    () => createColumns(tabletColumns),
+    [createColumns, tabletColumns]
+  );
+  const mobileColumnsData = useMemo(
+    () => createColumns(actualMobileColumns),
+    [createColumns, actualMobileColumns]
+  );
+
+  const renderColumn = useCallback(
+    (
+      columnTestimonials: TestimonialWithId[],
+      colIndex: number,
+      prefix: string,
+      containerHeight: number
+    ) => {
+      const moveUp = colIndex % 2 === 0;
+      const animationDuration = 40 + colIndex * 3;
+
+      return (
+        <div
+          key={`${prefix}-${colIndex}`}
+          className="flex-1 overflow-hidden relative testimonial-column"
+          style={{ height: `${containerHeight}px` }}
+        >
+          <div
+            className="flex flex-col"
+            style={{
+              animation: `${
+                moveUp ? "scroll-up-smooth" : "scroll-down-smooth"
+              } ${animationDuration}s linear infinite`,
+            }}
+          >
+            {columnTestimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={`${prefix}-${colIndex}-${testimonial.uniqueId}-${index}`}
+                testimonial={testimonial}
+                index={colIndex * 3 + index}
+              />
+            ))}
+          </div>
+        </div>
+      );
+    },
+    []
+  );
 
   return (
     <section className="py-12 md:py-12 bg-gray-50 dark:bg-black transition-colors duration-300">
       <style
         dangerouslySetInnerHTML={{
           __html: `
-          @keyframes scroll-up {
+          @keyframes scroll-up-smooth {
             0% { transform: translateY(0%); }
             100% { transform: translateY(-50%); }
           }
           
-          @keyframes scroll-down {
+          @keyframes scroll-down-smooth {
             0% { transform: translateY(-50%); }
             100% { transform: translateY(0%); }
           }
           
-          @keyframes scroll-mobile {
-            0% { transform: translateY(0%); }
-            100% { transform: translateY(-100%); }
-          }
-          
           .testimonial-column {
             will-change: transform;
+            contain: layout style paint;
           }
         `,
         }}
@@ -332,195 +380,45 @@ const KineticTestimonial: React.FC<KineticTestimonialProps> = ({
           <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-gray-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
 
-          {desktopColumnsData.map((columnTestimonials, colIndex) => {
-            const moveUp = colIndex % 2 === 0;
-
-            return (
-              <div
-                key={`desktop-${colIndex}`}
-                className="overflow-hidden relative h-[800px]"
-                style={{ width: `${100 / 6}%` }}
-              >
-                <div
-                  className="flex flex-col gap-6 absolute top-0 w-full testimonial-column"
-                  style={{
-                    height: "200%",
-                    animation: `${moveUp ? "scroll-up" : "scroll-down"} ${
-                      12 + colIndex
-                    }s linear infinite`,
-                  }}
-                >
-                  {[...columnTestimonials, ...columnTestimonials].map(
-                    (testimonial, index) => (
-                      <TestimonialCard
-                        key={`desktop-${colIndex}-${index}`}
-                        testimonial={testimonial}
-                        index={
-                          colIndex * columnTestimonials.length +
-                          (index % columnTestimonials.length)
-                        }
-                      />
-                    )
-                  )}
-                </div>
-              </div>
-            );
-          })}
+          {desktopColumnsData.map((columnTestimonials, colIndex) =>
+            renderColumn(columnTestimonials, colIndex, "desktop", 800)
+          )}
         </div>
 
         <div className="hidden lg:flex xl:hidden gap-4 w-full max-w-6xl overflow-hidden relative mx-4">
           <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-gray-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
 
-          {fiveColumnsData.map((columnTestimonials, colIndex) => {
-            const moveUp = colIndex % 2 === 0;
-
-            return (
-              <div
-                key={`five-${colIndex}`}
-                className="overflow-hidden relative h-[800px]"
-                style={{ width: `${100 / 5}%` }}
-              >
-                <div
-                  className="flex flex-col gap-6 absolute top-0 w-full testimonial-column"
-                  style={{
-                    height: "200%",
-                    animation: `${moveUp ? "scroll-up" : "scroll-down"} ${
-                      13 + colIndex
-                    }s linear infinite`,
-                  }}
-                >
-                  {[...columnTestimonials, ...columnTestimonials].map(
-                    (testimonial, index) => (
-                      <TestimonialCard
-                        key={`five-${colIndex}-${index}`}
-                        testimonial={testimonial}
-                        index={
-                          colIndex * columnTestimonials.length +
-                          (index % columnTestimonials.length)
-                        }
-                      />
-                    )
-                  )}
-                </div>
-              </div>
-            );
-          })}
+          {fiveColumnsData.map((columnTestimonials, colIndex) =>
+            renderColumn(columnTestimonials, colIndex, "five", 800)
+          )}
         </div>
 
         <div className="hidden md:flex lg:hidden gap-4 w-full max-w-5xl overflow-hidden relative mx-4">
           <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-gray-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
 
-          {fourColumnsData.map((columnTestimonials, colIndex) => {
-            const moveUp = colIndex % 2 === 0;
-
-            return (
-              <div
-                key={`four-${colIndex}`}
-                className="overflow-hidden relative h-[800px]"
-                style={{ width: `${100 / 4}%` }}
-              >
-                <div
-                  className="flex flex-col gap-6 absolute top-0 w-full testimonial-column"
-                  style={{
-                    height: "200%",
-                    animation: `${moveUp ? "scroll-up" : "scroll-down"} ${
-                      14 + colIndex
-                    }s linear infinite`,
-                  }}
-                >
-                  {[...columnTestimonials, ...columnTestimonials].map(
-                    (testimonial, index) => (
-                      <TestimonialCard
-                        key={`four-${colIndex}-${index}`}
-                        testimonial={testimonial}
-                        index={
-                          colIndex * columnTestimonials.length +
-                          (index % columnTestimonials.length)
-                        }
-                      />
-                    )
-                  )}
-                </div>
-              </div>
-            );
-          })}
+          {fourColumnsData.map((columnTestimonials, colIndex) =>
+            renderColumn(columnTestimonials, colIndex, "four", 800)
+          )}
         </div>
 
-        <div className="hidden sm:flex md:hidden gap-4 md:gap-6 w-full max-w-4xl overflow-hidden relative mx-4">
+        <div className="hidden sm:flex md:hidden gap-4 w-full max-w-4xl overflow-hidden relative mx-4">
           <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-gray-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
 
-          {tabletColumnsData.map((columnTestimonials, colIndex) => {
-            const moveUp = colIndex % 2 === 0;
-
-            return (
-              <div
-                key={`tablet-${colIndex}`}
-                className="overflow-hidden relative h-[800px]"
-                style={{ width: `${100 / tabletColumns}%` }}
-              >
-                <div
-                  className="flex flex-col gap-4 md:gap-6 absolute top-0 w-full testimonial-column"
-                  style={{
-                    height: "200%",
-                    animation: `${moveUp ? "scroll-up" : "scroll-down"} ${
-                      15 + colIndex * 2
-                    }s linear infinite`,
-                  }}
-                >
-                  {[...columnTestimonials, ...columnTestimonials].map(
-                    (testimonial, index) => (
-                      <TestimonialCard
-                        key={`tablet-${colIndex}-${index}`}
-                        testimonial={testimonial}
-                        index={
-                          colIndex * columnTestimonials.length +
-                          (index % columnTestimonials.length)
-                        }
-                      />
-                    )
-                  )}
-                </div>
-              </div>
-            );
-          })}
+          {tabletColumnsData.map((columnTestimonials, colIndex) =>
+            renderColumn(columnTestimonials, colIndex, "tablet", 800)
+          )}
         </div>
 
         <div className="sm:hidden flex gap-3 w-full overflow-hidden relative px-4">
-          {mobileColumnsData.map((columnTestimonials, colIndex) => {
-            return (
-              <div
-                key={`mobile-${colIndex}`}
-                className="overflow-hidden relative h-[500px] md:h-[600px]"
-                style={{ width: `${100 / actualMobileColumns}%` }}
-              >
-                <div
-                  className="flex flex-col gap-3 md:gap-4 absolute top-0 w-full testimonial-column"
-                  style={{
-                    height: "200%",
-                    animation: `scroll-mobile ${
-                      20 + colIndex * 3
-                    }s linear infinite`,
-                  }}
-                >
-                  {[...columnTestimonials, ...columnTestimonials].map(
-                    (testimonial, index) => (
-                      <TestimonialCard
-                        key={`mobile-${colIndex}-${index}`}
-                        testimonial={testimonial}
-                        index={
-                          colIndex * columnTestimonials.length +
-                          (index % columnTestimonials.length)
-                        }
-                      />
-                    )
-                  )}
-                </div>
-              </div>
-            );
-          })}
+          <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-gray-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-50 dark:from-black to-transparent z-10 pointer-events-none"></div>
+
+          {mobileColumnsData.map((columnTestimonials, colIndex) =>
+            renderColumn(columnTestimonials, colIndex, "mobile", 600)
+          )}
         </div>
       </div>
     </section>
