@@ -31,6 +31,7 @@ export const demoComponents = [
   "heroui-demo",
   "inputotp-demo",
   "interactiveinput-demo",
+  "kinetictestimonials-demo",
   "lamphome-demo",
   "lighttrail-demo",
   "lustretext-demo",

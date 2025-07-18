@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { ComponentShowcase } from "@/components/ComponentShowcase";
 import { Footer } from "@/components/Footer";
-import KineticTestimonial from "@/components/ui/kinetic-testimonial";
+import Testimonial from "@/components/testimonial";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
         <HeroSection />
         <FeaturesSection />
         <ComponentShowcase />
-        <KineticTestimonial />
+        <Testimonial />
       </main>
       <Footer />
     </>

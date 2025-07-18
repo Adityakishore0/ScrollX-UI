@@ -1,0 +1,167 @@
+---
+title: Kinetic Testimonials
+description: Smoothly scrolling, animated testimonials for modern developer websites to showcase user feedback visually.
+---
+
+<ComponentPreview
+  name="kinetictestimonials-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="kinetic-testimonials" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>kinetic-testimonials.tsx</code>
+</p>
+<ComponentSource name="kinetic-testimonials" />
+
+<Step>Update tailwind.config.ts</Step>
+
+```tsx
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+       animation: {
+        'scroll-up': 'scroll-up-smooth linear infinite',
+        'scroll-down': 'scroll-down-smooth linear infinite',
+      },
+      keyframes: {
+        'scroll-up-smooth': {
+          '0%': { transform: 'translateY(0%)' },
+          '100%': { transform: 'translateY(-50%)' },
+        },
+        'scroll-down-smooth': {
+          '0%': { transform: 'translateY(-50%)' },
+          '100%': { transform: 'translateY(0%)' },
+        },
+      },   
+    },
+  },
+};
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import KineticTestimonial from "@/components/ui/kinetic-testimonials";
+```
+
+```tsx
+<KineticTestimonial
+      testimonials={testimonials}
+      className="bg-gradient-to-br from-slate-100 to-slate-200 dark:from-black dark:to-black md:py-0 py-0 not-prose"
+      cardClassName="hover:scale-105 shadow-lg"
+      avatarClassName="ring-2 ring-purple-500"
+      desktopColumns={3}
+      tabletColumns={3}
+      mobileColumns={2}
+      speed={1.5}
+      title="Customer Reviews"
+      subtitle="What our users think about our product"
+    />
+```
+
+
+## API Reference
+
+### Kinetic Testimonial
+
+Showcasing testimonials with smooth scrolling and subtle animations for modern websites.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "testimonials",
+      type: "Testimonial[]",
+      default: "[]",
+      description:
+        "Array of testimonial objects.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description:
+        "Optional className for the root container.",
+    },
+    {
+      prop: "cardClassName",
+      type: "string",
+      default: "-",
+      description:
+        "Optional className passed to individual testimonial cards",
+    },
+    {
+      prop: "avatarClassName",
+      type: "string",
+      default: "-",
+      description:
+        "Optional className passed to the Avatar component.",
+    },
+    {
+      prop: "desktopColumns",
+      type: "number",
+      default: "6",
+      description:
+        "Number of columns displayed on desktop (xl screens).",
+    },
+    {
+      prop: "tabletColumns",
+      type: "number",
+      default: "3",
+      description:
+        "Number of columns displayed on tablets. ",
+    },
+    {
+      prop: "mobileColumns",
+      type: "number",
+      default: "2",
+      description:
+        "Number of columns displayed on mobile screens.",
+    },
+    {
+      prop: "speed",
+      type: "number",
+      default: "1",
+      description:
+        "Controls the animation speed of scrolling testimonials.",
+    },
+    {
+      prop: "title",
+      type: "string",
+      default: "Reviews",
+      description:
+        "Main heading text shown at the top of the testimonial section.",
+    },
+    {
+      prop: "subtitle",
+      type: "string",
+      default:
+        "about reviews",
+      description:
+        "Secondary text below the title",
+    },
+  ]}
+/>
+

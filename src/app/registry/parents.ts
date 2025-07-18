@@ -24,6 +24,7 @@ export const parentComponents = [
   "interactive-input",
   "lamphome",
   "light-trail",
+  "kinetic-testimonials",
   "lustretext",
   "magicdock",
   "morphotextflip",

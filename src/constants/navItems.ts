@@ -86,6 +86,10 @@ const navigation: NavItem[] = [
         title: "Interactive Input",
         href: "/docs/components/interactive-input",
       },
+      {
+        title: "Kinetic Testimonials",
+        href: "/docs/components/kinetic-testimonials",
+      },
       { title: "Lamphome", href: "/docs/components/lamphome" },
       {
         title: "Light Trail",
