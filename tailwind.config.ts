@@ -81,6 +81,8 @@ const config: Config = {
         },
       },
       animation: {
+        "scroll-up": "scroll-up-smooth linear infinite",
+        "scroll-down": "scroll-down-smooth linear infinite",
         tilt: "tilt 10s infinite linear",
         "glow-border": "glow-border 1.5s infinite alternate",
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -97,6 +99,14 @@ const config: Config = {
         "shake-smooth": "shake-smooth 0.5s ease-in-out",
       },
       keyframes: {
+        "scroll-up-smooth": {
+          "0%": { transform: "translateY(0%)" },
+          "100%": { transform: "translateY(-50%)" },
+        },
+        "scroll-down-smooth": {
+          "0%": { transform: "translateY(-50%)" },
+          "100%": { transform: "translateY(0%)" },
+        },
         tilt: {
           "0%, 50%, 100%": { transform: "rotate(0deg)" },
           "25%": { transform: "rotate(1deg)" },

@@ -160,7 +160,7 @@ interface TestimonialCardProps {
   index: number;
 }
 
-interface KineticTestimonialProps {
+interface TestimonialProps {
   desktopColumns?: number;
   tabletColumns?: number;
   mobileColumns?: number;
@@ -251,7 +251,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = React.memo(
 
 TestimonialCard.displayName = "TestimonialCard";
 
-const KineticTestimonial: React.FC<KineticTestimonialProps> = ({
+const Testimonial: React.FC<TestimonialProps> = ({
   desktopColumns = 6,
   tabletColumns = 3,
   mobileColumns = 2,
@@ -425,4 +425,4 @@ const KineticTestimonial: React.FC<KineticTestimonialProps> = ({
   );
 };
 
-export default KineticTestimonial;
+export default Testimonial;
