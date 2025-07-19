@@ -48,6 +48,7 @@ export const demoComponents = [
   "profilecard-demo",
   "radialflow-demo",
   "statscount-demo",
+  "statscarousel-demo",
   "spotlightcard-demo",
   "seperatorpro-demo",
   "seperatorprodotted",

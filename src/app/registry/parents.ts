@@ -35,6 +35,7 @@ export const parentComponents = [
   "profilecard",
   "radialflow",
   "statscount",
+  "statscarousel",
   "spotlightcard",
   "seperatorpro",
   "theme-switch",
