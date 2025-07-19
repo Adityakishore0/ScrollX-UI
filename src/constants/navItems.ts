@@ -133,6 +133,10 @@ const navigation: NavItem[] = [
         href: "/docs/components/statscount",
       },
       {
+        title: "Stats Carousel",
+        href: "/docs/components/statscarousel",
+      },
+      {
         title: "Spotlight Card",
         href: "/docs/components/spotlightcard",
       },

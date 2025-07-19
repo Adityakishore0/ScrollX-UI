@@ -1,0 +1,94 @@
+---
+title: Stats Carousel
+description: Animated statistics counter in stacked carousel for modern websites.
+---
+
+<ComponentPreview
+  name="statscarousel-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="statscarousel" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>statscarousel.tsx</code>
+</p>
+<ComponentSource name="statscarousel" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import StatsCarouselcount from "@/components/ui/statscarousel";
+```
+
+```tsx
+<StatsCarouselcount
+  title="CREATE STUNNING INTERFACES WITH SCROLLX UI COMPONENTS"
+  stats={[
+    { value: 40, suffix: "+", label: "Handcrafted animated components" },
+    { value: 12, suffix: "K+", label: "Developers building with ScrollX UI" },
+    { value: 99, suffix: "%", label: "Performance optimized for web" },
+  ]}
+  className=""
+  cardClassName=""
+/>
+```
+
+
+## API Reference
+
+### Stats Carousel
+
+Animated number stack for next-gen websites in stacked carousel. 
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "stats",
+      type: "{ value: number; suffix?: string; label: string; id?: number; }[]",
+      default: "optional",
+      description: "Array of stats with value, suffix (like %, K+), label, and optional id."
+    },
+    {
+      prop: "title",
+      type: "string",
+      default: "optional",
+      description: "Optional title shown above the carousel cards."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: '""',
+      description: "Additional classes for the outer wrapper section."
+    },
+    {
+      prop: "cardClassName",
+      type: "string",
+      default: '""',
+      description: "Additional classes for styling individual stat cards."
+    }
+  ]}
+/>
+
