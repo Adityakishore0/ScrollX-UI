@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface StatItem {
@@ -126,7 +126,7 @@ export default function StatsCarouselcount({
 
   return (
     <section
-      className={`py-20 px-4 w-full max-w-md mx-auto text-center relative h-[500px] ${className}`}
+      className={`py-20 px-4 w-full max-w-md mx-auto text-center relative h-[500px] z-[40] ${className}`}
     >
       <h2 className="text-lg font-bold text-black dark:text-white mb-12">
         {title ?? "CREATE STUNNING INTERFACES WITH SCROLLX UI COMPONENTS"}
@@ -149,7 +149,10 @@ export default function StatsCarouselcount({
           if (isTopCard && phase === "upReenter")
             animate = { x: 0, y: bottomIndex * 20, scale: bottomScale };
 
-          const zIndex = phase === "upReenter" && isTopCard ? 0 : 100 - index;
+          const zIndex =
+            phase === "upReenter" && isTopCard
+              ? 0
+              : Math.max(0, Math.min(40, 40 - index));
           const shouldAnimate =
             stat.id === activeTopId &&
             phase === "idle" &&
