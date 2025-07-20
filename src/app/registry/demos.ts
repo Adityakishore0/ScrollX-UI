@@ -5,6 +5,7 @@ export const demoComponents = [
   "animatedshowcase-demo",
   "animatedtabs-demo",
   "animatedtestimonials-demo",
+  "animatedtextgenerate-demo",
   "aspectratio-demo",
   "avatar-demo",
   "backgroundmeteors-demo",

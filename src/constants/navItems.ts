@@ -45,6 +45,10 @@ const navigation: NavItem[] = [
         title: "Animated Testimonials",
         href: "/docs/components/animated-testimonials",
       },
+      {
+        title: "Animated TextGenerate",
+        href: "/docs/components/animated-textgenerate",
+      },
       { title: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
       { title: "Avatar", href: "/docs/components/avatar" },
       {
