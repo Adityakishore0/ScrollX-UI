@@ -1,0 +1,147 @@
+---
+title: Animated TextGenerate
+description: Generates animated text word-by-word with blur, highlights, links, and smooth effects.
+---
+
+<ComponentPreview
+  name="animatedtextgenerate-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="animated-textgenerate" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>animated-textgenerate.tsx</code>
+</p>
+<ComponentSource name="animated-textgenerate" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { AnimatedTextGenerate } from "@/components/ui/animated-textgenerate";
+```
+
+```tsx
+ <AnimatedTextGenerate
+      text="Pressure changes everything. Some people focus, others fold."
+      className="text-center my-10"
+      textClassName="text-3xl text-gray-800 dark:text-white"
+      blurEffect={true}
+      speed={0.5}
+      highlightWords={["Pressure", "focus"]}
+      highlightClassName="text-blue-500"
+      linkWords={["everything"]}
+      linkHrefs={["/about"]}
+      linkClassNames={["underline text-red-500"]}
+    />
+```
+
+
+## API Reference
+
+### Animated TextGenerate
+
+Creates a flowing reading effect with staggered words, styling emphasis, and interactions.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "text",
+      type: "string",
+      default: "required",
+      description: "The full string of text to animate word-by-word."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "optional",
+      description: "Additional classNames for styling the outer container."
+    },
+    {
+      prop: "textClassName",
+      type: "string",
+      default: "optional",
+      description: "Additional classNames for styling the text container."
+    },
+    {
+      prop: "blurEffect",
+      type: "boolean",
+      default: "true",
+      description: "Applies a blur-in animation when words appear."
+    },
+    {
+      prop: "speed",
+      type: "number",
+      default: "0.5",
+      description: "Controls the speed of the animation. Lower is faster."
+    },
+    {
+      prop: "highlightWords",
+      type: "string[]",
+      default: "[]",
+      description: "Array of words to highlight visually when they appear."
+    },
+    {
+      prop: "highlightClassName",
+      type: "string",
+      default: "optional",
+      description: "Class applied to highlighted words for styling (e.g., color)."
+    },
+    {
+      prop: "linkWords",
+      type: "string[]",
+      default: "[]",
+      description: "Words to turn into links during animation."
+    },
+    {
+      prop: "linkHrefs",
+      type: "string[]",
+      default: "[]",
+      description: "Corresponding href values for `linkWords`. Must match `linkWords` length."
+    },
+    {
+      prop: "linkClassNames",
+      type: "string[]",
+      default: "[]",
+      description: "ClassNames applied individually to each link in `linkWords`."
+    },
+  ]}
+/>
+
