@@ -1,30 +1,20 @@
-"use client";
-
-import * as React from "react";
+import { CodeBlockWrapper } from "@/components/code-block-wrapper";
+import { getParentSourceAction } from "@/actions/getParentSourceAction";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { cn } from "@/lib/utils";
-import { CodeBlockWrapper } from "@/components/code-block-wrapper";
-import { getParentSourceAction } from "@/actions/getParentSourceAction";
 
 interface ComponentSourceProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
 }
 
-export function ComponentSource({
+export async function ComponentSource({
   name,
   className,
   ...props
 }: ComponentSourceProps) {
-  const [source, setSource] = React.useState<string>("");
-
-  React.useEffect(() => {
-    const loadSource = async () => {
-      const result = await getParentSourceAction(name);
-      setSource(result.source);
-    };
-    loadSource();
-  }, [name]);
+  const result = await getParentSourceAction(name);
+  const source = result.source ?? "";
 
   return (
     <CodeBlockWrapper
