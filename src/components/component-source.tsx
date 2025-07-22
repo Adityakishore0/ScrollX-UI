@@ -1,14 +1,15 @@
-import { CodeBlockWrapper } from "@/components/code-block-wrapper";
-import { getParentSourceAction } from "@/actions/getParentSourceAction";
+import { Suspense } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { cn } from "@/lib/utils";
+import { CodeBlockWrapper } from "@/components/code-block-wrapper";
+import { getParentSourceAction } from "@/actions/getParentSourceAction";
 
 interface ComponentSourceProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
 }
 
-export async function ComponentSource({
+async function ComponentSourceAsync({
   name,
   className,
   ...props
@@ -42,5 +43,16 @@ export async function ComponentSource({
         {source}
       </SyntaxHighlighter>
     </CodeBlockWrapper>
+  );
+}
+
+export function ComponentSource(props: ComponentSourceProps) {
+  return (
+    <Suspense
+      fallback={<div className="animate-pulse bg-gray-200 h-32 rounded-md" />}
+    >
+      {/* @ts-expect-error - Async Server Components are valid in React 18+ */}
+      <ComponentSourceAsync {...props} />
+    </Suspense>
   );
 }
