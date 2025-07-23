@@ -1,10 +1,23 @@
 "use client";
+import React from "react";
 
-export default function GridBackground() {
+interface GridBackgroundProps {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export default function GridBackground({
+  className,
+  children,
+}: GridBackgroundProps) {
   return (
-    <div className="h-[30rem] md:h-screen w-full bg-white dark:bg-black overflow-hidden">
-      <div className="relative h-full">
-        <div className="absolute top-0 h-1/2 w-[325vw] left-[-98vw] md:w-full md:left-0">
+    <div
+      className={`relative h-[30rem] md:h-screen w-full bg-white dark:bg-black overflow-hidden ${
+        className ?? ""
+      }`}
+    >
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 h-1/2 w-[325vw] left-[-98vw] md:w-full md:left-4">
           <svg className="w-full h-full" preserveAspectRatio="none">
             <g>
               {[...Array(15)].map((_, i) => {
@@ -26,7 +39,7 @@ export default function GridBackground() {
               <line
                 x1="0%"
                 y1="0%"
-                x2="100%"
+                x2="98%"
                 y2="0%"
                 stroke="#9ca3af"
                 strokeWidth="1"
@@ -34,7 +47,7 @@ export default function GridBackground() {
               <line
                 x1="0%"
                 y1="13.33%"
-                x2="100%"
+                x2="98%"
                 y2="13.33%"
                 stroke="#9ca3af"
                 strokeWidth="1"
@@ -60,7 +73,7 @@ export default function GridBackground() {
             <line
               x1="0%"
               y1="40%"
-              x2="100%"
+              x2="98%"
               y2="40%"
               stroke="#6b7280"
               strokeWidth="2"
@@ -68,7 +81,7 @@ export default function GridBackground() {
           </svg>
         </div>
 
-        <div className="absolute bottom-0 h-1/2 w-[325vw] left-[-98vw] md:w-full md:left-0">
+        <div className="absolute bottom-0 h-1/2 w-[325vw] left-[-98vw] md:w-full md:left-4">
           <svg className="w-full h-full" preserveAspectRatio="none">
             <g>
               {[...Array(15)].map((_, i) => {
@@ -91,7 +104,7 @@ export default function GridBackground() {
               <line
                 x1="0%"
                 y1="80%"
-                x2="100%"
+                x2="98%"
                 y2="80%"
                 stroke="#9ca3af"
                 strokeWidth="1"
@@ -116,7 +129,11 @@ export default function GridBackground() {
           </svg>
         </div>
 
-        <div className="absolute top-1/2 left-0 w-full h-64 -translate-y-1/2 pointer-events-none z-10 bg-gradient-to-b from-white/0 via-white to-white/0 dark:from-black/0 dark:via-black dark:to-black/0" />
+        <div className="absolute top-1/2 left-0 w-full h-64 -translate-y-1/2 pointer-events-none z-0 bg-gradient-to-b from-white/0 via-white to-white/0 dark:from-black/0 dark:via-black dark:to-black/0" />
+      </div>
+
+      <div className="relative z-10 w-full h-full flex items-center justify-center flex-col">
+        {children}
       </div>
     </div>
   );
