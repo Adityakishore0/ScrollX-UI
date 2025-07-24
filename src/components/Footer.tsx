@@ -91,26 +91,6 @@ export function Footer() {
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
           </span>
         </Link>
-        <div className="flex flex-col items-center gap-2 md:flex-row md:items-start md:gap-4 lg:gap-6">
-          <Link
-            href="/privacy"
-            className="text-xs text-muted-foreground hover:underline"
-          >
-            Privacy
-          </Link>
-          <Link
-            href="/terms"
-            className="text-xs text-muted-foreground hover:underline"
-          >
-            Terms
-          </Link>
-          <Link
-            href="/license"
-            className="text-xs text-muted-foreground hover:underline"
-          >
-            License
-          </Link>
-        </div>
       </div>
     </footer>
   );
