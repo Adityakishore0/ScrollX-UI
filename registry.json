@@ -31,6 +31,126 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "alert-dialog",
+      "title": "Alert Dialog",
+      "description": "A modal dialog used to convey critical information and require a user response before proceeding..",
+      "type": "registry:component",
+      "dependencies": ["@radix-ui/react-alert-dialog", "framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/alert-dialog.tsx",
+          "target": "components/ui/alert-dialog.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "animated-button",
+      "title": "Animated Button",
+      "description": "AnimatedButton is a highly customizable animated button component with shimmer effects, glow, and visual styling options.",
+      "type": "registry:component",
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "files": [
+        {
+          "path": "components/ui/animated-button.tsx",
+          "target": "components/ui/animated-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "animated-showcase",
+      "title": "Animated Showcase",
+      "description": "The AnimatedShowcase component displays interactive UI elements with smooth transitions and animations.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/animated-showcase.tsx",
+          "target": "components/ui/animated-showcase.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "animated-tabs",
+      "title": "Animated Tabs",
+      "description": "A headless and styled tab UI component set for switching content views.",
+      "type": "registry:component",
+      "dependencies": ["tailwind-merge"],
+      "files": [
+        {
+          "path": "components/ui/animated-tabs.tsx",
+          "target": "components/ui/animated-tabs.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "animated-testimonials",
+      "title": "Animated Testimonials",
+      "description": "Minimal testimonials with image and quote for clean, modern design.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/animated-testimonials.tsx",
+          "target": "components/ui/animated-testimonials.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "animated-textgenerate",
+      "title": "Animated TextGenerate",
+      "description": "Generates animated text word-by-word with blur, highlights, links, and smooth effects.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/animated-textgenerate.tsx",
+          "target": "components/ui/animated-textgenerate.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "aspect-ratio",
+      "title": "Aspect Ratio",
+      "description": "A responsive container component that maintains a fixed aspect ratio, commonly used for media like images and videos.",
+      "type": "registry:component",
+      "dependencies": ["@radix-ui/react-aspect-ratio"],
+      "files": [
+        {
+          "path": "components/ui/aspect-ratio.tsx",
+          "target": "components/ui/aspect-ratio.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "avatar",
+      "title": "Avatar",
+      "description": "Customizable Avatar component with animated borders for status indicators like \"close friends\" or \"normal story\".",
+      "type": "registry:component",
+      "dependencies": ["@radix-ui/react-avatar"],
+      "files": [
+        {
+          "path": "components/ui/avatar.tsx",
+          "target": "components/ui/avatar.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
