@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "scrollx-ui",
+  "homepage": "https://scrollx-ui.vercel.app/",
+  "dependencies": ["clsx", "tailwind-merge"],
+  "items": [
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "utils",
+      "title": "Utils",
+      "type": "registry:lib",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "accordion",
+      "title": "Accordion",
+      "description": "A collapsible component for showing and hiding content sections.",
+      "type": "registry:component",
+      "dependencies": ["@radix-ui/react-accordion", "lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/accordion.tsx",
+          "target": "components/ui/accordion.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
