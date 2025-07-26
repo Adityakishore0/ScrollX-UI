@@ -16,13 +16,13 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
   const getInstallCommand = (pkgManager: string) => {
     switch (pkgManager) {
       case "pnpm":
-        return `pnpm dlx scrollx-ui@latest add ${name}`;
+        return `pnpm dlx shadcn@latest add https://scrollx-ui.vercel.app/registry/${name}.json`;
       case "yarn":
-        return `npx scrollx-ui@latest add ${name}`;
+        return `npx shadcn@latest add https://scrollx-ui.vercel.app/registry/${name}.json`;
       case "bun":
-        return `bunx --bun scrollx-ui@latest add ${name}`;
+        return `bun x --bun shadcn@latest add https://scrollx-ui.vercel.app/registry/${name}.json`;
       default:
-        return `npx scrollx-ui@latest add ${name}`;
+        return `npx shadcn@latest add https://scrollx-ui.vercel.app/registry/${name}.json`;
     }
   };
 
@@ -205,7 +205,25 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
       </div>
 
       <pre className="overflow-x-auto not-prose px-4 py-3 text-sm font-mono text-white">
-        <code>{installCommand}</code>
+        <code>
+          {installCommand.split(" ").map((part, i) => {
+            let colorClass = "text-white";
+
+            if (["npx", "pnpm", "bun", "yarn"].includes(part)) {
+              colorClass = "text-blue-400";
+            } else if (part.startsWith("shadcn@")) {
+              colorClass = "text-green-400";
+            } else if (part.startsWith("https://")) {
+              colorClass = "text-yellow-400";
+            }
+
+            return (
+              <span key={i} className={`${colorClass}`}>
+                {part + " "}
+              </span>
+            );
+          })}
+        </code>
       </pre>
     </div>
   );
