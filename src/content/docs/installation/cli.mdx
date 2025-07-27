@@ -2,9 +2,283 @@
 title: CLI Quickstart
 description: Command Line Interface (CLI) to manage and configure your project efficiently.
 ---
-  <Steps>
-   <Step>Add CLI</Step>
 
-    We are currently working on the CLI feature. In the meantime, please use the [manual installation](https://scrollx-ui.vercel.app/docs/installation/manual).
+<Steps>
+  <Step>Initialize CLI</Step>
+</Steps>
+
+Use the `init` command to initialize configuration and dependencies for a new project.
+
+<Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="npm">
+    ```bash
+    npx shadcn@latest init
+    ```
+  </TabsContent>
   
-  </Steps>
+  <TabsContent value="yarn">
+    ```bash
+    npx shadcn@latest init
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx shadcn@latest init
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```bash
+     bun x --bun shadcn@latest init
+    ```
+  </TabsContent> 
+</Tabs>
+
+This installs dependencies, sets up the `cn` utility, configures `tailwind.config.js`, and generates a `components.json` file.
+
+You will be asked a few questions to configure `components.json`:
+
+```bash
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
+Do you want to use CSS variables for colors? › no / yes
+```
+
+### Options for `init`
+
+```bash
+Usage: shadcn init [options] [components...]
+
+initialize your project and install dependencies
+
+Arguments:
+  components         the components to add or a url to the component.
+
+Options:
+  -d, --defaults    use default values i.e new-york, zinc and css variables. (default: false)
+  -f, --force       force overwrite of existing components.json. (default: false)
+  -y, --yes         skip confirmation prompt. (default: false)
+  -c, --cwd <cwd>   the working directory. defaults to the current directory.
+  -h, --help       display help for command
+
+```
+
+---
+
+<Steps>
+  <Step>Add Components</Step>
+</Steps>
+
+Use the `add` command to add new components and their dependencies:
+
+<Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="npm">
+    ```bash
+    npx shadcn@latest add [component]
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```bash
+    npx shadcn@latest add [component]
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx shadcn@latest add [component]
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```bash
+    bun x --bun shadcn@latest add [component]
+    ```
+  </TabsContent> 
+</Tabs>
+
+### Options for `add`
+
+```bash
+Usage: shadcn add [options] [components...]
+
+add a component to your project
+
+Arguments:
+  components         the components to add or a url to the component.
+
+Options:
+  -y, --yes          skip confirmation prompt. (default: false)
+  -o, --overwrite    overwrite existing files. (default: false)
+  -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  -p, --path <path>  the path to add the component to.
+  -h, --help         display help for command
+```
+---
+
+<Steps>
+  <Step>Use in Monorepo</Step>
+</Steps>
+
+To specify a workspace path in a monorepo, use `-c` or `--cwd`:
+
+<Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="npm">
+    ```bash
+    npx shadcn@latest init -c ./apps/www
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```bash
+    npx shadcn@latest init -c ./apps/www
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx shadcn@latest init -c ./apps/www
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```bash
+    bun x --bun shadcn@latest init -c ./apps/www
+    ```
+  </TabsContent> 
+</Tabs>
+
+or
+
+<Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="npm">
+    ```bash
+    npx shadcn@latest add alert-dialog -c ./apps/www
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```bash
+    npx shadcn@latest add alert-dialog -c ./apps/www
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx shadcn@latest add alert-dialog -c ./apps/www
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```bash
+    bun x --bun shadcn@latest add alert-dialog -c ./apps/www
+    ```
+  </TabsContent> 
+</Tabs>
+
+---
+
+<Steps>
+  <Step>Installation through CLI</Step>
+</Steps>
+
+You can install ScrollX UI components through the CLI.
+ Use the following command structure:
+
+<Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="npm">
+    ```bash
+    npx shadcn@latest add https://scrollx-ui.vercel.app/registry/[component].json
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```bash
+    npx shadcn@latest add https://scrollx-ui.vercel.app/registry/[component].json
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx shadcn@latest add https://scrollx-ui.vercel.app/registry/[component].json
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```bash
+    bun x --bun shadcn@latest add https://scrollx-ui.vercel.app/registry/[component].json
+    ```
+  </TabsContent> 
+</Tabs>
+
+Integrates a new component into your project.
+
+<Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="npm">
+    ```bash
+    npx shadcn@latest add https://scrollx-ui.vercel.app/registry/alert-dialog.json
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```bash
+    npx shadcn@latest add https://scrollx-ui.vercel.app/registry/alert-dialog.json
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx shadcn@latest add https://scrollx-ui.vercel.app/registry/alert-dialog.json
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```bash
+    bun x --bun shadcn@latest add https://scrollx-ui.vercel.app/registry/alert-dialog.json
+    ```
+  </TabsContent> 
+</Tabs>
+
