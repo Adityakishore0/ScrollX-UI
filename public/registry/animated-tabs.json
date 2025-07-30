@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-tabs",
+  "type": "registry:component",
+  "title": "Animated Tabs",
+  "description": "A headless and styled tab UI component set for switching content views.",
+  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "dependencies": ["tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/animated-tabs.tsx",
+      "target": "components/ui/animated-tabs.tsx",
+      "content": "\"use client\";\n\nimport React, {\n  createContext,\n  useContext,\n  useState,\n  ReactNode,\n  ReactElement,\n} from \"react\";\nimport { twMerge } from \"tailwind-merge\";\n\ninterface TabsContextProps {\n  activeTab: string;\n  setActiveTab: (value: string) => void;\n}\n\nconst TabsContext = createContext<TabsContextProps | undefined>(undefined);\n\nfunction useTabsContext() {\n  const context = useContext(TabsContext);\n  if (!context) {\n    throw new Error(\"Tabs components must be used within <Tabs>\");\n  }\n  return context;\n}\n\ninterface TabsProps {\n  defaultValue: string;\n  children: ReactNode;\n}\n\nconst Tabs = ({ defaultValue, children }: TabsProps) => {\n  const [activeTab, setActiveTab] = useState(defaultValue);\n\n  return (\n    <TabsContext.Provider value={{ activeTab, setActiveTab }}>\n      <div className=\"w-full\">{children}</div>\n    </TabsContext.Provider>\n  );\n};\n\nconst TabsList = ({ children }: { children: ReactNode }) => {\n  return (\n    <div className=\"flex border-b border-gray-200 dark:border-gray-800\">\n      {children}\n    </div>\n  );\n};\n\ninterface TabsTriggerProps {\n  value: string;\n  children: ReactNode;\n}\n\nconst TabsTrigger = ({ value, children }: TabsTriggerProps) => {\n  const { activeTab, setActiveTab } = useTabsContext();\n  const isActive = activeTab === value;\n\n  return (\n    <button\n      onClick={() => setActiveTab(value)}\n      className=\"relative px-4 py-2 text-sm font-medium rounded-t-md overflow-hidden transition-colors duration-500\"\n    >\n      <span\n        className={twMerge(\n          \"relative z-10 capitalize transition-colors duration-300\",\n          isActive\n            ? \"text-white dark:text-black\"\n            : \"text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100\"\n        )}\n      >\n        {children}\n      </span>\n      <span\n        className={twMerge(\n          \"absolute bottom-0 left-0 h-full w-full origin-bottom scale-y-0 transition-transform duration-500 ease-out z-0 rounded-t-md\",\n          isActive ? \"scale-y-100 bg-black dark:bg-white\" : \"bg-transparent\"\n        )}\n      />\n    </button>\n  );\n};\n\ninterface TabsContentProps {\n  value: string;\n  children: ReactNode;\n}\n\nconst TabsContent = ({\n  value,\n  children,\n}: TabsContentProps): ReactElement | null => {\n  const { activeTab } = useTabsContext();\n  return activeTab === value ? <div className=\"p-4\">{children}</div> : null;\n};\n\nexport { Tabs, TabsList, TabsTrigger, TabsContent };"
+    }
+  ]
+}

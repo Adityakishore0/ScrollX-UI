@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "whitestripes",
+  "type": "registry:component",
+  "title": "Whitestripes",
+  "description": "Dynamic motion background for hero sections and modern layouts.",
+  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "dependencies": ["framer-motion"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/whitestripes.tsx",
+      "target": "components/ui/whitestripes.tsx",
+      "content": "\"use client\";\nimport { motion } from \"framer-motion\";\nimport React from \"react\";\n\ninterface WhiteStripesProps {\n  children?: React.ReactNode;\n  className?: string;\n}\n\nexport default function WhiteStripes({\n  children,\n  className = \"\",\n}: WhiteStripesProps) {\n  const stripeCount = 15;\n\n  return (\n    <div\n      className={`relative w-full h-screen bg-black dark:bg-white flex flex-col justify-start items-center overflow-hidden ${className}`}\n    >\n      {Array.from({ length: stripeCount }).map((_, index) => {\n        const height = 30 - index * 1.5;\n        const margin = index * 3;\n        if (height <= 0) return null;\n\n        const delay = index * 0.1;\n\n        return (\n          <motion.div\n            key={index}\n            initial={{ y: 0 }}\n            animate={{\n              y: [0, -5, 5, 0],\n            }}\n            transition={{\n              duration: 2,\n              repeat: Infinity,\n              ease: \"easeInOut\",\n              delay,\n            }}\n            className=\"w-full bg-white dark:bg-black\"\n            style={{\n              height: `${height}px`,\n              marginBottom: `${margin}px`,\n            }}\n          />\n        );\n      })}\n\n      {children && (\n        <div className=\"absolute inset-0 z-10 flex items-center justify-center p-8\">\n          {children}\n        </div>\n      )}\n    </div>\n  );\n}"
+    }
+  ]
+}
