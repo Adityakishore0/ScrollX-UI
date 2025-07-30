@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "carousel",
+  "type": "registry:component",
+  "title": "Carousel",
+  "description": "A carousel component with card stack visualization for cycling through content.",
+  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "dependencies": [
+    "lucide-react",
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/carousel.tsx",
+      "target": "components/ui/carousel.tsx",
+      "content": "import * as React from \"react\";\nimport { useState } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { ChevronUp, ChevronDown } from \"lucide-react\";\n\ninterface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {\n  className?: string;\n  children?: React.ReactNode;\n}\n\ninterface CarouselContentProps {\n  children?: React.ReactNode;\n}\n\ninterface CarouselItemProps {\n  children?: React.ReactNode;\n}\n\ninterface CarouselControlProps {\n  onClick?: () => void;\n  disabled?: boolean;\n}\n\nexport const Carousel: React.FC<CarouselProps> = ({\n  className,\n  children,\n  ...props\n}) => {\n  return (\n    <div className={className} {...props}>\n      {children}\n    </div>\n  );\n};\n\nexport const CarouselContent: React.FC<CarouselContentProps> = ({\n  children,\n}) => {\n  const [activeIndex, setActiveIndex] = useState(0);\n  const childrenArray = React.Children.toArray(children);\n  const totalCards = childrenArray.length;\n  const maxVisible = 3;\n\n  const goNext = () => {\n    if (activeIndex < totalCards - 1) {\n      setActiveIndex((prev) => prev + 1);\n    }\n  };\n\n  const goPrevious = () => {\n    if (activeIndex > 0) {\n      setActiveIndex((prev) => prev - 1);\n    }\n  };\n\n  const visibleCards = [];\n  for (let i = 0; i < maxVisible; i++) {\n    const cardIndex = activeIndex + i;\n    if (cardIndex < totalCards) {\n      visibleCards.push({\n        content: childrenArray[cardIndex],\n        index: cardIndex,\n      });\n    }\n  }\n\n  return (\n    <div className=\"w-full\">\n      <div className=\"relative h-80\">\n        {visibleCards.map((card, stackIndex) => (\n          <div\n            key={card.index}\n            className=\"absolute w-full transition-all duration-300 ease-in-out\"\n            style={{\n              zIndex: maxVisible - stackIndex,\n              top: `${stackIndex * 20}px`,\n              opacity: 1 - stackIndex * 0.15,\n              transform: `scale(${1 - stackIndex * 0.05})`,\n            }}\n          >\n            {card.content}\n          </div>\n        ))}\n      </div>\n\n      <div className=\"flex justify-between mt-4\">\n        <CarouselPrevious onClick={goPrevious} disabled={activeIndex === 0} />\n\n        <CarouselNext\n          onClick={goNext}\n          disabled={activeIndex >= totalCards - 1}\n        />\n      </div>\n    </div>\n  );\n};\n\nexport const CarouselItem: React.FC<CarouselItemProps> = ({ children }) => {\n  return <>{children}</>;\n};\n\nexport const CarouselPrevious: React.FC<CarouselControlProps> = ({\n  onClick,\n  disabled,\n}) => {\n  return (\n    <Button\n      onClick={onClick}\n      disabled={disabled}\n      variant=\"outline\"\n      size=\"icon\"\n      className=\"rounded-full mt-3 h-8 w-8\"\n    >\n      <ChevronUp className=\"h-4 w-4\" />\n      <span className=\"sr-only\">Previous card</span>\n    </Button>\n  );\n};\n\nexport const CarouselNext: React.FC<CarouselControlProps> = ({\n  onClick,\n  disabled,\n}) => {\n  return (\n    <Button\n      onClick={onClick}\n      disabled={disabled}\n      variant=\"outline\"\n      size=\"icon\"\n      className=\"rounded-full mt-3 h-8 w-8\"\n    >\n      <ChevronDown className=\"h-4 w-4\" />\n      <span className=\"sr-only\">Next card</span>\n    </Button>\n  );\n};"
+    },
+    {
+      "type": "registry:component",
+      "path": "components/ui/button.tsx",
+      "target": "components/ui/button.tsx",
+      "content": "import * as React from \"react\";\nimport { Slot } from \"@radix-ui/react-slot\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"bg-primary text-primary-foreground shadow hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90\",\n        outline:\n          \"border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground\",\n        secondary:\n          \"bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80\",\n        ghost: \"hover:bg-accent hover:text-accent-foreground\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n        success: \"bg-green-600 text-white hover:bg-green-700\",\n        warning: \"bg-yellow-500 text-black hover:bg-yellow-600\",\n        info: \"bg-blue-500 text-white hover:bg-blue-600\",\n        dark: \"bg-gray-800 text-white hover:bg-gray-700\",\n        light: \"bg-gray-100 text-gray-800 hover:bg-gray-200\",\n        gradient:\n          \"bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:opacity-90\",\n        glass:\n          \"bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/20\"\n      },\n      size: {\n        default: \"h-9 px-4 py-2\",\n        sm: \"h-8 rounded-md px-3 text-xs\",\n        lg: \"h-10 rounded-md px-8\",\n        icon: \"h-9 w-9\"\n      }\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\"\n    }\n  }\n);\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  asChild?: boolean;\n}\n\nconst Button = React.forwardRef<HTMLButtonElement, ButtonProps>(\n  ({ className, variant, size, asChild = false, ...props }, ref) => {\n    const Comp = asChild ? Slot : \"button\";\n    return (\n      <Comp\n        className={cn(buttonVariants({ variant, size, className }))}\n        ref={ref}\n        {...props}\n      />\n    );\n  }\n);\nButton.displayName = \"Button\";\n\nexport { Button, buttonVariants };"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}

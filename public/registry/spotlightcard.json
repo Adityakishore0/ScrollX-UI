@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlightcard",
+  "type": "registry:component",
+  "title": "Spotlight Card",
+  "description": "An interactive card with a spotlight hover effect that highlights content and enhances user engagement visually.",
+  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/spotlightcard.tsx",
+      "target": "components/ui/spotlightcard.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\nimport { motion, useMotionTemplate, useMotionValue } from \"framer-motion\";\nimport { Card, CardContent } from \"@/components/ui/card\";\n\ninterface SpotlightCardProps extends React.ComponentProps<typeof Card> {\n  spotlightColor?: string;\n  children: React.ReactNode;\n}\n\nexport function SpotlightCard({\n  spotlightColor = \"14, 165, 233\",\n  children,\n  className,\n  style,\n  ...props\n}: SpotlightCardProps) {\n  const mouseX = useMotionValue(0);\n  const mouseY = useMotionValue(0);\n  const spotlightX = useMotionValue(0);\n  const spotlightY = useMotionValue(0);\n\n  const backgroundImage = useMotionTemplate`radial-gradient(300px circle at ${spotlightX}px ${spotlightY}px, rgba(${spotlightColor}, 0.15), transparent)`;\n\n  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {\n    const { left, top } = e.currentTarget.getBoundingClientRect();\n    const x = e.clientX - left;\n    const y = e.clientY - top;\n\n    mouseX.set(x);\n    mouseY.set(y);\n    spotlightX.set(x);\n    spotlightY.set(y);\n  };\n\n  return (\n    <Card\n      className={`group relative overflow-hidden border rounded-lg ${\n        className ?? \"\"\n      }`}\n      style={\n        {\n          \"--spotlight-color\": spotlightColor,\n          ...style,\n        } as React.CSSProperties\n      }\n      onMouseMove={handleMouseMove}\n      {...props}\n    >\n      <motion.div\n        className=\"pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100\"\n        style={{ backgroundImage }}\n      />\n      <CardContent className=\"flex flex-col justify-center items-center w-full h-full p-6\">\n        {children}\n      </CardContent>\n    </Card>\n  );\n}"
+    },
+    {
+      "type": "registry:component",
+      "path": "components/ui/card.tsx",
+      "target": "components/ui/card.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst Card = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"rounded-xl border bg-card text-card-foreground shadow\",\n      className\n    )}\n    {...props}\n  />\n));\nCard.displayName = \"Card\";\n\nconst CardHeader = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex flex-col space-y-1.5 p-6\", className)}\n    {...props}\n  />\n));\nCardHeader.displayName = \"CardHeader\";\n\nconst CardTitle = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"font-semibold leading-none tracking-tight\", className)}\n    {...props}\n  />\n));\nCardTitle.displayName = \"CardTitle\";\n\nconst CardDescription = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"text-sm text-muted-foreground\", className)}\n    {...props}\n  />\n));\nCardDescription.displayName = \"CardDescription\";\n\nconst CardContent = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div ref={ref} className={cn(\"p-6 pt-0\", className)} {...props} />\n));\nCardContent.displayName = \"CardContent\";\n\nconst CardFooter = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex items-center p-6 pt-0\", className)}\n    {...props}\n  />\n));\nCardFooter.displayName = \"CardFooter\";\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardDescription,\n  CardContent,\n};"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}

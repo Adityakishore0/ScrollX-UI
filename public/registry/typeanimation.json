@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typeanimation",
+  "type": "registry:component",
+  "title": "Type Animation",
+  "description": "Displays an animated typing effect.",
+  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "dependencies": [
+    "framer-motion",
+    "react-type-animation",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/typeanimation.tsx",
+      "target": "components/ui/typeanimation.tsx",
+      "content": "\"use client\";\n\nimport { motion } from \"framer-motion\";\nimport { TypeAnimation } from \"react-type-animation\";\nimport { cn } from \"@/lib/utils\";\nimport { ComponentProps } from \"react\";\n\ntype LibrarySpeedType = ComponentProps<typeof TypeAnimation>[\"speed\"];\n\ntype SpeedType = number | \"slow\" | \"normal\" | \"fast\";\n\ninterface TypeanimationProps {\n  words?: string[];\n  className?: string;\n  typingSpeed?: SpeedType;\n  deletingSpeed?: SpeedType;\n  pauseDuration?: number;\n  gradientFrom?: string;\n  gradientTo?: string;\n}\n\nconst Typeanimation = ({\n  words = [\" existence\", \" reality\", \" the Internet\"],\n  className,\n  typingSpeed = 50,\n  deletingSpeed = 50,\n  pauseDuration = 1000,\n  gradientFrom = \"blue-500\",\n  gradientTo = \"purple-600\",\n}: TypeanimationProps) => {\n  const sequence = words.flatMap((word) => [word, pauseDuration]);\n\n  return (\n    <motion.span\n      className={cn(\n        `bg-clip-text text-transparent bg-gradient-to-r from-${gradientFrom} to-${gradientTo}`,\n        className\n      )}\n      initial={{ opacity: 0 }}\n      animate={{ opacity: 1 }}\n      transition={{ duration: 1 }}\n    >\n      <TypeAnimation\n        sequence={sequence}\n        wrapper=\"span\"\n        repeat={Infinity}\n        className=\"\"\n        speed={typingSpeed as LibrarySpeedType}\n        deletionSpeed={deletingSpeed as LibrarySpeedType}\n      />\n    </motion.span>\n  );\n};\n\nexport default Typeanimation;"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}

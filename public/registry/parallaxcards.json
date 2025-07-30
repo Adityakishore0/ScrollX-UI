@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "parallaxcards",
+  "type": "registry:component",
+  "title": "Card",
+  "description": "Renders a card component comprising a header, content section, and footer...",
+  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/parallaxcards.tsx",
+      "target": "components/ui/parallaxcards.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Card } from \"@/components/ui/card\";\n\ninterface ParallaxCard {\n  lightBg: string;\n  darkBg: string;\n  content: React.ReactNode;\n}\n\ninterface ParallaxCardsProps {\n  cards?: ParallaxCard[];\n  height?: number | string;\n}\n\nexport default function ParallaxCards({\n  cards,\n  height = \"100vh\",\n}: ParallaxCardsProps) {\n  const cardCount = cards?.length || 0;\n\n  return (\n    <section className=\"relative w-full\" style={{ height }}>\n      <div style={{ height: `${cardCount * 70}vh` }} className=\"relative\">\n        {cards?.map((card, index) => (\n          <div key={index} className=\"sticky top-0 h-[70vh] z-[1]\">\n            <Card\n              className={`w-full h-full flex items-center justify-center text-center p-8 rounded-none ${card.lightBg} ${card.darkBg}`}\n            >\n              {card.content}\n            </Card>\n          </div>\n        ))}\n      </div>\n      <div className=\"h-screen bg-white dark:bg-black\" />\n    </section>\n  );\n}"
+    },
+    {
+      "type": "registry:component",
+      "path": "components/ui/card.tsx",
+      "target": "components/ui/card.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst Card = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"rounded-xl border bg-card text-card-foreground shadow\",\n      className\n    )}\n    {...props}\n  />\n));\nCard.displayName = \"Card\";\n\nconst CardHeader = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex flex-col space-y-1.5 p-6\", className)}\n    {...props}\n  />\n));\nCardHeader.displayName = \"CardHeader\";\n\nconst CardTitle = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"font-semibold leading-none tracking-tight\", className)}\n    {...props}\n  />\n));\nCardTitle.displayName = \"CardTitle\";\n\nconst CardDescription = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"text-sm text-muted-foreground\", className)}\n    {...props}\n  />\n));\nCardDescription.displayName = \"CardDescription\";\n\nconst CardContent = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div ref={ref} className={cn(\"p-6 pt-0\", className)} {...props} />\n));\nCardContent.displayName = \"CardContent\";\n\nconst CardFooter = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex items-center p-6 pt-0\", className)}\n    {...props}\n  />\n));\nCardFooter.displayName = \"CardFooter\";\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardDescription,\n  CardContent,\n};"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
