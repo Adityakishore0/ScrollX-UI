@@ -11,6 +11,40 @@
     "clsx",
     "tailwind-merge"
   ],
+  "tailwind": {
+    "theme": {
+      "extend": {
+        "keyframes": {
+          "accordion-down": {
+            "from": { "height": "0" },
+            "to": { "height": "var(--radix-accordion-content-height)" }
+          },
+          "accordion-up": {
+            "from": { "height": "var(--radix-accordion-content-height)" },
+            "to": { "height": "0" }
+          },
+          "shake-smooth": {
+            "0%": { "transform": "translateX(0)" },
+            "10%": { "transform": "translateX(-12px)" },
+            "20%": { "transform": "translateX(12px)" },
+            "30%": { "transform": "translateX(-10px)" },
+            "40%": { "transform": "translateX(10px)" },
+            "50%": { "transform": "translateX(-6px)" },
+            "60%": { "transform": "translateX(6px)" },
+            "70%": { "transform": "translateX(-3px)" },
+            "80%": { "transform": "translateX(3px)" },
+            "90%": { "transform": "translateX(-1px)" },
+            "100%": { "transform": "translateX(0)" }
+          }
+        },
+        "animation": {
+          "accordion-down": "accordion-down 0.2s ease-out",
+          "accordion-up": "accordion-up 0.2s ease-out",
+          "shake-smooth": "shake-smooth 0.5s ease-in-out"
+        }
+      }
+    }
+  },
   "files": [
     {
       "type": "registry:component",
@@ -23,12 +57,6 @@
       "path": "lib/utils.ts",
       "target": "lib/utils.ts",
       "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
-    },
-    {
-      "type": "registry:file",
-      "path": "tailwind.config.ts",
-      "target": "tailwind.config.ts",
-      "content": "/** @type {import('tailwindcss').Config} */\nmodule.exports = {\n  theme: {\n    extend: {\n      keyframes: {\n        \"accordion-down\": {\n          from: { height: \"0\" },\n          to: { height: \"var(--radix-accordion-content-height)\" }\n        },\n        \"accordion-up\": {\n          from: { height: \"var(--radix-accordion-content-height)\" },\n          to: { height: \"0\" }\n        },\n        \"shake-smooth\": {\n          \"0%\": { transform: \"translateX(0)\" },\n          \"10%\": { transform: \"translateX(-12px)\" },\n          \"20%\": { transform: \"translateX(12px)\" },\n          \"30%\": { transform: \"translateX(-10px)\" },\n          \"40%\": { transform: \"translateX(10px)\" },\n          \"50%\": { transform: \"translateX(-6px)\" },\n          \"60%\": { transform: \"translateX(6px)\" },\n          \"70%\": { transform: \"translateX(-3px)\" },\n          \"80%\": { transform: \"translateX(3px)\" },\n          \"90%\": { transform: \"translateX(-1px)\" },\n          \"100%\": { transform: \"translateX(0)\" }\n        }\n      },\n      animation: {\n        \"accordion-down\": \"accordion-down 0.2s ease-out\",\n        \"accordion-up\": \"accordion-up 0.2s ease-out\",\n        \"shake-smooth\": \"shake-smooth 0.5s ease-in-out\"\n      }\n    }\n  }\n};"
     }
   ]
 }
