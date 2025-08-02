@@ -34,10 +34,6 @@ const navigation: NavItem[] = [
         href: "/docs/components/animated-button",
       },
       {
-        title: "Animated Showcase",
-        href: "/docs/components/animated-showcase",
-      },
-      {
         title: "Animated Tabs",
         href: "/docs/components/animated-tabs",
       },
