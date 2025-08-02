@@ -31,21 +31,6 @@ description: An interactive card with a spotlight hover effect that highlights c
 </p>
 <ComponentSource name="spotlightcard" />
 
-<Step>Add util file</Step>
-
-<p>
-  <code>lib/utils.ts</code>
-</p>
-
-```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-```
-
 </Steps>
   </TabsContent>
 </Tabs>
