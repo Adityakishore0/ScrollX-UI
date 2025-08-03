@@ -9,26 +9,23 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-
-      <div className="flex flex-1 overflow-x-hidden">
-        <div className="hidden lg:block w-64 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 fixed inset-y-0 overflow-y-auto">
-          <Sidebar />
-        </div>
-
-        <div className="flex-1 ml-0 lg:ml-64">
-          <div className="max-w-[90rem] w-full mx-auto flex">
-            <div className="flex-1 px-4 py-8 lg:pr-64">
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                {children}
-                <SeparatorPro variant="wave" className="my-4" />
-                <DocsFooter />
-              </div>
+      <div className="flex-1">
+        <div className="lg:grid lg:grid-cols-[minmax(16rem,16rem)_1fr_minmax(16rem,16rem)]">
+          <aside className="hidden lg:block w-full sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+            <Sidebar />
+          </aside>
+          <main className="min-w-0 py-8 px-4 lg:px-8">
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              {children}
+              <SeparatorPro variant="wave" className="my-4" />
+              <DocsFooter />
             </div>
-
-            <div className="w-64 hidden lg:block fixed right-0 top-16 border-l border-gray-200 dark:border-gray-800 pl-8 pr-8 py-8 h-[calc(100vh-4rem)] overflow-y-auto">
+          </main>
+          <aside className="hidden lg:block w-full sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto border-l border-gray-200 dark:border-gray-800">
+            <div className="px-6 py-8">
               <OnThisPage />
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </div>
