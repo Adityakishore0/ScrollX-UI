@@ -2,7 +2,6 @@ export const parentComponents = [
   "accordion",
   "alert-dialog",
   "animated-button",
-  "animated-showcase",
   "animated-testimonials",
   "animated-textgenerate",
   "animated-tabs",

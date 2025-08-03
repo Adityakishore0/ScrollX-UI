@@ -64,21 +64,6 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "animated-showcase",
-      "title": "Animated Showcase",
-      "description": "The AnimatedShowcase component displays interactive UI elements with smooth transitions and animations.",
-      "type": "registry:component",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "components/ui/animated-showcase.tsx",
-          "target": "components/ui/animated-showcase.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "animated-tabs",
       "title": "Animated Tabs",
       "description": "A headless and styled tab UI component set for switching content views.",
