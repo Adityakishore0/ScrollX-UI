@@ -1,15 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import ThemeSwitchIcon from "@/components/demos/themeswitchicon";
 import {
   Menu as List,
   X as Close,
   ChevronDown as ArrowDown,
   ChevronUp as ArrowUp,
 } from "lucide-react";
-import ScrollXHeading from "@/components/heading";
-import Link from "next/link";
 
 interface NavLink {
   text: string;
@@ -17,13 +14,12 @@ interface NavLink {
   submenu?: React.ReactNode;
 }
 
-interface LinkedNavbarProps {
+interface NavbarFlowProps {
   emblem?: React.ReactNode;
   links?: NavLink[];
-  displayGitIcon?: boolean;
-  gitUrl?: string;
   extraIcons?: React.ReactNode[];
   styleName?: string;
+  rightComponent?: React.ReactNode;
 }
 
 interface ListItemProps {
@@ -62,10 +58,22 @@ const ListItem: React.FC<ListItemProps> = ({
   children,
 }) => {
   return (
-    <div className="relative" onMouseEnter={() => setSelected(element)}>
+    <div
+      className="relative"
+      onMouseEnter={() => setSelected(element)}
+      onMouseLeave={(e) => {
+        const dropdown = e.currentTarget.querySelector(".dropdown-content");
+        if (dropdown) {
+          const dropdownRect = dropdown.getBoundingClientRect();
+          if (e.clientY < dropdownRect.top - 20) {
+            setSelected(null);
+          }
+        }
+      }}
+    >
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-gray-800 dark:text-gray-200 font-medium text-base lg:text-xl whitespace-nowrap hover:opacity-[0.9] hover:text-gray-900 dark:hover:text-white"
+        className="cursor-pointer text-gray-800 dark:text-gray-200 font-medium text-base lg:text-xl whitespace-nowrap hover:opacity-[0.9] hover:text-gray-900 dark:hover:text-white py-1"
       >
         {element}
       </motion.p>
@@ -76,13 +84,18 @@ const ListItem: React.FC<ListItemProps> = ({
           transition={springTransition}
         >
           {selected === element && (
-            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
+            <div className="absolute top-[calc(100%_+_0.5rem)] left-1/2 transform -translate-x-1/2 z-50">
               <motion.div
                 transition={springTransition}
                 layoutId="selected"
-                className="bg-white dark:bg-gray-900 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-xl"
+                className="dropdown-content bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-2xl"
+                style={{
+                  maxWidth: "min(90vw, 400px)",
+                }}
+                onMouseEnter={() => setSelected(element)}
+                onMouseLeave={() => setSelected(null)}
               >
-                <motion.div layout className="w-max h-full p-4">
+                <motion.div layout className="w-max h-full p-4 min-w-48">
                   {children}
                 </motion.div>
               </motion.div>
@@ -94,95 +107,46 @@ const ListItem: React.FC<ListItemProps> = ({
   );
 };
 
-const HoverLink: React.FC<HoverLinkProps> = ({ url, children, onPress }) => {
+export const HoverLink: React.FC<HoverLinkProps> = ({
+  url,
+  children,
+  onPress,
+}) => {
   return (
-    <Link
+    <a
       href={url}
       onClick={onPress}
       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
     >
       {children}
-    </Link>
+    </a>
   );
 };
 
-const FeatureItem: React.FC<FeatureItemProps> = ({
+export const FeatureItem: React.FC<FeatureItemProps> = ({
   heading,
   url,
   info,
   onPress,
 }) => {
   return (
-    <Link
+    <a
       href={url}
       onClick={onPress}
       className="block p-3 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
     >
       <h4 className="font-medium text-gray-900 dark:text-white">{heading}</h4>
       <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{info}</p>
-    </Link>
+    </a>
   );
 };
 
-const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
-  emblem = <ScrollXHeading className="w-auto h-4 sm:h-5 whitespace-nowrap" />,
-  links = [
-    {
-      text: "Components",
-      submenu: (
-        <div className="flex flex-col space-y-2">
-          <HoverLink url="/components/button">Button</HoverLink>
-          <HoverLink url="/components/hero">Hero Section</HoverLink>
-          <HoverLink url="/components/navbar">Navbar</HoverLink>
-          <HoverLink url="/components/footer">Footer</HoverLink>
-          <HoverLink url="/components/cards">Cards</HoverLink>
-          <HoverLink url="/components/forms">Forms</HoverLink>
-        </div>
-      ),
-    },
-    {
-      text: "Templates",
-      submenu: (
-        <div className="grid grid-cols-1 gap-2 w-48">
-          <FeatureItem
-            heading="Portfolio Template"
-            url="/templates/portfolio"
-            info="Clean, personal showcase for designers & developers."
-          />
-          <FeatureItem
-            heading="Business Template"
-            url="/templates/business"
-            info="Professional website layout for startups & businesses."
-          />
-          <FeatureItem
-            heading="Blog Template"
-            url="/templates/blog"
-            info="Minimal blog with modern reading experience."
-          />
-          <FeatureItem
-            heading="Landing Page"
-            url="/templates/landing"
-            info="High-converting landing page for product launches."
-          />
-        </div>
-      ),
-    },
-    {
-      text: "Showcase",
-      submenu: (
-        <div className="flex flex-col space-y-2">
-          <HoverLink url="/showcase/astroship">Astroship</HoverLink>
-          <HoverLink url="/showcase/papermod">PaperMod</HoverLink>
-          <HoverLink url="/showcase/satori">Satori</HoverLink>
-          <HoverLink url="/showcase/scrollx">ScrollX</HoverLink>
-          <HoverLink url="/showcase/speedyfolio">Speedyfolio</HoverLink>
-        </div>
-      ),
-    },
-    { text: "About", url: "/about" },
-  ],
+const NavbarFlow: React.FC<NavbarFlowProps> = ({
+  emblem,
+  links = [],
   extraIcons = [],
   styleName = "",
+  rightComponent,
 }) => {
   const [sequenceDone, setSequenceDone] = useState(false);
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
@@ -191,11 +155,16 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
   const [openedSections, setOpenedSections] = useState<Record<string, boolean>>(
     {}
   );
+  const [isMounted, setIsMounted] = useState(false);
 
   const navMotion = useAnimation();
   const emblemMotion = useAnimation();
   const switchMotion = useAnimation();
   const svgMotion = useAnimation();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const detectMobile = () => {
@@ -208,6 +177,8 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
   }, []);
 
   useEffect(() => {
+    if (!isMounted) return;
+
     const runSequence = async () => {
       if (mobileView) {
         await Promise.all([
@@ -229,7 +200,7 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
       } else {
         await navMotion.start({
           width: "auto",
-          padding: "16px 40px",
+          padding: "10px 30px",
           transition: { duration: 0.8, ease: "easeOut" },
         });
 
@@ -256,7 +227,7 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
     };
 
     runSequence();
-  }, [navMotion, emblemMotion, switchMotion, svgMotion, mobileView]);
+  }, [navMotion, emblemMotion, switchMotion, svgMotion, mobileView, isMounted]);
 
   const toggleMobileMenu = () => {
     setMobileMenuVisible(!mobileMenuVisible);
@@ -287,13 +258,13 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
   };
 
   return (
-    <div className={`sticky top-0 z-50 w-full  ${styleName}`}>
+    <div className={`sticky top-0 z-50 w-full ${styleName}`}>
       <div className="hidden md:block">
         <div className="relative w-full max-w-7xl mx-auto h-24 flex items-center justify-between px-4 lg:px-10">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={emblemMotion}
-            className="bg-gray-200/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-800 dark:text-gray-200 px-4 lg:px-8 py-3 lg:py-4 rounded-full font-semibold text-lg lg:text-xl z-10 flex-shrink-0"
+            className="bg-gray-200/80 dark:bg-black/95 backdrop-blur-sm text-gray-800 dark:text-gray-200 px-4 lg:px-8 py-3 lg:py-4 rounded-full font-semibold text-lg lg:text-xl z-10 flex-shrink-0"
           >
             {emblem}
           </motion.div>
@@ -301,10 +272,10 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
           <motion.nav
             initial={{
               width: "120px",
-              padding: "12px 24px",
+              padding: "8px 20px",
             }}
             animate={navMotion}
-            className="bg-gray-200/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full flex items-center justify-center gap-6 lg:gap-12 z-10 flex-shrink-0"
+            className="bg-gray-200/80 dark:bg-black/95 backdrop-blur-sm rounded-full flex items-center justify-center gap-6 lg:gap-12 z-10 flex-shrink-0"
             onMouseLeave={() => setSelectedSubmenu(null)}
           >
             {links.map((element) => (
@@ -322,12 +293,12 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: sequenceDone ? 1 : 0 }}
                   >
-                    <Link
+                    <a
                       href={element.url || "#"}
-                      className="text-gray-800 dark:text-gray-200 font-medium text-base lg:text-xl whitespace-nowrap hover:text-gray-900 dark:hover:text-white transition-colors"
+                      className="text-gray-800 dark:text-gray-200 font-medium text-base lg:text-xl whitespace-nowrap hover:text-gray-900 dark:hover:text-white transition-colors py-1"
                     >
                       {element.text}
-                    </Link>
+                    </a>
                   </motion.div>
                 )}
               </div>
@@ -337,7 +308,7 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={switchMotion}
-            className="bg-gray-200/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full p-2 lg:p-3 z-10 flex-shrink-0 flex items-center gap-2 lg:gap-3"
+            className="bg-gray-200/80 dark:bg-black/95 backdrop-blur-sm rounded-full p-2 lg:p-3 z-10 flex-shrink-0 flex items-center gap-2 lg:gap-3"
           >
             {extraIcons.map((icon, idx) => (
               <div key={idx} className="flex items-center justify-center">
@@ -345,9 +316,11 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
               </div>
             ))}
 
-            <div className="flex items-center justify-center">
-              <ThemeSwitchIcon />
-            </div>
+            {rightComponent && (
+              <div className="flex items-center justify-center">
+                {rightComponent}
+              </div>
+            )}
           </motion.div>
 
           <motion.svg
@@ -438,7 +411,16 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
               animate={{ pathLength: 1, opacity: 0.8 }}
               transition={{ duration: 2, ease: "easeOut", delay: 1.5 }}
             />
-
+            <motion.path
+              d="M 700 48 Q 500 30, 300 40 Q 200 35, 120 48"
+              stroke="url(#blueGradient)"
+              strokeWidth="3"
+              fill="none"
+              transform="scale(-1,1) translate(-1400,0)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 0.8 }}
+              transition={{ duration: 2, ease: "easeOut", delay: 1.5 }}
+            />
             <motion.path
               d="M 700 44 Q 520 60, 320 50 Q 220 55, 130 44"
               stroke="url(#cyanGradient)"
@@ -448,7 +430,16 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
               animate={{ pathLength: 1, opacity: 0.7 }}
               transition={{ duration: 2.2, ease: "easeOut", delay: 1.7 }}
             />
-
+            <motion.path
+              d="M 700 44 Q 520 60, 320 50 Q 220 55, 130 44"
+              stroke="url(#cyanGradient)"
+              strokeWidth="2.5"
+              fill="none"
+              transform="scale(-1,1) translate(-1400,0)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 0.7 }}
+              transition={{ duration: 2.2, ease: "easeOut", delay: 1.7 }}
+            />
             <motion.path
               d="M 700 52 Q 480 25, 280 45 Q 180 30, 110 52"
               stroke="url(#purpleGradient)"
@@ -458,7 +449,16 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
               animate={{ pathLength: 1, opacity: 0.6 }}
               transition={{ duration: 1.8, ease: "easeOut", delay: 1.9 }}
             />
-
+            <motion.path
+              d="M 700 52 Q 480 25, 280 45 Q 180 30, 110 52"
+              stroke="url(#purpleGradient)"
+              strokeWidth="2.5"
+              fill="none"
+              transform="scale(-1,1) translate(-1400,0)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 0.6 }}
+              transition={{ duration: 1.8, ease: "easeOut", delay: 1.9 }}
+            />
             <motion.path
               d="M 700 48 Q 900 35, 1100 45 Q 1200 40, 1280 48"
               stroke="url(#orangeGradient)"
@@ -468,7 +468,16 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
               animate={{ pathLength: 1, opacity: 0.8 }}
               transition={{ duration: 2, ease: "easeOut", delay: 2.1 }}
             />
-
+            <motion.path
+              d="M 700 48 Q 900 35, 1100 45 Q 1200 40, 1280 48"
+              stroke="url(#orangeGradient)"
+              strokeWidth="3"
+              fill="none"
+              transform="scale(-1,1) translate(-1400,0)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 0.8 }}
+              transition={{ duration: 2, ease: "easeOut", delay: 2.1 }}
+            />
             <motion.path
               d="M 700 44 Q 880 65, 1080 50 Q 1180 60, 1270 44"
               stroke="url(#redGradient)"
@@ -478,12 +487,31 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
               animate={{ pathLength: 1, opacity: 0.7 }}
               transition={{ duration: 2.2, ease: "easeOut", delay: 2.3 }}
             />
-
+            <motion.path
+              d="M 700 44 Q 880 65, 1080 50 Q 1180 60, 1270 44"
+              stroke="url(#redGradient)"
+              strokeWidth="2.5"
+              fill="none"
+              transform="scale(-1,1) translate(-1400,0)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 0.7 }}
+              transition={{ duration: 2.2, ease: "easeOut", delay: 2.3 }}
+            />
             <motion.path
               d="M 700 52 Q 920 25, 1120 40 Q 1220 30, 1290 52"
               stroke="url(#greenGradient)"
               strokeWidth="2.5"
               fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 0.6 }}
+              transition={{ duration: 1.8, ease: "easeOut", delay: 2.5 }}
+            />
+            <motion.path
+              d="M 700 52 Q 920 25, 1120 40 Q 1220 30, 1290 52"
+              stroke="url(#greenGradient)"
+              strokeWidth="2.5"
+              fill="none"
+              transform="scale(-1,1) translate(-1400,0)"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 0.6 }}
               transition={{ duration: 1.8, ease: "easeOut", delay: 2.5 }}
@@ -532,7 +560,7 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
       </div>
 
       <div className="block md:hidden">
-        <div className=" top-0 z-50 w-full border-b border-gray-200/40 dark:border-gray-800/40 bg-gray-50/95 dark:bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 dark:supports-[backdrop-filter]:bg-black/60 relative">
+        <div className="top-0 z-50 w-full border-b border-gray-200/40 dark:border-gray-800/40 bg-gray-50/95 dark:bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 dark:supports-[backdrop-filter]:bg-black/60 relative">
           <div className="container flex h-16 max-w-screen-2xl items-center px-4">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -556,9 +584,11 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
                   </div>
                 ))}
 
-                <div className="flex items-center justify-center">
-                  <ThemeSwitchIcon />
-                </div>
+                {rightComponent && (
+                  <div className="flex items-center justify-center">
+                    {rightComponent}
+                  </div>
+                )}
               </motion.div>
 
               <button
@@ -616,13 +646,13 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
                         )}
                       </>
                     ) : (
-                      <Link
+                      <a
                         href={element.url || "#"}
                         onClick={hideMobileMenu}
                         className="text-gray-800 dark:text-gray-200 font-medium text-base py-2 px-4 rounded-lg hover:bg-gray-200/50 dark:hover:bg-gray-800/50 transition-colors border-b border-gray-200 dark:border-gray-800 block"
                       >
                         {element.text}
-                      </Link>
+                      </a>
                     )}
                   </div>
                 ))}
@@ -635,4 +665,4 @@ const LinkedNavbar: React.FC<LinkedNavbarProps> = ({
   );
 };
 
-export default LinkedNavbar;
+export default NavbarFlow;

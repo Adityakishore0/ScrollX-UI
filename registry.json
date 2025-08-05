@@ -457,6 +457,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "navbar-flow",
+      "title": "Navbar Flow",
+      "description": "A customizable, animated navigation bar with hover effects and dropdowns.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/navbar-flow.tsx",
+          "target": "components/ui/navbar-flow.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "not-found",
       "title": "Not Found",
       "description": "A beautifully designed 404 page to guide users when content is missing.",
