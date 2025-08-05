@@ -104,6 +104,7 @@ const navigation: NavItem[] = [
         href: "/docs/components/magicdock",
       },
       { title: "MorphoText Flip", href: "/docs/components/morphotextflip" },
+      { title: "Navbar Flow", href: "/docs/components/navbar-flow" },
       { title: "Not Found", href: "/docs/components/not-found" },
       {
         title: "Pagination",

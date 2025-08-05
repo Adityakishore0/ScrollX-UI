@@ -29,6 +29,7 @@ export const parentComponents = [
   "magicdock",
   "morphotextflip",
   "not-found",
+  "navbar-flow",
   "pagination",
   "parallaxcards",
   "particles",

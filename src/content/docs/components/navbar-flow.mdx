@@ -1,0 +1,143 @@
+---
+title: Navbar Flow
+description: Animated navbar component with flowing SVG connections and dropdown menus.
+---
+
+<ComponentPreview name="navbarflow-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="navbar-flow" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>navbar-flow.tsx</code>
+</p>
+<ComponentSource name="navbar-flow" />
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import NavbarFlow, {
+  FeatureItem,
+  HoverLink,
+} from "@/components/ui/navbar-flow";
+```
+
+```tsx
+<NavbarFlow
+  emblem={<ScrollXHeading className="w-auto h-4 sm:h-5 whitespace-nowrap" />}
+  links={[
+    {
+      text: "Components",
+      submenu: (
+        <div className="flex flex-col space-y-2">
+          <HoverLink url="/components/button">Button</HoverLink>
+          <HoverLink url="/components/hero">Hero Section</HoverLink>
+          <HoverLink url="/components/navbar">Navbar</HoverLink>
+          <HoverLink url="/components/footer">Footer</HoverLink>
+          <HoverLink url="/components/cards">Cards</HoverLink>
+          <HoverLink url="/components/forms">Forms</HoverLink>
+        </div>
+      ),
+    },
+    {
+      text: "Templates",
+      submenu: (
+        <div className="grid grid-cols-1 gap-2 w-48">
+          <FeatureItem
+            heading="Portfolio Template"
+            url="/templates/portfolio"
+            info="Clean, personal showcase for designers & developers."
+          />
+          <FeatureItem
+            heading="Business Template"
+            url="/templates/business"
+            info="Professional website layout for startups & businesses."
+          />
+          <FeatureItem
+            heading="Blog Template"
+            url="/templates/blog"
+            info="Minimal blog with modern reading experience."
+          />
+          <FeatureItem
+            heading="Landing Page"
+            url="/templates/landing"
+            info="High-converting landing page for product launches."
+          />
+        </div>
+      ),
+    },
+    {
+      text: "Showcase",
+      submenu: (
+        <div className="flex flex-col space-y-2">
+          <HoverLink url="/showcase/astroship">Astroship</HoverLink>
+          <HoverLink url="/showcase/papermod">PaperMod</HoverLink>
+          <HoverLink url="/showcase/satori">Satori</HoverLink>
+          <HoverLink url="/showcase/scrollx">ScrollX</HoverLink>
+          <HoverLink url="/showcase/speedyfolio">Speedyfolio</HoverLink>
+        </div>
+      ),
+    },
+    { text: "About", url: "/about" },
+  ]}
+  rightComponent={<ThemeSwitchIcon />}
+/>
+```
+
+## API Reference
+
+### Navbar Flow
+
+Interactive navbar featuring animated connections and smooth hover transitions.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "emblem",
+      type: "ReactNode",
+      default: "undefined",
+      description: "Logo or brand element displayed on the left side of the navbar.",
+    },
+    {
+      prop: "links",
+      type: "NavLink[]",
+      default: "[]",
+      description: "Array of navigation links. Each link can have text, url, and optional submenu.",
+    },
+    {
+      prop: "extraIcons",
+      type: "ReactNode[]",
+      default: "[]",
+      description: "Additional icons displayed in the right section of the navbar.",
+    },
+    {
+      prop: "styleName",
+      type: "string",
+      default: "''",
+      description: "Additional CSS classes to apply to the navbar container.",
+    },
+    {
+      prop: "rightComponent",
+      type: "ReactNode",
+      default: "undefined",
+      description: "Custom component displayed in the right section alongside extra icons.",
+    },
+  ]}
+/>

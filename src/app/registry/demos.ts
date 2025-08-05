@@ -42,6 +42,7 @@ export const demoComponents = [
   "morphotextelastic",
   "morphotextsliderotate",
   "notfound-demo",
+  "navbarflow-demo",
   "pagination-demo",
   "particles-demo",
   "parallaxcards-demo",
