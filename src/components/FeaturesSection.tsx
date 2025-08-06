@@ -1,7 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Sparkles, Code, Palette, Zap, Layers, LayoutGrid } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import {
+  Sparkles,
+  Code,
+  Palette,
+  Zap,
+  Layers,
+  LayoutGrid,
+  Terminal,
+} from "lucide-react";
+import { AnimatedTextGenerate } from "@/components/ui/animated-textgenerate";
+import { useRef } from "react";
 
 export function FeaturesSection() {
   const features = [
@@ -10,6 +20,7 @@ export function FeaturesSection() {
       title: "Beautiful Animations",
       description:
         "Add stunning animations to your UI with minimal effort. Transform your static components into dynamic, engaging interfaces.",
+      className: "md:col-span-2",
     },
     {
       icon: <Code className="h-6 w-6" />,
@@ -41,43 +52,123 @@ export function FeaturesSection() {
       description:
         "Every component adapts beautifully to different screen sizes, from desktop to mobile.",
     },
+    {
+      icon: <Terminal className="h-6 w-6" />,
+      title: "CLI & Manual",
+      description:
+        "Easy installation with CLI tools or manual setup. Get started in minutes with our comprehensive documentation.",
+      className: "md:col-span-2",
+    },
   ];
 
+  const refs = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
+
+  const inViews = [
+    useInView(refs[0], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
+    useInView(refs[1], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
+    useInView(refs[2], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
+    useInView(refs[3], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
+    useInView(refs[4], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
+    useInView(refs[5], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
+    useInView(refs[6], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
+  ];
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    show: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        delay: i * 0.1,
+        ease: "easeOut",
+      },
+    }),
+  };
+
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-white to-gray-50 dark:bg-gradient-to-r dark:from-[#0c0c0c] dark:via-black dark:to-[#0c0c0c]">
+    <section className="w-full py-20 bg-gradient-to-b from-white to-gray-50 dark:bg-gradient-to-r dark:from-[#0c0c0c] dark:via-black dark:to-[#0c0c0c]">
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <motion.div
-            className="space-y-2"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-              Features that set us apart
-            </h2>
-            <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-              ScrollX-UI combines the best elements from top UI libraries to
-              provide you with an exceptional development experience.
-            </p>
-          </motion.div>
-        </div>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+            Features that set us apart
+          </h2>
+          <p className="mt-4 text-gray-500 dark:text-gray-400 text-lg">
+            ScrollX UI is built from the ground up to offer a premium developer
+            experience with unique, high-quality components.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[minmax(200px,1fr)] gap-6 max-w-6xl mx-auto">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="flex flex-col items-start space-y-3 rounded-lg border p-6 shadow-sm"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              custom={index}
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true }}
+              className={`rounded-2xl border border-gray-200 dark:border-gray-800 p-6 backdrop-blur-sm bg-white/60 dark:bg-white/5 shadow-md transition-all duration-300 ${
+                feature.className || ""
+              }`}
             >
-              <div className="rounded-full bg-primary/10 p-2 text-primary">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center justify-center mb-4 rounded-full bg-primary/10 p-3 text-primary shadow-lg ring-1 ring-primary/10 w-fit"
+              >
                 {feature.icon}
+              </motion.div>
+
+              <h3 className="text-[1.25rem] md:text-[1.35rem] font-bold text-foreground mb-2">
+                {feature.title}
+              </h3>
+
+              <div ref={refs[index]}>
+                {inViews[index] && (
+                  <AnimatedTextGenerate
+                    text={feature.description}
+                    className="mt-2"
+                    textClassName="text-sm text-muted-foreground opacity-80"
+                    blurEffect
+                    speed={0.7}
+                    highlightWords={[
+                      "stunning",
+                      "performance",
+                      "standalone",
+                      "customized",
+                      "theming",
+                      "minutes",
+                      "beautifully",
+                    ]}
+                    highlightClassName="inline-block !text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500 font-semibold"
+                    linkWords={["components", "documentation", "Get started"]}
+                    linkHrefs={[
+                      "/docs/components",
+                      "/docs",
+                      "/docs/installation/cli",
+                    ]}
+                    linkClassNames={[
+                      "underline decoration-blue-500 underline-offset-4 decoration-2 hover:decoration-blue-700 transition",
+                      "underline decoration-emerald-500 underline-offset-4 decoration-2 hover:decoration-emerald-700 transition",
+                      "underline decoration-purple-500 underline-offset-4 decoration-2 hover:decoration-purple-700 transition",
+                    ]}
+                  />
+                )}
               </div>
-              <h3 className="text-xl font-bold">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
             </motion.div>
           ))}
         </div>
