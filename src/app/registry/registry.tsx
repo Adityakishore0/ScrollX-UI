@@ -11,7 +11,7 @@ const componentsRegistry: Record<string, RegisteredComponent> =
       {
         loading: () => (
           <div className="flex items-center justify-center space-x-2 p-2">
-            <div className="h-4 w-4 animate-spin rounded-full border-2 border-t-transparent border-black dark:border-white"></div>
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-white dark:border-t-black"></div>
             <span className="text-sm  overflow-hidden whitespace-nowrap ">
               Loading...
             </span>
