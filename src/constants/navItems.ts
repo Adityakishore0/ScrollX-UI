@@ -95,6 +95,7 @@ const navigation: NavItem[] = [
         title: "Light Trail",
         href: "/docs/components/light-trail",
       },
+      { title: "Loader", href: "/docs/components/loader", category: "new" },
       {
         title: "lustre Text",
         href: "/docs/components/lustretext",
