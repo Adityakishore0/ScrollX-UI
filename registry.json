@@ -412,6 +412,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "loader",
+      "title": "Loader",
+      "description": "Animated versatile loader with different variants, customizable size and content.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/loader.tsx",
+          "target": "components/ui/loader.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "lustretext",
       "title": "Lustre Text",
       "description": "A lustrous text component with animated gradient shine.",
