@@ -73,7 +73,7 @@ const TopSheetRoot = ({
   );
 
   const contentProps = {
-    height: "70vh",
+    height: "55vh",
     className: className || "",
     closeThreshold: 0.3,
   };
@@ -197,7 +197,7 @@ interface TopSheetContentProps {
 
 const TopSheetContent = ({
   children,
-  height = "70vh",
+  height = "55vh",
   className = "",
   closeThreshold = 0.3,
 }: TopSheetContentProps) => {
@@ -206,27 +206,45 @@ const TopSheetContent = ({
   const y = useMotionValue(0);
   useTransform(y, [-100, 0], [0, 1]);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const heightInPx = useRef(0);
+  const [sheetHeight, setSheetHeight] = useState(0);
 
   const onClose = useCallback(() => onOpenChange(false), [onOpenChange]);
 
-  const getHeightInPx = useCallback(() => {
+  const calculateHeight = useCallback(() => {
     if (typeof window !== "undefined") {
       const vh = window.innerHeight;
-      if (height.includes("vh")) {
-        return (parseInt(height) / 100) * vh;
-      } else if (height.includes("px")) {
-        return parseInt(height);
+      const vw = window.innerWidth;
+
+      let calculatedHeight;
+      if (vw <= 640) {
+        calculatedHeight = vh * 0.6;
+      } else if (vw <= 1024) {
+        calculatedHeight = vh * 0.55;
       } else {
-        return vh * 0.7;
+        calculatedHeight = vh * 0.5;
       }
+
+      if (height.includes("vh")) {
+        calculatedHeight = (parseInt(height) / 100) * vh;
+      } else if (height.includes("px")) {
+        calculatedHeight = parseInt(height);
+      }
+
+      return Math.min(calculatedHeight, vh * 0.8);
     }
-    return 500;
+    return 400;
   }, [height]);
 
   useEffect(() => {
-    heightInPx.current = getHeightInPx();
-  }, [getHeightInPx]);
+    const updateHeight = () => {
+      setSheetHeight(calculateHeight());
+    };
+
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+
+    return () => window.removeEventListener("resize", updateHeight);
+  }, [calculateHeight]);
 
   useEffect(() => {
     if (isOpen) {
@@ -243,7 +261,7 @@ const TopSheetContent = ({
     } else {
       document.body.style.overflow = "";
       controls.start({
-        y: -heightInPx.current,
+        y: -(sheetHeight + 50),
         transition: {
           type: "tween",
           ease: [0.25, 0.46, 0.45, 0.94],
@@ -254,7 +272,7 @@ const TopSheetContent = ({
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isOpen, controls]);
+  }, [isOpen, controls, sheetHeight]);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -273,7 +291,7 @@ const TopSheetContent = ({
   const handleDragEnd = useCallback(
     (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
       const shouldClose =
-        info.offset.y < -(heightInPx.current * closeThreshold) ||
+        info.offset.y < -(sheetHeight * closeThreshold) ||
         info.velocity.y < -800;
       if (shouldClose) {
         onClose();
@@ -288,7 +306,7 @@ const TopSheetContent = ({
         });
       }
     },
-    [controls, onClose, closeThreshold]
+    [controls, onClose, closeThreshold, sheetHeight]
   );
 
   const handleOverlayClick = useCallback(
@@ -299,6 +317,8 @@ const TopSheetContent = ({
     },
     [onClose]
   );
+
+  if (sheetHeight === 0) return null;
 
   return (
     <TopSheetPortal>
@@ -319,18 +339,18 @@ const TopSheetContent = ({
         />
         <motion.div
           drag="y"
-          dragConstraints={{ top: -getHeightInPx(), bottom: 0 }}
+          dragConstraints={{ top: -sheetHeight, bottom: 0 }}
           dragElastic={{ top: 0.1, bottom: 0 }}
           dragMomentum={false}
           onDragEnd={handleDragEnd}
           animate={controls}
-          initial={{ y: -getHeightInPx() }}
+          initial={{ y: -(sheetHeight + 50) }}
           className={cn(
             "absolute left-0 right-0 top-0 w-full bg-white dark:bg-[#0A0A0A] shadow-2xl",
             className
           )}
           style={{
-            height,
+            height: sheetHeight,
             borderBottomLeftRadius: "16px",
             borderBottomRightRadius: "16px",
             display: "flex",
