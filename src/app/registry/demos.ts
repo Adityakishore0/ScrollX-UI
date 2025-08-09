@@ -66,6 +66,7 @@ export const demoComponents = [
   "thswitchthreenext",
   "thsinglecentredtwo",
   "thsinglecentredthree",
+  "topsheet-demo",
   "toastaddtocart-demo",
   "toastdelete-demo",
   "toasterror-demo",

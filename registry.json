@@ -652,6 +652,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "top-sheet",
+      "title": "Top Sheet",
+      "description": "A customizable component for creating elegant, slide-out panels from the top of the screen.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/top-sheet.tsx",
+          "target": "components/ui/top-sheet.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "toast",
       "title": "Toast",
       "description": "A customizable and responsive toast notification system...",

@@ -1,0 +1,86 @@
+---
+title: Top Sheet
+description: A customizable sheet component for creating elegant slide-out interfaces.
+---
+
+<ComponentPreview
+  name="topsheet-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="top-sheet" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>top-sheet.tsx</code>
+</p>
+<ComponentSource name="top-sheet" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import TopSheet from '@/components/ui/top-sheet'
+```
+
+```tsx
+<TopSheet>
+  <TopSheetTrigger asChild>
+    <Button>Open Sheet</Button>
+  </TopSheetTrigger>
+  <TopSheetContent>
+    <TopSheetHeader>
+      <TopSheetTitle>Title</TopSheetTitle>
+      <TopSheetDescription>Description</TopSheetDescription>
+    </TopSheetHeader>
+    content..
+    <TopSheetFooter>
+      <TopSheetClose asChild>
+        <Button>Close</Button>
+      </TopSheetClose>
+    </TopSheetFooter>
+  </TopSheetContent>
+</TopSheet>
+```
+
+
+## API Reference
+
+### Top Sheet
+
+A customizable component for creating elegant, slide-out panels from the top of the screen.
+
+## Props
+
+<PropsTable
+  rows={[
+    { prop: "open", type: "boolean", default: "false", component: "TopSheet", description: "Controlled open state." },
+    { prop: "onOpenChange", type: "(open: boolean) => void", default: "-", component: "TopSheet", description: "Called when the open state changes." },
+    { prop: "defaultOpen", type: "boolean", default: "false", component: "TopSheet", description: "Initial open state for uncontrolled usage." },
+    { prop: "asChild", type: "boolean", default: "false", component: "TopSheetTrigger, TopSheetClose", description: "Render without adding an extra wrapper element." },
+    { prop: "height", type: "string", default: "'70vh'", component: "TopSheetContent", description: "Height of the sheet." },
+    { prop: "closeThreshold", type: "number", default: "0.3", component: "TopSheetContent", description: "Drag distance ratio required to close the sheet." },
+    { prop: "container", type: "HTMLElement", default: "document.body", component: "TopSheetPortal", description: "DOM element where the portal is mounted." },
+    { prop: "className", type: "string", default: "''", component: "Most components", description: "Custom CSS classes." }
+  ]}
+/>
+
+

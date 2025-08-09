@@ -41,6 +41,7 @@ export const parentComponents = [
   "spotlightcard",
   "seperatorpro",
   "theme-switch",
+  "top-sheet",
   "toast",
   "typeanimation",
   "venom-beam",

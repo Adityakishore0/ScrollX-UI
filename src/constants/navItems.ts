@@ -150,7 +150,7 @@ const navigation: NavItem[] = [
         title: "Theme Switch",
         href: "/docs/components/theme-switch",
       },
-      { title: "Tooltip", href: "/docs/components/tooltip" },
+      { title: "Top Sheet", href: "/docs/components/top-sheet" },
       { title: "Toast", href: "/docs/components/toast" },
       { title: "Type Animation", href: "/docs/components/typeanimation" },
       { title: "Venom Beam", href: "/docs/components/venom-beam" },
