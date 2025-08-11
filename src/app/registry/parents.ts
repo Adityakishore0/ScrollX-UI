@@ -16,6 +16,7 @@ export const parentComponents = [
   "codeblock",
   "cursorimagetrail",
   "dropdown",
+  "expandable-dock",
   "followcursor",
   "glowingbordercard",
   "globe",

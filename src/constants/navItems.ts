@@ -64,6 +64,11 @@ const navigation: NavItem[] = [
       { title: "Cursor ImageTrail", href: "/docs/components/cursorimagetrail" },
       { title: "Dropdown", href: "/docs/components/dropdown" },
       {
+        title: "Expandable Dock",
+        href: "/docs/components/expandable-dock",
+        category: "new",
+      },
+      {
         title: "Follow Cursor",
         href: "/docs/components/followcursor",
         category: "new",
@@ -105,7 +110,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/magicdock",
       },
       { title: "MorphoText Flip", href: "/docs/components/morphotextflip" },
-      { title: "Navbar Flow", href: "/docs/components/navbar-flow", category: "new" },
+      {
+        title: "Navbar Flow",
+        href: "/docs/components/navbar-flow",
+        category: "new",
+      },
       { title: "Not Found", href: "/docs/components/not-found" },
       {
         title: "Pagination",

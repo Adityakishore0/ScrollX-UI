@@ -1,0 +1,102 @@
+---
+title: Expandable Dock
+description: Smooth animated expandable dock with header and collapsible content area.
+---
+
+<ComponentPreview name="expandabledock-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="expandable-dock" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>expandable-dock.tsx</code>
+</p>
+<ComponentSource name="expandable-dock" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import ExpandableDock from "@/components/ui/expandable-dock";
+```
+
+```tsx
+<ExpandableDock
+  headerContent={
+    <div className="flex items-center gap-2">
+      <span className="text-lg font-semibold">Open Dock</span>
+    </div>
+  }
+  className="max-w-lg"
+>
+  <p className="text-white">
+    This is the expandable content area. Put anything you want here, like
+    navigation, controls, or info.
+  </p>
+</ExpandableDock>
+```
+
+## API Reference
+
+### Expandable Dock
+
+Smooth animated expandable dock with header and collapsible content area.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "headerContent",
+      type: "ReactNode",
+      default: "required",
+      description:
+        "Content displayed in the dock header area, clickable to toggle.",
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Content displayed inside the expanded dock area.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "optional",
+      description:
+        "Additional CSS classes to customize the dock container style.",
+    },
+  ]}
+/>
