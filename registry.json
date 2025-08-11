@@ -277,6 +277,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "expandable-dock",
+      "title": "Expandable Dock",
+      "description": "A customizable expandable dock component.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/expandable-dock.tsx",
+          "target": "components/ui/expandable-dock.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "followcursor",
       "title": "Follow Cursor",
       "description": "Colorful, fluid cursor trails that respond to mouse movement.",
