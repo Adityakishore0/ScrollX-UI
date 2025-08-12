@@ -1,3 +1,9 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import ComponentPreview from "@/components/Component-preview";
 import { ComponentSource } from "@/components/component-source";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -8,6 +14,10 @@ import { Steps } from "@/components/ui/Steps";
 import { PropsTable } from "@/components/propstable";
 
 export const mdxComponents = {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
   ComponentPreview,
   ComponentSource,
   Tabs,

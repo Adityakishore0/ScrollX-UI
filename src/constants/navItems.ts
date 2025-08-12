@@ -20,6 +20,7 @@ const navigation: NavItem[] = [
         title: "Tailwind Setup",
         href: "/docs/installation/install-tailwindcss",
       },
+      { title: "Dark Mode", href: "/docs/installation/dark-mode" },
     ],
   },
 
@@ -54,7 +55,6 @@ const navigation: NavItem[] = [
       {
         title: "Background Paths",
         href: "/docs/components/background-paths",
-        category: "new",
       },
       { title: "Badge", href: "/docs/components/badge" },
       { title: "Button", href: "/docs/components/button" },
@@ -71,7 +71,6 @@ const navigation: NavItem[] = [
       {
         title: "Follow Cursor",
         href: "/docs/components/followcursor",
-        category: "new",
       },
       {
         title: "GlowingBorderCard",
@@ -94,6 +93,7 @@ const navigation: NavItem[] = [
       {
         title: "Kinetic Testimonials",
         href: "/docs/components/kinetic-testimonials",
+        category: "new",
       },
       { title: "Lamphome", href: "/docs/components/lamphome" },
       {
@@ -146,6 +146,7 @@ const navigation: NavItem[] = [
       {
         title: "Stats Carousel",
         href: "/docs/components/statscarousel",
+        category: "new",
       },
       {
         title: "Spotlight Card",
@@ -159,7 +160,11 @@ const navigation: NavItem[] = [
         title: "Theme Switch",
         href: "/docs/components/theme-switch",
       },
-      { title: "Top Sheet", href: "/docs/components/top-sheet" },
+      {
+        title: "Top Sheet",
+        href: "/docs/components/top-sheet",
+        category: "new",
+      },
       { title: "Toast", href: "/docs/components/toast" },
       { title: "Type Animation", href: "/docs/components/typeanimation" },
       { title: "Venom Beam", href: "/docs/components/venom-beam" },
