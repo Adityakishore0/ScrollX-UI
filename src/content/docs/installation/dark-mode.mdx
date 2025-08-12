@@ -1,0 +1,141 @@
+---
+title: DarkMode
+description: Adding dark mode to your next app.
+---
+
+<Steps>
+
+## Install next-themes
+
+Start by installing `next-themes`:
+
+<Tabs defaultValue="npm" className="w-full">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="npm">
+    ```bash
+    npm install next-themes
+    ```
+  </TabsContent>
+  
+  <TabsContent value="yarn">
+    ```bash
+    yarn add next-themes
+    ```
+  </TabsContent>
+  
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add next-themes
+    ```
+  </TabsContent>
+    
+  <TabsContent value="bun">
+    ```bash
+     bun add next-themes
+    ```
+  </TabsContent> 
+</Tabs>
+
+## Create a theme provider
+
+<Step>components/theme-provider.tsx</Step>
+
+```tsx
+"use client"
+
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+
+export function ThemeProvider({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+}
+```
+
+## Wrap your root layout
+
+Add the `ThemeProvider` to your root layout and add the `suppressHydrationWarning` prop to the `html` tag.
+
+<Step>app/layout.tsx</Step>
+
+```tsx
+import { ThemeProvider } from "@/components/theme-provider"
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
+  )
+}
+```
+
+## Add a theme switch
+
+Place a theme switch on your site to toggle between light and dark mode.
+
+<ComponentPreview name="themeswitchicon" className="[&_.preview]:items-start" />
+
+</Steps>
+
+For a complete, accessible, and customizable theme toggle component, see the  
+[Theme Switch component documentation](https://scrollx-ui.vercel.app/docs/components/theme-switch).
+
+## Dark Mode Troubleshooting & FAQ
+
+<Accordion type="single" collapsible className="w-full max-w-xl mx-auto mt-6">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Why does my theme flash on page load?</AccordionTrigger>
+        <AccordionContent>
+          This is a common issue called Flash of Unstyled Content (FOUC). It happens because the theme is loaded asynchronously after React hydrates. To minimize it, wait until the theme is loaded before rendering UI dependent on the theme, or use the <code>suppressHydrationWarning</code> on your <code>html</code> tag as shown in the guide.
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="item-2">
+        <AccordionTrigger>How do I persist the user’s theme choice?</AccordionTrigger>
+        <AccordionContent>
+          <code>next-themes</code> automatically persists the user’s theme preference to <code>localStorage</code>, so it will be remembered on page reloads or new sessions without extra setup.
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Can I use multiple themes beyond light and dark?</AccordionTrigger>
+        <AccordionContent>
+          Yes! You can extend the <code>next-themes</code> configuration to support multiple themes by specifying them in the <code>themes</code> prop. Then toggle between these custom themes by calling <code>setTheme</code> with the theme name.
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="item-4">
+        <AccordionTrigger>How do I integrate with Tailwind CSS dark mode?</AccordionTrigger>
+        <AccordionContent>
+          Set <code>darkMode: 'class'</code> in your <code>tailwind.config.ts</code>. This allows <code>next-themes</code> to toggle the <code>dark</code> class on the <code>html</code> element, enabling Tailwind’s <code>dark:</code> variants for styling.
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="item-5">
+        <AccordionTrigger>Why does my theme revert to light mode after refresh?</AccordionTrigger>
+        <AccordionContent>
+          This usually means the theme provider isn’t wrapping your app correctly or there’s conflicting code overwriting the <code>class</code> attribute on <code>html</code>. Make sure you’ve added the <code>ThemeProvider</code> at the root and aren’t manually setting the class elsewhere.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
