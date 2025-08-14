@@ -120,7 +120,6 @@ const navigation: NavItem[] = [
         title: "Pagination",
         href: "/docs/components/pagination",
       },
-      { title: "Popover", href: "/docs/components/popover" },
       {
         title: "Particles",
         href: "/docs/components/particles",

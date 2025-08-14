@@ -55,7 +55,7 @@ pnpm dev
 
 To stop the server, press **Ctrl + C**
 
-https://github.com/user-attachments/assets/c465613f-f22e-40e2-9b2e-1851bd07129d
+https://github.com/user-attachments/assets/48c9346f-2638-4fc7-9fab-e216df4913cc
 
 ## 🛠️ Creating a Contribution Branch
 
