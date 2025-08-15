@@ -165,7 +165,7 @@ export default function ComponentPreview({
           <Tabs.Content value="preview">
             <div
               className={twMerge(
-                "preview flex min-h-[350px] w-full justify-center items-center p-10",
+                "preview flex min-h-[350px] w-full justify-center items-center p-10 not-prose",
                 className
               )}
             >
