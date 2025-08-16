@@ -652,6 +652,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "scroll-areapro",
+      "title": "ScrollArea Pro",
+      "description": "advanced scrollarea with auto-hide scrollbars, progress bars, and cross-axis scroll.",
+      "type": "registry:component",
+      "dependencies": ["@radix-ui/react-scroll-area", "framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/scroll-areapro.tsx",
+          "target": "components/ui/scroll-areapro.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "theme-switch",
       "title": "Theme Switch",
       "description": "A flexible and accessible theme mode switcher component for Next.js projects using next-themes. ",

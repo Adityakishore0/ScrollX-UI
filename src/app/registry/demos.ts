@@ -59,6 +59,8 @@ export const demoComponents = [
   "seperatorpro-demo",
   "seperatorprodotted",
   "seperatorprowavy",
+  "scrollareapro-demo",
+  "scrollareaprohorizontal",
   "themeswitch-demo",
   "themeswitchicon",
   "thswitchhideinactive",

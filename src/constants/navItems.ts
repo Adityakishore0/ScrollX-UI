@@ -156,6 +156,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/seperatorpro",
       },
       {
+        title: "ScrollArea Pro",
+        href: "/docs/components/scroll-areapro",
+        category: "new",
+      },
+      {
         title: "Theme Switch",
         href: "/docs/components/theme-switch",
       },
