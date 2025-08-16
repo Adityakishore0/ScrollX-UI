@@ -1,0 +1,168 @@
+---
+title: ScrollArea Pro
+description: Advanced ScrollArea with auto-hide scrollbars, progress bars, and cross-axis scroll.
+---
+
+<ComponentPreview
+  name="scrollareapro-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="scroll-areapro" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="@radix-ui/react-scroll-area framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>scroll-areapro.tsx</code>
+</p>
+<ComponentSource name="scroll-areapro" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+ import {(ClassValue, clsx)} from "clsx";
+  import {twMerge} from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { ScrollAreaPro } from "@/components/ui/scroll-areapro"
+```
+
+```tsx
+<ScrollAreaPro
+        className="w-96 rounded-md border whitespace-nowrap"
+        crossDirectionalScroll
+        showProgress="horizontal"
+      >
+        <div className="flex w-max space-x-4 p-4">
+          {works.map((artwork) => (
+            <figure key={artwork.artist} className="shrink-0">
+              <div className="overflow-hidden rounded-md">
+                <Image
+                  src={artwork.art}
+                  alt={`Photo by ${artwork.artist}`}
+                  className="aspect-[3/4] object-cover grayscale"
+                  width={300}
+                  height={400}
+                />
+              </div>
+              <figcaption className="pt-2 text-xs text-muted-foreground">
+                Photo by{" "}
+                <span className="font-semibold text-foreground">
+                  {artwork.artist}
+                </span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </ScrollAreaPro>
+```
+## Examples
+
+---
+
+<Step>Horizontal</Step>
+
+<ComponentPreview
+  name="scrollareaprohorizontal"
+  className=""
+  description=""
+/>
+
+---
+
+## API Reference
+
+### ScrollArea Pro
+
+Premium ScrollArea with dynamic scrollbars, smooth progress indicators, and cross-axis flow.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "undefined",
+      description: "Additional classes to style the ScrollAreaPro or ScrollBarPro container."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Content inside the ScrollAreaPro viewport."
+    },
+    {
+      prop: "crossDirectionalScroll",
+      type: "boolean",
+      default: "false",
+      description: "Allows horizontal scroll via vertical gestures (wheel/touch) on desktop devices."
+    },
+    {
+      prop: "autoHide",
+      type: "boolean",
+      default: "false",
+      description: "Hides the scrollbars when not actively scrolling."
+    },
+    {
+      prop: "showProgress",
+      type: '"horizontal" | "vertical"',
+      default: "undefined",
+      description: "Shows a progress indicator. Horizontal at the bottom, vertical along the right."
+    },
+    {
+      prop: "onScrollChange",
+      type: "(progress: { x: number; y: number }) => void",
+      default: "undefined",
+      description: "Callback fired when the scroll position changes. Returns scroll progress in X and Y axes."
+    },
+    {
+      prop: "orientation",
+      type: '"vertical" | "horizontal"',
+      default: '"vertical"',
+      description: "Orientation of the ScrollBarPro (vertical or horizontal)."
+    },
+    {
+      prop: "show",
+      type: "boolean",
+      default: "true",
+      description: "Controls whether the ScrollBarPro is visible."
+    },
+    {
+      prop: "isScrolling",
+      type: "boolean",
+      default: "false",
+      description: "Indicates if the user is actively scrolling (used for animations)."
+    }
+  ]}
+/>
+
+
+

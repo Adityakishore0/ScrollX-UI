@@ -41,6 +41,7 @@ export const parentComponents = [
   "statscarousel",
   "spotlightcard",
   "seperatorpro",
+  "scroll-areapro",
   "theme-switch",
   "top-sheet",
   "toast",
