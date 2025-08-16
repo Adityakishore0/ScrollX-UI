@@ -35,6 +35,12 @@ const navigation: NavItem[] = [
         href: "/docs/components/animated-button",
       },
       {
+        title: "Animated Side Menu",
+        href: "/docs/components/animated-side-menu",
+        category: "new"
+      },
+
+      {
         title: "Animated Tabs",
         href: "/docs/components/animated-tabs",
       },

@@ -1,7 +1,10 @@
+import { a } from "@react-spring/web";
+
 export const parentComponents = [
   "accordion",
   "alert-dialog",
   "animated-button",
+  "animated-side-menu",
   "animated-testimonials",
   "animated-textgenerate",
   "animated-tabs",
