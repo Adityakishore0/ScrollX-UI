@@ -1,282 +1,143 @@
-import React, {
-  createContext,
-  useContext,
-  useId,
-  useMemo,
-  useState,
-  ReactNode,
-} from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+"use client";
+import React, { useState, createContext, useContext, ReactNode } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-
-type RenderProp<T> = (state: T) => ReactNode;
-
-interface ToggleVaultContextValue {
+interface VaultContextType {
   open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  toggle: () => void;
-  close: () => void;
-  triggerId: string;
-  panelId: string;
+  toggleOpen: () => void;
 }
+const VaultContext = createContext<VaultContextType | undefined>(undefined);
 
-const ToggleVaultContext = createContext<ToggleVaultContextValue | null>(null);
-
-export function useToggleVault() {
-  const ctx = useContext(ToggleVaultContext);
-  if (!ctx) throw new Error("ToggleVault components must be used within <ToggleVault>");
-  return ctx;
-}
-
-
-interface ColorSet {
-  closedBg?: string;
-  closedText?: string;
-  openBg?: string;
-  openText?: string;
-  panelBg?: string;
-  panelText?: string;
-}
-
-interface SizeSet {
-  width?: string;
-  height?: string;
-  rounded?: string;
-}
-
-interface ToggleVaultProps {
+export interface ToggleVaultProps {
   children: ReactNode;
-  defaultOpen?: boolean;
-  onOpenChange?: (open: boolean) => void;
-}
-
-export function ToggleVault({ children, defaultOpen = false, onOpenChange }: ToggleVaultProps) {
-  const [open, setOpen] = useState(defaultOpen);
-  const triggerId = useId();
-  const panelId = useId();
-
-  const ctx = useMemo<ToggleVaultContextValue>(
-    () => ({
-      open,
-      setOpen,
-      toggle: () => setOpen((o) => !o),
-      close: () => setOpen(false),
-      triggerId,
-      panelId,
-    }),
-    [open, triggerId, panelId]
-  );
-
-  React.useEffect(() => {
-    onOpenChange?.(open);
-  }, [open, onOpenChange]);
-
-  return <ToggleVaultContext.Provider value={ctx}>{children}</ToggleVaultContext.Provider>;
-}
-
-
-interface ToggleVaultTriggerProps {
-  children?: ReactNode | RenderProp<{ open: boolean }>;
   className?: string;
-  positionClassName?: string;
-  textClassName?: string;
-  lightColors?: ColorSet;
-  darkColors?: ColorSet;
-  buttonSize?: SizeSet;
 }
 
-export function ToggleVaultTrigger({
-  children,
-  className,
-  positionClassName = "absolute top-4 right-4",
-  textClassName = "font-bold",
-  lightColors,
-  darkColors,
-  buttonSize,
-}: ToggleVaultTriggerProps) {
-  const { open, toggle, triggerId, panelId } = useToggleVault();
-
-  const lc = {
-    closedBg: lightColors?.closedBg ?? "bg-black",
-    closedText: lightColors?.closedText ?? "text-white",
-    openBg: lightColors?.openBg ?? "bg-white",
-    openText: lightColors?.openText ?? "text-black",
-  };
-
-  const dc = {
-    closedBg: darkColors?.closedBg ?? "bg-white",
-    closedText: darkColors?.closedText ?? "text-black",
-    openBg: darkColors?.openBg ?? "bg-black",
-    openText: darkColors?.openText ?? "text-white",
-  };
-
-  const size = {
-    width: buttonSize?.width ?? "w-[100px]",
-    height: buttonSize?.height ?? "h-[40px]",
-    rounded: buttonSize?.rounded ?? "rounded-full",
-  };
-
-  const textVariants: Variants = {
-    hiddenUp: { y: -10, opacity: 0, transition: { duration: 0.3 } },
-    hiddenDown: { y: 10, opacity: 0, transition: { duration: 0.3 } },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.3 } },
-  };
-
-  const content =
-    typeof children === "function"
-      ? (children as RenderProp<{ open: boolean }> )({ open })
-      : children;
+export const ToggleVault: React.FC<ToggleVaultProps> = ({ children, className = "" }) => {
+  const [open, setOpen] = useState(false);
+  const toggleOpen = () => setOpen((prev) => !prev);
 
   return (
-    <motion.button
-      id={triggerId}
-      onClick={toggle}
-      role="button"
-      aria-expanded={open}
-      aria-controls={panelId}
-      className={[
-        positionClassName,
-        size.width,
-        size.height,
-        size.rounded,
-        "flex items-center justify-center cursor-pointer z-50 transition-all duration-300 hover:scale-105 border shadow-lg",
-        open
-          ? `${lc.openBg} ${lc.openText} dark:${dc.openBg} dark:${dc.openText}`
-          : `${lc.closedBg} ${lc.closedText} dark:${dc.closedBg} dark:${dc.closedText}`,
-        className ?? "",
-      ]
-        .filter(Boolean)
-        .join(" ")}
-      style={{
-        boxShadow: open
-          ? "0 0 20px rgba(0,0,0,0.4)"
-          : "0 0 20px rgba(255,255,255,0.3)",
-      }}
-    >
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={open ? "close" : "menu"}
-          variants={textVariants}
-          initial={open ? "hiddenDown" : "hiddenUp"}
-          animate="visible"
-          exit={open ? "hiddenUp" : "hiddenDown"}
-          className={textClassName}
-        >
-          {content ?? (open ? "CLOSE" : "MENU")}
-        </motion.span>
-      </AnimatePresence>
-    </motion.button>
+    <VaultContext.Provider value={{ open, toggleOpen }}>
+      <div className={`relative w-full h-full min-h-[350px] ${className}`}>
+        {children}
+      </div>
+    </VaultContext.Provider>
   );
+};
+
+interface TriggerProps {
+  children: ReactNode;
+  className?: string;
 }
+export const ToggleVaultTrigger: React.FC<TriggerProps> = ({ children, className = "" }) => {
+  const context = useContext(VaultContext);
+  if (!context) throw new Error("ToggleVaultTrigger must be inside ToggleVault");
+  const { open, toggleOpen } = context;
 
+  if (open) return null;
 
-interface ToggleVaultContentProps {
-  children: ReactNode | RenderProp<{ close: () => void; open: boolean }>;
-  panelClassName?: string;
-  innerClassName?: string;
-  lightColors?: ColorSet;
-  darkColors?: ColorSet;
-  panelSize?: SizeSet;
-  positionClassName?: string;
-  originClass?: string;
+  return (
+    <motion.div
+      onClick={toggleOpen}
+      aria-expanded={open}
+      className={`
+        absolute top-4 right-4 w-[100px] h-[40px] rounded-full flex items-center justify-center
+        cursor-pointer z-50 transition-all duration-300 hover:scale-105 shadow-lg
+        bg-black text-white dark:bg-white dark:text-black
+        ${className}
+      `}
+    >
+      <motion.span
+        initial={{ y: -10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 10, opacity: 0 }}
+        className="font-bold"
+      >
+        {children}
+      </motion.span>
+    </motion.div>
+  );
+};
+
+interface CloseProps {
+  children: ReactNode;
+  className?: string;
 }
+export const ToggleVaultClose: React.FC<CloseProps> = ({ children, className = "" }) => {
+  const context = useContext(VaultContext);
+  if (!context) throw new Error("ToggleVaultClose must be inside ToggleVault");
+  const { open, toggleOpen } = context;
+  if (!open) return null;
 
-export function ToggleVaultContent({
-  children,
-  panelClassName,
-  innerClassName = "p-12 flex flex-col gap-3 font-bold text-2xl",
-  lightColors,
-  darkColors,
-  panelSize,
-  positionClassName = "absolute top-0 right-0",
-  originClass = "top right",
-}: ToggleVaultContentProps) {
-  const { open, close, panelId } = useToggleVault();
+  return (
+    <motion.div
+      onClick={toggleOpen}
+      key="close"
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -10, opacity: 0 }}
+      className={`
+        absolute top-4 right-4 w-[100px] h-[40px] rounded-full flex items-center justify-center
+        z-50 font-bold cursor-pointer transition-all duration-300 hover:scale-105 shadow-lg
+        bg-white text-black dark:bg-black dark:text-white
+        ${className}
+      `}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
-  const lc = {
-    panelBg: lightColors?.panelBg ?? "bg-black",
-    panelText: lightColors?.panelText ?? "text-white",
-  };
-
-  const dc = {
-    panelBg: darkColors?.panelBg ?? "bg-white",
-    panelText: darkColors?.panelText ?? "text-black",
-  };
-
-  const size = {
-    width: panelSize?.width ?? "w-[400px]",
-    height: panelSize?.height ?? "h-[350px]",
-    rounded: panelSize?.rounded ?? "rounded-2xl",
-  };
-
-  const rendered =
-    typeof children === "function"
-      ? (children as RenderProp<{ close: () => void; open: boolean }> )({ close, open })
-      : children;
+interface ContentProps {
+  children: ReactNode;
+  className?: string;
+}
+export const ToggleVaultContent: React.FC<ContentProps> = ({ children, className = "" }) => {
+  const context = useContext(VaultContext);
+  if (!context) throw new Error("ToggleVaultContent must be inside ToggleVault");
+  const { open, toggleOpen } = context;
 
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          id={panelId}
           key="panel"
-          initial={{ scaleX: 0.2, scaleY: 0.066, opacity: 0 }}
+          initial={{ scaleX: 0.2, scaleY: 0.066, top: "1rem", right: "1rem", opacity: 0 }}
           animate={{
             scaleX: 1,
             scaleY: 1,
+            top: "0.6rem",
+            right: "0.6rem",
             opacity: 1,
             transition: { duration: 0.7, ease: [0.2, 0.9, 0.3, 1] },
           }}
           exit={{
             scaleX: 0.2,
             scaleY: 0.066,
+            top: "1rem",
+            right: "1rem",
             opacity: 0,
             transition: { duration: 0.6, ease: [0.2, 0.9, 0.3, 1] },
           }}
-          className={[
-            "absolute z-40 shadow-lg border",
-            size.width,
-            size.height,
-            size.rounded,
-            `${lc.panelBg} ${lc.panelText} dark:${dc.panelBg} dark:${dc.panelText}`,
-            positionClassName,
-            panelClassName ?? "",
-          ].join(" ")}
-          style={{
-            transformOrigin: originClass,
-            boxShadow: "0 0 25px rgba(0,0,0,0.3)",
-          }}
+          className={`
+            absolute rounded-2xl overflow-hidden z-40 shadow-lg 
+            bg-black text-white dark:bg-white dark:text-black
+            ${className}
+          `}
+          style={{ transformOrigin: "top right" }}
+          aria-hidden={!open}
         >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.4 } }}
             exit={{ opacity: 0 }}
-            className={innerClassName}
+            className="p-1 flex flex-col gap-3 font-bold font-bricolage"
           >
-            {rendered}
+            {children}
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
   );
-}
-
-
-interface ToggleVaultCloseProps {
-  children: ReactNode | RenderProp<{ open: boolean }>;
-  className?: string;
-}
-
-export function ToggleVaultClose({ children, className }: ToggleVaultCloseProps) {
-  const { close, open } = useToggleVault();
-  const content =
-    typeof children === "function"
-      ? (children as RenderProp<{ open: boolean }>)({ open })
-      : children;
-
-  return (
-    <button onClick={close} className={className}>
-      {content ?? "Close"}
-    </button>
-  );
-}
+};
