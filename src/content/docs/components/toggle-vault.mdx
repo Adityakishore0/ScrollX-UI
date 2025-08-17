@@ -1,0 +1,198 @@
+---
+title: Toggle Vault
+
+description: Toggle Vault is a flexible, animated side menu component built with Framer Motion and Tailwind CSS.
+---
+
+<ComponentPreview
+  name="togglevault-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An animated and customizable toggle panel component."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="toggle-vault" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>toggle-vault.tsx</code>
+</p>
+<ComponentSource name="toggle-vault" />
+
+<Step>Add util file (optional, if not already included in your project).</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  ToggleVault,
+  ToggleVaultTrigger,
+  ToggleVaultContent,
+} from "@/components/ui/toggle-vault";
+```
+
+```tsx
+<ToggleVault>
+  <ToggleVaultTrigger className="bg-primary text-white">
+    {({ open }) => (open ? "CLOSE" : "MENU")}
+  </ToggleVaultTrigger>
+
+  <ToggleVaultContent className="w-[400px] h-[350px] flex flex-col items-start p-12 space-y-4 text-2xl font-bold">
+    <a href="#hero" className="hover:opacity-70">HOME</a>
+    <a href="#about" className="hover:opacity-70">ABOUT</a>
+    <a href="#projects" className="hover:opacity-70">PROJECTS</a>
+    <a href="#resume" className="hover:opacity-70">RESUME</a>
+    <a href="#contact" className="hover:opacity-70">CONTACT</a>
+  </ToggleVaultContent>
+</ToggleVault>
+```
+
+## API Reference
+
+### Toggle Vault
+
+`ToggleVault` is a flexible, animated side menu component built with Framer Motion and Tailwind CSS.
+
+### ToggleVaultTrigger
+
+The button that toggles the panel open/close. Accepts either static text/icons or a render prop that receives `{ open }`.
+
+Props:
+
+- `children`: `ReactNode | ({ open: boolean }) => ReactNode`
+- Content of the toggle button. Can be a string, JSX, or function render prop.
+- `className`: `string` (optional) — Additional Tailwind classes for styling.
+
+### ToggleVaultContent
+
+The panel that animates in/out. You can place links, components, or any custom layout inside.
+
+Props:
+
+- `children`: `ReactNode` — The panel’s content.
+- className: string (optional) — Custom styling, including width and height.
+
+### ToggleVaultClose
+
+Optional. Typically not needed if links auto-close the panel.
+
+Props:
+
+- `children`: `ReactNode` — Content of the close button (text, icon, etc).
+- `className`: `string` (optional) — Custom styling for the button.
+
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Content of the ToggleVault provider."
+    },
+    {
+      prop: "ToggleVaultTrigger.children",
+      type: "ReactNode | ({ open: boolean }) => ReactNode",
+      default: "—",
+      description: "Content of the toggle button. Supports render prop to access open state."
+    },
+    {
+      prop: "ToggleVaultTrigger.className",
+      type: "string",
+      default: "undefined",
+      description: "Additional Tailwind classes for the trigger button."
+    },
+    {
+      prop: "ToggleVaultTrigger.lightColors",
+      type: "{ closedBg?: string; closedText?: string; openBg?: string; openText?: string; }",
+      default: "{ closedBg: 'bg-black', closedText: 'text-white', openBg: 'bg-white', openText: 'text-black' }",
+      description: "Theme overrides for light mode."
+    },
+    {
+      prop: "ToggleVaultTrigger.darkColors",
+      type: "{ closedBg?: string; closedText?: string; openBg?: string; openText?: string; }",
+      default: "{ closedBg: 'bg-white', closedText: 'text-black', openBg: 'bg-black', openText: 'text-white' }",
+      description: "Theme overrides for dark mode."
+    },
+    {
+      prop: "ToggleVaultTrigger.buttonSize",
+      type: "{ width?: string; height?: string; rounded?: string; }",
+      default: "{ width: 'w-[100px]', height: 'h-[40px]', rounded: 'rounded-full' }",
+      description: "Controls the button's width, height, and border radius."
+    },
+    {
+      prop: "ToggleVaultContent.children",
+      type: "ReactNode | ({ close: () => void; open: boolean }) => ReactNode",
+      default: "—",
+      description: "Custom content inside the animated panel. Can be a function to access `close` and `open`."
+    },
+    {
+      prop: "ToggleVaultContent.className",
+      type: "string",
+      default: "undefined",
+      description: "Extra Tailwind classes for panel styling."
+    },
+    {
+      prop: "ToggleVaultContent.lightColors",
+      type: "{ panelBg?: string; panelText?: string; }",
+      default: "{ panelBg: 'bg-black', panelText: 'text-white' }",
+      description: "Theme overrides for light mode."
+    },
+    {
+      prop: "ToggleVaultContent.darkColors",
+      type: "{ panelBg?: string; panelText?: string; }",
+      default: "{ panelBg: 'bg-white', panelText: 'text-black' }",
+      description: "Theme overrides for dark mode."
+    },
+    {
+      prop: "ToggleVaultContent.panelSize",
+      type: "{ width?: string; height?: string; rounded?: string; }",
+      default: "{ width: 'w-[400px]', height: 'h-[350px]', rounded: 'rounded-2xl' }",
+      description: "Controls the panel's width, height, and border radius."
+    },
+    {
+      prop: "ToggleVaultClose.children",
+      type: "ReactNode",
+      default: "—",
+      description: "(Optional) Content of a dedicated close button. Usually not needed since links auto-close."
+    },
+    {
+      prop: "ToggleVaultClose.className",
+      type: "string",
+      default: "undefined",
+      description: "(Optional) Additional Tailwind classes for the close button."
+    }
+  ]}
+/>

@@ -64,21 +64,6 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "animated-side-menu",
-      "title": "Animated Side Menu",
-      "description": "A sleek animated sidebar menu with smooth open/close transitions and theme support.",
-      "type": "registry:component",
-      "dependencies": ["framer-motion", "lucide-react"],
-      "files": [
-        {
-          "path": "components/ui/animated-side-menu.tsx",
-          "target": "components/ui/animated-side-menu.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "animated-tabs",
       "title": "Animated Tabs",
       "description": "A headless and styled tab UI component set for switching content views.",
@@ -721,6 +706,21 @@
         {
           "path": "components/ui/toast.tsx",
           "target": "components/ui/toast.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "toggle-vault",
+      "title": "Toggle Vault",
+      "description": "A sleek animated sidebar menu with smooth open/close transitions and theme support.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/toggle-vault.tsx",
+          "target": "components/ui/toggle-vault.tsx",
           "type": "registry:component"
         }
       ]
