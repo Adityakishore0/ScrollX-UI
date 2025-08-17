@@ -712,6 +712,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "toggle-vault",
+      "title": "Toggle Vault",
+      "description": "Expandable vault component with animated open/close, trigger button, and content panel.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/toggle-vault.tsx",
+          "target": "components/ui/toggle-vault.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "typeanimation",
       "title": "Type Animation",
       "description": "Displays an animated typing effect.",
@@ -755,5 +770,6 @@
         }
       ]
     }
+
   ]
 }

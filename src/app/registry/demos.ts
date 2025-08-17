@@ -77,6 +77,7 @@ export const demoComponents = [
   "toastdefault-demo",
   "toastwarning-demo",
   "toastsuccess-demo",
+  "togglevault-demo",
   "typeanimation-demo",
   "venombeam-demo",
   "whitestripes-demo",

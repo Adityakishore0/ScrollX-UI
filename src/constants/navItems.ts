@@ -170,6 +170,11 @@ const navigation: NavItem[] = [
         category: "new",
       },
       { title: "Toast", href: "/docs/components/toast" },
+      {
+        title: "Toggle Vault",
+        href: "/docs/components/toggle-vault",
+        category: "new"
+      },
       { title: "Type Animation", href: "/docs/components/typeanimation" },
       { title: "Venom Beam", href: "/docs/components/venom-beam" },
       { title: "Whitestripes", href: "/docs/components/whitestripes" },

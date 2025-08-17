@@ -1,0 +1,103 @@
+---
+title: Toggle Vault
+description: Animated toggle vault component with trigger, close button, and expandable content panel.
+---
+
+<ComponentPreview
+  name="togglevault-demo"
+  className="p-0"
+  description="An animated and customizable toggle panel component."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="toggle-vault" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>toggle-vault.tsx</code>
+</p>
+<ComponentSource name="toggle-vault" />
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  ToggleVault,
+  ToggleVaultTrigger,
+  ToggleVaultContent,
+  ToggleVaultClose,
+} from "@/components/ui/toggle-vault";
+```
+
+```tsx
+<ToggleVault>
+  <ToggleVaultTrigger className="w-20 h-8 text-sm">
+    MENU
+  </ToggleVaultTrigger>
+  <ToggleVaultClose className="w-20 h-8 text-sm">
+    CLOSE
+  </ToggleVaultClose>
+  <ToggleVaultContent className="w-[300px] h-[250px] p-8 text-xl flex flex-col gap-4">
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#contact">CONTACT</a>
+  </ToggleVaultContent>
+</ToggleVault>
+```
+
+## API Reference
+
+### Toggle Vault
+
+Expandable vault component with animated open/close, trigger button, and content panel.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Nested elements to be rendered inside the component. Required for all ToggleVault components."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: '""',
+      description: "Optional Tailwind or custom classes to style the component."
+    },
+    {
+      prop: "open",
+      type: "boolean",
+      default: "false",
+      description: "Internal state representing whether the vault is open. Used in ToggleVault context."
+    },
+    {
+      prop: "toggleOpen",
+      type: "() => void",
+      default: "required",
+      description: "Function to toggle the open state of the vault. Provided by ToggleVault context and used by Trigger and Close components."
+    }
+  ]}
+/>
+

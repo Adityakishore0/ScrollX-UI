@@ -1,3 +1,5 @@
+import { a } from "@react-spring/web";
+
 export const parentComponents = [
   "accordion",
   "alert-dialog",
@@ -45,6 +47,7 @@ export const parentComponents = [
   "theme-switch",
   "top-sheet",
   "toast",
+  "toggle-vault",
   "typeanimation",
   "venom-beam",
   "whitestripes",
