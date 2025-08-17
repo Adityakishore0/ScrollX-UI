@@ -16,13 +16,13 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
   const getInstallCommand = (pkgManager: string) => {
     switch (pkgManager) {
       case "pnpm":
-        return `pnpm dlx shadcn@latest add https://scrollx-ui.vercel.app/registry/${name}.json`;
+        return `pnpm dlx shadcn@latest add https://scrollxui.dev/registry/${name}.json`;
       case "yarn":
-        return `npx shadcn@latest add https://scrollx-ui.vercel.app/registry/${name}.json`;
+        return `npx shadcn@latest add https://scrollxui.dev/registry/${name}.json`;
       case "bun":
-        return `bun x --bun shadcn@latest add https://scrollx-ui.vercel.app/registry/${name}.json`;
+        return `bun x --bun shadcn@latest add https://scrollxui.dev/registry/${name}.json`;
       default:
-        return `npx shadcn@latest add https://scrollx-ui.vercel.app/registry/${name}.json`;
+        return `npx shadcn@latest add https://scrollxui.dev/registry/${name}.json`;
     }
   };
 

@@ -31,8 +31,7 @@ interface SitemapUrl {
 
 export async function GET() {
   try {
-    const baseUrl =
-      process.env.NEXT_PUBLIC_SITE_URL || "https://scrollx-ui.vercel.app";
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://scrollxui.dev";
     const docsPath = path.join(process.cwd(), "src/content/docs");
 
     const getAllMdxFiles = async (

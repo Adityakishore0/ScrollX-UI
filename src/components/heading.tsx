@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import SvgComponent from "@/components/svgcomponent"; // Your light SVG component
-import DarkSvgComponent from "@/components/darksvgcomponent"; // Your dark SVG component
+import SvgComponent from "@/components/svgcomponent";
+import DarkSvgComponent from "@/components/darksvgcomponent";
 
 interface ScrollXHeadingProps {
   className?: string;
