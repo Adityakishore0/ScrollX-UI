@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { SpotlightCard } from "@/components/ui/spotlightcard";
 import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
 import Typeanimation from "@/components/ui/typeanimation";
 
 export default function GithubStarSpotlightCard() {

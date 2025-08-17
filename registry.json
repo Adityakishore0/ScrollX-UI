@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "scrollx-ui",
-  "homepage": "https://scrollx-ui.vercel.app/",
+  "name": "scrollxui",
+  "homepage": "https://scrollxui.dev",
   "dependencies": ["clsx", "tailwind-merge"],
   "items": [
     {
