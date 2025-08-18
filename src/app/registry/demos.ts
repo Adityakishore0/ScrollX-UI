@@ -55,6 +55,7 @@ export const demoComponents = [
   "radialflow-demo",
   "statscount-demo",
   "statscarousel-demo",
+  "splitter-demo",
   "spotlightcard-demo",
   "seperatorpro-demo",
   "seperatorprodotted",
