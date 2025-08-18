@@ -148,6 +148,11 @@ const navigation: NavItem[] = [
         category: "new",
       },
       {
+        title: "Splitter",
+        href: "/docs/components/splitter",
+        category: "new",
+      },
+      {
         title: "Spotlight Card",
         href: "/docs/components/spotlightcard",
       },
@@ -173,7 +178,7 @@ const navigation: NavItem[] = [
       {
         title: "Toggle Vault",
         href: "/docs/components/toggle-vault",
-        category: "new"
+        category: "new",
       },
       { title: "Type Animation", href: "/docs/components/typeanimation" },
       { title: "Venom Beam", href: "/docs/components/venom-beam" },

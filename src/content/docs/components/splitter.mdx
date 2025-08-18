@@ -1,0 +1,136 @@
+---
+title: Splitter
+description: Splitter with collapsible panels, drag handle, and smooth animations.
+---
+
+<ComponentPreview name="splitter-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="splitter" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+ <Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion lucide-react" />   
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>splitter.tsx</code>
+</p>
+<ComponentSource name="splitter" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Splitter, SplitterPanel } from "@/components/ui/splitter";
+```
+
+```tsx
+<Splitter>
+  <SplitterPanel className="bg-muted/40 border-r">
+  </SplitterPanel>
+  <SplitterPanel className="bg-background flex items-center justify-center">
+  </SplitterPanel>
+</Splitter>
+```
+
+## API Reference
+
+### Splitter
+
+Splitter with collapsible panels, drag handle, and smooth animations.
+
+## Props
+
+<PropsTable 
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Two SplitterPanel components and optionally a SplitterHandle.",
+    },
+    {
+      prop: "onResize",
+      type: "(leftSize: number, rightSize: number) => void",
+      default: "undefined",
+      description: "Callback fired when panels are resized, returns left and right widths in %.",
+    },
+    {
+      prop: "allowFullCollapse",
+      type: "boolean",
+      default: "true",
+      description: "Allow panels to collapse completely to 0% or 100%.",
+    },
+    {
+      prop: "minSize",
+      type: "number",
+      default: "0",
+      description: "Minimum percentage width of the left panel.",
+    },
+    {
+      prop: "maxSize",
+      type: "number",
+      default: "100",
+      description: "Maximum percentage width of the left panel.",
+    },
+    {
+      prop: "defaultSize",
+      type: "number",
+      default: "50",
+      description: "Initial percentage width of the left panel.",
+    },
+    {
+      prop: "snapThreshold",
+      type: "number",
+      default: "5",
+      description: "Percentage threshold to snap panels fully collapsed.",
+    },
+    {
+      prop: "smoothTransition",
+      type: "boolean",
+      default: "true",
+      description: "Enable smooth animated transitions when resizing.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Additional CSS classes for styling the root Splitter.",
+    },
+    {
+      prop: "style",
+      type: "React.CSSProperties",
+      default: "-",
+      description: "Inline styles applied to the root Splitter.",
+    },
+  ]}
+/>
+

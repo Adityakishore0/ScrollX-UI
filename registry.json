@@ -622,6 +622,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "splitter",
+      "title": "Splitter",
+      "description": "A customizable splitter component with collapsible panels and smooth animations.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/splitter.tsx",
+          "target": "components/ui/splitter.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "spotlightcard",
       "title": "Spotlight Card",
       "description": "An interactive card with a spotlight hover effect that highlights content and enhances user engagement visually.",
@@ -770,6 +785,5 @@
         }
       ]
     }
-
   ]
 }

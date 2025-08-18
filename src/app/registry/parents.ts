@@ -41,6 +41,7 @@ export const parentComponents = [
   "radialflow",
   "statscount",
   "statscarousel",
+  "splitter",
   "spotlightcard",
   "seperatorpro",
   "scroll-areapro",
