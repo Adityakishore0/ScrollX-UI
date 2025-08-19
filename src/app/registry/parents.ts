@@ -19,6 +19,7 @@ export const parentComponents = [
   "cursorimagetrail",
   "dropdown",
   "expandable-dock",
+  "flipstack",
   "followcursor",
   "glowingbordercard",
   "globe",

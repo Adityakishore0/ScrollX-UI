@@ -25,6 +25,7 @@ export const demoComponents = [
   "dropdownuser-demo",
   "dropdownnotifications-demo",
   "expandabledock-demo",
+  "flipstack-demo",
   "followcursor-demo",
   "glowingbordercard-demo",
   "globe-demo",

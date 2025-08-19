@@ -292,6 +292,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "flipstack",
+      "title": "FlipStack",
+      "description": "A stylish and animated card stack UI for showcasing content in layered views.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/flipstack.tsx",
+          "target": "components/ui/flipstack.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "followcursor",
       "title": "Follow Cursor",
       "description": "Colorful, fluid cursor trails that respond to mouse movement.",

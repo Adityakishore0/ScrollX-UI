@@ -20,7 +20,7 @@ export default function TemplatesPage() {
                 Templates
               </h1>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Ready-to-use templates built with ScrollX-UI components.
+                Ready-to-use templates built with ScrollX UI components.
               </p>
             </div>
           </div>
