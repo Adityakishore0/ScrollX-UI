@@ -66,6 +66,10 @@ const navigation: NavItem[] = [
       {
         title: "Expandable Dock",
         href: "/docs/components/expandable-dock",
+      },
+      {
+        title: "FlipStack",
+        href: "/docs/components/flipstack",
         category: "new",
       },
       {
