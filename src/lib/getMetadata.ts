@@ -7,7 +7,7 @@ export function getMetadata({
   description: string;
   path: string;
 }) {
-  const siteUrl = "https://scrollx-ui.vercel.app";
+  const siteUrl = "https://scrollxui.dev";
   const image = `${siteUrl}/api/og?title=${encodeURIComponent(
     title
   )}&description=${encodeURIComponent(description)}`;
@@ -15,6 +15,10 @@ export function getMetadata({
   return {
     title: `ScrollX UI | ${title}`,
     description,
+    metadataBase: new URL(siteUrl),
+    alternates: {
+      canonical: `${siteUrl}${path}`,
+    },
     openGraph: {
       title: `ScrollX UI | ${title}`,
       description,

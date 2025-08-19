@@ -107,6 +107,7 @@ export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug || ["introduction"];
   const doc = await getDocBySlug(slug);
+  const url = `https://scrollxui.dev/docs/${slug.join("/")}`;
 
   if (!doc) {
     return {
@@ -115,28 +116,31 @@ export async function generateMetadata({ params }: PageProps) {
       openGraph: {
         title: "Not Found",
         description: "The page you are looking for does not exist.",
-        url: `https://scrollx-ui.vercel.app/docs/${slug.join("/")}`,
+        url,
         images: [
           {
-            url: "https://scrollx-ui.vercel.app/images/ui.png",
+            url: "https://scrollxui.dev/images/ui.png",
             width: 1200,
             height: 630,
             alt: "ScrollX UI",
           },
         ],
       },
+      alternates: {
+        canonical: url,
+      },
     };
   }
 
   const componentName = slug[slug.length - 1];
-  let imageUrl = "https://scrollx-ui.vercel.app/images/ui.png";
+  let imageUrl = "https://scrollxui.dev/images/ui.png";
 
   if (slug.includes("components") && componentName) {
-    imageUrl = `https://scrollx-ui.vercel.app/api/og?title=${encodeURIComponent(
+    imageUrl = `https://scrollxui.dev/api/og?title=${encodeURIComponent(
       doc.frontmatter.title
     )}&description=${encodeURIComponent(
       doc.frontmatter.description || ""
-    )}&logo=https://scrollx-ui.vercel.app/favicon.ico`;
+    )}&logo=https://scrollxui.dev/favicon.ico`;
   }
 
   return {
@@ -145,7 +149,7 @@ export async function generateMetadata({ params }: PageProps) {
     openGraph: {
       title: `ScrollX UI | ${doc.frontmatter.title}`,
       description: doc.frontmatter.description,
-      url: `https://scrollx-ui.vercel.app/docs/${slug.join("/")}`,
+      url,
       images: [
         {
           url: imageUrl,
@@ -160,6 +164,9 @@ export async function generateMetadata({ params }: PageProps) {
       title: `ScrollX UI | ${doc.frontmatter.title}`,
       description: doc.frontmatter.description,
       images: [imageUrl],
+    },
+    alternates: {
+      canonical: url,
     },
   };
 }
