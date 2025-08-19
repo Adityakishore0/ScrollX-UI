@@ -77,11 +77,11 @@ export default async function ComponentsPage() {
 
       <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
         {enrichedComponents.map((component) => {
-          const imageUrl = `https://scrollx-ui.vercel.app/api/og?title=${encodeURIComponent(
+          const imageUrl = `https://scrollxui.dev/api/og?title=${encodeURIComponent(
             component.title
           )}&description=${encodeURIComponent(
             component.description
-          )}&logo=https://scrollx-ui.vercel.app/favicon.ico`;
+          )}&logo=https://scrollxui.dev/favicon.ico`;
 
           return (
             <Link
