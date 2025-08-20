@@ -140,6 +140,10 @@ const navigation: NavItem[] = [
       {
         title: "Radial Flow",
         href: "/docs/components/radialflow",
+      },
+      {
+        title: "Side Sheet",
+        href: "/docs/components/side-sheet",
         category: "new",
       },
       {
