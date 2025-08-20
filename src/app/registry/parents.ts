@@ -40,7 +40,7 @@ export const parentComponents = [
   "particles",
   "profilecard",
   "radialflow",
-  "sidesheet",
+  "side-sheet",
   "statscount",
   "statscarousel",
   "splitter",
