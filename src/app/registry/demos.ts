@@ -54,6 +54,8 @@ export const demoComponents = [
   "parallaxcards-demo",
   "profilecard-demo",
   "radialflow-demo",
+  "sidesheetleft-demo",
+  "sidesheetright-demo",
   "statscount-demo",
   "statscarousel-demo",
   "splitter-demo",

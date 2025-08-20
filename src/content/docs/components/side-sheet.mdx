@@ -1,0 +1,158 @@
+---
+title: Side Sheet
+description: A customizable sheet component for creating elegant slide-out interfaces.
+---
+
+<ComponentPreview name="sidesheetleft-demo" className="" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="side-sheet" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+    <Step>Install the following dependencies:</Step>
+
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>side-sheet.tsx</code>
+</p>
+<ComponentSource name="side-sheet" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  SideSheet,
+  SideSheetTrigger,
+  SideSheetContent,
+  SideSheetHeader,
+  SideSheetTitle,
+  SideSheetDescription,
+  SideSheetFooter,
+  SideSheetClose,
+} from "@/components/ui/side-sheet";
+```
+
+```tsx
+<SideSheet side="right"> // or left
+  <SideSheetTrigger asChild>
+    <Button>Open Sheet</Button>
+  </SideSheetTrigger>
+  <SideSheetContent>
+    <SideSheetHeader>
+      <SideSheetTitle>Title</SideSheetTitle>
+      <SideSheetDescription>Description</SideSheetDescription>
+    </SideSheetHeader>
+    content..
+    <SideSheetFooter>
+      <SideSheetClose asChild>
+        <Button>Close</Button>
+      </SideSheetClose>
+    </SideSheetFooter>
+  </SideSheetContent>
+</SideSheet>
+```
+
+## Examples
+
+---
+
+<Step>Right side</Step>
+
+<ComponentPreview name="sidesheetright-demo" className="" description="" />
+
+## API Reference
+
+### Side Sheet
+
+A customizable sheet component for creating elegant slide-out interfaces.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "open",
+      type: "boolean",
+      default: "undefined",
+      description:
+        "Controlled open state. If provided, SideSheet becomes controlled.",
+    },
+    {
+      prop: "defaultOpen",
+      type: "boolean",
+      default: "false",
+      description:
+        "Initial open state (uncontrolled). Used when `open` is not controlled.",
+    },
+    {
+      prop: "onOpenChange",
+      type: "(open: boolean) => void",
+      default: "undefined",
+      description:
+        "Callback fired when the open state changes. Works for controlled and uncontrolled usage.",
+    },
+    {
+      prop: "side",
+      type: `"left" | "right"`,
+      default: `"right"`,
+      description: "Which side the sheet slides in from.",
+    },
+    {
+      prop: "width",
+      type: "string",
+      default: `"400px"`,
+      description:
+        "Width of the sheet. Accepts `px`, `%`, `vw` values. Adjusts responsively on smaller screens.",
+    },
+    {
+      prop: "closeThreshold",
+      type: "number",
+      default: "0.3",
+      description:
+        "Drag threshold (fraction of width) at which the sheet will close when swiped.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Additional classNames applied to the SideSheet container.",
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description:
+        "Content of the SideSheet. Usually composed of compound components like `SideSheetHeader`, `SideSheetContent`, `SideSheetFooter`.",
+    },
+  ]}
+/>
