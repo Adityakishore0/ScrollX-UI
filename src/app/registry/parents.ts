@@ -32,6 +32,7 @@ export const parentComponents = [
   "loader",
   "lustretext",
   "magicdock",
+  "motioncards",
   "morphotextflip",
   "not-found",
   "navbar-flow",
