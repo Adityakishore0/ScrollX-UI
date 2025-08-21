@@ -42,6 +42,7 @@ export const demoComponents = [
   "loadercube",
   "lustretext-demo",
   "magicdock-demo",
+  "motioncards-demo",
   "morphotextflip-demo",
   "morphotextslideup",
   "morphotextfadescale",

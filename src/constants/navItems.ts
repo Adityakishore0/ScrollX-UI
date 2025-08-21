@@ -113,6 +113,11 @@ const navigation: NavItem[] = [
         title: "Magic Dock",
         href: "/docs/components/magicdock",
       },
+      {
+        title: "MotionCards",
+        href: "/docs/components/motioncards",
+        category: "new",
+      },
       { title: "MorphoText Flip", href: "/docs/components/morphotextflip" },
       {
         title: "Navbar Flow",
