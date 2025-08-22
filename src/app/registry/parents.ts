@@ -23,6 +23,7 @@ export const parentComponents = [
   "followcursor",
   "glowingbordercard",
   "globe",
+  "gravity",
   "heroui",
   "input-otp",
   "interactive-input",

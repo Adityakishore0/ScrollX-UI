@@ -81,6 +81,7 @@ const config: Config = {
         },
       },
       animation: {
+        "rockets-effect": "rockets-path var(--duration) ease-in-out infinite",
         "scroll-up": "scroll-up-smooth linear infinite",
         "scroll-down": "scroll-down-smooth linear infinite",
         tilt: "tilt 10s infinite linear",
@@ -175,6 +176,26 @@ const config: Config = {
           "80%": { transform: "translateX(3px)" },
           "90%": { transform: "translateX(-1px)" },
           "100%": { transform: "translateX(0)" },
+        },
+        "rockets-path": {
+          "0%": {
+            transform: "translate(0, 0) rotate(var(--angle))",
+            opacity: "1",
+          },
+          "40%": {
+            transform: "translate(var(--x), -300px) rotate(var(--angle))",
+            opacity: "1",
+          },
+          "60%": {
+            transform: "translate(var(--x), -350px) rotate(var(--angle))",
+            opacity: "0.8",
+          },
+
+          "100%": {
+            transform:
+              "translate(var(--x), 0) rotate(calc(var(--angle) + 180deg))",
+            opacity: "0",
+          },
         },
       },
       typography: {

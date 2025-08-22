@@ -30,6 +30,7 @@ export const demoComponents = [
   "glowingbordercard-demo",
   "globe-demo",
   "globecities",
+  "gravity-demo",
   "heroui-demo",
   "inputotp-demo",
   "interactiveinput-demo",

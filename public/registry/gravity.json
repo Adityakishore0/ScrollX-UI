@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gravity",
+  "type": "registry:component",
+  "title": "Gravity",
+  "description": "Gravity pulls objects as they launch, soar, and fall inside a container.",
+  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "dependencies": ["framer-motion"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/gravity.tsx",
+      "target": "components/ui/gravity.tsx",
+      "content": "\"use client\";\nimport { cn } from \"@/lib/utils\";\nimport { motion } from \"framer-motion\";\nimport React, { useEffect, useState } from \"react\";\n\nexport const Gravity = ({\n  number,\n  className,\n}: {\n  number?: number;\n  className?: string;\n}) => {\n  const [mounted, setMounted] = useState(false);\n  const [rockets, setRockets] = useState<\n    { horizontal: number; angleDeg: string; duration: string; delay: string }[]\n  >([]);\n\n  useEffect(() => {\n    setMounted(true);\n    const generated = new Array(number || 20).fill(true).map(() => {\n      const angleDir = Math.random() < 0.5 ? -1 : 1;\n      const horizontal = angleDir * (100 + Math.random() * 200);\n      const vertical = -350;\n      const angleRad = Math.atan2(vertical, horizontal);\n      const angleDeg = `${angleRad * (180 / Math.PI)}deg`;\n      const duration = `${4 + Math.random() * 3}s`;\n      const delay = `${Math.random() * 3}s`;\n      return { horizontal, angleDeg, duration, delay };\n    });\n    setRockets(generated);\n  }, [number]);\n\n  if (!mounted) return null;\n\n  return (\n    <motion.div\n      initial={{ opacity: 0 }}\n      animate={{ opacity: 1 }}\n      transition={{ duration: 0.5 }}\n      className={cn(\n        \"absolute inset-0 overflow-hidden pointer-events-none flex justify-center items-end\",\n        className\n      )}\n    >\n      {rockets.map((rocket, idx) => (\n        <span\n          key={`gravity-${idx}`}\n          className={cn(\n            \"absolute animate-rockets-effect h-1 w-1 rounded-full\",\n            \"bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500\",\n            \"dark:from-slate-300 dark:via-slate-400 dark:to-transparent\",\n            \"shadow-[0_0_0_1px_#ffffff10]\",\n            \"before:absolute before:top-1/2 before:right-full before:h-[1px] before:w-[50px] before:-translate-y-1/2\",\n            \"before:bg-gradient-to-l before:from-indigo-500 before:via-purple-500 before:to-transparent\",\n            \"dark:before:from-slate-300 dark:before:via-slate-400 dark:before:to-transparent\"\n          )}\n          style={{\n            \"--x\": `${rocket.horizontal}px`,\n            \"--duration\": rocket.duration,\n            \"--angle\": rocket.angleDeg,\n            left: \"50%\",\n            bottom: \"-50px\",\n            transform: `rotate(${rocket.angleDeg})`,\n            transformOrigin: \"center\",\n            animationDelay: rocket.delay,\n          } as React.CSSProperties}\n        />\n      ))}\n    </motion.div>\n  );\n};"
+    }
+  ]
+}
