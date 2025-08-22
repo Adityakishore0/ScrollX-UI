@@ -1,0 +1,137 @@
+---
+title: Gravity
+description: Gravity pulls objects as they launch, soar, and fall inside a container.
+---
+
+<ComponentPreview name="gravity-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="gravity" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+    <Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>gravity.tsx</code>
+</p>
+<ComponentSource name="gravity" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+<Step>Update tailwind.config.ts</Step>
+
+```tsx
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        "rockets-path": {
+          "0%": {
+            transform: "translate(0, 0) rotate(var(--angle))",
+            opacity: "1",
+          },
+          "40%": {
+            transform: "translate(var(--x), -300px) rotate(var(--angle))",
+            opacity: "1",
+          },
+          "60%": {
+            transform: "translate(var(--x), -350px) rotate(var(--angle))",
+            opacity: "0.8",
+          },
+          "100%": {
+            transform:
+              "translate(var(--x), 0) rotate(calc(var(--angle) + 180deg))",
+            opacity: "0",
+          },
+        },
+      },
+      animation: {
+        "rockets-effect": "rockets-path var(--duration) ease-in-out infinite",
+      },
+    },
+  },
+};
+```
+
+## Usage
+
+```tsx
+import { Gravity } from "@/components/ui/gravity";
+```
+
+```tsx
+<div className="flex items-center justify-center px-4 py-12">
+  <div className="relative w-full max-w-sm">
+    <div
+      className="relative flex h-[340px] w-[90%] flex-col items-start justify-end 
+      overflow-hidden rounded-2xl border border-gray-300 dark:border-gray-800 
+      bg-gray-50 dark:bg-[#0a0a0a] 
+      px-5 py-8 shadow-xl mx-auto transition-colors"
+    >
+      <h2 className="relative z-50 mb-3 text-xl font-bold text-gray-900 dark:text-white">
+        Gravity
+      </h2>
+      <p className="relative z-50 mb-5 text-base font-normal text-gray-600 dark:text-gray-400 leading-relaxed">
+        Gravity pulls everything down, not to defeat it, but to give every fall
+        the chance to launch again with greater force.
+      </p>
+      <Gravity number={20} />
+    </div>
+  </div>
+</div>
+```
+
+## API Reference
+
+### Gravity
+
+Gravity pulls objects as they launch, soar, and fall inside a container.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "number",
+      type: "number",
+      default: "20",
+      description: "Number of rockets/objects to render inside the container.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "undefined",
+      description:
+        "Additional Tailwind or custom classes for styling the container.",
+    },
+  ]}
+/>

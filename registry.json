@@ -352,6 +352,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "gravity",
+      "title": "Gravity",
+      "description": "Gravity pulls objects as they launch, soar, and fall inside a container.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/gravity.tsx",
+          "target": "components/ui/gravity.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "heroui",
       "title": "Hero Sections",
       "description": "A set of hero sections ranging from simple to complex layouts.",

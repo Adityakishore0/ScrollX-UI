@@ -85,6 +85,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/globe",
       },
       {
+        title: "Gravity",
+        href: "/docs/components/gravity",
+        category: "new",
+      },
+      {
         title: "Hero Sections",
         href: "/docs/components/hero-sections",
         category: "new",
