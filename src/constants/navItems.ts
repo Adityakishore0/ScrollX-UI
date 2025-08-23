@@ -154,6 +154,7 @@ const navigation: NavItem[] = [
       {
         title: "Radial Socials",
         href: "/docs/components/radial-socials",
+        category: "new",
       },
       {
         title: "Side Sheet",
