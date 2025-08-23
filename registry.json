@@ -637,6 +637,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "radial-socials",
+      "title": "Radial Socials",
+      "description": "radial social icons arranged in circles, with smooth expansion and rotation",
+      "type": "registry:component",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "components/ui/radial-socials.tsx",
+          "target": "components/ui/radial-socials.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "side-sheet",
       "title": "Side Sheet",
       "description": "A customizable sheet component for creating elegant slide-out interfaces.",
