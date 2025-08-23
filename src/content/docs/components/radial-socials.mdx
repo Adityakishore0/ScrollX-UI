@@ -1,0 +1,149 @@
+---
+title: Radial Socials
+description: radial social icons arranged in circles, with smooth expansion and rotation
+---
+
+<ComponentPreview name="radialsocials-demo" className="" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="radial-socials" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>radial-socials.tsx</code>
+</p>
+<ComponentSource name="radial-socials" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  RadialSocials,
+  RadialSocialsContent,
+  RadialCircular,
+  RadialIcon,
+} from "@/components/ui/radial-socials";
+```
+
+```tsx
+<RadialSocials animationDelay={200} expandDuration={600} className="w-[200px] h-[120px]">
+  <RadialSocialsContent>
+    <RadialCircular radius={70} duration={20} startAngle={39}>
+      <RadialIcon icon={<Zap className="w-5 h-5" />} />
+      <RadialIcon icon={<Rocket className="w-5 h-5" />} />
+      <RadialIcon icon={<Flame className="w-5 h-5" />} />
+      <RadialIcon icon={<Wind className="w-5 h-5" />} />
+    </RadialCircular>
+  </RadialSocialsContent>
+</RadialSocials>
+```
+
+## API Reference
+
+### Radial Socials
+
+radial social icons arranged in circles, with smooth expansion and rotation
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description:
+        "Nested RadialSocialsContent, RadialCircular, or RadialIcon components.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Additional classes for the RadialSocials container.",
+    },
+    {
+      prop: "animationDelay",
+      type: "number",
+      default: 150,
+      description: "Delay (ms) between the animation of each icon.",
+    },
+    {
+      prop: "expandDuration",
+      type: "number",
+      default: 800,
+      description: "Duration (ms) for icons to expand from the center.",
+    },
+    {
+      prop: "containerClassName",
+      type: "string",
+      default: "-",
+      description: "Additional classes for the outermost content wrapper.",
+    },
+    {
+      prop: "radius",
+      type: "number",
+      default: "required",
+      description: "Radius of the circular path for icons.",
+    },
+    {
+      prop: "duration",
+      type: "number",
+      default: 20,
+      description: "Rotation duration of the circle in seconds.",
+    },
+    {
+      prop: "circleLineClassName",
+      type: "string",
+      default: "-",
+      description: "Custom class names for the circular border line.",
+    },
+    {
+      prop: "startAngle",
+      type: "number",
+      default: 0,
+      description: "Starting angle (degrees) for placing the first icon.",
+    },
+    {
+      prop: "icon",
+      type: "ReactNode",
+      default: "required",
+      description: "Icon element to display in the radial circle.",
+    },
+    {
+      prop: "angle",
+      type: "number",
+      default: "auto",
+      description:
+        "Angle (degrees) to place this icon; overrides automatic spacing.",
+    },
+  ]}
+/>

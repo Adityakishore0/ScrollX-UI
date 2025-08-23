@@ -152,6 +152,10 @@ const navigation: NavItem[] = [
         href: "/docs/components/radialflow",
       },
       {
+        title: "Radial Socials",
+        href: "/docs/components/radial-socials",
+      },
+      {
         title: "Side Sheet",
         href: "/docs/components/side-sheet",
         category: "new",
