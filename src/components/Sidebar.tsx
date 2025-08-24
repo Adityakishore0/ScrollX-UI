@@ -54,7 +54,7 @@ export default function Sidebar() {
                 key={child.href}
                 href={child.href}
                 className={cn(
-                  "block px-4 py-2 text-sm rounded-md transition-all relative my-1",
+                  "block px-4 py-2 text-sm rounded-md transition-all relative my-[0.1rem]",
                   pathname === child.href
                     ? "bg-black text-white dark:bg-white dark:text-black"
                     : "text-gray-700 dark:text-gray-400",
