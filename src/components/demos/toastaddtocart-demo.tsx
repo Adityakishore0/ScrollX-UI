@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { ToastProvider, useToast } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 
-function ToastAddToCartDemo() {
+export default function ToastAddToCart() {
   const { toast } = useToast();
 
   return (
@@ -19,13 +19,5 @@ function ToastAddToCartDemo() {
     >
       Add to Cart
     </Button>
-  );
-}
-
-export default function ToastAddToCart() {
-  return (
-    <ToastProvider>
-      <ToastAddToCartDemo />
-    </ToastProvider>
   );
 }

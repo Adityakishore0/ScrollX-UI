@@ -3,7 +3,7 @@ import React from "react";
 import { ToastProvider, useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 
-function ToastDeleteDemo() {
+export default function ToastDelete() {
   const { toast } = useToast();
 
   return (
@@ -24,13 +24,5 @@ function ToastDeleteDemo() {
     >
       Delete Item
     </Button>
-  );
-}
-
-export default function ToastDelete() {
-  return (
-    <ToastProvider>
-      <ToastDeleteDemo />
-    </ToastProvider>
   );
 }

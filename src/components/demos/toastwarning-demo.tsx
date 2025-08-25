@@ -3,29 +3,20 @@ import React from "react";
 import { ToastProvider, useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 
-function ToastWarningDemo() {
+export default function ToastWarning() {
   const { toast } = useToast();
 
   return (
     <Button
+      variant="secondary"
       onClick={() =>
-        toast({
-          variant: "warning",
-          title: "Warning",
-          description: "Proceed with caution",
+        toast.warning("Warning!", {
           position: "top-left",
+          description: "Please review your input before proceeding.",
         })
       }
     >
       Warning Toast
     </Button>
-  );
-}
-
-export default function ToastWarning() {
-  return (
-    <ToastProvider>
-      <ToastWarningDemo />
-    </ToastProvider>
   );
 }

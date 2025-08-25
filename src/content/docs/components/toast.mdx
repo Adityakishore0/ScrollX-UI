@@ -1,6 +1,6 @@
 ---
 title: Toast
-description: A customizable and responsive toast notification system...
+description: A customizable and responsive toast notification system.
 ---
 
 <ComponentPreview
@@ -22,7 +22,8 @@ description: A customizable and responsive toast notification system...
   <TabsContent value="manual">
     <Steps>
 
-
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion lucide-react" />
 
 <Step>Copy and paste the following code into your project.</Step>
 <p>
@@ -34,55 +35,6 @@ description: A customizable and responsive toast notification system...
   </TabsContent>
 </Tabs>
 
-<Step>Add Utilities</Step>
-
-<p>
-  <code>tailwind.config.ts</code>
-</p>
-
-```tsx
-module.exports = { 
-   theme: { 
-     extend: { 
-       keyframes: { 
-        "slide-in-right": {
-          "0%": { transform: "translateX(100%)", opacity: "0" },
-          "100%": { transform: "translateX(0)", opacity: "1" },
-        },
-        "slide-in-left": {
-          "0%": { transform: "translateX(-100%)", opacity: "0" },
-          "100%": { transform: "translateX(0)", opacity: "1" },
-        },
-        "slide-out-right": {
-          "0%": { transform: "translateX(0)", opacity: "1" },
-          "100%": { transform: "translateX(100%)", opacity: "0" },
-        },
-        "slide-out-left": {
-          "0%": { transform: "translateX(0)", opacity: "1" },
-          "100%": { transform: "translateX(-100%)", opacity: "0" },
-        }, 
-      }, 
-       animation: { 
-        "slide-in-right": "slide-in-right 0.3s ease-out",
-        "slide-in-left": "slide-in-left 0.3s ease-out",
-        "slide-out-right": "slide-out-right 0.3s ease-in",
-        "slide-out-left": "slide-out-left 0.3s ease-in", 
-       }, 
-     }, 
-    }, 
-    plugins: [
-    function ({ addBase }: PluginAPI) {
-      addBase({
-        ".toast-base": {
-          "touch-action": "none",
-          "user-select": "none",
-          "-webkit-user-select": "none",
-        },
-      });
-    },
-  ],
- };
-```
 
 ## Usage
 
@@ -102,7 +54,7 @@ function App() {
 ```tsx
 import { useToast } from "@/components/ui/toast";
 
-function MyComponent() {
+ return function MyComponent() {
   const { toast } = useToast();
   
   const showToast = () => {
@@ -111,14 +63,8 @@ function MyComponent() {
       description: "Your action was completed successfully.",
       variant: "success",
     });
-  };
-  
-  return (
-    <button onClick={showToast}>
-      Show Toast
-    </button>
-  );
-}
+  }
+ }
 ```
 
 ## Examples
@@ -180,7 +126,67 @@ function MyComponent() {
 <ComponentPreview
   name="toastsuccess-demo"
   className=""
-  description="Confirms positive outcome with affirmative styling."
+  description=""
+/>
+
+---
+
+<Step>With Action</Step>
+
+<ComponentPreview
+  name="toastwithaction-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Persistent</Step>
+
+<ComponentPreview
+  name="toastpersistent-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Promise</Step>
+
+<ComponentPreview
+  name="toastpromise-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Rich Content</Step>
+
+<ComponentPreview
+  name="toastrichcontent-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Custom Duration</Step>
+
+<ComponentPreview
+  name="toastcustomduration-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Bulk Actions</Step>
+
+<ComponentPreview
+  name="toastbulkactions-demo"
+  className=""
+  description=""
 />
 
 ## API Reference
@@ -194,40 +200,101 @@ Triggers a toast notification.
 <PropsTable
   rows={[
     {
+      prop: "id",
+      type: "string",
+      default: "auto",
+      description: "Unique identifier for the toast. Auto-generated if not provided."
+    },
+    {
       prop: "title",
       type: "string",
       default: "—",
-      description: "Toast title text."
+      description: "Main heading text of the toast."
     },
     {
       prop: "description",
       type: "string",
       default: "—",
-      description: "Toast message body."
+      description: "Optional descriptive message body."
     },
     {
       prop: "variant",
-      type: `"default" | "success" | "destructive" | "warning" | "info"`,
+      type: `"default" | "success" | "destructive" | "warning" | "info" | "loading"`,
       default: `"default"`,
-      description: "Visual style of the toast."
+      description: "Visual style of the toast. Affects colors and icon."
     },
     {
       prop: "position",
       type: `"top-right" | "top-left" | "bottom-right" | "bottom-left"`,
-      default: `"bottom-right"`,
-      description: "Screen position where toast appears."
+      default: `"top-right"`,
+      description: "Screen position where the toast appears."
     },
     {
       prop: "duration",
       type: "number",
       default: "5000",
-      description: "Auto-dismiss timeout in milliseconds."
+      description: "Auto-dismiss timeout in milliseconds. Use `Infinity` to disable auto-dismiss."
     },
     {
       prop: "action",
-      type: "ReactNode",
+      type: "ReactNode | { label: string; onClick: () => void }",
       default: "—",
-      description: "Optional custom action (e.g., a button)."
+      description: "Optional custom action element or config object with label and callback."
+    },
+    {
+      prop: "cancel",
+      type: `{ label: string; onClick: () => void }`,
+      default: "—",
+      description: "Optional cancel button with label and callback."
+    },
+    {
+      prop: "onClose",
+      type: "() => void",
+      default: "—",
+      description: "Callback fired when the toast is closed or dismissed."
+    },
+    {
+      prop: "stackIndex",
+      type: "number",
+      default: "0",
+      description: "Index of the toast in a stack (used internally for stacked animations)."
+    },
+    {
+      prop: "isVisible",
+      type: "boolean",
+      default: "true",
+      description: "Controls the visibility of the toast."
+    },
+    {
+      prop: "isStacked",
+      type: "boolean",
+      default: "false",
+      description: "Indicates if the toast is visually stacked with others."
+    },
+    {
+      prop: "isHovered",
+      type: "boolean",
+      default: "false",
+      description: "Indicates if the stack is hovered (pauses auto-dismiss)."
+    },
+    {
+      prop: "stackDirection",
+      type: `"up" | "down"`,
+      default: `"down"`,
+      description: "Direction in which stacked toasts collapse/expand."
+    },
+    {
+      prop: "isExiting",
+      type: "boolean",
+      default: "false",
+      description: "Indicates if the toast is currently exiting (used for animation timing)."
+    },
+    {
+      prop: "totalCount",
+      type: "number",
+      default: "1",
+      description: "Total number of toasts in the stack (used for '+N' badge)."
     }
   ]}
 />
+

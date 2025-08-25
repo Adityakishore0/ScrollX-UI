@@ -3,20 +3,24 @@ import React from "react";
 import { ToastProvider, useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 
-export default function ToastInfo() {
+export default function ToastPersistent() {
   const { toast } = useToast();
 
   return (
     <Button
       variant="outline"
       onClick={() =>
-        toast.info("Information", {
-          position: "bottom-right",
-          description: "Here's some helpful information for you.",
+        toast("Persistent Toast", {
+          description: "This toast won't auto-dismiss.",
+          duration: Infinity,
+          action: {
+            label: "Dismiss",
+            onClick: () => {},
+          },
         })
       }
     >
-      Info Toast
+      Persistent
     </Button>
   );
 }

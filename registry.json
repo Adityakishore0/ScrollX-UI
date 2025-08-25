@@ -789,9 +789,13 @@
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "toast",
       "title": "Toast",
-      "description": "A customizable and responsive toast notification system...",
+      "description": "A customizable and responsive toast notification system.",
       "type": "registry:component",
-      "dependencies": ["class-variance-authority", "lucide-react"],
+      "dependencies": [
+        "framer-motion",
+        "class-variance-authority",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "components/ui/toast.tsx",
