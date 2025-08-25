@@ -1,0 +1,148 @@
+---
+title: Text Highlighter
+description: TextHighlighter with smooth animated highlights to emphasize key text.
+---
+
+<ComponentPreview name="texthighlighter-demo" className="" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="text-highlighter" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>text-highlighter.tsx</code>
+</p>
+<ComponentSource name="text-highlighter" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import TextHighlighter from "@/components/ui/text-highlighter";
+```
+
+```tsx
+<TextHighlighter type="wavy" highlightColor="#00ffb7ff">
+  <span>share</span>
+</TextHighlighter>
+```
+
+## Examples
+
+---
+
+<Step>Zigzag</Step>
+
+<ComponentPreview name="texthighlighterzigzag" className="" description="" />
+
+## API Reference
+
+### Text Highlighter
+
+TextHighlighter with smooth animated highlights to emphasize key text.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "The text or elements to be highlighted.",
+    },
+    {
+      prop: "highlightColor",
+      type: "string",
+      default: "#ff6b9d",
+      description: "Color of the highlight stroke applied under the text.",
+    },
+    {
+      prop: "highlightOpacity",
+      type: "number",
+      default: "1",
+      description: "Opacity of the highlight stroke (0 to 1).",
+    },
+    {
+      prop: "animationDuration",
+      type: "number",
+      default: "1.2",
+      description: "Duration of the highlight drawing animation in seconds.",
+    },
+    {
+      prop: "animationDelay",
+      type: "number",
+      default: "0",
+      description: "Delay before the highlight animation starts (in seconds).",
+    },
+    {
+      prop: "strokeWidth",
+      type: "number",
+      default: "2",
+      description: "Width of the highlight stroke.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "''",
+      description: "Additional CSS classes for the wrapper span.",
+    },
+    {
+      prop: "style",
+      type: "React.CSSProperties",
+      default: "{}",
+      description: "Inline styles applied to the wrapper span.",
+    },
+    {
+      prop: "type",
+      type: "'wavy' | 'zigzag'",
+      default: "'wavy'",
+      description: "Type of highlight path shape drawn beneath the text.",
+    },
+    {
+      prop: "triggerOnView",
+      type: "boolean",
+      default: "true",
+      description:
+        "If true, the animation triggers when the element enters the viewport.",
+    },
+    {
+      prop: "repeat",
+      type: "boolean",
+      default: "false",
+      description:
+        "If true, animation retriggers every time the element enters the viewport.",
+    },
+  ]}
+/>

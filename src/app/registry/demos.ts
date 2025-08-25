@@ -68,6 +68,8 @@ export const demoComponents = [
   "seperatorprowavy",
   "scrollareapro-demo",
   "scrollareaprohorizontal",
+  "texthighlighter-demo",
+  "texthighlighterzigzag",
   "themeswitch-demo",
   "themeswitchicon",
   "thswitchhideinactive",
