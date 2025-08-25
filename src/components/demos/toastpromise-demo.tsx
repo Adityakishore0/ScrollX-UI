@@ -3,20 +3,21 @@ import React from "react";
 import { ToastProvider, useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 
-export default function ToastError() {
+export default function ToastPromise() {
   const { toast } = useToast();
 
   return (
     <Button
-      variant="destructive"
+      variant="secondary"
       onClick={() =>
-        toast.error("Error occurred!", {
-          position: "top-right",
-          description: "Something went wrong. Please try again.",
+        toast.promise(new Promise((resolve) => setTimeout(resolve, 2000)), {
+          loading: "Loading...",
+          success: "Promise resolved!",
+          error: "Promise rejected!",
         })
       }
     >
-      Error Toast
+      Promise Toast
     </Button>
   );
 }

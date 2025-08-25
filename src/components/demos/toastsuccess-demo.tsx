@@ -3,29 +3,19 @@ import React from "react";
 import { ToastProvider, useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 
-function ToastSuccessDemo() {
+export default function ToastSuccess() {
   const { toast } = useToast();
 
   return (
     <Button
+      variant="success"
       onClick={() =>
-        toast({
-          variant: "success",
-          title: "Success!",
-          description: "Your action was completed successfully",
-          duration: 7000,
+        toast.success("Success!", {
+          description: "Your action was completed successfully.",
         })
       }
     >
       Success Toast
     </Button>
-  );
-}
-
-export default function ToastSuccess() {
-  return (
-    <ToastProvider>
-      <ToastSuccessDemo />
-    </ToastProvider>
   );
 }

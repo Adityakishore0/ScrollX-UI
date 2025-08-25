@@ -4,6 +4,7 @@ import ClientBody from "./ClientBody";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { siteConfig } from "@/config/site";
+import { ToastContainer } from "@/components/ui/toast";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -103,7 +104,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ClientBody>{children}</ClientBody>
+        <ClientBody>
+          {children}
+          <ToastContainer />
+        </ClientBody>
       </body>
     </html>
   );
