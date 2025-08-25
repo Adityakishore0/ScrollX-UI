@@ -188,6 +188,11 @@ const navigation: NavItem[] = [
         category: "new",
       },
       {
+        title: "Text Highlighter",
+        href: "/docs/components/text-highlighter",
+        category: "new",
+      },
+      {
         title: "Theme Switch",
         href: "/docs/components/theme-switch",
       },

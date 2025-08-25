@@ -50,6 +50,7 @@ export const parentComponents = [
   "spotlightcard",
   "seperatorpro",
   "scroll-areapro",
+  "text-highlighter",
   "theme-switch",
   "top-sheet",
   "toast",
