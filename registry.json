@@ -184,6 +184,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "beams-upstream",
+      "title": "Beams Upstream",
+      "description": "Multiple background beams travel upstream, forming a hero section background.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/beams-upstream.tsx",
+          "target": "components/ui/beams-upstream.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "button",
       "title": "Button",
       "description": "Reusable button component with multiple variants and sizes.",

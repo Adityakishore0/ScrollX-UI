@@ -57,6 +57,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/background-paths",
       },
       { title: "Badge", href: "/docs/components/badge" },
+      {
+        title: "Beams Upstream",
+        href: "/docs/components/beams-upstream",
+        category: "new",
+      },
       { title: "Button", href: "/docs/components/button" },
       { title: "Card", href: "/docs/components/card" },
       { title: "Carousel", href: "/docs/components/carousel" },

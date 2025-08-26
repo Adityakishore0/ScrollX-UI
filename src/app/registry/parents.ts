@@ -12,6 +12,7 @@ export const parentComponents = [
   "backgroundmeteors",
   "background-paths",
   "badge",
+  "beams-upstream",
   "button",
   "card",
   "carousel",
