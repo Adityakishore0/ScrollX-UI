@@ -13,8 +13,8 @@ export default function Sidebar() {
   return (
     <aside
       className={cn(
-        "fixed left-0 top-0 h-screen w-64 p-6 transition-all duration-300 overflow-y-auto border-r backdrop-blur-xl",
-        "bg-white dark:bg-[#09090b] border-gray-200 dark:border-gray-800"
+        "fixed left-0 top-0 h-screen w-64 p-6 transition-all duration-300 overflow-y-auto border-r",
+        "border-gray-200 dark:border-gray-800"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
