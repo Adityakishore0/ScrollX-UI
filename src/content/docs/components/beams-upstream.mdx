@@ -1,0 +1,91 @@
+---
+title: Beams Upstream
+description: Multiple background beams travel upstream, forming a hero section background.
+---
+
+<ComponentPreview
+  name="beamsupstream-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="beams-upstream" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>beams-upstream.tsx</code>
+</p>
+<ComponentSource name="beams-upstream" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { BeamsUpstream } from "@/components/ui/beams-upstream";
+```
+
+```tsx
+<div className="relative h-screen w-full">
+  <div className="relative z-10 flex flex-col items-center justify-center h-full">
+    <h1 className="text-5xl font-bold text-white">Welcome to Upstream</h1>
+    <p className="mt-4 text-neutral-300">
+      Flow with energy and creativity, powered by animated SVG beams.
+    </p>
+  </div>
+  <BeamsUpstream className="z-0" />
+</div>
+```
+
+
+## API Reference
+
+### Beams Upstream
+
+Multiple background beams travel upstream, forming a hero section background.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description:
+        "Optional Tailwind or custom class names to style or position the beams container."
+    }
+  ]}
+/>
+

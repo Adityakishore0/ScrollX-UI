@@ -13,6 +13,7 @@ export const demoComponents = [
   "badge-destructive",
   "badge-secondary",
   "badge-outline",
+  "beamsupstream-demo",
   "button-demo",
   "cursorimagetrail-demo",
   "cursorimagetraildynamic",
