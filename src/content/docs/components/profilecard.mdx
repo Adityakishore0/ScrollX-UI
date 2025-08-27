@@ -40,29 +40,50 @@ description:  A reusable profile card component displaying a user's image, name,
 
 ## Usage
 ```tsx
-import CenteredImageCard from "@/components/ui/profilecard";
+import ProfileCard from "@/components/ui/profilecard";
 ```
 
 ```tsx
-<CenteredImageCard
+<ProfileCard
+      spotlight
+      spotlightColor="99,102,241"
       img="https://github.com/Adityakishore0.png"
       name="Ahdeetai"
       bio="Creator of ScrolIX UI, a modern component library built for speed and scalability."
-      skills={[
-        { name: "TypeScript", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-        { name: "Next.js", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-        { name: "Node.js", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-        { name: "JavaScript", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-        { name: "TailwindCSS", iconUrl: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
-        { name: "GitHub", iconUrl: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" }
-      ]}
-      githubUrl="https://github.com/Adityakishore0"
-      twitterUrl="https://x.com/Ahdeetai"
+      skills={skills}
+      socialLinks={socialLinks}
       position="Senior Software Engineer"
     />
 ```
+---
+
+## Changelog
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3D Tilt Effect</td>
+      <td>Card now tilts based on mouse movement when revealed.</td>
+    </tr>
+    <tr>
+      <td>Spotlight Effect</td>
+      <td>Optional radial spotlight on skills.</td>
+    </tr>
+    <tr>
+      <td>Custom Social Links</td>
+      <td>Added support for multiple social links.</td>
+    </tr>
+  </tbody>
+</table>
 
 
+---
 
 ## API Reference
 
@@ -72,7 +93,7 @@ The `ProfileCard` component is used to create an interactive profile card with u
 
 ## Props
 
-<PropsTable
+<PropsTable 
   rows={[
     {
       prop: "img",
@@ -100,22 +121,29 @@ The `ProfileCard` component is used to create an interactive profile card with u
     },
     {
       prop: "skills",
-      type: "string[]",
+      type: "Skill[]",
+      default: "required",
+      description: "Array of skills with name and icon."
+    },
+    {
+      prop: "socialLinks",
+      type: "SocialLink[]",
       default: "[]",
-      description: "List of skill names displayed as badges."
+      description: "Array of social links with name, url, and icon."
     },
     {
-      prop: "githubUrl",
-      type: "string",
-      default: "—",
-      description: "Link to GitHub profile."
+      prop: "spotlight",
+      type: "boolean",
+      default: "false",
+      description: "Enables interactive spotlight hover effect."
     },
     {
-      prop: "twitterUrl",
+      prop: "spotlightColor",
       type: "string",
-      default: "—",
-      description: "Link to Twitter/X profile."
+      default: "\"14, 165, 233\"",
+      description: "RGB color used for the spotlight glow."
     }
   ]}
 />
+
 

@@ -1,45 +1,77 @@
-import CenteredImageCard from "@/components/ui/profilecard";
+import ProfileCard from "@/components/ui/profilecard";
+import { Github, Linkedin, Twitter, X } from "lucide-react";
 
-export default function ProfileCard() {
+export default function ProfileCardDemo() {
   return (
-    <CenteredImageCard
+    <ProfileCard
+      spotlight={true}
+      spotlightColor="99,102,241"
       img="https://github.com/Adityakishore0.png"
       name="Ahdeetai"
       bio="Creator of ScrolIX UI, a modern component library built for speed and scalability."
       skills={[
         {
           name: "TypeScript",
-          iconUrl:
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
         },
         {
           name: "Next.js",
-          iconUrl:
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
         },
         {
           name: "Node.js",
-          iconUrl:
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
         },
         {
           name: "JavaScript",
-          iconUrl:
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
         },
         {
           name: "TailwindCSS",
-          iconUrl:
-            "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
+          icon: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
         },
         {
           name: "GitHub",
-          iconUrl:
-            "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+          icon: (
+            <Github
+              className="w-4 h-4 text-white dark:text-black"
+              strokeWidth={2}
+            />
+          ),
         },
       ]}
-      githubUrl="https://github.com/Adityakishore0"
-      twitterUrl="https://x.com/Ahdeetai"
+      socialLinks={[
+        {
+          name: "GitHub",
+          url: "https://github.com/Adityakishore0",
+          icon: (
+            <Github
+              className="w-4 h-4 text-white dark:text-black"
+              strokeWidth={2}
+            />
+          ),
+        },
+        {
+          name: "Twitter",
+          url: "ttps://x.com/Ahdeetai",
+          icon: (
+            <Twitter
+              className="w-4 h-4 text-white dark:text-black"
+              strokeWidth={2}
+            />
+          ),
+        },
+        {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/aditya-kishore-519068341/",
+          icon: (
+            <Linkedin
+              className="w-4 h-4 text-white dark:text-black"
+              strokeWidth={2}
+            />
+          ),
+        },
+      ]}
       position="Senior Software Engineer"
     />
   );
