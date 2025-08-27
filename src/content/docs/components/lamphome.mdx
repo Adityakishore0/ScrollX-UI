@@ -54,10 +54,16 @@ import { Lamphome } from "@/components/ui/Lamphome";
 
 export default function MyPage() {
   return (
-    <Lamphome 
-      title="My Custom Header" 
-      description="This is a custom description for my page" 
-    />
+    <Lamphome
+      title={title}
+      description={description}
+      logoSrc={logo.src}
+      logoAlt={logo.alt}
+      navItems={navItems}
+      className="bg-gray-50 dark:bg-neutral-900"
+    >
+      {content}
+    </Lamphome>
   );
 }
 ```
@@ -102,16 +108,41 @@ The root container for the `Lamphome` component. A stylish, animated header comp
       prop: "description",
       type: "string",
       default: `"An open-source collection."`,
-      description: "Descriptive text below the title."
+      description: "Descriptive text displayed below the title."
+    },
+    {
+      prop: "logoSrc",
+      type: "string",
+      default: "optional",
+      description: "URL or path for the logo image displayed on the navbar."
+    },
+    {
+      prop: "logoAlt",
+      type: "string",
+      default: `"Logo"`,
+      description: "Alt text for the logo image."
+    },
+    {
+      prop: "navItems",
+      type: "Array<{ href: string; label: string }>",
+      default: "[]",
+      description: "Navigation links rendered in the navbar."
     },
     {
       prop: "children",
       type: "ReactNode",
       default: "optional",
-      description: "Custom content rendered in the body area."
+      description: "Custom content rendered below the description."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: `""`,
+      description: "Additional custom CSS classes for the root container."
     }
   ]}
 />
+
 
 
 
