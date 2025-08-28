@@ -26,6 +26,7 @@ export const parentComponents = [
   "globe",
   "gravity",
   "heroui",
+  "hold-toconfirm",
   "input-otp",
   "interactive-input",
   "kinetic-testimonials",

@@ -97,6 +97,10 @@ const navigation: NavItem[] = [
       {
         title: "Hero Sections",
         href: "/docs/components/hero-sections",
+      },
+      {
+        title: "Hold ToConfirm",
+        href: "/docs/components/hold-toconfirm",
         category: "new",
       },
       { title: "Input OTP", href: "/docs/components/input-otp" },

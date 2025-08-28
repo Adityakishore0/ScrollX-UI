@@ -1,0 +1,177 @@
+---
+title: Hold ToConfirm
+description: A button that requires holding down to confirm irreversible or critical actions.
+---
+
+<ComponentPreview
+  name="holdtoconfirm-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="hold-toconfirm" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>hold-toconfirm.tsx</code>
+</p>
+<ComponentSource name="hold-toconfirm" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+ import {(ClassValue, clsx)} from "clsx";
+  import {twMerge} from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { HoldToConfirm } from "@/components/ui/hold-toconfirm";
+```
+
+```tsx
+<HoldToConfirm
+      variant="style"
+      size="dimension"
+      duration={time}
+      onConfirm={callback}
+      animation="border-or-fill"
+      fillClassName="styles"
+      confirmedChildren={content}
+      confirmedClassName="styles"
+      resetAfter={time}
+      showProgressOnConfirm={boolean}
+    >
+      content
+    </HoldToConfirm>
+```
+
+## Examples
+
+---
+
+<Step>Border Variant</Step>
+
+<ComponentPreview
+  name="holdtoconfirmborder"
+  className=""
+  description=""
+/>
+
+## API Reference
+
+### Hold ToConfirm
+
+A button that requires holding down to confirm irreversible or critical actions.
+
+## Props
+
+<PropsTable 
+  rows={[
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "Renders as a span instead of a button when true."
+    },
+    {
+      prop: "duration",
+      type: "number",
+      default: "2000",
+      description: "Hold duration in milliseconds required to confirm."
+    },
+    {
+      prop: "onConfirm",
+      type: "() => void",
+      default: "-",
+      description: "Callback fired once the hold is successfully confirmed."
+    },
+    {
+      prop: "animation",
+      type: `"border" | "fill"`,
+      default: `"fill"`,
+      description: "Style of the progress animation: border outline or background fill."
+    },
+    {
+      prop: "fillClassName",
+      type: "string",
+      default: "-",
+      description: "Classes applied to the progress fill/border element."
+    },
+    {
+      prop: "confirmedChildren",
+      type: "ReactNode",
+      default: "-",
+      description: "Content shown inside the button after confirmation."
+    },
+    {
+      prop: "confirmedClassName",
+      type: "string",
+      default: "-",
+      description: "Classes applied to the confirmed state content."
+    },
+    {
+      prop: "resetAfter",
+      type: "number",
+      default: "2000",
+      description: "Time in milliseconds after which the button resets state."
+    },
+    {
+      prop: "showProgressOnConfirm",
+      type: "boolean",
+      default: "false",
+      description: "Keeps progress visible after confirmation instead of resetting immediately."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: `"Hold"`,
+      description: "Button label or content shown before confirmation."
+    },
+    {
+      prop: "variant",
+      type: "string",
+      default: "-",
+      description: "Variant styles inherited from Button (e.g., default, outline)."
+    },
+    {
+      prop: "size",
+      type: "string",
+      default: "-",
+      description: "Size styles inherited from Button (e.g., sm, lg)."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Additional custom classes applied to the button."
+    }
+  ]}
+/>
+

@@ -33,6 +33,8 @@ export const demoComponents = [
   "globecities",
   "gravity-demo",
   "heroui-demo",
+  "holdtoconfirm-demo",
+  "holdtoconfirmborder",
   "inputotp-demo",
   "interactiveinput-demo",
   "kinetictestimonials-demo",
