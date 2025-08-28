@@ -3,7 +3,7 @@
 import { HoldToConfirm } from "@/components/ui/hold-toconfirm";
 import { motion } from "framer-motion";
 
-export default function HoldToConfirmDemo() {
+export default function HoldToConfirmBorder() {
   return (
     <div className="flex  items-center justify-center ">
       <div className="w-full max-w-md rounded-2xl border bg-card p-6 shadow-lg text-center space-y-4">
