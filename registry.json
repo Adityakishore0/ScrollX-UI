@@ -397,6 +397,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "hold-toconfirm",
+      "title": "Hold ToConfirm",
+      "description": "A button that requires holding down to confirm irreversible or critical actions.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/hold-toconfirm.tsx",
+          "target": "components/ui/hold-toconfirm.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "input-otp",
       "title": "Input Otp",
       "description": "A flexible Accessible one-time password component",
