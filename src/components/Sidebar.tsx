@@ -23,7 +23,7 @@ export default function Sidebar() {
         overflowY: "auto",
       }}
     >
-      <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+      <h2 className="text-[1.25rem] font-bold text-gray-900 dark:text-gray-100 mb-6">
         Docs
       </h2>
 
@@ -34,17 +34,24 @@ export default function Sidebar() {
               <Link
                 href={item.href}
                 className={cn(
-                  "block px-3 py-2 font-semibold rounded-md transition-all relative",
+                  "block font-semibold rounded-md transition-all relative",
                   pathname === item.href
                     ? "bg-black text-white dark:bg-white dark:text-black"
                     : "text-gray-700 dark:text-gray-400",
                   "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
                 )}
+                style={{
+                  fontSize: "0.95rem",
+                  padding: "0.5rem 0.75rem",
+                }}
               >
                 {item.title}
               </Link>
             ) : (
-              <span className="block px-3 py-2 font-semibold text-gray-900 dark:text-gray-100">
+              <span
+                className="block font-semibold text-gray-900 dark:text-gray-100"
+                style={{ fontSize: "0.95rem", padding: "0.5rem 0.75rem" }}
+              >
                 {item.title}
               </span>
             )}
@@ -54,19 +61,28 @@ export default function Sidebar() {
                 key={child.href}
                 href={child.href}
                 className={cn(
-                  "block px-4 py-2 text-sm rounded-md transition-all relative my-[0.1rem]",
+                  "block rounded-md transition-all relative",
                   pathname === child.href
                     ? "bg-black text-white dark:bg-white dark:text-black"
                     : "text-gray-700 dark:text-gray-400",
                   "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
                 )}
+                style={{
+                  fontSize: "0.85rem",
+                  padding: "0.4rem 0.75rem",
+                  margin: "0.15rem 0",
+                }}
               >
                 <div className="flex items-center gap-1 whitespace-nowrap overflow-hidden">
-                  <span className="text-xs sm:text-sm truncate">
-                    {child.title}
-                  </span>
+                  <span className="truncate">{child.title}</span>
                   {child.category === "new" && (
-                    <span className="flex-shrink-0 bg-green-900 text-green-400 text-xs font-medium px-1 py-0.5 rounded-full border border-green-500">
+                    <span
+                      className="flex-shrink-0 bg-green-900 text-green-400 font-medium rounded-full border border-green-500"
+                      style={{
+                        fontSize: "0.7rem",
+                        padding: "0.15rem 0.3rem",
+                      }}
+                    >
                       New
                     </span>
                   )}
@@ -79,11 +95,11 @@ export default function Sidebar() {
 
       <style jsx>{`
         aside::-webkit-scrollbar {
-          width: ${isHovered ? "6px" : "0px"};
+          width: ${isHovered ? "0.4rem" : "0rem"};
         }
         aside::-webkit-scrollbar-thumb {
           background-color: rgba(100, 100, 100, 0.3);
-          border-radius: 4px;
+          border-radius: 0.25rem;
         }
         aside:hover::-webkit-scrollbar-thumb {
           background-color: rgba(100, 100, 100, 0.5);
