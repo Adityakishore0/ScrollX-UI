@@ -82,6 +82,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/followcursor",
       },
       {
+        title: "Flowing Logos",
+        href: "/docs/components/flowing-logos",
+        category: "new",
+      },
+      {
         title: "GlowingBorderCard",
         href: "/docs/components/glowingbordercard",
       },

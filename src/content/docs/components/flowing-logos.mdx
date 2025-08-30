@@ -1,0 +1,138 @@
+---
+title: Flowing Logos
+description:  Flowing logo showcase with smooth animations, hover effects, and modern UI.
+---
+
+<ComponentPreview name="flowinglogos-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="flowing-logos" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>flowing-logos.tsx</code>
+</p>
+<ComponentSource name="flowing-logos" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx 
+import {(ClassValue, clsx)} from "clsx";
+import {twMerge} from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+<Step>Add these animations to your `tailwind.config.ts:`</Step>
+<p>
+  <code>tailwind.config.ts</code>
+</p>
+```ts
+// tailwind.config.ts
+export default {
+  theme: {
+    extend: {
+      keyframes: {
+        "canopy-x": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "canopy-y": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
+      },
+      animation: {
+        "canopy-horizontal": "canopy-x var(--duration) infinite linear",
+        "canopy-vertical": "canopy-y var(--duration) linear infinite",
+      },
+    },
+  },
+}
+```
+
+## Usage
+
+```tsx
+import { FlowingLogos } from "@/components/ui/flowing-logo";
+```
+
+```tsx
+<FlowingLogos
+     data={[
+       { image: "https://logo.clearbit.com/microsoft.com", name: "Microsoft" },
+       { image: "https://logo.clearbit.com/apple.com", name: "Apple" },
+       { image: "https://logo.clearbit.com/amazon.com", name: "Amazon" },
+       { image: "https://logo.clearbit.com/netflix.com", name: "Netflix" },
+       { image: "https://logo.clearbit.com/samsung.com", name: "Samsung" },
+       { image: "https://logo.clearbit.com/github.com", name: "GitHub" },
+       { image: "https://logo.clearbit.com/tesla.com", name: "Tesla" },
+     ]}
+   />
+```
+
+
+## API Reference
+
+###  Flowing Logos
+
+Flowing logo showcase with smooth animations, hover effects, and modern UI.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "data",
+      type: "Array<Logo>",
+      default: "required",
+      description: "An array of logo objects to display."
+    },
+    {
+      prop: "name",
+      type: "string",
+      default: "required",
+      description: "Name of the logo or brand. Used inside each logo object."
+    },
+    {
+      prop: "image",
+      type: "string",
+      default: "required",
+      description: "URL of the logo image. Used inside each logo object."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "undefined",
+      description: "Optional additional CSS classes applied to the container."
+    },
+    {
+      prop: "cardClassName",
+      type: "string",
+      default: "undefined",
+      description: "Optional additional CSS classes applied to each logo card."
+    }
+  ]}
+/>
+
+
+
