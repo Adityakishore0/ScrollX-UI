@@ -322,6 +322,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "flowing-logos",
+      "title": "Flowing Logos",
+      "description": "Flowing logo showcase with smooth animations, hover effects, and modern UI.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/flowing-logos.tsx",
+          "target": "components/ui/flowing-logos.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "followcursor",
       "title": "Follow Cursor",
       "description": "Colorful, fluid cursor trails that respond to mouse movement.",

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flowing-logos",
+  "type": "registry:component",
+  "title": "Flowing Logos",
+  "description": "Flowing logo showcase with smooth animations, hover effects, and modern UI.",
+  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/flowing-logos.tsx",
+      "target": "components/ui/flowing-logos.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Logo {\n  name: string;\n  image: string;\n}\n\ninterface FlowingLogoProps extends React.HTMLAttributes<HTMLDivElement> {\n  vertical?: boolean;\n  repeat?: number;\n  reverse?: boolean;\n  pauseOnHover?: boolean;\n  applyMask?: boolean;\n}\n\nconst FlowingLogo = ({\n  children,\n  vertical = false,\n  repeat = 4,\n  pauseOnHover = false,\n  reverse = false,\n  className,\n  applyMask = true,\n  ...props\n}: FlowingLogoProps) => (\n  <div\n    {...props}\n    className={cn(\n      \"group relative flex h-full w-full overflow-hidden p-1 [--duration:10s] [--gap:12px] [gap:var(--gap)]\",\n      vertical ? \"flex-col\" : \"flex-row\",\n      className\n    )}\n  >\n    {Array.from({ length: repeat }).map((_, index) => (\n      <div\n        key={`item-${index}`}\n        className={cn(\"flex shrink-0 [gap:var(--gap)]\", {\n          \"group-hover:[animation-play-state:paused]\": pauseOnHover,\n          \"[animation-direction:reverse]\": reverse,\n          \"animate-canopy-horizontal flex-row\": !vertical,\n          \"animate-canopy-vertical flex-col\": vertical,\n        })}\n      >\n        {children}\n      </div>\n    ))}\n    {applyMask && (\n      <div\n        className={cn(\n          \"pointer-events-none absolute inset-0 z-10 h-full w-full\",\n          vertical ? \"bg-gradient-to-b\" : \"bg-gradient-to-r\"\n        )}\n      />\n    )}\n  </div>\n);\n\nconst LogoCard = ({\n  logo,\n  className,\n}: {\n  logo: Logo;\n  className?: string;\n}) => (\n  <div\n    className={cn(\n      \"flex h-16 w-16 shrink-0 cursor-pointer overflow-hidden  hover:scale-110 rounded-xl border border-transparent  transition-all hover:border-blue-400 hover:shadow-[0_0_10px_#60a5fa] dark:hover:border-blue-400\",\n      className\n    )}\n  >\n    <img\n      src={logo.image}\n      alt={logo.name}\n      className=\"h-full w-full object-cover rounded-xl\"\n    />\n  </div>\n);\n\nexport const FlowingLogos = ({\n  data,\n  className,\n  cardClassName,\n}: {\n  data: Logo[];\n  className?: string;\n  cardClassName?: string;\n}) => (\n  <div className={cn(\"w-full overflow-hidden\", className)}>\n    {[false, true, false].map((reverse, index) => (\n      <FlowingLogo\n        key={`Canopy-${index}`}\n        reverse={reverse}\n        className=\"[--duration:30s]\"\n        pauseOnHover\n        applyMask\n        repeat={9}\n      >\n        {data.map((logo) => (\n          <LogoCard\n            key={logo.name}\n            logo={logo}\n            className={cardClassName}\n          />\n        ))}\n      </FlowingLogo>\n    ))}\n  </div>\n);"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}

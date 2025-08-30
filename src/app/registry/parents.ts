@@ -22,6 +22,7 @@ export const parentComponents = [
   "expandable-dock",
   "flipstack",
   "followcursor",
+  "flowing-logos",
   "glowingbordercard",
   "globe",
   "gravity",
