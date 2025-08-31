@@ -60,6 +60,10 @@ const navigation: NavItem[] = [
       {
         title: "Beams Upstream",
         href: "/docs/components/beams-upstream",
+      },
+      {
+        title: "Border Glide",
+        href: "/docs/components/border-glide",
         category: "new",
       },
       { title: "Button", href: "/docs/components/button" },
@@ -119,10 +123,6 @@ const navigation: NavItem[] = [
         category: "new",
       },
       { title: "Lamphome", href: "/docs/components/lamphome" },
-      {
-        title: "Light Trail",
-        href: "/docs/components/light-trail",
-      },
       { title: "Loader", href: "/docs/components/loader", category: "new" },
       {
         title: "lustre Text",

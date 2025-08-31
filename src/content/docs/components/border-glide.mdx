@@ -1,0 +1,138 @@
+---
+title: Border Glide
+description: Modern UI cards with a moving border and smooth transitions.
+---
+
+<ComponentPreview name="borderglide-demo" className="" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="border-glide" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+    <Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>border-glide.tsx</code>
+</p>
+<ComponentSource name="border-glide" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx 
+import {(ClassValue, clsx)} from "clsx";
+import {twMerge} from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { 
+  BorderGlide, 
+  BorderGlideCard, 
+  BorderGlideContent, 
+  BorderGlideHeader, 
+  BorderGlideFooter, 
+  BorderGlideTitle, 
+  BorderGlideDescription 
+} from "@/components/ui/border-glide"
+```
+
+```tsx
+<BorderGlide>
+  <BorderGlideCard>
+    <BorderGlideContent>
+      <BorderGlideHeader>
+        <BorderGlideTitle>Title One</BorderGlideTitle>
+        <BorderGlideDescription>Description text</BorderGlideDescription>
+      </BorderGlideHeader>
+      <BorderGlideFooter>Footer content</BorderGlideFooter>
+    </BorderGlideContent>
+  </BorderGlideCard>
+</BorderGlide>
+```
+
+## API Reference
+
+### Border Glide
+
+Modern UI cards with a moving border and smooth transitions.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description:
+        "Content to be rendered inside BorderGlide or its subcomponents.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description:
+        "Additional Tailwind CSS classes to style the component container.",
+    },
+    {
+      prop: "autoPlayInterval",
+      type: "number",
+      default: "5000",
+      description:
+        "Time in ms before automatically sliding to the next card. Set 0 to disable autoplay.",
+    },
+    {
+      prop: "borderDuration",
+      type: "number",
+      default: "3000",
+      description:
+        "Duration in ms for the moving border animation to complete one cycle.",
+    },
+    {
+      prop: "borderColor",
+      type: "string",
+      default: "#3b82f6",
+      description: " Accepts Tailwind color hex, CSS color, or gradient.",
+    },
+    {
+      prop: "borderWidth",
+      type: "string",
+      default: "6rem",
+      description: "Width of the moving border element.",
+    },
+    {
+      prop: "borderHeight",
+      type: "string",
+      default: "6rem",
+      description: "Height of the moving border element.",
+    },
+    {
+      prop: "borderOpacity",
+      type: "number",
+      default: "0.8",
+      description: "Opacity of the animated border.",
+    },
+  ]}
+/>
