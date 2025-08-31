@@ -1,37 +1,27 @@
 "use client";
-
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useMemo } from "react";
 import navigation from "@/constants/navItems";
 import { Button } from "@/components/ui/button";
-
-interface NavItem {
-  title: string;
-  href: string;
-  children?: NavItem[];
-}
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Navigator() {
   const pathname = usePathname();
 
   const allPages = useMemo(() => {
     const flatPages: { title: string; href: string }[] = [];
-
     flatPages.push(
       { title: "Introduction", href: "/docs/introduction" },
       { title: "Installation", href: "/docs/installation" }
     );
-
     const installationGuide =
       navigation.find((item) => item.title === "Installation Guide")
         ?.children || [];
     flatPages.push(...installationGuide);
-
     const components =
       navigation.find((item) => item.title === "Components")?.children || [];
     flatPages.push(...components);
-
     return flatPages;
   }, []);
 
@@ -52,18 +42,23 @@ export default function Navigator() {
     currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null;
 
   return (
-    <div className="flex justify-between items-center mt-8 px-4">
+    <div className="flex justify-between items-center mt-8 px-4 gap-4">
       {previousItem ? (
         <Link href={previousItem.href} prefetch>
-          <Button variant="outline">← {previousItem.title}</Button>
+          <Button variant="outline">
+            <ChevronLeft className="h-4 w-4" />
+            <span className="hidden md:inline">{previousItem.title}</span>
+          </Button>
         </Link>
       ) : (
         <div />
       )}
-
       {nextItem ? (
         <Link href={nextItem.href} prefetch>
-          <Button variant="default">{nextItem.title} →</Button>
+          <Button>
+            <span className="hidden md:inline">{nextItem.title}</span>
+            <ChevronRight className="h-4 w-4" />
+          </Button>
         </Link>
       ) : (
         <div />
