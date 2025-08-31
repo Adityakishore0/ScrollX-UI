@@ -199,6 +199,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "border-glide",
+      "title": "Border Glide",
+      "description": "Modern UI cards with a moving border and smooth transitions.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/border-glide.tsx",
+          "target": "components/ui/border-glide.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "button",
       "title": "Button",
       "description": "Reusable button component with multiple variants and sizes.",
@@ -481,21 +496,6 @@
         {
           "path": "components/ui/lamphome.tsx",
           "target": "components/ui/lamphome.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "lighttrail",
-      "title": "Light Trail",
-      "description": "A scroll-driven image showcase with animated progress indicator.",
-      "type": "registry:component",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "components/ui/lighttrail.tsx",
-          "target": "components/ui/lighttrail.tsx",
           "type": "registry:component"
         }
       ]
