@@ -292,15 +292,15 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-      "name": "dropdown",
-      "title": "Dropdown",
-      "description": "Animated Dropdown Reveals a menu of options or actions when activated by a button.",
+      "name": "dropdown-menu",
+      "title": "Dropdown Menu",
+      "description": "Animated Dropdown Menu Reveals a menu of options or actions when activated by a button.",
       "type": "registry:component",
-      "dependencies": ["framer-motion"],
+      "dependencies": ["framer-motion", "@radix-ui/react-dropdown-menu"],
       "files": [
         {
-          "path": "components/ui/dropdown.tsx",
-          "target": "components/ui/dropdown.tsx",
+          "path": "components/ui/dropdown-menu.tsx",
+          "target": "components/ui/dropdown-menu.tsx",
           "type": "registry:component"
         }
       ]

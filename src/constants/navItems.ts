@@ -71,7 +71,11 @@ const navigation: NavItem[] = [
       { title: "Carousel", href: "/docs/components/carousel" },
       { title: "CodeBlock", href: "/docs/components/codeblock" },
       { title: "Cursor ImageTrail", href: "/docs/components/cursorimagetrail" },
-      { title: "Dropdown", href: "/docs/components/dropdown" },
+      {
+        title: "Dropdown Menu",
+        href: "/docs/components/dropdown-menu",
+        category: "new",
+      },
       {
         title: "Expandable Dock",
         href: "/docs/components/expandable-dock",

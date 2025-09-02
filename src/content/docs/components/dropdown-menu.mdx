@@ -1,0 +1,168 @@
+---
+title: Dropdown Menu
+description: Animated Dropdown Reveals a menu of options or actions when activated by a button.
+---
+
+<ComponentPreview
+  name="dropdownmenu-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="dropdown-menu" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+    <Step>Install the following dependencies:</Step>
+<DepsOptions name="@radix-ui/react-dropdown-menu framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>dropdown-menu.tsx</code>
+</p>
+<ComponentSource name="dropdown-menu" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+```
+
+```tsx
+<DropdownMenu>
+  <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>Profile</DropdownMenuItem>
+    <DropdownMenuItem>Billing</DropdownMenuItem>
+    <DropdownMenuItem>Team</DropdownMenuItem>
+    <DropdownMenuItem>Subscription</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+## Examples
+
+---
+
+<Step>Checkboxes</Step>
+
+<ComponentPreview
+  name="dropdownmenucheckboxes"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Radio Group</Step>
+
+<ComponentPreview
+  name="dropdownmenuradiogroup-demo"
+  className=""
+  description=""
+/>
+
+## API Reference
+
+### Dropdown Menu
+
+The `Dropdown Menu` component displays a clickable trigger that reveals a list of selectable menu items.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Content inside the component. Applies to all DropdownMenu components."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Custom CSS classes for styling. Applies to all components."
+    },
+    {
+      prop: "inset",
+      type: "boolean",
+      default: "false",
+      description: "Applies to DropdownMenuItem, DropdownMenuLabel, DropdownMenuSubTrigger."
+    },
+    {
+      prop: "variant",
+      type: `"default" | "destructive"`,
+      default: `"default"`,
+      description: "Visual style of the item. Only applies to DropdownMenuItem."
+    },
+    {
+      prop: "checked",
+      type: "boolean",
+      default: "false",
+      description: "Indicates whether the checkbox is selected. Only applies to DropdownMenuCheckboxItem."
+    },
+    {
+      prop: "value",
+      type: "string",
+      default: "required",
+      description: "Value of the item. Applies to DropdownMenuRadioItem and DropdownMenuRadioGroup."
+    },
+    {
+      prop: "onValueChange",
+      type: "(value: string) => void",
+      default: "-",
+      description: "Callback when selected value changes. Only for DropdownMenuRadioGroup."
+    },
+    {
+      prop: "sideOffset",
+      type: "number",
+      default: 4,
+      description: "Offset in pixels from the trigger element. Only applies to DropdownMenuContent."
+    },
+    {
+      prop: "maxHeight",
+      type: "string | number",
+      default: "16rem",
+      description: "Maximum height for scrollable dropdown content. Only applies to DropdownMenuContent."
+    }
+  ]}
+/>
+
+
