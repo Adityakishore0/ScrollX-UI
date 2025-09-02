@@ -19,7 +19,7 @@ export const parentComponents = [
   "carousel",
   "codeblock",
   "cursorimagetrail",
-  "dropdown",
+  "dropdown-menu",
   "expandable-dock",
   "flipstack",
   "followcursor",
