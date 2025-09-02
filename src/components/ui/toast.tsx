@@ -281,6 +281,17 @@ const ToastComponent: React.FC<ToastProps> = ({
   const startX = useRef(0);
   const isDragging = useRef(false);
   const isTouchAction = useRef(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleClose = useCallback(
     (e?: React.UIEvent) => {
@@ -328,13 +339,17 @@ const ToastComponent: React.FC<ToastProps> = ({
         "touches" in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
       const diff = clientX - startX.current;
 
-      if (position.includes("right") && diff > 0) {
+      if (isMobile) {
         setTranslateX(diff);
-      } else if (position.includes("left") && diff < 0) {
-        setTranslateX(diff);
+      } else {
+        if (position.includes("right") && diff > 0) {
+          setTranslateX(diff);
+        } else if (position.includes("left") && diff < 0) {
+          setTranslateX(diff);
+        }
       }
     },
-    [position]
+    [position, isMobile]
   );
 
   const handleTouchEnd = useCallback(
@@ -779,6 +794,17 @@ const ToastStack: React.FC<ToastStackProps> = ({
 
 export function ToastContainer() {
   const [toasts, setToasts] = useState(toastManager.getToasts());
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = toastManager.subscribe(setToasts);
@@ -791,7 +817,14 @@ export function ToastContainer() {
     toastManager.remove(id);
   }, []);
 
-  const toastsByPosition = toasts.reduce((acc, toast) => {
+  const processedToasts = toasts.map((toast) => {
+    if (isMobile && toast.variant !== "info") {
+      return { ...toast, position: "top-right" as const };
+    }
+    return toast;
+  });
+
+  const toastsByPosition = processedToasts.reduce((acc, toast) => {
     const position = toast.position || "top-right";
     if (!acc[position]) {
       acc[position] = [];
