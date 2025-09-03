@@ -18,6 +18,7 @@ export const parentComponents = [
   "card",
   "carousel",
   "codeblock",
+  "stagger-chars",
   "cursorimagetrail",
   "dropdown-menu",
   "expandable-dock",

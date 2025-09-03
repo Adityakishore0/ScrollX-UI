@@ -727,6 +727,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "stagger-chars",
+      "title": "StaggerChars",
+      "description": "An animated text component that creates a smooth, staggered character animation effect when hovered",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/stagger-chars.tsx",
+          "target": "components/ui/stagger-chars.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "statscarousel",
       "title": "Stats Carousel",
       "description": "Animated statistics counter in stacked carousel for modern websites.",

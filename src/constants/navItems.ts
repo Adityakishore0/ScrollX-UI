@@ -184,6 +184,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/statscount",
       },
       {
+        title: "Stagger Chars",
+        href: "/docs/components/stagger-chars",
+        category: "new",
+      },
+      {
         title: "Stats Carousel",
         href: "/docs/components/statscarousel",
         category: "new",

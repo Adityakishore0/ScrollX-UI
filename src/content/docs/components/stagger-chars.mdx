@@ -1,0 +1,192 @@
+---
+title: StaggerChars
+category: Animation
+description: An animated text component that creates a smooth, staggered character animation effect when hovered. Each character can transition to a different character with customizable animation properties.
+---
+
+<ComponentPreview
+  name="staggerchars-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An animated text component with staggered character effects"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="stagger-chars" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <DepsOptions name="framer-motion" />
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <p>
+        <code>stagger-chars.tsx</code>
+      </p>
+      <ComponentSource name="stagger-chars" />
+    </Steps>
+
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import { StaggerChars } from "@/components/ui/stagger-chars";
+
+export function MyComponent() {
+  return (
+    <StaggerChars
+      text="HOVER ME"
+      className="text-white"
+      fromClassName="text-white"
+      toClassName="text-blue-400"
+    />
+  );
+}
+```
+
+## Easing Presets
+
+The component includes several easing presets for different animation feels:
+
+```tsx
+import { EASING_PRESETS } from "@/components/ui/stagger-chars";
+
+// Available presets:
+EASING_PRESETS.smooth; // [0.22, 1, 0.36, 1]
+EASING_PRESETS.bouncy; // [0.68, -0.55, 0.265, 1.55]
+EASING_PRESETS.sharp; // [0.4, 0, 0.2, 1]
+EASING_PRESETS.gentle; // [0.25, 0.46, 0.45, 0.94]
+EASING_PRESETS.linear; // [0, 0, 1, 1]
+EASING_PRESETS.easeIn; // [0.42, 0, 1, 1]
+EASING_PRESETS.easeOut; // [0, 0, 0.58, 1]
+EASING_PRESETS.easeInOut; // [0.42, 0, 0.58, 1]
+```
+
+## Examples
+
+---
+
+<Step>With Different Hover Text</Step>
+
+<ComponentPreview
+  name="staggercharsdifferenttexthover-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An animated text component with staggered character effects"
+/>
+
+---
+
+<Step>Up Direction</Step>
+
+<ComponentPreview
+  name="staggercharsup-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An animated text component with staggered character effects"
+/>
+
+---
+
+<Step>Down Direction</Step>
+
+<ComponentPreview
+  name="staggercharsdown-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An animated text component with staggered character effects"
+/>
+
+---
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "text",
+      type: "string",
+      default: "(required)",
+      description: "The base text to display",
+    },
+    {
+      prop: "hoverText",
+      type: "string",
+      default: "text",
+      description: "Text to show on hover (defaults to `text` if not provided)",
+    },
+    {
+      prop: "delay",
+      type: "number",
+      default: "0.05",
+      description: "Delay between each character's animation in seconds",
+    },
+    {
+      prop: "duration",
+      type: "number",
+      default: "1",
+      description: "Duration of the animation in seconds",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Additional classes for the container",
+    },
+    {
+      prop: "fromClassName",
+      type: "string",
+      default: "—",
+      description: "Classes for the initial text",
+    },
+    {
+      prop: "toClassName",
+      type: "string",
+      default: "—",
+      description: "Classes for the hover text",
+    },
+    {
+      prop: "direction",
+      type: "'up' | 'down' | 'alternate'",
+      default: "'alternate'",
+      description: "Animation direction",
+    },
+    {
+      prop: "easing",
+      type: "number[]",
+      default: "EASING_PRESETS.smooth",
+      description: "Custom easing function for the animation",
+    },
+    {
+      prop: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disable the hover effect",
+    },
+    {
+      prop: "onAnimationStart",
+      type: "() => void",
+      default: "—",
+      description: "Callback when animation starts",
+    },
+    {
+      prop: "onAnimationComplete",
+      type: "() => void",
+      default: "—",
+      description: "Callback when animation completes",
+    },
+  ]}
+/>
+
+## API Reference
+
+### StaggerChars
+
+The root component that creates the staggered character animation effect.
