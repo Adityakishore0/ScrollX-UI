@@ -211,6 +211,11 @@ const navigation: NavItem[] = [
         category: "new",
       },
       {
+        title: "Table",
+        href: "/docs/components/table",
+        category: "new",
+      },
+      {
         title: "Text Highlighter",
         href: "/docs/components/text-highlighter",
         category: "new",

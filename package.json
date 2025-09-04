@@ -46,6 +46,7 @@
     "@react-spring/web": "^10.0.0",
     "@react-three/fiber": "^8.17.14",
     "@tailwindcss/typography": "^0.5.16",
+    "@tanstack/react-table": "^8.21.3",
     "@types/prismjs": "^1.26.5",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@use-gesture/react": "^10.3.1",
