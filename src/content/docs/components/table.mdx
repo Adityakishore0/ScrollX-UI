@@ -1,0 +1,229 @@
+---
+title: Table
+description: Powerful responsive data table with sticky headers, smooth scrolling, sorting, and pagination.
+---
+
+<ComponentPreview
+  name="table-demo"
+  className="p-2"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="table" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion @tanstack/react-table" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>table.tsx</code>
+</p>
+<ComponentSource name="table" />
+
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+// Basic Usage
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+```
+
+```tsx
+<Table>
+  <TableCaption>A list of your recent invoices.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead className="w-[100px]">Invoice</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Method</TableHead>
+      <TableHead className="text-right">Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="font-medium">INV001</TableCell>
+      <TableCell>Paid</TableCell>
+      <TableCell>Credit Card</TableCell>
+      <TableCell className="text-right">$250.00</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+```tsx
+// DataTable Example
+<DataTable
+  columns={[
+    { accessorKey: 'invoice', header: createSortableHeader('Invoice') },
+    { accessorKey: 'status', header: 'Status' },
+    { accessorKey: 'method', header: 'Method' },
+    { accessorKey: 'amount', header: 'Amount', cell: ({ row }) => `$${row.original.amount}` },
+  ]}
+  data={[
+    { invoice: 'INV001', status: 'Paid', method: 'Credit Card', amount: 250 },
+    { invoice: 'INV002', status: 'Pending', method: 'PayPal', amount: 150 },
+  ]}
+  pageSize={5}
+  searchable
+  pagination
+/>
+```
+
+## Examples
+
+---
+
+<Step>DataTable</Step>
+
+<ComponentPreview
+  name="table-datatable-demo"
+  className="p-2"
+  description=""
+/>
+
+---
+
+<Step>Scrollable</Step>
+
+<ComponentPreview
+  name="tablescrollable-demo"
+  className="p-2"
+  description=""
+/>
+
+
+## API Reference
+
+### Table
+
+Powerful responsive data table with sticky headers, smooth scrolling, sorting, and pagination.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "columns",
+      type: "ColumnDef<any>[]",
+      default: "[]",
+      description: "Defines the table columns and their configuration."
+    },
+    {
+      prop: "data",
+      type: "any[]",
+      default: "[]",
+      description: "Array of data objects to display in the table."
+    },
+    {
+      prop: "enableScroll",
+      type: "boolean",
+      default: "false",
+      description: "Enables vertical and horizontal scrolling with sticky header."
+    },
+    {
+      prop: "scrollHeight",
+      type: "string | number",
+      default: `"400px"`,
+      description: "Max height for vertical scroll when scrolling is enabled."
+    },
+    {
+      prop: "enableAnimations",
+      type: "boolean",
+      default: "false",
+      description: "Adds smooth animations for row transitions."
+    },
+    {
+      prop: "staggerDelay",
+      type: "number",
+      default: "0.05",
+      description: "Delay between row animations when animating rows."
+    },
+    {
+      prop: "pagination",
+      type: "boolean",
+      default: "false",
+      description: "Enables pagination controls for the table."
+    },
+    {
+      prop: "showPageSizeSelector",
+      type: "boolean",
+      default: "true",
+      description: "Shows dropdown to select rows per page when pagination is enabled."
+    },
+    {
+      prop: "rowClassName",
+      type: "string",
+      default: "—",
+      description: "Custom class name applied to each table row."
+    },
+    {
+      prop: "cellClassName",
+      type: "string",
+      default: "—",
+      description: "Custom class name applied to each table cell."
+    },
+    {
+      prop: "emptyMessage",
+      type: "string | ReactNode",
+      default: `"No results"`,
+      description: "Message displayed when there are no rows to show."
+    },
+    {
+      prop: "onRowClick",
+      type: "(rowData: any) => void",
+      default: "—",
+      description: "Callback fired when a row is clicked, receives row data."
+    },
+    {
+      prop: "tableClassName",
+      type: "string",
+      default: "—",
+      description: "Custom class name applied to the table element."
+    },
+    {
+      prop: "...props",
+      type: "HTMLDivElement attributes",
+      default: "—",
+      description: "Supports all standard div props and events."
+    }
+  ]}
+/>
+
+
+
