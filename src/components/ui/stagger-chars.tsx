@@ -1,6 +1,11 @@
 "use client";
 import * as React from "react";
-import { AnimatePresence, motion, type Variants } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  type Variants,
+  useReducedMotion,
+} from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface StaggerCharsProps {
@@ -9,8 +14,7 @@ interface StaggerCharsProps {
   delay?: number;
   duration?: number;
   className?: string;
-  fromClassName?: string;
-  toClassName?: string;
+  hoverClassName?: string;
   direction?: "up" | "down" | "alternate";
   easing?: number[];
   disabled?: boolean;
@@ -18,162 +22,151 @@ interface StaggerCharsProps {
   onAnimationComplete?: () => void;
 }
 
-const EASING_PRESETS = {
-  smooth: [0.22, 1, 0.36, 1], // ease-out
-  bouncy: [0.68, -0.55, 0.265, 1.55], // overshoot
-  sharp: [0.4, 0, 0.2, 1], // ease-in-out
-  gentle: [0.25, 0.46, 0.45, 0.94], // ease-out-quart
-  linear: [0, 0, 1, 1], // linear
-  easeIn: [0.42, 0, 1, 1], // classic ease-in
-  easeOut: [0, 0, 0.58, 1], // classic ease-out
-  easeInOut: [0.42, 0, 0.58, 1], // classic ease-in-out
-};
+const useProcessedChars = (text: string, hoverText?: string) =>
+  React.useMemo(() => {
+    const base = text.split("");
+    const hover = (hoverText ?? text).split("");
+    const max = Math.max(base.length, hover.length);
 
-const useProcessedChars = (text: string, hoverText?: string) => {
-  return React.useMemo(() => {
-    const baseChars = text.split("");
-    const hoverChars = (hoverText ?? text).split("");
-    const maxLen = Math.max(baseChars.length, hoverChars.length);
-
-    const safeBase = Array.from(
-      { length: maxLen },
-      (_, i) => baseChars[i] ?? " "
-    );
-    const safeHover = Array.from(
-      { length: maxLen },
-      (_, i) => hoverChars[i] ?? " "
-    );
-
-    return { safeBase, safeHover, maxLen };
+    return {
+      safeBase: Array.from({ length: max }, (_, i) => base[i] ?? " "),
+      safeHover: Array.from({ length: max }, (_, i) => hover[i] ?? " "),
+    };
   }, [text, hoverText]);
-};
 
-const useReducedMotion = () => {
-  const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(false);
+const useIsTouchDevice = () => {
+  const [isTouch, setIsTouch] = React.useState(false);
 
   React.useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
+    const check = () =>
+      setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
 
-    const handleChange = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
 
-  return prefersReducedMotion;
+  return isTouch;
+};
+
+const getInitialY = (
+  direction: StaggerCharsProps["direction"],
+  isEven: boolean
+) => {
+  switch (direction) {
+    case "up":
+      return "0%";
+    case "down":
+      return "-50%";
+    case "alternate":
+    default:
+      return isEven ? "-50%" : "0%";
+  }
+};
+
+const getTargetY = (
+  direction: StaggerCharsProps["direction"],
+  isEven: boolean
+) => {
+  switch (direction) {
+    case "up":
+      return "-50%";
+    case "down":
+      return "0%";
+    case "alternate":
+    default:
+      return isEven ? "0%" : "-50%";
+  }
 };
 
 const StaggerChars = React.memo<StaggerCharsProps>(
   ({
     text,
     hoverText,
+    hoverClassName,
     delay = 0.05,
     duration = 1,
     className,
-    fromClassName,
-    toClassName,
     direction = "alternate",
-    easing = EASING_PRESETS.smooth,
+    easing = [0.22, 1, 0.36, 1],
     disabled = false,
     onAnimationStart,
     onAnimationComplete,
   }) => {
     const { safeBase, safeHover } = useProcessedChars(text, hoverText);
     const prefersReducedMotion = useReducedMotion();
+    const isTouchDevice = useIsTouchDevice();
+
     const [isHovered, setIsHovered] = React.useState(false);
+    const [isAutoAnimating, setIsAutoAnimating] = React.useState(false);
+    const intervalRef = React.useRef<NodeJS.Timeout>();
 
-    const containerVariants: Variants = React.useMemo(
-      () => ({
-        initial: {},
-        hover: {
-          transition: {
-            staggerChildren: prefersReducedMotion ? 0 : delay,
-            delayChildren: 0,
-          },
+    React.useEffect(() => {
+      if (!isTouchDevice || disabled) return;
+      const timeout = setTimeout(() => {
+        setIsAutoAnimating(true);
+        onAnimationStart?.();
+        intervalRef.current = setInterval(
+          () => setIsAutoAnimating((prev) => !prev),
+          2000
+        );
+      }, 1000);
+
+      return () => {
+        clearTimeout(timeout);
+        if (intervalRef.current) clearInterval(intervalRef.current);
+      };
+    }, [isTouchDevice, disabled, onAnimationStart]);
+
+    const containerVariants: Variants = {
+      initial: {},
+      hover: {
+        transition: {
+          staggerChildren: prefersReducedMotion ? 0 : delay,
         },
-        exit: {},
-      }),
-      [delay, prefersReducedMotion]
-    );
+      },
+      exit: {},
+    };
 
-    const stackVariants: Variants = React.useMemo(
-      () => ({
-        initial: (custom: { index: number; isEven: boolean }) => {
-          if (prefersReducedMotion) return { y: "0%" };
-
-          switch (direction) {
-            case "up":
-              return { y: "0%" };
-            case "down":
-              return { y: "-50%" };
-            case "alternate":
-            default:
-              return { y: custom.isEven ? "-50%" : "0%" };
-          }
-        },
-        hover: (custom: { index: number; isEven: boolean }) => {
-          if (prefersReducedMotion) return { y: "0%" };
-
-          let targetY: string;
-          switch (direction) {
-            case "up":
-              targetY = "-50%";
-              break;
-            case "down":
-              targetY = "0%";
-              break;
-            case "alternate":
-            default:
-              targetY = custom.isEven ? "0%" : "-50%";
-              break;
-          }
-
-          return {
-            y: targetY,
-            transition: {
-              duration: prefersReducedMotion ? 0 : duration,
-              delay: prefersReducedMotion ? 0 : custom.index * delay,
-              ease: easing,
+    const stackVariants: Variants = {
+      initial: ({ isEven }: { index: number; isEven: boolean }) =>
+        prefersReducedMotion
+          ? { y: "0%" }
+          : { y: getInitialY(direction, isEven) },
+      hover: ({ index, isEven }: { index: number; isEven: boolean }) =>
+        prefersReducedMotion
+          ? { y: "0%" }
+          : {
+              y: getTargetY(direction, isEven),
+              transition: {
+                duration,
+                delay: index * delay,
+                ease: easing,
+              },
             },
-          };
-        },
-        exit: (custom: { index: number; isEven: boolean }) => {
-          if (prefersReducedMotion) return { y: "0%" };
+      exit: ({ isEven }: { index: number; isEven: boolean }) =>
+        prefersReducedMotion
+          ? { y: "0%" }
+          : { y: getInitialY(direction, isEven) },
+    };
 
-          switch (direction) {
-            case "up":
-              return { y: "0%" };
-            case "down":
-              return { y: "-50%" };
-            case "alternate":
-            default:
-              return { y: custom.isEven ? "-50%" : "0%" };
-          }
-        },
-      }),
-      [direction, duration, delay, easing, prefersReducedMotion]
-    );
-
-    const handleHoverStart = React.useCallback(() => {
-      if (disabled) return;
+    const handleHoverStart = () => {
+      if (disabled || isTouchDevice) return;
       setIsHovered(true);
       onAnimationStart?.();
-    }, [disabled, onAnimationStart]);
+    };
 
-    const handleHoverEnd = React.useCallback(() => {
-      if (disabled) return;
+    const handleHoverEnd = () => {
+      if (disabled || isTouchDevice) return;
       setIsHovered(false);
       onAnimationComplete?.();
-    }, [disabled, onAnimationComplete]);
+    };
 
     return (
       <AnimatePresence mode="wait">
         <motion.div
           className={cn(
-            "relative h-fit font-extrabold text-5xl md:text-6xl lg:text-8xl uppercase leading-none",
+            "relative h-fit font-extrabold text-5xl md:text-6xl lg:text-8xl uppercase text-white leading-none",
             "select-none transform-gpu will-change-transform",
             !disabled && "cursor-pointer",
             className
@@ -181,7 +174,14 @@ const StaggerChars = React.memo<StaggerCharsProps>(
           variants={containerVariants}
           initial="initial"
           exit="exit"
-          whileHover={disabled ? undefined : "hover"}
+          whileHover={disabled || isTouchDevice ? undefined : "hover"}
+          animate={
+            isTouchDevice && !disabled
+              ? isAutoAnimating
+                ? "hover"
+                : "initial"
+              : undefined
+          }
           onHoverStart={handleHoverStart}
           onHoverEnd={handleHoverEnd}
           style={{ perspective: 1000 }}
@@ -196,11 +196,8 @@ const StaggerChars = React.memo<StaggerCharsProps>(
 
             return (
               <span
-                key={`char-wrapper-${index}`}
-                className={cn(
-                  "inline-block h-[1em] align-baseline overflow-hidden",
-                  "transform-gpu will-change-transform"
-                )}
+                key={index}
+                className="inline-block h-[1em] align-baseline overflow-hidden transform-gpu will-change-transform"
                 aria-hidden="true"
               >
                 <motion.span
@@ -213,15 +210,15 @@ const StaggerChars = React.memo<StaggerCharsProps>(
                   }}
                 >
                   {isEven && (
-                    <span className={cn("block h-[1em]", toClassName)}>
+                    <span className={cn("block h-[1em]", hoverClassName)}>
                       {isSpace ? "\u00A0" : nextChar}
                     </span>
                   )}
-                  <span className={cn("block h-[1em]", fromClassName)}>
+                  <span className="block h-[1em]">
                     {isSpace ? "\u00A0" : char}
                   </span>
                   {!isEven && (
-                    <span className={cn("block h-[1em]", toClassName)}>
+                    <span className={cn("block h-[1em]", hoverClassName)}>
                       {isSpace ? "\u00A0" : nextChar}
                     </span>
                   )}
@@ -236,6 +233,5 @@ const StaggerChars = React.memo<StaggerCharsProps>(
 );
 
 StaggerChars.displayName = "StaggerChars";
-export { EASING_PRESETS };
 export type { StaggerCharsProps };
 export default StaggerChars;

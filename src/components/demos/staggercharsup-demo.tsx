@@ -6,9 +6,7 @@ const StaggerCharsDemo = () => {
     <StaggerChars
       text="UP"
       direction="up"
-      className="text-white"
-      fromClassName="text-white"
-      toClassName="text-purple-400"
+      hoverClassName="text-purple-400"
       delay={0.03}
     />
   );

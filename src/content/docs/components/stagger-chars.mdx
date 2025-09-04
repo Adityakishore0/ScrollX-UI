@@ -1,13 +1,12 @@
 ---
 title: StaggerChars
-category: Animation
-description: An animated text component that creates a smooth, staggered character animation effect when hovered. Each character can transition to a different character with customizable animation properties.
+description: An animated text component that creates a smooth, staggered character animation effect when hovered.
 ---
 
 <ComponentPreview
   name="staggerchars-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An animated text component with staggered character effects"
+  description="An animated text component that creates a smooth, staggered character animation effect when hovered."
 />
 
 ## Installation
@@ -37,39 +36,12 @@ description: An animated text component that creates a smooth, staggered charact
 
 ## Usage
 
-### Basic Usage
-
 ```tsx
 import { StaggerChars } from "@/components/ui/stagger-chars";
-
-export function MyComponent() {
-  return (
-    <StaggerChars
-      text="HOVER ME"
-      className="text-white"
-      fromClassName="text-white"
-      toClassName="text-blue-400"
-    />
-  );
-}
 ```
 
-## Easing Presets
-
-The component includes several easing presets for different animation feels:
-
 ```tsx
-import { EASING_PRESETS } from "@/components/ui/stagger-chars";
-
-// Available presets:
-EASING_PRESETS.smooth; // [0.22, 1, 0.36, 1]
-EASING_PRESETS.bouncy; // [0.68, -0.55, 0.265, 1.55]
-EASING_PRESETS.sharp; // [0.4, 0, 0.2, 1]
-EASING_PRESETS.gentle; // [0.25, 0.46, 0.45, 0.94]
-EASING_PRESETS.linear; // [0, 0, 1, 1]
-EASING_PRESETS.easeIn; // [0.42, 0, 1, 1]
-EASING_PRESETS.easeOut; // [0, 0, 0.58, 1]
-EASING_PRESETS.easeInOut; // [0.42, 0, 0.58, 1]
+<StaggerChars text="HOVER ME" />
 ```
 
 ## Examples
@@ -106,6 +78,12 @@ EASING_PRESETS.easeInOut; // [0.42, 0, 0.58, 1]
 
 ---
 
+## API Reference
+
+### StaggerChars
+
+The `StaggerChars` component renders an animated text component with staggered character effects.
+
 ## Props
 
 <PropsTable
@@ -141,13 +119,7 @@ EASING_PRESETS.easeInOut; // [0.42, 0, 0.58, 1]
       description: "Additional classes for the container",
     },
     {
-      prop: "fromClassName",
-      type: "string",
-      default: "—",
-      description: "Classes for the initial text",
-    },
-    {
-      prop: "toClassName",
+      prop: "hoverClassName",
       type: "string",
       default: "—",
       description: "Classes for the hover text",
@@ -161,7 +133,7 @@ EASING_PRESETS.easeInOut; // [0.42, 0, 0.58, 1]
     {
       prop: "easing",
       type: "number[]",
-      default: "EASING_PRESETS.smooth",
+      default: "[0.22, 1, 0.36, 1]",
       description: "Custom easing function for the animation",
     },
     {
@@ -184,9 +156,3 @@ EASING_PRESETS.easeInOut; // [0.42, 0, 0.58, 1]
     },
   ]}
 />
-
-## API Reference
-
-### StaggerChars
-
-The root component that creates the staggered character animation effect.
