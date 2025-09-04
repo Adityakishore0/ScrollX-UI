@@ -166,7 +166,7 @@ const StaggerChars = React.memo<StaggerCharsProps>(
       <AnimatePresence mode="wait">
         <motion.div
           className={cn(
-            "relative h-fit font-extrabold text-5xl md:text-6xl lg:text-8xl uppercase text-white leading-none",
+            "relative h-fit uppercase text-black dark:text-white leading-none",
             "select-none transform-gpu will-change-transform",
             !disabled && "cursor-pointer",
             className
@@ -197,28 +197,45 @@ const StaggerChars = React.memo<StaggerCharsProps>(
             return (
               <span
                 key={index}
-                className="inline-block h-[1em] align-baseline overflow-hidden transform-gpu will-change-transform"
+                className="inline-block h-[1em] align-baseline overflow-hidden transform-gpu will-change-transform relative"
+                style={{ lineHeight: 1 }}
                 aria-hidden="true"
               >
                 <motion.span
-                  className="block"
+                  className="block relative"
                   variants={stackVariants}
                   custom={{ index, isEven }}
                   style={{
                     backfaceVisibility: "hidden",
                     transform: "translateZ(0)",
+                    lineHeight: 1,
                   }}
                 >
                   {isEven && (
-                    <span className={cn("block h-[1em]", hoverClassName)}>
+                    <span
+                      className={cn(
+                        "block h-[1em] leading-none",
+                        hoverClassName
+                      )}
+                      style={{ lineHeight: 1 }}
+                    >
                       {isSpace ? "\u00A0" : nextChar}
                     </span>
                   )}
-                  <span className="block h-[1em]">
+                  <span
+                    className="block h-[1em] leading-none"
+                    style={{ lineHeight: 1 }}
+                  >
                     {isSpace ? "\u00A0" : char}
                   </span>
                   {!isEven && (
-                    <span className={cn("block h-[1em]", hoverClassName)}>
+                    <span
+                      className={cn(
+                        "block h-[1em] leading-none",
+                        hoverClassName
+                      )}
+                      style={{ lineHeight: 1 }}
+                    >
                       {isSpace ? "\u00A0" : nextChar}
                     </span>
                   )}
