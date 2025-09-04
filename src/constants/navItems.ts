@@ -191,7 +191,6 @@ const navigation: NavItem[] = [
       {
         title: "Stats Carousel",
         href: "/docs/components/statscarousel",
-        category: "new",
       },
       {
         title: "Splitter",
