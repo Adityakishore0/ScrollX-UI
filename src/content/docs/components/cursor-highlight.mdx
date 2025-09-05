@@ -1,0 +1,238 @@
+---
+title: Cursor Highlight
+description: Text is revealed on scroll with pointer, gradient, and border effects.
+---
+
+<ComponentPreview
+  name="cursorhighlight-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="cursor-highlight" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>cursor-highlight.tsx</code>
+</p>
+<ComponentSource name="cursor-highlight" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { CursorHighlight } from "@/components/ui/cursor-highlight";
+```
+
+```tsx
+<CursorHighlight
+    className="text-2xl sm:text-3xl md:text-4xl font-bold"
+    gradient="from-pink-500 via-red-500 to-yellow-500"
+    showPointer={true}
+    pointerClassName="text-pink-500"
+    direction="right"
+    rectangle="bg-pink-200 dark:bg-green-950 border-blue dark:border-white/20 rounded-lg p-4"
+  >
+    <h1>Premium</h1>
+  </CursorHighlight>
+```
+## Examples
+
+---
+
+<Step>Default</Step>
+
+<ComponentPreview
+  name="cursorhighlightdefault-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Gradient</Step>
+
+<ComponentPreview
+  name="cursorhighlightgradient-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Pointer</Step>
+
+<ComponentPreview
+  name="cursorhighlightpointer-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Selection</Step>
+
+<ComponentPreview
+  name="cursorhighlightselection-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Top</Step>
+
+<ComponentPreview
+  name="cursorhighlighttop-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Botttom</Step>
+
+<ComponentPreview
+  name="cursorhighlightbottom-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Left</Step>
+
+<ComponentPreview
+  name="cursorhighlightleft-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Right</Step>
+
+<ComponentPreview
+  name="cursorhighlightright-demo"
+  className=""
+  description=""
+/>
+
+
+## API Reference
+
+### Cursor Highlight
+
+Text is revealed on scroll with pointer, gradient, and border effects.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "text",
+      type: "string",
+      default: "-",
+      description: "Text content to be highlighted. If not provided, `children` will be used."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "-",
+      description: "Any React node to be highlighted, used when `text` is not provided."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Custom classes for styling the text."
+    },
+    {
+      prop: "gradient",
+      type: "string",
+      default: `purple gradient`,
+      description: "Tailwind gradient classes used for the highlight animation."
+    },
+    {
+      prop: "direction",
+      type: `"left" | "right" | "top" | "bottom"`,
+      default: `"left"`,
+      description: "The animation direction for the gradient filling effect."
+    },
+    {
+      prop: "animate",
+      type: "boolean",
+      default: "false",
+      description: "Controls whether the highlight animation plays."
+    },
+    {
+      prop: "duration",
+      type: "number",
+      default: "2",
+      description: "Duration (in seconds) of the highlight animation."
+    },
+    {
+      prop: "showPointer",
+      type: "boolean",
+      default: "false",
+      description: "Whether to display a moving pointer along the highlight."
+    },
+    {
+      prop: "pointerDuration",
+      type: "number",
+      default: "1",
+      description: "Duration (in seconds) of the pointer's movement."
+    },
+    {
+      prop: "pointerClassName",
+      type: "string",
+      default: "-",
+      description: "Custom classes for styling the pointer."
+    },
+    {
+      prop: "containerClassName",
+      type: "string",
+      default: "-",
+      description: "Custom classes for styling the outer container element."
+    },
+    {
+      prop: "rectangle",
+      type: "boolean | string",
+      default: "false",
+      description: "Enables a rectangle border around the text."
+    }
+  ]}
+/>
+

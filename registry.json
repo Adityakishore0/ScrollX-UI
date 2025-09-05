@@ -277,6 +277,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "cursor-highlight",
+      "title": "Cursor Highlight",
+      "description": "Text is revealed on scroll with pointer, gradient, and border effects.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/cursor-highlight.tsx",
+          "target": "components/ui/cursor-highlight.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "cursorimagetrail",
       "title": "Cursor ImageTrail",
       "description": "The CursorImageTrail component creates an interactive mouse trail effect with animated images.",
