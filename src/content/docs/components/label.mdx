@@ -1,0 +1,114 @@
+---
+title: Label
+description: Displays an accessible label associated with controls.
+---
+
+<ComponentPreview
+  name="label-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="label" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion @radix-ui/react-label" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>label.tsx</code>
+</p>
+<ComponentSource name="label" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Label } from "@/components/ui/label"
+```
+
+```tsx
+<Label htmlFor="email" direction="right" >Your email address</Label>
+<br />
+<Label htmlFor="email" disableAnimation>Your email address</Label>
+```
+
+
+## API Reference
+
+### Label
+
+Displays an accessible label associated with controls.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "direction",
+      type: `"left" | "right" | "top" | "bottom"`,
+      default: `"left"`,
+      description: "Animation direction when label appears."
+    },
+    {
+      prop: "disableAnimation",
+      type: "boolean",
+      default: "false",
+      description: "If true, disables the motion animation."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom CSS classes applied to the label."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Content rendered inside the label."
+    },
+    {
+      prop: "htmlFor",
+      type: "string",
+      default: "—",
+      description: "ID of the associated form element (from LabelPrimitive)."
+    },
+    {
+      prop: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Marks the label as disabled and adjusts styling."
+    }
+  ]}
+/>
+

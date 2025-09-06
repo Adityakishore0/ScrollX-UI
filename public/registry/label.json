@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "type": "registry:component",
+  "title": "Label",
+  "description": "Displays an accessible label associated with controls.",
+  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "dependencies": [
+    "framer-motion",
+    "@radix-ui/react-label",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/motion-label.tsx",
+      "target": "components/ui/motion-label.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as LabelPrimitive from \"@radix-ui/react-label\"\nimport { motion, useInView } from \"framer-motion\"\nimport { cn } from \"@/lib/utils\"\n\ninterface LabelProps extends React.ComponentProps<typeof LabelPrimitive.Root> {\n  direction?: \"left\" | \"right\" | \"top\" | \"bottom\"\n  disableAnimation?: boolean\n}\n\n\nfunction mergeRefs<T>(\n  ...refs: Array<React.Ref<T> | undefined>\n): React.RefCallback<T> {\n  return (value) => {\n    refs.forEach((ref) => {\n      if (!ref) return\n      if (typeof ref === \"function\") ref(value)\n      else (ref as React.MutableRefObject<T | null>).current = value\n    })\n  }\n}\n\nconst MotionLabel = React.forwardRef<\n  HTMLLabelElement,\n  LabelProps & { children?: React.ReactNode }\n>(({ direction = \"left\", disableAnimation, className, ...props }, ref) => {\n  const localRef = React.useRef<HTMLLabelElement>(null)\n  const isInView = useInView(localRef, { once: false, margin: \"-50px\" })\n\n  const variants = {\n    left: { initial: { x: -20 }, animate: { x: 0 } },\n    right: { initial: { x: 20 }, animate: { x: 0 } },\n    top: { initial: { y: -20 }, animate: { y: 0 } },\n    bottom: { initial: { y: 20 }, animate: { y: 0 } },\n  }\n\n  const baseClasses = cn(\n    \"flex items-center gap-2 text-sm leading-none font-medium select-none user-select-none\",\n    \"group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-70\",\n    \"peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    className\n  )\n\n  if (disableAnimation) {\n    return <LabelPrimitive.Root ref={mergeRefs(ref, localRef)} className={baseClasses} {...props} />\n  }\n\n  return (\n    <motion.label\n      ref={mergeRefs(ref, localRef)}\n      initial={variants[direction].initial}\n      animate={isInView ? variants[direction].animate : variants[direction].initial}\n      transition={{ duration: 0.4, ease: \"easeOut\" }}\n      className={baseClasses}\n      {...props}\n    />\n  )\n})\n\nMotionLabel.displayName = \"MotionLabel\"\n\nexport { MotionLabel as Label }"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
