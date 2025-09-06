@@ -259,6 +259,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "checkbox-pro",
+      "title": "Checkbox Pro",
+      "description": "A customizable checkbox component with animated checkmark and indeterminate states.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/checkbox-pro.tsx",
+          "target": "components/ui/checkbox-pro.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "codeblock",
       "title": "CodeBlock",
       "description": "Syntax-highlighted codeblock component built on top of react-syntax-highlighter.",
@@ -496,6 +511,21 @@
         {
           "path": "components/ui/kinetic-testimonials.tsx",
           "target": "components/ui/kinetic-testimonials.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "label",
+      "title": "Label",
+      "description": "Displays an accessible label associated with controls.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "@radix-ui/react-label"],
+      "files": [
+        {
+          "path": "components/ui/label.tsx",
+          "target": "components/ui/label.tsx",
           "type": "registry:component"
         }
       ]

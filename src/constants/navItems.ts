@@ -69,6 +69,11 @@ const navigation: NavItem[] = [
       { title: "Button", href: "/docs/components/button" },
       { title: "Card", href: "/docs/components/card" },
       { title: "Carousel", href: "/docs/components/carousel" },
+      {
+        title: "Checkbox Pro",
+        href: "/docs/components/checkbox-pro",
+        category: "new",
+      },
       { title: "CodeBlock", href: "/docs/components/codeblock" },
       {
         title: "Cursor Highlight",
@@ -129,8 +134,8 @@ const navigation: NavItem[] = [
       {
         title: "Kinetic Testimonials",
         href: "/docs/components/kinetic-testimonials",
-        category: "new",
       },
+      { title: "Label", href: "/docs/components/label", category: "new" },
       { title: "Lamphome", href: "/docs/components/lamphome" },
       { title: "Loader", href: "/docs/components/loader", category: "new" },
       {

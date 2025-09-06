@@ -1,0 +1,166 @@
+---
+title: Checkbox Pro
+description: A switchable element to mark an option as checked or unchecked.
+---
+
+<ComponentPreview
+  name="checkboxpro-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="checkbox-pro" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>checkbox-pro.tsx</code>
+</p>
+<ComponentSource name="checkbox-pro" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox"
+```
+
+```tsx
+<Checkbox />
+```
+
+
+## API Reference
+
+### Checkbox Pro
+
+A switchable element to mark an option as checked or unchecked.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "Render custom child. Used in CheckboxPro & Indicator."
+    },
+    {
+      prop: "defaultChecked",
+      type: "boolean | 'indeterminate'",
+      default: "false",
+      description: "Initial state. CheckboxPro only."
+    },
+    {
+      prop: "checked",
+      type: "boolean | 'indeterminate'",
+      default: "—",
+      description: "Controlled state. CheckboxPro & Indicator."
+    },
+    {
+      prop: "onCheckedChange",
+      type: "function",
+      default: "—",
+      description: "State change callback. CheckboxPro only."
+    },
+    {
+      prop: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disable interaction. CheckboxPro & Indicator."
+    },
+    {
+      prop: "required",
+      type: "boolean",
+      default: "false",
+      description: "Required for forms. CheckboxPro only."
+    },
+    {
+      prop: "name",
+      type: "string",
+      default: "—",
+      description: "Form name. CheckboxPro only."
+    },
+    {
+      prop: "value",
+      type: "string",
+      default: "—",
+      description: "Form value. CheckboxPro only."
+    },
+    {
+      prop: "id",
+      type: "string",
+      default: "—",
+      description: "Element ID. CheckboxPro only."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom styles. CheckboxPro & Indicator."
+    },
+    {
+      prop: "aria-label",
+      type: "string",
+      default: "—",
+      description: "Accessibility. CheckboxPro only."
+    },
+    {
+      prop: "labelledby",
+      type: "string",
+      default: "—",
+      description: "Accessibility. CheckboxPro only."
+    },
+    {
+      prop: "describedby",
+      type: "string",
+      default: "—",
+      description: "Accessibility. CheckboxPro only."
+    },
+    {
+      prop: "forceMount",
+      type: "boolean",
+      default: "—",
+      description: "Always show indicator. Indicator only."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Custom content when asChild is true. Both components."
+    }
+  ]}
+/>
+
