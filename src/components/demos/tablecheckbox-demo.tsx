@@ -70,7 +70,7 @@ const data: Person[] = [
   },
 ];
 
-// Custom header component that can use hooks
+
 function SelectAllHeader({
   table,
   toast,
