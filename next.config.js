@@ -47,7 +47,7 @@ const nextConfig = {
       },
       {
         test: /\.(ts|tsx)$/,
-        resourceQuery: /raw/, // Load .ts or .tsx files as raw text
+        resourceQuery: /raw/,
         use: "raw-loader",
       }
     );
@@ -58,6 +58,15 @@ const nextConfig = {
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["next-mdx-remote"],
+
+  async rewrites() {
+    return [
+      {
+        source: "/registry",
+        destination: "/registry/index.json",
+      },
+    ];
+  },
 };
 
 const withMDXConfig = withMDX({

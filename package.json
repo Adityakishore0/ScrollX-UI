@@ -1,5 +1,5 @@
 {
-  "name": "scrollx-ui",
+  "name": "scrollxui",
   "version": "0.1.0",
   "type": "module",
   "private": true,
@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "next dev",
     "prepare:sw": "cp ./src/utils/service-worker.js ./public/service-worker.js",
-    "build": "pnpm prepare:sw && next build",
+    "build:registry": "node --loader ts-node/esm scripts/build-registry.ts",
+    "build": "pnpm prepare:sw && pnpm build:registry && next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix && pnpm format",
@@ -96,7 +97,7 @@
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "15.0.7",
     "@types/jest": "^29.5.3",
-    "@types/node": "^20",
+    "@types/node": "^20.17.30",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
     "@types/three": "^0.176.0",
@@ -118,6 +119,7 @@
     "prettier-plugin-tailwindcss": "0.5.0",
     "raw-loader": "^4.0.2",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
     "typescript": "5.2.2"
   },
   "husky": {
