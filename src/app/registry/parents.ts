@@ -51,6 +51,7 @@ export const parentComponents = [
   "radial-socials",
   "side-sheet",
   "stagger-chars",
+  "status",
   "statscount",
   "statscarousel",
   "splitter",

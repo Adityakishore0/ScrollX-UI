@@ -757,6 +757,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "status",
+      "title": "Status",
+      "description": "A small status component with customizable variants, indicator and shiny animation effects.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/status.tsx",
+          "target": "components/ui/status.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "statscount",
       "title": "StatsCount",
       "description": "Animated statistics counter with responsive layout and scroll triggers.",
