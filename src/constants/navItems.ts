@@ -187,8 +187,8 @@ const navigation: NavItem[] = [
       {
         title: "Side Sheet",
         href: "/docs/components/side-sheet",
-        category: "new",
       },
+      { title: "Status", href: "/docs/components/status", category: "new" },
       {
         title: "Stats Count",
         href: "/docs/components/statscount",
