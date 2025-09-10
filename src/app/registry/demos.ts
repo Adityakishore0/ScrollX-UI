@@ -80,6 +80,7 @@ export const demoComponents = [
   "statusshiny-demo",
   "statscount-demo",
   "statscarousel-demo",
+  "statscarouseldrag-demo",
   "staggerchars-demo",
   "staggercharsdifferenttexthover-demo",
   "staggercharsup-demo",
