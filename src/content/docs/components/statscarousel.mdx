@@ -3,11 +3,7 @@ title: Stats Carousel
 description: Animated statistics counter in stacked carousel for modern websites.
 ---
 
-<ComponentPreview
-  name="statscarousel-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name="statscarousel-demo" className="p-0" description="" />
 
 ## Installation
 
@@ -30,7 +26,6 @@ description: Animated statistics counter in stacked carousel for modern websites
   <code>statscarousel.tsx</code>
 </p>
 <ComponentSource name="statscarousel" />
-
 
 </Steps>
   </TabsContent>
@@ -55,12 +50,23 @@ import StatsCarouselcount from "@/components/ui/statscarousel";
 />
 ```
 
+## Examples
+
+---
+
+<Step>Drag</Step>
+
+<ComponentPreview
+  name="statscarouseldrag-demo"
+  className="p-0"
+  description=""
+/>
 
 ## API Reference
 
 ### Stats Carousel
 
-Animated number stack for next-gen websites in stacked carousel. 
+Animated number stack for next-gen websites in stacked carousel.
 
 ## Props
 
@@ -70,26 +76,33 @@ Animated number stack for next-gen websites in stacked carousel.
       prop: "stats",
       type: "{ value: number; suffix?: string; label: string; id?: number; }[]",
       default: "optional",
-      description: "Array of stats with value, suffix (like %, K+), label, and optional id."
+      description:
+        "Array of stats with value, suffix (like %, K+), label, and optional id.",
+    },
+    {
+      prop: "animation",
+      type: '"drag" | auto',
+      default: "auto",
+      description:
+        'If set to "drag", enables draggable top card mode instead of automatic stacked animation.',
     },
     {
       prop: "title",
       type: "string",
       default: "optional",
-      description: "Optional title shown above the carousel cards."
+      description: "Optional title shown above the carousel cards.",
     },
     {
       prop: "className",
       type: "string",
       default: '""',
-      description: "Additional classes for the outer wrapper section."
+      description: "Additional classes for the outer wrapper section.",
     },
     {
       prop: "cardClassName",
       type: "string",
       default: '""',
-      description: "Additional classes for styling individual stat cards."
-    }
+      description: "Additional classes for styling individual stat cards.",
+    },
   ]}
 />
-
