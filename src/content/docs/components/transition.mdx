@@ -1,0 +1,230 @@
+---
+title: Transition
+description: Smooth page transitions  with curved or slide effects.
+---
+
+<ComponentPreview
+  name="transition-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="transition" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>transition.tsx</code>
+</p>
+<ComponentSource name="transition" />
+
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import Transition from "@/components/ui/transition";
+```
+
+```tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <Transition
+      intro={
+        <div className="text-center text-white dark:text-black">
+          <h1 className="text-3xl font-bold">Welcome!</h1>
+        </div>
+      }
+      introDuration={2}
+      transitionDuration={1}
+      type="curved"
+      direction="bottom"
+    >
+      {children}
+    </Transition>
+  );
+}
+```
+## Examples
+
+---
+
+## Curve
+
+<Step>Top</Step>
+
+<ComponentPreview
+  name="transitioncurvetop-demo"
+  className="p-0"
+  description=""
+/>
+
+---
+
+<Step>Left</Step>
+
+<ComponentPreview
+  name="transitioncurveleft-demo"
+  className="p-0"
+  description=""
+/>
+
+---
+
+<Step>Right</Step>
+
+<ComponentPreview
+  name="transitioncurveright-demo"
+  className="p-0"
+  description=""
+/>
+
+---
+
+## Slide
+
+<Step>Top</Step>
+
+<ComponentPreview
+  name="transitionslidetop-demo"
+  className="p-0"
+  description=""
+/>
+
+---
+
+<Step>Bottom</Step>
+
+<ComponentPreview
+  name="transitionslide-demo"
+  className="p-0"
+  description=""
+/>
+
+---
+
+<Step>Left</Step>
+
+<ComponentPreview
+  name="transitionslideleft-demo"
+  className="p-0"
+  description=""
+/>
+
+
+---
+
+<Step>Right</Step>
+
+<ComponentPreview
+  name="transitionslideright-demo"
+  className="p-0"
+  description=""
+/>
+
+
+---
+
+<Step>Trigger</Step>
+
+<ComponentPreview
+  name="transitiontrigger-demo"
+  className="p-0"
+  description=""
+/>
+
+## API Reference
+
+### Transition
+
+Smooth page transitions  with curved or slide effects.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "intro",
+      type: "ReactNode | (triggerExit: () => void) => ReactNode",
+      default: "required",
+      description: "Content or function shown during the intro animation."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Main content displayed after the intro transition completes."
+    },
+    {
+      prop: "introDuration",
+      type: "number",
+      default: 1.5,
+      description: "Duration in seconds for which the intro is displayed."
+    },
+    {
+      prop: "transitionDuration",
+      type: "number",
+      default: 0.9,
+      description: "Time in seconds for the transition animation to complete."
+    },
+    {
+      prop: "type",
+      type: "'curved' | 'slide'",
+      default: "curved",
+      description: "Transition style: curved clipping or sliding effect."
+    },
+    {
+      prop: "direction",
+      type: "'top' | 'bottom' | 'left' | 'right'",
+      default: "bottom",
+      description: "Direction from which the transition occurs."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "CSS classes applied to the overlay element."
+    },
+    {
+      prop: "skip",
+      type: "boolean",
+      default: false,
+      description: "If true, skips the intro animation and immediately shows content."
+    },
+    {
+      prop: "autoExit",
+      type: "boolean",
+      default: true,
+      description: "If true, automatically starts exit transition after introDuration."
+    },
+    {
+      prop: "trigger",
+      type: "boolean",
+      default: "-",
+      description: "Optional external trigger to start the transition manually."
+    },
+    {
+      prop: "onFinished",
+      type: "() => void",
+      default: "-",
+      description: "Callback fired when the transition completes."
+    }
+  ]}
+/>
