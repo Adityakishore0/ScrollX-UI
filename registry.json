@@ -971,6 +971,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "transition",
+      "title": "Transition",
+      "description": "Smooth page transitions with curved or slide effects.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/transition.tsx",
+          "target": "components/ui/transition.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "typeanimation",
       "title": "Type Animation",
       "description": "Displays an animated typing effect.",

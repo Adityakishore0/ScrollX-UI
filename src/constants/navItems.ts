@@ -243,6 +243,10 @@ const navigation: NavItem[] = [
       {
         title: "Toggle Vault",
         href: "/docs/components/toggle-vault",
+      },
+      {
+        title: "Transition",
+        href: "/docs/components/transition",
         category: "new",
       },
       { title: "Type Animation", href: "/docs/components/typeanimation" },
