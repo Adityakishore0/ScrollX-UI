@@ -971,6 +971,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "tooltip",
+      "title": "Tooltip",
+      "description": "An interactive, animated popup that displays information related to an element when it receives keyboard focus or when the mouse hovers over it.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "@radix-ui/react-tooltip"],
+      "files": [
+        {
+          "path": "components/ui/tooltip.tsx",
+          "target": "components/ui/tooltip.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "transition",
       "title": "Transition",
       "description": "Smooth page transitions with curved or slide effects.",

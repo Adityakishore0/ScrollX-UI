@@ -121,6 +121,7 @@ export const demoComponents = [
   "toastwarning-demo",
   "toastsuccess-demo",
   "togglevault-demo",
+  "tooltip-demo",
   "transition-demo",
   "transitioncurvetop-demo",
   "transitioncurveleft-demo",
