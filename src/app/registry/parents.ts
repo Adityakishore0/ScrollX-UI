@@ -64,6 +64,7 @@ export const parentComponents = [
   "top-sheet",
   "toast",
   "toggle-vault",
+  "tooltip",
   "transition",
   "typeanimation",
   "venom-beam",

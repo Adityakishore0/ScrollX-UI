@@ -1,0 +1,121 @@
+---
+title: Tooltip
+description: An interactive, animated popup that displays information related to an element when it receives keyboard focus or when the mouse hovers over it.
+---
+
+<ComponentPreview
+  name="tooltip-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="tooltip" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion @radix-ui/react-tooltip" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>tooltip.tsx</code>
+</p>
+<ComponentSource name="tooltip" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+```
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>Hover</TooltipTrigger>
+  <TooltipContent>
+    <p>Isn't it cool?</p>
+  </TooltipContent>
+</Tooltip>
+```
+
+
+## API Reference
+
+### Tooltip
+
+An interactive, animated popup that displays information related to an element when it receives keyboard focus or when the mouse hovers over it.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "delayDuration",
+      type: "number",
+      default: "0",
+      description: "Time in milliseconds to wait before showing the tooltip. Used in TooltipProvider."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Content of the tooltip or the trigger element."
+    },
+    {
+      prop: "sideOffset",
+      type: "number",
+      default: "0",
+      description: "Distance in pixels between the trigger and the tooltip. Used in TooltipContent."
+    },
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "If true, renders children without wrapping them in a default element. Used in TooltipContent."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Custom CSS classes applied to TooltipContent."
+    },
+    {
+      prop: "...props",
+      type: "any",
+      default: "-",
+      description: "Other props supported by Radix Tooltip primitives (Root, Trigger, Content, Provider)."
+    }
+  ]}
+/>
+
