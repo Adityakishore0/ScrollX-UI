@@ -57,6 +57,7 @@ export const demoComponents = [
   "loadermagnetic-dots",
   "loaderdual-ring",
   "loadercube",
+  "loginform-demo",
   "lustretext-demo",
   "magicdock-demo",
   "motioncards-demo",
