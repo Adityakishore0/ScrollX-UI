@@ -37,6 +37,7 @@ export const parentComponents = [
   "label",
   "lamphome",
   "loader",
+  "loginform",
   "lustretext",
   "magicdock",
   "motioncards",
