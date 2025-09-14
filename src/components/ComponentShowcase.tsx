@@ -1,60 +1,140 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ParticlesDemo from "@/components/demos/particles-demo";
+import GravityDemo from "@/components/demos/gravity-demo";
+import ProfileCardDemo from "@/components/demos/profilecard-demo";
+import MotionCardsDemo from "@/components/demos/motioncards-demo";
+import { useState } from "react";
+import RadialSocialsDemo from "@/components/demos/radialsocials-demo";
+import HoldToConfirmDemo from "@/components/demos/holdtoconfirm-demo";
+import { Transition } from "@/components/ui/transition";
+import { motion } from "framer-motion";
+import { RefreshCw } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CursorHighlight } from "@/components/ui/cursor-highlight";
 
 export function ComponentShowcase() {
+  const [rotate, setRotate] = useState(false);
+  const [key, setKey] = useState(0);
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+              <CursorHighlight
+                className="text-3xl sm:text-5xl font-bold"
+                gradient="from-rose-500 via-fuchsia-500 to-rose-500"
+              >
+                70+
+              </CursorHighlight>{" "}
               Stunning Components
             </h2>
+
             <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-              Explore our library of animated components that will elevate your
-              UI
+              Explore our library of interactive and animated components that
+              will elevate your UI
             </p>
           </div>
         </div>
+
         <div className="mx-auto max-w-5xl mt-12">
-          <Tabs defaultValue="cards" className="w-full">
+          <Tabs defaultValue="interactive" className="w-full">
             <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="cards">Cards</TabsTrigger>
-              <TabsTrigger value="buttons">Buttons</TabsTrigger>
-              <TabsTrigger value="effects">Effects</TabsTrigger>
+              <TabsTrigger value="interactive">Interactive</TabsTrigger>
+              <TabsTrigger value="animated">Animated</TabsTrigger>
+              <TabsTrigger value="creative">Creative</TabsTrigger>
             </TabsList>
-            <TabsContent value="cards" className="space-y-8">
+
+            <TabsContent value="interactive" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <SpotlightCard />
-                <GlowingBorderCard />
+                <ShowcasePanel>
+                  <HoldToConfirmDemo />
+                </ShowcasePanel>
+                <ShowcasePanel>
+                  <ProfileCardDemo />
+                </ShowcasePanel>
               </div>
             </TabsContent>
-            <TabsContent value="buttons" className="space-y-8">
-              <div className="flex flex-wrap justify-center gap-4">
-                <AnimatedButton label="Primary Button" variant="primary" />
-                <AnimatedButton label="Secondary Button" variant="secondary" />
-                <AnimatedButton label="Outline Button" variant="outline" />
+
+            <TabsContent value="animated" className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <ShowcasePanel>
+                  <GravityDemo />
+                </ShowcasePanel>
+                <ShowcasePanel>
+                  <MotionCardsDemo />
+                </ShowcasePanel>
               </div>
             </TabsContent>
-            <TabsContent value="effects" className="space-y-8">
+
+            <TabsContent value="creative" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <BackgroundGradient>
-                  <div className="flex flex-col justify-center items-center h-56 p-4 text-center">
-                    <h3 className="text-xl font-bold mb-2">
-                      Background Gradient
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      A beautiful animated gradient background effect
-                    </p>
+                <ShowcasePanel>
+                  <RadialSocialsDemo />
+                </ShowcasePanel>
+
+                <ShowcasePanel>
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Transition
+                      key={key}
+                      introDuration={1.5}
+                      transitionDuration={1.0}
+                      type="slide"
+                      direction="bottom"
+                      autoExit={false}
+                      className="bg-black dark:bg-white h-full"
+                      intro={(triggerExit) => (
+                        <div className="flex flex-col items-center justify-center h-full w-full text-center space-y-4">
+                          <h1 className="text-4xl md:text-6xl font-bold text-white dark:text-black">
+                            ScrollX UI
+                          </h1>
+                          <p className="mt-2 text-base md:text-lg text-gray-400 dark:text-gray-600">
+                            Build modern interfaces with ease
+                          </p>
+                          <Button
+                            onClick={() => {
+                              setRotate(true);
+                              triggerExit();
+                              setTimeout(() => setRotate(false), 600);
+                            }}
+                            variant="outline"
+                            className="flex items-center space-x-2 mt-4"
+                          >
+                            <motion.div
+                              animate={{ rotate: rotate ? 360 : 0 }}
+                              transition={{ duration: 0.6, ease: "easeInOut" }}
+                            >
+                              <RefreshCw className="w-5 h-5" />
+                            </motion.div>
+                            <span>Trigger Transition</span>
+                          </Button>
+                        </div>
+                      )}
+                    >
+                      <div className="flex flex-col items-center justify-center h-full w-full space-y-4 text-center">
+                        <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white">
+                          Smooth transitions,
+                          <br />
+                          zero effort.
+                        </h2>
+                        <Button
+                          onClick={() => setKey((prev) => prev + 1)}
+                          variant="outline"
+                          className="flex items-center space-x-2"
+                        >
+                          <motion.div
+                            animate={{ rotate: rotate ? 360 : 0 }}
+                            transition={{ duration: 0.6, ease: "easeInOut" }}
+                          >
+                            <RefreshCw className="w-5 h-5" />
+                          </motion.div>
+                          <span>Replay Transition</span>
+                        </Button>
+                      </div>
+                    </Transition>
                   </div>
-                </BackgroundGradient>
-                <ParticleEffect />
+                </ShowcasePanel>
               </div>
             </TabsContent>
           </Tabs>
@@ -64,129 +144,10 @@ export function ComponentShowcase() {
   );
 }
 
-function SpotlightCard() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const spotlightX = useMotionValue(0);
-  const spotlightY = useMotionValue(0);
-  const backgroundImage = useMotionTemplate`radial-gradient(300px circle at ${spotlightX}px ${spotlightY}px, rgba(var(--spotlight-color), 0.15), transparent)`;
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { left, top, width, height } =
-      e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - left;
-    const y = e.clientY - top;
-
-    mouseX.set(x);
-    mouseY.set(y);
-    spotlightX.set(x);
-    spotlightY.set(y);
-  };
-
+function ShowcasePanel({ children }: { children: React.ReactNode }) {
   return (
-    <Card
-      className="group relative overflow-hidden border rounded-lg h-72"
-      style={{ "--spotlight-color": "14, 165, 233" } as React.CSSProperties}
-      onMouseMove={handleMouseMove}
-    >
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
-        style={{ backgroundImage }}
-      />
-      <CardContent className="flex flex-col justify-center items-center h-full p-6">
-        <div className="text-center">
-          <h3 className="text-xl font-bold mb-2">Spotlight Card</h3>
-          <p className="text-sm text-muted-foreground">
-            Hover over this card to see the spotlight effect
-          </p>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function GlowingBorderCard() {
-  return (
-    <div className="relative group">
-      <div
-        className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75
-        group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"
-      />
-      <div className="relative flex items-center justify-center h-72 bg-black rounded-lg p-6">
-        <div className="text-center">
-          <h3 className="text-xl font-bold mb-2 text-white">
-            Glowing Border Card
-          </h3>
-          <p className="text-sm text-gray-300">
-            Hover over this card to see the glowing border effect
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function AnimatedButton({
-  label,
-  variant = "primary",
-}: {
-  label: string;
-  variant?: "primary" | "secondary" | "outline";
-}) {
-  return (
-    <motion.button
-      className={cn(
-        "relative px-6 py-3 text-sm font-medium rounded-md",
-        variant === "primary" && "bg-blue-600 text-white",
-        variant === "secondary" && "bg-purple-600 text-white",
-        variant === "outline" &&
-          "bg-transparent text-primary border border-primary"
-      )}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      {label}
-    </motion.button>
-  );
-}
-
-function BackgroundGradient({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative group rounded-lg p-[2px] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-30 group-hover:opacity-90 transition-all duration-300" />
-      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-20 blur-md group-hover:blur-xl group-hover:opacity-60 rounded-xl pointer-events-none transition-all duration-300" />
-      <div className="absolute inset-[2px] bg-white dark:bg-black rounded-md transition-colors duration-500" />
-      <div className="relative text-black dark:text-white mt-7 transition-colors duration-500">
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function ParticleEffect() {
-  const [particles] = useState(() =>
-    Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 6 + 1,
-      color: ["bg-blue-500", "bg-purple-500", "bg-pink-500", "bg-green-500"][
-        Math.floor(Math.random() * 4)
-      ],
-    }))
-  );
-
-  return (
-    <div className="relative h-72 overflow-hidden rounded-lg">
-      <div className="absolute inset-0 bg-gradient-to-br from-black to-slate-900">
-        <ParticlesDemo />
-      </div>
-      <div className="relative z-10 flex flex-col justify-center items-center h-full p-6 text-center">
-        <h3 className="text-xl font-bold mb-2 text-white">Particle Effect</h3>
-        <p className="text-sm text-gray-300">
-          Animated particles floating in the background
-        </p>
-      </div>
+    <div className="relative rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden h-[380px] flex items-center justify-center bg-muted/20">
+      {children}
     </div>
   );
 }
