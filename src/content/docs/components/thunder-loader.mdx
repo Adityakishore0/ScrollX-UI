@@ -1,0 +1,235 @@
+---
+title: Thunder Loader
+description: Animated thunderbolt loader with glow and shimmer effects, customizable sizes and colors. 
+---
+
+<ComponentPreview
+  name="thunderloader-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="thunder-loader" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>thunder-loader.tsx</code>
+</p>
+<ComponentSource name="thunder-loader" />
+
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+
+```tsx
+import { ThunderLoader } from "@/components/ui/thunder-loader";
+```
+
+```tsx
+<ThunderLoader className="w-40 h-40"/>
+```
+
+## Examples
+
+---
+
+<Step>Default</Step>
+
+<ComponentPreview
+  name="thunderloaderdefault-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Size</Step>
+
+<ComponentPreview
+  name="thunderloadersize-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Variants</Step>
+
+<ComponentPreview
+  name="thunderloadervariants-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Custom Colors</Step>
+
+<ComponentPreview
+  name="thunderloadercolors-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Effects</Step>
+
+<ComponentPreview
+  name="thunderloadereffects-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Duration</Step>
+
+<ComponentPreview
+  name="thunderloaderduration-demo"
+  className=""
+  description=""
+/>
+
+## API Reference
+
+### Thunder Loader
+
+Animated thunderbolt loader with glow and shimmer effects, customizable sizes and colors.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "size",
+      type: `"xs" | "sm" | "md" | "lg" | "xl" | "2xl"`,
+      default: `"md"`,
+      description: "Controls the size of the loader."
+    },
+    {
+      prop: "variant",
+      type: `"default" | "electric" | "fire" | "ice" | "rainbow" | "subtle"`,
+      default: `"default"`,
+      description: "Controls the color style of the loader."
+    },
+    {
+      prop: "fillDuration",
+      type: "number",
+      default: "2",
+      description: "Duration in seconds for the fill animation."
+    },
+    {
+      prop: "glowDuration",
+      type: "number",
+      default: "3",
+      description: "Duration in seconds for the glow animation."
+    },
+    {
+      prop: "animateDuration",
+      type: "number",
+      default: "2",
+      description: "Duration in seconds for the thunder path animation."
+    },
+    {
+      prop: "showGlow",
+      type: "boolean",
+      default: "false",
+      description: "Enables the glow effect."
+    },
+    {
+      prop: "showFill",
+      type: "boolean",
+      default: "false",
+      description: "Enables the fill animation inside the loader."
+    },
+    {
+      prop: "animate",
+      type: "boolean | 'thunder'",
+      default: "false",
+      description: "Enables path animation; 'thunder' uses stroke dash offset animation."
+    },
+    {
+      prop: "fillColor",
+      type: "string",
+      default: "—",
+      description: "Custom color for the fill animation."
+    },
+    {
+      prop: "glowColor",
+      type: "string",
+      default: "—",
+      description: "Custom color for the glow effect."
+    },
+    {
+      prop: "baseColor",
+      type: "string",
+      default: "—",
+      description: "Custom base color of the loader stroke."
+    },
+    {
+      prop: "strokeWidth",
+      type: "number",
+      default: "2",
+      description: "Width of the loader stroke."
+    },
+    {
+      prop: "viewBox",
+      type: "string",
+      default: `"0 0 100 80"`,
+      description: "Custom SVG viewBox."
+    },
+    {
+      prop: "customPath",
+      type: "string",
+      default: "—",
+      description: "Custom SVG path for the loader shape."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom class names for styling the loader."
+    },
+    {
+      prop: "...props",
+      type: "HTMLDivElement attributes",
+      default: "—",
+      description: "Supports all standard div props and events."
+    }
+  ]}
+/>
+
+
+

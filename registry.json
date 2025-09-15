@@ -937,6 +937,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "thunder-loader",
+      "title": "Thunder Loader",
+      "description": "Animated thunderbolt loader with glow and shimmer effects, customizable sizes and colors.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/thunder-loader.tsx",
+          "target": "components/ui/thunder-loader.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "top-sheet",
       "title": "Top Sheet",
       "description": "A customizable component for creating elegant, slide-out panels from the top of the screen.",
