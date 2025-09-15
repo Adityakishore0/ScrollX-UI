@@ -1,359 +1,315 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
   Folder,
   FolderOpen,
   File,
-  FileText,
-  Image as ImageIcon,
-  Music,
-  Video as VideoIcon,
-  Code as CodeIcon,
-  Archive,
-  Settings as SettingsIcon,
   LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Types for the tree data structure
-export interface TreeNodeType {
-  id: string;
-  name: string;
-  type: string | "file" | "folder";
-  extension?: string;
-  children?: TreeNodeType[];
-  badge?: string | number;
-}
-
-interface TreeNodeProps {
-  node: TreeNodeType;
-  level?: number;
+interface FolderTreeContextType {
   expandedIds: Set<string>;
   selectedId: string | null;
-  onToggle: (id: string) => void;
-  onSelect: (node: TreeNodeType) => void;
-  showIcons?: boolean;
-  showLines?: boolean;
-  iconSize?: number;
-  nodeClassName?: string;
-  selectedClassName?: string;
-  hoverClassName?: string;
+  toggleExpanded: (id: string) => void;
+  setSelected: (id: string) => void;
+  onSelect?: (id: string, label: string) => void;
+  level: number;
 }
 
-interface FolderTreeProps {
-  data: TreeNodeType;
-  onSelect?: (node: TreeNodeType) => void;
-  onToggle?: (nodeId: string) => void;
-  initialExpanded?: string[];
-  initialSelected?: string | null;
-  showIcons?: boolean;
-  showLines?: boolean;
-  containerClassName?: string;
-  nodeClassName?: string;
-  selectedClassName?: string;
-  hoverClassName?: string;
-  iconSize?: number;
+const FolderTreeContext = createContext<FolderTreeContextType | null>(null);
+
+const useFolderTree = () => {
+  const context = useContext(FolderTreeContext);
+  if (!context) {
+    throw new Error(
+      "FolderTree components must be used within FolderTree.Root"
+    );
+  }
+  return context;
+};
+
+interface RootProps {
+  defaultExpanded?: string[];
+  defaultSelected?: string;
+  onSelect?: (id: string, label: string) => void;
   maxHeight?: string | number;
+  className?: string;
+  children: React.ReactNode;
+}
+
+interface ItemProps {
+  id: string;
+  label: string;
+  icon?: LucideIcon;
+  badge?: string | number;
+  modified?: boolean;
+  untracked?: boolean;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+interface TriggerProps {
   className?: string;
 }
 
-const getFileIcon = (
-  extension: string | undefined,
-  isFolder = false
-): LucideIcon | null => {
-  if (isFolder) return null;
+interface ContentProps {
+  children: React.ReactNode;
+  className?: string;
+}
 
-  const iconMap = {
-    // Images
-    png: ImageIcon,
-    jpg: ImageIcon,
-    jpeg: ImageIcon,
-    gif: ImageIcon,
-    svg: ImageIcon,
-    webp: ImageIcon,
-    // Audio
-    mp3: Music,
-    wav: Music,
-    flac: Music,
-    aac: Music,
-    ogg: Music,
-    // Video
-    mp4: VideoIcon,
-    avi: VideoIcon,
-    mov: VideoIcon,
-    mkv: VideoIcon,
-    webm: VideoIcon,
-    // Code
-    js: CodeIcon,
-    jsx: CodeIcon,
-    ts: CodeIcon,
-    tsx: CodeIcon,
-    html: CodeIcon,
-    css: CodeIcon,
-    scss: CodeIcon,
-    sass: CodeIcon,
-    json: CodeIcon,
-    xml: CodeIcon,
-    py: CodeIcon,
-    java: CodeIcon,
-    cpp: CodeIcon,
-    c: CodeIcon,
-    vue: CodeIcon,
-    php: CodeIcon,
-    rb: CodeIcon,
-    go: CodeIcon,
-    // Documents
-    txt: FileText,
-    md: FileText,
-    pdf: FileText,
-    doc: FileText,
-    docx: FileText,
-    // Archives
-    zip: Archive,
-    rar: Archive,
-    tar: Archive,
-    gz: Archive,
-    // Config
-    env: SettingsIcon,
-    config: SettingsIcon,
-    conf: SettingsIcon,
-    ini: SettingsIcon,
-  };
-
-  const ext = extension?.toLowerCase() || "";
-  return iconMap[ext as keyof typeof iconMap] || File;
-};
-
-const TreeNode: React.FC<TreeNodeProps> = ({
-  node,
-  level = 0,
-  expandedIds,
-  selectedId,
-  onToggle,
+const Root: React.FC<RootProps> = ({
+  defaultExpanded = [],
+  defaultSelected,
   onSelect,
-  showIcons = true,
-  showLines = true,
-  iconSize = 16,
-  nodeClassName = "",
-  selectedClassName = "",
-  hoverClassName = "",
-}) => {
-  const isExpanded = expandedIds.has(node.id);
-  const isSelected = selectedId === node.id;
-  const hasChildren = node.children && node.children.length > 0;
-  const isFolder = node.type === "folder";
-  const IconComponent = isFolder
-    ? isExpanded
-      ? FolderOpen
-      : Folder
-    : getFileIcon(node.extension) || File;
-
-  const handleClick = useCallback(() => {
-    if (isFolder && hasChildren) {
-      onToggle(node.id);
-    }
-    onSelect(node);
-  }, [isFolder, hasChildren, node, onToggle, onSelect]);
-
-  const defaultSelectedClass =
-    "bg-blue-50 dark:bg-blue-900/30 border-r-2 border-blue-500 dark:border-blue-500 text-blue-900 dark:text-blue-200";
-  const defaultHoverClass = "hover:bg-gray-50 dark:hover:bg-gray-800";
-
-  return (
-    <div>
-      <motion.div
-        initial={{ opacity: 0, x: -10 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.2, delay: level * 0.05 }}
-        className={cn(
-          `
-          flex items-center py-2 px-3 cursor-pointer transition-all duration-200 select-none`,
-          isSelected ? selectedClassName || defaultSelectedClass : "",
-          !isSelected ? hoverClassName || defaultHoverClass : "",
-          nodeClassName
-        )}
-        style={{ paddingLeft: `${level * 20 + 12}px` }}
-        onClick={handleClick}
-      >
-        {/* Expand/Collapse Icon */}
-        {isFolder && (
-          <motion.span
-            className="mr-2 flex-shrink-0"
-            animate={{ rotate: isExpanded ? 90 : 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            {hasChildren ? (
-              <ChevronRight
-                size={14}
-                className="text-gray-500 dark:text-gray-400"
-              />
-            ) : (
-              <span className="w-3.5" />
-            )}
-          </motion.span>
-        )}
-
-        {/* File indent space */}
-        {!isFolder && <span className="w-3.5 mr-2" />}
-
-        {/* File/Folder Icon */}
-        {showIcons && IconComponent && (
-          <IconComponent
-            size={iconSize}
-            className={cn(
-              `mr-3 flex-shrink-0`,
-              isFolder
-                ? isSelected
-                  ? "text-blue-600"
-                  : "text-blue-500"
-                : isSelected
-                ? "text-blue-600"
-                : "text-gray-500"
-            )}
-          />
-        )}
-
-        {/* Name */}
-        <span
-          className={cn(
-            `text-sm truncate`,
-            isFolder
-              ? "font-medium text-gray-800 dark:text-gray-200"
-              : "text-gray-700 dark:text-gray-200"
-          )}
-        >
-          {node.name}
-        </span>
-
-        {/* Optional badge or count */}
-        {node.badge && (
-          <span className="ml-auto text-xs bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded-full">
-            {node.badge}
-          </span>
-        )}
-      </motion.div>
-
-      {/* Children */}
-      <AnimatePresence>
-        {isFolder && hasChildren && isExpanded && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            style={{ overflow: "hidden" }}
-          >
-            {node.children?.map((child: TreeNodeType) => (
-              <TreeNode
-                key={child.id}
-                node={child}
-                level={level + 1}
-                expandedIds={expandedIds}
-                selectedId={selectedId}
-                onToggle={onToggle}
-                onSelect={onSelect}
-                showIcons={showIcons}
-                showLines={showLines}
-                iconSize={iconSize}
-                nodeClassName={nodeClassName}
-                selectedClassName={selectedClassName}
-                hoverClassName={hoverClassName}
-              />
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-const FolderTree: React.FC<FolderTreeProps> = ({
-  data,
-  onSelect = () => {},
-  onToggle = () => {},
-  initialExpanded = [],
-  initialSelected = null,
-  showIcons = true,
-  showLines = true,
-  containerClassName = "",
-  nodeClassName = "",
-  selectedClassName = "",
-  hoverClassName = "",
-  iconSize = 16,
   maxHeight = "24rem",
   className = "",
+  children,
 }) => {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(
-    new Set(initialExpanded)
+    new Set(defaultExpanded)
   );
   const [selectedId, setSelectedId] = useState<string | null>(
-    initialSelected || null
-  );
-  const handleToggle = useCallback(
-    (nodeId: string) => {
-      setExpandedIds((prev) => {
-        const newSet = new Set(prev);
-        if (newSet.has(nodeId)) {
-          newSet.delete(nodeId);
-        } else {
-          newSet.add(nodeId);
-        }
-        return newSet;
-      });
-      onToggle(nodeId);
-    },
-    [onToggle]
+    defaultSelected || null
   );
 
-  const handleSelect = useCallback(
-    (node: TreeNodeType) => {
-      setSelectedId(node.id);
-      onSelect(node);
-    },
-    [onSelect]
-  );
+  const toggleExpanded = useCallback((id: string) => {
+    setExpandedIds((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  }, []);
+
+  const setSelected = useCallback((id: string) => {
+    setSelectedId(id);
+  }, []);
+
+  const contextValue: FolderTreeContextType = {
+    expandedIds,
+    selectedId,
+    toggleExpanded,
+    setSelected,
+    onSelect,
+    level: 0,
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className={cn(
-        "bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden",
-        className
-      )}
-    >
-      {/* Tree Content */}
-      <div
-        className={cn("overflow-y-auto", containerClassName)}
-        style={{ maxHeight }}
-      >
-        {data ? (
-          <TreeNode
-            node={data}
-            expandedIds={expandedIds}
-            selectedId={selectedId}
-            onToggle={handleToggle}
-            onSelect={handleSelect}
-            showIcons={showIcons}
-            showLines={showLines}
-            iconSize={iconSize}
-            nodeClassName={nodeClassName}
-            selectedClassName={selectedClassName}
-            hoverClassName={hoverClassName}
-          />
-        ) : (
-          <div className="p-8 text-center text-gray-500">
-            <File size={48} className="mx-auto mb-4 text-gray-300" />
-            <p>No files found</p>
-          </div>
+    <FolderTreeContext.Provider value={contextValue}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className={cn(
+          "bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden",
+          className
         )}
-      </div>
-    </motion.div>
+        role="tree"
+      >
+        <div
+          className="w-full overflow-y-auto rounded-md bg-background p-2 text-sm"
+          style={{ maxHeight }}
+        >
+          {children}
+        </div>
+      </motion.div>
+    </FolderTreeContext.Provider>
   );
+};
+
+const ItemContext = createContext<{
+  itemId: string;
+  hasChildren: boolean;
+  isExpanded: boolean;
+  toggleExpanded: () => void;
+} | null>(null);
+
+const Item: React.FC<ItemProps> = ({
+  id,
+  label,
+  icon,
+  badge,
+  modified,
+  untracked,
+  className = "",
+  children,
+}) => {
+  const context = useFolderTree();
+  const hasChildren = React.Children.count(children) > 0;
+  const isExpanded = context.expandedIds.has(id);
+  const isSelected = context.selectedId === id;
+
+  const childContextValue: FolderTreeContextType = {
+    ...context,
+    level: context.level + 1,
+  };
+
+  const handleItemClick = useCallback(() => {
+    context.setSelected(id);
+    if (context.onSelect) {
+      context.onSelect(id, label);
+    }
+  }, [id, label, context]);
+
+  const toggleExpanded = useCallback(() => {
+    if (hasChildren) {
+      context.toggleExpanded(id);
+    }
+  }, [id, hasChildren, context]);
+
+  const IconComponent =
+    icon || (hasChildren ? (isExpanded ? FolderOpen : Folder) : File);
+
+  const itemContextValue = {
+    itemId: id,
+    hasChildren,
+    isExpanded,
+    toggleExpanded,
+  };
+
+  return (
+    <ItemContext.Provider value={itemContextValue}>
+      <FolderTreeContext.Provider value={childContextValue}>
+        <div>
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.2, delay: context.level * 0.05 }}
+            className={cn(
+              "flex items-center gap-2 rounded px-2 py-1.5 text-sm transition-colors cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-slate-700/50",
+              isSelected &&
+                "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400",
+              className
+            )}
+            style={{ paddingLeft: `${context.level * 20 + 12}px` }}
+            onClick={(e: React.MouseEvent) => {
+              handleItemClick();
+              e.stopPropagation();
+              toggleExpanded();
+            }}
+            role="treeitem"
+            tabIndex={context.selectedId === id ? 0 : -1}
+            aria-expanded={hasChildren ? isExpanded : undefined}
+            aria-selected={isSelected ? true : undefined}
+          >
+            {hasChildren && (
+              <motion.span
+                className="flex-shrink-0 cursor-pointer"
+                animate={{ rotate: isExpanded ? 90 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ChevronRight
+                  size={14}
+                  className="text-gray-500 dark:text-gray-400"
+                />
+              </motion.span>
+            )}
+
+            {!hasChildren && <span className="w-3.5 mr-2" />}
+
+            {IconComponent && (
+              <IconComponent
+                size={16}
+                className={cn(
+                  "mr-1 flex-shrink-0",
+                  hasChildren
+                    ? isSelected
+                      ? "text-blue-600"
+                      : "text-blue-500"
+                    : isSelected
+                    ? "text-blue-600"
+                    : "text-gray-500"
+                )}
+              />
+            )}
+
+            <span className="flex-1">{label}</span>
+
+            {badge && (
+              <span className="ml-auto text-xs bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded-full">
+                {badge}
+              </span>
+            )}
+            {modified && (
+              <span className="ml-auto text-xs bg-yellow-200 dark:bg-yellow-700 text-yellow-800 dark:text-yellow-200 px-2 py-0.5 rounded-full">
+                M
+              </span>
+            )}
+            {untracked && (
+              <span className="ml-auto text-xs bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200 px-2 py-0.5 rounded-full">
+                U
+              </span>
+            )}
+          </motion.div>
+          {children}
+        </div>
+      </FolderTreeContext.Provider>
+    </ItemContext.Provider>
+  );
+};
+
+const Trigger: React.FC<TriggerProps> = ({ className = "" }) => {
+  const itemContext = useContext(ItemContext);
+
+  if (!itemContext || !itemContext.hasChildren) {
+    return null;
+  }
+
+  return (
+    <motion.span
+      className={cn("mr-2 flex-shrink-0 cursor-pointer", className)}
+      animate={{ rotate: itemContext.isExpanded ? 90 : 0 }}
+      transition={{ duration: 0.2 }}
+      onClick={(e: React.MouseEvent) => {
+        e.stopPropagation();
+        itemContext.toggleExpanded();
+      }}
+    >
+      <ChevronRight size={14} className="text-gray-500 dark:text-gray-400" />
+    </motion.span>
+  );
+};
+
+const Content: React.FC<ContentProps> = ({ children, className = "" }) => {
+  const itemContext = useContext(ItemContext);
+
+  if (!itemContext) {
+    return <>{children}</>;
+  }
+
+  const hasContent = React.Children.count(children) > 0;
+
+  return (
+    <AnimatePresence>
+      {hasContent && itemContext.isExpanded && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          style={{ overflow: "hidden" }}
+          className={className}
+          role="group"
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+const FolderTree = {
+  Root,
+  Item,
+  Trigger,
+  Content,
 };
 
 export default FolderTree;

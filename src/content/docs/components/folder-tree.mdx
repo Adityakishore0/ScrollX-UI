@@ -39,111 +39,65 @@ description: A customizable folder tree component for displaying hierarchical da
 import { FolderTree } from "@/components/ui/folder-tree";
 ```
 
-### Basic Example
+### Basic Usage
 
 ```tsx
-const folderData = {
-  id: 'root',
-  name: 'Root',
-  type: 'folder',
-  children: [
-    {
-      id: 'folder1',
-      name: 'Documents',
-      type: 'folder',
-      children: [
-        {
-          id: 'file1',
-          name: 'Document 1',
-          type: 'file',
-          extension: 'docx'
-        }
-      ]
-    },
-    {
-      id: 'file2',
-      name: 'README',
-      type: 'file',
-      extension: 'md'
-    }
-  ]
-};
-
-<FolderTree 
-  data={folderData} 
-  initialExpanded={['root']}
-/>
+  <FolderTree.Root
+        defaultExpanded={["root", "folder1"]}
+        defaultSelected="file1"
+        className="w-full"
+      >
+        <FolderTree.Item id="root" label="Root Folder">
+          <FolderTree.Content>
+            <FolderTree.Item id="folder1" label="Documents">
+              <FolderTree.Content>
+                <FolderTree.Item id="file1" label="File 1.txt" />
+                <FolderTree.Item id="file2" label="File 2.txt" />
+                <FolderTree.Item id="file3" label="Image.png" />
+              </FolderTree.Content>
+            </FolderTree.Item>
+          </FolderTree.Content>
+        </FolderTree.Item>
+      </FolderTree.Root>
 ```
 
 ## Examples
 
 ---
 
-<Step>With Custom Icons</Step>
+<Step>With Badges</Step>
 
 <ComponentPreview
   name="foldertree-badge"
   className=""
-  description="A folder tree component with expandable nodes and file icons."
+  description="A folder tree component with badges."
 />
 
 ## API Reference
 
-### FolderTree
+### FolderTree.Root
 
-The `FolderTree` component renders a hierarchical tree view of folders and files.
-
-### Props
+The root component that provides context and manages global state.
 
 <PropsTable 
 rows={[
   {
-    prop: "data",
-    type: "TreeNodeType",
-    default: "required",
-    description: "The root node of the tree data structure (required)"
-  },
-  {
-    prop: "onSelect",
-    type: "(node: TreeNodeType) => void",
-    default: "() => {}",
-    description: "Callback when a node is selected"
-  },
-  {
-    prop: "onToggle",
-    type: "(nodeId: string) => void",
-    default: "() => {}",
-    description: "Callback when a folder node is toggled"
-  },
-  {
-    prop: "initialExpanded",
+    prop: "defaultExpanded",
     type: "string[]",
     default: "[]",
     description: "Array of node IDs that should be initially expanded"
   },
   {
-    prop: "initialSelected",
-    type: "string | null",
-    default: "null",
+    prop: "defaultSelected",
+    type: "string",
+    default: "-",
     description: "ID of the initially selected node"
   },
   {
-    prop: "showIcons",
-    type: "boolean",
-    default: "true",
-    description: "Whether to show file/folder icons"
-  },
-  {
-    prop: "showLines",
-    type: "boolean",
-    default: "true",
-    description: "Whether to show connecting lines between nodes"
-  },
-  {
-    prop: "iconSize",
-    type: "number",
-    default: "16",
-    description: "Size of the icons in pixels"
+    prop: "onSelect",
+    type: "(id: string, label: string) => void",
+    default: "-",
+    description: "Callback when a node is selected"
   },
   {
     prop: "maxHeight",
@@ -156,24 +110,18 @@ rows={[
     type: "string",
     default: "-",
     description: "Additional class name for the root element"
-  },
-  {
-    prop: "nodeClassName",
-    type: "string",
-    default: "-",
-    description: "Additional class name for each node"
-  },
-  {
-    prop: "selectedClassName",
-    type: "string",
-    default: "-",
-    description: "Class name for the selected node"
-  },
-  {
-    prop: "hoverClassName",
-    type: "string",
-    default: "-",
-    description: "Class name for hover state of nodes"
   }
 ]}
 />
+
+### FolderTree.Item
+
+Represents individual folder or file nodes. Requires `id` and `label` props.
+
+### FolderTree.Content
+
+Wraps child items and provides smooth expand/collapse animations. Use this to contain nested items within a folder.
+
+### FolderTree.Trigger
+
+Optional component for custom expand/collapse behavior. The expand/collapse functionality is built into the Item component by default, so this is only needed for advanced customization.
