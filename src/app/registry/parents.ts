@@ -62,6 +62,7 @@ export const parentComponents = [
   "table",
   "text-highlighter",
   "theme-switch",
+  "thunder-loader",
   "top-sheet",
   "toast",
   "toggle-vault",

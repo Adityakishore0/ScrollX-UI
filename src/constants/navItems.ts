@@ -240,9 +240,13 @@ const navigation: NavItem[] = [
         href: "/docs/components/theme-switch",
       },
       {
+        title: "Thunder Loader",
+        href: "/docs/components/thunder-loader",
+        category: "new",
+      },
+      {
         title: "Top Sheet",
         href: "/docs/components/top-sheet",
-        category: "new",
       },
       { title: "Toast", href: "/docs/components/toast" },
       {
