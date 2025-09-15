@@ -1,0 +1,179 @@
+---
+title: Folder Tree
+description: A customizable folder tree component for displaying hierarchical data with expandable nodes.
+---
+
+<ComponentPreview
+  name="foldertree-demo"
+  className="p-4"
+  description="A folder tree component with expandable nodes and file icons."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="folder-tree" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <DepsOptions name="lucide-react framer-motion" />
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <p>
+        <code>folder-tree.tsx</code>
+      </p>
+      <ComponentSource name="folder-tree" />
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { FolderTree } from "@/components/ui/folder-tree";
+```
+
+### Basic Example
+
+```tsx
+const folderData = {
+  id: 'root',
+  name: 'Root',
+  type: 'folder',
+  children: [
+    {
+      id: 'folder1',
+      name: 'Documents',
+      type: 'folder',
+      children: [
+        {
+          id: 'file1',
+          name: 'Document 1',
+          type: 'file',
+          extension: 'docx'
+        }
+      ]
+    },
+    {
+      id: 'file2',
+      name: 'README',
+      type: 'file',
+      extension: 'md'
+    }
+  ]
+};
+
+<FolderTree 
+  data={folderData} 
+  initialExpanded={['root']}
+/>
+```
+
+## Examples
+
+---
+
+<Step>With Custom Icons</Step>
+
+<ComponentPreview
+  name="foldertree-badge"
+  className=""
+  description="A folder tree component with expandable nodes and file icons."
+/>
+
+## API Reference
+
+### FolderTree
+
+The `FolderTree` component renders a hierarchical tree view of folders and files.
+
+### Props
+
+<PropsTable 
+rows={[
+  {
+    prop: "data",
+    type: "TreeNodeType",
+    default: "required",
+    description: "The root node of the tree data structure (required)"
+  },
+  {
+    prop: "onSelect",
+    type: "(node: TreeNodeType) => void",
+    default: "() => {}",
+    description: "Callback when a node is selected"
+  },
+  {
+    prop: "onToggle",
+    type: "(nodeId: string) => void",
+    default: "() => {}",
+    description: "Callback when a folder node is toggled"
+  },
+  {
+    prop: "initialExpanded",
+    type: "string[]",
+    default: "[]",
+    description: "Array of node IDs that should be initially expanded"
+  },
+  {
+    prop: "initialSelected",
+    type: "string | null",
+    default: "null",
+    description: "ID of the initially selected node"
+  },
+  {
+    prop: "showIcons",
+    type: "boolean",
+    default: "true",
+    description: "Whether to show file/folder icons"
+  },
+  {
+    prop: "showLines",
+    type: "boolean",
+    default: "true",
+    description: "Whether to show connecting lines between nodes"
+  },
+  {
+    prop: "iconSize",
+    type: "number",
+    default: "16",
+    description: "Size of the icons in pixels"
+  },
+  {
+    prop: "maxHeight",
+    type: "string | number",
+    default: "24rem",
+    description: "Maximum height of the tree container"
+  },
+  {
+    prop: "className",
+    type: "string",
+    default: "-",
+    description: "Additional class name for the root element"
+  },
+  {
+    prop: "nodeClassName",
+    type: "string",
+    default: "-",
+    description: "Additional class name for each node"
+  },
+  {
+    prop: "selectedClassName",
+    type: "string",
+    default: "-",
+    description: "Class name for the selected node"
+  },
+  {
+    prop: "hoverClassName",
+    type: "string",
+    default: "-",
+    description: "Class name for hover state of nodes"
+  }
+]}
+/>

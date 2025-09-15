@@ -104,6 +104,7 @@ const navigation: NavItem[] = [
         href: "/docs/components/flowing-logos",
         category: "new",
       },
+      { title: "Folder Tree", href: "/docs/components/folder-tree" },
       {
         title: "GlowingBorderCard",
         href: "/docs/components/glowingbordercard",
