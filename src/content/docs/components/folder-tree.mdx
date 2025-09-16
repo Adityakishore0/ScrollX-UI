@@ -30,7 +30,7 @@ description: A customizable folder tree component for displaying hierarchical da
       </p>
       <ComponentSource name="folder-tree" />
 
-<Step>Add util file</Step>
+      <Step>Add util file</Step>
 <p>
   <code>lib/utils.ts</code>
 </p>
@@ -45,6 +45,7 @@ export function cn(...inputs: ClassValue[]) {
 ```
 
     </Steps>
+
   </TabsContent>
 </Tabs>
 
@@ -55,23 +56,23 @@ import { FolderTree } from "@/components/ui/folder-tree";
 ```
 
 ```tsx
-  <FolderTree.Root
-        defaultExpanded={["root", "folder1"]}
-        defaultSelected="file1"
-        className="w-full"
-      >
-        <FolderTree.Item id="root" label="Root Folder">
-          <FolderTree.Content>
-            <FolderTree.Item id="folder1" label="Documents">
-              <FolderTree.Content>
-                <FolderTree.Item id="file1" label="File 1.txt" />
-                <FolderTree.Item id="file2" label="File 2.txt" />
-                <FolderTree.Item id="file3" label="Image.png" />
-              </FolderTree.Content>
-            </FolderTree.Item>
-          </FolderTree.Content>
-        </FolderTree.Item>
-      </FolderTree.Root>
+<FolderTree.Root
+  defaultExpanded={["root", "folder1"]}
+  defaultSelected="file1"
+  className="w-full"
+>
+  <FolderTree.Item id="root" label="Root Folder">
+    <FolderTree.Content>
+      <FolderTree.Item id="folder1" label="Documents">
+        <FolderTree.Content>
+          <FolderTree.Item id="file1" label="File 1.txt" />
+          <FolderTree.Item id="file2" label="File 2.txt" />
+          <FolderTree.Item id="file3" label="Image.png" />
+        </FolderTree.Content>
+      </FolderTree.Item>
+    </FolderTree.Content>
+  </FolderTree.Item>
+</FolderTree.Root>
 ```
 
 ## Examples
@@ -91,6 +92,8 @@ import { FolderTree } from "@/components/ui/folder-tree";
 ### FolderTree.Root
 
 The root component that provides context and manages global state.
+
+## Props
 
 <PropsTable
   rows={[
