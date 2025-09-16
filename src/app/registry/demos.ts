@@ -41,6 +41,8 @@ export const demoComponents = [
   "flipstack-demo",
   "flowinglogos-demo",
   "followcursor-demo",
+  "foldertree-demo",
+  "foldertree-badge",
   "glowingbordercard-demo",
   "globe-demo",
   "globecities",

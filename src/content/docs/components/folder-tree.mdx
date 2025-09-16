@@ -1,0 +1,173 @@
+---
+title: Folder Tree
+description: A customizable folder tree component for displaying hierarchical data with expandable nodes.
+---
+
+<ComponentPreview
+  name="foldertree-demo"
+  className="p-4"
+  description="A folder tree component with expandable nodes and file icons."
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="folder-tree" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Install the following dependencies:</Step>
+      <DepsOptions name="framer-motion" />
+
+      <Step>Copy and paste the following code into your project.</Step>
+      <p>
+        <code>folder-tree.tsx</code>
+      </p>
+      <ComponentSource name="folder-tree" />
+
+      <Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+    </Steps>
+
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { FolderTree } from "@/components/ui/folder-tree";
+```
+
+```tsx
+<FolderTree.Root
+  defaultExpanded={["root", "folder1"]}
+  defaultSelected="file1"
+  className="w-full"
+>
+  <FolderTree.Item id="root" label="Root Folder">
+    <FolderTree.Content>
+      <FolderTree.Item id="folder1" label="Documents">
+        <FolderTree.Content>
+          <FolderTree.Item id="file1" label="File 1.txt" />
+          <FolderTree.Item id="file2" label="File 2.txt" />
+          <FolderTree.Item id="file3" label="Image.png" />
+        </FolderTree.Content>
+      </FolderTree.Item>
+    </FolderTree.Content>
+  </FolderTree.Item>
+</FolderTree.Root>
+```
+
+## Examples
+
+---
+
+<Step>With Badges</Step>
+
+<ComponentPreview
+  name="foldertree-badge"
+  className=""
+  description="A folder tree component with badges."
+/>
+
+## API Reference
+
+### FolderTree.Root
+
+The root component that provides context and manages global state.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "defaultExpanded",
+      type: "string[]",
+      default: "[]",
+      description: "IDs expanded by default.",
+    },
+    {
+      prop: "defaultSelected",
+      type: "string",
+      default: "null",
+      description: "ID selected by default.",
+    },
+    {
+      prop: "onSelect",
+      type: "(id, label) => void",
+      default: "undefined",
+      description: "Fires on select.",
+    },
+    {
+      prop: "id",
+      type: "string",
+      default: `"folder-tree"`,
+      description: "Tree ID.",
+    },
+    {
+      prop: "itemId",
+      type: "string",
+      default: "required",
+      description: "Item ID.",
+    },
+    {
+      prop: "label",
+      type: "string",
+      default: "required",
+      description: "Item label.",
+    },
+    {
+      prop: "icon",
+      type: "LucideIcon",
+      default: "Folder | File",
+      description: "Custom icon.",
+    },
+    {
+      prop: "badge",
+      type: "string | number",
+      default: "—",
+      description: "Right badge.",
+    },
+    {
+      prop: "modified",
+      type: "boolean | { content, className?, ariaLabel? }",
+      default: "false",
+      description: "Modified state.",
+    },
+    {
+      prop: "untracked",
+      type: "boolean | { content, className?, ariaLabel? }",
+      default: "false",
+      description: "Untracked state.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom style.",
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Nested items.",
+    },
+  ]}
+/>
