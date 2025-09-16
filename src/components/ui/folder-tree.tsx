@@ -36,7 +36,6 @@ interface RootProps {
   defaultExpanded?: string[];
   defaultSelected?: string;
   onSelect?: (id: string, label: string) => void;
-  maxHeight?: string | number;
   className?: string;
   children: React.ReactNode;
 }
@@ -65,7 +64,6 @@ const Root: React.FC<RootProps> = ({
   defaultExpanded = [],
   defaultSelected,
   onSelect,
-  maxHeight = "24rem",
   className = "",
   children,
 }) => {
@@ -108,15 +106,12 @@ const Root: React.FC<RootProps> = ({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         className={cn(
-          "bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm overflow-hidden",
+          "bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden",
           className
         )}
         role="tree"
       >
-        <div
-          className="w-full overflow-y-auto rounded-md bg-background p-2 text-sm"
-          style={{ maxHeight }}
-        >
+        <div className="w-full overflow-y-auto bg-background text-sm">
           {children}
         </div>
       </motion.div>
@@ -182,10 +177,10 @@ const Item: React.FC<ItemProps> = ({
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.2, delay: context.level * 0.05 }}
+            data-selected={isSelected ? "true" : "false"}
             className={cn(
-              "flex items-center gap-2 rounded px-2 py-1.5 text-sm transition-colors cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-slate-700/50",
-              isSelected &&
-                "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400",
+              "flex items-center gap-2 px-2 py-1.5 text-sm transition-colors cursor-pointer select-none hover:bg-gray-100 dark:hover:bg-slate-700/50 data-[selected=true]:bg-blue-50 data-[selected=true]:text-blue-600 dark:data-[selected=true]:bg-blue-900/30 dark:data-[selected=true]:text-blue-400",
+              "data-[selected=true]:border-r-2 data-[selected=true]:border-blue-600",
               className
             )}
             style={{ paddingLeft: `${context.level * 20 + 12}px` }}
@@ -212,20 +207,15 @@ const Item: React.FC<ItemProps> = ({
               </motion.span>
             )}
 
-            {!hasChildren && <span className="w-3.5 mr-2" />}
+            {!hasChildren && <span className="w-3 mr-2" />}
 
             {IconComponent && (
               <IconComponent
                 size={16}
+                data-selected={isSelected ? "true" : "false"}
+                data-child={hasChildren ? "true" : "false"}
                 className={cn(
-                  "mr-1 flex-shrink-0",
-                  hasChildren
-                    ? isSelected
-                      ? "text-blue-600"
-                      : "text-blue-500"
-                    : isSelected
-                    ? "text-blue-600"
-                    : "text-gray-500"
+                  "mr-1 flex-shrink-0 text-gray-500 data-[child=true]:text-blue-500 data-[selected=true]:text-blue-600 dark:data-[selected=true]:text-blue-400"
                 )}
               />
             )}
