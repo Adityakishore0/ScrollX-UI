@@ -382,6 +382,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "folder-tree",
+      "title": "Folder Tree",
+      "description": "A customizable folder tree component for displaying hierarchical data with expandable nodes.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/folder-tree.tsx",
+          "target": "components/ui/folder-tree.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "followcursor",
       "title": "Follow Cursor",
       "description": "Colorful, fluid cursor trails that respond to mouse movement.",

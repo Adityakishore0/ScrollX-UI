@@ -2,6 +2,8 @@ export interface NavItem {
   title: string;
   href: string;
   category?: string;
+  color?: string;
+  categoryClassName?: string;
   children?: NavItem[];
 }
 
@@ -14,7 +16,13 @@ const navigation: NavItem[] = [
     title: "Installation Guide",
     href: "",
     children: [
-      { title: "CLI", href: "/docs/installation/cli" },
+      {
+        title: "CLI",
+        href: "/docs/installation/cli",
+        category: "3.0",
+        categoryClassName:
+          "ml-2 rounded-md border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs leading-none text-neutral-700 no-underline group-hover:no-underline dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400",
+      },
       { title: "Manual", href: "/docs/installation/manual" },
       {
         title: "Tailwind Setup",
