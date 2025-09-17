@@ -21,13 +21,15 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
         return `npx shadcn@latest add https://scrollxui.dev/registry/${name}.json`;
       case "bun":
         return `bun x --bun shadcn@latest add https://scrollxui.dev/registry/${name}.json`;
+      case "shadcn-cli":
+        return `npx shadcn@latest add @scrollxui/${name}`;
       default:
         return `npx shadcn@latest add https://scrollxui.dev/registry/${name}.json`;
     }
   };
 
   const installCommand = getInstallCommand(selected);
-  const packageManagers = ["pnpm", "npm", "yarn", "bun"];
+  const packageManagers = ["pnpm", "npm", "yarn", "bun", "shadcn-cli"];
 
   const isClipboardSupported = (): boolean => {
     try {
@@ -132,11 +134,11 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
   return (
     <div className="relative w-full max-w-4xl rounded-xl bg-black text-white shadow-lg">
       <div className="flex items-center justify-between px-4 pt-4 text-sm text-gray-400">
-        <div className="flex space-x-6">
+        <div className="flex space-x-3 sm:space-x-6 overflow-x-auto">
           {packageManagers.map((pkg) => (
             <button
               key={pkg}
-              className={`border-b-2 transition-colors ${
+              className={`border-b-2 whitespace-nowrap transition-colors ${
                 selected === pkg
                   ? "border-white text-white"
                   : "border-transparent hover:text-gray-300"
@@ -168,7 +170,7 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
             ) : copyFailed ? (
               <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
             ) : (
-              <Copy className="h-4 w-4" />
+              <Copy className="h-4 w-4 stroke-black dark:stroke-white" />
             )}
           </button>
 
@@ -209,11 +211,13 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
           {installCommand.split(" ").map((part, i) => {
             let colorClass = "text-white";
 
-            if (["npx", "pnpm", "bun", "yarn"].includes(part)) {
+            if (["npx", "pnpm", "bun", "yarn", "shadcn-cli"].includes(part)) {
               colorClass = "text-blue-400";
             } else if (part.startsWith("shadcn@")) {
               colorClass = "text-green-400";
             } else if (part.startsWith("https://")) {
+              colorClass = "text-yellow-400";
+            } else if (part.startsWith("@scrollxui/")) {
               colorClass = "text-yellow-400";
             }
 

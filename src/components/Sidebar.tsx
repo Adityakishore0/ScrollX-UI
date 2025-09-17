@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import navigation from "@/constants/navItems";
 import { useState } from "react";
+import { Status } from "@/components/ui/status";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -40,10 +41,7 @@ export default function Sidebar() {
                     : "text-gray-700 dark:text-gray-400",
                   "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
                 )}
-                style={{
-                  fontSize: "0.95rem",
-                  padding: "0.5rem 0.75rem",
-                }}
+                style={{ fontSize: "0.95rem", padding: "0.5rem 0.75rem" }}
               >
                 {item.title}
               </Link>
@@ -56,39 +54,48 @@ export default function Sidebar() {
               </span>
             )}
 
-            {item.children?.map((child) => (
-              <Link
-                key={child.href}
-                href={child.href}
-                className={cn(
-                  "block rounded-md transition-all relative",
-                  pathname === child.href
-                    ? "bg-black text-white dark:bg-white dark:text-black"
-                    : "text-gray-700 dark:text-gray-400",
-                  "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-                )}
-                style={{
-                  fontSize: "0.85rem",
-                  padding: "0.4rem 0.75rem",
-                  margin: "0.15rem 0",
-                }}
-              >
-                <div className="flex items-center gap-1 whitespace-nowrap overflow-hidden">
-                  <span className="truncate">{child.title}</span>
-                  {child.category === "new" && (
-                    <span
-                      className="flex-shrink-0 bg-green-900 text-green-400 font-medium rounded-full border border-green-500"
-                      style={{
-                        fontSize: "0.7rem",
-                        padding: "0.15rem 0.3rem",
-                      }}
-                    >
-                      New
-                    </span>
+            {item.children?.map((child) => {
+              const typedChild = child as typeof child & {
+                categoryClassName?: string;
+              };
+
+              return (
+                <Link
+                  key={typedChild.href}
+                  href={typedChild.href}
+                  className={cn(
+                    "block rounded-md transition-all relative",
+                    pathname === typedChild.href
+                      ? "bg-black text-white dark:bg-white dark:text-black"
+                      : "text-gray-700 dark:text-gray-400",
+                    "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
                   )}
-                </div>
-              </Link>
-            ))}
+                  style={{
+                    fontSize: "0.85rem",
+                    padding: "0.4rem 0.75rem",
+                    margin: "0.15rem 0",
+                  }}
+                >
+                  <div className="flex items-center gap-1 whitespace-nowrap overflow-hidden">
+                    <span className="truncate">{typedChild.title}</span>
+
+                    {typedChild.category && (
+                      <Status
+                        className={cn(
+                          "flex-shrink-0",
+                          typedChild.categoryClassName ||
+                            " bg-green-900 text-green-400 font-medium rounded-full border border-green-500"
+                        )}
+                        shiny={true}
+                        shinySpeed={2}
+                      >
+                        {typedChild.category}
+                      </Status>
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         ))}
       </nav>
