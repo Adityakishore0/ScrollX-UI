@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Stats Carousel",
   "description": "Animated statistics counter in stacked carousel for modern websites.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion"],
   "files": [
     {

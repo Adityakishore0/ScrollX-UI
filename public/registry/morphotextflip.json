@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "MorphoText Flip",
   "description": "Animated text component that flips between words with smooth transitions.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion"],
   "files": [
     {

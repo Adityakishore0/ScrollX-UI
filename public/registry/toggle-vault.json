@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Toggle Vault",
   "description": "Expandable vault component with animated open/close, trigger button, and content panel.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion"],
   "files": [
     {

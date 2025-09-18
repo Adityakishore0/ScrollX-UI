@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Aspect Ratio",
   "description": "A responsive container component that maintains a fixed aspect ratio, commonly used for media like images and videos.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["@radix-ui/react-aspect-ratio"],
   "files": [
     {

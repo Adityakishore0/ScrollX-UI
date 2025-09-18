@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Animated TextGenerate",
   "description": "Generates animated text word-by-word with blur, highlights, links, and smooth effects.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
   "files": [
     {

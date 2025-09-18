@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Button",
   "description": "Reusable button component with multiple variants and sizes.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["ogl"],
   "files": [
     {

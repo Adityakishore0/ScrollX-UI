@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Hold ToConfirm",
   "description": "A button that requires holding down to confirm irreversible or critical actions.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "framer-motion",
     "@radix-ui/react-slot",

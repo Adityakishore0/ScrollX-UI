@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Status",
   "description": "A small status component with customizable variants, indicator and shiny animation effects.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
   "files": [
     {

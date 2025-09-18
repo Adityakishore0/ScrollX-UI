@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Interactive input",
   "description": "A highly customizable interactive input component with shimmer effects, glow, and visual styling options.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "@radix-ui/react-slot",
     "class-variance-authority",

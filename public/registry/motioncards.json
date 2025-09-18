@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "MotionCards",
   "description": "Elegant cards in seamless flow for clean web design.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion"],
   "files": [
     {

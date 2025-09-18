@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Tooltip",
   "description": "An interactive, animated popup that displays information related to an element when it receives keyboard focus or when the mouse hovers over it.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "framer-motion",
     "@radix-ui/react-tooltip",

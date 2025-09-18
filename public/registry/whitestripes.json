@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Whitestripes",
   "description": "Dynamic motion background for hero sections and modern layouts.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion"],
   "files": [
     {

@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Cursor Highlight",
   "description": "Text is revealed on scroll with pointer, gradient, and border effects.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
   "files": [
     {

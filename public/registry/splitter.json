@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Splitter",
   "description": "A versatile splitter component for creating resizable panels with smooth animations.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "lucide-react", "clsx", "tailwind-merge"],
   "files": [
     {

@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Theme Switch",
   "description": "A flexible and accessible theme mode switcher component",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["lucide-react", "clsx", "tailwind-merge", "next-themes"],
   "files": [
     {

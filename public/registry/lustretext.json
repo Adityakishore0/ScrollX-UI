@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Lustre Text",
   "description": "A lustrous text component with animated gradient shine.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [""],
   "files": [
     {

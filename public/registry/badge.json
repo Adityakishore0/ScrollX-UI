@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Badge",
   "description": "A small badge component with customizable variants and shiny animation effects.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
   "files": [
     {

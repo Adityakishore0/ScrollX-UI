@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Checkbox Pro",
   "description": "A switchable element to mark an option as checked or unchecked.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "lucide-react", "clsx", "tailwind-merge"],
   "files": [
     {

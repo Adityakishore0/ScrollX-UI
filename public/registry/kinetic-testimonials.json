@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Kinetic Testimonials",
   "description": "Smoothly scrolling, animated testimonials for modern developer websites to showcase user feedback visually.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["@radix-ui/react-avatar", "clsx", "tailwind-merge"],
   "files": [
     {

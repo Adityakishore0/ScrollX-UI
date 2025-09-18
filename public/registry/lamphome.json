@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Lamphome",
   "description": "A stylish, animated header component with dark/light mode toggle functionality.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "next-themes"],
   "files": [
     {

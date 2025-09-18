@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Animated Tabs",
   "description": "A headless and styled tab UI component set for switching content views.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["tailwind-merge"],
   "files": [
     {

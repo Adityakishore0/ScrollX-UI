@@ -25,6 +25,7 @@ export const demoComponents = [
   "carousel-demo",
   "carouselimage-demo",
   "checkboxpro-demo",
+  "collapsible-demo",
   "cursorhighlight-demo",
   "cursorhighlightdefault-demo",
   "cursorhighlightgradient-demo",

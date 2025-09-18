@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Profile Card",
   "description": "A reusable profile card component displaying a user's image, name, bio, skills, and social links with interactive animations.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "lucide-react"],
   "files": [
     {

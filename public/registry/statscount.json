@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "StatsCount",
   "description": "Animated statistics counter with responsive layout and scroll triggers.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
   "files": [
     {

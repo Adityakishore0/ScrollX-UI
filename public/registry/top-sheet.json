@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Top Sheet",
   "description": "A customizable component for creating elegant, slide-out panels from the top of the screen.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
   "files": [
     {

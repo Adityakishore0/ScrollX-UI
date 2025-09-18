@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Dropdown Menu",
   "description": "Animated Dropdown Menu Reveals a menu of options or actions when activated by a button.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "framer-motion",
     "lucide-react",

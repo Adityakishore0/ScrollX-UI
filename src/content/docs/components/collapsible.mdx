@@ -1,0 +1,104 @@
+---
+title: Collapsible
+description: An interactive component which expands/collapses a panel with a smooth motion.
+---
+
+<ComponentPreview name="collapsible-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="collapsible" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion @radix-ui/react-collapsible" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>collapsible.tsx</code>
+</p>
+<ComponentSource name="collapsible" />
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+
+```tsx
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+```
+
+```tsx
+<Collapsible>
+  <CollapsibleTrigger>What is ScrollX UI?</CollapsibleTrigger>
+  <CollapsibleContent>
+    ScrollX UI is a collection of modern, animated, and customizable UI
+    components built for React and Next.js.
+  </CollapsibleContent>
+</Collapsible>
+```
+
+
+## API Reference
+
+###  Collapsible
+
+An interactive component which expands/collapses a panel with a smooth motion.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "Render a custom component instead of the default element."
+    },
+    {
+      prop: "open",
+      type: "boolean",
+      default: "-",
+      description: "Controls the open state of the collapsible."
+    },
+    {
+      prop: "defaultOpen",
+      type: "boolean",
+      default: "false",
+      description: "Sets the initial open state."
+    },
+    {
+      prop: "onOpenChange",
+      type: "(open: boolean) => void",
+      default: "-",
+      description: "Fires when the open state changes."
+    },
+    {
+      prop: "children",
+      type: "React.ReactNode",
+      default: "required",
+      description: "Content inside the collapsible."
+    },
+    {
+      prop: "data-slot",
+      type: "string",
+      default: "-",
+      description: "Internal attribute for styling/testing."
+    }
+  ]}
+/>

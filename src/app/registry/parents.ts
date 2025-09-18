@@ -19,6 +19,7 @@ export const parentComponents = [
   "carousel",
   "checkbox-pro",
   "codeblock",
+  "collapsible",
   "cursorimagetrail",
   "cursor-highlight",
   "dropdown-menu",
