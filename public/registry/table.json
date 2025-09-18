@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Table",
   "description": "Powerful responsive data table with sticky headers, smooth scrolling, sorting, and pagination.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "framer-motion",
     "@tanstack/react-table",

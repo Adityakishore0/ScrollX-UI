@@ -4,9 +4,8 @@
   "type": "registry:component",
   "title": "Gravity",
   "description": "Gravity pulls objects as they launch, soar, and fall inside a container.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
-  "dependencies": ["framer-motion", "clsx",
-    "tailwind-merge" ],
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
   "files": [
     {
       "type": "registry:component",

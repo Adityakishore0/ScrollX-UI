@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Particles",
   "description": "Dynamic 3D particle system with customizable properties",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["three", "@types/three"],
   "files": [
     {

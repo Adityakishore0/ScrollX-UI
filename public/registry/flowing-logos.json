@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Flowing Logos",
   "description": "Flowing logo showcase with smooth animations, hover effects, and modern UI.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["clsx", "tailwind-merge"],
   "files": [
     {

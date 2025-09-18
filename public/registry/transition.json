@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Transition",
   "description": "Smooth page transitions with curved or slide effects.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion"],
   "files": [
     {

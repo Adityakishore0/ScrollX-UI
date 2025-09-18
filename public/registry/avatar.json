@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Avatar",
   "description": "Customizable Avatar component with animated borders for status indicators like \"close friends\" or \"normal story\".",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["@radix-ui/react-avatar", "clsx", "tailwind-merge"],
   "files": [
     {

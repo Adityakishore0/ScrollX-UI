@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Card",
   "description": "Renders a card component comprising a header, content section, and footer...",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["clsx", "tailwind-merge"],
   "files": [
     {

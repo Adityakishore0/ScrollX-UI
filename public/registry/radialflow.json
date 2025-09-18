@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Radial Flow",
   "description": "Dynamic radial graph for visualizing networks & hierarchies with animated nodes.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "framer-motion",
     "class-variance-authority",

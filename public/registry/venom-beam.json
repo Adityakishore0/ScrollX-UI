@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Venom Beam",
   "description": "A glowing particle canvas with motion-reactive trails. Perfect for immersive, high-tech hero sections.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [""],
   "files": [
     {

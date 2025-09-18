@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Login Form",
   "description": "Modern, responsive login form with smooth transitions and gradient accents.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "framer-motion",
     "@radix-ui/react-slot",

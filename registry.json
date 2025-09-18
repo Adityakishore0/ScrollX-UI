@@ -292,6 +292,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "collapsible",
+      "title": "Collapsible",
+      "description": "An interactive component which expands/collapses a panel with a smooth motion.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "@radix-ui/react-collapsible"],
+      "files": [
+        {
+          "path": "components/ui/collapsible.tsx",
+          "target": "components/ui/collapsible.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "cursor-highlight",
       "title": "Cursor Highlight",
       "description": "Text is revealed on scroll with pointer, gradient, and border effects.",

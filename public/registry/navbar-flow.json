@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Navbar Flow",
   "description": "Animated navbar component with flowing SVG connections and dropdown menus.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "lucide-react"],
   "files": [
     {

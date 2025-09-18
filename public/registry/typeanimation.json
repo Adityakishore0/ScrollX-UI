@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Type Animation",
   "description": "Displays an animated typing effect.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "framer-motion",
     "react-type-animation",

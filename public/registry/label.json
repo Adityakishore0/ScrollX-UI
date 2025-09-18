@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Label",
   "description": "Displays an accessible label associated with controls.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "framer-motion",
     "@radix-ui/react-label",

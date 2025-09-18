@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:component",
+  "title": "Collapsible",
+  "description": "An interactive component which expands/collapses a panel with a smooth motion.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": ["framer-motion", "@radix-ui/react-collapsible"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/collapsible.tsx",
+      "target": "components/ui/collapsible.tsx",
+      "content": "\"use client\"\nimport * as React from \"react\"\nimport * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\"\nimport { motion } from \"framer-motion\"\n\nfunction Collapsible({\n  ...props\n}: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {\n  return <CollapsiblePrimitive.Root data-slot=\"collapsible\" {...props} />\n}\n\nfunction CollapsibleTrigger({\n  ...props\n}: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleTrigger>) {\n  return (\n    <CollapsiblePrimitive.CollapsibleTrigger\n      data-slot=\"collapsible-trigger\"\n      asChild\n      {...props}\n    >\n      <motion.div\n        whileHover={{ scale: 1.01 }}\n        whileTap={{ scale: 0.99 }}\n        transition={{ duration: 0.2 }}\n      >\n        {props.children}\n      </motion.div>\n    </CollapsiblePrimitive.CollapsibleTrigger>\n  )\n}\n\nfunction CollapsibleContent({\n  ...props\n}: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>) {\n  return (\n    <CollapsiblePrimitive.CollapsibleContent\n      data-slot=\"collapsible-content\"\n      asChild\n      {...props}\n    >\n      <motion.div\n        initial={{ height: 0, opacity: 0 }}\n        animate={{ height: \"auto\", opacity: 1 }}\n        exit={{ height: 0, opacity: 0 }}\n        transition={{ \n          duration: 0.3,\n          ease: \"easeInOut\"\n        }}\n        style={{ overflow: \"hidden\" }}\n      >\n        {props.children}\n      </motion.div>\n    </CollapsiblePrimitive.CollapsibleContent>\n  )\n}\n\nexport { Collapsible, CollapsibleTrigger, CollapsibleContent }"
+    }
+  ]
+}

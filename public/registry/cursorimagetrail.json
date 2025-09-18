@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Cursor ImageTrail",
   "description": "mouse trail component with animated image effects on hover.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion"],
   "files": [
     {

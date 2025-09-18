@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Stagger Chars",
   "description": "An animated text component that creates a smooth, staggered character animation effect when hovered.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
   "files": [
     {

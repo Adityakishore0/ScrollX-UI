@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "CodeBlock",
   "description": "Syntax-highlighted codeblock component built on top of react-syntax-highlighter.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "lucide-react",
     "react-syntax-highlighter",

@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Alert Dialog",
   "description": "A modal dialog used to convey critical information and require a user response before proceeding..",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": [
     "@radix-ui/react-alert-dialog",
     "framer-motion",

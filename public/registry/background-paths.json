@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Background Paths",
   "description": "A set of SVG paths that animate as if being drawn. Great for tech hero backgrounds.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
   "files": [
     {

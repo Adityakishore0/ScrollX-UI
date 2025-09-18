@@ -13,6 +13,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Search, Circle, Sparkle } from "lucide-react";
 import navigation, { NavItem } from "@/constants/navItems";
 import { SeparatorPro } from "@/components/ui/seperatorpro";
+import { Status } from "@/components/ui/status";
+import { cn } from "@/lib/utils";
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -38,8 +40,6 @@ const CSS_CLASSES = Object.freeze({
   button:
     "w-full text-left p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg group",
   span: "group-hover:border-b group-hover:border-black dark:group-hover:border-white pb-px transition-all duration-200",
-  newBadge:
-    "ml-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-400 text-xs font-medium px-2 py-0.5 rounded-full border border-green-300 dark:border-green-500",
 });
 
 let flattenedItems: NavItem[] | null = null;
@@ -47,57 +47,42 @@ let searchIndex: Map<string, NavItem[]> | null = null;
 
 const getFlattenedNavigation = (): NavItem[] => {
   if (flattenedItems) return flattenedItems;
-
   const result: NavItem[] = [];
   const stack = [...navigation];
-
   while (stack.length > 0) {
     const item = stack.pop()!;
     result.push(item);
-    if (item.children) {
-      stack.push(...item.children);
-    }
+    if (item.children) stack.push(...item.children);
   }
-
   flattenedItems = result;
   return result;
 };
 
 const buildSearchIndex = (items: NavItem[]): Map<string, NavItem[]> => {
   if (searchIndex) return searchIndex;
-
   const index = new Map<string, NavItem[]>();
-
   for (const item of items) {
     const title = item.title.toLowerCase();
     for (let i = 0; i < title.length; i++) {
       for (let j = i + 1; j <= title.length; j++) {
         const substring = title.slice(i, j);
-        if (!index.has(substring)) {
-          index.set(substring, []);
-        }
+        if (!index.has(substring)) index.set(substring, []);
         const arr = index.get(substring)!;
-        if (!arr.includes(item)) {
-          arr.push(item);
-        }
+        if (!arr.includes(item)) arr.push(item);
       }
     }
   }
-
   searchIndex = index;
   return index;
 };
 
 const searchItems = (query: string): NavItem[] => {
   if (!query) return [];
-
   const items = getFlattenedNavigation();
   const index = buildSearchIndex(items);
   const lowerQuery = query.toLowerCase();
-
   const results = index.get(lowerQuery);
   if (results && results.length <= 10) return results;
-
   const fallbackResults: NavItem[] = [];
   for (const item of items) {
     if (item.title.toLowerCase().includes(lowerQuery)) {
@@ -105,9 +90,41 @@ const searchItems = (query: string): NavItem[] => {
       if (fallbackResults.length >= 10) break;
     }
   }
-
   return fallbackResults;
 };
+
+const OptimizedStatusBadge = memo(
+  ({
+    category,
+    categoryClassName,
+    isHovered,
+  }: {
+    category: string;
+    categoryClassName?: string;
+    isHovered: boolean;
+  }) => {
+    const defaultClassName = useMemo(
+      () =>
+        "bg-green-900 text-green-400 font-medium rounded-full border border-green-500 px-2 py-0.5 text-xs",
+      []
+    );
+
+    return (
+      <Status
+        className={cn(
+          "flex-shrink-0 transition-all duration-200",
+          categoryClassName || defaultClassName
+        )}
+        shiny={isHovered}
+        shinySpeed={3}
+      >
+        {category}
+      </Status>
+    );
+  }
+);
+
+OptimizedStatusBadge.displayName = "OptimizedStatusBadge";
 
 const NavigationItem = memo(
   ({
@@ -119,26 +136,49 @@ const NavigationItem = memo(
     onClick: (href: string) => void;
     isChild?: boolean;
   }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
     const handleClick = useCallback(() => {
       if (item.href) onClick(item.href);
     }, [item.href, onClick]);
+
+    const handleMouseEnter = useCallback(() => {
+      setIsHovered(true);
+    }, []);
+
+    const handleMouseLeave = useCallback(() => {
+      setIsHovered(false);
+    }, []);
+
+    const categoryBadge = useMemo(() => {
+      if (!item.category) return null;
+      return (
+        <OptimizedStatusBadge
+          category={item.category}
+          categoryClassName={item.categoryClassName}
+          isHovered={isHovered}
+        />
+      );
+    }, [item.category, item.categoryClassName, isHovered]);
 
     return (
       <button
         className={CSS_CLASSES.button}
         onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         disabled={!item.href}
       >
         <div className="flex items-center">
-          {isChild && (
-            <Sparkle className="w-3 h-3 text-black dark:text-white opacity-80 mr-2 flex-shrink-0" />
-          )}
-          <span className={item.href ? CSS_CLASSES.span : ""}>
-            {item.title}
-          </span>
-          {item.category === "new" && (
-            <span className={CSS_CLASSES.newBadge}>New</span>
-          )}
+          <div className="flex items-center">
+            {isChild && (
+              <Sparkle className="w-3 h-3 text-black dark:text-white opacity-80 mr-2 flex-shrink-0" />
+            )}
+            <span className={cn("truncate", item.href ? CSS_CLASSES.span : "")}>
+              {item.title}
+            </span>
+          </div>
+          {categoryBadge && <div className="ml-2">{categoryBadge}</div>}
         </div>
       </button>
     );
@@ -158,7 +198,7 @@ const NavigationSection = memo(
     <div className="mb-3">
       <div className="flex items-center mb-1">
         <Circle className="w-3 h-3 text-black dark:text-white opacity-80 mr-2 flex-shrink-0" />
-        <p className="text-gray-600 dark:text-neutral-400 text-sm">
+        <p className="text-gray-600 dark:text-neutral-400 text-sm truncate">
           {item.title}
         </p>
       </div>
@@ -211,7 +251,6 @@ const TwitterLink = memo(() => {
   const handleClick = useCallback(() => {
     window.open("https://x.com/Ahdeetai", "_blank");
   }, []);
-
   return (
     <button className={CSS_CLASSES.button} onClick={handleClick}>
       <div className="flex items-center">
@@ -323,7 +362,6 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
       setSearchQuery(value);
-
       startTransition(() => {
         setDeferredQuery(value.trim());
       });
@@ -405,7 +443,7 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
           </div>
           <button
             onClick={handleClose}
-            className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-white flex-shrink-0"
+            className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-white flex-shrink-0 transition-colors duration-200"
             aria-label="Close search"
           >
             <X className="w-5 h-5" />
@@ -426,6 +464,7 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
             .custom-scrollbar::-webkit-scrollbar-thumb {
               background-color: #ccc;
               border-radius: 4px;
+              transition: background-color 0.2s ease;
             }
             .custom-scrollbar {
               scrollbar-width: thin;

@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Expandable Dock",
   "description": "A versatile expandable dock component that can be used to display various sections with expandable functionality.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
   "files": [
     {

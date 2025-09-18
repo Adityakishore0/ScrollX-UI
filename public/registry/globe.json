@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Globe",
   "description": "The Globe component creates beautiful 5kb WebGL Globe",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["@react-spring/web", "cobe"],
   "files": [
     {

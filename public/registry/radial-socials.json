@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Radial Socials",
   "description": "radial social icons arranged in circles, with smooth expansion and rotation",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["clsx", "tailwind-merge"],
   "files": [
     {

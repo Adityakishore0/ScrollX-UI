@@ -84,9 +84,13 @@ const navigation: NavItem[] = [
       },
       { title: "CodeBlock", href: "/docs/components/codeblock" },
       {
+        title: "Collapsible",
+        href: "/docs/components/collapsible",
+        category: "new",
+      },
+      {
         title: "Cursor Highlight",
         href: "/docs/components/cursor-highlight",
-        category: "new",
       },
       { title: "Cursor ImageTrail", href: "/docs/components/cursorimagetrail" },
       {
@@ -112,7 +116,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/flowing-logos",
         category: "new",
       },
-      { title: "Folder Tree", href: "/docs/components/folder-tree", category: "new", },
+      {
+        title: "Folder Tree",
+        href: "/docs/components/folder-tree",
+        category: "new",
+      },
       {
         title: "GlowingBorderCard",
         href: "/docs/components/glowingbordercard",

@@ -4,7 +4,7 @@
   "type": "registry:component",
   "title": "Input Otp",
   "description": "A flexible Accessible one-time password component.",
-  "author": "Ahdeetai <https://aditya.is-cool.devis>",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["framer-motion", "lucide-react", "clsx", "tailwind-merge"],
   "files": [
     {
