@@ -742,6 +742,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "popover",
+      "title": "Popover",
+      "description": "Displays rich content in a animated portal, triggered by a button.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "@radix-ui/react-popover"],
+      "files": [
+        {
+          "path": "components/ui/popover.tsx",
+          "target": "components/ui/popover.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "profilecard",
       "title": "Profile Card",
       "description": "A reusable profile card component displaying a user's image, name, bio, skills, and social links with interactive animations.",

@@ -194,6 +194,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/parallaxcards",
       },
       {
+        title: "Popover",
+        href: "/docs/components/popover",
+        category: "new",
+      },
+      {
         title: "Profile Card",
         href: "/docs/components/profilecard",
       },
