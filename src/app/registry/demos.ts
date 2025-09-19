@@ -74,6 +74,7 @@ export const demoComponents = [
   "pagination-demo",
   "particles-demo",
   "parallaxcards-demo",
+  "popover-demo",
   "profilecard-demo",
   "radialflow-demo",
   "radialsocials-demo",

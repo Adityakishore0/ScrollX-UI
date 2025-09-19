@@ -49,6 +49,7 @@ export const parentComponents = [
   "pagination",
   "parallaxcards",
   "particles",
+  "popover",
   "profilecard",
   "radialflow",
   "radial-socials",

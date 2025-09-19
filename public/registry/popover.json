@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "type": "registry:component",
+  "title": "Popover",
+  "description": "Displays rich content in a animated portal, triggered by a button.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": [
+    "framer-motion",
+    "@radix-ui/react-popover",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/popover.tsx",
+      "target": "components/ui/popover.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport * as PopoverPrimitive from \"@radix-ui/react-popover\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\nfunction Popover({ ...props }: React.ComponentProps<typeof PopoverPrimitive.Root>) {\n  return <PopoverPrimitive.Root data-slot=\"popover\" {...props} />;\n}\n\nfunction PopoverTrigger({ ...props }: React.ComponentProps<typeof PopoverPrimitive.Trigger>) {\n  return <PopoverPrimitive.Trigger data-slot=\"popover-trigger\" {...props} />;\n}\n\nfunction PopoverContent({\n  className,\n  align = \"center\",\n  sideOffset = 4,\n  children,\n  ...props\n}: React.ComponentProps<typeof PopoverPrimitive.Content>) {\n  return (\n    <PopoverPrimitive.Portal>\n      <PopoverPrimitive.Content\n        data-slot=\"popover-content\"\n        align={align}\n        sideOffset={sideOffset}\n        asChild\n        {...props}\n      >\n        <motion.div\n          initial={{ opacity: 0, scale: 0.3, y: 20 }}\n          animate={{ opacity: 1, scale: 1, y: 0, x: [0, -4, 4, -3, 3, -2, 2, -1, 1, 0] }}\n          exit={{\n            opacity: 0,\n            scale: 0.8,\n            y: 10,\n            x: [0, -3, 3, -2, 2, -1, 1, 0],\n            transition: {\n              opacity: { duration: 0.25 },\n              scale: { duration: 0.25, ease: \"easeIn\" },\n              y: { duration: 0.25, ease: \"easeIn\" },\n              x: { duration: 0.4, ease: \"easeOut\", times: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 1] },\n            },\n          }}\n          transition={{\n            opacity: { duration: 0.2 },\n            scale: { duration: 0.6, type: \"spring\", damping: 12, stiffness: 400, mass: 0.8 },\n            y: { duration: 0.5, type: \"spring\", damping: 10, stiffness: 300, mass: 0.9 },\n            x: { duration: 0.7, delay: 0.2, ease: \"easeOut\", times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1] },\n          }}\n          className={cn(\n            \"bg-popover text-popover-foreground z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden\",\n            className\n          )}\n        >\n          {children}\n        </motion.div>\n      </PopoverPrimitive.Content>\n    </PopoverPrimitive.Portal>\n  );\n}\n\nfunction PopoverAnchor({ ...props }: React.ComponentProps<typeof PopoverPrimitive.Anchor>) {\n  return <PopoverPrimitive.Anchor data-slot=\"popover-anchor\" {...props} />;\n}\n\nexport { Popover, PopoverTrigger, PopoverContent, PopoverAnchor };"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}

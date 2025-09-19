@@ -1,0 +1,113 @@
+---
+title: Popover
+description: Displays rich content in a animated portal, triggered by a button.
+---
+
+<ComponentPreview
+  name="popover-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="popover" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion @radix-ui/react-popover" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>popover.tsx</code>
+</p>
+<ComponentSource name="popover" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+```
+
+```tsx
+<Popover>
+  <PopoverTrigger>Open</PopoverTrigger>
+  <PopoverContent>Place content for the popover here.</PopoverContent>
+</Popover>
+```
+
+
+## API Reference
+
+### Popover
+
+Displays rich content in a animated portal, triggered by a button.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Content to be rendered inside the Popover. Required for Popover, PopoverTrigger, PopoverContent, and PopoverAnchor."
+    },
+    {
+      prop: "align",
+      type: `"start" | "center" | "end" | "baseline"`,
+      default: `"center"`,
+      description: "Alignment of the PopoverContent relative to the trigger. Used in PopoverContent."
+    },
+    {
+      prop: "sideOffset",
+      type: "number",
+      default: 4,
+      description: "Offset distance in pixels between the PopoverContent and its trigger. Used in PopoverContent."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Additional CSS classes to style PopoverContent. Used in PopoverContent."
+    },
+    {
+      prop: "...props",
+      type: "ComponentProps",
+      default: "-",
+      description: "All other native Popover props from @radix-ui/react-popover Root, Trigger, Content, or Anchor."
+    }
+  ]}
+/>
+
