@@ -1,0 +1,112 @@
+---
+title: Slider
+description: An interactive slider with glass effects for selecting values smoothly within a range.
+---
+
+<ComponentPreview
+  name="slider-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="slider" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+ <Step>Install the following dependencies:</Step>
+<DepsOptions name="@radix-ui/react-slider" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>slider.tsx</code>
+</p>
+<ComponentSource name="slider" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Slider } from "@/components/ui/slider"
+```
+
+```tsx
+<Slider defaultValue={[33]} max={100} step={1} />
+```
+
+
+## API Reference
+
+### Slider
+
+An interactive slider with glass effects for selecting values smoothly within a range.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "defaultValue",
+      type: "number | number[]",
+      default: "required",
+      description: "Initial slider value or range. Sets thumb position(s) on render."
+    },
+    {
+      prop: "value",
+      type: "number | number[]",
+      default: "-",
+      description: "Controlled value or range. Updates thumb position(s) when changed."
+    },
+    {
+      prop: "min",
+      type: "number",
+      default: 0,
+      description: "Minimum selectable value of the slider."
+    },
+    {
+      prop: "max",
+      type: "number",
+      default: 100,
+      description: "Maximum selectable value of the slider."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Custom CSS classes for styling the slider root."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "optional",
+      description: "Optional nested content inside the slider."
+    }
+  ]}
+/>
+

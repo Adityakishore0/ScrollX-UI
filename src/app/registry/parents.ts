@@ -54,6 +54,7 @@ export const parentComponents = [
   "radialflow",
   "radial-socials",
   "side-sheet",
+  "slider",
   "stagger-chars",
   "status",
   "statscount",

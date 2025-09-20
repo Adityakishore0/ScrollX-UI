@@ -72,7 +72,6 @@ const navigation: NavItem[] = [
       {
         title: "Border Glide",
         href: "/docs/components/border-glide",
-        category: "new",
       },
       { title: "Button", href: "/docs/components/button" },
       { title: "Card", href: "/docs/components/card" },
@@ -80,7 +79,6 @@ const navigation: NavItem[] = [
       {
         title: "Checkbox Pro",
         href: "/docs/components/checkbox-pro",
-        category: "new",
       },
       { title: "CodeBlock", href: "/docs/components/codeblock" },
       {
@@ -96,7 +94,6 @@ const navigation: NavItem[] = [
       {
         title: "Dropdown Menu",
         href: "/docs/components/dropdown-menu",
-        category: "new",
       },
       {
         title: "Expandable Dock",
@@ -105,7 +102,6 @@ const navigation: NavItem[] = [
       {
         title: "FlipStack",
         href: "/docs/components/flipstack",
-        category: "new",
       },
       {
         title: "Follow Cursor",
@@ -114,7 +110,6 @@ const navigation: NavItem[] = [
       {
         title: "Flowing Logos",
         href: "/docs/components/flowing-logos",
-        category: "new",
       },
       {
         title: "Folder Tree",
@@ -132,7 +127,6 @@ const navigation: NavItem[] = [
       {
         title: "Gravity",
         href: "/docs/components/gravity",
-        category: "new",
       },
       {
         title: "Hero Sections",
@@ -141,7 +135,6 @@ const navigation: NavItem[] = [
       {
         title: "Hold ToConfirm",
         href: "/docs/components/hold-toconfirm",
-        category: "new",
       },
       { title: "Input OTP", href: "/docs/components/input-otp" },
       {
@@ -152,13 +145,12 @@ const navigation: NavItem[] = [
         title: "Kinetic Testimonials",
         href: "/docs/components/kinetic-testimonials",
       },
-      { title: "Label", href: "/docs/components/label", category: "new" },
+      { title: "Label", href: "/docs/components/label" },
       { title: "Lamphome", href: "/docs/components/lamphome" },
-      { title: "Loader", href: "/docs/components/loader", category: "new" },
+      { title: "Loader", href: "/docs/components/loader" },
       {
         title: "Login Form",
         href: "/docs/components/loginform",
-        category: "new",
       },
       {
         title: "lustre Text",
@@ -171,13 +163,11 @@ const navigation: NavItem[] = [
       {
         title: "MotionCards",
         href: "/docs/components/motioncards",
-        category: "new",
       },
       { title: "MorphoText Flip", href: "/docs/components/morphotextflip" },
       {
         title: "Navbar Flow",
         href: "/docs/components/navbar-flow",
-        category: "new",
       },
       { title: "Not Found", href: "/docs/components/not-found" },
       {
@@ -187,7 +177,6 @@ const navigation: NavItem[] = [
       {
         title: "Particles",
         href: "/docs/components/particles",
-        category: "new",
       },
       {
         title: "Parallax Cards",
@@ -209,13 +198,17 @@ const navigation: NavItem[] = [
       {
         title: "Radial Socials",
         href: "/docs/components/radial-socials",
-        category: "new",
       },
       {
         title: "Side Sheet",
         href: "/docs/components/side-sheet",
       },
-      { title: "Status", href: "/docs/components/status", category: "new" },
+      {
+        title: "Slider",
+        href: "/docs/components/slider",
+        category: "new",
+      },
+      { title: "Status", href: "/docs/components/status" },
       {
         title: "Stats Count",
         href: "/docs/components/statscount",
@@ -223,7 +216,6 @@ const navigation: NavItem[] = [
       {
         title: "Stagger Chars",
         href: "/docs/components/stagger-chars",
-        category: "new",
       },
       {
         title: "Stats Carousel",
@@ -232,7 +224,6 @@ const navigation: NavItem[] = [
       {
         title: "Splitter",
         href: "/docs/components/splitter",
-        category: "new",
       },
       {
         title: "Spotlight Card",
@@ -245,17 +236,14 @@ const navigation: NavItem[] = [
       {
         title: "ScrollArea Pro",
         href: "/docs/components/scroll-areapro",
-        category: "new",
       },
       {
         title: "Table",
         href: "/docs/components/table",
-        category: "new",
       },
       {
         title: "Text Highlighter",
         href: "/docs/components/text-highlighter",
-        category: "new",
       },
       {
         title: "Theme Switch",
@@ -278,12 +266,10 @@ const navigation: NavItem[] = [
       {
         title: "Tooltip",
         href: "/docs/components/tooltip",
-        category: "new",
       },
       {
         title: "Transition",
         href: "/docs/components/transition",
-        category: "new",
       },
       { title: "Type Animation", href: "/docs/components/typeanimation" },
       { title: "Venom Beam", href: "/docs/components/venom-beam" },

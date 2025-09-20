@@ -817,6 +817,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "slider",
+      "title": "Slider",
+      "description": "An interactive slider with glass effects for selecting values smoothly within a range.",
+      "type": "registry:component",
+      "dependencies": ["@radix-ui/react-slider"],
+      "files": [
+        {
+          "path": "components/ui/slider.tsx",
+          "target": "components/ui/slider.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "status",
       "title": "Status",
       "description": "A small status component with customizable variants, indicator and shiny animation effects.",
