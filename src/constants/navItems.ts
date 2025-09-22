@@ -77,6 +77,10 @@ const navigation: NavItem[] = [
       { title: "Card", href: "/docs/components/card" },
       { title: "Carousel", href: "/docs/components/carousel" },
       {
+        title: "Calendar",
+        href: "/docs/components/calendar",
+      },
+      {
         title: "Checkbox Pro",
         href: "/docs/components/checkbox-pro",
       },
