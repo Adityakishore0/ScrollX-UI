@@ -17,6 +17,7 @@ export const parentComponents = [
   "button",
   "card",
   "carousel",
+  "calendar",
   "checkbox-pro",
   "codeblock",
   "collapsible",

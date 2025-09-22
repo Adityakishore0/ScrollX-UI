@@ -259,6 +259,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "calendar",
+      "title": "Calendar",
+      "description": "A date field component that enables users to choose and edit a date.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/calendar.tsx",
+          "target": "components/ui/calendar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "checkbox-pro",
       "title": "Checkbox Pro",
       "description": "A customizable checkbox component with animated checkmark and indeterminate states.",
