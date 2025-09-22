@@ -79,6 +79,7 @@ const navigation: NavItem[] = [
       {
         title: "Calendar",
         href: "/docs/components/calendar",
+        category: "new",
       },
       {
         title: "Checkbox Pro",
