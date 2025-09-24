@@ -74,7 +74,7 @@ const navigation: NavItem[] = [
         href: "/docs/components/border-glide",
       },
       { title: "Button", href: "/docs/components/button" },
-      { title: "Card", href: "/docs/components/card" },
+      { title: "Card", href: "/docs/components/card", category: "updated" },
       { title: "Carousel", href: "/docs/components/carousel" },
       {
         title: "Calendar",

@@ -21,7 +21,6 @@ description: Renders a card component comprising a header, content section, and 
   <TabsContent value="manual">
     <Steps>
 
-
 <Step>Copy and paste the following code into your project.</Step>
 <p>
   <code>card.tsx</code>
@@ -33,7 +32,6 @@ description: Renders a card component comprising a header, content section, and 
 <p>
   <code>lib/utils.ts</code>
 </p>
-
 
 ```tsx
 import { ClassValue, clsx } from "clsx";
@@ -48,23 +46,32 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
+
 ```tsx
-import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 ```
 
 ```tsx
 <Card>
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
-    <CardDescription>This is a description of the card.</CardDescription>
+    <CardDescription>Card Description</CardDescription>
+    <CardAction>Card Action</CardAction>
   </CardHeader>
   <CardContent>
-    <p>Some content for the card goes here.</p>
+    <p>Card Content</p>
   </CardContent>
   <CardFooter>
-    <Button variant="primary">Action</Button>
+    <p>Card Footer</p>
   </CardFooter>
 </Card>
 ```
@@ -74,6 +81,7 @@ import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
   <CardHeader>
     <CardTitle>Custom Card</CardTitle>
     <CardDescription>This card has a custom style.</CardDescription>
+    <CardAction>Card Action</CardAction>
   </CardHeader>
   <CardContent>
     <p>Additional content with custom styles.</p>
@@ -83,6 +91,14 @@ import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
   </CardFooter>
 </Card>
 ```
+---
+
+## Changelog
+
+#### 24-09-2025,  Added CardAction 
+
+- Introduced a new `CardAction` component to place actions (buttons, links) in the CardHeader aligned to the top-right.
+- Minor updates to existing components to include `data-slot` attributes for consistent styling.
 
 ## API Reference
 
@@ -98,44 +114,49 @@ The `Card` component is used to create a customizable container with content sec
       prop: "className",
       type: "string",
       default: "—",
-      description: "Optional custom class names. Used in: Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter."
+      description: "Custom classes for styling.",
     },
     {
       prop: "...props",
-      type: "HTMLDivElement attributes",
+      type: "React.HTMLAttributes<HTMLDivElement>",
       default: "—",
-      description: "Applies to Card and all subcomponents. Inherits all standard div attributes and events."
+      description: "All standard div props.",
     },
     {
       prop: "CardHeader",
-      type: "ReactNode",
-      default: "optional",
-      description: "Header section of the card."
+      type: "React.ReactNode",
+      default: "—",
+      description: "Header section.",
     },
     {
       prop: "CardTitle",
-      type: "ReactNode",
-      default: "optional",
-      description: "Title inside the CardHeader."
+      type: "React.ReactNode",
+      default: "—",
+      description: "Title inside header.",
     },
     {
       prop: "CardDescription",
-      type: "ReactNode",
-      default: "optional",
-      description: "Description inside the CardHeader."
+      type: "React.ReactNode",
+      default: "—",
+      description: "Description inside header.",
+    },
+    {
+      prop: "CardAction",
+      type: "React.ReactNode",
+      default: "—",
+      description: "Action (e.g., button) in header.",
     },
     {
       prop: "CardContent",
-      type: "ReactNode",
-      default: "optional",
-      description: "Main content area of the card."
+      type: "React.ReactNode",
+      default: "—",
+      description: "Main content area.",
     },
     {
       prop: "CardFooter",
-      type: "ReactNode",
-      default: "optional",
-      description: "Footer section, typically for actions."
-    }
+      type: "React.ReactNode",
+      default: "—",
+      description: "Footer section.",
+    },
   ]}
 />
-
