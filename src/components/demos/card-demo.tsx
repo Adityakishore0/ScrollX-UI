@@ -1,92 +1,78 @@
-import * as React from "react";
-
+import { Button } from "@/components/ui/button";
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { AnimatedButton } from "@/components/ui/animated-button";
-import { InteractiveInput } from "@/components/ui/interactive-input";
+import { Star, Users, Clock, MapPin } from "lucide-react";
+import { useToast } from "@/components/ui/toast";
 
-export default function NewsletterCard() {
+export default function CardDemo() {
+  const { toast } = useToast();
+
+  const handleAddToWishlist = () => {
+    toast("Jungle Safari Added to Wishlist!", { duration: 2000 });
+  };
+
   return (
-    <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>Subscribe</CardTitle>
-        <CardDescription>Get the latest updates in your inbox.</CardDescription>
+    <Card className="w-full max-w-sm">
+      <CardHeader className="flex flex-col gap-1 px-4 py-2">
+        <div className="flex items-start w-full">
+          <CardTitle className="text-lg font-semibold">
+            Jungle Safari Adventure
+          </CardTitle>
+          <CardAction className="ml-auto">
+            <Button
+              variant="link"
+              size="sm"
+              className="p-0 hover:underline"
+              onClick={handleAddToWishlist}
+            >
+              Add to Wishlist
+            </Button>
+          </CardAction>
+        </div>
+        <CardDescription className="text-sm text-gray-600 mt-1">
+          Explore the wild and enjoy a thrilling jungle safari experience.
+        </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form>
-          <div className="flex flex-col space-y-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="email">Email</Label>
-              <InteractiveInput
-                id="email"
-                type="email"
-                className="bg-green-500 text-white"
-                variant="default"
-                inputSize="default"
-                glow={false}
-                rounded="custom"
-                hideAnimations={false}
-                uppercase={true}
-                textEffect="normal"
-                shimmerColor="#39FF14"
-                shimmerSize="0.15em"
-                shimmerDuration="3s"
-                borderRadius="100px"
-                background="rgba(0, 0, 0, 1)"
-                placeholder="you@example.com"
-              />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="interest">Topic</Label>
-              <Select>
-                <SelectTrigger id="interest">
-                  <SelectValue placeholder="Choose a topic" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="buttons">Buttons</SelectItem>
-                  <SelectItem value="inputs">Inputs</SelectItem>
-                  <SelectItem value="cards">Cards</SelectItem>
-                  <SelectItem value="animations">Animations</SelectItem>
-                  <SelectItem value="utilities">Utilities</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+
+      <CardContent className="pt-0 flex flex-col gap-2 px-4">
+        <img
+          src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3"
+          alt="Jungle Safari"
+          className="w-full h-32 object-cover rounded-md"
+        />
+
+        <div className="flex items-center gap-2 text-sm text-gray-700">
+          <Star className="w-4 h-4 text-yellow-500" />
+          <span>4.8 (120 reviews)</span>
+        </div>
+
+        <div className="flex justify-between text-sm text-gray-700">
+          <div className="flex items-center gap-1">
+            <Clock className="w-4 h-4" />
+            <span>5 hrs</span>
           </div>
-        </form>
+          <div className="flex items-center gap-1">
+            <Users className="w-4 h-4" />
+            <span>Group: 20</span>
+          </div>
+        </div>
       </CardContent>
-      <CardFooter className="flex justify-end">
-        <AnimatedButton
-          className="bg-green-500 text-white"
-          variant="default"
-          size="default"
-          glow={false}
-          textEffect="normal"
-          uppercase={true}
-          rounded="custom"
-          asChild={false}
-          hideAnimations={false}
-          shimmerColor="#39FF14"
-          shimmerSize="0.15em"
-          shimmerDuration="3s"
-          borderRadius="100px"
-          background="rgba(0, 0, 0, 1)"
-        >
-          Subscribe
-        </AnimatedButton>
+
+      <CardFooter className="flex justify-between items-center px-4 py-3">
+        <div className="flex items-center gap-1 text-sm text-gray-500">
+          <MapPin className="w-4 h-4" />
+          <span>Rainforest</span>
+        </div>
+        <Button className="rounded-md px-4 py-1 text-sm transition-colors">
+          Book Now
+        </Button>
       </CardFooter>
     </Card>
   );
