@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "type": "registry:component",
+  "title": "Kbd",
+  "description": "A component for displaying keyboard shortcuts and key combinations.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/kbd.tsx",
+      "target": "components/ui/kbd.tsx",
+      "content": "import { type ComponentProps, type ReactNode } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type KbdProps = ComponentProps<\"span\"> & {\n  children: ReactNode;\n};\n\nexport const Kbd = ({ className, children, ...props }: KbdProps) => (\n  <span\n    className={cn(\n      \"inline-flex select-none items-center rounded-md border px-2 py-1 text-[10px] font-mono font-medium relative\",\n      \"bg-gradient-to-b from-gray-100 to-gray-200 border-gray-300 shadow-[0_2px_0_#ccc,0_3px_2px_rgba(0,0,0,0.25)]\",\n      \"dark:from-zinc-800 dark:to-zinc-900 dark:border-zinc-700 dark:shadow-[0_2px_0_#222,0_3px_2px_rgba(0,0,0,0.4)]\",\n      \"dark:text-zinc-200\",\n      className\n    )}\n    {...props}\n  >\n    {children}\n  </span>\n);\n\nexport type KbdKeyProps = ComponentProps<\"span\"> & {\n  \"aria-label\"?: string;\n  className?: string;\n};\n\nexport const KbdKey = ({ className, children, ...props }: KbdKeyProps) => (\n  <span\n    className={cn(\n      \"px-1 py-0.25 rounded-sm select-none text-[10px] font-mono font-medium bg-transparent\",\n      className\n    )}\n    {...props}\n  >\n    {children}\n  </span>\n);\n\nexport type KbdSeparatorProps = ComponentProps<\"span\"> & {\n  children?: ReactNode;\n  className?: string;\n};\n\nexport const KbdSeparator = ({ className, children = \"+\", ...props }: KbdSeparatorProps) => (\n  <span\n    className={cn(\n      \"text-muted-foreground/70 text-[10px] mx-0.5 select-none pointer-events-none\",\n      className\n    )}\n    {...props}\n  >\n    {children}\n  </span>\n);"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}

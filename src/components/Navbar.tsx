@@ -10,6 +10,7 @@ import { ModeToggle } from "./mode-toggle";
 import { SearchModal } from "@/components/SearchModal";
 import { NavSheet } from "@/components/navsheet";
 import ScrollXHeading from "@/components/heading";
+import { Kbd, KbdKey, KbdSeparator } from "@/components/ui/kbd";
 
 interface NavbarProps {
   className?: string;
@@ -109,7 +110,7 @@ export function Navbar({ className }: NavbarProps) {
             </Link>
           </div>
 
-          <nav className="hidden flex-1 items-center space-x-6 md:flex">
+          <nav className="hidden flex-1 items-center space-x-6 lg:flex">
             {routes.map((route) => (
               <Link
                 key={route.href}
@@ -148,9 +149,10 @@ export function Navbar({ className }: NavbarProps) {
                 Search{" "}
                 <span className="hidden xl:inline-block">Components</span>
               </span>
-              <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex dark:border-neutral-600 dark:bg-neutral-700 dark:text-neutral-300">
-                <span className="text-xs">⌘</span>K
-              </kbd>
+              <Kbd className="pointer-events-none hidden h-5 select-none items-center rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex dark:border-neutral-600 dark:bg-neutral-700 dark:text-neutral-300">
+                <KbdKey aria-label="Meta">⌘</KbdKey>
+                <KbdKey>K</KbdKey>
+              </Kbd>
             </button>
 
             <nav className="flex items-center space-x-2">
@@ -165,11 +167,11 @@ export function Navbar({ className }: NavbarProps) {
                 </Link>
               </Button>
 
-              <div className="hidden md:block">
+              <div className="hidden lg:block">
                 <ModeToggle />
               </div>
 
-              <div className="block md:hidden">
+              <div className="block lg:hidden">
                 <Button
                   variant="ghost"
                   size="icon"

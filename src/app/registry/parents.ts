@@ -36,6 +36,7 @@ export const parentComponents = [
   "hold-toconfirm",
   "input-otp",
   "interactive-input",
+  "kbd",
   "kinetic-testimonials",
   "label",
   "lamphome",

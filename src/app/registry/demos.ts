@@ -62,6 +62,7 @@ export const demoComponents = [
   "holdtoconfirmborder",
   "inputotp-demo",
   "interactiveinput-demo",
+  "kbd-demo",
   "kinetictestimonials-demo",
   "label-demo",
   "lamphome-demo",

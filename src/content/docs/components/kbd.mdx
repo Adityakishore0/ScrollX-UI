@@ -1,0 +1,97 @@
+---
+title: Kbd
+description: A component for displaying keyboard shortcuts and key combinations.
+---
+
+<ComponentPreview
+  name="kbd-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="kbd" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>kbd.tsx</code>
+</p>
+<ComponentSource name="kbd" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Kbd, KbdKey, KbdSeparator } from "@/components/ui/kbd";
+```
+
+```tsx
+<Kbd>
+    <KbdKey aria-label="Meta">⌘</KbdKey>
+    <KbdSeparator className="font-mono text-foreground">+</KbdSeparator>
+    <KbdKey>K</KbdKey>
+  </Kbd>
+```
+
+
+## API Reference
+
+### Kbd
+
+A component for displaying keyboard shortcuts and key combinations.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "The content inside the Kbd component, usually the key label or elements."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "undefined",
+      description: "Optional additional CSS classes to customize styling."
+    },
+    {
+      prop: "...props",
+      type: "ComponentProps<'span'>",
+      default: "undefined",
+      description: "All other native span element props are supported."
+    }
+  ]}
+/>
+
