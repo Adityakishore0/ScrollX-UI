@@ -147,6 +147,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/interactive-input",
       },
       {
+        title: "Kbd",
+        href: "/docs/components/kbd",
+        category: "new",
+      },
+      {
         title: "Kinetic Testimonials",
         href: "/docs/components/kinetic-testimonials",
       },

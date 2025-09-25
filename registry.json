@@ -547,6 +547,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "kbd",
+      "title": "Kbd",
+      "description": "A component for displaying keyboard shortcuts and key combinations.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/kbd.tsx",
+          "target": "components/ui/kbd.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "kinetic-testimonials",
       "title": "Kinetic Testimonials",
       "description": "Smoothly scrolling, animated testimonials for modern developer websites to showcase user feedback visually.",
