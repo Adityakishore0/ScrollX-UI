@@ -105,6 +105,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/expandable-dock",
       },
       {
+        title: "Facescape",
+        href: "/docs/components/facescape",
+        category: "new",
+      },
+      {
         title: "FlipStack",
         href: "/docs/components/flipstack",
       },

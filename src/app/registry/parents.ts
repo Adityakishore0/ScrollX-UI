@@ -25,6 +25,7 @@ export const parentComponents = [
   "cursor-highlight",
   "dropdown-menu",
   "expandable-dock",
+  "facescape",
   "flipstack",
   "followcursor",
   "flowing-logos",

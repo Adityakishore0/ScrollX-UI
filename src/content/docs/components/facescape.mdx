@@ -1,0 +1,150 @@
+---
+title: Facescape
+description: Interactive, animated user avatars with hover effects and responsive layout.
+---
+
+<ComponentPreview name="facescape-demo" className="" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="facescape" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>facescape.tsx</code>
+</p>
+<ComponentSource name="facescape" />
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Facescape } from "@/components/ui/facescape";
+```
+
+```tsx
+<Facescape
+  variant="squircle"
+  avatars={avatars}
+  colorDuration={3000}
+  className="max-w-4xl"
+/>
+```
+
+## Examples
+
+---
+
+<Step>Circle</Step>
+
+<ComponentPreview
+  name="facescapecircle-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Square</Step>
+
+<ComponentPreview
+  name="facescapesquare-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Squircle</Step>
+
+<ComponentPreview
+  name="facescapesquircle-demo"
+  className=""
+  description=""
+/>
+
+## API Reference
+
+### Facescape
+
+Interactive, animated user avatars with hover effects and responsive layout.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "avatars",
+      type: "AvatarData[]",
+      default: "required",
+      description: "Array of avatar objects containing src, alt, fallback, and name.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "undefined",
+      description: "Additional Tailwind or custom classes applied to the container.",
+    },
+    {
+      prop: "colorDuration",
+      type: "number",
+      default: 3000,
+      description: "Duration in ms for hover/autoAnimate color and scale transition.",
+    },
+    {
+      prop: "variant",
+      type: `"circle" | "square" | "squircle"`,
+      default: "squircle",
+      description: "Shape of the avatars. Determines border-radius styling.",
+    },
+    {
+      prop: "ref",
+      type: "Ref<HTMLDivElement>",
+      default: "undefined",
+      description: "Optional ref for the Facescape container div.",
+    },
+    {
+      prop: "autoAnimate",
+      type: "boolean",
+      default: "false",
+      description: "Used internally by FacescapeItem to animate avatars on scroll visibility (mobile/tablet).",
+    },
+    {
+      prop: "src",
+      type: "string",
+      default: "required",
+      description: "Image URL of the avatar. Required for FacescapeItem.",
+    },
+    {
+      prop: "alt",
+      type: "string",
+      default: "required",
+      description: "Alt text for the avatar image. Required for FacescapeItem.",
+    },
+    {
+      prop: "fallback",
+      type: "string",
+      default: "required",
+      description: "Fallback text displayed if the image fails to load. Required for FacescapeItem.",
+    },
+    {
+      prop: "name",
+      type: "string",
+      default: "required",
+      description: "Tooltip name displayed on hover. Required for FacescapeItem.",
+    },
+  ]}
+/>
+
