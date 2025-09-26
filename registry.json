@@ -382,6 +382,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "facescape",
+      "title": "Facescape",
+      "description": "Interactive, animated user avatars with hover effects and responsive layout.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/facescape.tsx",
+          "target": "components/ui/facescape.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "flipstack",
       "title": "FlipStack",
       "description": "A stylish and animated card stack UI for showcasing content in layered views.",

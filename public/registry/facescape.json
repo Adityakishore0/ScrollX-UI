@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "facescape",
+  "type": "registry:component",
+  "title": "Facescape",
+  "description": "Interactive, animated user avatars with hover effects and responsive layout.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": [
+    "@radix-ui/react-avatar",
+    "framer-motion",
+    "@radix-ui/react-tooltip",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/facescape.tsx",
+      "target": "components/ui/facescape.tsx",
+      "content": ""
+    },
+    {
+      "type": "registry:component",
+      "path": "components/ui/avatar.tsx",
+      "target": "components/ui/avatar.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport * as AvatarPrimitive from \"@radix-ui/react-avatar\";\nimport { cn } from \"@/lib/utils\";\n\ntype AvatarProps = React.ComponentPropsWithoutRef<\n  typeof AvatarPrimitive.Root\n> & {\n  variant?: \"close-friends\" | \"normal\" | \"none\";\n};\n\nconst Avatar = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Root>,\n  AvatarProps\n>(({ className, variant = \"none\", ...props }, ref) => {\n  const ringClass =\n    variant === \"close-friends\"\n      ? \"bg-gradient-to-tr from-green-400 to-green-600\"\n      : variant === \"normal\"\n      ? \"bg-[conic-gradient(at_top_right,_#f09433,_#e6683c,_#dc2743,_#cc2366,_#bc1888,_#f09433)]\"\n      : \"\";\n\n  return variant === \"none\" ? (\n    <AvatarPrimitive.Root\n      ref={ref}\n      className={cn(\n        \"relative flex h-12 w-12 shrink-0 overflow-hidden rounded-full\",\n        className\n      )}\n      {...props}\n    />\n  ) : (\n    <div\n      className={cn(\n        \"h-14 w-14 rounded-full p-[2px]\",\n        ringClass,\n        \"flex items-center justify-center\"\n      )}\n    >\n      <div className=\"h-full w-full rounded-full bg-black flex items-center justify-center overflow-hidden\">\n        <AvatarPrimitive.Root\n          ref={ref}\n          className={cn(\n            \"h-full w-full rounded-full overflow-hidden\",\n            className\n          )}\n          {...props}\n        />\n      </div>\n    </div>\n  );\n});\nAvatar.displayName = AvatarPrimitive.Root.displayName;\n\nconst AvatarImage = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Image>,\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>\n>(({ className, ...props }, ref) => (\n  <AvatarPrimitive.Image\n    ref={ref}\n    className={cn(\"h-full w-full object-cover not-prose\", className)}\n    {...props}\n  />\n));\nAvatarImage.displayName = AvatarPrimitive.Image.displayName;\n\nconst AvatarFallback = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Fallback>,\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>\n>(({ className, ...props }, ref) => (\n  <AvatarPrimitive.Fallback\n    ref={ref}\n    className={cn(\n      \"flex h-full w-full items-center justify-center rounded-full bg-muted text-sm font-medium\",\n      className\n    )}\n    {...props}\n  />\n));\nAvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;\n\nexport { Avatar, AvatarImage, AvatarFallback };"
+    },
+    {
+      "type": "registry:component",
+      "path": "components/ui/tooltip.tsx",
+      "target": "components/ui/tooltip.tsx",
+      "content": "\"use client\"\nimport * as React from \"react\"\nimport * as TooltipPrimitive from \"@radix-ui/react-tooltip\"\nimport { motion } from \"framer-motion\"\nimport { cn } from \"@/lib/utils\"\n\nfunction TooltipProvider({\n  delayDuration = 0,\n  ...props\n}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {\n  return (\n    <TooltipPrimitive.Provider\n      data-slot=\"tooltip-provider\"\n      delayDuration={delayDuration}\n      {...props}\n    />\n  )\n}\n\nfunction Tooltip({\n  ...props\n}: React.ComponentProps<typeof TooltipPrimitive.Root>) {\n  return (\n    <TooltipProvider>\n      <TooltipPrimitive.Root data-slot=\"tooltip\" {...props} />\n    </TooltipProvider>\n  )\n}\n\nfunction TooltipTrigger({\n  ...props\n}: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {\n  return <TooltipPrimitive.Trigger data-slot=\"tooltip-trigger\" {...props} />\n}\n\nfunction TooltipContent({\n  className,\n  sideOffset = 0,\n  children,\n  ...props\n}: React.ComponentProps<typeof TooltipPrimitive.Content>) {\n  return (\n    <TooltipPrimitive.Portal>\n      <TooltipPrimitive.Content\n        data-slot=\"tooltip-content\"\n        sideOffset={sideOffset}\n        className=\"z-50\"\n        {...props}\n        asChild\n      >\n        <motion.div\n          initial={{\n            opacity: 0,\n            scale: 0.3,\n            y: 20\n          }}\n          animate={{\n            opacity: 1,\n            scale: 1,\n            y: 0,\n            x: [0, -4, 4, -3, 3, -2, 2, -1, 1, 0]\n          }}\n          exit={{\n            opacity: 0,\n            scale: 0.8,\n            y: 10,\n            x: [0, -3, 3, -2, 2, -1, 1, 0]\n          }}\n          transition={{\n            opacity: { duration: 0.2 },\n            scale: { \n              duration: 0.6,\n              type: \"spring\",\n              damping: 12,\n              stiffness: 400,\n              mass: 0.8\n            },\n            y: { \n              duration: 0.5,\n              type: \"spring\",\n              damping: 10,\n              stiffness: 300,\n              mass: 0.9\n            },\n            x: { \n              duration: 0.7,\n              delay: 0.2,\n              ease: \"easeOut\",\n              times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1]\n            },\n            exit: {\n              opacity: { duration: 0.25 },\n              scale: { duration: 0.25, ease: \"easeIn\" },\n              y: { duration: 0.25, ease: \"easeIn\" },\n              x: { \n                duration: 0.4,\n                ease: \"easeOut\",\n                times: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 1]\n              }\n            }\n          }}\n          className={cn(\n            \"bg-primary text-primary-foreground w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance\",\n            className\n          )}\n        >\n          {children}\n          <TooltipPrimitive.Arrow className=\"bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]\" />\n        </motion.div>\n      </TooltipPrimitive.Content>\n    </TooltipPrimitive.Portal>\n  )\n}\n\nexport { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
