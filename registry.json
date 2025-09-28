@@ -682,6 +682,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "modern-loader",
+      "title": "Modern Loader",
+      "description": "A modern, dynamic code loader designed for AI-powered coding environments.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/modern-loader.tsx",
+          "target": "components/ui/modern-loader.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "motioncards",
       "title": "MotionCards",
       "description": "Elegant cards in seamless flow for clean web design.",

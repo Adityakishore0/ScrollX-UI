@@ -1,0 +1,82 @@
+---
+title: Modern Loader
+description: A modern, dynamic code loader designed for AI-powered coding environments.
+---
+
+<ComponentPreview
+  name="modernloader-demo"
+  className="p-2"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="modern-loader" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>modern-loader.tsx</code>
+</p>
+<ComponentSource name="modern-loader" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+ import {(ClassValue, clsx)} from "clsx";
+  import {twMerge} from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import ModernLoader from "@/components/ui/modern-loader";
+```
+
+```tsx
+<ModernLoader
+  words={["Setting things up...", "Loading modules...", "Writing some magic…"]}
+ />
+```
+
+
+## API Reference
+
+### Modern Loader
+
+A modern, dynamic code loader designed for AI-powered coding environments.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "words",
+      type: "string[]",
+      default: "array of words",
+      description: "Array of messages displayed with typing animation in the loader."
+    }
+  ]}
+/>
+
