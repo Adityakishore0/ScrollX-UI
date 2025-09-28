@@ -176,6 +176,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/magicdock",
       },
       {
+        title: "Modern Loader",
+        href: "/docs/components/modern-loader",
+        category: "new",
+      },
+      {
         title: "MotionCards",
         href: "/docs/components/motioncards",
       },

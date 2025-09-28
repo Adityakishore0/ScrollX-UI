@@ -45,6 +45,7 @@ export const parentComponents = [
   "loginform",
   "lustretext",
   "magicdock",
+  "modern-loader",
   "motioncards",
   "morphotextflip",
   "not-found",

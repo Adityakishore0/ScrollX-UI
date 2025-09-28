@@ -77,6 +77,7 @@ export const demoComponents = [
   "loginform-demo",
   "lustretext-demo",
   "magicdock-demo",
+  "modernloader-demo",
   "motioncards-demo",
   "morphotextflip-demo",
   "morphotextslideup",
