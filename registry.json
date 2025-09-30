@@ -532,6 +532,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "iphone",
+      "title": "Iphone",
+      "description": "IPhone mockup with screen, header, and custom children content.",
+      "type": "registry:component",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "components/ui/iphone.tsx",
+          "target": "components/ui/iphone.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "input-otp",
       "title": "Input Otp",
       "description": "A flexible Accessible one-time password component",
