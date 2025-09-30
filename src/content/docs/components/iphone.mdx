@@ -1,0 +1,123 @@
+---
+title: Iphone
+description: IPhone mockup with screen, header, and custom children content.
+---
+
+<ComponentPreview name="iphone-demo" className="" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="iphone" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>iphone.tsx</code>
+</p>
+<ComponentSource name="iphone" />
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Iphone } from "@/components/ui/iphone";
+```
+
+```tsx
+<div className="w-full max-w-sm mx-auto p-4">
+  <Iphone showHeader>
+    <div className="absolute inset-0 z-50 flex items-center justify-center">
+      <img
+        src="https://cdn.pixabay.com/photo/2025/01/13/12/29/ai-generated-9330361_1280.jpg"
+        alt="Screen Content"
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <p className="text-white font-bold">Hello inside iPhone!</p>
+      </div>
+    </div>
+  </Iphone>
+</div>
+```
+
+## Examples
+
+---
+
+<Step>With Image</Step>
+
+<ComponentPreview name="iphoneimage-demo" className="" description="" />
+
+---
+
+<Step>With Video</Step>
+
+<ComponentPreview name="iphonevideo-demo" className="" description="" />
+
+## API Reference
+
+### Iphone
+
+IPhone mockup with screen, header, and custom children content.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "imgUrl",
+      type: "string",
+      default: "_",
+      description: "URL of the image displayed on the iPhone screen.",
+    },
+    {
+      prop: "clip",
+      type: "string",
+      default: "_",
+      description: "URL of a video displayed on the iPhone screen.",
+    },
+    {
+      prop: "showHeader",
+      type: "boolean",
+      default: "false",
+      description:
+        "Whether to show the iPhone status bar (time, battery, wifi).",
+    },
+    {
+      prop: "headerClassName",
+      type: "string",
+      default: "_",
+      description: "Optional CSS class to customize the status bar styling.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "_",
+      description: "CSS class for the outer iPhone container.",
+    },
+    {
+      prop: "style",
+      type: "React.CSSProperties",
+      default: "_",
+      description: "Inline styles for the iPhone container.",
+    },
+    {
+      prop: "children",
+      type: "React.ReactNode",
+      default: "_",
+      description:
+        "Content displayed inside the iPhone screen above image/video.",
+    },
+  ]}
+/>

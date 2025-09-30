@@ -146,6 +146,11 @@ const navigation: NavItem[] = [
         title: "Hold ToConfirm",
         href: "/docs/components/hold-toconfirm",
       },
+      {
+        title: "Iphone",
+        href: "/docs/components/iphone",
+        category: "new",
+      },
       { title: "Input OTP", href: "/docs/components/input-otp" },
       {
         title: "Interactive Input",
