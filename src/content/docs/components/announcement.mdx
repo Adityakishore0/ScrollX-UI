@@ -1,0 +1,199 @@
+---
+title: Announcement 
+description: An announcement component that highlights key info with icons, effects, and expandable content.
+---
+
+<ComponentPreview
+  name="announcement-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="announcement" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>announcement.tsx</code>
+</p>
+<ComponentSource name="announcement" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Announcement,
+  AnnouncementTag,
+  AnnouncementTitle,
+} from '@/components/ui/announcement'; 
+```
+
+```tsx
+<Announcement movingBorder>
+    <AnnouncementTag lustre>Latest update</AnnouncementTag>
+    <AnnouncementTitle>
+      New feature added
+      <ArrowUpRightIcon className="shrink-0 text-muted-foreground" size={16} />
+    </AnnouncementTitle>
+  </Announcement>
+```
+## Examples
+
+---
+
+<Step>Default</Step>
+
+<ComponentPreview
+  name="announcementdefault-demo"
+  className=""
+  description="Default badge with primary color and shine effect"
+/>
+
+---
+
+<Step>Themes</Step>
+
+<ComponentPreview
+  name="announcementthemes-demo"
+  className=""
+  description="Subtle badge with secondary color theme and shine"
+/>
+
+---
+
+<Step>Styled</Step>
+
+<ComponentPreview
+  name="announcementstyled-demo"
+  className=""
+  description="Subtle badge with secondary color theme and shine"
+/>
+
+---
+
+<Step>Expandable</Step>
+
+<ComponentPreview
+  name="announcementexpandable-demo"
+  className=""
+  description="Subtle badge with secondary color theme and shine"
+/>
+
+## API Reference
+
+### Announcement
+
+An announcement component that highlights key info with icons, effects, and expandable content.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "variant",
+      type: "string",
+      default: "'outline'",
+      description: "Badge style variant. Used in: Announcement."
+    },
+    {
+      prop: "styled",
+      type: "boolean",
+      default: "false",
+      description: "Adds subtle border styling. Used in: Announcement."
+    },
+    {
+      prop: "animation",
+      type: "'fade'",
+      default: "'fade'",
+      description: "Controls announcement animation. Used in: Announcement."
+    },
+    {
+      prop: "icon",
+      type: "ReactNode",
+      default: "-",
+      description: "Optional icon element. Used in: Announcement."
+    },
+    {
+      prop: "iconPosition",
+      type: "'left' | 'right'",
+      default: "'left'",
+      description: "Controls icon placement. Used in: Announcement."
+    },
+    {
+      prop: "shiny",
+      type: "boolean",
+      default: "false",
+      description: "Applies lustre text effect to children. Used in: Announcement."
+    },
+    {
+      prop: "movingBorder",
+      type: "boolean",
+      default: "false",
+      description: "Enables animated moving border. Used in: Announcement, AnnouncementTag."
+    },
+    {
+      prop: "movingBorderDuration",
+      type: "number",
+      default: "3000",
+      description: "Duration of moving border animation in ms. Used in: Announcement, AnnouncementTag."
+    },
+    {
+      prop: "movingBorderClassName",
+      type: "string",
+      default: "-",
+      description: "Custom classes for moving border element. Used in: Announcement, AnnouncementTag."
+    },
+    {
+      prop: "lustre",
+      type: "boolean",
+      default: "false",
+      description: "Applies lustre text effect to text. Used in: AnnouncementTag, AnnouncementTitle."
+    },
+    {
+      prop: "multiTags",
+      type: "boolean",
+      default: "false",
+      description: "Allows multiple tags by wrapping content. Used in: AnnouncementTitle."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Content inside the component. Used in: Announcement, AnnouncementTag, AnnouncementTitle, AnnouncementContainer, AnnouncementExpandedContent."
+    }
+  ]}
+/>
+
+

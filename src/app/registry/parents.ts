@@ -7,6 +7,7 @@ export const parentComponents = [
   "animated-testimonials",
   "animated-textgenerate",
   "animated-tabs",
+  "announcement",
   "aspect-ratio",
   "avatar",
   "backgroundmeteors",

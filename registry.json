@@ -109,6 +109,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "announcement",
+      "title": "Announcement",
+      "description": "An announcement component that highlights key info with icons, effects, and expandable content.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/announcement.tsx",
+          "target": "components/ui/announcement.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "aspect-ratio",
       "title": "Aspect Ratio",
       "description": "A responsive container component that maintains a fixed aspect ratio, commonly used for media like images and videos.",
