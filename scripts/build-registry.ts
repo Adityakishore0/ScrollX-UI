@@ -8,5 +8,5 @@ if (!fs.existsSync(publicRegistryDir)) {
   fs.mkdirSync(publicRegistryDir, { recursive: true });
 }
 
-const indexRegistryPath = path.join(publicRegistryDir, "index.json");
+const indexRegistryPath = path.join(publicRegistryDir, "registry.json");
 fs.copyFileSync(rootRegistryPath, indexRegistryPath);

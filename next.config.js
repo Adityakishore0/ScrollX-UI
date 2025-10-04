@@ -63,7 +63,7 @@ const nextConfig = {
     return [
       {
         source: "/registry",
-        destination: "/registry/index.json",
+        destination: "/registry/registry.json",
       },
     ];
   },
