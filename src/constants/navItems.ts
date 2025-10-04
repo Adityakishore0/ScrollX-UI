@@ -222,6 +222,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/profilecard",
       },
       {
+        title: "Progress",
+        href: "/docs/components/progress",
+        category: "new",
+      },
+      {
         title: "Radial Flow",
         href: "/docs/components/radialflow",
       },
