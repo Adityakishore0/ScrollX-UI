@@ -1,0 +1,136 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+---
+
+<ComponentPreview name="progress-demo" className="p-5" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="progress" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="@radix-ui/react-progress" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>progress.tsx</code>
+</p>
+<ComponentSource name="progress" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Progress } from "@/components/ui/progress"
+```
+
+```tsx
+<Progress variant="slim" value={33} />
+```
+
+## Examples
+
+---
+
+<Step>Default</Step>
+
+<ComponentPreview name="progressdefault-demo" className="p-5" description="" />
+
+---
+
+<Step>Outline</Step>
+
+<ComponentPreview name="progressoutline-demo" className="p-5" description="" />
+
+---
+
+<Step>Slim</Step>
+
+<ComponentPreview name="progressslim-demo" className="p-5" description="" />
+
+## API Reference
+
+### Progress
+
+Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "value",
+      type: "number",
+      default: "0",
+      description: "The current progress value, typically between 0 and 100.",
+    },
+    {
+      prop: "variant",
+      type: `"default" | "slim" | "outline"`,
+      default: `"default"`,
+      description:
+        "Visual style of the progress bar.",
+    },
+    {
+      prop: "indicatorClassName",
+      type: "string",
+      default: "_",
+      description:
+        "Optional CSS class applied to the progress indicator.",
+    },
+    {
+      prop: "indicatorStyle",
+      type: "React.CSSProperties",
+      default: "_",
+      description:
+        "Optional inline styles applied to the progress indicator.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "_",
+      description: "CSS class for the outer progress container.",
+    },
+    {
+      prop: "style",
+      type: "React.CSSProperties",
+      default: "_",
+      description: "Inline styles for the outer progress container.",
+    },
+    {
+      prop: "children",
+      type: "React.ReactNode",
+      default: "_",
+      description: "Optional children to render inside the progress container (rarely used).",
+    },
+  ]}
+/>
+

@@ -862,6 +862,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "progress",
+      "title": "Progress",
+      "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "type": "registry:component",
+      "dependencies": ["@radix-ui/react-progress"],
+      "files": [
+        {
+          "path": "components/ui/progress.tsx",
+          "target": "components/ui/progress.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "radialflow",
       "title": "Radial Flow",
       "description": "Dynamic radial graph for visualizing networks & hierarchies with animated nodes.",

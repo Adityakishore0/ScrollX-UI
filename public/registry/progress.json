@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "type": "registry:component",
+  "title": "Progress",
+  "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": ["@radix-ui/react-progress", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/progress.tsx",
+      "target": "components/ui/progress.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as ProgressPrimitive from \"@radix-ui/react-progress\"\nimport { cn } from \"@/lib/utils\"\n\ninterface ProgressProps extends React.ComponentProps<typeof ProgressPrimitive.Root> {\n  variant?: \"default\" | \"slim\" | \"outline\"\n  indicatorClassName?: string\n  indicatorStyle?: React.CSSProperties\n}\n\nfunction Progress({\n  className,\n  value,\n  variant = \"default\",\n  indicatorClassName,\n  indicatorStyle,\n  ...props\n}: ProgressProps) {\n  const isSlim = variant === \"slim\"\n  const isOutline = variant === \"outline\"\n\n  return (\n    <ProgressPrimitive.Root\n      data-slot=\"progress\"\n      className={cn(\n        \"bg-primary/20 relative w-full overflow-hidden rounded-full border h-3\",\n        isSlim && \"bg-background border-[var(--border)]\",\n        isOutline && \"bg-primary/20 relative w-full overflow-hidden rounded-full border h-3 border-[var(--border)]\",\n        className\n      )}\n      {...props}\n    >\n      <ProgressPrimitive.Indicator\n        data-slot=\"progress-indicator\"\n        className={cn(\n          \"bg-primary transition-all\",\n          isSlim ? \"absolute top-1/2 -translate-y-1/2 h-[60%] rounded-full\" : \"h-full\",\n          indicatorClassName\n        )}\n        style={\n          isSlim\n            ? { left: \"4px\", width: `calc(${value || 0}% - 4px)`, ...indicatorStyle }\n            : { width: `${value || 0}%`, ...indicatorStyle }\n        }\n      />\n    </ProgressPrimitive.Root>\n  )\n}\n\n\nexport { Progress }\n"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
