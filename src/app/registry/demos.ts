@@ -146,6 +146,8 @@ export const demoComponents = [
   "thswitchthreenext",
   "thsinglecentredtwo",
   "thsinglecentredthree",
+  "timeline-demo",
+  "timelinecustom-demo",
   "topsheet-demo",
   "toastcustomduration-demo",
   "toastwithaction-demo",
