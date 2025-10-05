@@ -1,0 +1,142 @@
+---
+title: Timeline
+description: Smoothly animated timeline slider with resizable handles for interactive use.
+---
+
+<ComponentPreview
+  name="timeline-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="timeline" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>timeline.tsx</code>
+</p>
+<ComponentSource name="timeline" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Timeline, TimelineText } from "@/components/ui/timeline";
+```
+
+```tsx
+<Timeline 
+  rotation={-2.76}
+  containerClassName="border-blue-500"
+  handleClassName="border-blue-500"
+  handleIndicatorClassName="bg-blue-500"
+>
+  <TimelineText>Video Editor</TimelineText>
+</Timeline>
+```
+
+## Examples
+
+---
+
+<Step>Custom</Step>
+
+<ComponentPreview
+  name="timelinecustom-demo"
+  className=""
+  description=""
+/>
+
+## API Reference
+
+### Timeline
+
+Smoothly animated timeline slider with resizable handles for interactive use.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Content inside the timeline container. Required in Timeline."
+    },
+    {
+      prop: "rotation",
+      type: "number",
+      default: "-2.76",
+      description: "Rotation angle of the timeline in degrees."
+    },
+    {
+      prop: "initialLeft",
+      type: "number",
+      default: "0",
+      description: "Initial left handle position in pixels."
+    },
+    {
+      prop: "minWidth",
+      type: "number",
+      default: "56",
+      description: "Minimum width in pixels between left and right handles."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Optional class applied to the main timeline wrapper."
+    },
+    {
+      prop: "containerClassName",
+      type: "string",
+      default: "-",
+      description: "Optional class applied to the timeline content container."
+    },
+    {
+      prop: "handleClassName",
+      type: "string",
+      default: "-",
+      description: "Optional class applied to both left and right draggable handles."
+    },
+    {
+      prop: "handleIndicatorClassName",
+      type: "string",
+      default: "-",
+      description: "Optional class applied to the small indicator inside handles."
+    }
+  ]}
+/>
+
