@@ -287,6 +287,10 @@ const navigation: NavItem[] = [
       {
         title: "Thunder Loader",
         href: "/docs/components/thunder-loader",
+      },
+      {
+        title: "Timeline",
+        href: "/docs/components/timeline",
         category: "new",
       },
       {

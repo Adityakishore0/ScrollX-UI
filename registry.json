@@ -1117,6 +1117,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "timeline",
+      "title": "Timeline",
+      "description": "Smoothly animated timeline slider with resizable handles for interactive use.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/timeline.tsx",
+          "target": "components/ui/timeline.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "top-sheet",
       "title": "Top Sheet",
       "description": "A customizable component for creating elegant, slide-out panels from the top of the screen.",

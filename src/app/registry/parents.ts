@@ -74,6 +74,7 @@ export const parentComponents = [
   "text-highlighter",
   "theme-switch",
   "thunder-loader",
+  "timeline",
   "top-sheet",
   "toast",
   "toggle-vault",
