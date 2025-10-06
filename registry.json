@@ -922,6 +922,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "signupform",
+      "title": "Signup Form",
+      "description": "Modern, responsive signup form with smooth transitions and gradient accents.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/signupform.tsx",
+          "target": "components/ui/signupform.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "slider",
       "title": "Slider",
       "description": "An interactive slider with glass effects for selecting values smoothly within a range.",
