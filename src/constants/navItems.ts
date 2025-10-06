@@ -273,6 +273,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/scroll-areapro",
       },
       {
+        title: "Signup Form",
+        href: "/docs/components/signupform",
+        category: "new",
+      },
+      {
         title: "Table",
         href: "/docs/components/table",
       },
