@@ -107,6 +107,7 @@ export const demoComponents = [
   "radialsocials-demo",
   "sidesheetleft-demo",
   "sidesheetright-demo",
+  "signupform-demo",
   "slider-demo",
   "status-demo",
   "statusindicator-demo",
