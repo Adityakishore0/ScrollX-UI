@@ -130,6 +130,8 @@ export const demoComponents = [
   "table-datatable-demo",
   "tablescrollable-demo",
   "tablecheckbox-demo",
+  "testimonialcarousel-demo",
+  "testimonialcarouselgradient-demo",
   "texthighlighter-demo",
   "texthighlighterzigzag",
   "themeswitch-demo",

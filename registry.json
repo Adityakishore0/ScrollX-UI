@@ -1087,6 +1087,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "testimonial-carousel",
+      "title": "Testimonial Carousel",
+      "description": "Minimal, responsive testimonial slider with avatars, names, and quotes for clean, modern design.",
+      "type": "registry:component",
+      "dependencies": ["embla-carousel-react"],
+      "files": [
+        {
+          "path": "components/ui/testimonial-carousel.tsx",
+          "target": "components/ui/testimonial-carousel.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "text-highlighter",
       "title": "Text Highlighter",
       "description": "A customizable text highlighter with smooth animated highlights to emphasize key text.",
