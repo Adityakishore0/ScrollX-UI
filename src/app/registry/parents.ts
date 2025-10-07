@@ -72,6 +72,7 @@ export const parentComponents = [
   "seperatorpro",
   "scroll-areapro",
   "table",
+  "testimonial-carousel",
   "text-highlighter",
   "theme-switch",
   "thunder-loader",
