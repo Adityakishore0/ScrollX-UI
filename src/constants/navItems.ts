@@ -286,6 +286,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/text-highlighter",
       },
       {
+        title: "Testimonial Carousel",
+        href: "/docs/components/testimonial-carousel",
+        category: "new",
+      },
+      {
         title: "Theme Switch",
         href: "/docs/components/theme-switch",
       },
