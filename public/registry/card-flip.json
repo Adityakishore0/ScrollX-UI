@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-flip",
+  "type": "registry:component",
+  "title": "Card Flip",
+  "description": "Renders a card component with flip animation, supporting front/back content.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/card-flip.tsx",
+      "target": "components/ui/card-flip.tsx",
+      "content": "\"use client\";\nimport React, { useState } from \"react\";\nimport { motion } from \"framer-motion\";\nimport { Info, X } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nfunction CardFlip({ className, children, ...props }: React.ComponentProps<\"div\"> & { children: [React.ReactNode, React.ReactNode] }) {\n  const [isFlipped, setIsFlipped] = useState(false);\n  const [front, back] = React.Children.toArray(children);\n\n  return (\n    <div className={cn(\"relative w-full\", className)} style={{ perspective: \"1000px\" }} {...props}>\n      <motion.div\n        className=\"relative w-full\"\n        initial={false}\n        animate={{ rotateY: isFlipped ? -180 : 0 }}\n        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}\n        style={{ transformStyle: \"preserve-3d\" }}\n      >\n        <div\n          className=\"w-full\"\n          style={{ backfaceVisibility: \"hidden\" }}\n        >\n          <div className=\"relative w-full\">\n            <button\n              onClick={() => setIsFlipped(true)}\n              className=\"absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors z-10\"\n              aria-label=\"Show info\"\n            >\n              <Info className=\"w-5 h-5 text-muted-foreground\" />\n            </button>\n            {front}\n          </div>\n        </div>\n\n        <div\n          className=\"absolute inset-0 w-full\"\n          style={{ backfaceVisibility: \"hidden\", transform: \"rotateY(-180deg)\" }}\n        >\n          <div className=\"relative w-full h-full\">\n            <button\n              onClick={() => setIsFlipped(false)}\n              className=\"absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors z-10\"\n              aria-label=\"Close\"\n            >\n              <X className=\"w-5 h-5 text-muted-foreground\" />\n            </button>\n            {back}\n          </div>\n        </div>\n      </motion.div>\n    </div>\n  );\n}\n\nfunction CardFlipFront({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card\"\n      className={cn(\n        \"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction CardFlipBack({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card\"\n      className={cn(\n        \"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction CardFlipHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-header\"\n      className={cn(\n        \"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction CardFlipTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-title\"\n      className={cn(\"leading-none font-semibold\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction CardFlipDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-description\"\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction CardFlipAction({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-action\"\n      className={cn(\"col-start-2 row-span-2 row-start-1 self-start justify-self-end\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction CardFlipContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div data-slot=\"card-content\" className={cn(\"px-6\", className)} {...props} />\n  );\n}\n\nfunction CardFlipFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"card-footer\"\n      className={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  CardFlip,\n  CardFlipFront,\n  CardFlipBack,\n  CardFlipHeader,\n  CardFlipFooter,\n  CardFlipTitle,\n  CardFlipAction,\n  CardFlipDescription,\n  CardFlipContent,\n};\n"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}

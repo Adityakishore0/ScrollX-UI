@@ -1,0 +1,164 @@
+---
+title: Card Flip
+description: Renders a card component with flip animation, supporting front/back content.
+---
+
+<ComponentPreview name="cardflip-demo" className="p-8" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="card-flip" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>card-flip.tsx</code>
+</p>
+<ComponentSource name="card-flip" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  CardFlip,
+  CardFlipFront,
+  CardFlipBack,
+  CardFlipHeader,
+  CardFlipFooter,
+  CardFlipTitle,
+  CardFlipDescription,
+  CardFlipContent,
+  CardFlipAction,
+} from "@/components/ui/card-flip";
+```
+
+```tsx
+<CardFlip>
+  <CardFlipFront>
+    <CardFlipHeader>
+      <CardFlipTitle>Front Title</CardFlipTitle>
+    </CardFlipHeader>
+    <CardFlipContent>
+      <p>Front Content</p>
+    </CardFlipContent>
+  </CardFlipFront>
+
+  <CardFlipBack>
+    <CardFlipHeader>
+      <CardFlipTitle>Back Title</CardFlipTitle>
+    </CardFlipHeader>
+    <CardFlipContent>
+      <p>Back Content</p>
+    </CardFlipContent>
+  </CardFlipBack>
+</CardFlip>
+```
+
+## API Reference
+
+### Card Flip
+
+Renders a card component with flip animation, supporting front/back content.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom CSS classes for the root card container.",
+    },
+    {
+      prop: "...props",
+      type: "div props",
+      default: "—",
+      description: "All standard HTML div attributes.",
+    },
+    {
+      prop: "children",
+      type: "ReactNode[]",
+      default: "—",
+      description: "Front and back card content as two nodes.",
+    },
+    {
+      prop: "CardFlipFront",
+      type: "React.ReactNode",
+      default: "—",
+      description: "Front side of the card, containing main content.",
+    },
+    {
+      prop: "CardFlipBack",
+      type: "React.ReactNode",
+      default: "—",
+      description: "Back side of the card, shown on flip.",
+    },
+    {
+      prop: "CardFlipHeader",
+      type: "React.ReactNode",
+      default: "—",
+      description: "Header section inside front or back card.",
+    },
+    {
+      prop: "CardFlipTitle",
+      type: "React.ReactNode",
+      default: "—",
+      description: "Title inside the header section.",
+    },
+    {
+      prop: "CardFlipDescription",
+      type: "React.ReactNode",
+      default: "—",
+      description: "Description inside the header section.",
+    },
+    {
+      prop: "CardFlipAction",
+      type: "React.ReactNode",
+      default: "—",
+      description: "Action element (e.g., button) in the header.",
+    },
+    {
+      prop: "CardFlipContent",
+      type: "React.ReactNode",
+      default: "—",
+      description: "Main content area inside the card.",
+    },
+    {
+      prop: "CardFlipFooter",
+      type: "React.ReactNode",
+      default: "—",
+      description: "Footer section inside the card.",
+    },
+  ]}
+/>

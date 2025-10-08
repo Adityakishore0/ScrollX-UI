@@ -17,6 +17,7 @@ export const parentComponents = [
   "border-glide",
   "button",
   "card",
+  "card-flip",
   "carousel",
   "calendar",
   "checkbox-pro",
