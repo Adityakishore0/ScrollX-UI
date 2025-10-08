@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-flip",
+  "type": "registry:component",
+  "title": "Card Flip",
+  "description": "Renders a card component with flip animation, supporting front/back content.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": ["framer-motion", "lucide-react", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/card-flip.tsx",
+      "target": "components/ui/card-flip.tsx",
+      "content": ""
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
