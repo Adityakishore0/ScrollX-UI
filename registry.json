@@ -259,6 +259,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "card-flip",
+      "title": "Card Flip",
+      "description": "Renders a card component with flip animation, supporting front/back content.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/card-flip.tsx",
+          "target": "components/ui/card-flip.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "carousel",
       "title": "Carousel",
       "description": "A carousel component with card stack visualization for cycling through content.",
