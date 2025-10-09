@@ -126,22 +126,15 @@ export async function generateMetadata({ params }: PageProps) {
           },
         ],
       },
-      alternates: {
-        canonical: url,
-      },
+      alternates: { canonical: url },
     };
   }
 
-  const componentName = slug[slug.length - 1];
-  let imageUrl = "https://scrollxui.dev/images/ui.png";
-
-  if (slug.includes("components") && componentName) {
-    imageUrl = `https://scrollxui.dev/api/og?title=${encodeURIComponent(
-      doc.frontmatter.title
-    )}&description=${encodeURIComponent(
-      doc.frontmatter.description || ""
-    )}&logo=https://scrollxui.dev/favicon.ico`;
-  }
+  const imageUrl = `https://scrollxui.dev/api/og?title=${encodeURIComponent(
+    doc.frontmatter.title
+  )}&description=${encodeURIComponent(
+    doc.frontmatter.description || ""
+  )}&logo=https://scrollxui.dev/favicon.ico`;
 
   return {
     title: `ScrollX UI | ${doc.frontmatter.title}`,
@@ -165,9 +158,7 @@ export async function generateMetadata({ params }: PageProps) {
       description: doc.frontmatter.description,
       images: [imageUrl],
     },
-    alternates: {
-      canonical: url,
-    },
+    alternates: { canonical: url },
   };
 }
 
