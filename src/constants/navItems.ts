@@ -134,8 +134,8 @@ const navigation: NavItem[] = [
       {
         title: "Folder Tree",
         href: "/docs/components/folder-tree",
-        category: "new",
       },
+      { title: "Glass", href: "/docs/components/glass", category: "new" },
       {
         title: "GlowingBorderCard",
         href: "/docs/components/glowingbordercard",

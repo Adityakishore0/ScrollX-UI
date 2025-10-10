@@ -32,6 +32,7 @@ export const parentComponents = [
   "followcursor",
   "flowing-logos",
   "folder-tree",
+  "glass",
   "glowingbordercard",
   "globe",
   "gravity",
