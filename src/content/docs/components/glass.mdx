@@ -1,0 +1,175 @@
+---
+title: Glass
+description: glass surface with interactive ripple and dynamic cursor effects.
+---
+
+<ComponentPreview
+  name="glasshero-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="glass" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>glass.tsx</code>
+</p>
+<ComponentSource name="glass" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Glass } from "@/components/ui/glass";
+```
+
+```tsx
+<Glass
+  width={200}
+  height={200}
+  borderRadius={16}
+  tintOpacity={0.15}
+  blur={4}
+  ripple
+  followMouse
+  className="m-4"
+  onClick={() => console.log("Glass clicked!")}
+>
+  <div className="flex items-center justify-center h-full w-full text-white font-bold">
+    Interactive Surface
+  </div>
+</Glass>
+```
+## Examples
+
+---
+
+<Step>Follow Mouse</Step>
+
+<ComponentPreview
+  name="glass-demo"
+  className="p-0"
+  description=""
+/>
+
+---
+
+<Step>Ripple</Step>
+
+<ComponentPreview
+  name="glassripple-demo"
+  className="p-0"
+  description=""
+/>
+
+## API Reference
+
+### Glass
+
+glass surface with interactive ripple and dynamic cursor effects.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "undefined",
+      description: "Content rendered inside the glass container."
+    },
+    {
+      prop: "width",
+      type: "number | string",
+      default: "120",
+      description: "Width of the glass component in pixels or any CSS unit."
+    },
+    {
+      prop: "height",
+      type: "number | string",
+      default: "120",
+      description: "Height of the glass component in pixels or any CSS unit."
+    },
+    {
+      prop: "borderRadius",
+      type: "number",
+      default: "12",
+      description: "Border radius of the glass container in pixels."
+    },
+    {
+      prop: "tintOpacity",
+      type: "number",
+      default: "0.1",
+      description: "Opacity of the frosted tint overlay, between 0 and 1."
+    },
+    {
+      prop: "blur",
+      type: "number",
+      default: "2",
+      description: "Backdrop blur intensity in pixels."
+    },
+    {
+      prop: "ripple",
+      type: "boolean",
+      default: "false",
+      description: "If true, clicking generates a ripple effect."
+    },
+    {
+      prop: "followMouse",
+      type: "boolean",
+      default: "false",
+      description: "If true, the glass element follows the cursor or touch point."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "''",
+      description: "Additional custom CSS classes for the glass container."
+    },
+    {
+      prop: "style",
+      type: "CSSProperties",
+      default: "{}",
+      description: "Inline styles applied to the glass container."
+    },
+    {
+      prop: "onClick",
+      type: "(e: React.MouseEvent) => void",
+      default: "undefined",
+      description: "Callback fired when the glass container is clicked."
+    }
+  ]}
+/>
+
