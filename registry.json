@@ -487,6 +487,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "glass",
+      "title": "Glass",
+      "description": "glass surface with interactive ripple and dynamic cursor effects.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/glass.tsx",
+          "target": "components/ui/glass.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "glowingbordercard",
       "title": "Glowing Border Card",
       "description": "A customizable card with a glowing border effect that changes colors based on light and dark modes.",
