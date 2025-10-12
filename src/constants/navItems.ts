@@ -328,6 +328,11 @@ const navigation: NavItem[] = [
       },
       { title: "Type Animation", href: "/docs/components/typeanimation" },
       { title: "Venom Beam", href: "/docs/components/venom-beam" },
+      {
+        title: "Vercel Card",
+        href: "/docs/components/vercel-card",
+        category: "new",
+      },
       { title: "Whitestripes", href: "/docs/components/whitestripes" },
     ],
   },
