@@ -1301,6 +1301,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "vercel-card",
+      "title": "Vercel Card",
+      "description": "A smooth interactive vercel inspired card.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/vercel-card.tsx",
+          "target": "components/ui/vercel-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "whitestripes",
       "title": "Whitestripes",
       "description": "Dynamic motion background for hero sections and modern layouts.",

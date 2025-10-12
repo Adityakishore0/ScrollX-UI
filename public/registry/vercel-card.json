@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "vercel-card",
+  "type": "registry:component",
+  "title": "Vercel Card",
+  "description": "A smooth interactive vercel inspired card.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/vercel-card.tsx",
+      "target": "components/ui/vercel-card.tsx",
+      "content": "import React from \"react\";\nimport { motion, HTMLMotionProps } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\ninterface VercelCardProps extends Omit<HTMLMotionProps<\"div\">, \"whileHover\" | \"transition\"> {\n  showIcons?: boolean;\n  iconClassName?: string;\n  animateOnHover?: boolean;\n  glowEffect?: boolean;\n  bordered?: boolean;\n}\n\nfunction VercelCard({\n  children,\n  className,\n  showIcons = true,\n  iconClassName,\n  animateOnHover = false,\n  glowEffect = false,\n  bordered = true,\n  ...props\n}: VercelCardProps) {\n  return (\n    <motion.div\n      className={cn(\n        \"group/canvas-card relative flex flex-col items-center justify-center w-full h-full min-h-[200px]\",\n        bordered && \"border border-black/[0.2] dark:border-white/[0.2] rounded-xl\",\n        className\n      )}\n      whileHover={animateOnHover ? { scale: 1.02 } : {}}\n      transition={{ duration: 0.3 }}\n      {...props}\n    >\n      {showIcons && (\n        <>\n          <Icon className={cn(\"absolute -left-3 -top-3 h-6 w-6 text-black dark:text-white\", iconClassName)} />\n          <Icon className={cn(\"absolute -bottom-3 -left-3 h-6 w-6 text-black dark:text-white\", iconClassName)} />\n          <Icon className={cn(\"absolute -right-3 -top-3 h-6 w-6 text-black dark:text-white\", iconClassName)} />\n          <Icon className={cn(\"absolute -bottom-3 -right-3 h-6 w-6 text-black dark:text-white\", iconClassName)} />\n        </>\n      )}\n\n      {glowEffect && (\n        <motion.div\n          className=\"absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 blur-xl transition-opacity duration-500 group-hover/canvas-card:opacity-100\"\n          initial={{ opacity: 0 }}\n          whileHover={{ opacity: 1 }}\n        />\n      )}\n\n      <div className=\"relative h-full w-full p-6 flex flex-col items-center justify-center\">\n        {children}\n      </div>\n    </motion.div>\n  );\n}\n\nfunction Icon({ className, ...props }: React.SVGProps<SVGSVGElement>) {\n  return (\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      fill=\"none\"\n      viewBox=\"0 0 24 24\"\n      strokeWidth=\"1.5\"\n      stroke=\"currentColor\"\n      className={className}\n      {...props}\n    >\n      <path strokeLinecap=\"round\" strokeLinejoin=\"round\" d=\"M12 6v12m6-6H6\" />\n    </svg>\n  );\n}\n\nexport { VercelCard };"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}

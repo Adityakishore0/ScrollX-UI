@@ -182,6 +182,7 @@ export const demoComponents = [
   "transitiontrigger-demo",
   "typeanimation-demo",
   "venombeam-demo",
+  "vercelcard-demo",
   "whitestripes-demo",
   // Add more demo components here
 ] as const;
