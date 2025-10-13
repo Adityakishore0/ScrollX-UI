@@ -577,6 +577,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "hyperlink",
+      "title": "Hyperlink",
+      "description": "hyperlink component with animated underline, smooth hover & customizable style.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/hyperlink.tsx",
+          "target": "components/ui/hyperlink.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "iphone",
       "title": "Iphone",
       "description": "IPhone mockup with screen, header, and custom children content.",

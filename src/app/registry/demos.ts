@@ -73,6 +73,8 @@ export const demoComponents = [
   "heroui-demo",
   "holdtoconfirm-demo",
   "holdtoconfirmborder",
+  "hyperlink-demo",
+  "hyperlinkcustom-demo",
   "iphone-demo",
   "iphoneimage-demo",
   "iphonevideo-demo",

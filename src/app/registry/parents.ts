@@ -38,6 +38,7 @@ export const parentComponents = [
   "gravity",
   "heroui",
   "hold-toconfirm",
+  "hyperlink",
   "iphone",
   "input-otp",
   "interactive-input",
