@@ -3,7 +3,7 @@
   "name": "hyperlink",
   "type": "registry:component",
   "title": "Hyperlink",
-  "description": "A smooth interactive vercel inspired card.",
+  "description": "Hyperlink component with animated underline, smooth hover & customizable style.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "dependencies": ["clsx", "tailwind-merge"],
   "files": [
