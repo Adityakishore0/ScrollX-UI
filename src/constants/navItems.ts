@@ -157,9 +157,13 @@ const navigation: NavItem[] = [
         href: "/docs/components/hold-toconfirm",
       },
       {
+        title: "Hyperlink",
+        href: "/docs/components/hyperlink",
+        category: "new",
+      },
+      {
         title: "Iphone",
         href: "/docs/components/iphone",
-        category: "new",
       },
       { title: "Input OTP", href: "/docs/components/input-otp" },
       {
