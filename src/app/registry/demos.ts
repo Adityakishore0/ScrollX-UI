@@ -115,6 +115,8 @@ export const demoComponents = [
   "sidesheetright-demo",
   "signupform-demo",
   "slider-demo",
+  "socialorbit-demo",
+  "socialorbittext-demo",
   "status-demo",
   "statusindicator-demo",
   "statusshiny-demo",
