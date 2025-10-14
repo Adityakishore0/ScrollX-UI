@@ -74,6 +74,7 @@ export const parentComponents = [
   "spotlightcard",
   "seperatorpro",
   "scroll-areapro",
+  "social-orbit",
   "table",
   "testimonial-carousel",
   "text-highlighter",
