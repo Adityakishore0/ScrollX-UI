@@ -250,6 +250,10 @@ const navigation: NavItem[] = [
       {
         title: "Slider",
         href: "/docs/components/slider",
+      },
+      {
+        title: "Social Orbit",
+        href: "/docs/components/social-orbit",
         category: "new",
       },
       { title: "Status", href: "/docs/components/status" },
