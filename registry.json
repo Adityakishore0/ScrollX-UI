@@ -1117,6 +1117,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "social-orbit",
+      "title": "Social Orbit",
+      "description": "orbits your socials in smooth motion where icons spin, ripple, and glow with purpose.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/social-orbit.tsx",
+          "target": "components/ui/social-orbit.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "table",
       "title": "Table",
       "description": "Powerful responsive data table with sticky headers, smooth scrolling, sorting, and pagination.",
