@@ -340,6 +340,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/vercel-card",
         category: "new",
       },
+      {
+        title: "Wavy Button",
+        href: "/docs/components/wavy-button",
+        category: "new",
+      },
       { title: "Whitestripes", href: "/docs/components/whitestripes" },
     ],
   },

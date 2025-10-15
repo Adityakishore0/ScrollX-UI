@@ -89,6 +89,7 @@ export const parentComponents = [
   "typeanimation",
   "venom-beam",
   "vercel-card",
+  "wavy-button",
   "whitestripes",
   // Add more parent component names here
 ] as const;
