@@ -1346,6 +1346,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "wavy-button",
+      "title": "Wavy Button",
+      "description": "Interactive wavybutton with animated text and customizable styles for modern uis.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "@radix-ui/react-slot"],
+      "files": [
+        {
+          "path": "components/ui/wavy-button.tsx",
+          "target": "components/ui/wavy-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "whitestripes",
       "title": "Whitestripes",
       "description": "Dynamic motion background for hero sections and modern layouts.",
