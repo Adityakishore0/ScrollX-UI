@@ -457,6 +457,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "folder",
+      "title": "Folder",
+      "description": "Interactive 3D Folder UI component with hover & click animations for modern apps.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/folder.tsx",
+          "target": "components/ui/folder.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "folder-tree",
       "title": "Folder Tree",
       "description": "A customizable folder tree component for displaying hierarchical data with expandable nodes.",
