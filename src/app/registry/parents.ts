@@ -31,6 +31,7 @@ export const parentComponents = [
   "flipstack",
   "followcursor",
   "flowing-logos",
+  "folder",
   "folder-tree",
   "glass",
   "glowingbordercard",
