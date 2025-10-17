@@ -1,0 +1,108 @@
+---
+title: Folder
+description: Interactive 3D Folder UI component with hover & click animations for modern sites.
+---
+
+<ComponentPreview name="folder-demo" className="" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="folder" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>folder.tsx</code>
+</p>
+<ComponentSource name="folder" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import Folder from "@/components/ui/folder";
+```
+
+```tsx
+<Folder>
+  <FolderContent>
+    <div className="text-center">
+      <h2 className="text-2xl font-bold">ScrollX UI</h2>
+      <p className="mt-2 text-gray-400 font-medium">
+        Cool components for modern UI
+      </p>
+    </div>
+  </FolderContent>
+</Folder>
+```
+
+## API Reference
+
+### Folder
+
+Interactive 3D Folder UI component with hover & click animations for modern sites.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "color",
+      type: "string",
+      default: `"hsl(173, 80%, 70%)"`,
+      description: "Background color of the main folder body.",
+    },
+    {
+      prop: "tabColor",
+      type: "string",
+      default: `"hsl(173, 84%, 42%)"`,
+      description: "Color of the folder's top tab section.",
+    },
+    {
+      prop: "size",
+      type: `"xxs" | "xs" | "sm" | "md"`,
+      default: `"sm"`,
+      description:
+        "Determines the overall folder size.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional class name for custom styling or positioning.",
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description:
+        "Elements to render inside the folder. Commonly includes <FolderContent>.",
+    },
+  ]}
+/>
