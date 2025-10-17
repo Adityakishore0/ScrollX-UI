@@ -128,6 +128,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/followcursor",
       },
       {
+        title: "Folder",
+        href: "/docs/components/folder",
+        category: "new",
+      },
+      {
         title: "Flowing Logos",
         href: "/docs/components/flowing-logos",
       },

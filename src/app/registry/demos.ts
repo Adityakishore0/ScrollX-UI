@@ -60,6 +60,7 @@ export const demoComponents = [
   "facescapesquircle-demo",
   "flipstack-demo",
   "flowinglogos-demo",
+  "folder-demo",
   "followcursor-demo",
   "foldertree-demo",
   "foldertree-badge",
