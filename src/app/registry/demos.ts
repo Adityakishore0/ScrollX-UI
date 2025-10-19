@@ -90,6 +90,8 @@ export const demoComponents = [
   "loaderdual-ring",
   "loadercube",
   "loginform-demo",
+  "logostepper-demo",
+  "logosteppervloop-demo",
   "lustretext-demo",
   "magicdock-demo",
   "modernloader-demo",

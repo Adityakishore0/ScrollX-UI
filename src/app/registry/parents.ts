@@ -49,6 +49,7 @@ export const parentComponents = [
   "lamphome",
   "loader",
   "loginform",
+  "logo-stepper",
   "lustretext",
   "magicdock",
   "modern-loader",
