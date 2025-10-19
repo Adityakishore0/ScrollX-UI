@@ -742,6 +742,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "logo-stepper",
+      "title": "Logo Stepper",
+      "description": "logo showcase with names, smooth animations, hover effects, and modern UI.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/logo-stepper.tsx",
+          "target": "components/ui/logo-stepper.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "lustretext",
       "title": "Lustre Text",
       "description": "A lustrous text component with animated gradient shine.",
