@@ -192,6 +192,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/loginform",
       },
       {
+        title: "Logo Stepper",
+        href: "/docs/components/logo-stepper",
+        category: "new",
+      },
+      {
         title: "lustre Text",
         href: "/docs/components/lustretext",
       },
