@@ -1,0 +1,118 @@
+---
+title: Logo Stepper
+description: logo showcase with names, smooth animations, hover effects, and modern UI.
+---
+
+<ComponentPreview name="logostepper-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="logo-stepper" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+    <Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>logo-stepper.tsx</code>
+</p>
+<ComponentSource name="logo-stepper" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { LogoStepper } from "@/components/ui/logo-stepper";
+```
+
+```tsx
+<LogoStepper
+  logos={logos}
+  direction="loop"
+  animationDelay={1.2}
+  animationDuration={0.6}
+  visibleCount={5}
+/>
+```
+
+## Examples
+
+---
+
+<Step>Visible loop</Step>
+
+<ComponentPreview name="logosteppervloop-demo" className="p-0" description="" />
+
+## API Reference
+
+### Flowing Logos
+
+logo showcase with names, smooth animations, hover effects, and modern UI.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "logos",
+      type: "Array<{ icon: React.ReactNode; label: string }>",
+      default: "required",
+      description:
+        "An array of logo objects, each containing an icon and a label to display.",
+    },
+    {
+      prop: "animationDuration",
+      type: "number",
+      default: "0.6",
+      description:
+        "Duration (in seconds) for the logo transition animation using Framer Motion.",
+    },
+    {
+      prop: "animationDelay",
+      type: "number",
+      default: "1.2",
+      description:
+        "Time delay (in seconds) between automatic transitions of the logo stepper.",
+    },
+    {
+      prop: "direction",
+      type: "'loop' | 'vloop'",
+      default: "'loop'",
+      description:
+        "Determines the visiblity of loop",
+    },
+    {
+      prop: "visibleCount",
+      type: "number",
+      default: "5",
+      description:
+        "Number of logos visible at a time in the stepper viewport.",
+    },
+  ]}
+/>
+
