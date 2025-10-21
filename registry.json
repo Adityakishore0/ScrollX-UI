@@ -319,6 +319,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "clock",
+      "title": "Clock",
+      "description": "clock component with rotating hands and glowing effects, perfect for CTA sections.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/clock.tsx",
+          "target": "components/ui/clock.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "codeblock",
       "title": "CodeBlock",
       "description": "Syntax-highlighted codeblock component built on top of react-syntax-highlighter.",
