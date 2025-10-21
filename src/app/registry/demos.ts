@@ -40,6 +40,7 @@ export const demoComponents = [
   "calendarmultimon-demo",
   "calendardisabledays-demo",
   "checkboxpro-demo",
+  "clock-demo",
   "collapsible-demo",
   "cursorhighlight-demo",
   "cursorhighlightdefault-demo",
