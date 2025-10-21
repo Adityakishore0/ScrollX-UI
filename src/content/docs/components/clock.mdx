@@ -1,0 +1,84 @@
+---
+title: Clock
+description: clock component with rotating hands and glowing effects, perfect for CTA sections.
+---
+
+<ComponentPreview name="clock-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="clock" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>clock.tsx</code>
+</p>
+<ComponentSource name="clock" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import Clock from "@/components/ui/clock";
+```
+
+```tsx
+<Clock />
+```
+
+## API Reference
+
+### Clock
+
+clock component with rotating hands and glowing effects, perfect for CTA sections.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Optional CSS class for custom styling of the clock container.",
+    },
+    {
+      prop: "children",
+      type: "React.ReactNode",
+      default: "-",
+      description:
+        "Optional nested content displayed at the center of the clock, e.g., a logo or label.",
+    },
+  ]}
+/>
+
