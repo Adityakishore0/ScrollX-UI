@@ -95,6 +95,11 @@ const navigation: NavItem[] = [
         title: "Checkbox Pro",
         href: "/docs/components/checkbox-pro",
       },
+      {
+        title: "Clock",
+        href: "/docs/components/clock",
+        category: "new",
+      },
       { title: "CodeBlock", href: "/docs/components/codeblock" },
       {
         title: "Collapsible",
