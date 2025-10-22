@@ -1222,6 +1222,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "text-modifier",
+      "title": "Text Modifier",
+      "description": "text highlighter with solid background and decorative markers for emphasis..",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/text-modifier.tsx",
+          "target": "components/ui/text-modifier.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "theme-switch",
       "title": "Theme Switch",
       "description": "A flexible and accessible theme mode switcher component for Next.js projects using next-themes. ",
