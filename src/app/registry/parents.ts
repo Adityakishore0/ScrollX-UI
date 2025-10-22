@@ -81,6 +81,7 @@ export const parentComponents = [
   "table",
   "testimonial-carousel",
   "text-highlighter",
+  "text-modifier",
   "theme-switch",
   "thunder-loader",
   "timeline",

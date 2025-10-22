@@ -146,6 +146,7 @@ export const demoComponents = [
   "testimonialcarouselgradient-demo",
   "texthighlighter-demo",
   "texthighlighterzigzag",
+  "textmodifier-demo",
   "themeswitch-demo",
   "themeswitchicon",
   "thunderloader-demo",
