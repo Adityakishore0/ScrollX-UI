@@ -1,0 +1,151 @@
+---
+title: Text Spotlight
+description: spotlight text effect with hover and mobile reveal, customizable size and color.
+---
+
+<ComponentPreview name="textspotlight-demo" className="" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="text-spotlight" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>text-spotlight.tsx</code>
+</p>
+<ComponentSource name="text-spotlight" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { TextSpotlight } from "@/components/ui/text-spotlight";
+```
+
+```tsx
+<TextSpotlight
+  textClassName="text-xl md:text-4xl font-semibold"
+  text="Hover over me and watch the soft spotlight glide around like magic across the text."
+  spotlightColor="255, 255, 255"
+  animateOnPhone={true}
+  spotlightArea={90}
+  spotlightSize={100}
+/>
+```
+
+## Examples
+
+---
+
+<Step>AnimateOnPhone</Step>
+
+<ComponentPreview
+  name="textspotlightautophone-demo"
+  className=""
+  description=""
+/>
+
+## API Reference
+
+### Text Spotlight
+
+spotlight text effect with hover and mobile reveal, customizable size and color.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "text",
+      type: "string",
+      default: "required",
+      description:
+        "The text content to display with the spotlight or reveal animation.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Additional CSS classes for the container element.",
+    },
+    {
+      prop: "textClassName",
+      type: "string",
+      default: "-",
+      description: "Additional CSS classes for the text element.",
+    },
+    {
+      prop: "spotlightColor",
+      type: "string",
+      default: `"255, 255, 255"`,
+      description: "RGB color used for the spotlight gradient effect.",
+    },
+    {
+      prop: "spotlightSize",
+      type: "number",
+      default: "450",
+      description: "Defines the radius of the spotlight effect in pixels.",
+    },
+    {
+      prop: "spotlightOpacity",
+      type: "number",
+      default: "1",
+      description: "Controls the opacity of the spotlight (from 0 to 1).",
+    },
+    {
+      prop: "spotlightArea",
+      type: "number",
+      default: "-",
+      description:
+        "Optional area radius for spotlight detection (not required in most cases).",
+    },
+    {
+      prop: "animateOnPhone",
+      type: "boolean",
+      default: "false",
+      description: "Enables the mobile text reveal animation when true.",
+    },
+    {
+      prop: "colorDuration",
+      type: "number",
+      default: "2000",
+      description: "Duration (in milliseconds) of the mobile reveal animation.",
+    },
+    {
+      prop: "...props",
+      type: "HTMLDivElement attributes",
+      default: "-",
+      description: "Any other standard div attributes (like id, style, etc.).",
+    },
+  ]}
+/>
