@@ -1237,6 +1237,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "text-spotlight",
+      "title": "Text Spotlight",
+      "description": "spotlight text effect with hover and mobile reveal, customizable size and color.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/text-spotlight.tsx",
+          "target": "components/ui/text-spotlight.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "theme-switch",
       "title": "Theme Switch",
       "description": "A flexible and accessible theme mode switcher component for Next.js projects using next-themes. ",
