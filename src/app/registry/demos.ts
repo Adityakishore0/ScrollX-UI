@@ -147,6 +147,8 @@ export const demoComponents = [
   "texthighlighter-demo",
   "texthighlighterzigzag",
   "textmodifier-demo",
+  "textspotlight-demo",
+  "textspotlightautophone-demo",
   "themeswitch-demo",
   "themeswitchicon",
   "thunderloader-demo",
