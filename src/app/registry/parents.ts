@@ -26,6 +26,7 @@ export const parentComponents = [
   "collapsible",
   "cursorimagetrail",
   "cursor-highlight",
+  "draggable-avatar",
   "dropdown-menu",
   "expandable-dock",
   "facescape",
