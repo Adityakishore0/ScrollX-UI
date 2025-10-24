@@ -12,6 +12,10 @@ import { motion } from "framer-motion";
 import { RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CursorHighlight } from "@/components/ui/cursor-highlight";
+import { parentComponents } from "@/app/registry/parents";
+
+const totalComponents = parentComponents.length;
+const displayCount = Math.floor(totalComponents / 10) * 10 + "+";
 
 export function ComponentShowcase() {
   const [rotate, setRotate] = useState(false);
@@ -21,12 +25,12 @@ export function ComponentShowcase() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+            <h2 className="text-3xl font-bold sm:text-5xl">
               <CursorHighlight
                 className="text-3xl sm:text-5xl font-bold"
                 gradient="from-rose-500 via-fuchsia-500 to-rose-500"
               >
-                70+
+                {displayCount}
               </CursorHighlight>{" "}
               Stunning Components
             </h2>
