@@ -82,6 +82,11 @@ const navigation: NavItem[] = [
       },
       { title: "Cursor Highlight", href: "/docs/components/cursor-highlight" },
       { title: "Cursor ImageTrail", href: "/docs/components/cursorimagetrail" },
+      {
+        title: "Draggable Avatar",
+        href: "/docs/components/draggable-avatar",
+        category: "new",
+      },
       { title: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
       { title: "Expandable Dock", href: "/docs/components/expandable-dock" },
       {
