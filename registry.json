@@ -398,7 +398,7 @@
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "draggable-avatar",
-      "title": "Dropdown Menu",
+      "title": "Draggable Avatar",
       "description": "It displays a circular, draggable avatar with customizable size and style.",
       "type": "registry:component",
       "dependencies": ["framer-motion"],
