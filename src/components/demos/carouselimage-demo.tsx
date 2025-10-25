@@ -22,7 +22,7 @@ export default function CarouselImageDemo() {
           <CarouselItem key={index}>
             <div className="p-1">
               <Card>
-                <CardContent className="p-0">
+                <CardContent>
                   <img
                     src={imageUrl}
                     alt={`Landscape image ${index + 1}`}

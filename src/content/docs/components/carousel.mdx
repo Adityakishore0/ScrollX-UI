@@ -29,7 +29,20 @@ description:  A carousel component with card stack visualization for cycling thr
 </p>
 <ComponentSource name="carousel" />
 
+<Step>Add util file</Step>
 
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```tsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
 
 </Steps>
   </TabsContent>
@@ -73,6 +86,17 @@ import { Carousel, CarouselContent, CarouselItem, } from "@/components/ui/carous
 
 ---
 
+## Changelog
+
+#### 25-10-2025,  Carousel Refactor
+
+- Rebuilt Carousel with React Context for shared state.
+- Added keyboard navigation (↑ ↓).
+- Added `maxVisible` and `stackOffset` props for stacked layout.
+- Introduced `useCarousel()` hook and `data-slot` attributes.
+- Improved accessibility with ARIA roles.
+- Simplified controls using `CarouselPrevious` and `CarouselNext`.
+
 ## API Reference
 
 ### Carousel
@@ -87,26 +111,51 @@ The `Carousel` component is the main container for the card stack carousel.
       prop: "className",
       type: "string",
       default: "—",
-      description: "CSS classes for the outer container. Used in: Carousel."
+      description: "Extra CSS classes. Used in all components."
     },
     {
       prop: "children",
       type: "ReactNode",
       default: "required",
-      description: "Inner content. Used in: Carousel, CarouselContent, CarouselItem."
+      description: "Inner content. Used in Carousel, CarouselContent, CarouselItem."
+    },
+    {
+      prop: "maxVisible",
+      type: "number",
+      default: "3",
+      description: "Number of visible stacked cards. Used in CarouselContent."
+    },
+    {
+      prop: "stackOffset",
+      type: "number",
+      default: "20",
+      description: "Vertical gap between stacked cards. Used in CarouselContent."
+    },
+    {
+      prop: "variant",
+      type: '"default" | "outline" | "ghost" | "link"',
+      default: '"outline"',
+      description: "Button style. Used in CarouselPrevious, CarouselNext."
+    },
+    {
+      prop: "size",
+      type: '"default" | "sm" | "lg" | "icon"',
+      default: '"icon"',
+      description: "Button size. Used in CarouselPrevious, CarouselNext."
     },
     {
       prop: "onClick",
       type: "() => void",
       default: "—",
-      description: "Overrides default navigation. Used in: CarouselPrevious, CarouselNext."
+      description: "Click handler. Used in CarouselPrevious, CarouselNext."
     },
     {
       prop: "disabled",
       type: "boolean",
       default: "false",
-      description: "Disables button. Used in: CarouselPrevious, CarouselNext."
+      description: "Disables button. Used in CarouselPrevious, CarouselNext."
     }
   ]}
 />
+
 

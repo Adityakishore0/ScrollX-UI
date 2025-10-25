@@ -71,7 +71,12 @@ const navigation: NavItem[] = [
         href: "/docs/components/card-flip",
         category: "new",
       },
-      { title: "Carousel", href: "/docs/components/carousel" },
+      {
+        title: "Carousel",
+        href: "/docs/components/carousel",
+        category: "updated",
+        categoryClassName: "bg-blue-500",
+      },
       { title: "Checkbox Pro", href: "/docs/components/checkbox-pro" },
       { title: "Clock", href: "/docs/components/clock", category: "new" },
       { title: "CodeBlock", href: "/docs/components/codeblock" },
