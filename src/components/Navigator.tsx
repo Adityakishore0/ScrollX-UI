@@ -37,9 +37,17 @@ export default function Navigator() {
 
   if (currentIndex === -1) return null;
 
-  const previousItem = currentIndex > 0 ? allPages[currentIndex - 1] : null;
-  const nextItem =
+  let previousItem = currentIndex > 0 ? allPages[currentIndex - 1] : null;
+  let nextItem =
     currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null;
+
+  if (currentPath === "/docs/components/accordion") {
+    previousItem = { title: "Components", href: "/docs/components" };
+  }
+
+  if (currentPath === "/docs/installation/dark-mode") {
+    nextItem = { title: "Components", href: "/docs/components" };
+  }
 
   return (
     <div className="flex justify-between items-center mt-8 px-4 gap-4">
