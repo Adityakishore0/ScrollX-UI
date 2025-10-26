@@ -8,10 +8,24 @@ export interface NavItem {
 }
 
 const navigation: NavItem[] = [
-  { title: "Getting Started", href: "" },
-  { title: "Introduction", href: "/docs/introduction" },
-  { title: "Installation", href: "/docs/installation" },
+  {
+    title: "Sections",
+    href: "",
+    children: [
+      { title: "Get Started", href: "/docs" },
+      { title: "Components", href: "/docs/components" },
+      { title: "Changelog", href: "/docs/changelog" },
+    ],
+  },
 
+  {
+    title: "Getting Started",
+    href: "",
+    children: [
+      { title: "Installation", href: "/docs/installation" },
+      { title: "llms.txt", href: "/llms.txt" },
+    ],
+  },
   {
     title: "Installation Guide",
     href: "",
