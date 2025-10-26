@@ -10,36 +10,37 @@ export default function Navigator() {
   const pathname = usePathname();
 
   const allPages = useMemo(() => {
-    const flatPages: { title: string; href: string }[] = [];
-    flatPages.push(
+    const flatPages: { title: string; href: string }[] = [
       { title: "Introduction", href: "/docs/introduction" },
-      { title: "Installation", href: "/docs/installation" }
-    );
-    const installationGuide =
-      navigation.find((item) => item.title === "Installation Guide")
-        ?.children || [];
-    flatPages.push(...installationGuide);
-    const components =
-      navigation.find((item) => item.title === "Components")?.children || [];
-    flatPages.push(...components);
+      { title: "Installation", href: "/docs/installation" },
+      ...(navigation.find((item) => item.title === "Installation Guide")?.children || []),
+      ...(navigation.find((item) => item.title === "Components")?.children || []),
+    ];
     return flatPages;
   }, []);
 
-  const normalizedPathname =
-    pathname.endsWith("/") && pathname !== "/"
-      ? pathname.slice(0, -1)
-      : pathname;
+  const normalizedPathname = pathname.endsWith("/") && pathname !== "/"
+    ? pathname.slice(0, -1)
+    : pathname;
 
-  const currentPath =
-    normalizedPathname === "/docs" ? "/docs/introduction" : normalizedPathname;
+  const currentPath = normalizedPathname === "/docs" ? "/docs/introduction" : normalizedPathname;
 
   const currentIndex = allPages.findIndex((item) => item.href === currentPath);
-
   if (currentIndex === -1) return null;
 
-  const previousItem = currentIndex > 0 ? allPages[currentIndex - 1] : null;
+  const previousItem = 
+    currentPath === "/docs/components/accordion"
+      ? { title: "Components", href: "/docs/components" }
+      : currentIndex > 0
+      ? allPages[currentIndex - 1]
+      : null;
+
   const nextItem =
-    currentIndex < allPages.length - 1 ? allPages[currentIndex + 1] : null;
+    currentPath === "/docs/installation/dark-mode"
+      ? { title: "Components", href: "/docs/components" }
+      : currentIndex < allPages.length - 1
+      ? allPages[currentIndex + 1]
+      : null;
 
   return (
     <div className="flex justify-between items-center mt-8 px-4 gap-4">
