@@ -6,6 +6,8 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import fs from "fs";
 import path from "path";
 import { getMetadata } from "@/lib/getMetadata";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const metadata = getMetadata({
   title: "Components",
@@ -116,6 +118,21 @@ export default async function ComponentsPage() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex justify-between items-center mt-8 px-4 gap-4">
+          <Link href="/docs/installation/dark-mode" prefetch>
+            <Button variant="outline">
+              <ChevronLeft className="h-4 w-4" />
+              <span className="hidden md:inline">Dark Mode</span>
+            </Button>
+          </Link>
+
+          <Link href="/docs/components/accordion" prefetch>
+            <Button>
+              <span className="hidden md:inline">Accordion</span>
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
