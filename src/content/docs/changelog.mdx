@@ -1,0 +1,95 @@
+---
+title: Changelog
+description: latest updates, improvements, and new components added to the ScrollX UI library.
+---
+
+### Carousel
+`25-10-2025 — Keyboard navigation`
+
+- Rebuilt Carousel with React Context for shared state.  
+- Added keyboard navigation (`↑` `↓`).  
+- Added `maxVisible` and `stackOffset` props for stacked layout.  
+- Introduced `useCarousel()` hook and `data-slot` attributes.  
+- Improved accessibility with ARIA roles.  
+- Simplified controls using `CarouselPrevious` and `CarouselNext`.
+
+<ComponentPreview
+  name="carousel-demo"
+  className=""
+  description=""
+/>
+
+---
+
+### Card
+`24-09-2025 — Added CardAction`
+
+- Introduced a new `CardAction` component to place actions (buttons, links) in the `CardHeader`, aligned to the top-right.  
+- Minor updates to existing components to include `data-slot` attributes for consistent styling.
+
+<ComponentPreview
+  name="card-demo"
+  description=""
+/>
+
+---
+### ProfileCard
+`27-08-2025 — Added 3D Tilt Effect`
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3D Tilt Effect</td>
+      <td>Card now tilts based on mouse movement when revealed.</td>
+    </tr>
+    <tr>
+      <td>Spotlight Effect</td>
+      <td>Optional radial spotlight on skills.</td>
+    </tr>
+    <tr>
+      <td>Custom Social Links</td>
+      <td>Added support for multiple social links.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ComponentPreview
+  name="profilecard-demo"
+  description=""
+/>
+
+---
+
+#### Thank you
+
+I’d like to thank everyone who who has been using & supported this project, shared feedback, and contributed to its growth. Your encouragement and involvement mean a lot. I truly appreciate your support. Thank you 🙏
+
+<div className="flex justify-between items-center mt-8 px-4 gap-4">
+  <a
+    href="/docs/components"
+    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 cursor-pointer no-underline" style={{ textDecoration: 'none' }}
+  >
+    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+    </svg>
+    <span className="hidden md:inline">Components</span>
+  </a>
+
+  <a
+    href="/llms.txt"
+    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 cursor-pointer no-underline" style={{ textDecoration: 'none' }}
+  >
+    <span className="hidden md:inline">llms.txt</span>
+    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </a>
+</div>
+
+
