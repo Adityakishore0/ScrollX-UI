@@ -87,6 +87,7 @@ export const demoComponents = [
   "kinetictestimonials-demo",
   "label-demo",
   "lamphome-demo",
+  "layeredtext-demo",
   "loader-demo",
   "loadermagnetic-dots",
   "loaderdual-ring",
