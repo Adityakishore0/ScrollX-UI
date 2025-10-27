@@ -49,6 +49,7 @@ export const parentComponents = [
   "kinetic-testimonials",
   "label",
   "lamphome",
+  "layered-text",
   "loader",
   "loginform",
   "logo-stepper",

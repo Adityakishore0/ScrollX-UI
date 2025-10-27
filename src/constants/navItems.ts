@@ -145,6 +145,11 @@ const navigation: NavItem[] = [
       },
       { title: "Label", href: "/docs/components/label" },
       { title: "Lamphome", href: "/docs/components/lamphome" },
+      {
+        title: "Layered Text",
+        href: "/docs/components/layered-text",
+        category: "new",
+      },
       { title: "Loader", href: "/docs/components/loader" },
       { title: "Login Form", href: "/docs/components/loginform" },
       {
