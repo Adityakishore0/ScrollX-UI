@@ -1,0 +1,127 @@
+---
+title: Layered Text
+description: Layered text effect with offset shadows, customizable styling, and animations.
+---
+
+<ComponentPreview name="layeredtext-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="layered-text" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+    <Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>layered-text.tsx</code>
+</p>
+<ComponentSource name="layered-text" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { LayeredText } from "@/components/ui/layered-text";
+```
+
+```tsx
+<LayeredText
+  text="ScrollX UI"
+  className="text-4xl md:text-6xl font-bold text-black dark:text-white [--stroke-color:#FFFFFF] dark:[--stroke-color:#000000]"
+  layers={["#06B6D4", "#14B8A6", "#84CC16"]}
+  offsetX={2}
+  offsetY={2}
+  strokeWidth={2}
+  animate={true}
+/>
+```
+
+## API Reference
+
+### Layered Text
+
+Layered text effect with offset shadows, customizable styling, and animations.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "text",
+      type: "string",
+      default: "required",
+      description: "Main text to be displayed in layered style.",
+    },
+    {
+      prop: "layers",
+      type: "string[]",
+      default: "required",
+      description: "Array of colors used to create layered depth effects.",
+    },
+    {
+      prop: "offsetX",
+      type: "number",
+      default: "6",
+      description: "Horizontal offset applied between each text layer.",
+    },
+    {
+      prop: "offsetY",
+      type: "number",
+      default: "6",
+      description: "Vertical offset applied between each text layer.",
+    },
+    {
+      prop: "strokeWidth",
+      type: "number",
+      default: "4",
+      description: "Width of the text stroke for the top visible layer.",
+    },
+    {
+      prop: "animate",
+      type: "boolean",
+      default: "true",
+      description: "Whether to apply fade-in animation on text layers.",
+    },
+    {
+      prop: "animationDuration",
+      type: "number",
+      default: "0.6",
+      description: "Duration (in seconds) of the fade-in animation.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Optional className for additional styling.",
+    },
+  ]}
+/>
+
