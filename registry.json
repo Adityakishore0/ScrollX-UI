@@ -742,6 +742,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "layered-text",
+      "title": "Layered Text",
+      "description": "Layered text effect with offset shadows, customizable styling, and animations.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/layered-text.tsx",
+          "target": "components/ui/layered-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "loader",
       "title": "Loader",
       "description": "Animated versatile loader with different variants, customizable size and content.",
