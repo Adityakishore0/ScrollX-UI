@@ -7,15 +7,18 @@ import navigation from "@/constants/navItems";
 import { useState } from "react";
 import { Status } from "@/components/ui/status";
 
-export default function Sidebar() {
+interface SidebarProps {
+  onNavigate?: () => void;
+}
+
+export default function Sidebar({ onNavigate }: SidebarProps) {
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <aside
+    <div
       className={cn(
-        "fixed left-0 top-0 h-screen w-64 p-6 transition-all duration-300 overflow-y-auto border-r",
-        "border-gray-200 dark:border-gray-800"
+        "h-full w-full p-6 transition-all duration-300 overflow-y-auto"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -24,16 +27,13 @@ export default function Sidebar() {
         overflowY: "auto",
       }}
     >
-      <h2 className="text-[1.25rem] font-bold text-gray-900 dark:text-gray-100 mb-6">
-        Docs
-      </h2>
-
       <nav className="space-y-3">
         {navigation.map((item) => (
           <div key={item.title}>
             {item.href ? (
               <Link
                 href={item.href}
+                onClick={onNavigate}
                 className={cn(
                   "block font-semibold rounded-md transition-all relative",
                   pathname === item.href
@@ -63,6 +63,7 @@ export default function Sidebar() {
                 <Link
                   key={typedChild.href}
                   href={typedChild.href}
+                  onClick={onNavigate}
                   className={cn(
                     "block rounded-md transition-all relative",
                     pathname === typedChild.href
@@ -101,17 +102,17 @@ export default function Sidebar() {
       </nav>
 
       <style jsx>{`
-        aside::-webkit-scrollbar {
+        div::-webkit-scrollbar {
           width: ${isHovered ? "0.4rem" : "0rem"};
         }
-        aside::-webkit-scrollbar-thumb {
+        div::-webkit-scrollbar-thumb {
           background-color: rgba(100, 100, 100, 0.3);
           border-radius: 0.25rem;
         }
-        aside:hover::-webkit-scrollbar-thumb {
+        div:hover::-webkit-scrollbar-thumb {
           background-color: rgba(100, 100, 100, 0.5);
         }
       `}</style>
-    </aside>
+    </div>
   );
 }
