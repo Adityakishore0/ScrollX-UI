@@ -877,6 +877,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "morphy-button",
+      "title": "Morphy Button",
+      "description": "Morphing button with dynamic dot motion, reversible animation.",
+      "type": "registry:component",
+      "dependencies": ["class-variance-authority", "@radix-ui/react-slot"],
+      "files": [
+        {
+          "path": "components/ui/morphy-button.tsx",
+          "target": "components/ui/morphy-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "navbar-flow",
       "title": "Navbar Flow",
       "description": "A customizable, animated navigation bar with hover effects and dropdowns.",

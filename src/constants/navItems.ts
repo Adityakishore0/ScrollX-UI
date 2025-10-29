@@ -165,6 +165,11 @@ const navigation: NavItem[] = [
         category: "new",
       },
       { title: "MorphoText Flip", href: "/docs/components/morphotextflip" },
+      {
+        title: "Morphy Button",
+        href: "/docs/components/morphy-button",
+        category: "new",
+      },
       { title: "MotionCards", href: "/docs/components/motioncards" },
       { title: "Navbar Flow", href: "/docs/components/navbar-flow" },
       { title: "Not Found", href: "/docs/components/not-found" },

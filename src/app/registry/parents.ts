@@ -58,6 +58,7 @@ export const parentComponents = [
   "modern-loader",
   "motioncards",
   "morphotextflip",
+  "morphy-button",
   "not-found",
   "navbar-flow",
   "pagination",
