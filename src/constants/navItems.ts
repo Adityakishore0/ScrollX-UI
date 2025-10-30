@@ -162,7 +162,6 @@ const navigation: NavItem[] = [
       {
         title: "Modern Loader",
         href: "/docs/components/modern-loader",
-        category: "new",
       },
       {
         title: "MovingLines Background",
