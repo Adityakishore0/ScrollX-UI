@@ -164,6 +164,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/modern-loader",
         category: "new",
       },
+      {
+        title: "MovingLines Background",
+        href: "/docs/components/movinglines-background",
+        category: "new",
+      },
       { title: "MorphoText Flip", href: "/docs/components/morphotextflip" },
       {
         title: "Morphy Button",
