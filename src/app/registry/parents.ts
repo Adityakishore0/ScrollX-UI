@@ -56,6 +56,7 @@ export const parentComponents = [
   "lustretext",
   "magicdock",
   "modern-loader",
+  "movinglines-background",
   "motioncards",
   "morphotextflip",
   "morphy-button",

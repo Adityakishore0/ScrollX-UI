@@ -162,6 +162,10 @@ const navigation: NavItem[] = [
       {
         title: "Modern Loader",
         href: "/docs/components/modern-loader",
+      },
+      {
+        title: "MovingLines Background",
+        href: "/docs/components/movinglines-background",
         category: "new",
       },
       { title: "MorphoText Flip", href: "/docs/components/morphotextflip" },

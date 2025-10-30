@@ -847,6 +847,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "movinglines-background",
+      "title": "MovingLines Background",
+      "description": "A set of diagonal lines that move continuously. Great for hero backgrounds.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/movinglines-background.tsx",
+          "target": "components/ui/movinglines-background.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "motioncards",
       "title": "MotionCards",
       "description": "Elegant cards in seamless flow for clean web design.",

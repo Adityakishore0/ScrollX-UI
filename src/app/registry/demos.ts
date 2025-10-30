@@ -98,6 +98,8 @@ export const demoComponents = [
   "lustretext-demo",
   "magicdock-demo",
   "modernloader-demo",
+  "movinglinesbackground-demo",
+  "movinglinesbackgroundleft-demo",
   "motioncards-demo",
   "morphotextflip-demo",
   "morphotextslideup",
