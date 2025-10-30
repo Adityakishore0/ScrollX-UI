@@ -1,0 +1,143 @@
+---
+title: MovingLines Background
+description: A set of diagonal lines that move continuously. Great for hero backgrounds.
+---
+
+<ComponentPreview
+  name="movinglinesbackground-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="movinglines-background" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>movinglines-background.tsx</code>
+</p>
+<ComponentSource name="movinglines-background" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { MovingLinesBackground } from "@/components/ui/movinglines-background";
+```
+
+```tsx
+<MovingLinesBackground  className="relative h-[400px] w-full flex flex-col items-center justify-center">
+      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
+        Moving Lines, <br /> Background.
+      </h2>
+      <p className="max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center">
+       flowing right, defining direction.
+      </p>
+    </MovingLinesBackground>
+```
+## Examples
+
+---
+
+<Step>Direction</Step>
+
+<ComponentPreview
+  name="movinglinesbackgroundleft-demo"
+  className="p-0"
+  description=""
+/>
+
+
+## API Reference
+
+### BackgroundPaths
+
+The `BackgroundPaths` component renders a animated moving lines that adapts seamlessly to light and dark themes.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "speed",
+      type: "string",
+      default: '"20s"',
+      description:
+        "The **duration** of the line movement animation (e.g., '10s', '30s').",
+    },
+    {
+      prop: "opacity",
+      type: "number",
+      default: "0.8",
+      description:
+        "The **transparency** level of the moving lines layer (from 0 to 1).",
+    },
+    {
+      prop: "direction",
+      type: '"left" | "right"',
+      default: '"right"',
+      description:
+        "The **direction** in which the lines move, affecting the background-position calculation.",
+    },
+    {
+      prop: "blur",
+      type: "string",
+      default: '"0px"',
+      description:
+        "The CSS **blur value** (e.g., '2px', '5px') applied to the moving lines to create a soft, diffused effect.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description:
+        "Optional **styling** (e.g., Tailwind classes) for the **outer container** (`div`).",
+    },
+    {
+      prop: "lineClassName",
+      type: "string",
+      default: "—",
+      description:
+        "Optional **styling** (e.g., Tailwind classes) for the **moving line element** (`motion.div`).",
+    },
+    {
+      prop: "children",
+      type: "React.ReactNode",
+      default: "—",
+      description:
+        "The **content** to be rendered **above** the moving background.",
+    },
+  ]}
+/>
+
