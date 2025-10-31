@@ -55,6 +55,7 @@ export const parentComponents = [
   "logo-stepper",
   "lustretext",
   "magicdock",
+  "meteor-orbit",
   "modern-loader",
   "movinglines-background",
   "motioncards",

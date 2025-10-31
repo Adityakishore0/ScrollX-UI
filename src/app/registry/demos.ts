@@ -97,6 +97,8 @@ export const demoComponents = [
   "logosteppervloop-demo",
   "lustretext-demo",
   "magicdock-demo",
+  "meteororbit-demo",
+  "meteororbitgradients-demo",
   "modernloader-demo",
   "movinglinesbackground-demo",
   "movinglinesbackgroundleft-demo",

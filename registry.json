@@ -832,6 +832,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "meteor-orbit",
+      "title": "Meteor Orbit",
+      "description": "orbit system featuring rotating meteors and gracefully animated icons.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/meteor-orbit.tsx",
+          "target": "components/ui/meteor-orbit.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "modern-loader",
       "title": "Modern Loader",
       "description": "A modern, dynamic code loader designed for AI-powered coding environments.",
