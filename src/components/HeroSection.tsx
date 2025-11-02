@@ -12,6 +12,12 @@ import { AnimatedButton } from "@/components/ui/animated-button";
 import ThemeSwitchIcon from "@/components/demos/themeswitchicon";
 import ScrollXHeading from "@/components/heading";
 import Typeanimation from "@/components/ui/typeanimation";
+import {
+  Announcement,
+  AnnouncementTag,
+  AnnouncementTitle,
+} from "@/components/ui/announcement";
+import { ArrowUpRightIcon } from "lucide-react";
 
 export function HeroSection() {
   const { theme, systemTheme } = useTheme();
@@ -96,10 +102,38 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative w-full py-8 md:py-12 overflow-hidden min-h-[90vh] flex items-center justify-center 
-      bg-gradient-to-b from-white to-gray-50 
-      dark:from-[#0c0c0c] dark:via-[#000000] dark:to-[#0c0c0c]"
+      className="relative w-full py-8 md:py-12 overflow-hidden min-h-[90vh] 
+  flex flex-col items-center justify-center 
+  bg-gradient-to-b from-white to-gray-50 
+  dark:from-[#0c0c0c] dark:via-[#000000] dark:to-[#0c0c0c]"
     >
+      <Link href="/docs/changelog" className="block mb-10">
+        <Announcement className="group cursor-pointer border-transparent hover:border-border transition-colors duration-300">
+          <AnnouncementTag
+            movingBorder
+            className="text-[0.5rem] leading-[1rem] sm:text-[0.75rem] sm:leading-[1rem]"
+          >
+            <span className="inline-flex items-center gap-1">
+              <span
+                className="inline-block size-2 rounded-full bg-blue-500"
+                title="New"
+              ></span>
+              New Components
+            </span>
+          </AnnouncementTag>
+          <AnnouncementTitle
+            lustre
+            className="flex items-center gap-2 text-[0.5rem] leading-[1rem] sm:text-[0.75rem] sm:leading-[1rem]"
+          >
+            Button, Background, Text and more
+            <ArrowUpRightIcon
+              className="shrink-0 text-muted-foreground transition-transform duration-300 group-hover:rotate-45 group-hover:translate-x-1"
+              size={16}
+            />
+          </AnnouncementTitle>
+        </Announcement>
+      </Link>
+
       <div className="container relative px-4 md:px-6 mx-auto max-w-6xl z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center mx-auto">
           <motion.div
