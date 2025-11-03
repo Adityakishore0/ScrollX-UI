@@ -1147,6 +1147,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "stagger-button",
+      "title": "Stagger Button",
+      "description": "Interactive button with animated stagger text and customizable styles for modern uis.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "@radix-ui/react-slot"],
+      "files": [
+        {
+          "path": "components/ui/stagger-button.tsx",
+          "target": "components/ui/stagger-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "stagger-chars",
       "title": "Stagger Chars",
       "description": "An animated text component that creates a smooth, staggered character animation effect when hovered",

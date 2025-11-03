@@ -206,6 +206,11 @@ const navigation: NavItem[] = [
       },
       { title: "Spotlight Card", href: "/docs/components/spotlightcard" },
       { title: "Splitter", href: "/docs/components/splitter" },
+      {
+        title: "Stagger Button",
+        href: "/docs/components/stagger-button",
+        category: "new",
+      },
       { title: "Stagger Chars", href: "/docs/components/stagger-chars" },
       { title: "Stats Carousel", href: "/docs/components/statscarousel" },
       { title: "Stats Count", href: "/docs/components/statscount" },
