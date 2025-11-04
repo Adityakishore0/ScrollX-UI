@@ -27,12 +27,24 @@ function CardFlip({
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
         style={{ transformStyle: "preserve-3d" }}
       >
-        <div className="w-full" style={{ backfaceVisibility: "hidden" }}>
+        <div
+          className="w-full"
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transformStyle: "preserve-3d",
+          }}
+        >
           <div className="relative w-full">
             <button
               onClick={() => setIsFlipped(true)}
               className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors z-10"
               aria-label="Show info"
+              style={{
+                opacity: isFlipped ? 0 : 1,
+                pointerEvents: isFlipped ? "none" : "auto",
+                transition: "opacity 0.3s",
+              }}
             >
               <Info className="w-5 h-5 text-muted-foreground" />
             </button>
@@ -44,7 +56,9 @@ function CardFlip({
           className="absolute inset-0 w-full"
           style={{
             backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(-180deg)",
+            transformStyle: "preserve-3d",
           }}
         >
           <div className="relative w-full h-full">
@@ -52,6 +66,11 @@ function CardFlip({
               onClick={() => setIsFlipped(false)}
               className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors z-10"
               aria-label="Close"
+              style={{
+                opacity: isFlipped ? 1 : 0,
+                pointerEvents: isFlipped ? "auto" : "none",
+                transition: "opacity 0.3s",
+              }}
             >
               <X className="w-5 h-5 text-muted-foreground" />
             </button>
