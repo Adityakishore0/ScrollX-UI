@@ -186,6 +186,11 @@ const navigation: NavItem[] = [
       { title: "Radial Socials", href: "/docs/components/radial-socials" },
       { title: "ScrollArea Pro", href: "/docs/components/scroll-areapro" },
       { title: "Seperator Pro", href: "/docs/components/seperatorpro" },
+      {
+        title: "Shiny Button",
+        href: "/docs/components/shiny-button",
+        category: "new",
+      },
       { title: "Side Sheet", href: "/docs/components/side-sheet" },
       {
         title: "Signup Form",
