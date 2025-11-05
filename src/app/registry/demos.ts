@@ -125,6 +125,7 @@ export const demoComponents = [
   "progressoutline-demo",
   "radialflow-demo",
   "radialsocials-demo",
+  "shinybutton-demo",
   "sidesheetleft-demo",
   "sidesheetright-demo",
   "signupform-demo",

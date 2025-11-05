@@ -1,0 +1,133 @@
+---
+title: Shiny Button
+description: Interactive button with spotlight effect that follows  mouse cursor and highlights borders on hover.
+---
+
+<ComponentPreview
+  name="shinybutton-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="shiny-button" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion @radix-ui/react-slot" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>shiny-button.tsx</code>
+</p>
+<ComponentSource name="shiny-button" />
+
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+
+```tsx
+import { ShinyButton } from "@/components/ui/shiny-button";
+```
+
+```tsx
+<ShinyButton size="lg">
+  Button
+ </ShinyButton>
+```
+
+## API Reference
+
+### Shiny Button
+
+Interactive button with spotlight effect that follows  mouse cursor and highlights borders on hover.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "size",
+      type: `"default" | "sm" | "lg" | "icon"`,
+      default: `"default"`,
+      description: "Defines the button size and padding."
+    },
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "If true, renders a Radix Slot instead of a native button element."
+    },
+    {
+      prop: "gradientFrom",
+      type: "string",
+      default: `"#9E7AFF"`,
+      description: "Starting color of the shiny gradient."
+    },
+    {
+      prop: "gradientTo",
+      type: "string",
+      default: `"#FE8BBB"`,
+      description: "Ending color of the shiny gradient."
+    },
+    {
+      prop: "gradientOpacity",
+      type: "number",
+      default: "0.8",
+      description: "Controls transparency of the shiny gradient overlay."
+    },
+    {
+      prop: "gradientAngle",
+      type: "number",
+      default: "0",
+      description: "Initial angle (in degrees) of the shiny gradient direction."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom CSS classes applied to the base gloss layer. Overrides default background."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Button label or nested elements (text, icons, etc.)."
+    },
+    {
+      prop: "...props",
+      type: "button props",
+      default: "—",
+      description: "Supports all standard button attributes and events."
+    }
+  ]}
+/>
+
+
+
