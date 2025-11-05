@@ -1072,6 +1072,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "shiny-button",
+      "title": "Shiny Button",
+      "description": "Interactive button with spotlight effect that follows mouse cursor and highlights borders on hover.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "@radix-ui/react-slot"],
+      "files": [
+        {
+          "path": "components/ui/shiny-button.tsx",
+          "target": "components/ui/shiny-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "side-sheet",
       "title": "Side Sheet",
       "description": "A customizable sheet component for creating elegant slide-out interfaces.",
