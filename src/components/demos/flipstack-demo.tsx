@@ -9,7 +9,7 @@ export default function FlipStackDemo() {
         <img
           src="https://images.unsplash.com/photo-1611558709798-e009c8fd7706?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
           alt="Isabelle Carlos"
-          className="w-full h-full object-cover"
+          className="w-full h-[420px] object-cover"
         />
       ),
     },
@@ -19,7 +19,7 @@ export default function FlipStackDemo() {
         <img
           src="https://plus.unsplash.com/premium_photo-1692340973636-6f2ff926af39?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
           alt="Lana Akash"
-          className="w-full h-full object-cover"
+          className="w-full h-[420px] object-cover"
         />
       ),
     },
@@ -29,7 +29,7 @@ export default function FlipStackDemo() {
         <img
           src="https://github.com/Adityakishore0.png?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
           alt="Ahdeetai"
-          className="w-full h-full object-cover"
+          className="w-full h-[420px] object-cover"
         />
       ),
     },
@@ -39,7 +39,7 @@ export default function FlipStackDemo() {
         <img
           src="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
           alt="Isabella Mendes"
-          className="w-full h-full object-cover scale-x-[-1]"
+          className="w-full h-[420px] object-cover scale-x-[-1]"
         />
       ),
     },
@@ -49,7 +49,7 @@ export default function FlipStackDemo() {
         <img
           src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
           alt="Meera Patel"
-          className="w-full h-full object-cover"
+          className="w-full h-[420px] object-cover"
         />
       ),
     },
