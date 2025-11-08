@@ -62,10 +62,7 @@ const navigation: NavItem[] = [
         title: "Animated TextGenerate",
         href: "/docs/components/animated-textgenerate",
       },
-      {
-        title: "Announcement",
-        href: "/docs/components/announcement",
-      },
+      { title: "Announcement", href: "/docs/components/announcement" },
       { title: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
       { title: "Avatar", href: "/docs/components/avatar" },
       {
@@ -85,17 +82,11 @@ const navigation: NavItem[] = [
         category: "updated",
         categoryClassName: "bg-blue-500",
       },
-      {
-        title: "Carousel",
-        href: "/docs/components/carousel",
-      },
+      { title: "Carousel", href: "/docs/components/carousel" },
       { title: "Checkbox Pro", href: "/docs/components/checkbox-pro" },
       { title: "Clock", href: "/docs/components/clock", category: "new" },
       { title: "CodeBlock", href: "/docs/components/codeblock" },
-      {
-        title: "Collapsible",
-        href: "/docs/components/collapsible",
-      },
+      { title: "Collapsible", href: "/docs/components/collapsible" },
       { title: "Cursor Highlight", href: "/docs/components/cursor-highlight" },
       { title: "Cursor ImageTrail", href: "/docs/components/cursorimagetrail" },
       {
@@ -105,15 +96,12 @@ const navigation: NavItem[] = [
       },
       { title: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
       { title: "Expandable Dock", href: "/docs/components/expandable-dock" },
-      {
-        title: "Facescape",
-        href: "/docs/components/facescape",
-      },
+      { title: "Facescape", href: "/docs/components/facescape" },
       { title: "FlipStack", href: "/docs/components/flipstack" },
-      { title: "Follow Cursor", href: "/docs/components/followcursor" },
+      { title: "Flowing Logos", href: "/docs/components/flowing-logos" },
       { title: "Folder", href: "/docs/components/folder" },
       { title: "Folder Tree", href: "/docs/components/folder-tree" },
-      { title: "Flowing Logos", href: "/docs/components/flowing-logos" },
+      { title: "Follow Cursor", href: "/docs/components/followcursor" },
       { title: "Glass", href: "/docs/components/glass" },
       { title: "Globe", href: "/docs/components/globe" },
       {
@@ -123,10 +111,7 @@ const navigation: NavItem[] = [
       { title: "Gravity", href: "/docs/components/gravity" },
       { title: "Hero Sections", href: "/docs/components/hero-sections" },
       { title: "Hold ToConfirm", href: "/docs/components/hold-toconfirm" },
-      {
-        title: "Hyperlink",
-        href: "/docs/components/hyperlink",
-      },
+      { title: "Hyperlink", href: "/docs/components/hyperlink" },
       { title: "Input OTP", href: "/docs/components/input-otp" },
       {
         title: "Interactive Input",
@@ -147,10 +132,7 @@ const navigation: NavItem[] = [
       },
       { title: "Loader", href: "/docs/components/loader" },
       { title: "Login Form", href: "/docs/components/loginform" },
-      {
-        title: "Logo Stepper",
-        href: "/docs/components/logo-stepper",
-      },
+      { title: "Logo Stepper", href: "/docs/components/logo-stepper" },
       { title: "lustre Text", href: "/docs/components/lustretext" },
       { title: "Magic Dock", href: "/docs/components/magicdock" },
       {
@@ -158,22 +140,24 @@ const navigation: NavItem[] = [
         href: "/docs/components/meteor-orbit",
         category: "new",
       },
-      {
-        title: "Modern Loader",
-        href: "/docs/components/modern-loader",
-      },
-      {
-        title: "MovingLines Background",
-        href: "/docs/components/movinglines-background",
-        category: "new",
-      },
+      { title: "Modern Loader", href: "/docs/components/modern-loader" },
       { title: "MorphoText Flip", href: "/docs/components/morphotextflip" },
       {
         title: "Morphy Button",
         href: "/docs/components/morphy-button",
         category: "new",
       },
+      {
+        title: "Motion Grid",
+        href: "/docs/components/motion-grid",
+        category: "new",
+      },
       { title: "MotionCards", href: "/docs/components/motioncards" },
+      {
+        title: "MovingLines Background",
+        href: "/docs/components/movinglines-background",
+        category: "new",
+      },
       { title: "Navbar Flow", href: "/docs/components/navbar-flow" },
       { title: "Not Found", href: "/docs/components/not-found" },
       { title: "Pagination", href: "/docs/components/pagination" },
@@ -192,15 +176,9 @@ const navigation: NavItem[] = [
         category: "new",
       },
       { title: "Side Sheet", href: "/docs/components/side-sheet" },
-      {
-        title: "Signup Form",
-        href: "/docs/components/signupform",
-      },
+      { title: "Signup Form", href: "/docs/components/signupform" },
       { title: "Slider", href: "/docs/components/slider" },
-      {
-        title: "Social Orbit",
-        href: "/docs/components/social-orbit",
-      },
+      { title: "Social Orbit", href: "/docs/components/social-orbit" },
       { title: "Spotlight Card", href: "/docs/components/spotlightcard" },
       { title: "Splitter", href: "/docs/components/splitter" },
       {
@@ -238,14 +216,8 @@ const navigation: NavItem[] = [
       { title: "Transition", href: "/docs/components/transition" },
       { title: "Type Animation", href: "/docs/components/typeanimation" },
       { title: "Venom Beam", href: "/docs/components/venom-beam" },
-      {
-        title: "Vercel Card",
-        href: "/docs/components/vercel-card",
-      },
-      {
-        title: "Wavy Button",
-        href: "/docs/components/wavy-button",
-      },
+      { title: "Vercel Card", href: "/docs/components/vercel-card" },
+      { title: "Wavy Button", href: "/docs/components/wavy-button" },
       { title: "Whitestripes", href: "/docs/components/whitestripes" },
     ],
   },

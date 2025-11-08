@@ -892,6 +892,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "motion-grid",
+      "title": "Motion Grid",
+      "description": "A set of diagonal lines that move continuously with gradientglow.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/motion-grid.tsx",
+          "target": "components/ui/motion-grid.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "morphotextflip",
       "title": "MorphoText Flip",
       "description": "Animated text component that flips between words with smooth transitions.",

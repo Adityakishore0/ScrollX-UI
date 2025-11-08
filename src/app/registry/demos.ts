@@ -103,6 +103,8 @@ export const demoComponents = [
   "movinglinesbackground-demo",
   "movinglinesbackgroundleft-demo",
   "motioncards-demo",
+  "motiongrid-demo",
+  "motiongridleft-demo",
   "morphotextflip-demo",
   "morphotextslideup",
   "morphotextfadescale",

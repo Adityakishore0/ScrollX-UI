@@ -59,6 +59,7 @@ export const parentComponents = [
   "modern-loader",
   "movinglines-background",
   "motioncards",
+  "motion-grid",
   "morphotextflip",
   "morphy-button",
   "not-found",
