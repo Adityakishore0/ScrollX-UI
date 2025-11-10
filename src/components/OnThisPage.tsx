@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import GithubStarSpotlightCard from "@/components/githubstarspotlightcard";
@@ -20,6 +20,8 @@ export default function OnThisPage() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [clickedId, setClickedId] = useState<string | null>(null);
   const pathname = usePathname();
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const contentRoot = document.querySelector<HTMLDivElement>(".prose");
@@ -77,10 +79,39 @@ export default function OnThisPage() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (clickedId) return;
+
+        let foundIntersecting = false;
         for (const entry of entries) {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id);
+            foundIntersecting = true;
             break;
+          }
+        }
+
+        if (!foundIntersecting) {
+          const allHeadings = headings
+            .map((h) => document.getElementById(h.id))
+            .filter(Boolean);
+
+          const scrollPosition = window.scrollY + window.innerHeight;
+          const pageHeight = document.documentElement.scrollHeight;
+          const isNearBottom = pageHeight - scrollPosition < 200;
+
+          if (isNearBottom && allHeadings.length > 0) {
+            const lastHeading = allHeadings[allHeadings.length - 1];
+            if (lastHeading) {
+              setActiveId(lastHeading.id);
+              return;
+            }
+          }
+
+          const lastAboveViewport = allHeadings
+            .filter((el) => el!.getBoundingClientRect().top < 100)
+            .pop();
+
+          if (lastAboveViewport) {
+            setActiveId(lastAboveViewport.id);
           }
         }
       },
@@ -98,18 +129,82 @@ export default function OnThisPage() {
     };
   }, [headings, clickedId]);
 
+  useEffect(() => {
+    if (!activeId) return;
+
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+
+    scrollTimeoutRef.current = setTimeout(() => {
+      const activeLink = document.querySelector(
+        `a[href="#${activeId}"]`
+      ) as HTMLElement;
+      if (!activeLink) return;
+
+      const scrollArea = activeLink.closest(
+        "[data-radix-scroll-area-viewport]"
+      ) as HTMLElement;
+      if (!scrollArea) return;
+
+      const linkRect = activeLink.getBoundingClientRect();
+      const scrollRect = scrollArea.getBoundingClientRect();
+      const linkTop = linkRect.top - scrollRect.top + scrollArea.scrollTop;
+      const linkBottom = linkTop + linkRect.height;
+      const viewportTop = scrollArea.scrollTop;
+      const viewportBottom = viewportTop + scrollArea.clientHeight;
+
+      const BUFFER = 80;
+
+      if (
+        linkTop < viewportTop + BUFFER ||
+        linkBottom > viewportBottom - BUFFER
+      ) {
+        const targetScroll =
+          linkTop - scrollArea.clientHeight / 2 + linkRect.height / 2;
+        scrollArea.scrollTo({
+          top: Math.max(0, targetScroll),
+          behavior: "smooth",
+        });
+      }
+    }, 100);
+
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, [activeId]);
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setActiveId(id);
     setClickedId(id);
+
+    if (clickTimeoutRef.current) {
+      clearTimeout(clickTimeoutRef.current);
+    }
+
     const el = document.getElementById(id);
     if (!el) return;
+
     const offset = 100;
     const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
     window.history.pushState(null, "", `#${id}`);
     window.scrollTo({ top, behavior: "smooth" });
-    setTimeout(() => setClickedId(null), 1000);
+
+    clickTimeoutRef.current = setTimeout(() => {
+      setClickedId(null);
+    }, 1500);
   };
+
+  useEffect(() => {
+    return () => {
+      if (clickTimeoutRef.current) {
+        clearTimeout(clickTimeoutRef.current);
+      }
+    };
+  }, []);
 
   if (pathname === "/docs/components") {
     return (
