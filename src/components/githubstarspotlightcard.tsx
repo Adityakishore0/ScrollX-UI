@@ -9,7 +9,7 @@ export default function GithubStarSpotlightCard() {
   return (
     <SpotlightCard
       spotlightColor="255, 214, 10"
-      className="w-[220px] h-[240px] bg-surface text-surface-foreground shadow-sm border border-border"
+      className="w-[220px] h-[240px] p-1 bg-surface text-surface-foreground shadow-sm border border-border"
     >
       <div className="flex flex-col justify-between h-full w-full px-3">
         <div className="space-y-3">
