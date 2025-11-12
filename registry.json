@@ -907,6 +907,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "motion-navbar",
+      "title": "Motion Navbar",
+      "description": "modern react navbar with smooth animations, dropdown menus, and mobile-friendly design.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/motion-navbar.tsx",
+          "target": "components/ui/motion-navbar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "morphotextflip",
       "title": "MorphoText Flip",
       "description": "Animated text component that flips between words with smooth transitions.",
