@@ -60,6 +60,7 @@ export const parentComponents = [
   "movinglines-background",
   "motioncards",
   "motion-grid",
+  "motion-navbar",
   "morphotextflip",
   "morphy-button",
   "not-found",
