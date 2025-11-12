@@ -154,6 +154,11 @@ const navigation: NavItem[] = [
       },
       { title: "MotionCards", href: "/docs/components/motioncards" },
       {
+        title: "Motion Navbar",
+        href: "/docs/components/motion-navbar",
+        category: "new",
+      },
+      {
         title: "MovingLines Background",
         href: "/docs/components/movinglines-background",
         category: "new",
