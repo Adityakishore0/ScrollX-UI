@@ -1,0 +1,178 @@
+---
+title: Motion Navbar
+description: modern react navbar with smooth animations, dropdown menus, and mobile-friendly design.
+---
+
+<ComponentPreview name="motionnavbar-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="motion-navbar" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+    <Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>motion-navbar.tsx</code>
+</p>
+<ComponentSource name="motion-navbar" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Navbar,
+  NavBody,
+  NavItems,
+  NavDropdown,
+  MobileNav,
+  NavbarLogo,
+  NavbarButton,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from "@/components/ui/motion-navbar";
+```
+
+```tsx
+<Navbar className="bg-black dark:bg-white text-white dark:text-black">
+      <NavbarLogo />
+      <NavBody>
+        <NavItems items={navItems} />
+        <NavDropdown label="resources" items={dropdownItems} />
+        <NavbarButton href="/get-started" variant="primary">
+          get started
+        </NavbarButton>
+      </NavBody>
+
+      <MobileNav>
+        <MobileNavHeader>
+          <MobileNavToggle isOpen={false} onClick={() => {}} />
+        </MobileNavHeader>
+        <MobileNavMenu>
+          <NavItems items={navItems} />
+          <NavDropdown label="resources" items={dropdownItems} />
+          <NavbarButton href="/get-started" variant="primary">
+            get started
+          </NavbarButton>
+        </MobileNavMenu>
+      </MobileNav>
+    </Navbar>
+
+```
+
+## API Reference
+
+### Motion Navbar
+
+modern react navbar with smooth animations, dropdown menus, and mobile-friendly design.
+
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "Navbar",
+      type: "ReactNode",
+      default: "—",
+      description: "Main navbar container that wraps all elements.",
+    },
+    {
+      prop: "NavBody",
+      type: "ReactNode",
+      default: "—",
+      description: "Holds navigation items and dropdowns (desktop view).",
+    },
+    {
+      prop: "NavItems",
+      type: "array",
+      default: "[]",
+      description: "List of navigation links with labels and hrefs.",
+    },
+    {
+      prop: "NavDropdown",
+      type: "object",
+      default: "[]",
+      description: "Dropdown menu with grouped links and optional icons.",
+    },
+    {
+      prop: "MobileNav",
+      type: "ReactNode",
+      default: "—",
+      description: "Container for mobile navigation layout.",
+    },
+    {
+      prop: "MobileNavHeader",
+      type: "ReactNode",
+      default: "—",
+      description: "Top section inside the mobile menu.",
+    },
+    {
+      prop: "MobileNavMenu",
+      type: "ReactNode",
+      default: "—",
+      description: "Expandable mobile menu content area.",
+    },
+    {
+      prop: "MobileNavToggle",
+      type: "boolean | function",
+      default: "false",
+      description: "Controls open and close state of the mobile menu.",
+    },
+    {
+      prop: "NavbarLogo",
+      type: "ReactNode",
+      default: "—",
+      description: "Animated brand logo for the navbar.",
+    },
+    {
+      prop: "NavbarButton",
+      type: "object",
+      default: "—",
+      description: "Button for primary or secondary navbar actions.",
+    },
+    {
+      prop: "NavbarDivider",
+      type: "ReactNode",
+      default: "—",
+      description: "Visual divider between navbar sections.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "''",
+      description: "Optional Tailwind classes for styling.",
+    },
+  ]}
+/>
+
