@@ -105,6 +105,7 @@ export const demoComponents = [
   "motioncards-demo",
   "motiongrid-demo",
   "motiongridleft-demo",
+  "motionnavbar-demo",
   "morphotextflip-demo",
   "morphotextslideup",
   "morphotextfadescale",
