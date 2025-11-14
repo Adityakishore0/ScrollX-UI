@@ -73,6 +73,7 @@ export const parentComponents = [
   "progress",
   "radialflow",
   "radial-socials",
+  "reveal-text",
   "shiny-button",
   "side-sheet",
   "signupform",

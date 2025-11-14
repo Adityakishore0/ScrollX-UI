@@ -173,6 +173,11 @@ const navigation: NavItem[] = [
       { title: "Progress", href: "/docs/components/progress" },
       { title: "Radial Flow", href: "/docs/components/radialflow" },
       { title: "Radial Socials", href: "/docs/components/radial-socials" },
+      {
+        title: "Reveal Text",
+        href: "/docs/components/reveal-text",
+        category: "new",
+      },
       { title: "ScrollArea Pro", href: "/docs/components/scroll-areapro" },
       { title: "Seperator Pro", href: "/docs/components/seperatorpro" },
       {
