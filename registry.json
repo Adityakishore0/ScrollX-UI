@@ -1102,6 +1102,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "reveal-text",
+      "title": "Reveal Text",
+      "description": "a clean text reveal component providing directional animation and stagger options.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/reveal-text.tsx",
+          "target": "components/ui/reveal-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "shiny-button",
       "title": "Shiny Button",
       "description": "Interactive button with spotlight effect that follows mouse cursor and highlights borders on hover.",
