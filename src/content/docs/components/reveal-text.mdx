@@ -1,0 +1,202 @@
+---
+title: Reveal Text
+description: a clean text reveal component providing directional animation and stagger options.
+---
+
+<ComponentPreview
+  name="revealtext-demo"
+  className="overflow-visible relative p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="reveal-text" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>reveal-text.tsx</code>
+</p>
+<ComponentSource name="reveal-text" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { RevealText } from "@/components/ui/reveal-text";
+```
+
+```tsx
+<RevealText mode="auto" delay={0.2} stagger={0.15} className="text-5xl font-bold">
+  Bold research to unlock
+</RevealText>
+```
+## Examples
+
+---
+
+<Step>Auto</Step>
+
+<ComponentPreview
+  name="revealtext-demo"
+  className="overflow-visible relative p-0"
+  description=""
+/>
+
+---
+
+<Step>Manual</Step>
+
+<ComponentPreview
+  name="revealtextmanual-demo"
+  className="overflow-visible relative p-0"
+  description=""
+/>
+
+---
+
+<Step>Up</Step>
+
+<ComponentPreview
+  name="revealtextup-demo"
+  className="overflow-visible relative p-0"
+  description=""
+/>
+
+---
+
+<Step>Down</Step>
+
+<ComponentPreview
+  name="revealtext-demo"
+  className="overflow-visible relative p-0"
+  description=""
+/>
+
+---
+
+<Step>Left</Step>
+
+<ComponentPreview
+  name="revealtextleft-demo"
+  className="overflow-visible relative p-0"
+  description=""
+/>
+
+---
+
+<Step>Right</Step>
+
+<ComponentPreview
+  name="revealtextright-demo"
+  className="overflow-visible relative p-0"
+  description=""
+/>
+
+---
+
+<Step>Trigger</Step>
+
+<ComponentPreview
+  name="revealtexttrigger-demo"
+  className="overflow-visible relative p-0"
+  description=""
+/>
+
+
+## API Reference
+
+### Reveal Text
+
+a clean text reveal component providing directional animation and stagger options.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "-",
+      description: "Text or elements to animate."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Classes applied to the visible text."
+    },
+    {
+      prop: "boxClassName",
+      type: "string",
+      default: "-",
+      description: "Classes applied to the reveal animation layer."
+    },
+    {
+      prop: "delay",
+      type: "number",
+      default: "0",
+      description: "Animation delay before the reveal starts."
+    },
+    {
+      prop: "duration",
+      type: "number",
+      default: "0.8",
+      description: "Duration of the reveal animation."
+    },
+    {
+      prop: "direction",
+      type: `"up" | "down" | "left" | "right"`,
+      default: `"down"`,
+      description: "Direction from which the reveal layer moves."
+    },
+    {
+      prop: "mode",
+      type: `"manual" | "auto"`,
+      default: `"manual"`,
+      description: "Animate full text or auto-split into words."
+    },
+    {
+      prop: "stagger",
+      type: "number",
+      default: "0.1",
+      description: "Delay between word animations in auto mode."
+    },
+    {
+      prop: "once",
+      type: "boolean",
+      default: "true",
+      description: "Run animation once or every time it enters view."
+    }
+  ]}
+/>
