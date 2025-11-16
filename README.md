@@ -9,12 +9,39 @@
 	<br>
 	<br>
 </div>
+
+<div align="center">
+  The most expansive and imaginative collection of motion-rich, interactive React components.
+</div>
+
 <br />
 
 <div align="center">
+  <a href="https://github.com/Adityakishore0/ScrollX-UI/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Adityakishore0/ScrollX-UI"></a>
   <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-red.svg"></a>
   <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/CONTRIBUTING.md"><img alt="Open-Source" src="https://img.shields.io/badge/Open-Source-red.svg"></a>
 </div>
+
+## Documentation
+
+Go to [scrollxui.dev](https://scrollxui.dev/) to view the documentation.
+
+## About
+
+ScrollX UI is a collection of animated, interactive React components built to help your web interfaces feel modern and alive. The library delivers a broad spectrum of components - from text animations and motion-driven interactions to polished UI elements and dynamic backgrounds - all free to use and fully customizable through simple props, giving you exactly what you need right out of the box.
+
+## Key Features
+
+- 105+ total components (text animations, animations, interactive components, backgrounds), growing every week
+- All components are built with minimal dependencies, and are highly customizable through props
+- You get the code, so you can modify, extend, and personalize every detail
+- Designed to integrate seamlessly with any modern React project
+- omponents come in one clean format: TypeScript + Tailwind for everyone
+
+## Installing Components Via CLI
+
+ScrollX UI supports [shadcn](https://ui.shadcn.com/) for quick installs. </br>
+Each component demo provides CLI commands, ready for you to copy and run. Detailed instructions can also be found [here](https://scrollxui.dev/docs/installation/cli).
 
 ## How To Contribute?
 
