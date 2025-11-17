@@ -97,7 +97,12 @@ const navigation: NavItem[] = [
       { title: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
       { title: "Expandable Dock", href: "/docs/components/expandable-dock" },
       { title: "Facescape", href: "/docs/components/facescape" },
-      { title: "FlipStack", href: "/docs/components/flipstack" },
+      {
+        title: "FlipStack",
+        href: "/docs/components/flipstack",
+        category: "updated",
+        categoryClassName: "bg-blue-500",
+      },
       { title: "Flowing Logos", href: "/docs/components/flowing-logos" },
       { title: "Folder", href: "/docs/components/folder" },
       { title: "Folder Tree", href: "/docs/components/folder-tree" },
