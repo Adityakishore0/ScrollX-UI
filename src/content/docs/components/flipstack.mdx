@@ -63,6 +63,13 @@ import FlipStack from "@/components/ui/flipstack";
 />
 ```
 
+## Changelog
+
+#### 17-11-2025 — Added `mobileDirection` Prop
+
+- Introduced a new `mobileDirection` prop (`"top"` | `"bottom"`) to control the mobile bounce direction.
+
+
 ## API Reference
 
 ### FlipStack
@@ -85,6 +92,13 @@ A stylish and animated card stack UI for showcasing content in layered views.
       default: "required",
       description:
         "Unique identifier for the card. Used as React key and to manage animations.",
+    },
+    {
+      prop: "mobileDirection",
+      type: `"top" | "bottom"`,
+      default: `"top"`,
+      description:
+        "Controls the bounce direction of the active card on mobile devices.",
     },
     {
       prop: "FlipStackCard.content",
