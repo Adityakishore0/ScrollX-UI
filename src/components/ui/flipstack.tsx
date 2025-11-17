@@ -10,10 +10,12 @@ interface FlipStackCard {
 
 interface FlipStackProps {
   cards?: FlipStackCard[];
+  mobileDirection?: "top" | "bottom";
 }
 
 export default function FlipStack({
   cards = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
+  mobileDirection = "top",
 }: FlipStackProps) {
   const [isInView, setIsInView] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -58,13 +60,16 @@ export default function FlipStack({
     const centerIndex = Math.floor(totalCards / 2);
     const positionFromCenter = index - centerIndex;
     if (isMobile) {
+      const yInitial = mobileDirection === "bottom" ? -100 : 100;
+      const yBounce = mobileDirection === "bottom" ? [0, 80, 0] : [0, -80, 0];
+
       return {
         initial: {
           opacity: 0,
           scale: 0.9,
           z: -100,
           rotate: getRotation(index),
-          y: 100,
+          y: yInitial,
         },
         animate: {
           opacity: isActive(index) ? 1 : 0.7,
@@ -72,7 +77,7 @@ export default function FlipStack({
           z: isActive(index) ? 0 : -100,
           rotate: isActive(index) ? 0 : getRotation(index),
           zIndex: isActive(index) ? 40 : totalCards + 2 - index,
-          y: isActive(index) ? [0, -80, 0] : 0,
+          y: isActive(index) ? yBounce : 0,
         },
       };
     }
