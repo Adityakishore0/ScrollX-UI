@@ -1,7 +1,21 @@
 "use client";
+
+import { useState } from "react";
 import FlipStack from "@/components/ui/flipstack";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 export default function FlipStackDemo() {
+  const [direction, setDirection] = useState<"top" | "bottom">("top");
+
   const cards = [
     {
       id: 1,
@@ -57,9 +71,26 @@ export default function FlipStackDemo() {
 
   return (
     <>
-      <div className="w-full lg:hidden">
-        <FlipStack cards={cards} />
+      <div className="w-full lg:hidden flex flex-col items-center gap-4">
+        <FlipStack cards={cards} mobileDirection={direction} />
+
+        <Select
+          value={direction}
+          onValueChange={(v) => setDirection(v as "top" | "bottom")}
+        >
+          <SelectTrigger className="w-[160px]">
+            <SelectValue placeholder="Direction" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Direction</SelectLabel>
+              <SelectItem value="top">Top</SelectItem>
+              <SelectItem value="bottom">Bottom</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
+
       <div className="hidden lg:flex absolute inset-0 overflow-visible items-center justify-center pt-[14rem]">
         <FlipStack cards={cards} />
       </div>
