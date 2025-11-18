@@ -28,6 +28,7 @@ export const demoComponents = [
   "codeblockmultitab",
   "card-demo",
   "cardflip-demo",
+  "cardtilt-demo",
   "carousel-demo",
   "carouselimage-demo",
   "calendar-demo",
