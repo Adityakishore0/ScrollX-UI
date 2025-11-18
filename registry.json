@@ -274,6 +274,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "card-tilt",
+      "title": "Card Tilt",
+      "description": "smooth card tilt that responds naturally to your cursor, giving the card a more polished, modern look.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/card-tilt.tsx",
+          "target": "components/ui/card-tilt.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "carousel",
       "title": "Carousel",
       "description": "A carousel component with card stack visualization for cycling through content.",

@@ -82,6 +82,11 @@ const navigation: NavItem[] = [
         category: "updated",
         categoryClassName: "bg-blue-500",
       },
+      {
+        title: "Card Tilt",
+        href: "/docs/components/card-tilt",
+        category: "new",
+      },
       { title: "Carousel", href: "/docs/components/carousel" },
       { title: "Checkbox Pro", href: "/docs/components/checkbox-pro" },
       { title: "Clock", href: "/docs/components/clock", category: "new" },
