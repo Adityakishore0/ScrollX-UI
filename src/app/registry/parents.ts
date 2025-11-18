@@ -18,6 +18,7 @@ export const parentComponents = [
   "button",
   "card",
   "card-flip",
+  "card-tilt",
   "carousel",
   "calendar",
   "checkbox-pro",
