@@ -151,7 +151,12 @@ const navigation: NavItem[] = [
         category: "new",
       },
       { title: "Modern Loader", href: "/docs/components/modern-loader" },
-      { title: "MorphoText Flip", href: "/docs/components/morphotextflip" },
+      {
+        title: "MorphoText Flip",
+        href: "/docs/components/morphotextflip",
+        category: "updated",
+        categoryClassName: "bg-blue-500",
+      },
       {
         title: "Morphy Button",
         href: "/docs/components/morphy-button",
