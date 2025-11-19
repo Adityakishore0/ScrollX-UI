@@ -1,9 +1,7 @@
 "use client";
 import React, { useState, useEffect, useId } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const cn = (...classes: (string | undefined | null | false)[]): string =>
-  classes.filter(Boolean).join(" ");
+import { cn } from "@/lib/utils";
 
 export interface MorphoTextFlipProps {
   words?: string[];
@@ -93,10 +91,7 @@ export function MorphoTextFlip({
         damping: 30,
       }}
       className={cn(
-        "relative inline-block overflow-hidden rounded-2xl px-6 pt-2 pb-3",
-        "backdrop-blur-sm border border-gray-200 shadow-xl",
-        "bg-white/70 dark:bg-slate-800/70",
-        "dark:border-slate-700",
+        "relative inline-block overflow-hidden rounded-2xl px-6 pt-2 pb-3 backdrop-blur-sm border border-gray-200 shadow-xl bg-white/70 dark:bg-slate-800/70 dark:border-slate-700",
         className
       )}
     >
@@ -105,8 +100,7 @@ export function MorphoTextFlip({
           ref={measureRef}
           className={cn(
             "absolute opacity-0 pointer-events-none whitespace-nowrap",
-            "text-4xl font-bold md:text-7xl",
-            textClassName
+            textClassName || "text-4xl font-bold md:text-7xl"
           )}
           style={{ top: -9999 }}
         >
@@ -127,8 +121,9 @@ export function MorphoTextFlip({
                   : "easeInOut",
             }}
             className={cn(
-              "text-4xl font-bold text-rose-600 dark:text-rose-400 md:text-7xl  whitespace-nowrap",
-              textClassName
+              "whitespace-nowrap",
+              textClassName ||
+                "text-4xl font-bold text-rose-600 dark:text-rose-400 md:text-7xl"
             )}
             ref={textRef}
           >
