@@ -52,6 +52,7 @@ export const demoComponents = [
   "cursorhighlightleft-demo",
   "cursorhighlightpointer-demo",
   "cursorhighlightselection-demo",
+  "decoratedtext-demo",
   "draggableavatar-demo",
   "dropdownmenu-demo",
   "dropdownmenucheckboxes",
