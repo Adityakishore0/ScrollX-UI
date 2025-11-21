@@ -412,6 +412,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "decorated-text",
+      "title": "Decorated Text",
+      "description": "decorative text frame with corner accents and a compact entrance effect.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/decorated-text.tsx",
+          "target": "components/ui/decorated-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "draggable-avatar",
       "title": "Draggable Avatar",
       "description": "It displays a circular, draggable avatar with customizable size and style.",
