@@ -95,6 +95,11 @@ const navigation: NavItem[] = [
       { title: "Cursor Highlight", href: "/docs/components/cursor-highlight" },
       { title: "Cursor ImageTrail", href: "/docs/components/cursorimagetrail" },
       {
+        title: "Decorated Text",
+        href: "/docs/components/decorated-text",
+        category: "new",
+      },
+      {
         title: "Draggable Avatar",
         href: "/docs/components/draggable-avatar",
         category: "new",
