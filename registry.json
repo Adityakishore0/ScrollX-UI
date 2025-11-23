@@ -457,6 +457,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "expandable-cards",
+      "title": "Expandable Cards",
+      "description": "Interactive card layout where hovered cards expand smoothly for focused content viewing.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/expandable-cards.tsx",
+          "target": "components/ui/expandable-cards.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "expandable-dock",
       "title": "Expandable Dock",
       "description": "A customizable expandable dock component.",

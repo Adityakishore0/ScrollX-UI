@@ -1,0 +1,99 @@
+---
+title: Expandable Cards
+description: Interactive card layout where hovered cards expand smoothly for focused content viewing.
+---
+
+<ComponentPreview
+  name="expandablecards-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="An interactive card component with  hover effect"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="expandable-cards" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>expandable-cards.tsx</code>
+</p>
+<ComponentSource name="expandable-cards" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import ExpandableCards from "@/components/ui/expandable-cards";
+```
+
+```tsx
+<div className="h-[100px] sm:h-[300px] w-full select-none">
+  <ExpandableCards
+    cards={cards}
+    defaultExpanded={3}
+  />
+</div>
+```
+
+## API Reference
+
+### Expandable Cards
+
+Interactive card layout where hovered cards expand smoothly for focused content viewing.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "cards",
+      type: "ExpandableCard[]",
+      default: "required",
+      description: "Array of card objects, each containing an id and JSX content."
+    },
+    {
+      prop: "defaultExpanded",
+      type: "number",
+      default: "1",
+      description: "ID of the card that should be expanded initially."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Optional additional class for custom styling of the container."
+    }
+  ]}
+/>
+
+

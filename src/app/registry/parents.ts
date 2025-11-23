@@ -30,6 +30,7 @@ export const parentComponents = [
   "decorated-text",
   "draggable-avatar",
   "dropdown-menu",
+  "expandable-cards",
   "expandable-dock",
   "facescape",
   "flipstack",
