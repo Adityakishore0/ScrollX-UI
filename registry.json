@@ -464,8 +464,8 @@
       "dependencies": ["framer-motion"],
       "files": [
         {
-          "path": "components/ui/expandable-cards .tsx",
-          "target": "components/ui/expandable-cards .tsx",
+          "path": "components/ui/expandable-cards.tsx",
+          "target": "components/ui/expandable-cards.tsx",
           "type": "registry:component"
         }
       ]
