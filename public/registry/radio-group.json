@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "type": "registry:component",
+  "title": "Radio Group",
+  "description": "A group of radio buttons that lets you pick only one option at a time.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-radio-group"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/radio-group.tsx",
+      "target": "components/ui/radio-group.tsx",
+      "content": "import * as React from \"react\"\nimport * as RadioGroupPrimitive from \"@radix-ui/react-radio-group\"\nimport { Circle } from \"lucide-react\"\nimport { motion } from \"framer-motion\"\nimport { cn } from \"@/lib/utils\"\n\nfunction RadioGroup({ className, ...props }: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {\n  return (\n    <RadioGroupPrimitive.Root\n      data-slot=\"radio-group\"\n      className={cn(\"grid gap-3\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction RadioGroupItem({ className, ...props }: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {\n  return (\n    <RadioGroupPrimitive.Item asChild {...props}>\n      <motion.button\n        type=\"button\"\n        data-slot=\"radio-group-item\"\n        className={cn(\n          \"border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 aspect-square size-4 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50\",\n          className\n        )}\n        whileHover={\n          props.disabled\n            ? {}\n            : {\n                scale: 1.15,\n                transition: {\n                  type: \"spring\",\n                  stiffness: 600,\n                  damping: 25,\n                  mass: 0.5\n                }\n              }\n        }\n        whileTap={\n          props.disabled\n            ? {}\n            : {\n                scale: 0.9,\n                transition: {\n                  type: \"spring\",\n                  stiffness: 600,\n                  damping: 25,\n                  mass: 0.5\n                }\n              }\n        }\n      >\n        <RadioGroupPrimitive.Indicator\n          data-slot=\"radio-group-indicator\"\n          className=\"relative flex items-center justify-center\"\n          asChild\n        >\n          <motion.div\n            initial={{ scale: 0.1, opacity: 0 }}\n            animate={{ scale: 1, opacity: 1 }}\n            exit={{ scale: 0.1, opacity: 0 }}\n            transition={{\n              type: \"spring\",\n              stiffness: 800,\n              damping: 30,\n              mass: 0.4\n            }}\n          >\n            <Circle className=\"fill-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2\" />\n          </motion.div>\n        </RadioGroupPrimitive.Indicator>\n      </motion.button>\n    </RadioGroupPrimitive.Item>\n  )\n}\n\nexport { RadioGroup, RadioGroupItem }\n"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
