@@ -197,6 +197,11 @@ const navigation: NavItem[] = [
       { title: "Profile Card", href: "/docs/components/profilecard" },
       { title: "Progress", href: "/docs/components/progress" },
       { title: "Radial Flow", href: "/docs/components/radialflow" },
+      {
+        title: "Radio Group",
+        href: "/docs/components/radio-group",
+        category: "new",
+      },
       { title: "Radial Socials", href: "/docs/components/radial-socials" },
       {
         title: "Reveal Text",

@@ -130,6 +130,7 @@ export const demoComponents = [
   "progressslim-demo",
   "progressoutline-demo",
   "radialflow-demo",
+  "radiogroup-demo",
   "radialsocials-demo",
   "revealtext-demo",
   "revealtextmanual-demo",

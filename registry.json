@@ -1132,6 +1132,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "radio-group",
+      "title": "Radio Group",
+      "description": "A group of radio buttons that lets you pick only one option at a time.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion", "@radix-ui/react-radio-group"],
+      "files": [
+        {
+          "path": "components/ui/radio-group.tsx",
+          "target": "components/ui/radio-group.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "radial-socials",
       "title": "Radial Socials",
       "description": "radial social icons arranged in circles, with smooth expansion and rotation",

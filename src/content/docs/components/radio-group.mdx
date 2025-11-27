@@ -1,0 +1,162 @@
+---
+title: Radio Group
+description: A group of radio buttons that lets you pick only one option at a time.
+---
+
+<ComponentPreview
+  name="radiogroup-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="radio-group" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion @radix-ui/react-radio-group" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>radio-group.tsx</code>
+</p>
+<ComponentSource name="radio-group" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/components/ui/radio-group"
+```
+
+```tsx
+<RadioGroup defaultValue="option-one">
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-one" id="option-one" />
+    <Label htmlFor="option-one">Option One</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="option-two" id="option-two" />
+    <Label htmlFor="option-two">Option Two</Label>
+  </div>
+</RadioGroup>
+```
+
+
+## API Reference
+
+### Radio Group
+
+A group of radio buttons that lets you pick only one option at a time.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "defaultValue",
+      type: "string",
+      default: "—",
+      description: "Initial selected value for uncontrolled usage. RadioGroup."
+    },
+    {
+      prop: "value (group)",
+      type: "string",
+      default: "—",
+      description: "Selected value for controlled usage. RadioGroup."
+    },
+    {
+      prop: "onValueChange",
+      type: "function",
+      default: "—",
+      description: "Callback when selection changes. RadioGroup."
+    },
+    {
+      prop: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disables the entire group and all items. RadioGroup."
+    },
+    {
+      prop: "required",
+      type: "boolean",
+      default: "false",
+      description: "Required for form submission. RadioGroup."
+    },
+    {
+      prop: "name",
+      type: "string",
+      default: "—",
+      description: "Form field name. RadioGroup."
+    },
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "Render a custom root element. Both components."
+    },
+    {
+      prop: "id",
+      type: "string",
+      default: "—",
+      description: "Unique identifier. RadioGroupItem."
+    },
+    {
+      prop: "value (item)",
+      type: "string",
+      default: "—",
+      description: "The option's value. RadioGroupItem."
+    },
+    {
+      prop: "disabled (item)",
+      type: "boolean",
+      default: "false",
+      description: "Disable this specific radio item. RadioGroupItem."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom styles. Both components."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Custom element when using asChild. Both components."
+    }
+  ]}
+/>
+
+
+

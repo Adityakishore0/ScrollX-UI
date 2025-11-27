@@ -75,6 +75,7 @@ export const parentComponents = [
   "profilecard",
   "progress",
   "radialflow",
+  "radio-group",
   "radial-socials",
   "reveal-text",
   "shiny-button",
