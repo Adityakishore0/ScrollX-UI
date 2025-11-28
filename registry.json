@@ -457,6 +457,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "electric-text",
+      "title": "Electric Text",
+      "description": "Animated electric text with glowing, distorted outline for dynamic neon effects.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/electric-text.tsx",
+          "target": "components/ui/electric-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "expandable-cards",
       "title": "Expandable Cards",
       "description": "Interactive card layout where hovered cards expand smoothly for focused content viewing.",

@@ -57,6 +57,7 @@ export const demoComponents = [
   "dropdownmenu-demo",
   "dropdownmenucheckboxes",
   "dropdownmenuradiogroup-demo",
+  "electrictext-demo",
   "expandablecards-demo",
   "expandabledock-demo",
   "facescape-demo",

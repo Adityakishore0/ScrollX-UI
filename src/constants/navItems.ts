@@ -106,6 +106,11 @@ const navigation: NavItem[] = [
       },
       { title: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
       {
+        title: "Electric Text",
+        href: "/docs/components/electric-text",
+        category: "new",
+      },
+      {
         title: "Expandable Cards",
         href: "/docs/components/expandable-cards",
         category: "new",
