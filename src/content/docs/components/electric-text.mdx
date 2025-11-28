@@ -1,0 +1,136 @@
+---
+title: Electric Text
+description: Animated electric text with glowing, distorted outline for dynamic neon effects.
+---
+
+<ComponentPreview
+  name="electrictext-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="electric-text" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>electric-text.tsx</code>
+</p>
+<ComponentSource name="electric-text" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { ElectricText } from "@/components/ui/electric-text";
+```
+
+```tsx
+<ElectricText
+        color="#BB8A2C"
+        showFill={false}
+        speed={1}
+        glowIntensity="high"
+        chaos={1}
+        strokeWidth={3}
+        className="text-5xl font-bold"
+      >
+        Feel the Spark
+      </ElectricText>
+```
+
+
+## API Reference
+
+### Electric Text
+
+Animated electric text with glowing, distorted outline for dynamic neon effects.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "-",
+      description: "The text or React nodes to display with the electric effect."
+    },
+    {
+      prop: "color",
+      type: "string",
+      default: "#5227FF",
+      description: "Primary stroke color for the electric outline."
+    },
+    {
+      prop: "speed",
+      type: "number",
+      default: 1,
+      description: "Animation speed multiplier for the electric effect."
+    },
+    {
+      prop: "chaos",
+      type: "number",
+      default: 1,
+      description: "Intensity of the distortion in the electric effect."
+    },
+    {
+      prop: "strokeWidth",
+      type: "number",
+      default: 2,
+      description: "Width of the text stroke for the electric outline."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Custom class names for styling the root container."
+    },
+    {
+      prop: "glowIntensity",
+      type: "'low' | 'medium' | 'high'",
+      default: "medium",
+      description: "Controls blur and opacity levels of the glow layers."
+    },
+    {
+      prop: "fillColor",
+      type: "string",
+      default: "rgba(0,0,0,0.8)",
+      description: "Fill color for the text when `showFill` is true."
+    },
+    {
+      prop: "showFill",
+      type: "boolean",
+      default: "true",
+      description: "Toggles the fill layer. Set to false to show only electric outline."
+    }
+  ]}
+/>
