@@ -198,6 +198,11 @@ const navigation: NavItem[] = [
       { title: "Pagination", href: "/docs/components/pagination" },
       { title: "Parallax Cards", href: "/docs/components/parallaxcards" },
       { title: "Particles", href: "/docs/components/particles" },
+      {
+        title: "Pixel Background",
+        href: "/docs/components/pixel-background",
+        category: "new",
+      },
       { title: "Popover", href: "/docs/components/popover" },
       { title: "Profile Card", href: "/docs/components/profilecard" },
       { title: "Progress", href: "/docs/components/progress" },
