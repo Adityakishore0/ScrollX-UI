@@ -124,6 +124,8 @@ export const demoComponents = [
   "pagination-demo",
   "particles-demo",
   "parallaxcards-demo",
+  "pixelbackground-demo",
+  "pixelbackgrounddirection-demo",
   "popover-demo",
   "profilecard-demo",
   "progress-demo",
