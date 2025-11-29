@@ -1087,6 +1087,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "pixel-background",
+      "title": "Pixel Background",
+      "description": "A flexible pixel animation background with customizable origins and smooth atmospheric motion.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/pixel-background.tsx",
+          "target": "components/ui/pixel-background.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "popover",
       "title": "Popover",
       "description": "Displays rich content in a animated portal, triggered by a button.",
