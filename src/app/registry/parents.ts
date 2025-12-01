@@ -29,6 +29,7 @@ export const parentComponents = [
   "cursor-highlight",
   "decorated-text",
   "draggable-avatar",
+  "drift-card",
   "dropdown-menu",
   "electric-text",
   "expandable-cards",
