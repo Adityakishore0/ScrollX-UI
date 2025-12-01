@@ -442,6 +442,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "drift-card",
+      "title": "Drift Card",
+      "description": "An interactive card with a drift hover effect that visually highlights content.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/drift-card.tsx",
+          "target": "components/ui/drift-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "dropdown-menu",
       "title": "Dropdown Menu",
       "description": "Animated Dropdown Menu Reveals a menu of options or actions when activated by a button.",
