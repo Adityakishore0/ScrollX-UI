@@ -54,6 +54,7 @@ export const demoComponents = [
   "cursorhighlightselection-demo",
   "decoratedtext-demo",
   "draggableavatar-demo",
+  "driftcard-demo",
   "dropdownmenu-demo",
   "dropdownmenucheckboxes",
   "dropdownmenuradiogroup-demo",
