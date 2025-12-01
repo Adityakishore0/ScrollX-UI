@@ -104,6 +104,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/draggable-avatar",
         category: "new",
       },
+      {
+        title: "Drift Card",
+        href: "/docs/components/drift-card",
+        category: "new",
+      },
       { title: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
       {
         title: "Electric Text",
