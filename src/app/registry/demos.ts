@@ -164,6 +164,8 @@ export const demoComponents = [
   "staggercharsdifferenttexthover-demo",
   "staggercharsup-demo",
   "staggercharsdown-demo",
+  "stripedgrid-demo",
+  "stripedgridleft-demo",
   "splitter-demo",
   "spotlightcard-demo",
   "seperatorpro-demo",
