@@ -90,6 +90,7 @@ export const parentComponents = [
   "status",
   "statscount",
   "statscarousel",
+  "striped-grid",
   "splitter",
   "spotlightcard",
   "seperatorpro",

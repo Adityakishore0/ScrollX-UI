@@ -245,6 +245,11 @@ const navigation: NavItem[] = [
       { title: "Stats Carousel", href: "/docs/components/statscarousel" },
       { title: "Stats Count", href: "/docs/components/statscount" },
       { title: "Status", href: "/docs/components/status" },
+      {
+        title: "Striped Grid",
+        href: "/docs/components/striped-grid",
+        category: "new",
+      },
       { title: "Table", href: "/docs/components/table" },
       {
         title: "Testimonial Carousel",

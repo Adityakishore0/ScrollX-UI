@@ -1357,6 +1357,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "striped-grid",
+      "title": "Striped Grid",
+      "description": "Animated diagonal stripes with optional base grid, creating a dynamic textured background.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/striped-grid.tsx",
+          "target": "components/ui/striped-grid.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "splitter",
       "title": "Splitter",
       "description": "A customizable splitter component with collapsible panels and smooth animations.",
