@@ -3,6 +3,153 @@ title: Changelog
 description: latest updates, improvements, and new components added to the ScrollX UI library.
 ---
 
+## December 2025 - New Components
+
+- [<u>Striped Grid</u>](/docs/components/striped-grid): Animated diagonal stripes over an optional base grid.  
+- [<u>Drift Card</u>](/docs/components/drift-card): Interactive card with a subtle drift hover highlight.  
+- [<u>Pixel Background</u>](/docs/components/pixel-background): Flexible pixel field with smooth atmospheric motion.  
+- [<u>Electric Text</u>](/docs/components/electric-text): Neon-style text with electric glow animation.  
+- [<u>Radio Group</u>](/docs/components/radio-group): Clean single-select radio button group.  
+- [<u>Expandable Cards</u>](/docs/components/expandable-cards): Cards that expand on hover for focus.  
+- [<u>Decorated Text</u>](/docs/components/decorated-text): Text framed with minimal decorative corners.  
+- [<u>Card Tilt</u>](/docs/components/card-tilt): Smooth 3D tilt effect reacting to cursor movement.  
+- [<u>Reveal Text</u>](/docs/components/reveal-text): Text reveal animation with directional control.  
+- [<u>Motion Navbar</u>](/docs/components/motion-navbar): Animated navbar with dropdowns and mobile menu.  
+- [<u>Motion Grid</u>](/docs/components/motion-grid): Diagonal grid with continuous glowing motion.  
+- [<u>Shiny Button</u>](/docs/components/shiny-button): Button with a cursor-tracking spotlight glow.  
+- [<u>Stagger Button</u>](/docs/components/stagger-button): Button with animated staggered text on hover.
+
+### Striped Grid
+
+<ComponentPreview
+  name="stripedgrid-demo"
+  className="p-0"
+  description=""
+/>
+
+### Drift Card
+
+<ComponentPreview
+  name="driftcard-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description=""
+/>
+
+### Pixel Background
+
+<ComponentPreview
+  name="pixelbackgrounddirection-demo"
+  className="p-0"
+  description=""
+/>
+
+### Electric Text
+
+<ComponentPreview
+  name="electrictext-demo"
+  className=""
+  description=""
+/>
+
+### Radio Group
+
+<ComponentPreview
+  name="radiogroup-demo"
+  className=""
+  description=""
+/>
+
+### Expandable Cards
+
+<ComponentPreview
+  name="expandablecards-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description=""
+/>
+
+### Decorated Text
+
+<ComponentPreview
+  name="decoratedtext-demo"
+  className=""
+  description=""
+/>
+
+### Card Tilt
+
+<ComponentPreview
+  name="cardtilt-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description=""
+/>
+
+### Reveal Text
+
+<ComponentPreview
+  name="revealtext-demo"
+  className="overflow-visible relative p-0"
+  description=""
+/>
+
+### Motion Navbar
+
+<ComponentPreview
+  name="motionnavbar-demo"
+  className="p-0"
+  description=""
+/>
+
+### Motion Grid
+
+<ComponentPreview
+  name="motiongrid-demo"
+  className="p-0"
+  description=""
+/>
+
+### Shiny Button
+
+<ComponentPreview
+  name="shinybutton-demo"
+  className=""
+  description=""
+/>
+
+### Stagger Button
+
+<ComponentPreview
+  name="staggerbutton-demo"
+  className=""
+  description=""
+/>
+
+## Refactors & Fixes
+
+### Card Flip
+`04-11-2025, Safari CardFlip Bug`
+
+- Fixed a Safari-specific issue where the `Info` and `X` buttons were not hiding correctly during card flip transitions.  
+- Improved compatibility by adding `WebkitBackfaceVisibility` and refining `transformStyle` for smoother 3D rendering in Safari.  
+- Enhanced transition handling for button opacity and pointer events to ensure consistent behavior across all browsers.  
+- Verified consistent and stable performance in Chrome, Safari, and Edge.
+
+<ComponentPreview name="cardflip-demo"
+  className="p-8"
+  description=""
+/>
+
+
+### MorphoText Flip
+`19-11-2025,  Updated MorphoTextFlip`
+
+- Refined width auto-measure system for smoother container resizing and stability.
+- Improved animation variant logic and unified className handling for cleaner structure.
+
+<ComponentPreview
+  name="morphotextflip-demo"
+  className="p-0"
+  description=""
+/>
 
 ## November 2025 - New Components
 
