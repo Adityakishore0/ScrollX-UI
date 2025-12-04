@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -52,17 +52,25 @@ export const ShinyButton = React.forwardRef<
     ref
   ) => {
     const Comp = asChild ? Slot : "button";
-    const [isTouch, setIsTouch] = React.useState(false);
     const [isHovered, setIsHovered] = React.useState(false);
+    const [currentAngle, setCurrentAngle] = React.useState(gradientAngle);
     const angle = useMotionValue(gradientAngle);
+    const isTouchDevice = React.useRef(false);
 
     const reset = React.useCallback(() => {
       angle.set(gradientAngle);
+      setCurrentAngle(gradientAngle);
       setIsHovered(false);
     }, [angle, gradientAngle]);
 
     const handlePointerMove = React.useCallback(
       (e: React.PointerEvent<HTMLButtonElement>) => {
+        if (e.pointerType === "touch") {
+          isTouchDevice.current = true;
+          return;
+        }
+
+        isTouchDevice.current = false;
         const rect = e.currentTarget.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -71,27 +79,33 @@ export const ShinyButton = React.forwardRef<
         const radians = Math.atan2(dy, dx);
         const deg = (radians * 180) / Math.PI;
         angle.set(deg);
+        setCurrentAngle(deg);
       },
       [angle]
     );
 
     React.useEffect(() => {
-      if (typeof window !== "undefined") {
-        setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
-      }
       reset();
     }, [reset]);
+
+    const gradientStyle = React.useMemo(
+      () => ({
+        background: `linear-gradient(${currentAngle}deg, ${gradientFrom}, ${gradientTo} 30%, transparent 80%)`,
+        opacity: gradientOpacity,
+      }),
+      [currentAngle, gradientFrom, gradientTo, gradientOpacity]
+    );
 
     return (
       <Comp
         ref={ref}
         className={cn(shinyButtonStyles({ size }))}
-        onPointerEnter={!isTouch ? () => setIsHovered(true) : undefined}
-        onPointerMove={!isTouch ? handlePointerMove : undefined}
-        onPointerLeave={!isTouch ? reset : undefined}
+        onPointerEnter={() => setIsHovered(true)}
+        onPointerMove={handlePointerMove}
+        onPointerLeave={reset}
         {...props}
       >
-        {isTouch ? (
+        {isTouchDevice.current ? (
           <div
             className="absolute inset-0 rounded-[inherit]"
             style={{
@@ -102,12 +116,8 @@ export const ShinyButton = React.forwardRef<
         ) : (
           <motion.div
             className="pointer-events-none absolute inset-0 rounded-[inherit]"
-            style={{
-              background: useMotionTemplate`
-                linear-gradient(${angle}deg, ${gradientFrom}, ${gradientTo} 30%, transparent 80%)
-              `,
-              opacity: gradientOpacity,
-            }}
+            style={gradientStyle}
+            animate={{ opacity: gradientOpacity }}
             transition={{
               type: "spring",
               stiffness: 150,
