@@ -817,6 +817,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "layered-button",
+      "title": "Layered Button",
+      "description": "A layered button with a radial expand effect and smooth sliding hover label animation.",
+      "type": "registry:component",
+      "dependencies": ["@radix-ui/react-slot"],
+      "files": [
+        {
+          "path": "components/ui/layered-button.tsx",
+          "target": "components/ui/layered-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "layered-text",
       "title": "Layered Text",
       "description": "Layered text effect with offset shadows, customizable styling, and animations.",
