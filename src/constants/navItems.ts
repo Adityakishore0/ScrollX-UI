@@ -156,6 +156,11 @@ const navigation: NavItem[] = [
       { title: "Label", href: "/docs/components/label" },
       { title: "Lamphome", href: "/docs/components/lamphome" },
       {
+        title: "Layered Button",
+        href: "/docs/components/layered-button",
+        category: "new",
+      },
+      {
         title: "Layered Text",
         href: "/docs/components/layered-text",
         category: "new",

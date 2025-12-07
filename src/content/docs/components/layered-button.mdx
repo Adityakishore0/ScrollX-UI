@@ -1,0 +1,173 @@
+---
+title: Layered Button
+description: A layered button with a radial expand effect and smooth sliding hover label animation.
+---
+
+<ComponentPreview
+  name="layeredbutton-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="layered-button" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="@radix-ui/react-slot" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>layered-button.tsx</code>
+</p>
+<ComponentSource name="layered-button" />
+
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+
+```tsx
+import { LayeredButton } from "@/components/ui/layered-button";
+```
+
+```tsx
+<LayeredButton variant="default">
+    Default
+  </LayeredButton>
+```
+
+## Examples
+
+---
+
+<Step>Default</Step>
+
+<ComponentPreview
+  name="layeredbutton-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Outline</Step>
+
+<ComponentPreview
+  name="layeredbuttonoutline-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Icon</Step>
+
+<ComponentPreview
+  name="layeredbuttonicon-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Size</Step>
+
+<ComponentPreview
+  name="layeredbuttonsize-demo"
+  className=""
+  description=""
+/>
+
+---
+
+<Step>Custom</Step>
+
+<ComponentPreview
+  name="layeredbuttoncustom-demo"
+  className=""
+  description=""
+/>
+
+## API Reference
+
+### Layered Button
+
+A layered button with a radial expand effect and smooth sliding hover label animation.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "variant",
+      type: "string",
+      default: "default",
+      description: "Button style."
+    },
+    {
+      prop: "size",
+      type: "string",
+      default: "default",
+      description: "Button size."
+    },
+    {
+      prop: "borderWidth",
+      type: "number",
+      default: 3,
+      description: "Inner border width."
+    },
+    {
+      prop: "asChild",
+      type: "boolean",
+      default: false,
+      description: "Use Radix Slot."
+    },
+    {
+      prop: "children",
+      type: "node",
+      default: "—",
+      description: "Content inside button."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom classes."
+    },
+    {
+      prop: "...props",
+      type: "button props",
+      default: "—",
+      description: "All native button attributes."
+    }
+  ]}
+/>
+
+
+
