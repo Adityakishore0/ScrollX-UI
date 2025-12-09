@@ -10,6 +10,7 @@ export const parentComponents = [
   "announcement",
   "aspect-ratio",
   "avatar",
+  "aurora-dots",
   "backgroundmeteors",
   "background-paths",
   "badge",

@@ -1,0 +1,138 @@
+---
+title: Aurora Dots
+description: A captivating background effect featuring softly glowing, animated dots that mimic the ethereal beauty of the aurora borealis.
+---
+
+<ComponentPreview
+  name="auroradots-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="aurora-dots" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>aurora-dots.tsx</code>
+</p>
+<ComponentSource name="aurora-dots" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { AuroraDots } from "@/components/ui/aurora-dots";
+```
+
+```tsx
+<AuroraDots className="relative h-[400px] w-full flex flex-col items-center justify-center">
+      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
+        AuroraDots, <br /> Background.
+      </h2>
+    </AuroraDots>
+```
+
+
+## API Reference
+
+### Aurora Dots
+
+A captivating background effect featuring softly glowing, animated dots that mimic the ethereal beauty of the aurora borealis.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "particleColor",
+      type: "string",
+      default: '"34, 211, 238"',
+      description: "RGB color used for the particles.",
+    },
+    {
+      prop: "particleSize",
+      type: "number",
+      default: "2",
+      description: "Base size of each particle.",
+    },
+    {
+      prop: "glowIntensity",
+      type: "number",
+      default: "0.3",
+      description: "Default glow strength.",
+    },
+    {
+      prop: "hoverGlowIntensity",
+      type: "number",
+      default: "0.5",
+      description: "Glow strength when hovered.",
+    },
+    {
+      prop: "animationSpeed",
+      type: "number",
+      default: "3",
+      description: "Speed of the particle wave animation.",
+    },
+    {
+      prop: "hoverRadius",
+      type: "number",
+      default: "10",
+      description: "Area around cursor that boosts glow.",
+    },
+    {
+      prop: "interactive",
+      type: "boolean",
+      default: "true",
+      description: "Enables mouse hover interaction.",
+    },
+    {
+      prop: "clusters",
+      type: "Cluster[]",
+      default: "preset clusters",
+      description: "Particle cluster layout settings.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Extra class names for the container.",
+    },
+    {
+      prop: "children",
+      type: "React.ReactNode",
+      default: "—",
+      description: "Content displayed above the canvas.",
+    },
+  ]}
+/>
+
+
