@@ -154,6 +154,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "aurora-dots",
+      "title": "Aurora Dots",
+      "description": "A captivating background effect featuring softly glowing, animated dots that mimic the ethereal beauty of the aurora borealis.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/aurora-dots.tsx",
+          "target": "components/ui/aurora-dots.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "backgroundmeteors",
       "title": "Background Meteors",
       "description": "animated background featuring vertical meteor-like beams falling from the top to the bottom of the screen over a grid pattern.",
