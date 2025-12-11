@@ -66,6 +66,11 @@ const navigation: NavItem[] = [
       { title: "Aspect Ratio", href: "/docs/components/aspect-ratio" },
       { title: "Avatar", href: "/docs/components/avatar" },
       {
+        title: "Avatar Group",
+        href: "/docs/components/avatar-group",
+        category: "new",
+      },
+      {
         title: "Aurora Dots",
         href: "/docs/components/aurora-dots",
         category: "new",
