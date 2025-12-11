@@ -154,6 +154,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "avatar-group",
+      "title": "Avatar Group",
+      "description": "Overlapping avatar circles that expand smoothly to reveal each user's name on hover.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/avatar-group.tsx",
+          "target": "components/ui/avatar-group.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "aurora-dots",
       "title": "Aurora Dots",
       "description": "A captivating background effect featuring softly glowing, animated dots that mimic the ethereal beauty of the aurora borealis.",
