@@ -12,6 +12,7 @@ export const demoComponents = [
   "announcementstyled-demo",
   "aspectratio-demo",
   "avatar-demo",
+  "avatargroup-demo",
   "auroradots-demo",
   "backgroundmeteors-demo",
   "backgroundpaths-demo",
