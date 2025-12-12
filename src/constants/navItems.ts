@@ -99,7 +99,7 @@ const navigation: NavItem[] = [
       },
       { title: "Carousel", href: "/docs/components/carousel" },
       { title: "Checkbox Pro", href: "/docs/components/checkbox-pro" },
-      { title: "Clock", href: "/docs/components/clock", category: "new" },
+      { title: "Clock", href: "/docs/components/clock" },
       { title: "CodeBlock", href: "/docs/components/codeblock" },
       { title: "Collapsible", href: "/docs/components/collapsible" },
       { title: "Cursor Highlight", href: "/docs/components/cursor-highlight" },
@@ -112,7 +112,6 @@ const navigation: NavItem[] = [
       {
         title: "Draggable Avatar",
         href: "/docs/components/draggable-avatar",
-        category: "new",
       },
       {
         title: "Drift Card",
@@ -173,7 +172,6 @@ const navigation: NavItem[] = [
       {
         title: "Layered Text",
         href: "/docs/components/layered-text",
-        category: "new",
       },
       { title: "Loader", href: "/docs/components/loader" },
       { title: "Login Form", href: "/docs/components/loginform" },
@@ -183,7 +181,6 @@ const navigation: NavItem[] = [
       {
         title: "Meteor Orbit",
         href: "/docs/components/meteor-orbit",
-        category: "new",
       },
       { title: "Modern Loader", href: "/docs/components/modern-loader" },
       {
@@ -195,7 +192,6 @@ const navigation: NavItem[] = [
       {
         title: "Morphy Button",
         href: "/docs/components/morphy-button",
-        category: "new",
       },
       {
         title: "Motion Grid",
@@ -211,7 +207,6 @@ const navigation: NavItem[] = [
       {
         title: "MovingLines Background",
         href: "/docs/components/movinglines-background",
-        category: "new",
       },
       { title: "Navbar Flow", href: "/docs/components/navbar-flow" },
       { title: "Not Found", href: "/docs/components/not-found" },
@@ -243,7 +238,8 @@ const navigation: NavItem[] = [
       {
         title: "Shiny Button",
         href: "/docs/components/shiny-button",
-        category: "new",
+        category: "updated",
+        categoryClassName: "bg-blue-500",
       },
       { title: "Side Sheet", href: "/docs/components/side-sheet" },
       { title: "Signup Form", href: "/docs/components/signupform" },
@@ -274,12 +270,10 @@ const navigation: NavItem[] = [
       {
         title: "Text Modifier",
         href: "/docs/components/text-modifier",
-        category: "new",
       },
       {
         title: "Text Spotlight",
         href: "/docs/components/text-spotlight",
-        category: "new",
       },
       { title: "Theme Switch", href: "/docs/components/theme-switch" },
       { title: "Thunder Loader", href: "/docs/components/thunder-loader" },
