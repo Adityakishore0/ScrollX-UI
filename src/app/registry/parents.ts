@@ -77,6 +77,7 @@ export const parentComponents = [
   "parallaxcards",
   "particles",
   "pixel-background",
+  "pixel-highlight",
   "popover",
   "profilecard",
   "progress",
