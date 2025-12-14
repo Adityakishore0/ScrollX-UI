@@ -135,6 +135,7 @@ export const demoComponents = [
   "parallaxcards-demo",
   "pixelbackground-demo",
   "pixelbackgrounddirection-demo",
+  "pixelhighlight-demo",
   "popover-demo",
   "profilecard-demo",
   "progress-demo",
