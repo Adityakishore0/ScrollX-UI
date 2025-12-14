@@ -1162,6 +1162,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "pixel-highlight",
+      "title": "Pixel Highlight",
+      "description": "Animated pixel-based text reveal with directional shimmer using canvas-rendered particles.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/pixel-highlight.tsx",
+          "target": "components/ui/pixel-highlight.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "popover",
       "title": "Popover",
       "description": "Displays rich content in a animated portal, triggered by a button.",
