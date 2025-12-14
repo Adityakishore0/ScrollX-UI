@@ -218,6 +218,11 @@ const navigation: NavItem[] = [
         href: "/docs/components/pixel-background",
         category: "new",
       },
+      {
+        title: "Pixel Highlight",
+        href: "/docs/components/pixel-highlight",
+        category: "new",
+      },
       { title: "Popover", href: "/docs/components/popover" },
       { title: "Profile Card", href: "/docs/components/profilecard" },
       { title: "Progress", href: "/docs/components/progress" },
