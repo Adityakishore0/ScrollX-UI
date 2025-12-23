@@ -81,6 +81,7 @@ const navigation: NavItem[] = [
       },
       { title: "Background Paths", href: "/docs/components/background-paths" },
       { title: "Badge", href: "/docs/components/badge" },
+      { title: "BarsWave", href: "/docs/components/barswave", category: "new" },
       { title: "Beams Upstream", href: "/docs/components/beams-upstream" },
       { title: "Border Glide", href: "/docs/components/border-glide" },
       { title: "Button", href: "/docs/components/button" },
