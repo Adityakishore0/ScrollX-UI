@@ -15,6 +15,7 @@ export const parentComponents = [
   "backgroundmeteors",
   "background-paths",
   "badge",
+  "barswave",
   "beams-upstream",
   "border-glide",
   "button",

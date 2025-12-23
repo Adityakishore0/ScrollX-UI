@@ -20,6 +20,8 @@ export const demoComponents = [
   "badge-destructive",
   "badge-secondary",
   "badge-outline",
+  "barswave-demo",
+  "barswavefilled-demo",
   "beamsupstream-demo",
   "borderglide-demo",
   "button-demo",
