@@ -1447,6 +1447,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "spark-waves",
+      "title": "Spark Waves",
+      "description": "Vertical wave bars animate in symmetry, forming a subtle motion-driven background layer.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/spark-waves.tsx",
+          "target": "components/ui/spark-waves.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "splitter",
       "title": "Splitter",
       "description": "A customizable splitter component with collapsible panels and smooth animations.",

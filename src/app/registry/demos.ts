@@ -177,6 +177,7 @@ export const demoComponents = [
   "staggercharsdown-demo",
   "stripedgrid-demo",
   "stripedgridleft-demo",
+  "sparkwaves-demo",
   "splitter-demo",
   "spotlightcard-demo",
   "seperatorpro-demo",

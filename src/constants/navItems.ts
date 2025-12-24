@@ -254,6 +254,11 @@ const navigation: NavItem[] = [
       { title: "Spotlight Card", href: "/docs/components/spotlightcard" },
       { title: "Splitter", href: "/docs/components/splitter" },
       {
+        title: "Spark Waves",
+        href: "/docs/components/spark-waves",
+        category: "new",
+      },
+      {
         title: "Stagger Button",
         href: "/docs/components/stagger-button",
         category: "new",
