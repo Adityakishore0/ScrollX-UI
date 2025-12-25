@@ -259,6 +259,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "bolt-strike",
+      "title": "Bolt Strike",
+      "description": "lightning bolts burst randomly with sparks and particles, creating a high-energy, reactive background effect.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/bolt-strike.tsx",
+          "target": "components/ui/bolt-strike.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "border-glide",
       "title": "Border Glide",
       "description": "Modern UI cards with a moving border and smooth transitions.",
