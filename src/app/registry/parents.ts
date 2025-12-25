@@ -17,6 +17,7 @@ export const parentComponents = [
   "badge",
   "barswave",
   "beams-upstream",
+  "bolt-strike",
   "border-glide",
   "button",
   "card",

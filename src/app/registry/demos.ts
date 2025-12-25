@@ -23,6 +23,7 @@ export const demoComponents = [
   "barswave-demo",
   "barswavefilled-demo",
   "beamsupstream-demo",
+  "boltstrike-demo",
   "borderglide-demo",
   "button-demo",
   "cursorimagetrail-demo",
