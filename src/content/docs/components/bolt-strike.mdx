@@ -1,0 +1,112 @@
+---
+title: Bolt Strike
+description: lightning bolts burst randomly with sparks and particles, creating a high-energy, reactive background effect.
+---
+
+<ComponentPreview
+  name="boltstrike-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="bolt-strike" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>bolt-strike.tsx</code>
+</p>
+<ComponentSource name="bolt-strike" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { BoltStrike } from "@/components/ui/bolt-strike";
+```
+
+```tsx
+<BoltStrike 
+      color="#7c3aed" 
+      intensity={1} 
+      className="relative h-[400px] w-full flex flex-col items-center justify-center"
+    >
+      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
+        Bolt Animation, <br /> Background.
+      </h2>
+    </BoltStrike>
+```
+
+## API Reference
+
+### Bolt Strike
+
+lightning bolts burst randomly with sparks and particles, creating a high-energy, reactive background effect.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "color",
+      type: "string",
+      default: '"#7c3aed"',
+      description: "Primary color of the lightning bolts, sparks, and glow effects.",
+    },
+    {
+      prop: "speed",
+      type: "number",
+      default: "1",
+      description: "Controls the overall animation speed (higher values feel more rapid and energetic).",
+    },
+    {
+      prop: "intensity",
+      type: "number",
+      default: "1",
+      description: "Controls how frequently lightning strikes occur (higher values = more strikes).",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom classes applied to the outer container.",
+    },
+    {
+      prop: "children",
+      type: "node",
+      default: "—",
+      description: "Content rendered above the lightning animation.",
+    },
+  ]}
+/>
+
+
+
+
