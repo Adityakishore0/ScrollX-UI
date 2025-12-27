@@ -66,6 +66,7 @@ export const parentComponents = [
   "lustretext",
   "magicdock",
   "meteor-orbit",
+  "media-card",
   "modern-loader",
   "movinglines-background",
   "motioncards",
