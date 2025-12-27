@@ -1,0 +1,142 @@
+---
+title: Media Card
+description: An Interactive media cards with a fluid cursor and a polished, modern aesthetic.
+---
+
+<ComponentPreview
+  name="mediacard-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="media-card" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>media-card.tsx</code>
+</p>
+<ComponentSource name="media-card" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { MediaCard, MediaCardItem } from "@/components/ui/media-card";
+```
+
+```tsx
+<MediaCard
+      className="w-full min-h-[350px] flex items-center justify-center p-10"
+      dotClassName="bg-blue-500 w-4 h-4"
+      marqueeClassName="bg-blue-500/95 text-white"
+    >
+      <MediaCardItem
+        src="https://www.pexels.com/download/video/1390942/"
+        alt="Video"
+        title="Lost in the view."
+        type="video"
+        className="w-full max-w-sm"
+      />
+    </MediaCard>
+```
+
+## Examples
+
+---
+
+<Step>Image</Step>
+
+<ComponentPreview
+  name="mediacardimage-demo"
+  className="p-0"
+  description=""
+/>
+
+## API Reference
+
+### Media Card
+
+An Interactive media cards with a fluid cursor and a polished, modern aesthetic.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom class for the media card container."
+    },
+    {
+      prop: "dotClassName",
+      type: "string",
+      default: "—",
+      description: "Styles applied to the cursor dot."
+    },
+    {
+      prop: "marqueeClassName",
+      type: "string",
+      default: "—",
+      description: "Styles applied to the marquee cursor."
+    },
+    {
+      prop: "springConfig",
+      type: "{ stiffness?, damping?, mass? }",
+      default: "-",
+      description: "Spring physics configuration for cursor motion."
+    },
+    {
+      prop: "marqueeSpeed",
+      type: "number",
+      default: "10",
+      description: "Speed of the marquee text animation."
+    },
+    {
+      prop: "marqueeDelay",
+      type: "number",
+      default: "0.5",
+      description: "Delay before marquee animation starts."
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "MediaCardItem components."
+    }
+  ]}
+/>
+
+
