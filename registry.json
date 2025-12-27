@@ -982,6 +982,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "media-card",
+      "title": "Media Card",
+      "description": "An Interactive media cards with a fluid cursor and a polished, modern aesthetic.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/media-card.tsx",
+          "target": "components/ui/media-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "meteor-orbit",
       "title": "Meteor Orbit",
       "description": "orbit system featuring rotating meteors and gracefully animated icons.",
