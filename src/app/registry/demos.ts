@@ -113,6 +113,8 @@ export const demoComponents = [
   "logosteppervloop-demo",
   "lustretext-demo",
   "magicdock-demo",
+  "mediacard-demo",
+  "mediacardimage-demo",
   "meteororbit-demo",
   "meteororbitgradients-demo",
   "modernloader-demo",
