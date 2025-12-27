@@ -185,6 +185,11 @@ const navigation: NavItem[] = [
       { title: "lustre Text", href: "/docs/components/lustretext" },
       { title: "Magic Dock", href: "/docs/components/magicdock" },
       {
+        title: "Media Card",
+        href: "/docs/components/media-card",
+        category: "new",
+      },
+      {
         title: "Meteor Orbit",
         href: "/docs/components/meteor-orbit",
       },
