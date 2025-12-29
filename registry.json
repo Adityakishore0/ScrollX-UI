@@ -592,6 +592,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "flashy-card",
+      "title": "Flashy Card",
+      "description": "Interactive card with smooth animated activation and visual effects.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/flashy-card.tsx",
+          "target": "components/ui/flashy-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "flipstack",
       "title": "FlipStack",
       "description": "A stylish and animated card stack UI for showcasing content in layered views.",

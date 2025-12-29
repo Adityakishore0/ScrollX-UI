@@ -138,6 +138,11 @@ const navigation: NavItem[] = [
       { title: "Expandable Dock", href: "/docs/components/expandable-dock" },
       { title: "Facescape", href: "/docs/components/facescape" },
       {
+        title: "Flashy Card",
+        href: "/docs/components/flashy-card",
+        category: "new",
+      },
+      {
         title: "FlipStack",
         href: "/docs/components/flipstack",
         category: "updated",
