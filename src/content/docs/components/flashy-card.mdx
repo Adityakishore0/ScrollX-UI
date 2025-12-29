@@ -1,0 +1,133 @@
+---
+title: Flashy Card
+description: Interactive card with smooth animated activation and visual effects.
+---
+
+<ComponentPreview name="flashycard-demo" className="" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="flashy-card" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>flashy-card.tsx</code>
+</p>
+<ComponentSource name="flashy-card" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { FlashyCard } from "@/components/ui/flashy-card";
+```
+
+```tsx
+<FlashyCard
+    className="w-full max-w-sm"
+  defaultSrc="https://images.pexels.com/photos/1933316/pexels-photo-1933316.jpeg"
+  activeSrc="https://www.pexels.com/download/video/1390942/"
+  activeType="video"
+/>
+```
+
+## API Reference
+
+### Flashy Card
+
+Interactive card with smooth animated activation and visual effects.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "-",
+      description: "Custom content using FlashyCardDefault and FlashyCardActive slots.",
+    },
+    {
+      prop: "onStateChange",
+      type: "function",
+      default: "-",
+      description: "Callback fired when card toggles between active and inactive state.",
+    },
+    {
+      prop: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Disables interaction and prevents state change animations.",
+    },
+    {
+      prop: "iconClassName",
+      type: "string",
+      default: "-",
+      description: "Custom className applied to the center action button.",
+    },
+    {
+      prop: "rippleClassName",
+      type: "string",
+      default: "-",
+      description: "Custom className for the ripple pulse effect.",
+    },
+    {
+      prop: "glareClassName",
+      type: "string",
+      default: "-",
+      description: "Custom className for the glare sweep overlay.",
+    },
+    {
+      prop: "defaultSrc",
+      type: "string",
+      default: "-",
+      description: "Image source displayed when the card is inactive.",
+    },
+    {
+      prop: "activeSrc",
+      type: "string",
+      default: "-",
+      description: "Image or video source displayed when the card is active.",
+    },
+    {
+      prop: "activeType",
+      type: "string",
+      default: "auto",
+      description: "Forces active content type: image or video.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Additional className applied to the card container.",
+    },
+  ]}
+/>
