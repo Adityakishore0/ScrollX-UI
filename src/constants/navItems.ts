@@ -116,6 +116,11 @@ const navigation: NavItem[] = [
         category: "new",
       },
       {
+        title: "Dot Wave",
+        href: "/docs/components/dot-wave",
+        category: "new",
+      },
+      {
         title: "Draggable Avatar",
         href: "/docs/components/draggable-avatar",
       },
