@@ -1,0 +1,178 @@
+---
+title: Dot Wave
+description: Dot-based waves ripple outward in symmetry, creating a subtle, motion-driven background layer
+---
+
+<ComponentPreview
+  name="dotwave-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="dot-wave" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>dot-wave.tsx</code>
+</p>
+<ComponentSource name="dot-wave" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { DotWave } from "@/components/ui/dot-wave";
+```
+
+```tsx
+<DotWave
+      dotGap={20}
+      dotRadiusMax={3}
+      expansionSpeed={250}
+      lightIntensity={0.4}
+      fadeIntensity={0.08}
+      className="w-full h-[350px] flex items-center justify-center"
+    >
+      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-600 to-white text-2xl md:text-4xl lg:text-7xl font-sans font-bold tracking-tight relative z-20">
+        Dot Wave, <br /> Background.
+      </h2>
+    </DotWave>
+```
+
+## API Reference
+
+### Dot Wave
+
+Dot-based waves ripple outward in symmetry, creating a subtle, motion-driven background layer
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "dotGap",
+      type: "number",
+      default: "20",
+      description:
+        "Distance (in pixels) between each dot in the grid. Smaller values create denser dot patterns.",
+    },
+    {
+      prop: "sphereRadius",
+      type: "number",
+      default: "200",
+      description:
+        "Defines the virtual radius of influence for the wave effect, controlling overall spread.",
+    },
+    {
+      prop: "dotRadiusMax",
+      type: "number",
+      default: "3",
+      description:
+        "Maximum radius (in pixels) of each rendered dot.",
+    },
+    {
+      prop: "speed",
+      type: "number",
+      default: "0.15",
+      description:
+        "Controls the easing speed when the wave center moves automatically.",
+    },
+    {
+      prop: "expansionSpeed",
+      type: "number",
+      default: "150",
+      description:
+        "Speed at which the wave expands outward from the center (pixels per second).",
+    },
+    {
+      prop: "repeatAnimation",
+      type: "boolean",
+      default: "true",
+      description:
+        "Determines whether the wave animation restarts after reaching the screen edges.",
+    },
+    {
+      prop: "lightIntensity",
+      type: "number",
+      default: "0.5",
+      description:
+        "Base brightness of the dots after the wave passes through.",
+    },
+    {
+      prop: "fadeIntensity",
+      type: "number",
+      default: "0.15",
+      description:
+        "Controls how much dots fade after the wave has moved past them.",
+    },
+    {
+      prop: "followMouse",
+      type: "boolean",
+      default: "false",
+      description:
+        "When enabled, the wave center follows the mouse cursor for interactive effects.",
+    },
+    {
+      prop: "bgColor",
+      type: "string",
+      default: '"#000000"',
+      description:
+        "Fallback background color for the canvas when container styles are transparent.",
+    },
+    {
+      prop: "dotColor",
+      type: "string",
+      default: '"#ffffff"',
+      description:
+        "Fallback color used to render dots when no text color is detected.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description:
+        "Custom classes applied to the outer container element.",
+    },
+    {
+      prop: "dotClassName",
+      type: "string",
+      default: "—",
+      description:
+        "Custom classes applied directly to the canvas element.",
+    },
+    {
+      prop: "children",
+      type: "React.ReactNode",
+      default: "—",
+      description:
+        "Content rendered above the animated dot wave, useful for hero sections or overlays.",
+    },
+  ]}
+/>

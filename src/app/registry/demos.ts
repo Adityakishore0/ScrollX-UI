@@ -58,6 +58,7 @@ export const demoComponents = [
   "cursorhighlightpointer-demo",
   "cursorhighlightselection-demo",
   "decoratedtext-demo",
+  "dotwave-demo",
   "draggableavatar-demo",
   "driftcard-demo",
   "dropdownmenu-demo",

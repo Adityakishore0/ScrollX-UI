@@ -32,6 +32,7 @@ export const parentComponents = [
   "cursorimagetrail",
   "cursor-highlight",
   "decorated-text",
+  "dot-wave",
   "draggable-avatar",
   "drift-card",
   "dropdown-menu",
