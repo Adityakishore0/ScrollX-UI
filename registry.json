@@ -487,6 +487,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "dot-wave",
+      "title": "Dot Wave",
+      "description": "Dot-based waves ripple outward in symmetry, creating a subtle, motion-driven background layer",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/dot-wave.tsx",
+          "target": "components/ui/dot-wave.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "draggable-avatar",
       "title": "Draggable Avatar",
       "description": "It displays a circular, draggable avatar with customizable size and style.",
