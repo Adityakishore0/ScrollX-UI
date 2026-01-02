@@ -159,6 +159,8 @@ export const demoComponents = [
   "revealtextleft-demo",
   "revealtextright-demo",
   "revealtexttrigger-demo",
+  "sensitivetext-demo",
+  "sensitivetextstretch-demo",
   "shinybutton-demo",
   "sidesheetleft-demo",
   "sidesheetright-demo",
