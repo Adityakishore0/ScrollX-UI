@@ -1,0 +1,155 @@
+---
+title: Sensitive Text
+description: Interactive text that subtly compresses or stretches characters based on cursor proximity.
+---
+
+<ComponentPreview
+  name="sensitivetext-demo"
+  className=""
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="sensitive-text" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>sensitive-text.tsx</code>
+</p>
+<ComponentSource name="sensitive-text" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import SensitiveText from "@/components/ui/sensitive-text";
+```
+
+```tsx
+ <SensitiveText
+      variant="compress"
+      maxStretch={0.3}
+      sensitivity={0.6}
+      easing={12}
+      className="md:text-6xl text-4xl font-black text-black dark:text-white"
+    >
+      HOVER ME
+    </SensitiveText>
+```
+
+## Examples
+
+---
+
+<Step>Stretch</Step>
+
+<ComponentPreview
+  name="sensitivetextstretch-demo"
+  className=""
+  description=""
+/>
+
+---
+
+## API Reference
+
+### Sensitive Text
+
+Interactive text that subtly compresses or stretches characters based on cursor proximity.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "string",
+      default: "required",
+      description: "Text content that is split into characters and reacts to cursor movement.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: `"optional"`,
+      description: "Class applied to each individual character span.",
+    },
+    {
+      prop: "containerClassName",
+      type: "string",
+      default: `"optional"`,
+      description: "Class applied to the outer container wrapping the text.",
+    },
+    {
+      prop: "maxStretch",
+      type: "number",
+      default: 0.5,
+      description: "Maximum vertical scale amount applied to characters near the cursor.",
+    },
+    {
+      prop: "sensitivity",
+      type: "number",
+      default: 0.5,
+      description: "Controls how far horizontally the cursor influences nearby characters.",
+    },
+    {
+      prop: "easing",
+      type: "number",
+      default: 10,
+      description: "Smoothing factor for cursor-follow animation (higher = slower response).",
+    },
+    {
+      prop: "verticalRange",
+      type: "number",
+      default: 100,
+      description: "Extra vertical distance below the text where cursor interaction remains active.",
+    },
+    {
+      prop: "falloffPower",
+      type: "number",
+      default: 2,
+      description: "Exponent used to control how sharply the effect falls off with distance.",
+    },
+    {
+      prop: "variant",
+      type: `"compress" | "stretch"`,
+      default: `"compress"`,
+      description: "Determines whether characters compress inward or stretch outward near the cursor.",
+    },
+    {
+      prop: "style",
+      type: "CSSProperties",
+      default: `"optional"`,
+      description: "Inline styles applied to the outer text container.",
+    },
+  ]}
+/>
+
+
