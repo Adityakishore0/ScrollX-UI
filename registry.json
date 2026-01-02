@@ -1357,6 +1357,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "sensitive-text",
+      "title": "Sensitive Text",
+      "description": "Interactive text that subtly compresses or stretches characters based on cursor proximity.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/sensitive-text.tsx",
+          "target": "components/ui/sensitive-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "shiny-button",
       "title": "Shiny Button",
       "description": "Interactive button with spotlight effect that follows mouse cursor and highlights borders on hover.",
