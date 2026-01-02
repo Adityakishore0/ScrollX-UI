@@ -260,6 +260,11 @@ const navigation: NavItem[] = [
         category: "new",
       },
       { title: "ScrollArea Pro", href: "/docs/components/scroll-areapro" },
+      {
+        title: "Sensitive Text",
+        href: "/docs/components/sensitive-text",
+        category: "new",
+      },
       { title: "Seperator Pro", href: "/docs/components/seperatorpro" },
       {
         title: "Shiny Button",
