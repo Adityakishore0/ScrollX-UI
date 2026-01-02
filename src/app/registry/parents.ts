@@ -90,6 +90,7 @@ export const parentComponents = [
   "radio-group",
   "radial-socials",
   "reveal-text",
+  "sensitive-text",
   "shiny-button",
   "side-sheet",
   "signupform",
