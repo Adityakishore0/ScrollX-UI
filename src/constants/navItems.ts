@@ -95,13 +95,10 @@ const navigation: NavItem[] = [
       {
         title: "Card Flip",
         href: "/docs/components/card-flip",
-        category: "updated",
-        categoryClassName: "bg-blue-500",
       },
       {
         title: "Card Tilt",
         href: "/docs/components/card-tilt",
-        category: "new",
       },
       { title: "Carousel", href: "/docs/components/carousel" },
       { title: "Checkbox Pro", href: "/docs/components/checkbox-pro" },
@@ -113,7 +110,6 @@ const navigation: NavItem[] = [
       {
         title: "Decorated Text",
         href: "/docs/components/decorated-text",
-        category: "new",
       },
       {
         title: "Dot Wave",
@@ -127,18 +123,15 @@ const navigation: NavItem[] = [
       {
         title: "Drift Card",
         href: "/docs/components/drift-card",
-        category: "new",
       },
       { title: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
       {
         title: "Electric Text",
         href: "/docs/components/electric-text",
-        category: "new",
       },
       {
         title: "Expandable Cards",
         href: "/docs/components/expandable-cards",
-        category: "new",
       },
       { title: "Expandable Dock", href: "/docs/components/expandable-dock" },
       { title: "Facescape", href: "/docs/components/facescape" },
@@ -150,8 +143,6 @@ const navigation: NavItem[] = [
       {
         title: "FlipStack",
         href: "/docs/components/flipstack",
-        category: "updated",
-        categoryClassName: "bg-blue-500",
       },
       { title: "Flowing Logos", href: "/docs/components/flowing-logos" },
       { title: "Folder", href: "/docs/components/folder" },
@@ -207,8 +198,6 @@ const navigation: NavItem[] = [
       {
         title: "MorphoText Flip",
         href: "/docs/components/morphotextflip",
-        category: "updated",
-        categoryClassName: "bg-blue-500",
       },
       {
         title: "Morphy Button",
@@ -217,13 +206,11 @@ const navigation: NavItem[] = [
       {
         title: "Motion Grid",
         href: "/docs/components/motion-grid",
-        category: "new",
       },
       { title: "MotionCards", href: "/docs/components/motioncards" },
       {
         title: "Motion Navbar",
         href: "/docs/components/motion-navbar",
-        category: "new",
       },
       {
         title: "MovingLines Background",
@@ -237,7 +224,6 @@ const navigation: NavItem[] = [
       {
         title: "Pixel Background",
         href: "/docs/components/pixel-background",
-        category: "new",
       },
       {
         title: "Pixel Highlight",
@@ -251,13 +237,11 @@ const navigation: NavItem[] = [
       {
         title: "Radio Group",
         href: "/docs/components/radio-group",
-        category: "new",
       },
       { title: "Radial Socials", href: "/docs/components/radial-socials" },
       {
         title: "Reveal Text",
         href: "/docs/components/reveal-text",
-        category: "new",
       },
       { title: "ScrollArea Pro", href: "/docs/components/scroll-areapro" },
       {
@@ -269,8 +253,6 @@ const navigation: NavItem[] = [
       {
         title: "Shiny Button",
         href: "/docs/components/shiny-button",
-        category: "updated",
-        categoryClassName: "bg-blue-500",
       },
       { title: "Side Sheet", href: "/docs/components/side-sheet" },
       { title: "Signup Form", href: "/docs/components/signupform" },
@@ -286,7 +268,6 @@ const navigation: NavItem[] = [
       {
         title: "Stagger Button",
         href: "/docs/components/stagger-button",
-        category: "new",
       },
       { title: "Stagger Chars", href: "/docs/components/stagger-chars" },
       { title: "Stats Carousel", href: "/docs/components/statscarousel" },
@@ -295,7 +276,6 @@ const navigation: NavItem[] = [
       {
         title: "Striped Grid",
         href: "/docs/components/striped-grid",
-        category: "new",
       },
       { title: "Table", href: "/docs/components/table" },
       {
