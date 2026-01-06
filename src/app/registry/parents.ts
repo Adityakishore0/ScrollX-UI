@@ -36,6 +36,7 @@ export const parentComponents = [
   "draggable-avatar",
   "drift-card",
   "dropdown-menu",
+  "dualsparks",
   "electric-text",
   "expandable-cards",
   "expandable-dock",

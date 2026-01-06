@@ -1,0 +1,220 @@
+---
+title: DualSparks
+description: Corner-based spark waves that radiate inward and outward with smooth motion.
+---
+
+<ComponentPreview
+  name="dualsparks-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="dualsparks" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>dualsparks.tsx</code>
+</p>
+<ComponentSource name="dualsparks" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { DualSparks } from "@/components/ui/dualsparks";
+```
+
+```tsx
+<DualSparks
+       sparkColor="#000000"
+      sparkColorDark="#ffffff"
+      sparkSize={2}
+      sparkCount={22}
+      ringsPerWave={3}
+      waveInterval={1200}
+      maxRadius={1000}
+      corners="both"
+      className="w-full h-[350px] flex items-center bg-black justify-center"
+    >
+      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans font-bold tracking-tight relative z-20">
+        DualSparks, <br /> Background.
+      </h2>
+    </DualSparks>
+```
+
+## Examples
+
+---
+
+<Step>Left</Step>
+
+<ComponentPreview
+  name="dualsparksleft-demo"
+  className="p-0"
+  description=""
+/>
+
+---
+
+<Step>Rightt</Step>
+
+<ComponentPreview
+  name="dualsparksright-demo"
+  className="p-0"
+  description=""
+/>
+
+## API Reference
+
+### DualSparks
+
+Corner-based spark waves that radiate inward and outward with smooth motion.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "sparkColor",
+      type: "string",
+      default: '"#000000"',
+      description: "Spark color used in light mode.",
+    },
+    {
+      prop: "sparkColorDark",
+      type: "string",
+      default: '"#ffffff"',
+      description: "Spark color used when dark mode is active.",
+    },
+    {
+      prop: "sparkSize",
+      type: "number",
+      default: "10",
+      description: "Length of each spark line segment.",
+    },
+    {
+      prop: "sparkCount",
+      type: "number",
+      default: "24",
+      description: "Number of sparks emitted per ring.",
+    },
+    {
+      prop: "duration",
+      type: "number",
+      default: "3500",
+      description: "Time (ms) for a spark wave to complete.",
+    },
+    {
+      prop: "easing",
+      type: "string",
+      default: '"ease-out"',
+      description: "Easing function applied to spark motion.",
+    },
+    {
+      prop: "waveInterval",
+      type: "number",
+      default: "1400",
+      description: "Delay (ms) between consecutive waves.",
+    },
+    {
+      prop: "maxRadius",
+      type: "number",
+      default: "800",
+      description: "Maximum outward expansion radius.",
+    },
+    {
+      prop: "ringsPerWave",
+      type: "number",
+      default: "5",
+      description: "Number of concentric rings per wave.",
+    },
+    {
+      prop: "ringSpacing",
+      type: "number",
+      default: "40",
+      description: "Distance between successive rings.",
+    },
+    {
+      prop: "enableInward",
+      type: "boolean",
+      default: "true",
+      description: "Enables inward collapsing spark waves.",
+    },
+    {
+      prop: "corners",
+      type: '"both" | "left" | "right"',
+      default: '"both"',
+      description: "Corner origin(s) for spark emission.",
+    },
+    {
+      prop: "backgroundColor",
+      type: "string",
+      default: '"white"',
+      description: "Background fill color in light mode.",
+    },
+    {
+      prop: "backgroundColorDark",
+      type: "string",
+      default: '"black"',
+      description: "Background fill color in dark mode.",
+    },
+    {
+      prop: "clearBackground",
+      type: "boolean",
+      default: "true",
+      description: "Clears or repaints the canvas each frame.",
+    },
+    {
+      prop: "backgroundOpacity",
+      type: "number",
+      default: "0.15",
+      description: "Overrides alpha value of background color.",
+    },
+    {
+      prop: "forceDarkMode",
+      type: "boolean",
+      default: "—",
+      description: "Forces dark mode regardless of theme.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description: "Custom classes for the container wrapper.",
+    },
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "—",
+      description: "Content rendered above the spark canvas.",
+    },
+  ]}
+/>
