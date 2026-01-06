@@ -126,6 +126,11 @@ const navigation: NavItem[] = [
       },
       { title: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
       {
+        title: "DualSparks",
+        href: "/docs/components/dualsparks",
+        category: "new",
+      },
+      {
         title: "Electric Text",
         href: "/docs/components/electric-text",
       },
