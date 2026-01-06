@@ -547,6 +547,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "dualsparks",
+      "title": "Dual Sparks",
+      "description": "Corner-based spark waves that radiate inward and outward with smooth motion.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/dualsparks.tsx",
+          "target": "components/ui/dualsparks.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "electric-text",
       "title": "Electric Text",
       "description": "Animated electric text with glowing, distorted outline for dynamic neon effects.",
