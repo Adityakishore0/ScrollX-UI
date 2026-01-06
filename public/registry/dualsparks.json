@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dualsparks",
+  "type": "registry:component",
+  "title": "Dual Sparks",
+  "description": "Corner-based spark waves that radiate inward and outward with smooth motion.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/dualsparks.tsx",
+      "target": "components/ui/dualsparks.tsx",
+      "content": ""
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
