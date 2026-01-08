@@ -42,6 +42,7 @@ export const parentComponents = [
   "expandable-dock",
   "facescape",
   "flashy-card",
+  "flipflow",
   "flipstack",
   "followcursor",
   "flowing-logos",
