@@ -146,6 +146,11 @@ const navigation: NavItem[] = [
         category: "new",
       },
       {
+        title: "FlipFlow",
+        href: "/docs/components/flipflow",
+        category: "new",
+      },
+      {
         title: "FlipStack",
         href: "/docs/components/flipstack",
       },
