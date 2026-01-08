@@ -75,6 +75,7 @@ export const demoComponents = [
   "facescapesquare-demo",
   "facescapesquircle-demo",
   "flashycard-demo",
+  "flipflow-demo",
   "flipstack-demo",
   "flowinglogos-demo",
   "folder-demo",

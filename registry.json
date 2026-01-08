@@ -637,6 +637,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "flipflow",
+      "title": "FlipFlow",
+      "description": "A looping flow of flip cards with smooth motion and subtle interactive effects.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/flipflow.tsx",
+          "target": "components/ui/flipflow.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "flipstack",
       "title": "FlipStack",
       "description": "A stylish and animated card stack UI for showcasing content in layered views.",
