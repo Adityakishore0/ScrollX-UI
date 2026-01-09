@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fancy-text",
+  "type": "registry:component",
+  "title": "Fancy Text",
+  "description": "A refined text reveal animation with smooth character motion and a clean, modern visual flow.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/fancy-text.tsx",
+      "target": "components/ui/fancy-text.tsx",
+      "content": ""
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
