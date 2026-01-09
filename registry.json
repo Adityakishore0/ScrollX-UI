@@ -622,6 +622,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "fancy-text",
+      "title": "Fancy Text",
+      "description": "A refined text reveal animation with smooth character motion and a clean, modern visual flow.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/fancy-text.tsx",
+          "target": "components/ui/fancy-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "flashy-card",
       "title": "Flashy Card",
       "description": "Interactive card with smooth animated activation and visual effects.",
