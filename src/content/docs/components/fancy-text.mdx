@@ -1,0 +1,124 @@
+---
+title: Fancy Text
+description:  A refined text reveal animation with smooth character motion and a clean, modern visual flow.
+---
+
+<ComponentPreview
+  name="fancytext-demo"
+  className="overflow-visible relative p-0'"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="fancy-text" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>fancy-text.tsx</code>
+</p>
+<ComponentSource name="fancy-text" />
+
+<Step>Add util file</Step>
+<p>
+  <code>lib/utils.ts</code>
+</p>
+```jsx 
+import {(ClassValue, clsx)} from "clsx";
+import {twMerge} from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+
+## Usage
+
+```tsx
+import { FancyText } from "@/components/ui/fancy-text";
+```
+
+```tsx
+<FancyText
+  key={key}
+  className="text-5xl font-black leading-none text-black/10 dark:text-white/10"
+  fillClassName="text-black dark:text-white"
+  stagger={0.06}
+  duration={1.2}
+  delay={0.2}
+ >
+ Authentic.
+</FancyText>
+```
+
+
+## API Reference
+
+###  Fancy Text
+
+A refined text reveal animation with smooth character motion and a clean, modern visual flow.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "string",
+      default: "required",
+      description: "Text content to be animated."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "preset",
+      description: "CSS classes applied to the base and animated text."
+    },
+    {
+      prop: "fillClassName",
+      type: "string",
+      default: "preset",
+      description: "CSS classes applied to the reveal layer."
+    },
+    {
+      prop: "stagger",
+      type: "number",
+      default: "0.08",
+      description: "Delay gap between each character animation."
+    },
+    {
+      prop: "duration",
+      type: "number",
+      default: "1.4",
+      description: "Duration of the reveal animation."
+    },
+    {
+      prop: "delay",
+      type: "number",
+      default: "0",
+      description: "Initial delay before animation starts."
+    }
+  ]}
+/>
+
+
+
+
+
