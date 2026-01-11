@@ -54,6 +54,7 @@ export const parentComponents = [
   "heroui",
   "hold-toconfirm",
   "hyperlink",
+  "infinite-canvas",
   "iphone",
   "input-otp",
   "interactive-input",
