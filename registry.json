@@ -847,6 +847,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "infinite-canvas",
+      "title": "Infinite Canvas",
+      "description": "Infinite draggable canvas with zoomable, repeating cards and touch/mouse controls.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/infinite-canvas.tsx",
+          "target": "components/ui/infinite-canvas.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "iphone",
       "title": "Iphone",
       "description": "IPhone mockup with screen, header, and custom children content.",

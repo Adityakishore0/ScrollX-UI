@@ -178,6 +178,11 @@ const navigation: NavItem[] = [
         title: "Interactive Input",
         href: "/docs/components/interactive-input",
       },
+      {
+        title: "Infinite Canvas",
+        href: "/docs/components/infinite-canvas",
+        category: "new",
+      },
       { title: "Iphone", href: "/docs/components/iphone" },
       { title: "Kbd", href: "/docs/components/kbd" },
       {

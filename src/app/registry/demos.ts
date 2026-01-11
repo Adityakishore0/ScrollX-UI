@@ -95,6 +95,7 @@ export const demoComponents = [
   "holdtoconfirmborder",
   "hyperlink-demo",
   "hyperlinkcustom-demo",
+  "infinitecanvas-demo",
   "iphone-demo",
   "iphoneimage-demo",
   "iphonevideo-demo",
