@@ -1,0 +1,145 @@
+---
+title: Infinite Canvas
+description: Infinite draggable canvas with zoomable, repeating cards and touch/mouse controls.
+---
+
+<ComponentPreview name="infinitecanvas-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="infinite-canvas" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>infinite-canvas.tsx</code>
+</p>
+<ComponentSource name="infinite-canvas" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Card, InfiniteCanvas } from "@/components/ui/infinite-canvas";
+```
+
+```tsx
+ <InfiniteCanvas 
+      className="relative h-[450px] w-full"
+      showControls={true}
+      showZoom={true}
+      showStatus={true}
+      showInstructions={true}
+    >
+    <Card className="bg-card p-6 rounded-lg shadow-lg border h-full">
+    <p className="text-foreground">
+          Card 1 
+        </p>
+    </Card>
+   <Card className="bg-card p-6 rounded-lg shadow-lg border h-full">
+    <p className="text-foreground">
+          Card 1 
+        </p>
+    </Card>
+    <Card className="bg-card p-6 rounded-lg shadow-lg border h-full">
+    <p className="text-foreground">
+          Card 1 
+        </p>
+    </Card>
+    </InfiniteCanvas>
+```
+
+## API Reference
+
+### Infinite Canvas
+
+Infinite draggable canvas with zoomable, repeating cards and touch/mouse controls.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "ReactNode",
+      default: "required",
+      description: "Card components rendered infinitely across the canvas grid.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "-",
+      description: "Additional CSS classes applied to the canvas container.",
+    },
+    {
+      prop: "cardWidth",
+      type: "number",
+      default: "280",
+      description: "Fixed width of each card in pixels.",
+    },
+    {
+      prop: "cardHeight",
+      type: "number",
+      default: "220",
+      description: "Fixed height of each card in pixels.",
+    },
+    {
+      prop: "spacing",
+      type: "number",
+      default: "30",
+      description: "Space between cards in the infinite grid layout.",
+    },
+    {
+      prop: "showControls",
+      type: "boolean",
+      default: "true",
+      description: "Show button to enable or disable canvas interaction.",
+    },
+    {
+      prop: "showZoom",
+      type: "boolean",
+      default: "true",
+      description: "Display current zoom percentage indicator.",
+    },
+    {
+      prop: "showStatus",
+      type: "boolean",
+      default: "true",
+      description: "Show active/inactive status badge for the canvas.",
+    },
+    {
+      prop: "showInstructions",
+      type: "boolean",
+      default: "true",
+      description: "Display drag and zoom usage instructions overlay.",
+    },
+  ]}
+/>
+
+
