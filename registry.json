@@ -652,6 +652,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "flex-navbar",
+      "title": "Flex Navbar",
+      "description": "A modern navbar with smooth expansion, media panels, and theme controls.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/flex-navbar.tsx",
+          "target": "components/ui/flex-navbar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "flipflow",
       "title": "FlipFlow",
       "description": "A looping flow of flip cards with smooth motion and subtle interactive effects.",
