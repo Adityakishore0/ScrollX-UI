@@ -1,0 +1,211 @@
+---
+title: Flex Navbar
+description: A modern navbar with smooth expansion, media panels, and theme controls.
+---
+
+<ComponentPreview
+  name="flexnavbar-demo"
+  className="p-0"
+  description="" 
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="flex-navbar" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+    <Step>Install the following dependencies:</Step>
+
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>flex-navbar.tsx</code>
+</p>
+<ComponentSource name="flex-navbar" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { FlexNavbar } from "@/components/ui/flex-navbar";
+```
+
+```tsx
+<FlexNavbar
+  brandName="ScrollX UI"
+  tagline="Motion-first component library"
+  launchText="Open-source"
+  navLinks={[
+    { label: "Components", href: "/docs/components" },
+    { label: "Docs", href: "/docs" },
+    {
+      label: "GitHub",
+      href: "https://github.com/Adityakishore0/ScrollX-UI",
+    },
+    { label: "Showcase", href: "/Showcase" },
+  ]}
+  media={{
+    type: "video",
+    src: "/assets/scrollxuilaunch.webm",
+    autoplay: false,
+  }}
+  mediaButtonText="Watch intro"
+/>
+```
+
+## API Reference
+
+### Flex Navbar
+
+A modern navbar with smooth expansion, media panels, and theme controls.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "logo",
+      type: "ReactNode",
+      default: "SVG",
+      description: "Logo element displayed on the left side of the navbar.",
+    },
+    {
+      prop: "brandName",
+      type: "string",
+      default: "STARTUP",
+      description: "Centered brand name text shown in the navbar header.",
+    },
+    {
+      prop: "tagline",
+      type: "string",
+      default: "Text",
+      description:
+        "Short tagline displayed in the footer section when expanded.",
+    },
+    {
+      prop: "launchText",
+      type: "string",
+      default: "Text",
+      description: "Right-aligned secondary text shown in the expanded footer.",
+    },
+    {
+      prop: "navLinks",
+      type: "array",
+      default: "empty",
+      description:
+        "Primary navigation links displayed when the navbar expands.",
+    },
+    {
+      prop: "media",
+      type: "object",
+      default: "none",
+      description:
+        "Media content configuration (image or video) shown inside the expanded navbar.",
+    },
+    {
+      prop: "mediaButtonText",
+      type: "string",
+      default: "OurStory",
+      description: "Text displayed on the media overlay action button.",
+    },
+    {
+      prop: "onMediaClick",
+      type: "function",
+      default: "none",
+      description: "Callback triggered when media is clicked or played.",
+    },
+    {
+      prop: "collapsedWidth",
+      type: "string",
+      default: "90vw",
+      description: "Width of the navbar in collapsed state.",
+    },
+    {
+      prop: "collapsedMaxWidth",
+      type: "string",
+      default: "20rem",
+      description: "Maximum width of the navbar when collapsed.",
+    },
+    {
+      prop: "collapsedHeight",
+      type: "string",
+      default: "3.75rem",
+      description: "Height of the navbar in collapsed state.",
+    },
+    {
+      prop: "expandedWidth",
+      type: "string",
+      default: "95vw",
+      description: "Width of the navbar when expanded.",
+    },
+    {
+      prop: "expandedMaxWidth",
+      type: "string",
+      default: "48.75rem",
+      description: "Maximum width of the expanded navbar.",
+    },
+    {
+      prop: "expandedHeight",
+      type: "string",
+      default: "28rem",
+      description: "Expanded navbar height on desktop screens.",
+    },
+    {
+      prop: "expandedHeightMobile",
+      type: "string",
+      default: "33rem",
+      description: "Expanded navbar height on mobile devices.",
+    },
+    {
+      prop: "animationDuration",
+      type: "number",
+      default: "0.5",
+      description: "Duration of expand/collapse animation in seconds.",
+    },
+    {
+      prop: "animationEasing",
+      type: "array",
+      default: "bezier",
+      description: "Cubic-bezier easing array used by Framer Motion.",
+    },
+    {
+      prop: "showThemeToggle",
+      type: "boolean",
+      default: "true",
+      description: "Controls visibility of the theme switcher in the footer.",
+    },
+    {
+      prop: "onExpand",
+      type: "function",
+      default: "none",
+      description: "Callback fired whenever the navbar expands or collapses.",
+    },
+  ]}
+/>

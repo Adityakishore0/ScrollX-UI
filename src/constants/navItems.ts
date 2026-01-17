@@ -151,6 +151,11 @@ const navigation: NavItem[] = [
         category: "new",
       },
       {
+        title: "Flex Navbar",
+        href: "/docs/components/flex-navbar",
+        category: "new",
+      },
+      {
         title: "FlipFlow",
         href: "/docs/components/flipflow",
         category: "new",

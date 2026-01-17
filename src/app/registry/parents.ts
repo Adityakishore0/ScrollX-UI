@@ -43,6 +43,7 @@ export const parentComponents = [
   "facescape",
   "fancy-text",
   "flashy-card",
+  "flex-navbar",
   "flipflow",
   "flipstack",
   "followcursor",
