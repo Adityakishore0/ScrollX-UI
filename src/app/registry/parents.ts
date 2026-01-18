@@ -100,6 +100,7 @@ export const parentComponents = [
   "side-sheet",
   "signupform",
   "slider",
+  "slide-text",
   "stagger-button",
   "stagger-chars",
   "status",
