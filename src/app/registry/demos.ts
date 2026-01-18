@@ -175,6 +175,7 @@ export const demoComponents = [
   "slider-demo",
   "socialorbit-demo",
   "socialorbittext-demo",
+  "slidetext-demo",
   "staggerbutton-demo",
   "staggerbuttoneven-demo",
   "staggerbuttonodd-demo",
