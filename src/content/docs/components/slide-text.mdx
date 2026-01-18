@@ -1,0 +1,107 @@
+---
+title: Slide Text
+description: sliding text animation with smooth staggered motion and loop control.
+---
+
+<ComponentPreview name="slidetext-demo" className="p-0" description="" />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="slide-text" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>slide-text.tsx</code>
+</p>
+<ComponentSource name="slide-text" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { SlideText } from "@/components/ui/slide-text";
+```
+
+```tsx
+<SlideText
+      text="Innovation"
+      staggerDelay={0.03}
+      staggerDuration={0.5}
+      pauseDuration={2}
+      className="text-4xl font-semibold"
+    />
+```
+
+## API Reference
+
+### Slide Text
+
+sliding text animation with smooth staggered motion and loop control.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "text",
+      type: "string",
+      default: "required",
+      description: "Text content animated per character with vertical slide motion.",
+    },
+    {
+      prop: "staggerDelay",
+      type: "number",
+      default: "0.025",
+      description: "Delay between consecutive character animations.",
+    },
+    {
+      prop: "staggerDuration",
+      type: "number",
+      default: "0.4",
+      description: "Duration of each character’s slide transition.",
+    },
+    {
+      prop: "pauseDuration",
+      type: "number",
+      default: "1.5",
+      description: "Pause before switching animation direction or restarting.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "''",
+      description: "Additional CSS classes applied to the text wrapper.",
+    },
+  ]}
+/>
+
