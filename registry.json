@@ -1507,6 +1507,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "slide-text",
+      "title": "Slide Text",
+      "description": "",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/slide-text.tsx",
+          "target": "components/ui/slide-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "status",
       "title": "Status",
       "description": "A small status component with customizable variants, indicator and shiny animation effects.",

@@ -282,6 +282,11 @@ const navigation: NavItem[] = [
       { title: "Side Sheet", href: "/docs/components/side-sheet" },
       { title: "Signup Form", href: "/docs/components/signupform" },
       { title: "Slider", href: "/docs/components/slider" },
+      {
+        title: "Slide Text",
+        href: "/docs/components/slide-text",
+        category: "new",
+      },
       { title: "Social Orbit", href: "/docs/components/social-orbit" },
       { title: "Spotlight Card", href: "/docs/components/spotlightcard" },
       { title: "Splitter", href: "/docs/components/splitter" },
