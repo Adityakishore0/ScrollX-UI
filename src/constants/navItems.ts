@@ -245,7 +245,12 @@ const navigation: NavItem[] = [
       { title: "Not Found", href: "/docs/components/not-found" },
       { title: "Pagination", href: "/docs/components/pagination" },
       { title: "Parallax Cards", href: "/docs/components/parallaxcards" },
-      { title: "Particles", href: "/docs/components/particles" },
+      {
+        title: "Particles",
+        href: "/docs/components/particles",
+        category: "updated",
+        categoryClassName: "bg-blue-500",
+      },
       {
         title: "Pixel Background",
         href: "/docs/components/pixel-background",
