@@ -115,6 +115,11 @@ const FlexNavbar: React.FC<FlexNavbarProps> = ({
     onExpand?.(newState);
   };
 
+  const closeNavbar = () => {
+    setIsExpanded(false);
+    onExpand?.(false);
+  };
+
   const handleMediaClick = () => {
     if (media.link && (media.type === "image" || !isVideoPlaying)) {
       window.open(media.link, media.linkTarget || "_blank");
@@ -263,6 +268,9 @@ const FlexNavbar: React.FC<FlexNavbarProps> = ({
                       <a
                         key={index}
                         href={link.href}
+                        onClick={() => {
+                          setTimeout(closeNavbar, 150);
+                        }}
                         className={cn(
                           "font-medium text-gray-900 dark:text-gray-50 hover:text-gray-600 dark:hover:text-gray-300 transition-colors whitespace-nowrap"
                         )}
