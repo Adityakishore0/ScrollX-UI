@@ -8,6 +8,8 @@ import { getMetadata } from "@/lib/getMetadata";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import AutoPlayVideo from "@/components/autoplayvideo";
+import ScrollHandler from "@/components/scroll-handler";
+import AZFilter from "@/components/az-filter";
 
 export const metadata = getMetadata({
   title: "Components",
@@ -67,6 +69,7 @@ export default async function ComponentsPage() {
 
   return (
     <section className="flex-1 px-4 py-16 md:py-10 lg:py-10 max-w-7xl mx-auto">
+      <ScrollHandler />
       <div className="mb-12 max-w-3xl">
         <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-5xl">
           Components
@@ -85,6 +88,7 @@ export default async function ComponentsPage() {
             <Link
               key={component.href}
               href={component.href}
+              data-component-card="true"
               className="group block rounded-3xl overflow-hidden shadow-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 transition-all hover:shadow-xl hover:scale-[1.015]"
             >
               <AspectRatio ratio={1200 / 628}>
@@ -126,6 +130,9 @@ export default async function ComponentsPage() {
             </Button>
           </Link>
         </div>
+      </div>
+      <div className="lg:hidden ">
+        <AZFilter />
       </div>
     </section>
   );
