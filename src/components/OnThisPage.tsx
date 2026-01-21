@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import GithubStarSpotlightCard from "@/components/githubstarspotlightcard";
+import AZFilter from "@/components/az-filter";
 
 function slugify(text: string): string {
   return text
@@ -208,8 +209,16 @@ export default function OnThisPage() {
 
   if (pathname === "/docs/components") {
     return (
-      <div className="relative">
+      <div className="relative space-y-4">
         <GithubStarSpotlightCard />
+        <AZFilter
+          onLetterClick={(letter) => {
+            window.dispatchEvent(
+              new CustomEvent("filterByLetter", { detail: { letter } })
+            );
+          }}
+          activeLetter={null}
+        />
       </div>
     );
   }
