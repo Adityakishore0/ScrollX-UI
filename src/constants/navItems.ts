@@ -105,6 +105,11 @@ const navigation: NavItem[] = [
       { title: "Clock", href: "/docs/components/clock" },
       { title: "CodeBlock", href: "/docs/components/codeblock" },
       { title: "Collapsible", href: "/docs/components/collapsible" },
+      {
+        title: "Cosmic Background",
+        href: "/docs/components/cosmic-background",
+        category: "new",
+      },
       { title: "Cursor Highlight", href: "/docs/components/cursor-highlight" },
       { title: "Cursor ImageTrail", href: "/docs/components/cursorimagetrail" },
       {
