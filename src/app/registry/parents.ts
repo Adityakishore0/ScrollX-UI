@@ -29,6 +29,7 @@ export const parentComponents = [
   "clock",
   "codeblock",
   "collapsible",
+  "cosmic-background",
   "cursorimagetrail",
   "cursor-highlight",
   "decorated-text",

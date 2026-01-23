@@ -442,6 +442,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "cosmic-background",
+      "title": "Cosmic Background",
+      "description": "A modern cosmic background featuring smooth motion and immersive depth effects.",
+      "type": "registry:component",
+      "dependencies": ["three"],
+      "files": [
+        {
+          "path": "components/ui/cosmic-background.tsx",
+          "target": "components/ui/cosmic-background.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "cursor-highlight",
       "title": "Cursor Highlight",
       "description": "Text is revealed on scroll with pointer, gradient, and border effects.",
