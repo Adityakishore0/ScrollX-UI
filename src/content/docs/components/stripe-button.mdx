@@ -1,0 +1,167 @@
+---
+title: Stripe Button
+description: Smooth animated button crafted with refined glow and modern motion.
+---
+
+<ComponentPreview
+  name="stripebutton-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="stripe-button" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="framer-motion" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>stripe-button.tsx</code>
+</p>
+<ComponentSource name="stripe-button" />
+
+<Step>Add util file</Step>
+
+<p>
+  <code>lib/utils.ts</code>
+</p>
+
+```jsx
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { StripeButton } from "@/components/ui/stripe-button";
+```
+
+```tsx
+<StripeButton className="italic">
+      Enter the Arena!
+    </StripeButton>
+```
+## Examples
+
+---
+
+<Step>Compact</Step>
+
+<ComponentPreview
+  name="stripebuttoncompact-demo"
+  className="p-0"
+  description=""
+/>
+
+---
+
+<Step>Size</Step>
+
+<ComponentPreview
+  name="stripebuttonsize-demo"
+  className="p-0"
+  description=""
+/>
+
+---
+
+<Step>Icon</Step>
+
+<ComponentPreview
+  name="stripebuttonicon-demo"
+  className="p-0"
+  description=""
+/>
+
+---
+
+<Step>Animation</Step>
+
+<ComponentPreview
+  name="stripebuttonspeed-demo"
+  className="p-0"
+  description=""
+/>
+
+## API Reference
+
+### Stripe Button
+
+Smooth animated button crafted with refined glow and modern motion.
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "children",
+      type: "React.ReactNode",
+      default: "—",
+      description:
+        "Content displayed inside the button, typically text or icons.",
+    },
+    {
+      prop: "stripesSpeed",
+      type: "number",
+      default: "500",
+      description:
+        "Duration (in ms) for the diagonal stripe background shift on hover.",
+    },
+    {
+      prop: "variant",
+      type: '"default" | "compact"',
+      default: '"default"',
+      description:
+        "Controls internal padding style. `compact` keeps height full with tighter layout.",
+    },
+    {
+      prop: "size",
+      type: '"default" | "sm" | "lg" | "icon"',
+      default: '"default"',
+      description:
+        "Defines button height and padding. `icon` creates a square icon-only button.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: "—",
+      description:
+        "Additional Tailwind or custom classes applied to the outer button wrapper.",
+    },
+    {
+      prop: "onClick",
+      type: "() => void",
+      default: "—",
+      description:
+        "Callback fired when the button is clicked.",
+    },
+    {
+      prop: "disabled",
+      type: "boolean",
+      default: "false",
+      description:
+        "Disables the button and prevents user interaction.",
+    },
+  ]}
+/>
+
