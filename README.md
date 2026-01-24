@@ -32,7 +32,7 @@ ScrollX UI is a collection of animated, interactive React components built to he
 
 ## Key Features
 
-- 125+ total components (text animations, animations, interactive components, backgrounds), growing every week
+- 130+ total components (text animations, animations, interactive components, backgrounds), growing every week
 - All components are built with minimal dependencies, and are highly customizable through props
 - You get the code, so you can modify, extend, and personalize every detail
 - Designed to integrate seamlessly with any modern React project
