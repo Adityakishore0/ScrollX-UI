@@ -1612,6 +1612,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "stripe-button",
+      "title": "Stripe Button",
+      "description": "Smooth animated button crafted with refined glow and modern motion.",
+      "type": "registry:component",
+      "dependencies": ["framer-motion"],
+      "files": [
+        {
+          "path": "components/ui/stripe-button.tsx",
+          "target": "components/ui/stripe-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "striped-grid",
       "title": "Striped Grid",
       "description": "Animated diagonal stripes with optional base grid, creating a dynamic textured background.",
