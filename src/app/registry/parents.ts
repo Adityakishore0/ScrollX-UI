@@ -106,6 +106,7 @@ export const parentComponents = [
   "status",
   "statscount",
   "statscarousel",
+  "stripe-button",
   "striped-grid",
   "spark-waves",
   "splitter",
