@@ -290,6 +290,7 @@ const navigation: NavItem[] = [
         title: "Shiny Button",
         href: "/docs/components/shiny-button",
       },
+      { title: "Showcase", href: "/docs/components/showcase", category: "new" },
       { title: "Side Sheet", href: "/docs/components/side-sheet" },
       { title: "Signup Form", href: "/docs/components/signupform" },
       { title: "Slider", href: "/docs/components/slider" },

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "showcase",
+  "type": "registry:component",
+  "title": "Showcase",
+  "description": "An interactive showcase component with smooth content and image transitions.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "dependencies": ["framer-motion", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "components/ui/showcase.tsx",
+      "target": "components/ui/showcase.tsx",
+      "content": "\"use client\";\n\nimport React, { useState, useEffect, useRef } from \"react\";\nimport { motion } from \"framer-motion\";\nimport Image from \"next/image\";\nimport { cn } from \"@/lib/utils\";\n\ninterface Step {\n  label?: string;\n  heading: string;\n  description: string;\n  media: string;\n}\n\ninterface ShowcaseProps {\n  items: Step[];\n  containerClass?: string;\n  cycleDelay?: number;\n  mediaClass?: string;\n}\n\nfunction Showcase({\n  items,\n  containerClass,\n  cycleDelay = 3000,\n  mediaClass = \"h-[400px]\",\n}: ShowcaseProps): JSX.Element {\n  const [active, setActive] = useState(0);\n  const [previous, setPrevious] = useState(0);\n  const isInitial = useRef(true);\n\n  useEffect(() => {\n    isInitial.current = false;\n  }, []);\n\n  const handleClick = (idx: number) => {\n    if (idx === active) return;\n    setPrevious(active);\n    setActive(idx);\n  };\n\n  const handleAnimationComplete = () => {\n    setPrevious(active);\n    setActive((c) => (c + 1) % items.length);\n  };\n\n  return (\n    <div\n      className={cn(\n        \"flex flex-col-reverse md:flex-row w-full md:items-stretch max-w-[1440px] mx-auto\",\n        containerClass\n      )}\n    >\n      <div className=\"flex flex-col w-full md:w-1/2 border border-black/10 dark:border-white/10 divide-y divide-black/10 dark:divide-white/10 md:border-t\">\n        {items.map((item, idx) => (\n          <motion.div\n            key={idx}\n            layoutId={item.heading}\n            onClick={() => handleClick(idx)}\n            className=\"p-4 md:p-10 relative cursor-pointer\"\n          >\n            <h3 className=\"text-base md:text-lg leading-none text-black dark:text-white\">\n              {item.heading}\n            </h3>\n            <p className=\"mt-2 text-sm text-neutral-500\">\n              {item.description}\n            </p>\n            {idx === active && (\n              <motion.div\n                key={`bar-${active}`}\n                className=\"absolute h-[1px] bottom-0 left-0 bg-black dark:bg-white\"\n                initial={{ width: \"0%\" }}\n                animate={{ width: \"100%\" }}\n                transition={{\n                  duration: cycleDelay / 1000,\n                  ease: \"linear\",\n                }}\n                onAnimationComplete={handleAnimationComplete}\n              />\n            )}\n          </motion.div>\n        ))}\n      </div>\n\n      <div\n        className={cn(\n          \"w-full md:w-1/2 border border-black/10 dark:border-white/10 md:border-l-0 border-b-0 md:border-b md:border-t relative p-4 md:p-5 overflow-hidden\",\n          mediaClass\n        )}\n      >\n        <div className=\"absolute inset-0\">\n          <Image\n            src={items[previous].media}\n            alt={items[previous].heading}\n            fill\n            className=\"rounded object-cover\"\n          />\n        </div>\n\n        {!isInitial.current && (\n          <motion.div\n            key={active}\n            initial={{ clipPath: \"inset(100% 0% 0% 0%)\" }}\n            animate={{ clipPath: \"inset(0% 0% 0% 0%)\" }}\n            transition={{\n              duration: 0.6,\n              ease: [0.4, 0, 0.2, 1],\n            }}\n            className=\"absolute inset-0\"\n          >\n            <Image\n              src={items[active].media}\n              alt={items[active].heading}\n              fill\n              className=\"rounded object-cover\"\n            />\n          </motion.div>\n        )}\n      </div>\n    </div>\n  );\n}\n\nShowcase.displayName = \"Showcase\";\n\nexport { Showcase };"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "target": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}

@@ -172,6 +172,7 @@ export const demoComponents = [
   "sensitivetext-demo",
   "sensitivetextstretch-demo",
   "shinybutton-demo",
+  "showcase-demo",
   "sidesheetleft-demo",
   "sidesheetright-demo",
   "signupform-demo",
