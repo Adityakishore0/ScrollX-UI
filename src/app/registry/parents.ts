@@ -98,6 +98,7 @@ export const parentComponents = [
   "reveal-text",
   "sensitive-text",
   "shiny-button",
+  "showcase",
   "side-sheet",
   "signupform",
   "slider",
