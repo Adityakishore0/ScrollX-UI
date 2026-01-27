@@ -242,7 +242,8 @@ export default function OnThisPage() {
           <nav className="space-y-1">
             {headings.map((h) => {
               const isActive = activeId === h.id;
-              const base = "block text-sm py-1 px-2 rounded transition-colors";
+              const base =
+                "flex w-fit transition-all relative text-sm py-1 px-2 rounded transition-colors";
               const level = h.level === 2 ? "font-medium" : "pl-4";
               const hover =
                 "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black";

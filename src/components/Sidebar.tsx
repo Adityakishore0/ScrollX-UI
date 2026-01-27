@@ -65,7 +65,7 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
                   href={typedChild.href}
                   onClick={onNavigate}
                   className={cn(
-                    "block rounded-md transition-all relative",
+                    "flex w-fit rounded transition-all relative",
                     pathname === typedChild.href
                       ? "bg-black text-white dark:bg-white dark:text-black"
                       : "text-gray-700 dark:text-gray-400",
