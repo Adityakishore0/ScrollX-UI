@@ -244,6 +244,9 @@ const config: Config = {
           "user-select": "none",
           "-webkit-user-select": "none",
         },
+        html: {
+          "scroll-behavior": "smooth",
+        },
       });
     },
   ],
