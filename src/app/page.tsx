@@ -9,13 +9,17 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col min-h-screen">
-        <HeroSection />
-        <FeaturesSection />
-        <ComponentShowcase />
-        <Testimonial />
+      <main className="flex flex-col min-h-screen relative">
+        <div className="relative z-30">
+          <HeroSection />
+          <FeaturesSection />
+          <ComponentShowcase />
+          <Testimonial />
+        </div>
+        <div className="sticky bottom-0">
+          <Footer />
+        </div>
       </main>
-      <Footer />
     </>
   );
 }
