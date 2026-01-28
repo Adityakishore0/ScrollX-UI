@@ -44,7 +44,7 @@ export function PropsTable({
                   </span>
                 </td>
                 <td className="p-2 align-middle [&:has([role=checkbox])]:pr-0 sm:p-4">
-                  <code className="relative rounded bg-slate-900 dark:bg-white px-[0.3rem] py-[0.2rem] font-mono text-sm text-white dark:text-slate-900 whitespace-nowrap">
+                  <code className="relative rounded bg-slate-900 dark:bg-white px-[0.3rem] py-[0.2rem] font-mono text-sm text-white dark:text-slate-900 max-w-[220px] break-words whitespace-normal">
                     {row.default}
                   </code>
                 </td>
