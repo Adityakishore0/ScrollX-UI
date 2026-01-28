@@ -1,0 +1,185 @@
+---
+title: Globe Wireframe
+description:  globe with smooth city rotations, responsive design, and premium motion
+---
+
+<ComponentPreview
+  name="globewireframe-demo"
+  className="p-0"
+  description=""
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="globe-wireframe" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name="d3 topojson-client @types/d3 @types/topojson-client @types/topojson-specification" />
+
+<Step>Copy and paste the following code into your project.</Step>
+<p>
+  <code>globe-wireframe.tsx</code>
+</p>
+<ComponentSource name="globe-wireframe" />
+
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import GlobeWireframe from "@/components/ui/globe-wireframe";
+```
+
+```tsx
+<GlobeWireframe
+  className="w-full h-full"
+  variant="solid"
+/>
+```
+
+
+## Examples
+
+---
+
+<Step>Cities based Rotation</Step>
+
+<ComponentPreview 
+ name="globewireframerotatecities" 
+ className="p-0" 
+ description="" 
+/>
+
+## API Reference
+
+### Globe Wireframe
+
+The `Globe Wireframe` component creates beautiful globe with smooth city rotations, responsive design, and premium motion
+
+## Props
+
+<PropsTable
+  rows={[
+    {
+      prop: "variant",
+      type: `"wireframe" | "wireframesolid" | "solid"`,
+      default: `"wireframe"`,
+      description: "Rendering style of the globe."
+    },
+    {
+      prop: "scale",
+      type: "number",
+      default: "1",
+      description: "Scales the globe size relative to its container."
+    },
+    {
+      prop: "className",
+      type: "string",
+      default: `"aspect-square w-full max-w-[600px]"`,
+      description: "CSS classes applied to the globe container."
+    },
+    {
+      prop: "strokeColor",
+      type: "string",
+      default: `"currentColor"`,
+      description: "Stroke color for countries and outlines."
+    },
+    {
+      prop: "strokeWidth",
+      type: "number",
+      default: "1",
+      description: "Stroke width for country borders."
+    },
+    {
+      prop: "sphereOutlineColor",
+      type: "string",
+      default: `"currentColor"`,
+      description: "Outline color of the globe sphere."
+    },
+    {
+      prop: "sphereOutlineWidth",
+      type: "number",
+      default: "1",
+      description: "Width of the globe outline stroke."
+    },
+    {
+      prop: "showGraticule",
+      type: "boolean",
+      default: "true",
+      description: "Show latitude and longitude grid lines."
+    },
+    {
+      prop: "graticuleOpacity",
+      type: "number",
+      default: "0.2",
+      description: "Opacity of the graticule lines."
+    },
+    {
+      prop: "autoRotate",
+      type: "boolean",
+      default: "true",
+      description: "Automatically rotate the globe when idle."
+    },
+    {
+      prop: "autoRotateSpeed",
+      type: "number",
+      default: "0.5",
+      description: "Speed of idle rotation."
+    },
+    {
+      prop: "rotateToLocation",
+      type: "string | [number, number]",
+      default: "—",
+      description: "Rotate globe to a city name or coordinates."
+    },
+    {
+      prop: "rotateCities",
+      type: "string[]",
+      default: "[]",
+      description: "Automatically rotate through listed cities."
+    },
+    {
+      prop: "rotationSpeed",
+      type: "number",
+      default: "3000",
+      description: "Interval (ms) between city rotations."
+    },
+    {
+      prop: "enableInteraction",
+      type: "boolean",
+      default: "true",
+      description: "Enable drag interaction to rotate the globe."
+    },
+    {
+      prop: "countryFillColor",
+      type: "string",
+      default: "—",
+      description: "Fill color for countries in solid variant."
+    },
+    {
+      prop: "countryHoverColor",
+      type: "string",
+      default: "—",
+      description: "Hover color for countries (solid variant only)."
+    },
+    {
+      prop: "backgroundColor",
+      type: "string",
+      default: `"transparent"`,
+      description: "Background color behind the globe sphere."
+    }
+  ]}
+/>
+
