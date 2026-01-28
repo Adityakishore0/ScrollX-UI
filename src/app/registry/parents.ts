@@ -54,6 +54,7 @@ export const parentComponents = [
   "glass",
   "glowingbordercard",
   "globe",
+  "globe-wireframe",
   "gravity",
   "heroui",
   "hold-toconfirm",
