@@ -177,6 +177,11 @@ const navigation: NavItem[] = [
       { title: "Glass", href: "/docs/components/glass" },
       { title: "Globe", href: "/docs/components/globe" },
       {
+        title: "Globe Wireframe",
+        href: "/docs/components/globe-wireframe",
+        category: "new",
+      },
+      {
         title: "GlowingBorderCard",
         href: "/docs/components/glowingbordercard",
       },

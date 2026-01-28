@@ -817,6 +817,27 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "globe-wireframe",
+      "title": "Globe Wireframe",
+      "description": "The Globe Wireframe component creates beautiful globe with smooth city rotations, responsive design, and premium motion.",
+      "type": "registry:component",
+      "dependencies": [
+        "d3",
+        "topojson-client",
+        "@types/d3",
+        "@types/topojson-client",
+        "@types/topojson-specification"
+      ],
+      "files": [
+        {
+          "path": "components/ui/globe-wireframe.tsx",
+          "target": "components/ui/globe-wireframe.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "gravity",
       "title": "Gravity",
       "description": "Gravity pulls objects as they launch, soar, and fall inside a container.",
