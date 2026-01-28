@@ -93,6 +93,8 @@ export const demoComponents = [
   "glowingbordercard-demo",
   "globe-demo",
   "globecities",
+  "globewireframe-demo",
+  "globewireframerotatecities",
   "gravity-demo",
   "heroui-demo",
   "holdtoconfirm-demo",
