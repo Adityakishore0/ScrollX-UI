@@ -82,10 +82,21 @@ const useMobile = () => {
   return isMobile;
 };
 
+const DropdownMenuContext = React.createContext<{ animate: boolean }>({
+  animate: true,
+});
+
 function DropdownMenu({
+  animate = true,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
-  return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Root> & {
+  animate?: boolean;
+}) {
+  return (
+    <DropdownMenuContext.Provider value={{ animate }}>
+      <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />
+    </DropdownMenuContext.Provider>
+  );
 }
 
 function DropdownMenuTrigger({
@@ -93,6 +104,8 @@ function DropdownMenuTrigger({
   children,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
+  const { animate } = React.useContext(DropdownMenuContext);
+
   return (
     <DropdownMenuPrimitive.Trigger
       data-slot="dropdown-menu-trigger"
@@ -105,10 +118,13 @@ function DropdownMenuTrigger({
       {...props}
     >
       <motion.div
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+        whileHover={animate ? { scale: 1.02 } : undefined}
+        whileTap={animate ? { scale: 0.98 } : undefined}
+        transition={
+          animate ? { type: "spring", stiffness: 400, damping: 25 } : undefined
+        }
         className="flex items-center gap-2 cursor-pointer"
+        style={{ touchAction: "manipulation" }}
       >
         {children}
       </motion.div>
@@ -131,69 +147,61 @@ function DropdownMenuContent({
   children,
   ...props
 }: DropdownMenuContentProps) {
+  const { animate } = React.useContext(DropdownMenuContext);
+
   return (
     <DropdownMenuPrimitive.Portal>
-      <AnimatePresence>
-        <DropdownMenuPrimitive.Content
-          data-slot="dropdown-menu-content"
-          sideOffset={sideOffset}
-          className="z-50"
-          asChild
-          {...props}
+      <DropdownMenuPrimitive.Content
+        data-slot="dropdown-menu-content"
+        sideOffset={sideOffset}
+        className="z-50"
+        asChild
+        {...props}
+      >
+        <motion.div
+          variants={animate ? dropdownVariants : undefined}
+          initial={animate ? "hidden" : undefined}
+          animate={animate ? "visible" : undefined}
+          exit={animate ? "exit" : undefined}
+          className={cn(
+            "w-72 rounded-xl border shadow-xl overflow-hidden [perspective:800px] [transform-style:preserve-3d]",
+            "bg-[#ffffff] border-neutral-900/10",
+            "dark:bg-[#262626] dark:border-neutral-50/10",
+            className
+          )}
+          style={{
+            transformOrigin:
+              "var(--radix-dropdown-menu-content-transform-origin)",
+          }}
         >
-          <motion.div
-            variants={dropdownVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className={cn(
-              "w-72 rounded-xl border shadow-xl overflow-hidden [perspective:800px] [transform-style:preserve-3d]",
-              "bg-white/80 border-neutral-900/10 backdrop-blur-md",
-              "dark:bg-neutral-900/80 dark:border-neutral-50/10",
-              className
-            )}
+          <div
+            className="relative z-20 overflow-y-auto scrollbar-visible"
             style={{
-              transformOrigin:
-                "var(--radix-dropdown-menu-content-transform-origin)",
+              maxHeight:
+                typeof maxHeight === "number" ? `${maxHeight}px` : maxHeight,
+              scrollbarWidth: "thin",
+              scrollbarColor: "rgba(155, 155, 155, 0.5) transparent",
             }}
           >
-            <div
-              className={cn(
-                "absolute inset-0 z-0",
-                "bg-gradient-to-br from-indigo-500/10 to-purple-500/10",
-                "dark:from-indigo-500/20 dark:to-purple-500/20"
-              )}
-            />
-
-            <div className="absolute inset-0 backdrop-blur-sm z-10" />
-
-            <div
-              className="relative z-20 overflow-y-auto scrollbar-visible"
-              style={{
-                maxHeight:
-                  typeof maxHeight === "number" ? `${maxHeight}px` : maxHeight,
-                scrollbarWidth: "thin",
-                scrollbarColor: "rgba(155, 155, 155, 0.5) transparent",
-              }}
-            >
-              <style jsx global>{`
-                .scrollbar-visible::-webkit-scrollbar {
-                  width: 6px;
-                  display: block;
-                }
-                .scrollbar-visible::-webkit-scrollbar-track {
-                  background: transparent;
-                }
-                .scrollbar-visible::-webkit-scrollbar-thumb {
-                  background-color: rgba(155, 155, 155, 0.5);
-                  border-radius: 20px;
-                }
-                .scrollbar-visible::-webkit-scrollbar-thumb:hover {
-                  background-color: rgba(155, 155, 155, 0.7);
-                }
-              `}</style>
-              <div className="p-2">
-                {React.Children.map(children, (child, index) => (
+            <style jsx global>{`
+              .scrollbar-visible::-webkit-scrollbar {
+                width: 6px;
+                display: block;
+              }
+              .scrollbar-visible::-webkit-scrollbar-track {
+                background: transparent;
+              }
+              .scrollbar-visible::-webkit-scrollbar-thumb {
+                background-color: rgba(155, 155, 155, 0.5);
+                border-radius: 20px;
+              }
+              .scrollbar-visible::-webkit-scrollbar-thumb:hover {
+                background-color: rgba(155, 155, 155, 0.7);
+              }
+            `}</style>
+            <div className="p-2">
+              {React.Children.map(children, (child, index) =>
+                animate ? (
                   <motion.div
                     key={index}
                     custom={index}
@@ -204,12 +212,14 @@ function DropdownMenuContent({
                   >
                     {child}
                   </motion.div>
-                ))}
-              </div>
+                ) : (
+                  <div key={index}>{child}</div>
+                )
+              )}
             </div>
-          </motion.div>
-        </DropdownMenuPrimitive.Content>
-      </AnimatePresence>
+          </div>
+        </motion.div>
+      </DropdownMenuPrimitive.Content>
     </DropdownMenuPrimitive.Portal>
   );
 }
@@ -227,6 +237,7 @@ function DropdownMenuItem({
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const isMobile = useMobile();
+  const { animate } = React.useContext(DropdownMenuContext);
 
   return (
     <DropdownMenuPrimitive.Item
@@ -245,37 +256,39 @@ function DropdownMenuItem({
       )}
       onMouseEnter={() => !isMobile && setIsHovered(true)}
       onMouseLeave={() => !isMobile && setIsHovered(false)}
+      style={{ touchAction: "manipulation" }}
       asChild
       {...props}
     >
       <motion.div
         className="relative w-full"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{
-          opacity: 1,
-          x: 0,
-        }}
+        initial={animate ? { opacity: 0, x: -20 } : undefined}
+        animate={animate ? { opacity: 1, x: 0 } : undefined}
       >
         <AnimatePresence>
           {!isMobile && isHovered && (
             <motion.div
-              layoutId="hoverBackground"
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                scale: 1.05,
-                transition: {
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 15,
-                },
-              }}
-              exit={{ opacity: 0 }}
+              layoutId={animate ? "hoverBackground" : undefined}
+              initial={animate ? { opacity: 0 } : undefined}
+              animate={
+                animate
+                  ? {
+                      opacity: 1,
+                      scale: 1.05,
+                      transition: {
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 15,
+                      },
+                    }
+                  : { opacity: 1 }
+              }
+              exit={animate ? { opacity: 0 } : undefined}
               className={cn(
                 "absolute inset-0 rounded-lg",
                 variant === "destructive"
-                  ? "bg-gradient-to-r from-red-500/10 to-red-600/10 dark:from-red-500/20 dark:to-red-600/20"
-                  : "bg-gradient-to-r from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/20 dark:to-purple-500/20"
+                  ? "bg-red-500/10 dark:bg-red-500/20"
+                  : "bg-[#f5f5f5] dark:bg-[#404040]"
               )}
             />
           )}
@@ -300,11 +313,17 @@ function DropdownMenuItem({
               return (
                 <motion.div
                   key={index}
-                  animate={{
-                    scale: !isMobile && isHovered ? 1.1 : 1,
-                    rotate: !isMobile && isHovered ? 5 : 0,
-                  }}
-                  transition={{ type: "spring", stiffness: 500 }}
+                  animate={
+                    animate
+                      ? {
+                          scale: !isMobile && isHovered ? 1.1 : 1,
+                          rotate: !isMobile && isHovered ? 5 : 0,
+                        }
+                      : undefined
+                  }
+                  transition={
+                    animate ? { type: "spring", stiffness: 500 } : undefined
+                  }
                 >
                   {child}
                 </motion.div>
@@ -315,11 +334,17 @@ function DropdownMenuItem({
               return (
                 <motion.span
                   key={index}
-                  animate={{
-                    y: !isMobile && isHovered ? -1 : 0,
-                    x: !isMobile && isHovered ? 1 : 0,
-                  }}
-                  transition={{ type: "spring", stiffness: 500 }}
+                  animate={
+                    animate
+                      ? {
+                          y: !isMobile && isHovered ? -1 : 0,
+                          x: !isMobile && isHovered ? 1 : 0,
+                        }
+                      : undefined
+                  }
+                  transition={
+                    animate ? { type: "spring", stiffness: 500 } : undefined
+                  }
                   className="font-medium flex-1"
                 >
                   {child}
@@ -345,6 +370,7 @@ function DropdownMenuCheckboxItem({
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const isMobile = useMobile();
+  const { animate } = React.useContext(DropdownMenuContext);
 
   const handleSelect = (e: Event) => {
     e.preventDefault();
@@ -371,6 +397,7 @@ function DropdownMenuCheckboxItem({
       onMouseEnter={() => !isMobile && setIsHovered(true)}
       onMouseLeave={() => !isMobile && setIsHovered(false)}
       onSelect={handleSelect}
+      style={{ touchAction: "manipulation" }}
       asChild
       {...props}
     >
@@ -378,19 +405,23 @@ function DropdownMenuCheckboxItem({
         <AnimatePresence>
           {!isMobile && isHovered && (
             <motion.div
-              layoutId="checkboxHoverBackground"
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                scale: 1.05,
-                transition: {
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 15,
-                },
-              }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/20 dark:to-purple-500/20"
+              layoutId={animate ? "checkboxHoverBackground" : undefined}
+              initial={animate ? { opacity: 0 } : undefined}
+              animate={
+                animate
+                  ? {
+                      opacity: 1,
+                      scale: 1.05,
+                      transition: {
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 15,
+                      },
+                    }
+                  : { opacity: 1 }
+              }
+              exit={animate ? { opacity: 0 } : undefined}
+              className="absolute inset-0 rounded-lg bg-[#f5f5f5] dark:bg-[#404040]"
             />
           )}
         </AnimatePresence>
@@ -398,9 +429,13 @@ function DropdownMenuCheckboxItem({
         <span className="pointer-events-none absolute left-2 flex size-4 items-center justify-center">
           <DropdownMenuPrimitive.ItemIndicator>
             <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              initial={animate ? { scale: 0 } : undefined}
+              animate={animate ? { scale: 1 } : undefined}
+              transition={
+                animate
+                  ? { type: "spring", stiffness: 400, damping: 25 }
+                  : undefined
+              }
             >
               <CheckIcon className="size-4" />
             </motion.div>
@@ -408,11 +443,15 @@ function DropdownMenuCheckboxItem({
         </span>
 
         <motion.div
-          animate={{
-            y: !isMobile && isHovered ? -1 : 0,
-            x: !isMobile && isHovered ? 1 : 0,
-          }}
-          transition={{ type: "spring", stiffness: 500 }}
+          animate={
+            animate
+              ? {
+                  y: !isMobile && isHovered ? -1 : 0,
+                  x: !isMobile && isHovered ? 1 : 0,
+                }
+              : undefined
+          }
+          transition={animate ? { type: "spring", stiffness: 500 } : undefined}
           className="relative z-10"
         >
           {children}
@@ -442,6 +481,7 @@ function DropdownMenuRadioItem({
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const isMobile = useMobile();
+  const { animate } = React.useContext(DropdownMenuContext);
 
   const handleSelect = (e: Event) => {
     e.preventDefault();
@@ -467,6 +507,7 @@ function DropdownMenuRadioItem({
       onMouseEnter={() => !isMobile && setIsHovered(true)}
       onMouseLeave={() => !isMobile && setIsHovered(false)}
       onSelect={handleSelect}
+      style={{ touchAction: "manipulation" }}
       asChild
       {...props}
     >
@@ -474,19 +515,23 @@ function DropdownMenuRadioItem({
         <AnimatePresence>
           {!isMobile && isHovered && (
             <motion.div
-              layoutId="radioHoverBackground"
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                scale: 1.05,
-                transition: {
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 15,
-                },
-              }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/20 dark:to-purple-500/20"
+              layoutId={animate ? "radioHoverBackground" : undefined}
+              initial={animate ? { opacity: 0 } : undefined}
+              animate={
+                animate
+                  ? {
+                      opacity: 1,
+                      scale: 1.05,
+                      transition: {
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 15,
+                      },
+                    }
+                  : { opacity: 1 }
+              }
+              exit={animate ? { opacity: 0 } : undefined}
+              className="absolute inset-0 rounded-lg bg-[#f5f5f5] dark:bg-[#404040]"
             />
           )}
         </AnimatePresence>
@@ -494,9 +539,13 @@ function DropdownMenuRadioItem({
         <span className="pointer-events-none absolute left-2 flex size-4 items-center justify-center">
           <DropdownMenuPrimitive.ItemIndicator>
             <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              initial={animate ? { scale: 0 } : undefined}
+              animate={animate ? { scale: 1 } : undefined}
+              transition={
+                animate
+                  ? { type: "spring", stiffness: 400, damping: 25 }
+                  : undefined
+              }
             >
               <CircleIcon className="size-2 fill-current" />
             </motion.div>
@@ -504,11 +553,15 @@ function DropdownMenuRadioItem({
         </span>
 
         <motion.div
-          animate={{
-            y: !isMobile && isHovered ? -1 : 0,
-            x: !isMobile && isHovered ? 1 : 0,
-          }}
-          transition={{ type: "spring", stiffness: 500 }}
+          animate={
+            animate
+              ? {
+                  y: !isMobile && isHovered ? -1 : 0,
+                  x: !isMobile && isHovered ? 1 : 0,
+                }
+              : undefined
+          }
+          transition={animate ? { type: "spring", stiffness: 500 } : undefined}
           className="relative z-10"
         >
           {children}
@@ -548,19 +601,25 @@ function DropdownMenuSeparator({
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Separator> & {
   className?: string;
 }) {
+  const { animate } = React.useContext(DropdownMenuContext);
+
   return (
     <motion.div
-      initial={{ scaleX: 0, opacity: 0 }}
-      animate={{
-        scaleX: 1,
-        opacity: 1,
-        transition: {
-          delay: 0.1,
-          type: "spring",
-          stiffness: 400,
-          damping: 25,
-        },
-      }}
+      initial={animate ? { scaleX: 0, opacity: 0 } : undefined}
+      animate={
+        animate
+          ? {
+              scaleX: 1,
+              opacity: 1,
+              transition: {
+                delay: 0.1,
+                type: "spring",
+                stiffness: 400,
+                damping: 25,
+              },
+            }
+          : undefined
+      }
       className="flex justify-center py-1"
     >
       <DropdownMenuPrimitive.Separator
@@ -608,6 +667,7 @@ function DropdownMenuSubTrigger({
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const isMobile = useMobile();
+  const { animate } = React.useContext(DropdownMenuContext);
 
   return (
     <DropdownMenuPrimitive.SubTrigger
@@ -619,34 +679,40 @@ function DropdownMenuSubTrigger({
         "focus:outline-none",
         "text-neutral-900 dark:text-neutral-50",
         "data-[inset]:pl-8",
-        "data-[state=open]:bg-gradient-to-r data-[state=open]:from-indigo-500/10 data-[state=open]:to-purple-500/10",
-        "dark:data-[state=open]:from-indigo-500/20 dark:data-[state=open]:to-purple-500/20",
-        !isMobile &&
-          isHovered &&
-          "bg-gradient-to-r from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/20 dark:to-purple-500/20",
+        "data-[state=open]:bg-[#f5f5f5] dark:data-[state=open]:bg-[#404040]",
+        !isMobile && isHovered && "bg-[#f5f5f5] dark:bg-[#404040]",
         className
       )}
       onMouseEnter={() => !isMobile && setIsHovered(true)}
       onMouseLeave={() => !isMobile && setIsHovered(false)}
+      style={{ touchAction: "manipulation" }}
       {...props}
     >
       <div className="w-full flex items-center gap-3">
         <motion.div
-          animate={{
-            y: !isMobile && isHovered ? -1 : 0,
-            x: !isMobile && isHovered ? 1 : 0,
-          }}
-          transition={{ type: "spring", stiffness: 500 }}
+          animate={
+            animate
+              ? {
+                  y: !isMobile && isHovered ? -1 : 0,
+                  x: !isMobile && isHovered ? 1 : 0,
+                }
+              : undefined
+          }
+          transition={animate ? { type: "spring", stiffness: 500 } : undefined}
           className="flex-1"
         >
           {children}
         </motion.div>
         <motion.div
-          animate={{
-            rotate: !isMobile && isHovered ? 90 : 0,
-            scale: !isMobile && isHovered ? 1.1 : 1,
-          }}
-          transition={{ type: "spring", stiffness: 500 }}
+          animate={
+            animate
+              ? {
+                  rotate: !isMobile && isHovered ? 90 : 0,
+                  scale: !isMobile && isHovered ? 1.1 : 1,
+                }
+              : undefined
+          }
+          transition={animate ? { type: "spring", stiffness: 500 } : undefined}
         >
           <ChevronRightIcon className="ml-auto size-4" />
         </motion.div>
@@ -668,6 +734,8 @@ function DropdownMenuSubContent({
   children,
   ...props
 }: DropdownMenuSubContentProps) {
+  const { animate } = React.useContext(DropdownMenuContext);
+
   return (
     <DropdownMenuPrimitive.SubContent
       data-slot="dropdown-menu-sub-content"
@@ -676,14 +744,14 @@ function DropdownMenuSubContent({
       {...props}
     >
       <motion.div
-        variants={dropdownVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
+        variants={animate ? dropdownVariants : undefined}
+        initial={animate ? "hidden" : undefined}
+        animate={animate ? "visible" : undefined}
+        exit={animate ? "exit" : undefined}
         className={cn(
           "min-w-[8rem] rounded-xl border shadow-xl overflow-hidden [perspective:800px] [transform-style:preserve-3d]",
-          "bg-white/80 border-neutral-900/10 backdrop-blur-md",
-          "dark:bg-neutral-900/80 dark:border-neutral-50/10",
+          "bg-[#ffffff] border-neutral-900/10",
+          "dark:bg-[#262626] dark:border-neutral-50/10",
           className
         )}
         style={{
@@ -691,29 +759,23 @@ function DropdownMenuSubContent({
             "var(--radix-dropdown-menu-content-transform-origin)",
         }}
       >
-        <div
-          className={cn(
-            "absolute inset-0 z-0",
-            "bg-gradient-to-br from-indigo-500/10 to-purple-500/10",
-            "dark:from-indigo-500/20 dark:to-purple-500/20"
-          )}
-        />
-
-        <div className="absolute inset-0 backdrop-blur-sm z-10" />
-
         <div className="p-1 w-full relative z-20">
-          {React.Children.map(children, (child, index) => (
-            <motion.div
-              key={index}
-              custom={index}
-              variants={itemVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              {child}
-            </motion.div>
-          ))}
+          {React.Children.map(children, (child, index) =>
+            animate ? (
+              <motion.div
+                key={index}
+                custom={index}
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                {child}
+              </motion.div>
+            ) : (
+              <div key={index}>{child}</div>
+            )
+          )}
         </div>
       </motion.div>
     </DropdownMenuPrimitive.SubContent>
