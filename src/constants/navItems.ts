@@ -129,7 +129,12 @@ const navigation: NavItem[] = [
         title: "Drift Card",
         href: "/docs/components/drift-card",
       },
-      { title: "Dropdown Menu", href: "/docs/components/dropdown-menu" },
+      {
+        title: "Dropdown Menu",
+        href: "/docs/components/dropdown-menu",
+        category: "updated",
+        categoryClassName: "bg-blue-500",
+      },
       {
         title: "DualSparks",
         href: "/docs/components/dualsparks",
