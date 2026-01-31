@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import GithubStarSpotlightCard from "@/components/githubstarspotlightcard";
 import AZFilter from "@/components/az-filter";
+import Feedback from "@/components/feedback";
 
 function slugify(text: string): string {
   return text
@@ -20,9 +21,11 @@ export default function OnThisPage() {
   >([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [clickedId, setClickedId] = useState<string | null>(null);
+  const [contentHeight, setContentHeight] = useState<number>(0);
   const pathname = usePathname();
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const contentRoot = document.querySelector<HTMLDivElement>(".prose");
@@ -70,6 +73,18 @@ export default function OnThisPage() {
     const truncatedToc = stopIndex === -1 ? toc : toc.slice(0, stopIndex + 1);
     setHeadings(truncatedToc);
   }, [pathname]);
+
+  // Calculate content height after headings are set
+  useEffect(() => {
+    if (navRef.current && headings.length > 0) {
+      setTimeout(() => {
+        const totalHeight = navRef.current?.scrollHeight || 0;
+        setContentHeight(totalHeight);
+      }, 0);
+    } else {
+      setContentHeight(0);
+    }
+  }, [headings]);
 
   useEffect(() => {
     setActiveId(null);
@@ -219,18 +234,32 @@ export default function OnThisPage() {
           }}
           activeLetter={null}
         />
+        <Feedback />
       </div>
     );
   }
 
-  if (!headings.length) return null;
+  if (!headings.length) {
+    return (
+      <div className="relative">
+        <Feedback />
+      </div>
+    );
+  }
+
+  // Calculate dynamic height
+  const maxHeight =
+    typeof window !== "undefined" ? window.innerHeight * 0.5 : 400;
+  const shouldScroll = contentHeight > maxHeight;
+  const dynamicHeight = shouldScroll ? maxHeight : contentHeight;
 
   return (
     <div className="relative">
       <h4 className="text-sm font-medium mb-4">On This Page</h4>
       <div className="group">
         <ScrollArea
-          className="h-[50vh] pr-3
+          style={{ height: dynamicHeight > 0 ? `${dynamicHeight}px` : "auto" }}
+          className="pr-3
           [&>[data-radix-scroll-area-viewport]]:overflow-y-auto
           [&_[data-radix-scroll-area-scrollbar]]:opacity-0
           [&_[data-radix-scroll-area-scrollbar]]:transition-opacity
@@ -239,7 +268,7 @@ export default function OnThisPage() {
           [&_[data-radix-scroll-area-scrollbar]]:hover:bg-transparent
           dark:[&_[data-radix-scroll-area-scrollbar]]:hover:bg-transparent"
         >
-          <nav className="space-y-1">
+          <nav ref={navRef} className="space-y-1">
             {headings.map((h) => {
               const isActive = activeId === h.id;
               const base =
@@ -270,6 +299,7 @@ export default function OnThisPage() {
           </nav>
         </ScrollArea>
       </div>
+      <Feedback />
     </div>
   );
 }
