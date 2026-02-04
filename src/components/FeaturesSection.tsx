@@ -1,177 +1,78 @@
-"use client";
+import { AlarmClockIcon } from "@/components/icons/alarm-clock";
+import { ContrastIcon } from "@/components/icons/contrast";
+import { ConnectIcon } from "@/components/icons/connect";
+import { FrameIcon } from "@/components/icons/frame";
+import { SettingsIcon } from "@/components/icons/settings";
+import { ZapIcon } from "@/components/icons/zap";
+import { AuroraDotsWrapper } from "@/components/auroradots-wrapper";
+import { FeatureCard } from "@/components/feature-card";
 
-import { motion, useInView } from "framer-motion";
-import {
-  Sparkles,
-  Code,
-  Palette,
-  Zap,
-  Layers,
-  LayoutGrid,
-  Terminal,
-} from "lucide-react";
-import { AnimatedTextGenerate } from "@/components/ui/animated-textgenerate";
-import { useRef } from "react";
+const features = [
+  {
+    title: "Animations",
+    description:
+      "Add stunning animations to your UI with minimal effort. Transform your static website into dynamic, engaging interfaces.",
+    icon: AlarmClockIcon,
+    className: "md:row-span-2",
+    iconSize: 124,
+    iconSizeMobile: 48,
+  },
+  {
+    title: "Themeable",
+    description: "Each component is designed for light & dark mode.",
+    icon: ContrastIcon,
+    className: "md:col-span-2",
+  },
+  {
+    title: "Customizable",
+    description: "Every component is designed to be easily customized.",
+    icon: SettingsIcon,
+  },
+  {
+    title: "Performance",
+    description: "Optimized for performance, ensuring smooth animations.",
+    icon: ZapIcon,
+  },
+  {
+    title: "Responsive",
+    description: "Component adapts beautifully to different screen sizes.",
+    icon: FrameIcon,
+    className: "md:col-span-2",
+  },
+  {
+    title: "CLI & Manual",
+    description: "Get started in minutes with our comprehensive documentation.",
+    icon: ConnectIcon,
+  },
+];
 
 export function FeaturesSection() {
-  const features = [
-    {
-      icon: <Sparkles className="h-6 w-6" />,
-      title: "Beautiful Animations",
-      description:
-        "Add stunning animations to your UI with minimal effort. Transform your static components into dynamic, engaging interfaces.",
-      className: "md:col-span-2",
-    },
-    {
-      icon: <Code className="h-6 w-6" />,
-      title: "Fully Customizable",
-      description:
-        "Every component is designed to be easily customized to match your brand and project requirements.",
-    },
-    {
-      icon: <Palette className="h-6 w-6" />,
-      title: "Themeable",
-      description:
-        "Built with a complete theming system that allows you to switch between light and dark modes effortlessly.",
-    },
-    {
-      icon: <Zap className="h-6 w-6" />,
-      title: "High Performance",
-      description:
-        "Optimized for performance, ensuring smooth animations and transitions even on complex interfaces.",
-    },
-    {
-      icon: <Layers className="h-6 w-6" />,
-      title: "Modular Architecture",
-      description:
-        "Use only what you need. Each component is built as a standalone module that can be imported individually.",
-    },
-    {
-      icon: <LayoutGrid className="h-6 w-6" />,
-      title: "Responsive Design",
-      description:
-        "Every component adapts beautifully to different screen sizes, from desktop to mobile.",
-    },
-    {
-      icon: <Terminal className="h-6 w-6" />,
-      title: "CLI & Manual",
-      description:
-        "Easy installation with CLI tools or manual setup. Get started in minutes with our comprehensive documentation.",
-      className: "md:col-span-2",
-    },
-  ];
-
-  const refs = [
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-  ];
-
-  const inViews = [
-    useInView(refs[0], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
-    useInView(refs[1], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
-    useInView(refs[2], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
-    useInView(refs[3], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
-    useInView(refs[4], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
-    useInView(refs[5], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
-    useInView(refs[6], { margin: "0px 0px 0% 0px", once: true, amount: 0.65 }),
-  ];
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    show: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        delay: i * 0.1,
-        ease: "easeOut",
-      },
-    }),
-  };
-
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-white to-gray-50 dark:bg-gradient-to-r dark:from-[#0c0c0c] dark:via-black dark:to-[#0c0c0c]">
-      <div className="container px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
-            Features that set us apart
+    <section className="w-full py-20 px-4 md:px-8 bg-gradient-to-b from-white to-gray-50 dark:from-[#0b0b0b] dark:via-[#090909] dark:to-[#0b0b0b] select-none">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            The foundation for modern interfaces.
           </h2>
-          <p className="mt-4 text-gray-500 dark:text-gray-400 text-lg">
-            ScrollX UI is built from the ground up to offer a premium developer
-            experience with unique, high-quality components.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            High-performance primitives for modern web applications.
           </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[minmax(200px,1fr)] gap-6 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              custom={index}
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className={`rounded-2xl border border-gray-200 dark:border-gray-800 p-6 backdrop-blur-sm bg-white/60 dark:bg-white/5 shadow-md transition-all duration-300 ${
-                feature.className || ""
-              }`}
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center justify-center mb-4 rounded-full bg-primary/10 p-3 text-primary shadow-lg ring-1 ring-primary/10 w-fit"
-              >
-                {feature.icon}
-              </motion.div>
-
-              <h3 className="text-[1.25rem] md:text-[1.35rem] font-bold text-foreground mb-2">
-                {feature.title}
-              </h3>
-
-              <div ref={refs[index]}>
-                {inViews[index] && (
-                  <AnimatedTextGenerate
-                    text={feature.description}
-                    className="mt-2"
-                    textClassName="text-sm text-muted-foreground opacity-80"
-                    blurEffect
-                    speed={0.7}
-                    highlightWords={[
-                      "stunning",
-                      "performance",
-                      "standalone",
-                      "customized",
-                      "theming",
-                      "minutes",
-                      "beautifully",
-                    ]}
-                    highlightClassName="inline-block !text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-500 font-semibold"
-                    linkWords={["components", "documentation", "Get started"]}
-                    linkHrefs={[
-                      "/docs/components",
-                      "/docs",
-                      "/docs/installation/cli",
-                    ]}
-                    linkClassNames={[
-                      "underline decoration-blue-500 underline-offset-4 decoration-2 hover:decoration-blue-700 transition",
-                      "underline decoration-emerald-500 underline-offset-4 decoration-2 hover:decoration-emerald-700 transition",
-                      "underline decoration-purple-500 underline-offset-4 decoration-2 hover:decoration-purple-700 transition",
-                    ]}
-                  />
-                )}
-              </div>
-            </motion.div>
-          ))}
         </div>
+
+        <AuroraDotsWrapper
+          className="rounded-3xl bg-gradient-to-b from-[#0b0b0b] via-[#090909] to-[#0b0b0b] p-6"
+          particleColor="99, 102, 241"
+          glowIntensity={0.25}
+          animationSpeed={60}
+          hoverRadius={12}
+          hoverGlowIntensity={1.2}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[200px]">
+            {features.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+          </div>
+        </AuroraDotsWrapper>
       </div>
     </section>
   );
