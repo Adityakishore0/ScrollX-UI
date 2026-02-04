@@ -102,6 +102,7 @@ export const demoComponents = [
   "hyperlink-demo",
   "hyperlinkcustom-demo",
   "infinitecanvas-demo",
+  "infinitecanvasdisabled-demo",
   "iphone-demo",
   "iphoneimage-demo",
   "iphonevideo-demo",
