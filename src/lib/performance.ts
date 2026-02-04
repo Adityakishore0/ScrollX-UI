@@ -1,13 +1,16 @@
 type PerformanceLevel = "low" | "medium" | "high";
 
 export interface WaveSettings {
+  arcGlowRadii?: number[];
   arcCount: number;
   centerGlowIntensity: number;
   speed: number;
   centerGlowRadius: number;
+  arcGlowIntensities?: number[];
   arcRadii?: number[];
   arcWaveAmps?: number[];
   arcSpacing: number;
+  position: "top" | "bottom" | "left" | "right" | "both";
 }
 
 interface NavigatorWithMemory extends Navigator {
@@ -60,11 +63,12 @@ export function getWaveSettings(
     return {
       arcCount: isMobile ? 1 : 2,
       centerGlowIntensity: 0.01,
-      speed: isMobile ? 0 : 10,
+      speed: isMobile ? 1 : 5,
       centerGlowRadius: isMobile ? 100 : 150,
       arcRadii: isMobile ? [120] : [180, 210],
       arcWaveAmps: isMobile ? [8] : [12, 12],
       arcSpacing: isMobile ? 180 : 420,
+      position: isMobile ? "top" : "both",
     };
   }
 
@@ -72,33 +76,36 @@ export function getWaveSettings(
     if (isMobile) {
       return {
         arcCount: 2,
-        centerGlowIntensity: 0.04,
-        speed: 0,
-        centerGlowRadius: 150,
+        centerGlowIntensity: 0.01,
+        speed: 7,
+        centerGlowRadius: 0,
         arcRadii: [140, 170],
         arcWaveAmps: [10, 10],
-        arcSpacing: 200,
+        arcSpacing: 100,
+        position: "top",
       };
     }
     if (isTablet) {
       return {
         arcCount: 3,
         centerGlowIntensity: 0.06,
-        speed: 15,
+        speed: 6,
         centerGlowRadius: 250,
         arcRadii: [200, 230, 260],
         arcWaveAmps: [15, 15, 13],
         arcSpacing: 500,
+        position: "both",
       };
     }
     return {
       arcCount: 3,
       centerGlowIntensity: 0.06,
-      speed: 15,
+      speed: 7,
       centerGlowRadius: 250,
       arcRadii: [200, 230, 260],
       arcWaveAmps: [15, 15, 13],
       arcSpacing: 550,
+      position: "both",
     };
   }
 
@@ -106,11 +113,12 @@ export function getWaveSettings(
     return {
       arcCount: 2,
       centerGlowIntensity: 0.05,
-      speed: 0,
+      speed: 3,
       centerGlowRadius: 180,
       arcRadii: [150, 180],
       arcWaveAmps: [12, 12],
       arcSpacing: 220,
+      position: "top",
     };
   }
 
@@ -118,21 +126,24 @@ export function getWaveSettings(
     return {
       arcCount: 4,
       centerGlowIntensity: 0.07,
-      speed: 16,
+      speed: 7,
       centerGlowRadius: 275,
       arcRadii: [220, 250, 280, 310],
       arcWaveAmps: [18, 18, 16, 16],
       arcSpacing: 520,
+      position: "both",
     };
   }
 
   return {
     arcCount: 4,
+    arcGlowIntensities: [0.44, 0.03, 0.02, 0.01],
     centerGlowIntensity: 0.08,
-    speed: 18,
-    centerGlowRadius: 300,
+    speed: 8,
+    centerGlowRadius: 0,
     arcRadii: [250, 280, 310, 340],
     arcWaveAmps: [20, 20, 18, 18],
     arcSpacing: 760,
+    position: "top",
   };
 }
