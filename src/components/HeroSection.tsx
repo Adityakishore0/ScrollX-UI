@@ -44,6 +44,7 @@ export function HeroSection() {
     <div ref={sectionRef}>
       <WaveBackground
         variant="violet"
+        position="both"
         speed={isVisible ? waveSettings.speed : 0}
         arcCount={isVisible ? waveSettings.arcCount : 0}
         centerGlowIntensity={isVisible ? waveSettings.centerGlowIntensity : 0}
