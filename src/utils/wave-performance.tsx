@@ -12,6 +12,7 @@ export function useWavePerformance() {
     speed: 18,
     centerGlowRadius: 300,
     arcSpacing: 580,
+    position: "both",
   });
 
   useEffect(() => {

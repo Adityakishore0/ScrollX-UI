@@ -68,12 +68,10 @@ const navigation: NavItem[] = [
       {
         title: "Avatar Group",
         href: "/docs/components/avatar-group",
-        category: "new",
       },
       {
         title: "Aurora Dots",
         href: "/docs/components/aurora-dots",
-        category: "new",
       },
       {
         title: "Background Meteors",
@@ -81,12 +79,11 @@ const navigation: NavItem[] = [
       },
       { title: "Background Paths", href: "/docs/components/background-paths" },
       { title: "Badge", href: "/docs/components/badge" },
-      { title: "BarsWave", href: "/docs/components/barswave", category: "new" },
+      { title: "BarsWave", href: "/docs/components/barswave" },
       { title: "Beams Upstream", href: "/docs/components/beams-upstream" },
       {
         title: "Bolt Strike",
         href: "/docs/components/bolt-strike",
-        category: "new",
       },
       { title: "Border Glide", href: "/docs/components/border-glide" },
       { title: "Button", href: "/docs/components/button" },
@@ -119,7 +116,6 @@ const navigation: NavItem[] = [
       {
         title: "Dot Wave",
         href: "/docs/components/dot-wave",
-        category: "new",
       },
       {
         title: "Draggable Avatar",
@@ -158,7 +154,6 @@ const navigation: NavItem[] = [
       {
         title: "Flashy Card",
         href: "/docs/components/flashy-card",
-        category: "new",
       },
       {
         title: "Flex Navbar",
@@ -215,7 +210,6 @@ const navigation: NavItem[] = [
       {
         title: "Layered Button",
         href: "/docs/components/layered-button",
-        category: "new",
       },
       {
         title: "Layered Text",
@@ -229,7 +223,6 @@ const navigation: NavItem[] = [
       {
         title: "Media Card",
         href: "/docs/components/media-card",
-        category: "new",
       },
       {
         title: "Meteor Orbit",
@@ -274,7 +267,6 @@ const navigation: NavItem[] = [
       {
         title: "Pixel Highlight",
         href: "/docs/components/pixel-highlight",
-        category: "new",
       },
       { title: "Popover", href: "/docs/components/popover" },
       { title: "Profile Card", href: "/docs/components/profilecard" },
@@ -293,7 +285,6 @@ const navigation: NavItem[] = [
       {
         title: "Sensitive Text",
         href: "/docs/components/sensitive-text",
-        category: "new",
       },
       { title: "Seperator Pro", href: "/docs/components/seperatorpro" },
       {
@@ -315,7 +306,6 @@ const navigation: NavItem[] = [
       {
         title: "Spark Waves",
         href: "/docs/components/spark-waves",
-        category: "new",
       },
       {
         title: "Stagger Button",
