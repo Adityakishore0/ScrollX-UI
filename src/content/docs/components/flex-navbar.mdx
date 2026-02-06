@@ -96,124 +96,27 @@ A modern navbar with smooth expansion, media panels, and theme controls.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "logo",
-      type: "ReactNode",
-      default: "SVG",
-      description: "Logo element displayed on the left side of the navbar.",
-    },
-    {
-      prop: "brandName",
-      type: "string",
-      default: "STARTUP",
-      description: "Centered brand name text shown in the navbar header.",
-    },
-    {
-      prop: "tagline",
-      type: "string",
-      default: "Text",
-      description:
-        "Short tagline displayed in the footer section when expanded.",
-    },
-    {
-      prop: "launchText",
-      type: "string",
-      default: "Text",
-      description: "Right-aligned secondary text shown in the expanded footer.",
-    },
-    {
-      prop: "navLinks",
-      type: "array",
-      default: "empty",
-      description:
-        "Primary navigation links displayed when the navbar expands.",
-    },
-    {
-      prop: "media",
-      type: "object",
-      default: "none",
-      description:
-        "Media content configuration (image or video) shown inside the expanded navbar.",
-    },
-    {
-      prop: "mediaButtonText",
-      type: "string",
-      default: "OurStory",
-      description: "Text displayed on the media overlay action button.",
-    },
-    {
-      prop: "onMediaClick",
-      type: "function",
-      default: "none",
-      description: "Callback triggered when media is clicked or played.",
-    },
-    {
-      prop: "collapsedWidth",
-      type: "string",
-      default: "90vw",
-      description: "Width of the navbar in collapsed state.",
-    },
-    {
-      prop: "collapsedMaxWidth",
-      type: "string",
-      default: "20rem",
-      description: "Maximum width of the navbar when collapsed.",
-    },
-    {
-      prop: "collapsedHeight",
-      type: "string",
-      default: "3.75rem",
-      description: "Height of the navbar in collapsed state.",
-    },
-    {
-      prop: "expandedWidth",
-      type: "string",
-      default: "95vw",
-      description: "Width of the navbar when expanded.",
-    },
-    {
-      prop: "expandedMaxWidth",
-      type: "string",
-      default: "48.75rem",
-      description: "Maximum width of the expanded navbar.",
-    },
-    {
-      prop: "expandedHeight",
-      type: "string",
-      default: "28rem",
-      description: "Expanded navbar height on desktop screens.",
-    },
-    {
-      prop: "expandedHeightMobile",
-      type: "string",
-      default: "33rem",
-      description: "Expanded navbar height on mobile devices.",
-    },
-    {
-      prop: "animationDuration",
-      type: "number",
-      default: "0.5",
-      description: "Duration of expand/collapse animation in seconds.",
-    },
-    {
-      prop: "animationEasing",
-      type: "array",
-      default: "bezier",
-      description: "Cubic-bezier easing array used by Framer Motion.",
-    },
-    {
-      prop: "showThemeToggle",
-      type: "boolean",
-      default: "true",
-      description: "Controls visibility of the theme switcher in the footer.",
-    },
-    {
-      prop: "onExpand",
-      type: "function",
-      default: "none",
-      description: "Callback fired whenever the navbar expands or collapses.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `logo` | `ReactNode` | `SVG` | Logo element displayed on the left side of the navbar. |
+| `brandName` | `string` | `STARTUP` | Centered brand name text shown in the navbar header. |
+| `tagline` | `string` | `Text` | Short tagline displayed in the footer section when expanded. |
+| `launchText` | `string` | `Text` | Right-aligned secondary text shown in the expanded footer. |
+| `navLinks` | `array` | `empty` | Primary navigation links displayed when the navbar expands. |
+| `media` | `object` | `none` | Media content configuration (image or video) shown inside the expanded navbar. |
+| `mediaButtonText` | `string` | `OurStory` | Text displayed on the media overlay action button. |
+| `onMediaClick` | `function` | `none` | Callback triggered when media is clicked or played. |
+| `collapsedWidth` | `string` | `90vw` | Width of the navbar in collapsed state. |
+| `collapsedMaxWidth` | `string` | `20rem` | Maximum width of the navbar when collapsed. |
+| `collapsedHeight` | `string` | `3.75rem` | Height of the navbar in collapsed state. |
+| `expandedWidth` | `string` | `95vw` | Width of the navbar when expanded. |
+| `expandedMaxWidth` | `string` | `48.75rem` | Maximum width of the expanded navbar. |
+| `expandedHeight` | `string` | `28rem` | Expanded navbar height on desktop screens. |
+| `expandedHeightMobile` | `string` | `33rem` | Expanded navbar height on mobile devices. |
+| `animationDuration` | `number` | `0.5` | Duration of expand/collapse animation in seconds. |
+| `animationEasing` | `array` | `bezier` | Cubic-bezier easing array used by Framer Motion. |
+| `showThemeToggle` | `boolean` | `true` | Controls visibility of the theme switcher in the footer. |
+| `onExpand` | `function` | `none` | Callback fired whenever the navbar expands or collapses. |
+
+

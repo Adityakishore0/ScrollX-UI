@@ -98,61 +98,15 @@ A customizable sheet component for creating elegant slide-out interfaces.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "open",
-      type: "boolean",
-      default: "undefined",
-      description:
-        "Controlled open state. If provided, SideSheet becomes controlled.",
-    },
-    {
-      prop: "defaultOpen",
-      type: "boolean",
-      default: "false",
-      description:
-        "Initial open state (uncontrolled). Used when `open` is not controlled.",
-    },
-    {
-      prop: "onOpenChange",
-      type: "(open: boolean) => void",
-      default: "undefined",
-      description:
-        "Callback fired when the open state changes. Works for controlled and uncontrolled usage.",
-    },
-    {
-      prop: "side",
-      type: `"left" | "right"`,
-      default: `"right"`,
-      description: "Which side the sheet slides in from.",
-    },
-    {
-      prop: "width",
-      type: "string",
-      default: `"400px"`,
-      description:
-        "Width of the sheet. Accepts `px`, `%`, `vw` values. Adjusts responsively on smaller screens.",
-    },
-    {
-      prop: "closeThreshold",
-      type: "number",
-      default: "0.3",
-      description:
-        "Drag threshold (fraction of width) at which the sheet will close when swiped.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Additional classNames applied to the SideSheet container.",
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description:
-        "Content of the SideSheet. Usually composed of compound components like `SideSheetHeader`, `SideSheetContent`, `SideSheetFooter`.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `open` | `boolean` | `undefined` | Controlled open state. If provided, SideSheet becomes controlled. |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled). Used when `open` is not controlled. |
+| `onOpenChange` | `(open: boolean) => void` | `undefined` | Callback fired when the open state changes. Works for controlled and uncontrolled usage. |
+| `side` | `"left" \| "right"` | `"right"` | Which side the sheet slides in from. |
+| `width` | `string` | `"400px"` | Width of the sheet. Accepts `px`, `%`, `vw` values. Adjusts responsively on smaller screens. |
+| `closeThreshold` | `number` | `0.3` | Drag threshold (fraction of width) at which the sheet will close when swiped. |
+| `className` | `string` | `-` | Additional classNames applied to the SideSheet container. |
+| `children` | `ReactNode` | `required` | Content of the SideSheet. Usually composed of compound components like `SideSheetHeader`, `SideSheetContent`, `SideSheetFooter`. |
+

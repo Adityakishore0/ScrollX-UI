@@ -119,40 +119,16 @@ Interactive particle visualization with mouse-responsive movement
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "color",
-      type: "string",
-      default: `"#ff3366"`,
-      description: "Base color of the particles (HEX)."
-    },
-    {
-      prop: "particleCount",
-      type: "number",
-      default: "10000",
-      description: "Total number of particles rendered."
-    },
-    {
-      prop: "particleSize",
-      type: "number",
-      default: "35",
-      description: "Size of each individual particle."
-    },
-    {
-      prop: "animate",
-      type: "boolean",
-      default: "true",
-      description: "Whether particles animate color transitions."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: `""`,
-      description: "Optional class for the outer container."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `color` | `string` | `"#ff3366"` | Base color of the particles (HEX). |
+| `particleCount` | `number` | `10000` | Total number of particles rendered. |
+| `particleSize` | `number` | `35` | Size of each individual particle. |
+| `animate` | `boolean` | `true` | Whether particles animate color transitions. |
+| `className` | `string` | `""` | Optional class for the outer container. |
+
+
 
 
 `Type Notes` : The included type declaration file is only necessary if using Stats.js performance monitoring. For basic particle functionality without performance stats, you can omit the type file.

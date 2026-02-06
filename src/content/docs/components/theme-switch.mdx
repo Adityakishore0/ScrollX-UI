@@ -162,46 +162,17 @@ A flexible and accessible theme mode switcher component for Next.js projects usi
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "modes",
-      type: "string[]",
-      default: `["light", "dark", "system"]`,
-      description: "Available theme modes to cycle through."
-    },
-    {
-      prop: "icons",
-      type: "ReactNode[]",
-      default: "[]",
-      description: "Icons representing each mode (same order as `modes`)."
-    },
-    {
-      prop: "showActiveIconOnly",
-      type: "boolean",
-      default: "false",
-      description: "Show only the active icon centered."
-    },
-    {
-      prop: "showInactiveIcons",
-      type: `"all" | "none" | "next"`,
-      default: `"all"`,
-      description: "How inactive icons are shown."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Optional class for styling the switch container."
-    },
-    {
-      prop: "...props",
-      type: "HTMLDivElement attributes",
-      default: "—",
-      description: "Additional props passed to the root div."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `modes` | `string[]` | `["light", "dark", "system"]` | Available theme modes to cycle through. |
+| `icons` | `ReactNode[]` | `[]` | Icons representing each mode (same order as `modes`). |
+| `showActiveIconOnly` | `boolean` | `false` | Show only the active icon centered. |
+| `showInactiveIcons` | `"all" \| "none" \| "next"` | `"all"` | How inactive icons are shown. |
+| `className` | `string` | — | Optional class for styling the switch container. |
+| `...props` | `HTMLDivElement attributes` | — | Additional props passed to the root div. |
+
+
 
 ---
 

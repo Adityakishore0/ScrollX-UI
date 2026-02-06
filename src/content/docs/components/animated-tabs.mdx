@@ -61,25 +61,11 @@ A headless and styled tab UI component set for switching content views.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "defaultValue",
-      type: "string",
-      default: "required",
-      description: "Initial active tab value. Used in: Tabs."
-    },
-    {
-      prop: "value",
-      type: "string",
-      default: "required",
-      description: "Tab identifier. Used in: TabsTrigger (for selection), TabsContent (for matching)."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Used as nested content or label. Required in: Tabs, TabsList, TabsTrigger, TabsContent."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `defaultValue` | `string` | `required` | Initial active tab value. Used in: Tabs. |
+| `value` | `string` | `required` | Tab identifier. Used in: TabsTrigger (for selection), TabsContent (for matching). |
+| `children` | `ReactNode` | `required` | Used as nested content or label. Required in: Tabs, TabsList, TabsTrigger, TabsContent. |
+
+

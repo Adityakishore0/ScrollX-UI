@@ -56,44 +56,15 @@ The `FollowCursor` component creates beautiful, fluid lines that follow the user
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Optional CSS class for the outer container."
-    },
-    {
-      prop: "style",
-      type: "React.CSSProperties",
-      default: "—",
-      description: "Inline styles for the container."
-    },
-    {
-      prop: "colors",
-      type: "string[]",
-      default: "10 preset vibrant colors",
-      description: "Hex color strings for the lines."
-    },
-    {
-      prop: "thickness",
-      type: "{ min: number; max: number }",
-      default: "{ min: 30, max: 100 }",
-      description: "Line thickness range."
-    },
-    {
-      prop: "count",
-      type: "{ min: number; max: number }",
-      default: "{ min: 15, max: 25 }",
-      description: "Range of points per line."
-    },
-    {
-      prop: "bgColor",
-      type: "string",
-      default: `"rgba(26, 26, 38, 1)"`,
-      description: "Background color of the canvas."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `className` | `string` | — | Optional CSS class for the outer container. |
+| `style` | `React.CSSProperties` | — | Inline styles for the container. |
+| `colors` | `string[]` | `10 preset vibrant colors` | Hex color strings for the lines. |
+| `thickness` | `{ min: number; max: number }` | `{ min: 30, max: 100 }` | Line thickness range. |
+| `count` | `{ min: number; max: number }` | `{ min: 15, max: 25 }` | Range of points per line. |
+| `bgColor` | `string` | `"rgba(26, 26, 38, 1)"` | Background color of the canvas. |
+
+
 

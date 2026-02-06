@@ -72,31 +72,12 @@ An interactive showcase component with smooth content and image transitions.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "items",
-      type: "Step[]",
-      default: "required",
-      description: "List of showcase steps containing heading, description, and media."
-    },
-    {
-      prop: "containerClass",
-      type: "string",
-      default: "-",
-      description: "Custom classes applied to the root showcase container."
-    },
-    {
-      prop: "cycleDelay",
-      type: "number",
-      default: "3000",
-      description: "Duration (ms) for the progress bar before auto-advancing."
-    },
-    {
-      prop: "mediaClass",
-      type: "string",
-      default: "h-[400px]",
-      description: "Controls height and layout of the media section."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `items` | `Step[]` | `required` | List of showcase steps containing heading, description, and media. |
+| `containerClass` | `string` | `-` | Custom classes applied to the root showcase container. |
+| `cycleDelay` | `number` | `3000` | Duration (ms) for the progress bar before auto-advancing. |
+| `mediaClass` | `string` | `h-[400px]` | Controls height and layout of the media section. |
+
+

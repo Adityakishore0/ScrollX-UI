@@ -197,104 +197,25 @@ Triggers a toast notification.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "id",
-      type: "string",
-      default: "auto",
-      description: "Unique identifier for the toast. Auto-generated if not provided."
-    },
-    {
-      prop: "title",
-      type: "string",
-      default: "—",
-      description: "Main heading text of the toast."
-    },
-    {
-      prop: "description",
-      type: "string",
-      default: "—",
-      description: "Optional descriptive message body."
-    },
-    {
-      prop: "variant",
-      type: `"default" | "success" | "destructive" | "warning" | "info" | "loading"`,
-      default: `"default"`,
-      description: "Visual style of the toast. Affects colors and icon."
-    },
-    {
-      prop: "position",
-      type: `"top-right" | "top-left" | "bottom-right" | "bottom-left"`,
-      default: `"top-right"`,
-      description: "Screen position where the toast appears."
-    },
-    {
-      prop: "duration",
-      type: "number",
-      default: "5000",
-      description: "Auto-dismiss timeout in milliseconds. Use `Infinity` to disable auto-dismiss."
-    },
-    {
-      prop: "action",
-      type: "ReactNode | { label: string; onClick: () => void }",
-      default: "—",
-      description: "Optional custom action element or config object with label and callback."
-    },
-    {
-      prop: "cancel",
-      type: `{ label: string; onClick: () => void }`,
-      default: "—",
-      description: "Optional cancel button with label and callback."
-    },
-    {
-      prop: "onClose",
-      type: "() => void",
-      default: "—",
-      description: "Callback fired when the toast is closed or dismissed."
-    },
-    {
-      prop: "stackIndex",
-      type: "number",
-      default: "0",
-      description: "Index of the toast in a stack (used internally for stacked animations)."
-    },
-    {
-      prop: "isVisible",
-      type: "boolean",
-      default: "true",
-      description: "Controls the visibility of the toast."
-    },
-    {
-      prop: "isStacked",
-      type: "boolean",
-      default: "false",
-      description: "Indicates if the toast is visually stacked with others."
-    },
-    {
-      prop: "isHovered",
-      type: "boolean",
-      default: "false",
-      description: "Indicates if the stack is hovered (pauses auto-dismiss)."
-    },
-    {
-      prop: "stackDirection",
-      type: `"up" | "down"`,
-      default: `"down"`,
-      description: "Direction in which stacked toasts collapse/expand."
-    },
-    {
-      prop: "isExiting",
-      type: "boolean",
-      default: "false",
-      description: "Indicates if the toast is currently exiting (used for animation timing)."
-    },
-    {
-      prop: "totalCount",
-      type: "number",
-      default: "1",
-      description: "Total number of toasts in the stack (used for '+N' badge)."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `id` | `string` | `auto` | Unique identifier for the toast. Auto-generated if not provided. |
+| `title` | `string` | — | Main heading text of the toast. |
+| `description` | `string` | — | Optional descriptive message body. |
+| `variant` | `"default" \| "success" \| "destructive" \| "warning" \| "info" \| "loading"` | `"default"` | Visual style of the toast. Affects colors and icon. |
+| `position` | `"top-right" \| "top-left" \| "bottom-right" \| "bottom-left"` | `"top-right"` | Screen position where the toast appears. |
+| `duration` | `number` | `5000` | Auto-dismiss timeout in milliseconds. Use `Infinity` to disable auto-dismiss. |
+| `action` | `ReactNode \| { label: string; onClick: () => void }` | — | Optional custom action element or config object with label and callback. |
+| `cancel` | `{ label: string; onClick: () => void }` | — | Optional cancel button with label and callback. |
+| `onClose` | `() => void` | — | Callback fired when the toast is closed or dismissed. |
+| `stackIndex` | `number` | `0` | Index of the toast in a stack (used internally for stacked animations). |
+| `isVisible` | `boolean` | `true` | Controls the visibility of the toast. |
+| `isStacked` | `boolean` | `false` | Indicates if the toast is visually stacked with others. |
+| `isHovered` | `boolean` | `false` | Indicates if the stack is hovered (pauses auto-dismiss). |
+| `stackDirection` | `"up" \| "down"` | `"down"` | Direction in which stacked toasts collapse/expand. |
+| `isExiting` | `boolean` | `false` | Indicates if the toast is currently exiting (used for animation timing). |
+| `totalCount` | `number` | `1` | Total number of toasts in the stack (used for '+N' badge). |
+
+
 

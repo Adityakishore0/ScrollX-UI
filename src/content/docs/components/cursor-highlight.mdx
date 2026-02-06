@@ -159,80 +159,21 @@ Text is revealed on scroll with pointer, gradient, and border effects.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "text",
-      type: "string",
-      default: "-",
-      description: "Text content to be highlighted. If not provided, `children` will be used."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "-",
-      description: "Any React node to be highlighted, used when `text` is not provided."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Custom classes for styling the text."
-    },
-    {
-      prop: "gradient",
-      type: "string",
-      default: `purple gradient`,
-      description: "Tailwind gradient classes used for the highlight animation."
-    },
-    {
-      prop: "direction",
-      type: `"left" | "right" | "top" | "bottom"`,
-      default: `"left"`,
-      description: "The animation direction for the gradient filling effect."
-    },
-    {
-      prop: "animate",
-      type: "boolean",
-      default: "false",
-      description: "Controls whether the highlight animation plays."
-    },
-    {
-      prop: "duration",
-      type: "number",
-      default: "2",
-      description: "Duration (in seconds) of the highlight animation."
-    },
-    {
-      prop: "showPointer",
-      type: "boolean",
-      default: "false",
-      description: "Whether to display a moving pointer along the highlight."
-    },
-    {
-      prop: "pointerDuration",
-      type: "number",
-      default: "1",
-      description: "Duration (in seconds) of the pointer's movement."
-    },
-    {
-      prop: "pointerClassName",
-      type: "string",
-      default: "-",
-      description: "Custom classes for styling the pointer."
-    },
-    {
-      prop: "containerClassName",
-      type: "string",
-      default: "-",
-      description: "Custom classes for styling the outer container element."
-    },
-    {
-      prop: "rectangle",
-      type: "boolean | string",
-      default: "false",
-      description: "Enables a rectangle border around the text."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `text` | `string` | `-` | Text content to be highlighted. If not provided, `children` will be used. |
+| `children` | `ReactNode` | `-` | Any React node to be highlighted, used when `text` is not provided. |
+| `className` | `string` | `-` | Custom classes for styling the text. |
+| `gradient` | `string` | `purple gradient` | Tailwind gradient classes used for the highlight animation. |
+| `direction` | `"left" \| "right" \| "top" \| "bottom"` | `"left"` | The animation direction for the gradient filling effect. |
+| `animate` | `boolean` | `false` | Controls whether the highlight animation plays. |
+| `duration` | `number` | `2` | Duration (in seconds) of the highlight animation. |
+| `showPointer` | `boolean` | `false` | Whether to display a moving pointer along the highlight. |
+| `pointerDuration` | `number` | `1` | Duration (in seconds) of the pointer's movement. |
+| `pointerClassName` | `string` | `-` | Custom classes for styling the pointer. |
+| `containerClassName` | `string` | `-` | Custom classes for styling the outer container element. |
+| `rectangle` | `boolean \| string` | `false` | Enables a rectangle border around the text. |
+
+
 

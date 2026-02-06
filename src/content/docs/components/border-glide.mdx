@@ -80,59 +80,16 @@ Modern UI cards with a moving border and smooth transitions.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description:
-        "Content to be rendered inside BorderGlide or its subcomponents.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description:
-        "Additional Tailwind CSS classes to style the component container.",
-    },
-    {
-      prop: "autoPlayInterval",
-      type: "number",
-      default: "5000",
-      description:
-        "Time in ms before automatically sliding to the next card. Set 0 to disable autoplay.",
-    },
-    {
-      prop: "borderDuration",
-      type: "number",
-      default: "3000",
-      description:
-        "Duration in ms for the moving border animation to complete one cycle.",
-    },
-    {
-      prop: "borderColor",
-      type: "string",
-      default: "#3b82f6",
-      description: " Accepts Tailwind color hex, CSS color, or gradient.",
-    },
-    {
-      prop: "borderWidth",
-      type: "string",
-      default: "6rem",
-      description: "Width of the moving border element.",
-    },
-    {
-      prop: "borderHeight",
-      type: "string",
-      default: "6rem",
-      description: "Height of the moving border element.",
-    },
-    {
-      prop: "borderOpacity",
-      type: "number",
-      default: "0.8",
-      description: "Opacity of the animated border.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `ReactNode` | `required` | Content to be rendered inside BorderGlide or its subcomponents. |
+| `className` | `string` | `-` | Additional Tailwind CSS classes to style the component container. |
+| `autoPlayInterval` | `number` | `5000` | Time in ms before automatically sliding to the next card. Set 0 to disable autoplay. |
+| `borderDuration` | `number` | `3000` | Duration in ms for the moving border animation to complete one cycle. |
+| `borderColor` | `string` | `#3b82f6` |  Accepts Tailwind color hex, CSS color, or gradient. |
+| `borderWidth` | `string` | `6rem` | Width of the moving border element. |
+| `borderHeight` | `string` | `6rem` | Height of the moving border element. |
+| `borderOpacity` | `number` | `0.8` | Opacity of the animated border. |
+
+

@@ -106,46 +106,17 @@ A looping flow of flip cards with smooth motion and subtle interactive effects.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "data",
-      type: "Array<{ name: string }>",
-      default: "required",
-      description: "Array of card objects to render inside the flow."
-    },
-    {
-      prop: "name",
-      type: "string",
-      default: "required",
-      description: "Text displayed on both the front and back of each flip card. Used inside the data object."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Additional CSS classes applied to the FlipFlow container."
-    },
-    {
-      prop: "cardClassName",
-      type: "string",
-      default: "-",
-      description: "Additional CSS classes applied to each flip card."
-    },
-    {
-      prop: "colors",
-      type: "string[]",
-      default: "preset gradients",
-      description: "Gradient background classes applied to the front side of cards. Cycles through the array."
-    },
-    {
-      prop: "backColors",
-      type: "string[]",
-      default: "preset gradients",
-      description: "Gradient background classes applied to the back side of cards. Cycles through the array."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `data` | `Array<{ name: string }>` | `required` | Array of card objects to render inside the flow. |
+| `name` | `string` | `required` | Text displayed on both the front and back of each flip card. Used inside the data object. |
+| `className` | `string` | `-` | Additional CSS classes applied to the FlipFlow container. |
+| `cardClassName` | `string` | `-` | Additional CSS classes applied to each flip card. |
+| `colors` | `string[]` | `preset gradients` | Gradient background classes applied to the front side of cards. Cycles through the array. |
+| `backColors` | `string[]` | `preset gradients` | Gradient background classes applied to the back side of cards. Cycles through the array. |
+
+
 
 
 

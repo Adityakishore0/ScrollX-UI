@@ -92,86 +92,22 @@ A button that requires holding down to confirm irreversible or critical actions.
 
 ## Props
 
-<PropsTable 
-  rows={[
-    {
-      prop: "asChild",
-      type: "boolean",
-      default: "false",
-      description: "Renders as a span instead of a button when true."
-    },
-    {
-      prop: "duration",
-      type: "number",
-      default: "2000",
-      description: "Hold duration in milliseconds required to confirm."
-    },
-    {
-      prop: "onConfirm",
-      type: "() => void",
-      default: "-",
-      description: "Callback fired once the hold is successfully confirmed."
-    },
-    {
-      prop: "animation",
-      type: `"border" | "fill"`,
-      default: `"fill"`,
-      description: "Style of the progress animation: border outline or background fill."
-    },
-    {
-      prop: "fillClassName",
-      type: "string",
-      default: "-",
-      description: "Classes applied to the progress fill/border element."
-    },
-    {
-      prop: "confirmedChildren",
-      type: "ReactNode",
-      default: "-",
-      description: "Content shown inside the button after confirmation."
-    },
-    {
-      prop: "confirmedClassName",
-      type: "string",
-      default: "-",
-      description: "Classes applied to the confirmed state content."
-    },
-    {
-      prop: "resetAfter",
-      type: "number",
-      default: "2000",
-      description: "Time in milliseconds after which the button resets state."
-    },
-    {
-      prop: "showProgressOnConfirm",
-      type: "boolean",
-      default: "false",
-      description: "Keeps progress visible after confirmation instead of resetting immediately."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: `"Hold"`,
-      description: "Button label or content shown before confirmation."
-    },
-    {
-      prop: "variant",
-      type: "string",
-      default: "-",
-      description: "Variant styles inherited from Button (e.g., default, outline)."
-    },
-    {
-      prop: "size",
-      type: "string",
-      default: "-",
-      description: "Size styles inherited from Button (e.g., sm, lg)."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Additional custom classes applied to the button."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `asChild` | `boolean` | `false` | Renders as a span instead of a button when true. |
+| `duration` | `number` | `2000` | Hold duration in milliseconds required to confirm. |
+| `onConfirm` | `() => void` | `-` | Callback fired once the hold is successfully confirmed. |
+| `animation` | `"border" \| "fill"` | `"fill"` | Style of the progress animation: border outline or background fill. |
+| `fillClassName` | `string` | `-` | Classes applied to the progress fill/border element. |
+| `confirmedChildren` | `ReactNode` | `-` | Content shown inside the button after confirmation. |
+| `confirmedClassName` | `string` | `-` | Classes applied to the confirmed state content. |
+| `resetAfter` | `number` | `2000` | Time in milliseconds after which the button resets state. |
+| `showProgressOnConfirm` | `boolean` | `false` | Keeps progress visible after confirmation instead of resetting immediately. |
+| `children` | `ReactNode` | `"Hold"` | Button label or content shown before confirmation. |
+| `variant` | `string` | `-` | Variant styles inherited from Button (e.g., default, outline). |
+| `size` | `string` | `-` | Size styles inherited from Button (e.g., sm, lg). |
+| `className` | `string` | `-` | Additional custom classes applied to the button. |
+
+
 

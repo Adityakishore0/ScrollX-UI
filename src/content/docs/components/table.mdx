@@ -145,94 +145,25 @@ Powerful responsive data table with sticky headers, smooth scrolling, sorting, a
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "columns",
-      type: "ColumnDef<any>[]",
-      default: "[]",
-      description: "Defines the table columns and their configuration."
-    },
-    {
-      prop: "data",
-      type: "any[]",
-      default: "[]",
-      description: "Array of data objects to display in the table."
-    },
-    {
-      prop: "enableScroll",
-      type: "boolean",
-      default: "false",
-      description: "Enables vertical and horizontal scrolling with sticky header."
-    },
-    {
-      prop: "scrollHeight",
-      type: "string | number",
-      default: `"400px"`,
-      description: "Max height for vertical scroll when scrolling is enabled."
-    },
-    {
-      prop: "enableAnimations",
-      type: "boolean",
-      default: "false",
-      description: "Adds smooth animations for row transitions."
-    },
-    {
-      prop: "staggerDelay",
-      type: "number",
-      default: "0.05",
-      description: "Delay between row animations when animating rows."
-    },
-    {
-      prop: "pagination",
-      type: "boolean",
-      default: "false",
-      description: "Enables pagination controls for the table."
-    },
-    {
-      prop: "showPageSizeSelector",
-      type: "boolean",
-      default: "true",
-      description: "Shows dropdown to select rows per page when pagination is enabled."
-    },
-    {
-      prop: "rowClassName",
-      type: "string",
-      default: "—",
-      description: "Custom class name applied to each table row."
-    },
-    {
-      prop: "cellClassName",
-      type: "string",
-      default: "—",
-      description: "Custom class name applied to each table cell."
-    },
-    {
-      prop: "emptyMessage",
-      type: "string | ReactNode",
-      default: `"No results"`,
-      description: "Message displayed when there are no rows to show."
-    },
-    {
-      prop: "onRowClick",
-      type: "(rowData: any) => void",
-      default: "—",
-      description: "Callback fired when a row is clicked, receives row data."
-    },
-    {
-      prop: "tableClassName",
-      type: "string",
-      default: "—",
-      description: "Custom class name applied to the table element."
-    },
-    {
-      prop: "...props",
-      type: "HTMLDivElement attributes",
-      default: "—",
-      description: "Supports all standard div props and events."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `columns` | `ColumnDef<any>[]` | `[]` | Defines the table columns and their configuration. |
+| `data` | `any[]` | `[]` | Array of data objects to display in the table. |
+| `enableScroll` | `boolean` | `false` | Enables vertical and horizontal scrolling with sticky header. |
+| `scrollHeight` | `string \| number` | `"400px"` | Max height for vertical scroll when scrolling is enabled. |
+| `enableAnimations` | `boolean` | `false` | Adds smooth animations for row transitions. |
+| `staggerDelay` | `number` | `0.05` | Delay between row animations when animating rows. |
+| `pagination` | `boolean` | `false` | Enables pagination controls for the table. |
+| `showPageSizeSelector` | `boolean` | `true` | Shows dropdown to select rows per page when pagination is enabled. |
+| `rowClassName` | `string` | — | Custom class name applied to each table row. |
+| `cellClassName` | `string` | — | Custom class name applied to each table cell. |
+| `emptyMessage` | `string \| ReactNode` | `"No results"` | Message displayed when there are no rows to show. |
+| `onRowClick` | `(rowData: any) => void` | — | Callback fired when a row is clicked, receives row data. |
+| `tableClassName` | `string` | — | Custom class name applied to the table element. |
+| `...props` | `HTMLDivElement attributes` | — | Supports all standard div props and events. |
+
+
 
 
 

@@ -117,58 +117,19 @@ The Status component creates a customizable label with optional indicator and sh
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "status",
-      type: `"online" | "offline" | "away" | "busy" | "idle" | "pending" | "success" | "error" | "warning" | "info"`,
-      default: `"offline"`,
-      description: "Semantic status — controls the badge background color."
-    },
-    {
-      prop: "statusindicator",
-      type: "boolean",
-      default: "false",
-      description: "When true shows a small circular indicator to the left of the label."
-    },
-    {
-      prop: "indicatorClassName",
-      type: "string",
-      default: "—",
-      description: "Additional classes applied to the indicator (use w-/h- classes to set size)."
-    },
-    {
-      prop: "shiny",
-      type: "boolean",
-      default: "false",
-      description: "Enable the animated shine effect (forwarded to the underlying Badge)."
-    },
-    {
-      prop: "shinySpeed",
-      type: "number",
-      default: "—",
-      description: "Shine animation speed in seconds (forwarded to the Badge)."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Custom class names applied to the outer Badge element."
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "—",
-      description: "Content rendered inside the Status (typically a text label)."
-    },
-    {
-      prop: "...props",
-      type: "HTMLDivElement attributes",
-      default: "—",
-      description: "All other standard div props/events are supported and forwarded to the Badge."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `status` | `"online" \| "offline" \| "away" \| "busy" \| "idle" \| "pending" \| "success" \| "error" \| "warning" \| "info"` | `"offline"` | Semantic status — controls the badge background color. |
+| `statusindicator` | `boolean` | `false` | When true shows a small circular indicator to the left of the label. |
+| `indicatorClassName` | `string` | — | Additional classes applied to the indicator (use w-/h- classes to set size). |
+| `shiny` | `boolean` | `false` | Enable the animated shine effect (forwarded to the underlying Badge). |
+| `shinySpeed` | `number` | — | Shine animation speed in seconds (forwarded to the Badge). |
+| `className` | `string` | — | Custom class names applied to the outer Badge element. |
+| `children` | `React.ReactNode` | — | Content rendered inside the Status (typically a text label). |
+| `...props` | `HTMLDivElement attributes` | — | All other standard div props/events are supported and forwarded to the Badge. |
+
+
 
 
 

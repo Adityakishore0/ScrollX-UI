@@ -149,97 +149,23 @@ A date field component that enables users to choose and edit a date.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "mode",
-      type: `"single" | "multiple" | "range"`,
-      default: `"single"`,
-      description: "Selection mode",
-    },
-    {
-      prop: "selected",
-      type: "Date | Date[] | {from: Date; to?: Date}",
-      default: "-",
-      description: "Selected date(s) or range",
-    },
-    {
-      prop: "onSelect",
-      type: "function",
-      default: "-",
-      description: "Called on date select",
-    },
-    {
-      prop: "numberOfMonths",
-      type: "number",
-      default: 1,
-      description: "Months displayed",
-    },
-    {
-      prop: "defaultMonth",
-      type: "Date",
-      default: "new Date()",
-      description: "Initial month shown",
-    },
-    {
-      prop: "showWeekNumber",
-      type: "boolean",
-      default: false,
-      description: "Show week numbers",
-    },
-    {
-      prop: "weekStartsOn",
-      type: "0 | 1 | ... | 6",
-      default: 0,
-      description: "Week start day",
-    },
-    {
-      prop: "captionLayout",
-      type: `"label" | "dropdown" | "dropdown-months" | "dropdown-years"`,
-      default: `"label"`,
-      description: "Month/year caption style",
-    },
-    {
-      prop: "fromYear",
-      type: "number",
-      default: "currentYear-100",
-      description: "Start year for dropdown",
-    },
-    {
-      prop: "toYear",
-      type: "number",
-      default: "currentYear",
-      description: "End year for dropdown",
-    },
-    {
-      prop: "disabled",
-      type: "Date[] | function | object",
-      default: "-",
-      description: "Disable dates",
-    },
-    {
-      prop: "components",
-      type: "object",
-      default: "-",
-      description: "Custom subcomponents",
-    },
-    {
-      prop: "modifiers",
-      type: "object",
-      default: "-",
-      description: "Custom day modifiers",
-    },
-    {
-      prop: "animate",
-      type: "boolean",
-      default: false,
-      description: "Enable animation",
-    },
-    {
-      prop: "footer",
-      type: "ReactNode",
-      default: "-",
-      description: "Footer content",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `mode` | `"single" \| "multiple" \| "range"` | `"single"` | Selection mode |
+| `selected` | `Date \| Date[] \| {from: Date; to?: Date}` | `-` | Selected date(s) or range |
+| `onSelect` | `function` | `-` | Called on date select |
+| `numberOfMonths` | `number` | `1` | Months displayed |
+| `defaultMonth` | `Date` | `new Date()` | Initial month shown |
+| `showWeekNumber` | `boolean` | — | Show week numbers |
+| `weekStartsOn` | `0 \| 1 \| ... \| 6` | — | Week start day |
+| `captionLayout` | `"label" \| "dropdown" \| "dropdown-months" \| "dropdown-years"` | `"label"` | Month/year caption style |
+| `fromYear` | `number` | `currentYear-100` | Start year for dropdown |
+| `toYear` | `number` | `currentYear` | End year for dropdown |
+| `disabled` | `Date[] \| function \| object` | `-` | Disable dates |
+| `components` | `object` | `-` | Custom subcomponents |
+| `modifiers` | `object` | `-` | Custom day modifiers |
+| `animate` | `boolean` | — | Enable animation |
+| `footer` | `ReactNode` | `-` | Footer content |
+
+

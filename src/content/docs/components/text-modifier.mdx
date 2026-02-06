@@ -56,74 +56,20 @@ text highlighter with solid background and decorative markers for emphasis.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "highlightColorClass",
-      type: "string",
-      default: `"bg-yellow-200"`,
-      description: "Background color class for the solid highlight of the text.",
-    },
-    {
-      prop: "markerColorClass",
-      type: "string",
-      default: `"bg-yellow-500"`,
-      description: "Color class for decorative top and bottom markers around the text.",
-    },
-    {
-      prop: "opacity",
-      type: "number",
-      default: 0.6,
-      description: "Opacity level of the highlight background.",
-    },
-    {
-      prop: "animationDuration",
-      type: "number",
-      default: 0.6,
-      description: "Duration of the highlight and marker animation in seconds.",
-    },
-    {
-      prop: "animationDelay",
-      type: "number",
-      default: 0,
-      description: "Delay before starting the highlight animation in seconds.",
-    },
-    {
-      prop: "animate",
-      type: "boolean",
-      default: true,
-      description: "Enable or disable animation for highlight and markers.",
-    },
-    {
-      prop: "triggerOnView",
-      type: "boolean",
-      default: true,
-      description: "Animate only when the component comes into viewport.",
-    },
-    {
-      prop: "repeat",
-      type: "boolean",
-      default: false,
-      description: "Allow animation to repeat when the component leaves and re-enters viewport.",
-    },
-    {
-      prop: "padding",
-      type: "string",
-      default: `"0.125rem 0.375rem"`,
-      description: "Padding around the text inside the highlight.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: `"optional"`,
-      description: "Custom className to style the text content.",
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Text or JSX content to be highlighted.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `highlightColorClass` | `string` | `"bg-yellow-200"` | Background color class for the solid highlight of the text. |
+| `markerColorClass` | `string` | `"bg-yellow-500"` | Color class for decorative top and bottom markers around the text. |
+| `opacity` | `number` | `0.6` | Opacity level of the highlight background. |
+| `animationDuration` | `number` | `0.6` | Duration of the highlight and marker animation in seconds. |
+| `animationDelay` | `number` | — | Delay before starting the highlight animation in seconds. |
+| `animate` | `boolean` | `true` | Enable or disable animation for highlight and markers. |
+| `triggerOnView` | `boolean` | `true` | Animate only when the component comes into viewport. |
+| `repeat` | `boolean` | — | Allow animation to repeat when the component leaves and re-enters viewport. |
+| `padding` | `string` | `"0.125rem 0.375rem"` | Padding around the text inside the highlight. |
+| `className` | `string` | `"optional"` | Custom className to style the text content. |
+| `children` | `ReactNode` | `required` | Text or JSX content to be highlighted. |
+
+
 

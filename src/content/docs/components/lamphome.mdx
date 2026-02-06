@@ -96,52 +96,18 @@ The root container for the `Lamphome` component. A stylish, animated header comp
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "title",
-      type: "string",
-      default: `"SCROLLX UI"`,
-      description: "Main heading displayed in the component."
-    },
-    {
-      prop: "description",
-      type: "string",
-      default: `"An open-source collection."`,
-      description: "Descriptive text displayed below the title."
-    },
-    {
-      prop: "logoSrc",
-      type: "string",
-      default: "optional",
-      description: "URL or path for the logo image displayed on the navbar."
-    },
-    {
-      prop: "logoAlt",
-      type: "string",
-      default: `"Logo"`,
-      description: "Alt text for the logo image."
-    },
-    {
-      prop: "navItems",
-      type: "Array<{ href: string; label: string }>",
-      default: "[]",
-      description: "Navigation links rendered in the navbar."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "optional",
-      description: "Custom content rendered below the description."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: `""`,
-      description: "Additional custom CSS classes for the root container."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `title` | `string` | `"SCROLLX UI"` | Main heading displayed in the component. |
+| `description` | `string` | `"An open-source collection."` | Descriptive text displayed below the title. |
+| `logoSrc` | `string` | `optional` | URL or path for the logo image displayed on the navbar. |
+| `logoAlt` | `string` | `"Logo"` | Alt text for the logo image. |
+| `navItems` | `Array<{ href: string; label: string }>` | `[]` | Navigation links rendered in the navbar. |
+| `children` | `ReactNode` | `optional` | Custom content rendered below the description. |
+| `className` | `string` | `""` | Additional custom CSS classes for the root container. |
+
+
 
 
 

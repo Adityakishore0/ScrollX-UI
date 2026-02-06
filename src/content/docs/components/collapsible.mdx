@@ -62,43 +62,14 @@ An interactive component which expands/collapses a panel with a smooth motion.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "asChild",
-      type: "boolean",
-      default: "false",
-      description: "Render a custom component instead of the default element."
-    },
-    {
-      prop: "open",
-      type: "boolean",
-      default: "-",
-      description: "Controls the open state of the collapsible."
-    },
-    {
-      prop: "defaultOpen",
-      type: "boolean",
-      default: "false",
-      description: "Sets the initial open state."
-    },
-    {
-      prop: "onOpenChange",
-      type: "(open: boolean) => void",
-      default: "-",
-      description: "Fires when the open state changes."
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "required",
-      description: "Content inside the collapsible."
-    },
-    {
-      prop: "data-slot",
-      type: "string",
-      default: "-",
-      description: "Internal attribute for styling/testing."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `asChild` | `boolean` | `false` | Render a custom component instead of the default element. |
+| `open` | `boolean` | `-` | Controls the open state of the collapsible. |
+| `defaultOpen` | `boolean` | `false` | Sets the initial open state. |
+| `onOpenChange` | `(open: boolean) => void` | `-` | Fires when the open state changes. |
+| `children` | `React.ReactNode` | `required` | Content inside the collapsible. |
+| `data-slot` | `string` | `-` | Internal attribute for styling/testing. |
+
+

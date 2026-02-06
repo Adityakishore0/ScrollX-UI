@@ -158,73 +158,19 @@ Smooth page transitions  with curved or slide effects.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "intro",
-      type: "ReactNode | (triggerExit: () => void) => ReactNode",
-      default: "required",
-      description: "Content or function shown during the intro animation."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Main content displayed after the intro transition completes."
-    },
-    {
-      prop: "introDuration",
-      type: "number",
-      default: 1.5,
-      description: "Duration in seconds for which the intro is displayed."
-    },
-    {
-      prop: "transitionDuration",
-      type: "number",
-      default: 0.9,
-      description: "Time in seconds for the transition animation to complete."
-    },
-    {
-      prop: "type",
-      type: "'curved' | 'slide'",
-      default: "curved",
-      description: "Transition style: curved clipping or sliding effect."
-    },
-    {
-      prop: "direction",
-      type: "'top' | 'bottom' | 'left' | 'right'",
-      default: "bottom",
-      description: "Direction from which the transition occurs."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "CSS classes applied to the overlay element."
-    },
-    {
-      prop: "skip",
-      type: "boolean",
-      default: false,
-      description: "If true, skips the intro animation and immediately shows content."
-    },
-    {
-      prop: "autoExit",
-      type: "boolean",
-      default: true,
-      description: "If true, automatically starts exit transition after introDuration."
-    },
-    {
-      prop: "trigger",
-      type: "boolean",
-      default: "-",
-      description: "Optional external trigger to start the transition manually."
-    },
-    {
-      prop: "onFinished",
-      type: "() => void",
-      default: "-",
-      description: "Callback fired when the transition completes."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `intro` | `ReactNode \| (triggerExit: () => void) => ReactNode` | `required` | Content or function shown during the intro animation. |
+| `children` | `ReactNode` | `required` | Main content displayed after the intro transition completes. |
+| `introDuration` | `number` | `1.5` | Duration in seconds for which the intro is displayed. |
+| `transitionDuration` | `number` | `0.9` | Time in seconds for the transition animation to complete. |
+| `type` | `'curved' \| 'slide'` | `curved` | Transition style: curved clipping or sliding effect. |
+| `direction` | `'top' \| 'bottom' \| 'left' \| 'right'` | `bottom` | Direction from which the transition occurs. |
+| `className` | `string` | `-` | CSS classes applied to the overlay element. |
+| `skip` | `boolean` | — | If true, skips the intro animation and immediately shows content. |
+| `autoExit` | `boolean` | `true` | If true, automatically starts exit transition after introDuration. |
+| `trigger` | `boolean` | `-` | Optional external trigger to start the transition manually. |
+| `onFinished` | `() => void` | `-` | Callback fired when the transition completes. |
+
+

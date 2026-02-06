@@ -79,32 +79,13 @@ The root component for displaying animated, responsive statistics counters with 
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "stats",
-      type: `Array<{ value: number; suffix?: string; label: string; duration?: number }>`,
-      default: "—",
-      description: "Array of stat items with value, label, optional suffix, and animation duration."
-    },
-    {
-      prop: "title",
-      type: "string",
-      default: "—",
-      description: "Custom title text; splits on 'WITH' for responsiveness."
-    },
-    {
-      prop: "showDividers",
-      type: "boolean",
-      default: "true",
-      description: "Show or hide vertical divider lines."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Optional class for styling the container."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `stats` | `Array<{ value: number; suffix?: string; label: string; duration?: number }>` | — | Array of stat items with value, label, optional suffix, and animation duration. |
+| `title` | `string` | — | Custom title text; splits on 'WITH' for responsiveness. |
+| `showDividers` | `boolean` | `true` | Show or hide vertical divider lines. |
+| `className` | `string` | — | Optional class for styling the container. |
+
+
 

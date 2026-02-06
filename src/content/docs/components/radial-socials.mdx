@@ -75,75 +75,19 @@ radial social icons arranged in circles, with smooth expansion and rotation
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description:
-        "Nested RadialSocialsContent, RadialCircular, or RadialIcon components.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Additional classes for the RadialSocials container.",
-    },
-    {
-      prop: "animationDelay",
-      type: "number",
-      default: 150,
-      description: "Delay (ms) between the animation of each icon.",
-    },
-    {
-      prop: "expandDuration",
-      type: "number",
-      default: 800,
-      description: "Duration (ms) for icons to expand from the center.",
-    },
-    {
-      prop: "containerClassName",
-      type: "string",
-      default: "-",
-      description: "Additional classes for the outermost content wrapper.",
-    },
-    {
-      prop: "radius",
-      type: "number",
-      default: "required",
-      description: "Radius of the circular path for icons.",
-    },
-    {
-      prop: "duration",
-      type: "number",
-      default: 20,
-      description: "Rotation duration of the circle in seconds.",
-    },
-    {
-      prop: "circleLineClassName",
-      type: "string",
-      default: "-",
-      description: "Custom class names for the circular border line.",
-    },
-    {
-      prop: "startAngle",
-      type: "number",
-      default: 0,
-      description: "Starting angle (degrees) for placing the first icon.",
-    },
-    {
-      prop: "icon",
-      type: "ReactNode",
-      default: "required",
-      description: "Icon element to display in the radial circle.",
-    },
-    {
-      prop: "angle",
-      type: "number",
-      default: "auto",
-      description:
-        "Angle (degrees) to place this icon; overrides automatic spacing.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `ReactNode` | `required` | Nested RadialSocialsContent, RadialCircular, or RadialIcon components. |
+| `className` | `string` | `-` | Additional classes for the RadialSocials container. |
+| `animationDelay` | `number` | `150` | Delay (ms) between the animation of each icon. |
+| `expandDuration` | `number` | `800` | Duration (ms) for icons to expand from the center. |
+| `containerClassName` | `string` | `-` | Additional classes for the outermost content wrapper. |
+| `radius` | `number` | `required` | Radius of the circular path for icons. |
+| `duration` | `number` | `20` | Rotation duration of the circle in seconds. |
+| `circleLineClassName` | `string` | `-` | Custom class names for the circular border line. |
+| `startAngle` | `number` | — | Starting angle (degrees) for placing the first icon. |
+| `icon` | `ReactNode` | `required` | Icon element to display in the radial circle. |
+| `angle` | `number` | `auto` | Angle (degrees) to place this icon; overrides automatic spacing. |
+
+

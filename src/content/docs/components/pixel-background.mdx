@@ -65,63 +65,16 @@ A flexible pixel animation background with customizable origins and smooth atmos
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "gap",
-      type: "number",
-      default: "6",
-      description:
-        "Controls the distance between each pixel in the grid. Smaller gaps create a denser, more detailed animation.",
-    },
-    {
-      prop: "speed",
-      type: "number",
-      default: "80",
-      description:
-        "Defines how fast each pixel grows and shimmers during the animation. Higher values create more energetic motion.",
-    },
-    {
-      prop: "colors",
-      type: "string",
-      default: '"—"',
-      description:
-        "Comma-separated list of colors used for the pixels. Each pixel randomly picks one from the list.",
-    },
-    {
-      prop: "opacity",
-      type: "number",
-      default: "1",
-      description:
-        "Sets the transparency of the canvas layer. Lower values allow the background content to blend through.",
-    },
-    {
-      prop: "direction",
-      type: "string",
-      default: '"center"',
-      description:
-        "Determines where the animation originates. You can start from the center, edges, or corners for different effects.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description:
-        "Custom styling applied to the container wrapping the canvas.",
-    },
-    {
-      prop: "canvasClassName",
-      type: "string",
-      default: "—",
-      description:
-        "Optional classes for styling the underlying canvas element.",
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "—",
-      description:
-        "Any elements you want rendered above the animated pixel background.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `number` | `6` | Controls the distance between each pixel in the grid. Smaller gaps create a denser, more detailed animation. |
+| `speed` | `number` | `80` | Defines how fast each pixel grows and shimmers during the animation. Higher values create more energetic motion. |
+| `colors` | `string` | `"—"` | Comma-separated list of colors used for the pixels. Each pixel randomly picks one from the list. |
+| `opacity` | `number` | `1` | Sets the transparency of the canvas layer. Lower values allow the background content to blend through. |
+| `direction` | `string` | `"center"` | Determines where the animation originates. You can start from the center, edges, or corners for different effects. |
+| `className` | `string` | — | Custom styling applied to the container wrapping the canvas. |
+| `canvasClassName` | `string` | — | Optional classes for styling the underlying canvas element. |
+| `children` | `React.ReactNode` | — | Any elements you want rendered above the animated pixel background. |
+
+

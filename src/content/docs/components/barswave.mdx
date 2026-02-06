@@ -88,79 +88,20 @@ Vertical wave bars animate in symmetry, forming a subtle motion-driven backgroun
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "barCount",
-      type: "number",
-      default: "15",
-      description:
-        "Controls the total number of animated bars rendered across the background.",
-    },
-    {
-      prop: "minHeight",
-      type: "number",
-      default: "15",
-      description:
-        "Sets the minimum height percentage each bar can animate to.",
-    },
-    {
-      prop: "maxHeight",
-      type: "number",
-      default: "85",
-      description:
-        "Defines the maximum height percentage bars can reach during animation.",
-    },
-    {
-      prop: "fillColor",
-      type: "string",
-      default: "—",
-      description:
-        "Custom fill color applied when using the filled variant.",
-    },
-    {
-      prop: "borderColor",
-      type: "string",
-      default: "—",
-      description:
-        "Overrides the border color when using the outlined variant.",
-    },
-    {
-      prop: "barOpacity",
-      type: "number",
-      default: "1",
-      description:
-        "Adjusts the transparency of the animated bars for subtle blending.",
-    },
-    {
-      prop: "animationDuration",
-      type: "number",
-      default: "3",
-      description:
-        "Base duration (in seconds) of the bar height animation cycle.",
-    },
-    {
-      prop: "variant",
-      type: '"filled" | "outlined"',
-      default: '"outlined"',
-      description:
-        "Switches between filled bars or outlined bars for different styles.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description:
-        "Custom classes applied to the outer container.",
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "—",
-      description:
-        "Content rendered above the animated bars, ideal for hero sections.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `barCount` | `number` | `15` | Controls the total number of animated bars rendered across the background. |
+| `minHeight` | `number` | `15` | Sets the minimum height percentage each bar can animate to. |
+| `maxHeight` | `number` | `85` | Defines the maximum height percentage bars can reach during animation. |
+| `fillColor` | `string` | — | Custom fill color applied when using the filled variant. |
+| `borderColor` | `string` | — | Overrides the border color when using the outlined variant. |
+| `barOpacity` | `number` | `1` | Adjusts the transparency of the animated bars for subtle blending. |
+| `animationDuration` | `number` | `3` | Base duration (in seconds) of the bar height animation cycle. |
+| `variant` | `"filled" \| "outlined"` | `"outlined"` | Switches between filled bars or outlined bars for different styles. |
+| `className` | `string` | — | Custom classes applied to the outer container. |
+| `children` | `React.ReactNode` | — | Content rendered above the animated bars, ideal for hero sections. |
+
+
 
 

@@ -108,73 +108,19 @@ The `StaggerChars` component renders an animated text component with staggered c
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "text",
-      type: "string",
-      default: "(required)",
-      description: "The base text to display",
-    },
-    {
-      prop: "hoverText",
-      type: "string",
-      default: "text",
-      description: "Text to show on hover (defaults to `text` if not provided)",
-    },
-    {
-      prop: "delay",
-      type: "number",
-      default: "0.05",
-      description: "Delay between each character's animation in seconds",
-    },
-    {
-      prop: "duration",
-      type: "number",
-      default: "1",
-      description: "Duration of the animation in seconds",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Additional classes for the container",
-    },
-    {
-      prop: "hoverClassName",
-      type: "string",
-      default: "—",
-      description: "Classes for the hover text",
-    },
-    {
-      prop: "direction",
-      type: "'up' | 'down' | 'alternate'",
-      default: "'alternate'",
-      description: "Animation direction",
-    },
-    {
-      prop: "easing",
-      type: "number[]",
-      default: "[0.22, 1, 0.36, 1]",
-      description: "Custom easing function for the animation",
-    },
-    {
-      prop: "disabled",
-      type: "boolean",
-      default: "false",
-      description: "Disable the hover effect",
-    },
-    {
-      prop: "onAnimationStart",
-      type: "() => void",
-      default: "—",
-      description: "Callback when animation starts",
-    },
-    {
-      prop: "onAnimationComplete",
-      type: "() => void",
-      default: "—",
-      description: "Callback when animation completes",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `text` | `string` | `(required)` | The base text to display |
+| `hoverText` | `string` | `text` | Text to show on hover (defaults to `text` if not provided) |
+| `delay` | `number` | `0.05` | Delay between each character's animation in seconds |
+| `duration` | `number` | `1` | Duration of the animation in seconds |
+| `className` | `string` | — | Additional classes for the container |
+| `hoverClassName` | `string` | — | Classes for the hover text |
+| `direction` | `'up' \| 'down' \| 'alternate'` | `'alternate'` | Animation direction |
+| `easing` | `number[]` | `[0.22, 1, 0.36, 1]` | Custom easing function for the animation |
+| `disabled` | `boolean` | `false` | Disable the hover effect |
+| `onAnimationStart` | `() => void` | — | Callback when animation starts |
+| `onAnimationComplete` | `() => void` | — | Callback when animation completes |
+
+

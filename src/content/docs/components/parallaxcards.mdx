@@ -59,19 +59,10 @@ A vertical sticky-scroll component that displays stacked cards with parallax beh
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "cards",
-      type: `{ lightBg: string; darkBg: string; content: React.ReactNode; }[]`,
-      default: "[]",
-      description: "Array of cards with light/dark background and content."
-    },
-    {
-      prop: "height",
-      type: "number | string",
-      default: `"100vh"`,
-      description: "Height of the scroll container. Each card is sticky (70vh tall)."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `cards` | `{ lightBg: string; darkBg: string; content: React.ReactNode; }[]` | `[]` | Array of cards with light/dark background and content. |
+| `height` | `number \| string` | `"100vh"` | Height of the scroll container. Each card is sticky (70vh tall). |
+
+

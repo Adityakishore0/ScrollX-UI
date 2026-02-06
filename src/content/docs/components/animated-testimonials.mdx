@@ -110,39 +110,15 @@ The root component for displaying animated testimonial cards.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "data",
-      type: "Array<Testimonial>",
-      default: "required",
-      description: "An array of testimonial objects to display."
-    },
-    {
-      prop: "name",
-      type: "string",
-      default: "required",
-      description: "Name of the person giving the testimonial. Used inside each data item."
-    },
-    {
-      prop: "image",
-      type: "string",
-      default: "required",
-      description: "URL of the profile image. Used inside each data item."
-    },
-    {
-      prop: "description",
-      type: "string",
-      default: "required",
-      description: "Testimonial message or feedback. Used inside each data item."
-    },
-    {
-      prop: "handle",
-      type: "string",
-      default: "required",
-      description: "Social media handle or role (e.g., @john or 'Founder, X')."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `data` | `Array<Testimonial>` | `required` | An array of testimonial objects to display. |
+| `name` | `string` | `required` | Name of the person giving the testimonial. Used inside each data item. |
+| `image` | `string` | `required` | URL of the profile image. Used inside each data item. |
+| `description` | `string` | `required` | Testimonial message or feedback. Used inside each data item. |
+| `handle` | `string` | `required` | Social media handle or role (e.g., @john or 'Founder, X'). |
+
+
 
 

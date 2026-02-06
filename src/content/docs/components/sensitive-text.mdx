@@ -87,69 +87,20 @@ Interactive text that subtly compresses or stretches characters based on cursor 
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "children",
-      type: "string",
-      default: "required",
-      description: "Text content that is split into characters and reacts to cursor movement.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: `"optional"`,
-      description: "Class applied to each individual character span.",
-    },
-    {
-      prop: "containerClassName",
-      type: "string",
-      default: `"optional"`,
-      description: "Class applied to the outer container wrapping the text.",
-    },
-    {
-      prop: "maxStretch",
-      type: "number",
-      default: 0.5,
-      description: "Maximum vertical scale amount applied to characters near the cursor.",
-    },
-    {
-      prop: "sensitivity",
-      type: "number",
-      default: 0.5,
-      description: "Controls how far horizontally the cursor influences nearby characters.",
-    },
-    {
-      prop: "easing",
-      type: "number",
-      default: 10,
-      description: "Smoothing factor for cursor-follow animation (higher = slower response).",
-    },
-    {
-      prop: "verticalRange",
-      type: "number",
-      default: 100,
-      description: "Extra vertical distance below the text where cursor interaction remains active.",
-    },
-    {
-      prop: "falloffPower",
-      type: "number",
-      default: 2,
-      description: "Exponent used to control how sharply the effect falls off with distance.",
-    },
-    {
-      prop: "variant",
-      type: `"compress" | "stretch"`,
-      default: `"compress"`,
-      description: "Determines whether characters compress inward or stretch outward near the cursor.",
-    },
-    {
-      prop: "style",
-      type: "CSSProperties",
-      default: `"optional"`,
-      description: "Inline styles applied to the outer text container.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `string` | `required` | Text content that is split into characters and reacts to cursor movement. |
+| `className` | `string` | `"optional"` | Class applied to each individual character span. |
+| `containerClassName` | `string` | `"optional"` | Class applied to the outer container wrapping the text. |
+| `maxStretch` | `number` | `0.5` | Maximum vertical scale amount applied to characters near the cursor. |
+| `sensitivity` | `number` | `0.5` | Controls how far horizontally the cursor influences nearby characters. |
+| `easing` | `number` | `10` | Smoothing factor for cursor-follow animation (higher = slower response). |
+| `verticalRange` | `number` | `100` | Extra vertical distance below the text where cursor interaction remains active. |
+| `falloffPower` | `number` | `2` | Exponent used to control how sharply the effect falls off with distance. |
+| `variant` | `"compress" \| "stretch"` | `"compress"` | Determines whether characters compress inward or stretch outward near the cursor. |
+| `style` | `CSSProperties` | `"optional"` | Inline styles applied to the outer text container. |
+
+
 
 

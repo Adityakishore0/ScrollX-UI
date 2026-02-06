@@ -86,98 +86,24 @@ import { InteractiveInput } from "@/components/ui/interactive-input";
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "variant",
-      type: `"default" | "outline" | "ghost" | "glow"`,
-      default: `"default"`,
-      description: "Visual style of the input."
-    },
-    {
-      prop: "inputSize",
-      type: `"sm" | "default" | "lg" | "icon"`,
-      default: `"default"`,
-      description: "Adjusts the size of the input."
-    },
-    {
-      prop: "rounded",
-      type: `"none" | "default" | "full" | "custom"`,
-      default: `"default"`,
-      description: "Border radius style."
-    },
-    {
-      prop: "borderRadius",
-      type: "string",
-      default: `"—"`,
-      description: "Custom border radius (used when rounded is 'custom')."
-    },
-    {
-      prop: "glow",
-      type: "boolean",
-      default: "false",
-      description: "Enables glowing animation around the input."
-    },
-    {
-      prop: "textEffect",
-      type: `"normal" | "spread"`,
-      default: `"normal"`,
-      description: "Applies animated text styling."
-    },
-    {
-      prop: "uppercase",
-      type: "boolean",
-      default: "false",
-      description: "Transforms text to uppercase."
-    },
-    {
-      prop: "background",
-      type: "string",
-      default: `"—"`,
-      description: "Sets background color or gradient."
-    },
-    {
-      prop: "shimmerColor",
-      type: "string",
-      default: `"—"`,
-      description: "Shimmer color value (e.g., '#39FF14')."
-    },
-    {
-      prop: "shimmerSize",
-      type: "string",
-      default: `"—"`,
-      description: "Size or thickness of shimmer (e.g., '0.15em')."
-    },
-    {
-      prop: "shimmerDuration",
-      type: "string",
-      default: `"—"`,
-      description: "Duration of shimmer animation (e.g., '3s')."
-    },
-    {
-      prop: "asChild",
-      type: "boolean",
-      default: "false",
-      description: "Renders input as a child using Slot."
-    },
-    {
-      prop: "hideAnimations",
-      type: "boolean",
-      default: "false",
-      description: "Disables all input animations."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: `"undefined"`,
-      description: "Additional classes to style the input."
-    },
-    {
-      prop: "...props",
-      type: "HTMLInputElement attributes",
-      default: "—",
-      description: "Inherits all standard input element props."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `variant` | `"default" \| "outline" \| "ghost" \| "glow"` | `"default"` | Visual style of the input. |
+| `inputSize` | `"sm" \| "default" \| "lg" \| "icon"` | `"default"` | Adjusts the size of the input. |
+| `rounded` | `"none" \| "default" \| "full" \| "custom"` | `"default"` | Border radius style. |
+| `borderRadius` | `string` | `"—"` | Custom border radius (used when rounded is 'custom'). |
+| `glow` | `boolean` | `false` | Enables glowing animation around the input. |
+| `textEffect` | `"normal" \| "spread"` | `"normal"` | Applies animated text styling. |
+| `uppercase` | `boolean` | `false` | Transforms text to uppercase. |
+| `background` | `string` | `"—"` | Sets background color or gradient. |
+| `shimmerColor` | `string` | `"—"` | Shimmer color value (e.g., '#39FF14'). |
+| `shimmerSize` | `string` | `"—"` | Size or thickness of shimmer (e.g., '0.15em'). |
+| `shimmerDuration` | `string` | `"—"` | Duration of shimmer animation (e.g., '3s'). |
+| `asChild` | `boolean` | `false` | Renders input as a child using Slot. |
+| `hideAnimations` | `boolean` | `false` | Disables all input animations. |
+| `className` | `string` | `"undefined"` | Additional classes to style the input. |
+| `...props` | `HTMLInputElement attributes` | — | Inherits all standard input element props. |
+
+
 

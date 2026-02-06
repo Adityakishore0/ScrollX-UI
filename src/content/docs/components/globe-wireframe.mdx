@@ -70,116 +70,27 @@ The `Globe Wireframe` component creates beautiful globe with smooth city rotatio
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "variant",
-      type: `"wireframe" | "wireframesolid" | "solid"`,
-      default: `"wireframe"`,
-      description: "Rendering style of the globe."
-    },
-    {
-      prop: "scale",
-      type: "number",
-      default: "1",
-      description: "Scales the globe size relative to its container."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: `"aspect-square w-full max-w-[600px]"`,
-      description: "CSS classes applied to the globe container."
-    },
-    {
-      prop: "strokeColor",
-      type: "string",
-      default: `"currentColor"`,
-      description: "Stroke color for countries and outlines."
-    },
-    {
-      prop: "strokeWidth",
-      type: "number",
-      default: "1",
-      description: "Stroke width for country borders."
-    },
-    {
-      prop: "sphereOutlineColor",
-      type: "string",
-      default: `"currentColor"`,
-      description: "Outline color of the globe sphere."
-    },
-    {
-      prop: "sphereOutlineWidth",
-      type: "number",
-      default: "1",
-      description: "Width of the globe outline stroke."
-    },
-    {
-      prop: "showGraticule",
-      type: "boolean",
-      default: "true",
-      description: "Show latitude and longitude grid lines."
-    },
-    {
-      prop: "graticuleOpacity",
-      type: "number",
-      default: "0.2",
-      description: "Opacity of the graticule lines."
-    },
-    {
-      prop: "autoRotate",
-      type: "boolean",
-      default: "true",
-      description: "Automatically rotate the globe when idle."
-    },
-    {
-      prop: "autoRotateSpeed",
-      type: "number",
-      default: "0.5",
-      description: "Speed of idle rotation."
-    },
-    {
-      prop: "rotateToLocation",
-      type: "string | [number, number]",
-      default: "—",
-      description: "Rotate globe to a city name or coordinates."
-    },
-    {
-      prop: "rotateCities",
-      type: "string[]",
-      default: "[]",
-      description: "Automatically rotate through listed cities."
-    },
-    {
-      prop: "rotationSpeed",
-      type: "number",
-      default: "3000",
-      description: "Interval (ms) between city rotations."
-    },
-    {
-      prop: "enableInteraction",
-      type: "boolean",
-      default: "true",
-      description: "Enable drag interaction to rotate the globe."
-    },
-    {
-      prop: "countryFillColor",
-      type: "string",
-      default: "—",
-      description: "Fill color for countries in solid variant."
-    },
-    {
-      prop: "countryHoverColor",
-      type: "string",
-      default: "—",
-      description: "Hover color for countries (solid variant only)."
-    },
-    {
-      prop: "backgroundColor",
-      type: "string",
-      default: `"transparent"`,
-      description: "Background color behind the globe sphere."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `variant` | `"wireframe" \| "wireframesolid" \| "solid"` | `"wireframe"` | Rendering style of the globe. |
+| `scale` | `number` | `1` | Scales the globe size relative to its container. |
+| `className` | `string` | `"aspect-square w-full max-w-[600px]"` | CSS classes applied to the globe container. |
+| `strokeColor` | `string` | `"currentColor"` | Stroke color for countries and outlines. |
+| `strokeWidth` | `number` | `1` | Stroke width for country borders. |
+| `sphereOutlineColor` | `string` | `"currentColor"` | Outline color of the globe sphere. |
+| `sphereOutlineWidth` | `number` | `1` | Width of the globe outline stroke. |
+| `showGraticule` | `boolean` | `true` | Show latitude and longitude grid lines. |
+| `graticuleOpacity` | `number` | `0.2` | Opacity of the graticule lines. |
+| `autoRotate` | `boolean` | `true` | Automatically rotate the globe when idle. |
+| `autoRotateSpeed` | `number` | `0.5` | Speed of idle rotation. |
+| `rotateToLocation` | `string \| [number, number]` | — | Rotate globe to a city name or coordinates. |
+| `rotateCities` | `string[]` | `[]` | Automatically rotate through listed cities. |
+| `rotationSpeed` | `number` | `3000` | Interval (ms) between city rotations. |
+| `enableInteraction` | `boolean` | `true` | Enable drag interaction to rotate the globe. |
+| `countryFillColor` | `string` | — | Fill color for countries in solid variant. |
+| `countryHoverColor` | `string` | — | Hover color for countries (solid variant only). |
+| `backgroundColor` | `string` | `"transparent"` | Background color behind the globe sphere. |
+
+
 

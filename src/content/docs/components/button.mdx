@@ -78,38 +78,14 @@ import { Button } from "@/components/ui/button";
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "variant",
-      type: `"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "success" | "warning" | "info" | "dark" | "light" | "gradient" | "glass"`,
-      default: `"default"`,
-      description: "Controls the visual style of the button."
-    },
-    {
-      prop: "size",
-      type: `"sm" | "default" | "lg" | "icon"`,
-      default: `"default"`,
-      description: "Adjusts the button size."
-    },
-    {
-      prop: "asChild",
-      type: "boolean",
-      default: "false",
-      description: "Renders the button as its child using Slot."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Additional custom class names."
-    },
-    {
-      prop: "...props",
-      type: "HTMLButtonElement attributes",
-      default: "—",
-      description: "Inherits all standard button attributes and events."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link" \| "success" \| "warning" \| "info" \| "dark" \| "light" \| "gradient" \| "glass"` | `"default"` | Controls the visual style of the button. |
+| `size` | `"sm" \| "default" \| "lg" \| "icon"` | `"default"` | Adjusts the button size. |
+| `asChild` | `boolean` | `false` | Renders the button as its child using Slot. |
+| `className` | `string` | — | Additional custom class names. |
+| `...props` | `HTMLButtonElement attributes` | — | Inherits all standard button attributes and events. |
+
+
 

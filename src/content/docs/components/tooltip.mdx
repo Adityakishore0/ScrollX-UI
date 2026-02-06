@@ -78,44 +78,15 @@ An interactive, animated popup that displays information related to an element w
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "delayDuration",
-      type: "number",
-      default: "0",
-      description: "Time in milliseconds to wait before showing the tooltip. Used in TooltipProvider."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Content of the tooltip or the trigger element."
-    },
-    {
-      prop: "sideOffset",
-      type: "number",
-      default: "0",
-      description: "Distance in pixels between the trigger and the tooltip. Used in TooltipContent."
-    },
-    {
-      prop: "asChild",
-      type: "boolean",
-      default: "false",
-      description: "If true, renders children without wrapping them in a default element. Used in TooltipContent."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Custom CSS classes applied to TooltipContent."
-    },
-    {
-      prop: "...props",
-      type: "any",
-      default: "-",
-      description: "Other props supported by Radix Tooltip primitives (Root, Trigger, Content, Provider)."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `delayDuration` | `number` | `0` | Time in milliseconds to wait before showing the tooltip. Used in TooltipProvider. |
+| `children` | `ReactNode` | `required` | Content of the tooltip or the trigger element. |
+| `sideOffset` | `number` | `0` | Distance in pixels between the trigger and the tooltip. Used in TooltipContent. |
+| `asChild` | `boolean` | `false` | If true, renders children without wrapping them in a default element. Used in TooltipContent. |
+| `className` | `string` | `-` | Custom CSS classes applied to TooltipContent. |
+| `...props` | `any` | `-` | Other props supported by Radix Tooltip primitives (Root, Trigger, Content, Provider). |
+
+
 

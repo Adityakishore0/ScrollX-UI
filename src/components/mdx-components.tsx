@@ -12,6 +12,7 @@ import DepsOptions from "@/components/depsoptions";
 import { Step } from "@/components/Step";
 import { Steps } from "@/components/ui/Steps";
 import { PropsTable } from "@/components/propstable";
+import { MDXPropsTable } from "@/components/mdx/propstable-wrapper";
 
 export const mdxComponents = {
   Accordion,
@@ -29,4 +30,5 @@ export const mdxComponents = {
   Step,
   Steps,
   PropsTable,
+  table: MDXPropsTable,
 };

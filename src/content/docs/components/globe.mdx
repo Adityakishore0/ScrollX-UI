@@ -69,67 +69,18 @@ The `Globe` component creates beautiful 5kb WebGL Globe
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "baseColor",
-      type: "[number, number, number]",
-      default: "[0.3, 0.3, 0.3]",
-      description: "Base color of the globe in RGB."
-    },
-    {
-      prop: "markerColor",
-      type: "[number, number, number]",
-      default: "[0.1, 0.8, 1]",
-      description: "Color of the marker points in RGB."
-    },
-    {
-      prop: "glowColor",
-      type: "[number, number, number]",
-      default: "[1, 1, 1]",
-      description: "Color of the globe glow in RGB."
-    },
-    {
-      prop: "markers",
-      type: "Array<{ location: [number, number]; size: number }>",
-      default: "Default SF/NY markers",
-      description: "Coordinate markers with optional size."
-    },
-    {
-      prop: "scale",
-      type: "number",
-      default: "1",
-      description: "Size multiplier for the globe."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "''",
-      description: "CSS class name for the outer container."
-    },
-    {
-      prop: "rotateToLocation",
-      type: "string | [number, number]",
-      default: "—",
-      description: "Initial rotation target — city name or coordinates."
-    },
-    {
-      prop: "autoRotate",
-      type: "boolean",
-      default: "true",
-      description: "Enable or disable idle globe rotation."
-    },
-    {
-      prop: "rotateCities",
-      type: "string[]",
-      default: "[]",
-      description: "City names to auto-rotate through."
-    },
-    {
-      prop: "rotationSpeed",
-      type: "number",
-      default: "3000",
-      description: "Time (ms) between auto-rotated cities."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `baseColor` | `[number, number, number]` | `[0.3, 0.3, 0.3]` | Base color of the globe in RGB. |
+| `markerColor` | `[number, number, number]` | `[0.1, 0.8, 1]` | Color of the marker points in RGB. |
+| `glowColor` | `[number, number, number]` | `[1, 1, 1]` | Color of the globe glow in RGB. |
+| `markers` | `Array<{ location: [number, number]; size: number }>` | `Default SF/NY markers` | Coordinate markers with optional size. |
+| `scale` | `number` | `1` | Size multiplier for the globe. |
+| `className` | `string` | `''` | CSS class name for the outer container. |
+| `rotateToLocation` | `string \| [number, number]` | — | Initial rotation target — city name or coordinates. |
+| `autoRotate` | `boolean` | `true` | Enable or disable idle globe rotation. |
+| `rotateCities` | `string[]` | `[]` | City names to auto-rotate through. |
+| `rotationSpeed` | `number` | `3000` | Time (ms) between auto-rotated cities. |
+
+

@@ -70,39 +70,15 @@ The `CursorImageTrail` component creates an interactive mouse trail effect with 
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Trigger content for the image trail on hover."
-    },
-    {
-      prop: "images",
-      type: "string[]",
-      default: "required",
-      description: "Array of image URLs used in the trail."
-    },
-    {
-      prop: "renderImageBuffer",
-      type: "number",
-      default: "required",
-      description: "Minimum pixel distance between image renders."
-    },
-    {
-      prop: "rotationRange",
-      type: "number",
-      default: "required",
-      description: "Maximum rotation (in degrees) for trail images."
-    },
-    {
-      prop: "animationStyle",
-      type: `"dynamic" | "minimal"`,
-      default: `"dynamic"`,
-      description: "Controls animation complexity of the trail."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `ReactNode` | `required` | Trigger content for the image trail on hover. |
+| `images` | `string[]` | `required` | Array of image URLs used in the trail. |
+| `renderImageBuffer` | `number` | `required` | Minimum pixel distance between image renders. |
+| `rotationRange` | `number` | `required` | Maximum rotation (in degrees) for trail images. |
+| `animationStyle` | `"dynamic" \| "minimal"` | `"dynamic"` | Controls animation complexity of the trail. |
+
+
 
 
