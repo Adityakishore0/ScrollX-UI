@@ -87,57 +87,18 @@ orbit system featuring rotating meteors and gracefully animated icons.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "icons",
-      type: "SocialIcon[]",
-      default: "[]",
-      description: "Array of social icons with optional orbit index and position angle."
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "undefined",
-      description: "Content rendered at the center of the orbit animation."
-    },
-    {
-      prop: "rippleCount",
-      type: "number",
-      default: "5",
-      description: "Number of circular ripple orbits around the center."
-    },
-    {
-      prop: "meteorSpeed",
-      type: "number",
-      default: "4",
-      description: "Controls the rotation speed of meteor trails (lower = faster)."
-    },
-    {
-      prop: "size",
-      type: "number",
-      default: "500",
-      description: "Overall size (width and height) of the orbit container in pixels."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "undefined",
-      description: "Custom class name for the main container."
-    },
-    {
-      prop: "meteorClassName",
-      type: "string | string[]",
-      default: '""',
-      description: "Additional Tailwind classes applied to meteor trails for styling."
-    },
-    {
-      prop: "meteorGradients",
-      type: "[string, string][]",
-      default: "[]",
-      description: "Array of gradient color pairs for each meteor trail."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `icons` | `SocialIcon[]` | `[]` | Array of social icons with optional orbit index and position angle. |
+| `children` | `React.ReactNode` | `undefined` | Content rendered at the center of the orbit animation. |
+| `rippleCount` | `number` | `5` | Number of circular ripple orbits around the center. |
+| `meteorSpeed` | `number` | `4` | Controls the rotation speed of meteor trails (lower = faster). |
+| `size` | `number` | `500` | Overall size (width and height) of the orbit container in pixels. |
+| `className` | `string` | `undefined` | Custom class name for the main container. |
+| `meteorClassName` | `string \| string[]` | `""` | Additional Tailwind classes applied to meteor trails for styling. |
+| `meteorGradients` | `[string, string][]` | `[]` | Array of gradient color pairs for each meteor trail. |
+
+
 
 

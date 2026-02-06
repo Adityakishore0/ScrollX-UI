@@ -70,31 +70,11 @@ const demoTopics: Topic[] = [
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "topics",
-      type: `Array<{
-  id: string;
-  name: string;
-  position: { x: number; y: number };
-  color: string;
-  highlighted: boolean;
-}>`,
-      default: "required",
-      description: "Array of topic nodes with ID, label, position, color, and highlight state."
-    },
-    {
-      prop: "badgeName",
-      type: "string",
-      default: "required",
-      description: "Label displayed in the center badge."
-    },
-    {
-      prop: "centralDotColor",
-      type: "string",
-      default: `"#FFFFFF"`,
-      description: "Color of the center badge dot."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `topics` | `Array<{   id: string;   name: string;   position: { x: number; y: number };   color: string;   highlighted: boolean; }>` | `required` | Array of topic nodes with ID, label, position, color, and highlight state. |
+| `badgeName` | `string` | `required` | Label displayed in the center badge. |
+| `centralDotColor` | `string` | `"#FFFFFF"` | Color of the center badge dot. |
+
+

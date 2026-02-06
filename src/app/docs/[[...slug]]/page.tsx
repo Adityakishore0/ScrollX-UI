@@ -7,6 +7,7 @@ import { mdxComponents } from "@/components/mdx-components";
 import { cache } from "react";
 import rehypePrettyCode from "rehype-pretty-code";
 import CodeBlock from "@/components/CodeBlock";
+import remarkGfm from "remark-gfm";
 import ComponentNavigator from "@/components/Navigator";
 
 interface DocFrontmatter {
@@ -43,7 +44,7 @@ const getDocBySlug = cache(async (slug: string[]) => {
       options: {
         parseFrontmatter: true,
         mdxOptions: {
-          remarkPlugins: [],
+          remarkPlugins: [remarkGfm],
           rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
           format: "mdx",
         },

@@ -96,86 +96,22 @@ orbits your socials in smooth motion where icons spin, ripple, and glow with pur
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "icons",
-      type: "SocialIcon[]",
-      default: "[]",
-      description: "Array of icons to display in the orbit. Each icon can have optional orbitIndex and position.",
-    },
-    {
-      prop: "text",
-      type: "string",
-      default: '""',
-      description: "Text to display around a central orbit. Letters are evenly spaced and rotate.",
-    },
-    {
-      prop: "textClassName",
-      type: "string",
-      default: '""',
-      description: "Tailwind classes applied to each letter of the text.",
-    },
-    {
-      prop: "textOrbitIndex",
-      type: "number",
-      default: 2,
-      description: "Index of the ripple box used as radius for the text orbit.",
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "-",
-      description: "Optional content displayed at the center of the orbit.",
-    },
-    {
-      prop: "rippleCount",
-      type: "number",
-      default: 5,
-      description: "Number of concentric ripple circles in the orbit.",
-    },
-    {
-      prop: "rippleDuration",
-      type: "number",
-      default: 2,
-      description: "Duration (seconds) of ripple animation.",
-    },
-    {
-      prop: "textDuration",
-      type: "number",
-      default: 20,
-      description: "Duration (seconds) for the text to rotate one full circle.",
-    },
-    {
-      prop: "iconDelay",
-      type: "number",
-      default: 150,
-      description: "Delay (ms) between consecutive icon entrance animations.",
-    },
-    {
-      prop: "iconDuration",
-      type: "number",
-      default: 800,
-      description: "Duration (ms) for each icon's entrance animation.",
-    },
-    {
-      prop: "orbitDuration",
-      type: "number",
-      default: 30,
-      description: "Duration (seconds) for icons in an orbit to complete a full rotation.",
-    },
-    {
-      prop: "size",
-      type: "number",
-      default: 500,
-      description: "Width and height of the entire orbit container in pixels.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: '""',
-      description: "Additional Tailwind classes applied to the orbit container.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `icons` | `SocialIcon[]` | `[]` | Array of icons to display in the orbit. Each icon can have optional orbitIndex and position. |
+| `text` | `string` | `""` | Text to display around a central orbit. Letters are evenly spaced and rotate. |
+| `textClassName` | `string` | `""` | Tailwind classes applied to each letter of the text. |
+| `textOrbitIndex` | `number` | `2` | Index of the ripple box used as radius for the text orbit. |
+| `children` | `ReactNode` | `-` | Optional content displayed at the center of the orbit. |
+| `rippleCount` | `number` | `5` | Number of concentric ripple circles in the orbit. |
+| `rippleDuration` | `number` | `2` | Duration (seconds) of ripple animation. |
+| `textDuration` | `number` | `20` | Duration (seconds) for the text to rotate one full circle. |
+| `iconDelay` | `number` | `150` | Delay (ms) between consecutive icon entrance animations. |
+| `iconDuration` | `number` | `800` | Duration (ms) for each icon's entrance animation. |
+| `orbitDuration` | `number` | `30` | Duration (seconds) for icons in an orbit to complete a full rotation. |
+| `size` | `number` | `500` | Width and height of the entire orbit container in pixels. |
+| `className` | `string` | `""` | Additional Tailwind classes applied to the orbit container. |
+
+
 

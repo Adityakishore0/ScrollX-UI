@@ -100,121 +100,27 @@ Corner-based spark waves that radiate inward and outward with smooth motion.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "sparkColor",
-      type: "string",
-      default: '"#000000"',
-      description: "Spark color used in light mode.",
-    },
-    {
-      prop: "sparkColorDark",
-      type: "string",
-      default: '"#ffffff"',
-      description: "Spark color used when dark mode is active.",
-    },
-    {
-      prop: "sparkSize",
-      type: "number",
-      default: "10",
-      description: "Length of each spark line segment.",
-    },
-    {
-      prop: "sparkCount",
-      type: "number",
-      default: "24",
-      description: "Number of sparks emitted per ring.",
-    },
-    {
-      prop: "duration",
-      type: "number",
-      default: "3500",
-      description: "Time (ms) for a spark wave to complete.",
-    },
-    {
-      prop: "easing",
-      type: "string",
-      default: '"ease-out"',
-      description: "Easing function applied to spark motion.",
-    },
-    {
-      prop: "waveInterval",
-      type: "number",
-      default: "1400",
-      description: "Delay (ms) between consecutive waves.",
-    },
-    {
-      prop: "maxRadius",
-      type: "number",
-      default: "800",
-      description: "Maximum outward expansion radius.",
-    },
-    {
-      prop: "ringsPerWave",
-      type: "number",
-      default: "5",
-      description: "Number of concentric rings per wave.",
-    },
-    {
-      prop: "ringSpacing",
-      type: "number",
-      default: "40",
-      description: "Distance between successive rings.",
-    },
-    {
-      prop: "enableInward",
-      type: "boolean",
-      default: "true",
-      description: "Enables inward collapsing spark waves.",
-    },
-    {
-      prop: "corners",
-      type: '"both" | "left" | "right"',
-      default: '"both"',
-      description: "Corner origin(s) for spark emission.",
-    },
-    {
-      prop: "backgroundColor",
-      type: "string",
-      default: '"white"',
-      description: "Background fill color in light mode.",
-    },
-    {
-      prop: "backgroundColorDark",
-      type: "string",
-      default: '"black"',
-      description: "Background fill color in dark mode.",
-    },
-    {
-      prop: "clearBackground",
-      type: "boolean",
-      default: "true",
-      description: "Clears or repaints the canvas each frame.",
-    },
-    {
-      prop: "backgroundOpacity",
-      type: "number",
-      default: "0.15",
-      description: "Overrides alpha value of background color.",
-    },
-    {
-      prop: "forceDarkMode",
-      type: "boolean",
-      default: "—",
-      description: "Forces dark mode regardless of theme.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Custom classes for the container wrapper.",
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "—",
-      description: "Content rendered above the spark canvas.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `sparkColor` | `string` | `"#000000"` | Spark color used in light mode. |
+| `sparkColorDark` | `string` | `"#ffffff"` | Spark color used when dark mode is active. |
+| `sparkSize` | `number` | `10` | Length of each spark line segment. |
+| `sparkCount` | `number` | `24` | Number of sparks emitted per ring. |
+| `duration` | `number` | `3500` | Time (ms) for a spark wave to complete. |
+| `easing` | `string` | `"ease-out"` | Easing function applied to spark motion. |
+| `waveInterval` | `number` | `1400` | Delay (ms) between consecutive waves. |
+| `maxRadius` | `number` | `800` | Maximum outward expansion radius. |
+| `ringsPerWave` | `number` | `5` | Number of concentric rings per wave. |
+| `ringSpacing` | `number` | `40` | Distance between successive rings. |
+| `enableInward` | `boolean` | `true` | Enables inward collapsing spark waves. |
+| `corners` | `"both" \| "left" \| "right"` | `"both"` | Corner origin(s) for spark emission. |
+| `backgroundColor` | `string` | `"white"` | Background fill color in light mode. |
+| `backgroundColorDark` | `string` | `"black"` | Background fill color in dark mode. |
+| `clearBackground` | `boolean` | `true` | Clears or repaints the canvas each frame. |
+| `backgroundOpacity` | `number` | `0.15` | Overrides alpha value of background color. |
+| `forceDarkMode` | `boolean` | — | Forces dark mode regardless of theme. |
+| `className` | `string` | — | Custom classes for the container wrapper. |
+| `children` | `ReactNode` | — | Content rendered above the spark canvas. |
+
+

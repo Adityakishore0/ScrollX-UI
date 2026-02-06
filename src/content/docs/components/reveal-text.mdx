@@ -142,61 +142,17 @@ a clean text reveal component providing directional animation and stagger option
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "-",
-      description: "Text or elements to animate."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Classes applied to the visible text."
-    },
-    {
-      prop: "boxClassName",
-      type: "string",
-      default: "-",
-      description: "Classes applied to the reveal animation layer."
-    },
-    {
-      prop: "delay",
-      type: "number",
-      default: "0",
-      description: "Animation delay before the reveal starts."
-    },
-    {
-      prop: "duration",
-      type: "number",
-      default: "0.8",
-      description: "Duration of the reveal animation."
-    },
-    {
-      prop: "direction",
-      type: `"up" | "down" | "left" | "right"`,
-      default: `"down"`,
-      description: "Direction from which the reveal layer moves."
-    },
-    {
-      prop: "mode",
-      type: `"manual" | "auto"`,
-      default: `"manual"`,
-      description: "Animate full text or auto-split into words."
-    },
-    {
-      prop: "stagger",
-      type: "number",
-      default: "0.1",
-      description: "Delay between word animations in auto mode."
-    },
-    {
-      prop: "once",
-      type: "boolean",
-      default: "true",
-      description: "Run animation once or every time it enters view."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `ReactNode` | `-` | Text or elements to animate. |
+| `className` | `string` | `-` | Classes applied to the visible text. |
+| `boxClassName` | `string` | `-` | Classes applied to the reveal animation layer. |
+| `delay` | `number` | `0` | Animation delay before the reveal starts. |
+| `duration` | `number` | `0.8` | Duration of the reveal animation. |
+| `direction` | `"up" \| "down" \| "left" \| "right"` | `"down"` | Direction from which the reveal layer moves. |
+| `mode` | `"manual" \| "auto"` | `"manual"` | Animate full text or auto-split into words. |
+| `stagger` | `number` | `0.1` | Delay between word animations in auto mode. |
+| `once` | `boolean` | `true` | Run animation once or every time it enters view. |
+
+

@@ -86,17 +86,18 @@ A customizable component for creating elegant, slide-out panels from the top of 
 
 ## Props
 
-<PropsTable
-  rows={[
-    { prop: "open", type: "boolean", default: "false", component: "TopSheet", description: "Controlled open state." },
-    { prop: "onOpenChange", type: "(open: boolean) => void", default: "-", component: "TopSheet", description: "Called when the open state changes." },
-    { prop: "defaultOpen", type: "boolean", default: "false", component: "TopSheet", description: "Initial open state for uncontrolled usage." },
-    { prop: "asChild", type: "boolean", default: "false", component: "TopSheetTrigger, TopSheetClose", description: "Render without adding an extra wrapper element." },
-    { prop: "height", type: "string", default: "'70vh'", component: "TopSheetContent", description: "Height of the sheet." },
-    { prop: "closeThreshold", type: "number", default: "0.3", component: "TopSheetContent", description: "Drag distance ratio required to close the sheet." },
-    { prop: "container", type: "HTMLElement", default: "document.body", component: "TopSheetPortal", description: "DOM element where the portal is mounted." },
-    { prop: "className", type: "string", default: "''", component: "Most components", description: "Custom CSS classes." }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `open` | `boolean` | `false` | Controlled open state. |
+| `onOpenChange` | `(open: boolean) => void` | `-` | Called when the open state changes. |
+| `defaultOpen` | `boolean` | `false` | Initial open state for uncontrolled usage. |
+| `asChild` | `boolean` | `false` | Render without adding an extra wrapper element. |
+| `height` | `string` | `'70vh'` | Height of the sheet. |
+| `closeThreshold` | `number` | `0.3` | Drag distance ratio required to close the sheet. |
+| `container` | `HTMLElement` | `document.body` | DOM element where the portal is mounted. |
+| `className` | `string` | `''` | Custom CSS classes. |
+
+
 
 

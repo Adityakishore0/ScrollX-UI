@@ -84,53 +84,16 @@ Displays an indicator showing the completion progress of a task, typically displ
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "value",
-      type: "number",
-      default: "0",
-      description: "The current progress value, typically between 0 and 100.",
-    },
-    {
-      prop: "variant",
-      type: `"default" | "slim" | "outline"`,
-      default: `"default"`,
-      description:
-        "Visual style of the progress bar.",
-    },
-    {
-      prop: "indicatorClassName",
-      type: "string",
-      default: "_",
-      description:
-        "Optional CSS class applied to the progress indicator.",
-    },
-    {
-      prop: "indicatorStyle",
-      type: "React.CSSProperties",
-      default: "_",
-      description:
-        "Optional inline styles applied to the progress indicator.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "_",
-      description: "CSS class for the outer progress container.",
-    },
-    {
-      prop: "style",
-      type: "React.CSSProperties",
-      default: "_",
-      description: "Inline styles for the outer progress container.",
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "_",
-      description: "Optional children to render inside the progress container (rarely used).",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `value` | `number` | `0` | The current progress value, typically between 0 and 100. |
+| `variant` | `"default" \| "slim" \| "outline"` | `"default"` | Visual style of the progress bar. |
+| `indicatorClassName` | `string` | `_` | Optional CSS class applied to the progress indicator. |
+| `indicatorStyle` | `React.CSSProperties` | `_` | Optional inline styles applied to the progress indicator. |
+| `className` | `string` | `_` | CSS class for the outer progress container. |
+| `style` | `React.CSSProperties` | `_` | Inline styles for the outer progress container. |
+| `children` | `React.ReactNode` | `_` | Optional children to render inside the progress container (rarely used). |
+
+
 

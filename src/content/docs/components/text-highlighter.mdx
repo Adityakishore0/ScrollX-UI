@@ -74,75 +74,19 @@ TextHighlighter with smooth animated highlights to emphasize key text.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "The text or elements to be highlighted.",
-    },
-    {
-      prop: "highlightColor",
-      type: "string",
-      default: "#ff6b9d",
-      description: "Color of the highlight stroke applied under the text.",
-    },
-    {
-      prop: "highlightOpacity",
-      type: "number",
-      default: "1",
-      description: "Opacity of the highlight stroke (0 to 1).",
-    },
-    {
-      prop: "animationDuration",
-      type: "number",
-      default: "1.2",
-      description: "Duration of the highlight drawing animation in seconds.",
-    },
-    {
-      prop: "animationDelay",
-      type: "number",
-      default: "0",
-      description: "Delay before the highlight animation starts (in seconds).",
-    },
-    {
-      prop: "strokeWidth",
-      type: "number",
-      default: "2",
-      description: "Width of the highlight stroke.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "''",
-      description: "Additional CSS classes for the wrapper span.",
-    },
-    {
-      prop: "style",
-      type: "React.CSSProperties",
-      default: "{}",
-      description: "Inline styles applied to the wrapper span.",
-    },
-    {
-      prop: "type",
-      type: "'wavy' | 'zigzag'",
-      default: "'wavy'",
-      description: "Type of highlight path shape drawn beneath the text.",
-    },
-    {
-      prop: "triggerOnView",
-      type: "boolean",
-      default: "true",
-      description:
-        "If true, the animation triggers when the element enters the viewport.",
-    },
-    {
-      prop: "repeat",
-      type: "boolean",
-      default: "false",
-      description:
-        "If true, animation retriggers every time the element enters the viewport.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `ReactNode` | `required` | The text or elements to be highlighted. |
+| `highlightColor` | `string` | `#ff6b9d` | Color of the highlight stroke applied under the text. |
+| `highlightOpacity` | `number` | `1` | Opacity of the highlight stroke (0 to 1). |
+| `animationDuration` | `number` | `1.2` | Duration of the highlight drawing animation in seconds. |
+| `animationDelay` | `number` | `0` | Delay before the highlight animation starts (in seconds). |
+| `strokeWidth` | `number` | `2` | Width of the highlight stroke. |
+| `className` | `string` | `''` | Additional CSS classes for the wrapper span. |
+| `style` | `React.CSSProperties` | `{}` | Inline styles applied to the wrapper span. |
+| `type` | `'wavy' \| 'zigzag'` | `'wavy'` | Type of highlight path shape drawn beneath the text. |
+| `triggerOnView` | `boolean` | `true` | If true, the animation triggers when the element enters the viewport. |
+| `repeat` | `boolean` | `false` | If true, animation retriggers every time the element enters the viewport. |
+
+

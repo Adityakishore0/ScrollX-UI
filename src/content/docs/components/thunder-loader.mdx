@@ -130,106 +130,27 @@ Animated thunderbolt loader with glow and shimmer effects, customizable sizes an
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "size",
-      type: `"xs" | "sm" | "md" | "lg" | "xl" | "2xl"`,
-      default: `"md"`,
-      description: "Controls the size of the loader."
-    },
-    {
-      prop: "variant",
-      type: `"default" | "electric" | "fire" | "ice" | "rainbow" | "subtle"`,
-      default: `"default"`,
-      description: "Controls the color style of the loader."
-    },
-    {
-      prop: "fillDuration",
-      type: "number",
-      default: "2",
-      description: "Duration in seconds for the fill animation."
-    },
-    {
-      prop: "glowDuration",
-      type: "number",
-      default: "3",
-      description: "Duration in seconds for the glow animation."
-    },
-    {
-      prop: "animateDuration",
-      type: "number",
-      default: "2",
-      description: "Duration in seconds for the thunder path animation."
-    },
-    {
-      prop: "showGlow",
-      type: "boolean",
-      default: "false",
-      description: "Enables the glow effect."
-    },
-    {
-      prop: "showFill",
-      type: "boolean",
-      default: "false",
-      description: "Enables the fill animation inside the loader."
-    },
-    {
-      prop: "animate",
-      type: "boolean | 'thunder'",
-      default: "false",
-      description: "Enables path animation; 'thunder' uses stroke dash offset animation."
-    },
-    {
-      prop: "fillColor",
-      type: "string",
-      default: "—",
-      description: "Custom color for the fill animation."
-    },
-    {
-      prop: "glowColor",
-      type: "string",
-      default: "—",
-      description: "Custom color for the glow effect."
-    },
-    {
-      prop: "baseColor",
-      type: "string",
-      default: "—",
-      description: "Custom base color of the loader stroke."
-    },
-    {
-      prop: "strokeWidth",
-      type: "number",
-      default: "2",
-      description: "Width of the loader stroke."
-    },
-    {
-      prop: "viewBox",
-      type: "string",
-      default: `"0 0 100 80"`,
-      description: "Custom SVG viewBox."
-    },
-    {
-      prop: "customPath",
-      type: "string",
-      default: "—",
-      description: "Custom SVG path for the loader shape."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Custom class names for styling the loader."
-    },
-    {
-      prop: "...props",
-      type: "HTMLDivElement attributes",
-      default: "—",
-      description: "Supports all standard div props and events."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl"` | `"md"` | Controls the size of the loader. |
+| `variant` | `"default" \| "electric" \| "fire" \| "ice" \| "rainbow" \| "subtle"` | `"default"` | Controls the color style of the loader. |
+| `fillDuration` | `number` | `2` | Duration in seconds for the fill animation. |
+| `glowDuration` | `number` | `3` | Duration in seconds for the glow animation. |
+| `animateDuration` | `number` | `2` | Duration in seconds for the thunder path animation. |
+| `showGlow` | `boolean` | `false` | Enables the glow effect. |
+| `showFill` | `boolean` | `false` | Enables the fill animation inside the loader. |
+| `animate` | `boolean \| 'thunder'` | `false` | Enables path animation; 'thunder' uses stroke dash offset animation. |
+| `fillColor` | `string` | — | Custom color for the fill animation. |
+| `glowColor` | `string` | — | Custom color for the glow effect. |
+| `baseColor` | `string` | — | Custom base color of the loader stroke. |
+| `strokeWidth` | `number` | `2` | Width of the loader stroke. |
+| `viewBox` | `string` | `"0 0 100 80"` | Custom SVG viewBox. |
+| `customPath` | `string` | — | Custom SVG path for the loader shape. |
+| `className` | `string` | — | Custom class names for styling the loader. |
+| `...props` | `HTMLDivElement attributes` | — | Supports all standard div props and events. |
+
+
 
 
 

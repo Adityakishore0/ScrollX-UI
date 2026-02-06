@@ -79,56 +79,17 @@ A smooth interactive vercel inspired card.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Content of the card. Placed inside the centered area of the card."
-    },
-    {
-      prop: "showIcons",
-      type: "boolean",
-      default: "true",
-      description: "Whether to display the corner icons (+) around the card."
-    },
-    {
-      prop: "iconClassName",
-      type: "string",
-      default: "''",
-      description: "Additional classes to style the corner icons."
-    },
-    {
-      prop: "animateOnHover",
-      type: "boolean",
-      default: "false",
-      description: "Whether the card should scale slightly on hover."
-    },
-    {
-      prop: "glowEffect",
-      type: "boolean",
-      default: "false",
-      description: "Whether to show a glowing gradient effect on hover."
-    },
-    {
-      prop: "bordered",
-      type: "boolean",
-      default: "true",
-      description: "Whether to show the card border."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "''",
-      description: "Custom classes applied to the card container."
-    },
-    {
-      prop: "...props",
-      type: "HTMLMotionProps<'div'>",
-      default: "-",
-      description: "Any other props supported by Framer Motion's div, e.g., id, style, onClick."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `ReactNode` | `required` | Content of the card. Placed inside the centered area of the card. |
+| `showIcons` | `boolean` | `true` | Whether to display the corner icons (+) around the card. |
+| `iconClassName` | `string` | `''` | Additional classes to style the corner icons. |
+| `animateOnHover` | `boolean` | `false` | Whether the card should scale slightly on hover. |
+| `glowEffect` | `boolean` | `false` | Whether to show a glowing gradient effect on hover. |
+| `bordered` | `boolean` | `true` | Whether to show the card border. |
+| `className` | `string` | `''` | Custom classes applied to the card container. |
+| `...props` | `HTMLMotionProps<'div'>` | `-` | Any other props supported by Framer Motion's div, e.g., id, style, onClick. |
+
+
 

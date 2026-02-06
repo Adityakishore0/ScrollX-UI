@@ -103,86 +103,22 @@ Interactive button with animated stagger text and customizable styles for modern
 
 ## Props
 
-<PropsTable
-  rows={[
-  {
-    "prop": "variant",
-    "type": "string",
-    "default": "default",
-    "description": "Button style (default, destructive, outline,..)"
-  },
-  {
-    "prop": "size",
-    "type": "string",
-    "default": "default",
-    "description": "Button size (default, sm, lg, icon)"
-  },
-  {
-    "prop": "asChild",
-    "type": "boolean",
-    "default": false,
-    "description": "Renders as Slot child element"
-  },
-  {
-    "prop": "text",
-    "type": "string",
-    "default": "—",
-    "description": "Base button text"
-  },
-  {
-    "prop": "hoverText",
-    "type": "string",
-    "default": "—",
-    "description": "Text displayed on hover"
-  },
-  {
-    "prop": "staggerDelay",
-    "type": "number",
-    "default": 0.05,
-    "description": "Delay between each character animation"
-  },
-  {
-    "prop": "staggerDuration",
-    "type": "number",
-    "default": 1,
-    "description": "Duration of the stagger animation"
-  },
-  {
-    "prop": "direction",
-    "type": "string",
-    "default": "down",
-    "description": "Animation direction (up, down, alternate-even, alternate-odd)"
-  },
-  {
-    "prop": "easing",
-    "type": "number[]",
-    "default": "[0.22, 1, 0.36, 1]",
-    "description": "Easing curve for animation timing"
-  },
-  {
-    "prop": "disableStagger",
-    "type": "boolean",
-    "default": false,
-    "description": "Disables stagger text animation"
-  },
-  {
-    "prop": "className",
-    "type": "string",
-    "default": "—",
-    "description": "Custom CSS classes for styling"
-  },
-  {
-    "prop": "children",
-    "type": "ReactNode",
-    "default": "—",
-    "description": "Button content: text or elements"
-  },
-  {
-    "prop": "...props",
-    "type": "button props",
-    "default": "—",
-    "description": "Supports native button attributes and events"
-  }
-]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `variant` | `string` | `default` | Button style (default, destructive, outline,..) |
+| `size` | `string` | `default` | Button size (default, sm, lg, icon) |
+| `asChild` | `boolean` | — | Renders as Slot child element |
+| `text` | `string` | — | Base button text |
+| `hoverText` | `string` | — | Text displayed on hover |
+| `staggerDelay` | `number` | `0.05` | Delay between each character animation |
+| `staggerDuration` | `number` | `1` | Duration of the stagger animation |
+| `direction` | `string` | `down` | Animation direction (up, down, alternate-even, alternate-odd) |
+| `easing` | `number[]` | `[0.22, 1, 0.36, 1]` | Easing curve for animation timing |
+| `disableStagger` | `boolean` | — | Disables stagger text animation |
+| `className` | `string` | — | Custom CSS classes for styling |
+| `children` | `ReactNode` | — | Button content: text or elements |
+| `...props` | `button props` | — | Supports native button attributes and events |
+
+
 

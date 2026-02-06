@@ -105,57 +105,18 @@ The `Carousel` component is the main container for the card stack carousel.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Extra CSS classes. Used in all components."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Inner content. Used in Carousel, CarouselContent, CarouselItem."
-    },
-    {
-      prop: "maxVisible",
-      type: "number",
-      default: "3",
-      description: "Number of visible stacked cards. Used in CarouselContent."
-    },
-    {
-      prop: "stackOffset",
-      type: "number",
-      default: "20",
-      description: "Vertical gap between stacked cards. Used in CarouselContent."
-    },
-    {
-      prop: "variant",
-      type: '"default" | "outline" | "ghost" | "link"',
-      default: '"outline"',
-      description: "Button style. Used in CarouselPrevious, CarouselNext."
-    },
-    {
-      prop: "size",
-      type: '"default" | "sm" | "lg" | "icon"',
-      default: '"icon"',
-      description: "Button size. Used in CarouselPrevious, CarouselNext."
-    },
-    {
-      prop: "onClick",
-      type: "() => void",
-      default: "—",
-      description: "Click handler. Used in CarouselPrevious, CarouselNext."
-    },
-    {
-      prop: "disabled",
-      type: "boolean",
-      default: "false",
-      description: "Disables button. Used in CarouselPrevious, CarouselNext."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `className` | `string` | — | Extra CSS classes. Used in all components. |
+| `children` | `ReactNode` | `required` | Inner content. Used in Carousel, CarouselContent, CarouselItem. |
+| `maxVisible` | `number` | `3` | Number of visible stacked cards. Used in CarouselContent. |
+| `stackOffset` | `number` | `20` | Vertical gap between stacked cards. Used in CarouselContent. |
+| `variant` | `"default" \| "outline" \| "ghost" \| "link"` | `"outline"` | Button style. Used in CarouselPrevious, CarouselNext. |
+| `size` | `"default" \| "sm" \| "lg" \| "icon"` | `"icon"` | Button size. Used in CarouselPrevious, CarouselNext. |
+| `onClick` | `() => void` | — | Click handler. Used in CarouselPrevious, CarouselNext. |
+| `disabled` | `boolean` | `false` | Disables button. Used in CarouselPrevious, CarouselNext. |
+
+
 
 

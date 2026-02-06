@@ -143,62 +143,18 @@ The `MagicDock` component provides a customizable, animated dock.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "items",
-      type: "DockItemData[]",
-      default: "required",
-      description: "Array of dock items with id, icon, label, description, and onClick."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Custom classes for the dock container."
-    },
-    {
-      prop: "distance",
-      type: "number",
-      default: "150",
-      description: "Distance used for magnification effect."
-    },
-    {
-      prop: "panelHeight",
-      type: "number",
-      default: "64",
-      description: "Fixed height of the dock panel."
-    },
-    {
-      prop: "baseItemSize",
-      type: "number",
-      default: "50",
-      description: "Base size of each dock item."
-    },
-    {
-      prop: "dockHeight",
-      type: "number",
-      default: "256",
-      description: "Max height of the expanded dock."
-    },
-    {
-      prop: "magnification",
-      type: "number",
-      default: "70",
-      description: "Max size increase on item hover."
-    },
-    {
-      prop: "spring",
-      type: "{ mass: number; stiffness: number; damping: number }",
-      default: `{ mass: 0.1, stiffness: 150, damping: 12 }`,
-      description: "Spring animation config for item movement."
-    },
-    {
-      prop: "variant",
-      type: `"default" | "gradient" | "tooltip"`,
-      default: `"default"`,
-      description: "Visual style of the dock."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `items` | `DockItemData[]` | `required` | Array of dock items with id, icon, label, description, and onClick. |
+| `className` | `string` | — | Custom classes for the dock container. |
+| `distance` | `number` | `150` | Distance used for magnification effect. |
+| `panelHeight` | `number` | `64` | Fixed height of the dock panel. |
+| `baseItemSize` | `number` | `50` | Base size of each dock item. |
+| `dockHeight` | `number` | `256` | Max height of the expanded dock. |
+| `magnification` | `number` | `70` | Max size increase on item hover. |
+| `spring` | `{ mass: number; stiffness: number; damping: number }` | `{ mass: 0.1, stiffness: 150, damping: 12 }` | Spring animation config for item movement. |
+| `variant` | `"default" \| "gradient" \| "tooltip"` | `"default"` | Visual style of the dock. |
+
+
 

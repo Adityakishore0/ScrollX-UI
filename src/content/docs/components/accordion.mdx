@@ -121,56 +121,16 @@ import {
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "type",
-      type: `"single" | "multiple"`,
-      default: `"single"`,
-      description: "Accordion type; single allows only one item open."
-    },
-    {
-      prop: "defaultValue",
-      type: "string | string[]",
-      default: "—",
-      description: "Initial open item(s)."
-    },
-    {
-      prop: "value",
-      type: "string | string[]",
-      default: "—",
-      description: "Controlled open item(s)."
-    },
-    {
-      prop: "onValueChange",
-      type: "(value: string | string[]) => void",
-      default: "—",
-      description: "Callback triggered on value change."
-    },
-    {
-      prop: "collapsible",
-      type: "boolean",
-      default: "false",
-      description: "If true, allows closing the open item in 'single' mode."
-    },
-    {
-      prop: "value (AccordionItem)",
-      type: "string",
-      default: "required",
-      description: "Unique key for the accordion item."
-    },
-    {
-      prop: "disabled (AccordionItem)",
-      type: "boolean",
-      default: "false",
-      description: "Disables the accordion item."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Used in: Accordion, Trigger, Content — represents nested elements."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `type` | `"single" \| "multiple"` | `"single"` | Accordion type; single allows only one item open. |
+| `defaultValue` | `string \| string[]` | — | Initial open item(s). |
+| `value` | `string \| string[]` | — | Controlled open item(s). |
+| `onValueChange` | `(value: string \| string[]) => void` | — | Callback triggered on value change. |
+| `collapsible` | `boolean` | `false` | If true, allows closing the open item in 'single' mode. |
+| `value (AccordionItem)` | `string` | `required` | Unique key for the accordion item. |
+| `disabled (AccordionItem)` | `boolean` | `false` | Disables the accordion item. |
+| `children` | `ReactNode` | `required` | Used in: Accordion, Trigger, Content — represents nested elements. |
+
 

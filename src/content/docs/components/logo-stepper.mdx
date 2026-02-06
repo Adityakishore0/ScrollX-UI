@@ -76,43 +76,14 @@ logo showcase with names, smooth animations, hover effects, and modern UI.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "logos",
-      type: "Array<{ icon: React.ReactNode; label: string }>",
-      default: "required",
-      description:
-        "An array of logo objects, each containing an icon and a label to display.",
-    },
-    {
-      prop: "animationDuration",
-      type: "number",
-      default: "0.6",
-      description:
-        "Duration (in seconds) for the logo transition animation using Framer Motion.",
-    },
-    {
-      prop: "animationDelay",
-      type: "number",
-      default: "1.2",
-      description:
-        "Time delay (in seconds) between automatic transitions of the logo stepper.",
-    },
-    {
-      prop: "direction",
-      type: "'loop' | 'vloop'",
-      default: "'loop'",
-      description:
-        "Determines the visiblity of loop",
-    },
-    {
-      prop: "visibleCount",
-      type: "number",
-      default: "5",
-      description:
-        "Number of logos visible at a time in the stepper viewport.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `logos` | `Array<{ icon: React.ReactNode; label: string }>` | `required` | An array of logo objects, each containing an icon and a label to display. |
+| `animationDuration` | `number` | `0.6` | Duration (in seconds) for the logo transition animation using Framer Motion. |
+| `animationDelay` | `number` | `1.2` | Time delay (in seconds) between automatic transitions of the logo stepper. |
+| `direction` | `'loop' \| 'vloop'` | `'loop'` | Determines the visiblity of loop |
+| `visibleCount` | `number` | `5` | Number of logos visible at a time in the stepper viewport. |
+
+
 

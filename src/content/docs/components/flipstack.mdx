@@ -78,34 +78,12 @@ A stylish and animated card stack UI for showcasing content in layered views.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "cards",
-      type: "FlipStackCard[]",
-      default: "id",
-      description: "Array of cards to display in the stack.",
-    },
-    {
-      prop: "FlipStackCard.id",
-      type: "number",
-      default: "required",
-      description:
-        "Unique identifier for the card. Used as React key and to manage animations.",
-    },
-    {
-      prop: "mobileDirection",
-      type: `"top" | "bottom"`,
-      default: `"top"`,
-      description:
-        "Controls the bounce direction of the active card on mobile devices.",
-    },
-    {
-      prop: "FlipStackCard.content",
-      type: "ReactNode",
-      default: "optional",
-      description:
-        "Custom content to render inside the card. Can be text, images, or any JSX element.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `cards` | `FlipStackCard[]` | `id` | Array of cards to display in the stack. |
+| `FlipStackCard.id` | `number` | `required` | Unique identifier for the card. Used as React key and to manage animations. |
+| `mobileDirection` | `"top" \| "bottom"` | `"top"` | Controls the bounce direction of the active card on mobile devices. |
+| `FlipStackCard.content` | `ReactNode` | `optional` | Custom content to render inside the card. Can be text, images, or any JSX element. |
+
+

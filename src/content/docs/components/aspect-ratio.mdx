@@ -60,37 +60,13 @@ The root container for the `AspectRatio` component, which helps to maintain a co
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "ratio",
-      type: "number",
-      default: "16 / 9",
-      description: "Aspect ratio of the container (e.g., 4/3, 1/1). Used in AspectRatio."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Content inside the container. Used in AspectRatio and AspectRatioChild."
-    },
-    {
-      prop: "fill",
-      type: "boolean",
-      default: "false",
-      description: "Makes the child fill the entire container. Used in AspectRatioChild."
-    },
-    {
-      prop: "object-cover",
-      type: "boolean",
-      default: "true",
-      description: "Keeps aspect ratio while covering the container. Used in AspectRatioChild."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Optional styling class. Used in AspectRatio and AspectRatioChild."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `ratio` | `number` | `16 / 9` | Aspect ratio of the container (e.g., 4/3, 1/1). Used in AspectRatio. |
+| `children` | `ReactNode` | `required` | Content inside the container. Used in AspectRatio and AspectRatioChild. |
+| `fill` | `boolean` | `false` | Makes the child fill the entire container. Used in AspectRatioChild. |
+| `object-cover` | `boolean` | `true` | Keeps aspect ratio while covering the container. Used in AspectRatioChild. |
+| `className` | `string` | — | Optional styling class. Used in AspectRatio and AspectRatioChild. |
+
+

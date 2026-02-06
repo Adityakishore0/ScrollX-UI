@@ -74,105 +74,22 @@ Dot-based waves ripple outward in symmetry, creating a subtle, motion-driven bac
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "dotGap",
-      type: "number",
-      default: "20",
-      description:
-        "Distance (in pixels) between each dot in the grid. Smaller values create denser dot patterns.",
-    },
-    {
-      prop: "sphereRadius",
-      type: "number",
-      default: "200",
-      description:
-        "Defines the virtual radius of influence for the wave effect, controlling overall spread.",
-    },
-    {
-      prop: "dotRadiusMax",
-      type: "number",
-      default: "3",
-      description:
-        "Maximum radius (in pixels) of each rendered dot.",
-    },
-    {
-      prop: "speed",
-      type: "number",
-      default: "0.15",
-      description:
-        "Controls the easing speed when the wave center moves automatically.",
-    },
-    {
-      prop: "expansionSpeed",
-      type: "number",
-      default: "150",
-      description:
-        "Speed at which the wave expands outward from the center (pixels per second).",
-    },
-    {
-      prop: "repeatAnimation",
-      type: "boolean",
-      default: "true",
-      description:
-        "Determines whether the wave animation restarts after reaching the screen edges.",
-    },
-    {
-      prop: "lightIntensity",
-      type: "number",
-      default: "0.5",
-      description:
-        "Base brightness of the dots after the wave passes through.",
-    },
-    {
-      prop: "fadeIntensity",
-      type: "number",
-      default: "0.15",
-      description:
-        "Controls how much dots fade after the wave has moved past them.",
-    },
-    {
-      prop: "followMouse",
-      type: "boolean",
-      default: "false",
-      description:
-        "When enabled, the wave center follows the mouse cursor for interactive effects.",
-    },
-    {
-      prop: "bgColor",
-      type: "string",
-      default: '"#000000"',
-      description:
-        "Fallback background color for the canvas when container styles are transparent.",
-    },
-    {
-      prop: "dotColor",
-      type: "string",
-      default: '"#ffffff"',
-      description:
-        "Fallback color used to render dots when no text color is detected.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description:
-        "Custom classes applied to the outer container element.",
-    },
-    {
-      prop: "dotClassName",
-      type: "string",
-      default: "—",
-      description:
-        "Custom classes applied directly to the canvas element.",
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "—",
-      description:
-        "Content rendered above the animated dot wave, useful for hero sections or overlays.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `dotGap` | `number` | `20` | Distance (in pixels) between each dot in the grid. Smaller values create denser dot patterns. |
+| `sphereRadius` | `number` | `200` | Defines the virtual radius of influence for the wave effect, controlling overall spread. |
+| `dotRadiusMax` | `number` | `3` | Maximum radius (in pixels) of each rendered dot. |
+| `speed` | `number` | `0.15` | Controls the easing speed when the wave center moves automatically. |
+| `expansionSpeed` | `number` | `150` | Speed at which the wave expands outward from the center (pixels per second). |
+| `repeatAnimation` | `boolean` | `true` | Determines whether the wave animation restarts after reaching the screen edges. |
+| `lightIntensity` | `number` | `0.5` | Base brightness of the dots after the wave passes through. |
+| `fadeIntensity` | `number` | `0.15` | Controls how much dots fade after the wave has moved past them. |
+| `followMouse` | `boolean` | `false` | When enabled, the wave center follows the mouse cursor for interactive effects. |
+| `bgColor` | `string` | `"#000000"` | Fallback background color for the canvas when container styles are transparent. |
+| `dotColor` | `string` | `"#ffffff"` | Fallback color used to render dots when no text color is detected. |
+| `className` | `string` | — | Custom classes applied to the outer container element. |
+| `dotClassName` | `string` | — | Custom classes applied directly to the canvas element. |
+| `children` | `React.ReactNode` | — | Content rendered above the animated dot wave, useful for hero sections or overlays. |
+
+

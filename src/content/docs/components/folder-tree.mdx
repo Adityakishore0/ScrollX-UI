@@ -95,79 +95,20 @@ The root component that provides context and manages global state.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "defaultExpanded",
-      type: "string[]",
-      default: "[]",
-      description: "IDs expanded by default.",
-    },
-    {
-      prop: "defaultSelected",
-      type: "string",
-      default: "null",
-      description: "ID selected by default.",
-    },
-    {
-      prop: "onSelect",
-      type: "(id, label) => void",
-      default: "undefined",
-      description: "Fires on select.",
-    },
-    {
-      prop: "id",
-      type: "string",
-      default: `"folder-tree"`,
-      description: "Tree ID.",
-    },
-    {
-      prop: "itemId",
-      type: "string",
-      default: "required",
-      description: "Item ID.",
-    },
-    {
-      prop: "label",
-      type: "string",
-      default: "required",
-      description: "Item label.",
-    },
-    {
-      prop: "icon",
-      type: "LucideIcon",
-      default: "Folder | File",
-      description: "Custom icon.",
-    },
-    {
-      prop: "badge",
-      type: "string | number",
-      default: "—",
-      description: "Right badge.",
-    },
-    {
-      prop: "modified",
-      type: "boolean | { content, className?, ariaLabel? }",
-      default: "false",
-      description: "Modified state.",
-    },
-    {
-      prop: "untracked",
-      type: "boolean | { content, className?, ariaLabel? }",
-      default: "false",
-      description: "Untracked state.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Custom style.",
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "—",
-      description: "Nested items.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `defaultExpanded` | `string[]` | `[]` | IDs expanded by default. |
+| `defaultSelected` | `string` | `null` | ID selected by default. |
+| `onSelect` | `(id, label) => void` | `undefined` | Fires on select. |
+| `id` | `string` | `"folder-tree"` | Tree ID. |
+| `itemId` | `string` | `required` | Item ID. |
+| `label` | `string` | `required` | Item label. |
+| `icon` | `LucideIcon` | `Folder \| File` | Custom icon. |
+| `badge` | `string \| number` | — | Right badge. |
+| `modified` | `boolean \| { content, className?, ariaLabel? }` | `false` | Modified state. |
+| `untracked` | `boolean \| { content, className?, ariaLabel? }` | `false` | Untracked state. |
+| `className` | `string` | — | Custom style. |
+| `children` | `ReactNode` | — | Nested items. |
+
+

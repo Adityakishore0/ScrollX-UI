@@ -84,56 +84,17 @@ Syntax-highlighted code block with tabs, stats, and file navigation.
 
 ## Props
   
-<PropsTable
-  rows={[
-    {
-      prop: "language",
-      type: "string",
-      default: "required",
-      description: "Language for syntax highlighting. Required if tabs not used."
-    },
-    {
-      prop: "filename",
-      type: "string",
-      default: "required",
-      description: "Displayed filename above the code block."
-    },
-    {
-      prop: "code",
-      type: "string",
-      default: "required (if no tabs)",
-      description: "Code string to display. Required if tabs not provided."
-    },
-    {
-      prop: "tabs",
-      type: "Array<{ name: string; code: string; language?: string }>",
-      default: "required (if no code)",
-      description: "Array of tabbed code blocks. Each must include a name and code."
-    },
-    {
-      prop: "highlightLines",
-      type: "number[]",
-      default: "[]",
-      description: "Lines to highlight in the code block."
-    },
-    {
-      prop: "breadcrumb",
-      type: "string[]",
-      default: "[]",
-      description: "Optional breadcrumb text shown above filename."
-    },
-    {
-      prop: "showStats",
-      type: "boolean",
-      default: "true",
-      description: "Toggles file stats UI (like file size, lines, etc.)."
-    },
-    {
-      prop: "theme",
-      type: `"dark" | "light"`,
-      default: `"dark"`,
-      description: "Color theme for the code block."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `language` | `string` | `required` | Language for syntax highlighting. Required if tabs not used. |
+| `filename` | `string` | `required` | Displayed filename above the code block. |
+| `code` | `string` | `required (if no tabs)` | Code string to display. Required if tabs not provided. |
+| `tabs` | `Array<{ name: string; code: string; language?: string }>` | `required (if no code)` | Array of tabbed code blocks. Each must include a name and code. |
+| `highlightLines` | `number[]` | `[]` | Lines to highlight in the code block. |
+| `breadcrumb` | `string[]` | `[]` | Optional breadcrumb text shown above filename. |
+| `showStats` | `boolean` | `true` | Toggles file stats UI (like file size, lines, etc.). |
+| `theme` | `"dark" \| "light"` | `"dark"` | Color theme for the code block. |
+
+
 

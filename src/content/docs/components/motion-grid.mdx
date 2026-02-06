@@ -87,86 +87,21 @@ A set of diagonal lines that move continuously with gradientglow.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "speed",
-      type: "string",
-      default: '"30s"',
-      description:
-        "Duration of the diagonal grid movement animation (e.g., '10s', '30s').",
-    },
-    {
-      prop: "opacity",
-      type: "number",
-      default: "0.1",
-      description:
-        "Opacity of the grid lines (0 to 1). Controls how visible the lines appear.",
-    },
-    {
-      prop: "direction",
-      type: '"left" | "right"',
-      default: '"right"',
-      description:
-        "Direction of the grid movement. Determines if the background shifts left or right.",
-    },
-    {
-      prop: "lineColor",
-      type: "string",
-      default: '"0, 255, 128"',
-      description:
-        "RGB values (without alpha) for the grid line color. Used inside rgba().",
-    },
-    {
-      prop: "lineWidth",
-      type: "string",
-      default: '"1px"',
-      description:
-        "Thickness of individual grid lines (e.g., '1px', '2px').",
-    },
-    {
-      prop: "gridSpacing",
-      type: "string",
-      default: '"20px"',
-      description:
-        "Distance between repeating grid lines. Controls how dense the grid looks.",
-    },
-    {
-      prop: "backgroundColor",
-      type: "string",
-      default: '"#0f0f0f"',
-      description:
-        "The base background color behind the animated grid.",
-    },
-    {
-      prop: "enableGlow",
-      type: "boolean",
-      default: "true",
-      description:
-        "Enables or disables the glow gradient overlay behind the grid.",
-    },
-    {
-      prop: "glowGradient",
-      type: "string",
-      default: "—",
-      description:
-        "Custom glow gradient value (optional). Overrides the default radial glow.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description:
-        "Additional classes for the outer container.",
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "—",
-      description:
-        "Content rendered above the animated grid background.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `speed` | `string` | `"30s"` | Duration of the diagonal grid movement animation (e.g., '10s', '30s'). |
+| `opacity` | `number` | `0.1` | Opacity of the grid lines (0 to 1). Controls how visible the lines appear. |
+| `direction` | `"left" \| "right"` | `"right"` | Direction of the grid movement. Determines if the background shifts left or right. |
+| `lineColor` | `string` | `"0, 255, 128"` | RGB values (without alpha) for the grid line color. Used inside rgba(). |
+| `lineWidth` | `string` | `"1px"` | Thickness of individual grid lines (e.g., '1px', '2px'). |
+| `gridSpacing` | `string` | `"20px"` | Distance between repeating grid lines. Controls how dense the grid looks. |
+| `backgroundColor` | `string` | `"#0f0f0f"` | The base background color behind the animated grid. |
+| `enableGlow` | `boolean` | `true` | Enables or disables the glow gradient overlay behind the grid. |
+| `glowGradient` | `string` | — | Custom glow gradient value (optional). Overrides the default radial glow. |
+| `className` | `string` | — | Additional classes for the outer container. |
+| `children` | `React.ReactNode` | — | Content rendered above the animated grid background. |
+
+
 
 

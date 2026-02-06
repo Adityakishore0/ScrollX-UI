@@ -70,39 +70,13 @@ Animated number stack for next-gen websites in stacked carousel.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "stats",
-      type: "{ value: number; suffix?: string; label: string; id?: number; }[]",
-      default: "optional",
-      description:
-        "Array of stats with value, suffix (like %, K+), label, and optional id.",
-    },
-    {
-      prop: "animation",
-      type: '"drag" | auto',
-      default: "auto",
-      description:
-        'If set to "drag", enables draggable top card mode instead of automatic stacked animation.',
-    },
-    {
-      prop: "title",
-      type: "string",
-      default: "optional",
-      description: "Optional title shown above the carousel cards.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: '""',
-      description: "Additional classes for the outer wrapper section.",
-    },
-    {
-      prop: "cardClassName",
-      type: "string",
-      default: '""',
-      description: "Additional classes for styling individual stat cards.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `stats` | `{ value: number; suffix?: string; label: string; id?: number; }[]` | `optional` | Array of stats with value, suffix (like %, K+), label, and optional id. |
+| `animation` | `"drag" \| auto` | `auto` | If set to "drag", enables draggable top card mode instead of automatic stacked animation. |
+| `title` | `string` | `optional` | Optional title shown above the carousel cards. |
+| `className` | `string` | `""` | Additional classes for the outer wrapper section. |
+| `cardClassName` | `string` | `""` | Additional classes for styling individual stat cards. |
+
+

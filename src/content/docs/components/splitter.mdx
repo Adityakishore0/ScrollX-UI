@@ -69,68 +69,19 @@ Splitter with collapsible panels, drag handle, and smooth animations.
 
 ## Props
 
-<PropsTable 
-  rows={[
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Two SplitterPanel components and optionally a SplitterHandle.",
-    },
-    {
-      prop: "onResize",
-      type: "(leftSize: number, rightSize: number) => void",
-      default: "undefined",
-      description: "Callback fired when panels are resized, returns left and right widths in %.",
-    },
-    {
-      prop: "allowFullCollapse",
-      type: "boolean",
-      default: "true",
-      description: "Allow panels to collapse completely to 0% or 100%.",
-    },
-    {
-      prop: "minSize",
-      type: "number",
-      default: "0",
-      description: "Minimum percentage width of the left panel.",
-    },
-    {
-      prop: "maxSize",
-      type: "number",
-      default: "100",
-      description: "Maximum percentage width of the left panel.",
-    },
-    {
-      prop: "defaultSize",
-      type: "number",
-      default: "50",
-      description: "Initial percentage width of the left panel.",
-    },
-    {
-      prop: "snapThreshold",
-      type: "number",
-      default: "5",
-      description: "Percentage threshold to snap panels fully collapsed.",
-    },
-    {
-      prop: "smoothTransition",
-      type: "boolean",
-      default: "true",
-      description: "Enable smooth animated transitions when resizing.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Additional CSS classes for styling the root Splitter.",
-    },
-    {
-      prop: "style",
-      type: "React.CSSProperties",
-      default: "-",
-      description: "Inline styles applied to the root Splitter.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `ReactNode` | `required` | Two SplitterPanel components and optionally a SplitterHandle. |
+| `onResize` | `(leftSize: number, rightSize: number) => void` | `undefined` | Callback fired when panels are resized, returns left and right widths in %. |
+| `allowFullCollapse` | `boolean` | `true` | Allow panels to collapse completely to 0% or 100%. |
+| `minSize` | `number` | `0` | Minimum percentage width of the left panel. |
+| `maxSize` | `number` | `100` | Maximum percentage width of the left panel. |
+| `defaultSize` | `number` | `50` | Initial percentage width of the left panel. |
+| `snapThreshold` | `number` | `5` | Percentage threshold to snap panels fully collapsed. |
+| `smoothTransition` | `boolean` | `true` | Enable smooth animated transitions when resizing. |
+| `className` | `string` | `-` | Additional CSS classes for styling the root Splitter. |
+| `style` | `React.CSSProperties` | `-` | Inline styles applied to the root Splitter. |
+
+
 

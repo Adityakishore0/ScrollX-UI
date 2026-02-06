@@ -90,84 +90,19 @@ Animated diagonal stripes with optional base grid, creating a dynamic textured b
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "speed",
-      type: "string",
-      default: '"15s"',
-      description:
-        "Controls the animation duration of the moving diagonal stripes (e.g., '10s', '20s').",
-    },
-    {
-      prop: "opacity",
-      type: "number",
-      default: "0.3",
-      description:
-        "Opacity of the moving stripes. Lower values make stripes subtle, higher values more visible.",
-    },
-    {
-      prop: "direction",
-      type: '"left" | "right"',
-      default: '"right"',
-      description:
-        "Direction in which the diagonal stripes move. Determines whether animation shifts left or right.",
-    },
-    {
-      prop: "stripeColor",
-      type: "string",
-      default: '"16, 185, 129"',
-      description:
-        "RGB values (without alpha) for stripe color. Used inside rgba(). Example: '255, 99, 71'.",
-    },
-    {
-      prop: "stripeWidth",
-      type: "string",
-      default: '"2px"',
-      description:
-        "Thickness of each diagonal stripe (e.g., '2px', '4px').",
-    },
-    {
-      prop: "stripeSpacing",
-      type: "string",
-      default: '"8px"',
-      description:
-        "Spacing between repeated diagonal stripes. Controls density of pattern.",
-    },
-    {
-      prop: "backgroundColor",
-      type: "string",
-      default: '"#ffffff"',
-      description:
-        "Base background color behind all grid and stripe layers.",
-    },
-    {
-      prop: "enableBaseGrid",
-      type: "boolean",
-      default: "true",
-      description:
-        "Enables the underlying static square grid behind the moving stripes.",
-    },
-    {
-      prop: "baseGridOpacity",
-      type: "number",
-      default: "0.15",
-      description:
-        "Opacity of the static base grid lines. Works when enableBaseGrid is true.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description:
-        "Additional Tailwind or custom class names applied to the container.",
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "—",
-      description:
-        "Content rendered above all animated layers.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `speed` | `string` | `"15s"` | Controls the animation duration of the moving diagonal stripes (e.g., '10s', '20s'). |
+| `opacity` | `number` | `0.3` | Opacity of the moving stripes. Lower values make stripes subtle, higher values more visible. |
+| `direction` | `"left" \| "right"` | `"right"` | Direction in which the diagonal stripes move. Determines whether animation shifts left or right. |
+| `stripeColor` | `string` | `"16, 185, 129"` | RGB values (without alpha) for stripe color. Used inside rgba(). Example: '255, 99, 71'. |
+| `stripeWidth` | `string` | `"2px"` | Thickness of each diagonal stripe (e.g., '2px', '4px'). |
+| `stripeSpacing` | `string` | `"8px"` | Spacing between repeated diagonal stripes. Controls density of pattern. |
+| `backgroundColor` | `string` | `"#ffffff"` | Base background color behind all grid and stripe layers. |
+| `enableBaseGrid` | `boolean` | `true` | Enables the underlying static square grid behind the moving stripes. |
+| `baseGridOpacity` | `number` | `0.15` | Opacity of the static base grid lines. Works when enableBaseGrid is true. |
+| `className` | `string` | — | Additional Tailwind or custom class names applied to the container. |
+| `children` | `React.ReactNode` | — | Content rendered above all animated layers. |
+
+

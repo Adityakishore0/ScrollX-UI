@@ -77,74 +77,20 @@ Animated pixel-based text reveal with directional shimmer using canvas-rendered 
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "text",
-      type: "string",
-      default: "-",
-      description: "Text to render as the pixel highlight animation."
-    },
-    {
-      prop: "children",
-      type: "node",
-      default: "-",
-      description: "Custom React content used instead of the text prop."
-    },
-    {
-      prop: "colors",
-      type: "string",
-      default: "gradient",
-      description: "Comma-separated color values randomly applied to animated pixels."
-    },
-    {
-      prop: "gap",
-      type: "number",
-      default: "6",
-      description: "Distance between pixels. Smaller values create denser highlights."
-    },
-    {
-      prop: "speed",
-      type: "number",
-      default: "80",
-      description: "Controls how fast pixels appear and shimmer."
-    },
-    {
-      prop: "direction",
-      type: "enum",
-      default: "center",
-      description: "Direction from which the pixel animation originates."
-    },
-    {
-      prop: "opacity",
-      type: "number",
-      default: "1",
-      description: "Overall transparency of the pixel canvas layer."
-    },
-    {
-      prop: "fontSize",
-      type: "string | number",
-      default: "20",
-      description: "Font size of the text mask. Numbers scale responsively."
-    },
-    {
-      prop: "fontWeight",
-      type: "string | number",
-      default: "bold",
-      description: "Weight of the text used for the pixel mask."
-    },
-    {
-      prop: "fontFamily",
-      type: "string",
-      default: "sans",
-      description: "Font family applied to the text mask."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Additional class names for the root container."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `text` | `string` | `-` | Text to render as the pixel highlight animation. |
+| `children` | `node` | `-` | Custom React content used instead of the text prop. |
+| `colors` | `string` | `gradient` | Comma-separated color values randomly applied to animated pixels. |
+| `gap` | `number` | `6` | Distance between pixels. Smaller values create denser highlights. |
+| `speed` | `number` | `80` | Controls how fast pixels appear and shimmer. |
+| `direction` | `enum` | `center` | Direction from which the pixel animation originates. |
+| `opacity` | `number` | `1` | Overall transparency of the pixel canvas layer. |
+| `fontSize` | `string \| number` | `20` | Font size of the text mask. Numbers scale responsively. |
+| `fontWeight` | `string \| number` | `bold` | Weight of the text used for the pixel mask. |
+| `fontFamily` | `string` | `sans` | Font family applied to the text mask. |
+| `className` | `string` | `-` | Additional class names for the root container. |
+
+
 

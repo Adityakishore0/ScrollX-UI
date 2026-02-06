@@ -69,44 +69,15 @@ An interactive slider with glass effects for selecting values smoothly within a 
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "defaultValue",
-      type: "number | number[]",
-      default: "required",
-      description: "Initial slider value or range. Sets thumb position(s) on render."
-    },
-    {
-      prop: "value",
-      type: "number | number[]",
-      default: "-",
-      description: "Controlled value or range. Updates thumb position(s) when changed."
-    },
-    {
-      prop: "min",
-      type: "number",
-      default: 0,
-      description: "Minimum selectable value of the slider."
-    },
-    {
-      prop: "max",
-      type: "number",
-      default: 100,
-      description: "Maximum selectable value of the slider."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Custom CSS classes for styling the slider root."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "optional",
-      description: "Optional nested content inside the slider."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `defaultValue` | `number \| number[]` | `required` | Initial slider value or range. Sets thumb position(s) on render. |
+| `value` | `number \| number[]` | `-` | Controlled value or range. Updates thumb position(s) when changed. |
+| `min` | `number` | — | Minimum selectable value of the slider. |
+| `max` | `number` | `100` | Maximum selectable value of the slider. |
+| `className` | `string` | `-` | Custom CSS classes for styling the slider root. |
+| `children` | `ReactNode` | `optional` | Optional nested content inside the slider. |
+
+
 

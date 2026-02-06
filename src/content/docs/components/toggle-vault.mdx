@@ -72,32 +72,13 @@ Expandable vault component with animated open/close, trigger button, and content
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Nested elements to be rendered inside the component. Required for all ToggleVault components."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: '""',
-      description: "Optional Tailwind or custom classes to style the component."
-    },
-    {
-      prop: "open",
-      type: "boolean",
-      default: "false",
-      description: "Internal state representing whether the vault is open. Used in ToggleVault context."
-    },
-    {
-      prop: "toggleOpen",
-      type: "() => void",
-      default: "required",
-      description: "Function to toggle the open state of the vault. Provided by ToggleVault context and used by Trigger and Close components."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `ReactNode` | `required` | Nested elements to be rendered inside the component. Required for all ToggleVault components. |
+| `className` | `string` | `""` | Optional Tailwind or custom classes to style the component. |
+| `open` | `boolean` | `false` | Internal state representing whether the vault is open. Used in ToggleVault context. |
+| `toggleOpen` | `() => void` | `required` | Function to toggle the open state of the vault. Provided by ToggleVault context and used by Trigger and Close components. |
+
+
 

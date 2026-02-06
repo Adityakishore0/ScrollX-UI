@@ -111,57 +111,16 @@ Smooth animated button crafted with refined glow and modern motion.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "—",
-      description:
-        "Content displayed inside the button, typically text or icons.",
-    },
-    {
-      prop: "stripesSpeed",
-      type: "number",
-      default: "500",
-      description:
-        "Duration (in ms) for the diagonal stripe background shift on hover.",
-    },
-    {
-      prop: "variant",
-      type: '"default" | "compact"',
-      default: '"default"',
-      description:
-        "Controls internal padding style. `compact` keeps height full with tighter layout.",
-    },
-    {
-      prop: "size",
-      type: '"default" | "sm" | "lg" | "icon"',
-      default: '"default"',
-      description:
-        "Defines button height and padding. `icon` creates a square icon-only button.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description:
-        "Additional Tailwind or custom classes applied to the outer button wrapper.",
-    },
-    {
-      prop: "onClick",
-      type: "() => void",
-      default: "—",
-      description:
-        "Callback fired when the button is clicked.",
-    },
-    {
-      prop: "disabled",
-      type: "boolean",
-      default: "false",
-      description:
-        "Disables the button and prevents user interaction.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `React.ReactNode` | — | Content displayed inside the button, typically text or icons. |
+| `stripesSpeed` | `number` | `500` | Duration (in ms) for the diagonal stripe background shift on hover. |
+| `variant` | `"default" \| "compact"` | `"default"` | Controls internal padding style. `compact` keeps height full with tighter layout. |
+| `size` | `"default" \| "sm" \| "lg" \| "icon"` | `"default"` | Defines button height and padding. `icon` creates a square icon-only button. |
+| `className` | `string` | — | Additional Tailwind or custom classes applied to the outer button wrapper. |
+| `onClick` | `() => void` | — | Callback fired when the button is clicked. |
+| `disabled` | `boolean` | `false` | Disables the button and prevents user interaction. |
+
+
 

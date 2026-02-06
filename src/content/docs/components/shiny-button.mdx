@@ -79,64 +79,20 @@ Interactive button with spotlight effect that follows  mouse cursor and highligh
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "size",
-      type: `"default" | "sm" | "lg" | "icon"`,
-      default: `"default"`,
-      description: "Defines the button size and padding."
-    },
-    {
-      prop: "asChild",
-      type: "boolean",
-      default: "false",
-      description: "If true, renders a Radix Slot instead of a native button element."
-    },
-    {
-      prop: "gradientFrom",
-      type: "string",
-      default: `"#9E7AFF"`,
-      description: "Starting color of the shiny gradient."
-    },
-    {
-      prop: "gradientTo",
-      type: "string",
-      default: `"#FE8BBB"`,
-      description: "Ending color of the shiny gradient."
-    },
-    {
-      prop: "gradientOpacity",
-      type: "number",
-      default: "0.8",
-      description: "Controls transparency of the shiny gradient overlay."
-    },
-    {
-      prop: "gradientAngle",
-      type: "number",
-      default: "0",
-      description: "Initial angle (in degrees) of the shiny gradient direction."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Custom CSS classes applied to the base gloss layer. Overrides default background."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "—",
-      description: "Button label or nested elements (text, icons, etc.)."
-    },
-    {
-      prop: "...props",
-      type: "button props",
-      default: "—",
-      description: "Supports all standard button attributes and events."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `"default" \| "sm" \| "lg" \| "icon"` | `"default"` | Defines the button size and padding. |
+| `asChild` | `boolean` | `false` | If true, renders a Radix Slot instead of a native button element. |
+| `gradientFrom` | `string` | `"#9E7AFF"` | Starting color of the shiny gradient. |
+| `gradientTo` | `string` | `"#FE8BBB"` | Ending color of the shiny gradient. |
+| `gradientOpacity` | `number` | `0.8` | Controls transparency of the shiny gradient overlay. |
+| `gradientAngle` | `number` | `0` | Initial angle (in degrees) of the shiny gradient direction. |
+| `className` | `string` | — | Custom CSS classes applied to the base gloss layer. Overrides default background. |
+| `children` | `ReactNode` | — | Button label or nested elements (text, icons, etc.). |
+| `...props` | `button props` | — | Supports all standard button attributes and events. |
+
+
 
 
 

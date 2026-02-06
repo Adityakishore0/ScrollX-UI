@@ -83,68 +83,19 @@ Interactive, animated user avatars with hover effects and responsive layout.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "avatars",
-      type: "AvatarData[]",
-      default: "required",
-      description: "Array of avatar objects containing src, alt, fallback, and name.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "undefined",
-      description: "Additional Tailwind or custom classes applied to the container.",
-    },
-    {
-      prop: "colorDuration",
-      type: "number",
-      default: 3000,
-      description: "Duration in ms for hover/autoAnimate color and scale transition.",
-    },
-    {
-      prop: "variant",
-      type: `"circle" | "square" | "squircle"`,
-      default: "squircle",
-      description: "Shape of the avatars. Determines border-radius styling.",
-    },
-    {
-      prop: "ref",
-      type: "Ref<HTMLDivElement>",
-      default: "undefined",
-      description: "Optional ref for the Facescape container div.",
-    },
-    {
-      prop: "autoAnimate",
-      type: "boolean",
-      default: "false",
-      description: "Used internally by FacescapeItem to animate avatars on scroll visibility (mobile/tablet).",
-    },
-    {
-      prop: "src",
-      type: "string",
-      default: "required",
-      description: "Image URL of the avatar. Required for FacescapeItem.",
-    },
-    {
-      prop: "alt",
-      type: "string",
-      default: "required",
-      description: "Alt text for the avatar image. Required for FacescapeItem.",
-    },
-    {
-      prop: "fallback",
-      type: "string",
-      default: "required",
-      description: "Fallback text displayed if the image fails to load. Required for FacescapeItem.",
-    },
-    {
-      prop: "name",
-      type: "string",
-      default: "required",
-      description: "Tooltip name displayed on hover. Required for FacescapeItem.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `avatars` | `AvatarData[]` | `required` | Array of avatar objects containing src, alt, fallback, and name. |
+| `className` | `string` | `undefined` | Additional Tailwind or custom classes applied to the container. |
+| `colorDuration` | `number` | `3000` | Duration in ms for hover/autoAnimate color and scale transition. |
+| `variant` | `"circle" \| "square" \| "squircle"` | `squircle` | Shape of the avatars. Determines border-radius styling. |
+| `ref` | `Ref<HTMLDivElement>` | `undefined` | Optional ref for the Facescape container div. |
+| `autoAnimate` | `boolean` | `false` | Used internally by FacescapeItem to animate avatars on scroll visibility (mobile/tablet). |
+| `src` | `string` | `required` | Image URL of the avatar. Required for FacescapeItem. |
+| `alt` | `string` | `required` | Alt text for the avatar image. Required for FacescapeItem. |
+| `fallback` | `string` | `required` | Fallback text displayed if the image fails to load. Required for FacescapeItem. |
+| `name` | `string` | `required` | Tooltip name displayed on hover. Required for FacescapeItem. |
+
+
 

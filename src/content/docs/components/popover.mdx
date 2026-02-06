@@ -76,38 +76,14 @@ Displays rich content in a animated portal, triggered by a button.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "required",
-      description: "Content to be rendered inside the Popover. Required for Popover, PopoverTrigger, PopoverContent, and PopoverAnchor."
-    },
-    {
-      prop: "align",
-      type: `"start" | "center" | "end" | "baseline"`,
-      default: `"center"`,
-      description: "Alignment of the PopoverContent relative to the trigger. Used in PopoverContent."
-    },
-    {
-      prop: "sideOffset",
-      type: "number",
-      default: 4,
-      description: "Offset distance in pixels between the PopoverContent and its trigger. Used in PopoverContent."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "-",
-      description: "Additional CSS classes to style PopoverContent. Used in PopoverContent."
-    },
-    {
-      prop: "...props",
-      type: "ComponentProps",
-      default: "-",
-      description: "All other native Popover props from @radix-ui/react-popover Root, Trigger, Content, or Anchor."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `children` | `ReactNode` | `required` | Content to be rendered inside the Popover. Required for Popover, PopoverTrigger, PopoverContent, and PopoverAnchor. |
+| `align` | `"start" \| "center" \| "end" \| "baseline"` | `"center"` | Alignment of the PopoverContent relative to the trigger. Used in PopoverContent. |
+| `sideOffset` | `number` | `4` | Offset distance in pixels between the PopoverContent and its trigger. Used in PopoverContent. |
+| `className` | `string` | `-` | Additional CSS classes to style PopoverContent. Used in PopoverContent. |
+| `...props` | `ComponentProps` | `-` | All other native Popover props from @radix-ui/react-popover Root, Trigger, Content, or Anchor. |
+
+
 

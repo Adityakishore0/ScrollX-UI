@@ -87,57 +87,16 @@ A set of diagonal lines that move continuously. Great for hero backgrounds.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "speed",
-      type: "string",
-      default: '"20s"',
-      description:
-        "The **duration** of the line movement animation (e.g., '10s', '30s').",
-    },
-    {
-      prop: "opacity",
-      type: "number",
-      default: "0.8",
-      description:
-        "The **transparency** level of the moving lines layer (from 0 to 1).",
-    },
-    {
-      prop: "direction",
-      type: '"left" | "right"',
-      default: '"right"',
-      description:
-        "The **direction** in which the lines move, affecting the background-position calculation.",
-    },
-    {
-      prop: "blur",
-      type: "string",
-      default: '"0px"',
-      description:
-        "The CSS **blur value** (e.g., '2px', '5px') applied to the moving lines to create a soft, diffused effect.",
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description:
-        "Optional **styling** (e.g., Tailwind classes) for the **outer container** (`div`).",
-    },
-    {
-      prop: "lineClassName",
-      type: "string",
-      default: "—",
-      description:
-        "Optional **styling** (e.g., Tailwind classes) for the **moving line element** (`motion.div`).",
-    },
-    {
-      prop: "children",
-      type: "React.ReactNode",
-      default: "—",
-      description:
-        "The **content** to be rendered **above** the moving background.",
-    },
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `speed` | `string` | `"20s"` | The **duration** of the line movement animation (e.g., '10s', '30s'). |
+| `opacity` | `number` | `0.8` | The **transparency** level of the moving lines layer (from 0 to 1). |
+| `direction` | `"left" \| "right"` | `"right"` | The **direction** in which the lines move, affecting the background-position calculation. |
+| `blur` | `string` | `"0px"` | The CSS **blur value** (e.g., '2px', '5px') applied to the moving lines to create a soft, diffused effect. |
+| `className` | `string` | — | Optional **styling** (e.g., Tailwind classes) for the **outer container** (`div`). |
+| `lineClassName` | `string` | — | Optional **styling** (e.g., Tailwind classes) for the **moving line element** (`motion.div`). |
+| `children` | `React.ReactNode` | — | The **content** to be rendered **above** the moving background. |
+
+
 

@@ -103,50 +103,16 @@ Morphing button with dynamic dot motion, reversible animation.
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "size",
-      type: `"sm" | "default" | "lg"`,
-      default: `"default"`,
-      description: "Controls button size and padding layout."
-    },
-    {
-      prop: "asChild",
-      type: "boolean",
-      default: "false",
-      description: "Renders as a child element using Radix Slot if true."
-    },
-    {
-      prop: "dotClassName",
-      type: "string",
-      default: "—",
-      description: "Adds custom styling to the animated dot element."
-    },
-    {
-      prop: "animate",
-      type: `"normal" | "reverse"`,
-      default: `"normal"`,
-      description: "Reverses morph animation direction when set to 'reverse'."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Custom Tailwind or CSS classes for additional styling."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "—",
-      description: "Button label or nested elements."
-    },
-    {
-      prop: "...props",
-      type: "button props",
-      default: "—",
-      description: "Inherits all native HTML button attributes and events."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Controls button size and padding layout. |
+| `asChild` | `boolean` | `false` | Renders as a child element using Radix Slot if true. |
+| `dotClassName` | `string` | — | Adds custom styling to the animated dot element. |
+| `animate` | `"normal" \| "reverse"` | `"normal"` | Reverses morph animation direction when set to 'reverse'. |
+| `className` | `string` | — | Custom Tailwind or CSS classes for additional styling. |
+| `children` | `ReactNode` | — | Button label or nested elements. |
+| `...props` | `button props` | — | Inherits all native HTML button attributes and events. |
+
+
 

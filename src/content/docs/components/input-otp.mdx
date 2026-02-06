@@ -84,74 +84,20 @@ The `InputOTP` is a root component that creates an animated OTP input field with
 
 ## Props
 
-<PropsTable
-  rows={[
-    {
-      prop: "maxLength",
-      type: "number",
-      default: "required",
-      description: "Total number of OTP digits. Used in: InputOTP."
-    },
-    {
-      prop: "onComplete",
-      type: "(otp: string) => void",
-      default: "—",
-      description: "Callback fired when OTP is fully entered. Used in: InputOTP."
-    },
-    {
-      prop: "mask",
-      type: "boolean",
-      default: "false",
-      description: "Whether to mask each digit. Used in: InputOTP."
-    },
-    {
-      prop: "maskSymbol",
-      type: "string",
-      default: "•",
-      description: "Symbol to show when masking. Used in: InputOTP."
-    },
-    {
-      prop: "maskDelay",
-      type: "number",
-      default: "1000",
-      description: "Delay (ms) before masking input. Used in: InputOTP."
-    },
-    {
-      prop: "index",
-      type: "number",
-      default: "required",
-      description: "Slot index position. Used in: InputOTPSlot."
-    },
-    {
-      prop: "separatorSymbol",
-      type: "string",
-      default: "'-'",
-      description: "Symbol displayed between OTP slots. Used in: InputOTPSeparator."
-    },
-    {
-      prop: "className",
-      type: "string",
-      default: "—",
-      description: "Optional styling class. Used in: InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator."
-    },
-    {
-      prop: "containerClassName",
-      type: "string",
-      default: "—",
-      description: "Class name for outer container. Used in: InputOTP."
-    },
-    {
-      prop: "inputClassName",
-      type: "string",
-      default: "—",
-      description: "Class name for each OTP input. Used in: InputOTP."
-    },
-    {
-      prop: "children",
-      type: "ReactNode",
-      default: "optional",
-      description: "Nested content. Used in: InputOTP, InputOTPGroup."
-    }
-  ]}
-/>
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `maxLength` | `number` | `required` | Total number of OTP digits. Used in: InputOTP. |
+| `onComplete` | `(otp: string) => void` | — | Callback fired when OTP is fully entered. Used in: InputOTP. |
+| `mask` | `boolean` | `false` | Whether to mask each digit. Used in: InputOTP. |
+| `maskSymbol` | `string` | `•` | Symbol to show when masking. Used in: InputOTP. |
+| `maskDelay` | `number` | `1000` | Delay (ms) before masking input. Used in: InputOTP. |
+| `index` | `number` | `required` | Slot index position. Used in: InputOTPSlot. |
+| `separatorSymbol` | `string` | `'-'` | Symbol displayed between OTP slots. Used in: InputOTPSeparator. |
+| `className` | `string` | — | Optional styling class. Used in: InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator. |
+| `containerClassName` | `string` | — | Class name for outer container. Used in: InputOTP. |
+| `inputClassName` | `string` | — | Class name for each OTP input. Used in: InputOTP. |
+| `children` | `ReactNode` | `optional` | Nested content. Used in: InputOTP, InputOTPGroup. |
+
+
 
