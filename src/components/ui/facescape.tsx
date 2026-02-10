@@ -1,13 +1,13 @@
-"use client";
-import React, { useState, useEffect, useRef } from "react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+'use client';
+import React, { useState, useEffect, useRef } from 'react';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
   TooltipProvider,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/tooltip';
+import { cn } from '@/lib/utils';
 
 export interface AvatarData {
   src: string;
@@ -20,19 +20,19 @@ export interface FacescapeProps {
   avatars: AvatarData[];
   className?: string;
   colorDuration?: number;
-  variant?: "circle" | "square" | "squircle";
+  variant?: 'circle' | 'square' | 'squircle';
 }
 
-const BREAKPOINTS = { sm: 640, md: 768, lg: 1024, xl: 1280, "2xl": 1536 };
+const BREAKPOINTS = { sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536 };
 
-const useBreakpoint = (breakpoint: "sm" | "md" | "lg" | "xl" | "2xl") => {
+const useBreakpoint = (breakpoint: 'sm' | 'md' | 'lg' | 'xl' | '2xl') => {
   const [isBelow, setIsBelow] = useState(false);
   useEffect(() => {
     const handleResize = () =>
       setIsBelow(window.innerWidth < BREAKPOINTS[breakpoint]);
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [breakpoint]);
   return isBelow;
 };
@@ -47,7 +47,7 @@ const FacescapeItem = React.forwardRef<
     name: string;
     colorDuration?: number;
     autoAnimate?: boolean;
-    variant?: "circle" | "square" | "squircle";
+    variant?: 'circle' | 'square' | 'squircle';
   }
 >(
   (
@@ -59,10 +59,10 @@ const FacescapeItem = React.forwardRef<
       name,
       colorDuration = 3000,
       autoAnimate = false,
-      variant = "squircle",
+      variant = 'squircle',
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isHovered, setIsHovered] = useState(false);
     const [isColorful, setIsColorful] = useState(false);
@@ -71,38 +71,49 @@ const FacescapeItem = React.forwardRef<
     const itemRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+      if (ref) {
+        if (typeof ref === 'function') {
+          ref(itemRef.current);
+        } else {
+          ref.current = itemRef.current;
+        }
+      }
+    }, [ref]);
+
+    useEffect(() => {
       if (!autoAnimate || !itemRef.current) return;
       const observer = new IntersectionObserver(
         ([entry]) => setIsVisible(entry.isIntersecting),
-        { threshold: 0.3 }
+        { threshold: 0.3 },
       );
       observer.observe(itemRef.current);
       return () => observer.disconnect();
     }, [autoAnimate]);
 
+    const active = autoAnimate ? isVisible : isHovered;
+
     useEffect(() => {
       let colorTimeout: NodeJS.Timeout | undefined;
       let sizeTimeout: NodeJS.Timeout | undefined;
-      const active = autoAnimate ? isVisible : isHovered;
-      if (active) {
-        setIsColorful(true);
-        setIsLarge(true);
-      } else {
+      if (!active) {
         if (isColorful)
           colorTimeout = setTimeout(() => setIsColorful(false), colorDuration);
         if (isLarge)
           sizeTimeout = setTimeout(() => setIsLarge(false), colorDuration);
+      } else {
+        colorTimeout = setTimeout(() => setIsColorful(true), 0);
+        sizeTimeout = setTimeout(() => setIsLarge(true), 0);
       }
       return () => {
         if (colorTimeout) clearTimeout(colorTimeout);
         if (sizeTimeout) clearTimeout(sizeTimeout);
       };
-    }, [isHovered, isVisible, autoAnimate, isColorful, isLarge, colorDuration]);
+    }, [active, isColorful, isLarge, colorDuration]);
 
     const shapeClass = {
-      circle: "rounded-full",
-      square: "rounded-none",
-      squircle: "rounded-md",
+      circle: 'rounded-full',
+      square: 'rounded-none',
+      squircle: 'rounded-md',
     }[variant];
 
     return (
@@ -112,18 +123,18 @@ const FacescapeItem = React.forwardRef<
             <div
               ref={itemRef}
               className={cn(
-                "relative cursor-pointer transition-all duration-500 ease-in-out transform-gpu origin-center",
-                isLarge ? "scale-150 z-10" : "scale-100",
+                'relative cursor-pointer transition-all duration-500 ease-in-out transform-gpu origin-center',
+                isLarge ? 'scale-150 z-10' : 'scale-100',
                 isColorful
-                  ? "grayscale-0 contrast-100 brightness-100 opacity-100"
-                  : "grayscale contrast-50 brightness-75 opacity-60",
-                className
+                  ? 'grayscale-0 contrast-100 brightness-100 opacity-100'
+                  : 'grayscale contrast-50 brightness-75 opacity-60',
+                className,
               )}
               onMouseEnter={() => !autoAnimate && setIsHovered(true)}
               onMouseLeave={() => !autoAnimate && setIsHovered(false)}
               {...props}
             >
-              <Avatar className={cn("h-8 w-8", shapeClass)}>
+              <Avatar className={cn('h-8 w-8', shapeClass)}>
                 <AvatarImage src={src} alt={alt} />
                 <AvatarFallback>{fallback}</AvatarFallback>
               </Avatar>
@@ -135,10 +146,10 @@ const FacescapeItem = React.forwardRef<
         </Tooltip>
       </TooltipProvider>
     );
-  }
+  },
 );
 
-FacescapeItem.displayName = "FacescapeItem";
+FacescapeItem.displayName = 'FacescapeItem';
 
 const Facescape = React.forwardRef<HTMLDivElement, FacescapeProps>(
   (
@@ -146,25 +157,25 @@ const Facescape = React.forwardRef<HTMLDivElement, FacescapeProps>(
       avatars,
       className,
       colorDuration = 3000,
-      variant = "squircle",
+      variant = 'squircle',
       ...props
     },
-    ref
+    ref,
   ) => {
-    const isMobileOrTablet = useBreakpoint("lg");
+    const isMobileOrTablet = useBreakpoint('lg');
     return (
       <div
         ref={ref}
         className={cn(
-          "flex flex-wrap w-full justify-center gap-x-3 gap-y-4",
-          className
+          'flex flex-wrap w-full justify-center gap-x-3 gap-y-4',
+          className,
         )}
         {...props}
       >
         {avatars.map((avatar, index) => (
           <div
             key={index}
-            className="flex justify-center items-center w-10 h-10"
+            className='flex justify-center items-center w-10 h-10'
           >
             <FacescapeItem
               src={avatar.src}
@@ -179,9 +190,9 @@ const Facescape = React.forwardRef<HTMLDivElement, FacescapeProps>(
         ))}
       </div>
     );
-  }
+  },
 );
 
-Facescape.displayName = "Facescape";
+Facescape.displayName = 'Facescape';
 
 export { Facescape };
