@@ -1,0 +1,107 @@
+---
+title: February 2026 – New Components
+description: Explore new glowing buttons, immersive cosmic backgrounds, sliding text effects.
+date: "2026-02-04"
+---
+
+- [<u>Stripe Button</u>](/docs/components/stripe-button): Animated button with refined glow effects.
+- [<u>Cosmic Background</u>](/docs/components/cosmic-background): Cosmic animated background with immersive depth.
+- [<u>Slide Text</u>](/docs/components/slide-text): Sliding text animation with staggered motion.
+- [<u>Showcase</u>](/docs/components/slide-text): An interactive showcase component with smooth transitions.
+- [<u>Flex Navbar</u>](/docs/components/flex-navbar): Modern expandable navbar with smooth transitions.
+- [<u>Infinite Canvas</u>](/docs/components/infinite-canvas): Infinite draggable canvas with zoom support.
+- [<u>Fancy Text</u>](/docs/components/fancy-text): Refined text reveal with smooth character motion.
+- [<u>FlipFlow</u>](/docs/components/flipflow): Looping flip cards with smooth flowing motion.
+- [<u>DualSparks</u>](/docs/components/dualsparks): Corner-based spark waves with smooth motion.
+
+### Stripe Button
+
+<ComponentPreview
+  name="stripebutton-demo"
+  className="p-0"
+  description=""
+/>
+
+### Cosmic Background
+
+<ComponentPreview
+  name="cosmicbackground-demo"
+  className="p-0"
+  description=""
+/>
+
+### Slide Text
+
+<ComponentPreview
+  name="slidetext-demo"
+  className="p-0"
+  description=""
+/>
+
+### Showcase
+
+<ComponentPreview
+  name="showcase-demo"
+  className=""
+  description=""
+/>
+
+### Flex Navbar
+
+<ComponentPreview
+  name="flexnavbar-demo"
+  className="p-0"
+  description="" 
+/>
+
+### Infinite Canvas
+
+<ComponentPreview
+  name="infinitecanvasdisabled-demo"
+  className="relative p-0"
+  description=""
+/>
+
+### Fancy Text
+
+<ComponentPreview
+  name="fancytext-demo"
+  className="overflow-visible relative p-0"
+  description=""
+/>
+
+### FlipFlow
+
+<ComponentPreview
+  name="flipflow-demo"
+  className="p-0"
+  description=""
+/>
+
+### DualSparks
+
+<ComponentPreview
+  name="dualsparks-demo"
+  className="p-0"
+  description=""
+/>
+
+
+## Refactors & fixes
+
+## FlexNavbar
+
+#### 20-01-2026, Improved Navigation Interaction
+
+- Updated `FlexNavbar` to automatically collapse when a navigation link is clicked.
+- Added a slight delay before closing the navbar to allow link interactions and transitions to feel smoother.
+- Exposed the collapse behavior via a reusable `closeNavbar` handler and ensured `onExpand` stays in sync.
+
+## Dropdown Menu
+
+#### 30-01-2026, Visual Updates and Mobile Fixes
+
+- Updated color system: Light mode uses `#ffffff` background with `#f5f5f5` hover, dark mode uses `#262626` background with `#404040` hover.
+- Added `animate` prop to `DropdownMenu` component (default: `true`) to control all animations globally.
+- Fixed critical mobile bug where dropdown would auto-close immediately after opening on touch devices.
+- Added `touchAction: "manipulation"` to all interactive components to prevent tap delays and improve mobile responsiveness.

@@ -1,0 +1,66 @@
+---
+title: Refactors 
+description: carousel, card & profilecard refactors.
+date: "2025-10-25"
+---
+
+### Carousel
+`25-10-2025 — Keyboard navigation`
+
+- Rebuilt Carousel with React Context for shared state.  
+- Added keyboard navigation (`↑` `↓`).  
+- Added `maxVisible` and `stackOffset` props for stacked layout.  
+- Introduced `useCarousel()` hook and `data-slot` attributes.  
+- Improved accessibility with ARIA roles.  
+- Simplified controls using `CarouselPrevious` and `CarouselNext`.
+
+<ComponentPreview
+  name="carousel-demo"
+  className=""
+  description=""
+/>
+
+---
+
+### Card
+`24-09-2025 — Added CardAction`
+
+- Introduced a new `CardAction` component to place actions (buttons, links) in the `CardHeader`, aligned to the top-right.  
+- Minor updates to existing components to include `data-slot` attributes for consistent styling.
+
+<ComponentPreview
+  name="card-demo"
+  description=""
+/>
+
+---
+### ProfileCard
+`27-08-2025 — Added 3D Tilt Effect`
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3D Tilt Effect</td>
+      <td>Card now tilts based on mouse movement when revealed.</td>
+    </tr>
+    <tr>
+      <td>Spotlight Effect</td>
+      <td>Optional radial spotlight on skills.</td>
+    </tr>
+    <tr>
+      <td>Custom Social Links</td>
+      <td>Added support for multiple social links.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ComponentPreview
+  name="profilecard-demo"
+  description=""
+/>
