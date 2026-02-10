@@ -1,12 +1,12 @@
-"use client";
-import * as React from "react";
-import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
-import { motion } from "framer-motion";
+'use client';
+import * as React from 'react';
+import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
+import { motion } from 'motion/react';
 
 function Collapsible({
   ...props
 }: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {
-  return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />;
+  return <CollapsiblePrimitive.Root data-slot='collapsible' {...props} />;
 }
 
 function CollapsibleTrigger({
@@ -14,7 +14,7 @@ function CollapsibleTrigger({
 }: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleTrigger>) {
   return (
     <CollapsiblePrimitive.CollapsibleTrigger
-      data-slot="collapsible-trigger"
+      data-slot='collapsible-trigger'
       asChild
       {...props}
     >
@@ -34,19 +34,19 @@ function CollapsibleContent({
 }: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>) {
   return (
     <CollapsiblePrimitive.CollapsibleContent
-      data-slot="collapsible-content"
+      data-slot='collapsible-content'
       asChild
       {...props}
     >
       <motion.div
         initial={{ height: 0, opacity: 0 }}
-        animate={{ height: "auto", opacity: 1 }}
+        animate={{ height: 'auto', opacity: 1 }}
         exit={{ height: 0, opacity: 0 }}
         transition={{
           duration: 0.3,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
-        style={{ overflow: "hidden" }}
+        style={{ overflow: 'hidden' }}
       >
         {props.children}
       </motion.div>
