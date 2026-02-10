@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { PixelHighlight } from "@/components/ui/pixel-highlight";
-import { Button } from "@/components/ui/button";
-import { RefreshCw } from "lucide-react";
-import { twMerge } from "tailwind-merge";
+import { useState } from 'react';
+import { motion } from 'motion/react';
+import { PixelHighlight } from '@/components/ui/pixel-highlight';
+import { Button } from '@/components/ui/button';
+import { RefreshCw } from 'lucide-react';
+import { twMerge } from 'tailwind-merge';
 
 export default function PixelHighlightDemo() {
   const [key, setKey] = useState(0);
@@ -21,33 +21,33 @@ export default function PixelHighlightDemo() {
     <>
       <Button
         onClick={handleReload}
-        className="absolute right-4 top-4 p-2 z-20"
-        aria-label="Reload animation"
-        variant="outline"
+        className='absolute right-4 top-4 p-2 z-20'
+        aria-label='Reload animation'
+        variant='outline'
       >
         <motion.div
           animate={{ rotate: rotate ? 360 : 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
         >
-          <RefreshCw className="w-6 h-6" />
+          <RefreshCw className='w-6 h-6' />
         </motion.div>
       </Button>
 
       <div
         key={key}
         className={twMerge(
-          "flex min-h-[350px] w-full items-center justify-center rounded p-10"
+          'flex min-h-87.5 w-full items-center justify-center rounded p-10',
         )}
       >
         <PixelHighlight
           key={key}
-          text="Collection"
-          colors="#8A6A18, #BB8A2C, #E3C770"
-          direction="top"
+          text='Collection'
+          colors='#8A6A18, #BB8A2C, #E3C770'
+          direction='top'
           speed={70}
           gap={3}
           fontSize={12}
-          className="w-full h-32"
+          className='w-full h-32'
         />
       </div>
     </>
