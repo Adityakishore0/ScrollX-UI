@@ -1,6 +1,6 @@
-"use client";
-import React, { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
+'use client';
+import React, { useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 interface Cluster {
   cx: number;
@@ -30,7 +30,7 @@ interface AuroraDotsProps {
 }
 
 export function AuroraDots({
-  particleColor = "34, 211, 238",
+  particleColor = '34, 211, 238',
   particleSize = 2,
   glowIntensity = 0.3,
   hoverGlowIntensity = 0.5,
@@ -64,7 +64,7 @@ export function AuroraDots({
   const containerRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: -1000, y: -1000 });
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const autoHoverPosRef = useRef({ x: 0.5, y: 0.5, angle: 0 });
   const isVisibleRef = useRef(true);
 
@@ -73,7 +73,7 @@ export function AuroraDots({
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const observer = new IntersectionObserver(
@@ -83,7 +83,7 @@ export function AuroraDots({
           animate();
         }
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
 
     observer.observe(container);
@@ -95,7 +95,7 @@ export function AuroraDots({
     };
 
     resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener('resize', resizeCanvas);
 
     const particles: Particle[] = [];
     clusters.forEach((cluster) => {
@@ -119,7 +119,7 @@ export function AuroraDots({
 
     particlesRef.current = particles;
 
-    const [r, g, b] = particleColor.split(",").map(Number);
+    const [r, g, b] = particleColor.split(',').map(Number);
     const startTime = Date.now();
     const fpsInterval = 1000 / 30;
     let lastFrameTime = Date.now();
@@ -194,7 +194,7 @@ export function AuroraDots({
           ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${glowAlpha})`;
           ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${Math.min(
             1,
-            Math.max(0, opacity)
+            Math.max(0, opacity),
           )})`;
           ctx.beginPath();
           ctx.arc(px, py, size / 2, 0, Math.PI * 2);
@@ -209,7 +209,7 @@ export function AuroraDots({
     animate();
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener('resize', resizeCanvas);
       observer.disconnect();
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
@@ -243,16 +243,16 @@ export function AuroraDots({
   return (
     <div
       ref={containerRef}
-      className={cn("relative w-full h-full", className)}
+      className={cn('relative w-full h-full', className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none"
+        className='absolute inset-0 w-full h-full pointer-events-none'
       />
       {children && (
-        <div className="relative z-10 w-full h-full">{children}</div>
+        <div className='relative z-10 w-full h-full'>{children}</div>
       )}
     </div>
   );
