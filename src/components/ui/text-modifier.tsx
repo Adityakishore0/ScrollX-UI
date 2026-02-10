@@ -1,6 +1,6 @@
-"use client";
-import React, { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+'use client';
+import React, { useRef, useEffect, useState } from 'react';
+import { motion } from 'motion/react';
 
 interface TextModifierProps extends React.HTMLAttributes<HTMLDivElement> {
   highlightColorClass?: string;
@@ -16,15 +16,15 @@ interface TextModifierProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const TextModifier: React.FC<TextModifierProps> = ({
   children,
-  highlightColorClass = "bg-yellow-200",
-  markerColorClass = "bg-yellow-500",
+  highlightColorClass = 'bg-yellow-200',
+  markerColorClass = 'bg-yellow-500',
   opacity = 0.8,
   animationDuration = 0.6,
   animationDelay = 0,
   animate = true,
   triggerOnView = true,
   repeat = false,
-  padding = "0.125rem 0.375rem",
+  padding = '0.125rem 0.375rem',
   className,
   ...props
 }) => {
@@ -41,7 +41,7 @@ const TextModifier: React.FC<TextModifierProps> = ({
           if (!repeat && observerRef.current) observerRef.current.disconnect();
         } else if (repeat) setIsVisible(false);
       },
-      { threshold: 0.1, rootMargin: "-50px" }
+      { threshold: 0.1, rootMargin: '-50px' },
     );
     observerRef.current.observe(textRef.current);
     return () => observerRef.current?.disconnect();
@@ -56,14 +56,14 @@ const TextModifier: React.FC<TextModifierProps> = ({
     return (
       <>
         <motion.span
-          className="absolute"
-          style={{ top: "-9px", left: `-${offset}px` }}
+          className='absolute'
+          style={{ top: '-9px', left: `-${offset}px` }}
           initial={{ opacity: 0, y: -5 }}
           animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: -5 }}
           transition={{
             duration: 0.3,
             delay: animationDelay + animationDuration * 0.8,
-            ease: "easeOut",
+            ease: 'easeOut',
           }}
         >
           <span
@@ -73,27 +73,27 @@ const TextModifier: React.FC<TextModifierProps> = ({
           <span
             className={`block ${markerColorClass}`}
             style={{
-              width: "2px",
+              width: '2px',
               height: `${lineLength}px`,
               marginLeft: `${(markerSize - 2) / 2}px`,
             }}
           />
         </motion.span>
         <motion.span
-          className="absolute"
-          style={{ bottom: "-9px", right: `-${offset}px` }}
+          className='absolute'
+          style={{ bottom: '-9px', right: `-${offset}px` }}
           initial={{ opacity: 0, y: 5 }}
           animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 5 }}
           transition={{
             duration: 0.3,
             delay: animationDelay + animationDuration,
-            ease: "easeOut",
+            ease: 'easeOut',
           }}
         >
           <span
             className={`block ${markerColorClass}`}
             style={{
-              width: "2px",
+              width: '2px',
               height: `${lineLength}px`,
               marginLeft: `${(markerSize - 2) / 2}px`,
             }}
@@ -114,22 +114,22 @@ const TextModifier: React.FC<TextModifierProps> = ({
   );
 
   const content = (
-    <span className="relative inline" style={{ padding }}>
+    <span className='relative inline' style={{ padding }}>
       <motion.span
         className={`${highlightColorClass} rounded`}
         style={{
           opacity,
-          boxDecorationBreak: "clone",
-          WebkitBoxDecorationBreak: "clone",
-          padding: "0.125rem 0.25rem",
-          display: "inline",
+          boxDecorationBreak: 'clone',
+          WebkitBoxDecorationBreak: 'clone',
+          padding: '0.125rem 0.25rem',
+          display: 'inline',
         }}
         initial={{ opacity: 0 }}
         animate={shouldAnimate ? { opacity } : { opacity: 0 }}
         transition={{
           duration: animationDuration,
           delay: animationDelay,
-          ease: "easeOut",
+          ease: 'easeOut',
         }}
       >
         {textContent}
