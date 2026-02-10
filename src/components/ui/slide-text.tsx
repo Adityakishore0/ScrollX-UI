@@ -1,7 +1,7 @@
-"use client";
-import * as React from "react";
-import { motion, type Variants, useReducedMotion } from "framer-motion";
-import { cn } from "@/lib/utils";
+'use client';
+import * as React from 'react';
+import { motion, type Variants, useReducedMotion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 interface SlideTextProps {
   text: string;
@@ -20,54 +20,57 @@ const SlideText = React.forwardRef<HTMLSpanElement, SlideTextProps>(
       pauseDuration = 1.5,
       className,
     },
-    ref
+    ref,
   ) => {
-    const [phase, setPhase] = React.useState<"initial" | "down" | "up">(
-      "initial"
+    const [phase, setPhase] = React.useState<'initial' | 'down' | 'up'>(
+      'initial',
     );
     const chars = React.useMemo(() => Array.from(text), [text]);
     const prefersReducedMotion = useReducedMotion();
 
     const totalAnimationTime = React.useMemo(
       () => (chars.length * staggerDelay + staggerDuration) * 1000,
-      [chars.length, staggerDelay, staggerDuration]
+      [chars.length, staggerDelay, staggerDuration],
     );
 
     React.useEffect(() => {
       if (prefersReducedMotion) return;
 
       const down = setTimeout(() => {
-        setPhase("down");
+        setPhase('down');
       }, pauseDuration * 1000);
 
       return () => clearTimeout(down);
     }, [pauseDuration, prefersReducedMotion]);
 
     React.useEffect(() => {
-      if (prefersReducedMotion || phase !== "down") return;
+      if (prefersReducedMotion || phase !== 'down') return;
 
-      const up = setTimeout(() => {
-        setPhase("up");
-      }, totalAnimationTime + pauseDuration * 1000);
+      const up = setTimeout(
+        () => {
+          setPhase('up');
+        },
+        totalAnimationTime + pauseDuration * 1000,
+      );
 
       return () => clearTimeout(up);
     }, [phase, totalAnimationTime, pauseDuration, prefersReducedMotion]);
 
     React.useEffect(() => {
-      if (prefersReducedMotion || phase !== "up") return;
+      if (prefersReducedMotion || phase !== 'up') return;
 
       const reset = setTimeout(() => {
-        setPhase("initial");
+        setPhase('initial');
       }, totalAnimationTime);
 
       return () => clearTimeout(reset);
     }, [phase, totalAnimationTime, prefersReducedMotion]);
 
     React.useEffect(() => {
-      if (prefersReducedMotion || phase !== "initial") return;
+      if (prefersReducedMotion || phase !== 'initial') return;
 
       const restart = setTimeout(() => {
-        setPhase("down");
+        setPhase('down');
       }, pauseDuration * 1000);
 
       return () => clearTimeout(restart);
@@ -88,27 +91,27 @@ const SlideText = React.forwardRef<HTMLSpanElement, SlideTextProps>(
     };
 
     const stackVariants: Variants = {
-      initial: { y: "0%" },
+      initial: { y: '0%' },
       down: ({ index }: { index: number }) =>
         prefersReducedMotion
-          ? { y: "0%" }
+          ? { y: '0%' }
           : {
-              y: "-100%",
+              y: '-100%',
               transition: {
                 duration: staggerDuration,
                 delay: index * staggerDelay,
-                ease: "easeOut",
+                ease: 'easeOut',
               },
             },
       up: ({ index, total }: { index: number; total: number }) =>
         prefersReducedMotion
-          ? { y: "0%" }
+          ? { y: '0%' }
           : {
-              y: "0%",
+              y: '0%',
               transition: {
                 duration: staggerDuration,
                 delay: (total - 1 - index) * staggerDelay,
-                ease: "easeOut",
+                ease: 'easeOut',
               },
             },
     };
@@ -117,41 +120,41 @@ const SlideText = React.forwardRef<HTMLSpanElement, SlideTextProps>(
       <span
         ref={ref}
         className={cn(
-          "relative inline-block leading-none select-none overflow-hidden",
-          className
+          'relative inline-block leading-none select-none overflow-hidden',
+          className,
         )}
       >
         <motion.span
-          className="relative h-fit leading-none inline-flex transform-gpu will-change-transform"
+          className='relative h-fit leading-none inline-flex transform-gpu will-change-transform'
           variants={containerVariants}
-          initial="initial"
+          initial='initial'
           animate={phase}
           style={{ perspective: 1000 }}
         >
           {chars.map((char, index) => {
-            const isSpace = char === " ";
+            const isSpace = char === ' ';
 
             return (
               <span
                 key={index}
-                className="inline-block h-[1.2em] align-baseline overflow-hidden relative"
+                className='inline-block h-[1.2em] align-baseline overflow-hidden relative'
                 style={{ lineHeight: 1.2 }}
               >
                 <motion.span
-                  className="block relative"
+                  className='block relative'
                   variants={stackVariants}
                   custom={{ index, total: chars.length }}
                   style={{
-                    backfaceVisibility: "hidden",
-                    transform: "translateZ(0)",
+                    backfaceVisibility: 'hidden',
+                    transform: 'translateZ(0)',
                     lineHeight: 1.2,
                   }}
                 >
-                  <span className="flex h-[1.2em] leading-none relative items-center">
-                    {isSpace ? "\u00A0" : char}
+                  <span className='flex h-[1.2em] leading-none relative items-center'>
+                    {isSpace ? '\u00A0' : char}
                   </span>
-                  <span className="flex h-[1.2em] leading-none absolute top-full left-0 items-center">
-                    {isSpace ? "\u00A0" : char}
+                  <span className='flex h-[1.2em] leading-none absolute top-full left-0 items-center'>
+                    {isSpace ? '\u00A0' : char}
                   </span>
                 </motion.span>
               </span>
@@ -160,10 +163,10 @@ const SlideText = React.forwardRef<HTMLSpanElement, SlideTextProps>(
         </motion.span>
       </span>
     );
-  }
+  },
 );
 
-SlideText.displayName = "SlideText";
+SlideText.displayName = 'SlideText';
 
 export { SlideText };
 export type { SlideTextProps };
