@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, {
   useState,
   useRef,
@@ -8,8 +8,8 @@ import React, {
   ReactElement,
   useCallback,
   useMemo,
-} from "react";
-import { cn } from "@/lib/utils";
+} from 'react';
+import { cn } from '@/lib/utils';
 
 interface CardProps {
   className?: string;
@@ -19,7 +19,7 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({
-  className = "",
+  className = '',
   children,
   x = 0,
   y = 0,
@@ -43,8 +43,15 @@ interface InfiniteCanvasProps {
   showInstructions?: boolean;
 }
 
+interface VisibleCard {
+  id: string;
+  x: number;
+  y: number;
+  childIndex: number;
+}
+
 const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
-  className = "",
+  className = '',
   children,
   cardWidth = 280,
   cardHeight = 220,
@@ -60,67 +67,76 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [lastTouchDistance, setLastTouchDistance] = useState(0);
   const [isActive, setIsActive] = useState(true);
+  const [visibleCards, setVisibleCards] = useState<VisibleCard[]>([]);
   const canvasRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
 
   const cellWidth = cardWidth + spacing;
   const cellHeight = cardHeight + spacing;
 
-  const childArray = useMemo(() => Children.toArray(children), [children]);
+  const childArray = useMemo(() => {
+    const array = Children.toArray(children);
+    return array;
+  }, [children]);
+
   const childCount = childArray.length;
 
-  const getVisibleCards = useCallback(() => {
-    const canvas = canvasRef.current;
-    const viewportWidth = canvas ? canvas.offsetWidth : window.innerWidth;
-    const viewportHeight = canvas ? canvas.offsetHeight : window.innerHeight;
-    const buffer = Math.ceil(3 / zoom);
+  const getVisibleCards = useCallback(
+    (
+      currentPosition: { x: number; y: number },
+      currentZoom: number,
+      canvasElement: HTMLDivElement | null,
+    ): VisibleCard[] => {
+      const viewportWidth = canvasElement
+        ? canvasElement.offsetWidth
+        : window.innerWidth;
+      const viewportHeight = canvasElement
+        ? canvasElement.offsetHeight
+        : window.innerHeight;
+      const buffer = Math.ceil(3 / currentZoom);
 
-    const startCol =
-      Math.floor((-position.x / zoom - viewportWidth / 2) / cellWidth) - buffer;
-    const endCol =
-      Math.ceil((-position.x / zoom + viewportWidth / 2) / cellWidth) + buffer;
-    const startRow =
-      Math.floor((-position.y / zoom - viewportHeight / 2) / cellHeight) -
-      buffer;
-    const endRow =
-      Math.ceil((-position.y / zoom + viewportHeight / 2) / cellHeight) +
-      buffer;
+      const startCol =
+        Math.floor(
+          (-currentPosition.x / currentZoom - viewportWidth / 2) / cellWidth,
+        ) - buffer;
+      const endCol =
+        Math.ceil(
+          (-currentPosition.x / currentZoom + viewportWidth / 2) / cellWidth,
+        ) + buffer;
+      const startRow =
+        Math.floor(
+          (-currentPosition.y / currentZoom - viewportHeight / 2) / cellHeight,
+        ) - buffer;
+      const endRow =
+        Math.ceil(
+          (-currentPosition.y / currentZoom + viewportHeight / 2) / cellHeight,
+        ) + buffer;
 
-    const cards = [];
-    for (let j = startRow; j <= endRow; j++) {
-      for (let i = startCol; i <= endCol; i++) {
-        const index = Math.abs(i * 7 + j * 13) % childCount;
-        cards.push({
-          id: `${i}-${j}`,
-          x: i * cellWidth + spacing / 2,
-          y: j * cellHeight + spacing / 2,
-          childIndex: index,
-        });
+      const cards: VisibleCard[] = [];
+      for (let j = startRow; j <= endRow; j++) {
+        for (let i = startCol; i <= endCol; i++) {
+          const index = Math.abs(i * 7 + j * 13) % childCount;
+          cards.push({
+            id: `${i}-${j}`,
+            x: i * cellWidth + spacing / 2,
+            y: j * cellHeight + spacing / 2,
+            childIndex: index,
+          });
+        }
       }
-    }
-    return cards;
-  }, [
-    position.x,
-    position.y,
-    zoom,
-    childCount,
-    cellWidth,
-    cellHeight,
-    spacing,
-  ]);
-
-  interface VisibleCard {
-    id: string;
-    x: number;
-    y: number;
-    childIndex: number;
-  }
-
-  const [visibleCards, setVisibleCards] = useState<VisibleCard[]>([]);
+      return cards;
+    },
+    [childCount, cellWidth, cellHeight, spacing],
+  );
 
   useEffect(() => {
-    setVisibleCards(getVisibleCards());
-  }, [position, zoom, childCount, getVisibleCards]);
+    const updateVisibleCards = () => {
+      const cards = getVisibleCards(position, zoom, canvasRef.current);
+      setVisibleCards(cards);
+    };
+
+    updateVisibleCards();
+  }, [position, zoom, getVisibleCards]);
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent) => {
@@ -128,7 +144,7 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
       setIsDragging(true);
       setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
     },
-    [isActive, position.x, position.y]
+    [isActive, position.x, position.y],
   );
 
   const handleMouseMove = useCallback(
@@ -138,7 +154,7 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
       const newX = e.clientX - dragStart.x;
       const newY = e.clientY - dragStart.y;
 
-      if (rafRef.current) {
+      if (rafRef.current !== undefined) {
         cancelAnimationFrame(rafRef.current);
       }
 
@@ -146,7 +162,7 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
         setPosition({ x: newX, y: newY });
       });
     },
-    [isActive, isDragging, dragStart.x, dragStart.y]
+    [isActive, isDragging, dragStart.x, dragStart.y],
   );
 
   const handleMouseUp = useCallback(() => {
@@ -172,7 +188,7 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
         });
       }
     },
-    [isActive, position.x, position.y, getTouchDistance]
+    [isActive, position.x, position.y, getTouchDistance],
   );
 
   const handleTouchMove = useCallback(
@@ -181,14 +197,14 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
       if (e.touches.length === 2) {
         e.preventDefault();
         const newDistance = getTouchDistance(
-          e.touches as unknown as React.TouchList
+          e.touches as unknown as React.TouchList,
         );
         if (lastTouchDistance > 0) {
           const delta = newDistance - lastTouchDistance;
           const zoomSpeed = 0.01;
           const newZoom = Math.max(0.3, Math.min(3, zoom + delta * zoomSpeed));
 
-          if (rafRef.current) {
+          if (rafRef.current !== undefined) {
             cancelAnimationFrame(rafRef.current);
           }
 
@@ -201,7 +217,7 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
         const newX = e.touches[0].clientX - dragStart.x;
         const newY = e.touches[0].clientY - dragStart.y;
 
-        if (rafRef.current) {
+        if (rafRef.current !== undefined) {
           cancelAnimationFrame(rafRef.current);
         }
 
@@ -218,7 +234,7 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
       lastTouchDistance,
       zoom,
       getTouchDistance,
-    ]
+    ],
   );
 
   const handleTouchEnd = useCallback(() => {
@@ -234,7 +250,7 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
       const zoomSpeed = 0.001;
       const newZoom = Math.max(0.3, Math.min(3, zoom - delta * zoomSpeed));
 
-      if (rafRef.current) {
+      if (rafRef.current !== undefined) {
         cancelAnimationFrame(rafRef.current);
       }
 
@@ -242,17 +258,17 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
         setZoom(newZoom);
       });
     },
-    [isActive, zoom]
+    [isActive, zoom],
   );
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (canvas && isActive) {
-      canvas.addEventListener("wheel", handleWheel, { passive: false });
-      canvas.addEventListener("touchmove", handleTouchMove, { passive: false });
+      canvas.addEventListener('wheel', handleWheel, { passive: false });
+      canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
       return () => {
-        canvas.removeEventListener("wheel", handleWheel);
-        canvas.removeEventListener("touchmove", handleTouchMove);
+        canvas.removeEventListener('wheel', handleWheel);
+        canvas.removeEventListener('touchmove', handleTouchMove);
       };
     }
   }, [handleWheel, handleTouchMove, isActive]);
@@ -262,8 +278,8 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
       const originalOverflow = document.body.style.overflow;
       const originalHtmlOverflow = document.documentElement.style.overflow;
 
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
 
       return () => {
         document.body.style.overflow = originalOverflow;
@@ -275,22 +291,22 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
   const transformStyle = useMemo(
     () => ({
       transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
-      position: "absolute" as const,
-      left: "50%",
-      top: "50%",
+      position: 'absolute' as const,
+      left: '50%',
+      top: '50%',
       width: 0,
       height: 0,
-      willChange: "transform",
+      willChange: 'transform',
     }),
-    [position.x, position.y, zoom]
+    [position.x, position.y, zoom],
   );
 
   return (
     <div
       ref={canvasRef}
-      className={cn("relative overflow-hidden select-none", className)}
+      className={cn('relative overflow-hidden select-none', className)}
       style={{
-        cursor: isActive ? (isDragging ? "grabbing" : "grab") : "default",
+        cursor: isActive ? (isDragging ? 'grabbing' : 'grab') : 'default',
       }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
@@ -306,20 +322,23 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
           return (
             <div
               key={card.id}
-              className="absolute"
+              className='absolute'
               style={{
                 transform: `translate(${card.x}px, ${card.y}px)`,
                 width: `${cardWidth}px`,
                 height: `${cardHeight}px`,
-                transformOrigin: "center center",
+                transformOrigin: 'center center',
               }}
             >
-              <div className="pointer-events-none w-full h-full flex items-start justify-start">
+              <div className='pointer-events-none w-full h-full flex items-start justify-start'>
                 {React.isValidElement(child)
-                  ? cloneElement(child as ReactElement, {
-                      x: card.x,
-                      y: card.y,
-                    })
+                  ? cloneElement(
+                      child as ReactElement<{ x?: number; y?: number }>,
+                      {
+                        x: card.x,
+                        y: card.y,
+                      },
+                    )
                   : child}
               </div>
             </div>
@@ -328,22 +347,22 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
       </div>
 
       {showInstructions && (
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-sm dark:text-white text-black px-4 py-2 rounded-full text-xs sm:text-sm pointer-events-none whitespace-nowrap">
+        <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-xs dark:text-white text-black px-4 py-2 rounded-full text-xs sm:text-sm pointer-events-none whitespace-nowrap'>
           Drag to pan • Scroll to zoom
         </div>
       )}
 
       {showZoom && (
-        <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm dark:text-white text-black px-3 py-1.5 rounded-full text-xs sm:text-sm pointer-events-none">
+        <div className='absolute top-4 right-4 bg-white/10 backdrop-blur-xs dark:text-white text-black px-3 py-1.5 rounded-full text-xs sm:text-sm pointer-events-none'>
           {Math.round(zoom * 100)}%
         </div>
       )}
 
       {showStatus && (
-        <div className="absolute top-4 left-4 flex items-center gap-2 bg-white/10 backdrop-blur-sm dark:text-white text-black px-3 py-1.5 rounded-full text-xs sm:text-sm pointer-events-none">
+        <div className='absolute top-4 left-4 flex items-center gap-2 bg-white/10 backdrop-blur-xs dark:text-white text-black px-3 py-1.5 rounded-full text-xs sm:text-sm pointer-events-none'>
           <div
             className={`w-2 h-2 rounded-full ${
-              isActive ? "bg-green-400 animate-pulse" : "bg-red-400"
+              isActive ? 'bg-green-400 animate-pulse' : 'bg-red-400'
             }`}
           ></div>
         </div>
@@ -352,9 +371,9 @@ const InfiniteCanvas: React.FC<InfiniteCanvasProps> = ({
       {showControls && (
         <button
           onClick={() => setIsActive(!isActive)}
-          className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm dark:text-white text-black px-4 py-1.5 rounded-full text-xs sm:text-sm transition-colors pointer-events-auto whitespace-nowrap"
+          className='absolute top-4 left-1/2 transform -translate-x-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-xs dark:text-white text-black px-4 py-1.5 rounded-full text-xs sm:text-sm transition-colors pointer-events-auto whitespace-nowrap'
         >
-          {isActive ? "Disable" : "Enable"}
+          {isActive ? 'Disable' : 'Enable'}
         </button>
       )}
     </div>
