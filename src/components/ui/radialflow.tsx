@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { motion } from 'motion/react';
+import { Badge } from '@/components/ui/badge';
 
 export interface Topic {
   id: string;
@@ -21,7 +21,7 @@ interface RadialFlowProps {
 export function RadialFlow({
   topics,
   badgeName,
-  centralDotColor = "#FFFFFF",
+  centralDotColor = '#FFFFFF',
 }: RadialFlowProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -30,8 +30,8 @@ export function RadialFlow({
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const updateDimensions = useCallback(() => {
@@ -46,7 +46,7 @@ export function RadialFlow({
   useEffect(() => {
     updateDimensions();
     const resizeObserver = new ResizeObserver(() =>
-      requestAnimationFrame(updateDimensions)
+      requestAnimationFrame(updateDimensions),
     );
     if (containerRef.current) resizeObserver.observe(containerRef.current);
     return () => resizeObserver.disconnect();
@@ -63,12 +63,12 @@ export function RadialFlow({
         y: position.y,
       };
     },
-    [isMobile]
+    [isMobile],
   );
 
   const getPathData = useCallback(
     (topic: Topic) => {
-      if (!dimensions.width || !dimensions.height) return "";
+      if (!dimensions.width || !dimensions.height) return '';
 
       const centerX = dimensions.width / 2;
       const centerY = dimensions.height / 2;
@@ -81,7 +81,7 @@ export function RadialFlow({
 
       return `M ${x} ${y} Q ${controlX} ${y} ${centerX} ${centerY}`;
     },
-    [dimensions, getLabelPosition]
+    [dimensions, getLabelPosition],
   );
 
   const generateParticles = useCallback(
@@ -112,33 +112,33 @@ export function RadialFlow({
             }}
           >
             <animateMotion
-              dur="3.5s"
-              repeatCount="indefinite"
+              dur='3.5s'
+              repeatCount='indefinite'
               path={pathData}
-              rotate="auto"
-              calcMode="spline"
-              keyPoints="0;1"
-              keyTimes="0;1"
-              keySplines="0.42 0 0.58 1"
+              rotate='auto'
+              calcMode='spline'
+              keyPoints='0;1'
+              keyTimes='0;1'
+              keySplines='0.42 0 0.58 1'
             />
           </motion.path>
         </motion.g>
       );
     },
-    [getPathData]
+    [getPathData],
   );
 
   const getTopicLabelClasses = useCallback(
     (topic: Topic) =>
       `absolute transform -translate-x-1/2 -translate-y-1/2 bg-gray-900/90 text-white rounded-md 
-     backdrop-blur-sm border transition-all duration-300 px-3 py-2 text-xs sm:text-sm
+     backdrop-blur-xs border transition-all duration-300 px-3 py-2 text-xs sm:text-sm
      ${
        topic.highlighted
-         ? "border-yellow-400/30 shadow-glow"
-         : "border-gray-800"
+         ? 'border-yellow-400/30 shadow-glow'
+         : 'border-gray-800'
      }
-     whitespace-normal break-words text-center leading-tight`,
-    []
+     whitespace-normal wrap-break-word text-center leading-tight`,
+    [],
   );
 
   const getLabelStyle = useCallback(
@@ -146,35 +146,35 @@ export function RadialFlow({
       left: `${getLabelPosition(topic.position).x}%`,
       top: `${getLabelPosition(topic.position).y}%`,
       color: topic.color,
-      maxWidth: isMobile ? "140px" : "200px",
-      minWidth: "80px",
-      lineHeight: "1.2",
+      maxWidth: isMobile ? '140px' : '200px',
+      minWidth: '80px',
+      lineHeight: '1.2',
     }),
-    [isMobile, getLabelPosition]
+    [isMobile, getLabelPosition],
   );
 
   return (
     <div
       ref={containerRef}
-      className="w-full h-full  relative overflow-hidden min-h-[300px]"
+      className='w-full h-full  relative overflow-hidden min-h-75'
     >
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mb-8">
-        <Badge variant="default" shiny={true}>
+      <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 mb-8'>
+        <Badge variant='default' shiny={true}>
           {badgeName}
         </Badge>
       </div>
 
       {dimensions.width > 0 && (
         <svg
-          className="absolute inset-0 w-full h-full"
+          className='absolute inset-0 w-full h-full'
           viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
         >
           <defs>
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+            <filter id='glow' x='-50%' y='-50%' width='200%' height='200%'>
+              <feGaussianBlur stdDeviation='2' result='coloredBlur' />
               <feMerge>
-                <feMergeNode in="coloredBlur" />
-                <feMergeNode in="SourceGraphic" />
+                <feMergeNode in='coloredBlur' />
+                <feMergeNode in='SourceGraphic' />
               </feMerge>
             </filter>
           </defs>
@@ -183,10 +183,10 @@ export function RadialFlow({
             <path
               key={`path-${topic.id}`}
               d={getPathData(topic)}
-              stroke={topic.highlighted ? topic.color : "#374151"}
-              strokeWidth="1"
+              stroke={topic.highlighted ? topic.color : '#374151'}
+              strokeWidth='1'
               strokeOpacity={topic.highlighted ? 0.4 : 0.2}
-              fill="none"
+              fill='none'
             />
           ))}
 
@@ -195,7 +195,7 @@ export function RadialFlow({
           <motion.circle
             cx={dimensions.width / 2}
             cy={dimensions.height / 2}
-            r="4"
+            r='4'
             fill={centralDotColor}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
