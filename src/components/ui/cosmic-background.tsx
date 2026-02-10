@@ -1,26 +1,39 @@
-"use client";
-import React, { useRef, useEffect, useState } from "react";
-import * as THREE from "three";
+'use client';
+import React, { useRef, useEffect, useState } from 'react';
+import * as THREE from 'three';
 
 interface CosmicBackgroundProps {
-  variant?: "aurora" | "cosmic" | "neon";
+  variant?: 'aurora' | 'cosmic' | 'neon';
   intensity?: number;
   speed?: number;
   interactive?: boolean;
-  quality?: "low" | "medium" | "high" | "ultra";
+  quality?: 'low' | 'medium' | 'high' | 'ultra';
   overlay?: boolean;
   className?: string;
   children?: React.ReactNode;
 }
 
+const checkWebGLSupport = (): boolean => {
+  try {
+    const canvas = document.createElement('canvas');
+    const gl =
+      canvas.getContext('webgl2') ||
+      canvas.getContext('webgl') ||
+      canvas.getContext('experimental-webgl');
+    return !!gl;
+  } catch (e) {
+    return false;
+  }
+};
+
 const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
-  variant = "aurora",
+  variant = 'aurora',
   intensity = 1.0,
   speed = 1.0,
   interactive = true,
-  quality = "high",
+  quality = 'high',
   overlay = false,
-  className = "",
+  className = '',
   children,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -32,25 +45,27 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
   const mouseRef = useRef<THREE.Vector2>(new THREE.Vector2(0.5, 0.5));
   const targetMouseRef = useRef<THREE.Vector2>(new THREE.Vector2(0.5, 0.5));
   const timeRef = useRef<number>(0);
-  const [webGLSupported, setWebGLSupported] = useState<boolean>(true);
+  const [webGLSupported] = useState<boolean>(() =>
+    typeof window !== 'undefined' ? checkWebGLSupport() : true,
+  );
 
   const variantConfigs = {
     aurora: {
-      colors: ["#0a1628", "#1a3a52", "#2d5f7e", "#45a29e", "#66fcf1"],
+      colors: ['#0a1628', '#1a3a52', '#2d5f7e', '#45a29e', '#66fcf1'],
       flowSpeed: 0.15,
       complexity: 3.5,
       waveCount: 4,
       glowIntensity: 1.8,
     },
     cosmic: {
-      colors: ["#0d0221", "#240046", "#3c096c", "#5a189a", "#9d4edd"],
+      colors: ['#0d0221', '#240046', '#3c096c', '#5a189a', '#9d4edd'],
       flowSpeed: 0.08,
       complexity: 5.0,
       waveCount: 6,
       glowIntensity: 2.2,
     },
     neon: {
-      colors: ["#000000", "#ff006e", "#fb5607", "#ffbe0b", "#8338ec"],
+      colors: ['#000000', '#ff006e', '#fb5607', '#ffbe0b', '#8338ec'],
       flowSpeed: 0.2,
       complexity: 4.2,
       waveCount: 5,
@@ -61,17 +76,6 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
   const config = variantConfigs[variant];
 
   useEffect(() => {
-    const canvas = document.createElement("canvas");
-    const gl =
-      canvas.getContext("webgl2") ||
-      canvas.getContext("webgl") ||
-      canvas.getContext("experimental-webgl");
-    if (!gl) {
-      setWebGLSupported(false);
-    }
-  }, []);
-
-  useEffect(() => {
     if (!containerRef.current || !webGLSupported) return;
 
     const container = containerRef.current;
@@ -80,27 +84,27 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
 
     const isMobile =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
+        navigator.userAgent,
       );
     const isLowEndDevice =
       isMobile ||
       (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
 
     let effectiveQuality = quality;
-    if (isLowEndDevice && quality === "ultra") effectiveQuality = "medium";
-    if (isMobile && quality !== "low") effectiveQuality = "low";
+    if (isLowEndDevice && quality === 'ultra') effectiveQuality = 'medium';
+    if (isMobile && quality !== 'low') effectiveQuality = 'low';
 
     const qualitySettings = {
-      low: { pixelRatio: 0.5, precision: "mediump" as const, octaves: 3 },
-      medium: { pixelRatio: 0.75, precision: "mediump" as const, octaves: 4 },
+      low: { pixelRatio: 0.5, precision: 'mediump' as const, octaves: 3 },
+      medium: { pixelRatio: 0.75, precision: 'mediump' as const, octaves: 4 },
       high: {
         pixelRatio: Math.min(window.devicePixelRatio, 1.5),
-        precision: "highp" as const,
+        precision: 'highp' as const,
         octaves: 5,
       },
       ultra: {
         pixelRatio: Math.min(window.devicePixelRatio, 2),
-        precision: "highp" as const,
+        precision: 'highp' as const,
         octaves: 6,
       },
     };
@@ -115,17 +119,16 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({
-        antialias: effectiveQuality === "ultra",
+        antialias: effectiveQuality === 'ultra',
         alpha: true,
         powerPreference:
-          effectiveQuality === "low" ? "low-power" : "high-performance",
+          effectiveQuality === 'low' ? 'low-power' : 'high-performance',
         precision: settings.precision,
         stencil: false,
         depth: false,
       });
     } catch (error) {
-      console.error("WebGL initialization failed:", error);
-      setWebGLSupported(false);
+      console.error('WebGL initialization failed:', error);
       return;
     }
 
@@ -320,13 +323,13 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
     };
 
     if (interactive) {
-      container.addEventListener("mousemove", handleMouseMove, {
+      container.addEventListener('mousemove', handleMouseMove, {
         passive: true,
       });
     }
 
     let lastTime = performance.now();
-    const targetFPS = effectiveQuality === "low" ? 30 : 60;
+    const targetFPS = effectiveQuality === 'low' ? 30 : 60;
     const frameTime = 1000 / targetFPS;
 
     const animate = (currentTime: number) => {
@@ -372,12 +375,12 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
       }, 150);
     };
 
-    window.addEventListener("resize", handleResize, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
       if (interactive) {
-        container.removeEventListener("mousemove", handleMouseMove);
+        container.removeEventListener('mousemove', handleMouseMove);
       }
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
@@ -411,17 +414,17 @@ const CosmicBackground: React.FC<CosmicBackgroundProps> = ({
   if (!webGLSupported) {
     return (
       <div
-        className={`w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 ${className}`}
+        className={`w-full h-full flex items-center justify-center bg-linear-to-br from-gray-900 to-gray-800 ${className}`}
       >
-        <div className="text-gray-400 text-sm">WebGL not supported</div>
+        <div className='text-gray-400 text-sm'>WebGL not supported</div>
       </div>
     );
   }
 
   return (
     <div className={`relative ${className}`}>
-      <div ref={containerRef} className="absolute inset-0 w-full h-full" />
-      {children && <div className="relative z-10">{children}</div>}
+      <div ref={containerRef} className='absolute inset-0 w-full h-full' />
+      {children && <div className='relative z-10'>{children}</div>}
     </div>
   );
 };
