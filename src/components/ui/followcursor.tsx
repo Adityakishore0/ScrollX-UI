@@ -1,6 +1,6 @@
-"use client";
-import { useEffect, useRef, useState, useCallback } from "react";
-import { Renderer, Transform, Vec3, Color, Polyline, Program } from "ogl";
+'use client';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { Renderer, Transform, Vec3, Color, Polyline, Program } from 'ogl';
 
 const vertexShader = `
     precision highp float;
@@ -101,23 +101,23 @@ interface FollowCursorProps {
 }
 
 export default function FollowCursor({
-  className = "",
+  className = '',
   style = {},
   colors = [
-    "#FF6B6B",
-    "#4ECDC4",
-    "#45B7D1",
-    "#FFBE0B",
-    "#FB5607",
-    "#8338EC",
-    "#3A86FF",
-    "#FF006E",
-    "#A5FFD6",
-    "#FF9E00",
+    '#FF6B6B',
+    '#4ECDC4',
+    '#45B7D1',
+    '#FFBE0B',
+    '#FB5607',
+    '#8338EC',
+    '#3A86FF',
+    '#FF006E',
+    '#A5FFD6',
+    '#FF9E00',
   ],
   thickness = { min: 30, max: 100 },
   count = { min: 15, max: 25 },
-  bgColor = "rgba(26, 26, 38, 1)",
+  bgColor = 'rgba(26, 26, 38, 1)',
 }: FollowCursorProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -145,12 +145,13 @@ export default function FollowCursor({
       offset: new Vec3(
         (Math.random() - 0.5) * 0.05,
         (Math.random() - 0.5) * 0.05,
-        0
+        0,
       ),
     }));
   }, [colors, thickness, count]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
     return () => setIsMounted(false);
   }, []);
@@ -224,7 +225,7 @@ export default function FollowCursor({
 
       linesRef.current = lines;
     } catch (error) {
-      console.error("Failed to create polylines:", error);
+      console.error('Failed to create polylines:', error);
       return;
     }
 
@@ -241,21 +242,21 @@ export default function FollowCursor({
             if (
               line &&
               line.polyline &&
-              typeof line.polyline.resize === "function"
+              typeof line.polyline.resize === 'function'
             ) {
               line.polyline.resize();
             }
           });
         }
       } catch (error) {
-        console.error("Failed to resize:", error);
+        console.error('Failed to resize:', error);
       }
     };
 
     const handlePointerMove = (e: MouseEvent | TouchEvent) => {
       if (!isComponentMounted || !renderer || !canvas) return;
 
-      const event = "touches" in e ? e.touches[0] : e;
+      const event = 'touches' in e ? e.touches[0] : e;
 
       const canvasPos = getCanvasPosition();
 
@@ -265,7 +266,7 @@ export default function FollowCursor({
       mouseRef.current.set(
         (x / canvas.width) * 2 - 1,
         (y / canvas.height) * -2 + 1,
-        0
+        0,
       );
 
       if (lines && Array.isArray(lines)) {
@@ -290,8 +291,8 @@ export default function FollowCursor({
       resizeObserverRef.current.observe(container);
     }
 
-    window.addEventListener("mousemove", handlePointerMove);
-    window.addEventListener("touchmove", handlePointerMove);
+    window.addEventListener('mousemove', handlePointerMove);
+    window.addEventListener('touchmove', handlePointerMove);
 
     mouseRef.current.set(0, 0, 0);
 
@@ -326,12 +327,12 @@ export default function FollowCursor({
 
                 line.points[i].lerp(
                   mouseRef.current.clone().add(line.offset),
-                  0.4
+                  0.4,
                 );
               } else {
                 line.points[i].lerp(
                   line.points[i - 1],
-                  0.88 + Math.sin(timeRef.current + i) * 0.05
+                  0.88 + Math.sin(timeRef.current + i) * 0.05,
                 );
               }
             }
@@ -345,7 +346,7 @@ export default function FollowCursor({
                 line.program.uniforms.uIntensity.value = lerp(
                   line.program.uniforms.uIntensity.value || 0,
                   line.targetIntensity,
-                  0.1
+                  0.1,
                 );
               }
             }
@@ -360,7 +361,7 @@ export default function FollowCursor({
           rendererRef.current.render({ scene: sceneRef.current });
         }
       } catch (error) {
-        console.error("Animation error:", error);
+        console.error('Animation error:', error);
       }
 
       if (isComponentMounted) {
@@ -378,21 +379,21 @@ export default function FollowCursor({
         resizeObserverRef.current.disconnect();
       }
 
-      window.removeEventListener("mousemove", handlePointerMove);
-      window.removeEventListener("touchmove", handlePointerMove);
+      window.removeEventListener('mousemove', handlePointerMove);
+      window.removeEventListener('touchmove', handlePointerMove);
 
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
 
-      if (gl && typeof gl.getExtension === "function") {
+      if (gl && typeof gl.getExtension === 'function') {
         try {
-          const extension = gl.getExtension("WEBGL_lose_context");
+          const extension = gl.getExtension('WEBGL_lose_context');
           if (extension) {
             extension.loseContext();
           }
         } catch (error) {
-          console.error("Error losing WebGL context:", error);
+          console.error('Error losing WebGL context:', error);
         }
       }
     };
@@ -404,7 +405,7 @@ export default function FollowCursor({
       className={`relative w-full h-full overflow-hidden ${className}`}
       style={style}
     >
-      <canvas ref={canvasRef} className="block w-full h-full" />
+      <canvas ref={canvasRef} className='block w-full h-full' />
     </div>
   );
 }

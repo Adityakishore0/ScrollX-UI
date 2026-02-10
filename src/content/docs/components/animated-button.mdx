@@ -4,9 +4,9 @@ description: AnimatedButton is a highly customizable animated button component w
 ---
 
 <ComponentPreview
-  name="animatedbutton-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An accessible Button component built with Radix UI"
+  name='animatedbutton-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An accessible Button component built with Radix UI'
 />
 
 ## Installation
@@ -23,24 +23,19 @@ description: AnimatedButton is a highly customizable animated button component w
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="@radix-ui/react-slot" />
+<DepsOptions name='@radix-ui/react-slot' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>animated-button.tsx</code>
-</p>
-<ComponentSource name="animated-button" />
+
+<ComponentSource name='animated-button' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
-
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -51,34 +46,32 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
 
 ```tsx
-import { AnimatedButton } from "@/components/ui/animated-button";
+import { AnimatedButton } from '@/components/ui/animated-button';
 ```
 
 ```tsx
 <AnimatedButton
-        className="bg-green-500 text-white"
-        variant="default"
-        size="default"
-        glow={true}
-        textEffect="normal"
-        uppercase={true}
-        rounded="custom"
-        asChild={false}
-        hideAnimations={false}
-        shimmerColor="#39FF14"
-        shimmerSize="0.15em"
-        shimmerDuration="3s"
-        borderRadius="100px"
-        background="rgba(0, 0, 0, 1)"
-      >
-        ScrollX UI
-      </AnimatedButton>
+  className='bg-green-500 text-white'
+  variant='default'
+  size='default'
+  glow={true}
+  textEffect='normal'
+  uppercase={true}
+  rounded='custom'
+  asChild={false}
+  hideAnimations={false}
+  shimmerColor='#39FF14'
+  shimmerSize='0.15em'
+  shimmerDuration='3s'
+  borderRadius='100px'
+  background='rgba(0, 0, 0, 1)'
+>
+  ScrollX UI
+</AnimatedButton>
 ```
-
 
 ## API Reference
 
@@ -88,24 +81,20 @@ import { AnimatedButton } from "@/components/ui/animated-button";
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link" \| "success" \| "warning" \| "info" \| "dark" \| "light" \| "gradient" \| "glass"` | `"default"` | Controls the visual style of the button. |
-| `size` | `"sm" \| "default" \| "lg" \| "icon"` | `"default"` | Adjusts the button size. |
-| `glow` | `boolean` | `false` | Enables glowing animation around the button. |
-| `textEffect` | `"normal" \| "shimmer" \| "gradient" \| "glitch" \| string` | `"normal"` | Applies a text animation or effect. |
-| `uppercase` | `boolean` | `false` | Renders button text in uppercase. |
-| `rounded` | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full" \| "custom"` | `"md"` | Controls border radius style. |
-| `borderRadius` | `string` | — | Custom border radius. Applies only when rounded = 'custom'. |
-| `background` | `string` | — | Custom background color or gradient. |
-| `shimmerColor` | `string` | — | Color used in shimmer effect (e.g., '#39FF14'). |
-| `shimmerSize` | `string` | `"0.15em"` | Size/thickness of the shimmer effect. |
-| `shimmerDuration` | `string` | `"3s"` | Duration of shimmer animation. |
-| `asChild` | `boolean` | `false` | Render the button as a child component using Slot. |
-| `hideAnimations` | `boolean` | `false` | Disables all visual animations when true. |
-| `className` | `string` | `undefined` | Additional custom class names for styling. |
-| `...props` | `HTMLButtonElement attributes` | — | All standard HTML button attributes and events. |
-
-
-
+| Prop              | Type                                                                                                                                                                  | Default     | Description                                                 |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----------------------------------------------------------- |
+| `variant`         | `"default" \| "destructive" \| "outline-solid" \| "secondary" \| "ghost" \| "link" \| "success" \| "warning" \| "info" \| "dark" \| "light" \| "gradient" \| "glass"` | `"default"` | Controls the visual style of the button.                    |
+| `size`            | `"sm" \| "default" \| "lg" \| "icon"`                                                                                                                                 | `"default"` | Adjusts the button size.                                    |
+| `glow`            | `boolean`                                                                                                                                                             | `false`     | Enables glowing animation around the button.                |
+| `textEffect`      | `"normal" \| "shimmer" \| "gradient" \| "glitch" \| string`                                                                                                           | `"normal"`  | Applies a text animation or effect.                         |
+| `uppercase`       | `boolean`                                                                                                                                                             | `false`     | Renders button text in uppercase.                           |
+| `rounded`         | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full" \| "custom"`                                                                                                        | `"md"`      | Controls border radius style.                               |
+| `borderRadius`    | `string`                                                                                                                                                              | —           | Custom border radius. Applies only when rounded = 'custom'. |
+| `background`      | `string`                                                                                                                                                              | —           | Custom background color or gradient.                        |
+| `shimmerColor`    | `string`                                                                                                                                                              | —           | Color used in shimmer effect (e.g., '#39FF14').             |
+| `shimmerSize`     | `string`                                                                                                                                                              | `"0.15em"`  | Size/thickness of the shimmer effect.                       |
+| `shimmerDuration` | `string`                                                                                                                                                              | `"3s"`      | Duration of shimmer animation.                              |
+| `asChild`         | `boolean`                                                                                                                                                             | `false`     | Render the button as a child component using Slot.          |
+| `hideAnimations`  | `boolean`                                                                                                                                                             | `false`     | Disables all visual animations when true.                   |
+| `className`       | `string`                                                                                                                                                              | `undefined` | Additional custom class names for styling.                  |
+| `...props`        | `HTMLButtonElement attributes`                                                                                                                                        | —           | All standard HTML button attributes and events.             |

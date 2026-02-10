@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 interface DotWaveProps {
   dotGap?: number;
@@ -76,8 +76,8 @@ export function DotWave({
   className,
   dotClassName,
   children,
-  bgColor = "#000000",
-  dotColor = "#ffffff",
+  bgColor = '#000000',
+  dotColor = '#ffffff',
 }: DotWaveProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -92,9 +92,9 @@ export function DotWave({
     easeY: new Ease(0.5, 2, 60, 0),
     animationId: 0,
     expansionRadius: 0,
-    startTime: Date.now(),
-    bgColor: "#000000",
-    dotColor: "#ffffff",
+    startTime: 0,
+    bgColor: '#000000',
+    dotColor: '#ffffff',
   });
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export function DotWave({
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const state = stateRef.current;
@@ -118,24 +118,24 @@ export function DotWave({
 
       state.bgColor =
         containerBg &&
-        containerBg !== "rgba(0, 0, 0, 0)" &&
-        containerBg !== "transparent"
+        containerBg !== 'rgba(0, 0, 0, 0)' &&
+        containerBg !== 'transparent'
           ? containerBg
           : bgColor;
 
       state.dotColor =
         containerColor &&
-        containerColor !== "rgba(0, 0, 0, 0)" &&
-        containerColor !== "transparent"
+        containerColor !== 'rgba(0, 0, 0, 0)' &&
+        containerColor !== 'transparent'
           ? containerColor
           : dotColor;
     };
 
     updateColors();
 
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleThemeChange = () => updateColors();
-    mediaQuery.addEventListener("change", handleThemeChange);
+    mediaQuery.addEventListener('change', handleThemeChange);
 
     const handleResize = () => {
       state.windowSize = {
@@ -165,10 +165,10 @@ export function DotWave({
 
       state.posStart = {
         x: Math.round(
-          (state.windowSize.w - (state.circleNumber.x - 1) * dotGap) / 2
+          (state.windowSize.w - (state.circleNumber.x - 1) * dotGap) / 2,
         ),
         y: Math.round(
-          (state.windowSize.h - (state.circleNumber.y - 1) * dotGap) / 2
+          (state.windowSize.h - (state.circleNumber.y - 1) * dotGap) / 2,
         ),
       };
     };
@@ -192,7 +192,7 @@ export function DotWave({
       const maxScreenRadius =
         Math.sqrt(
           state.windowSize.w * state.windowSize.w +
-            state.windowSize.h * state.windowSize.h
+            state.windowSize.h * state.windowSize.h,
         ) / 2;
 
       if (repeatAnimation && state.expansionRadius > maxScreenRadius + 100) {
@@ -284,15 +284,15 @@ export function DotWave({
     };
 
     handleResize();
-    window.addEventListener("resize", handleResize);
-    canvas.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener('resize', handleResize);
+    canvas.addEventListener('mousemove', handleMouseMove);
 
     draw();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-      canvas.removeEventListener("mousemove", handleMouseMove);
-      mediaQuery.removeEventListener("change", handleThemeChange);
+      window.removeEventListener('resize', handleResize);
+      canvas.removeEventListener('mousemove', handleMouseMove);
+      mediaQuery.removeEventListener('change', handleThemeChange);
       cancelAnimationFrame(state.animationId);
     };
   }, [
@@ -312,20 +312,20 @@ export function DotWave({
   return (
     <div
       ref={containerRef}
-      className={cn("relative overflow-hidden", className)}
+      className={cn('relative overflow-hidden', className)}
       style={
         {
-          "--dot-wave-bg": "var(--dot-wave-bg, light-dark(#ffffff, #0a0a0a))",
-          "--dot-wave-color":
-            "var(--dot-wave-color, light-dark(#000000, #00d4ff))",
+          '--dot-wave-bg': 'var(--dot-wave-bg, light-dark(#ffffff, #0a0a0a))',
+          '--dot-wave-color':
+            'var(--dot-wave-color, light-dark(#000000, #00d4ff))',
         } as React.CSSProperties
       }
     >
       <canvas
         ref={canvasRef}
-        className={cn("absolute inset-0 w-full h-full", dotClassName)}
+        className={cn('absolute inset-0 w-full h-full', dotClassName)}
       />
-      {children && <div className="relative z-10">{children}</div>}
+      {children && <div className='relative z-10'>{children}</div>}
     </div>
   );
 }

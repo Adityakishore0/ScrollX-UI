@@ -3,11 +3,7 @@ title: Checkbox Pro
 description: A switchable element to mark an option as checked or unchecked.
 ---
 
-<ComponentPreview
-  name="checkboxpro-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='checkboxpro-demo' className='' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: A switchable element to mark an option as checked or unchecked.
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>checkbox-pro.tsx</code>
-</p>
-<ComponentSource name="checkbox-pro" />
+
+<ComponentSource name='checkbox-pro' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,13 +45,12 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { Checkbox } from "@/components/ui/checkbox"
+import { Checkbox } from '@/components/ui/checkbox';
 ```
 
 ```tsx
 <Checkbox />
 ```
-
 
 ## API Reference
 
@@ -69,24 +60,20 @@ A switchable element to mark an option as checked or unchecked.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `asChild` | `boolean` | `false` | Render custom child. Used in CheckboxPro & Indicator. |
-| `defaultChecked` | `boolean \| 'indeterminate'` | `false` | Initial state. CheckboxPro only. |
-| `checked` | `boolean \| 'indeterminate'` | — | Controlled state. CheckboxPro & Indicator. |
-| `onCheckedChange` | `function` | — | State change callback. CheckboxPro only. |
-| `disabled` | `boolean` | `false` | Disable interaction. CheckboxPro & Indicator. |
-| `required` | `boolean` | `false` | Required for forms. CheckboxPro only. |
-| `name` | `string` | — | Form name. CheckboxPro only. |
-| `value` | `string` | — | Form value. CheckboxPro only. |
-| `id` | `string` | — | Element ID. CheckboxPro only. |
-| `className` | `string` | — | Custom styles. CheckboxPro & Indicator. |
-| `aria-label` | `string` | — | Accessibility. CheckboxPro only. |
-| `labelledby` | `string` | — | Accessibility. CheckboxPro only. |
-| `describedby` | `string` | — | Accessibility. CheckboxPro only. |
-| `forceMount` | `boolean` | — | Always show indicator. Indicator only. |
-| `children` | `ReactNode` | — | Custom content when asChild is true. Both components. |
-
-
-
+| Prop              | Type                         | Default | Description                                           |
+| ----------------- | ---------------------------- | ------- | ----------------------------------------------------- |
+| `asChild`         | `boolean`                    | `false` | Render custom child. Used in CheckboxPro & Indicator. |
+| `defaultChecked`  | `boolean \| 'indeterminate'` | `false` | Initial state. CheckboxPro only.                      |
+| `checked`         | `boolean \| 'indeterminate'` | —       | Controlled state. CheckboxPro & Indicator.            |
+| `onCheckedChange` | `function`                   | —       | State change callback. CheckboxPro only.              |
+| `disabled`        | `boolean`                    | `false` | Disable interaction. CheckboxPro & Indicator.         |
+| `required`        | `boolean`                    | `false` | Required for forms. CheckboxPro only.                 |
+| `name`            | `string`                     | —       | Form name. CheckboxPro only.                          |
+| `value`           | `string`                     | —       | Form value. CheckboxPro only.                         |
+| `id`              | `string`                     | —       | Element ID. CheckboxPro only.                         |
+| `className`       | `string`                     | —       | Custom styles. CheckboxPro & Indicator.               |
+| `aria-label`      | `string`                     | —       | Accessibility. CheckboxPro only.                      |
+| `labelledby`      | `string`                     | —       | Accessibility. CheckboxPro only.                      |
+| `describedby`     | `string`                     | —       | Accessibility. CheckboxPro only.                      |
+| `forceMount`      | `boolean`                    | —       | Always show indicator. Indicator only.                |
+| `children`        | `ReactNode`                  | —       | Custom content when asChild is true. Both components. |

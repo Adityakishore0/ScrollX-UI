@@ -3,7 +3,7 @@ title: Calendar
 description: A date field component that enables users to choose and edit a date.
 ---
 
-<ComponentPreview name="calendar-demo" className="" description="" />
+<ComponentPreview name='calendar-demo' className='' description='' />
 
 ## Installation
 
@@ -19,20 +19,16 @@ description: A date field component that enables users to choose and edit a date
     <Steps>
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>calendar.tsx</code>
-</p>
-<ComponentSource name="calendar" />
+
+<ComponentSource name='calendar' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -46,7 +42,7 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { Calendar } from "@/components/ui/calendar";
+import { Calendar } from '@/components/ui/calendar';
 ```
 
 ```tsx
@@ -54,10 +50,10 @@ const [date, setDate] = React.useState<Date | undefined>(new Date());
 
 return (
   <Calendar
-    mode="single"
+    mode='single'
     selected={date}
     onSelect={setDate}
-    className="rounded-lg border"
+    className='rounded-lg border'
   />
 );
 ```
@@ -68,28 +64,22 @@ return (
 
 <Step>YearOrder</Step>
 
-<ComponentPreview 
-  name="calendaryearorder-demo" 
-  className="" 
-  description="" />
+<ComponentPreview name='calendaryearorder-demo' className='' description='' />
 
 ---
 
 <Step>Disabled Days</Step>
 
-<ComponentPreview
-  name="calendardisabledays-demo"
-  className="" 
-  description="" />
+<ComponentPreview name='calendardisabledays-demo' className='' description='' />
 
 ---
 
 <Step>Single month with range selection</Step>
 
 <ComponentPreview
-  name="calendarrangeselection-demo"
-  className=""
-  description=""
+  name='calendarrangeselection-demo'
+  className=''
+  description=''
 />
 
 ---
@@ -97,38 +87,31 @@ return (
 <Step>Multiple month with range selection</Step>
 
 <ComponentPreview
-  name="calendarmultimonrange-demo"
-  className=""
-  description=""
+  name='calendarmultimonrange-demo'
+  className=''
+  description=''
 />
 
 ---
 
 <Step>Multiple months</Step>
 
-<ComponentPreview 
-  name="calendarmultimon-demo" 
-  className="" 
-  description="" />
+<ComponentPreview name='calendarmultimon-demo' className='' description='' />
 
 ---
 
 <Step>Date Of Birth Picker</Step>
 
-<ComponentPreview
-  name="calendardobpicker-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='calendardobpicker-demo' className='' description='' />
 
 ---
 
 <Step>Month and Year Selector</Step>
 
 <ComponentPreview
-  name="calendarmonyearselector-demo"
-  className=""
-  description=""
+  name='calendarmonyearselector-demo'
+  className=''
+  description=''
 />
 
 ---
@@ -136,9 +119,9 @@ return (
 <Step>Date & Time Picker</Step>
 
 <ComponentPreview
-  name="calendardatetimepicker-demo"
-  className=""
-  description=""
+  name='calendardatetimepicker-demo'
+  className=''
+  description=''
 />
 
 ## API Reference
@@ -149,23 +132,20 @@ A date field component that enables users to choose and edit a date.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `mode` | `"single" \| "multiple" \| "range"` | `"single"` | Selection mode |
-| `selected` | `Date \| Date[] \| {from: Date; to?: Date}` | `-` | Selected date(s) or range |
-| `onSelect` | `function` | `-` | Called on date select |
-| `numberOfMonths` | `number` | `1` | Months displayed |
-| `defaultMonth` | `Date` | `new Date()` | Initial month shown |
-| `showWeekNumber` | `boolean` | — | Show week numbers |
-| `weekStartsOn` | `0 \| 1 \| ... \| 6` | — | Week start day |
-| `captionLayout` | `"label" \| "dropdown" \| "dropdown-months" \| "dropdown-years"` | `"label"` | Month/year caption style |
-| `fromYear` | `number` | `currentYear-100` | Start year for dropdown |
-| `toYear` | `number` | `currentYear` | End year for dropdown |
-| `disabled` | `Date[] \| function \| object` | `-` | Disable dates |
-| `components` | `object` | `-` | Custom subcomponents |
-| `modifiers` | `object` | `-` | Custom day modifiers |
-| `animate` | `boolean` | — | Enable animation |
-| `footer` | `ReactNode` | `-` | Footer content |
-
-
+| Prop             | Type                                                             | Default           | Description               |
+| ---------------- | ---------------------------------------------------------------- | ----------------- | ------------------------- |
+| `mode`           | `"single" \| "multiple" \| "range"`                              | `"single"`        | Selection mode            |
+| `selected`       | `Date \| Date[] \| {from: Date; to?: Date}`                      | `-`               | Selected date(s) or range |
+| `onSelect`       | `function`                                                       | `-`               | Called on date select     |
+| `numberOfMonths` | `number`                                                         | `1`               | Months displayed          |
+| `defaultMonth`   | `Date`                                                           | `new Date()`      | Initial month shown       |
+| `showWeekNumber` | `boolean`                                                        | —                 | Show week numbers         |
+| `weekStartsOn`   | `0 \| 1 \| ... \| 6`                                             | —                 | Week start day            |
+| `captionLayout`  | `"label" \| "dropdown" \| "dropdown-months" \| "dropdown-years"` | `"label"`         | Month/year caption style  |
+| `fromYear`       | `number`                                                         | `currentYear-100` | Start year for dropdown   |
+| `toYear`         | `number`                                                         | `currentYear`     | End year for dropdown     |
+| `disabled`       | `Date[] \| function \| object`                                   | `-`               | Disable dates             |
+| `components`     | `object`                                                         | `-`               | Custom subcomponents      |
+| `modifiers`      | `object`                                                         | `-`               | Custom day modifiers      |
+| `animate`        | `boolean`                                                        | —                 | Enable animation          |
+| `footer`         | `ReactNode`                                                      | `-`               | Footer content            |

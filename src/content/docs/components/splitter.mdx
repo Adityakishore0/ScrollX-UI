@@ -3,7 +3,7 @@ title: Splitter
 description: Splitter with collapsible panels, drag handle, and smooth animations.
 ---
 
-<ComponentPreview name="splitter-demo" className="p-0" description="" />
+<ComponentPreview name='splitter-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -18,24 +18,20 @@ description: Splitter with collapsible panels, drag handle, and smooth animation
   <TabsContent value="manual">
     <Steps>
 
- <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />   
+<Step>Install the following dependencies:</Step>
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>splitter.tsx</code>
-</p>
-<ComponentSource name="splitter" />
+
+<ComponentSource name='splitter' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,15 +45,13 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { Splitter, SplitterPanel } from "@/components/ui/splitter";
+import { Splitter, SplitterPanel } from '@/components/ui/splitter';
 ```
 
 ```tsx
 <Splitter>
-  <SplitterPanel className="bg-muted/40 border-r">
-  </SplitterPanel>
-  <SplitterPanel className="bg-background flex items-center justify-center">
-  </SplitterPanel>
+  <SplitterPanel className='bg-muted/40 border-r'></SplitterPanel>
+  <SplitterPanel className='bg-background flex items-center justify-center'></SplitterPanel>
 </Splitter>
 ```
 
@@ -69,19 +63,15 @@ Splitter with collapsible panels, drag handle, and smooth animations.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `required` | Two SplitterPanel components and optionally a SplitterHandle. |
-| `onResize` | `(leftSize: number, rightSize: number) => void` | `undefined` | Callback fired when panels are resized, returns left and right widths in %. |
-| `allowFullCollapse` | `boolean` | `true` | Allow panels to collapse completely to 0% or 100%. |
-| `minSize` | `number` | `0` | Minimum percentage width of the left panel. |
-| `maxSize` | `number` | `100` | Maximum percentage width of the left panel. |
-| `defaultSize` | `number` | `50` | Initial percentage width of the left panel. |
-| `snapThreshold` | `number` | `5` | Percentage threshold to snap panels fully collapsed. |
-| `smoothTransition` | `boolean` | `true` | Enable smooth animated transitions when resizing. |
-| `className` | `string` | `-` | Additional CSS classes for styling the root Splitter. |
-| `style` | `React.CSSProperties` | `-` | Inline styles applied to the root Splitter. |
-
-
-
+| Prop                | Type                                            | Default     | Description                                                                 |
+| ------------------- | ----------------------------------------------- | ----------- | --------------------------------------------------------------------------- |
+| `children`          | `ReactNode`                                     | `required`  | Two SplitterPanel components and optionally a SplitterHandle.               |
+| `onResize`          | `(leftSize: number, rightSize: number) => void` | `undefined` | Callback fired when panels are resized, returns left and right widths in %. |
+| `allowFullCollapse` | `boolean`                                       | `true`      | Allow panels to collapse completely to 0% or 100%.                          |
+| `minSize`           | `number`                                        | `0`         | Minimum percentage width of the left panel.                                 |
+| `maxSize`           | `number`                                        | `100`       | Maximum percentage width of the left panel.                                 |
+| `defaultSize`       | `number`                                        | `50`        | Initial percentage width of the left panel.                                 |
+| `snapThreshold`     | `number`                                        | `5`         | Percentage threshold to snap panels fully collapsed.                        |
+| `smoothTransition`  | `boolean`                                       | `true`      | Enable smooth animated transitions when resizing.                           |
+| `className`         | `string`                                        | `-`         | Additional CSS classes for styling the root Splitter.                       |
+| `style`             | `React.CSSProperties`                           | `-`         | Inline styles applied to the root Splitter.                                 |

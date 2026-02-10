@@ -1,7 +1,7 @@
-"use client";
-import React, { useRef, useEffect, useState } from "react";
-import { useInView } from "framer-motion";
-import { cn } from "@/lib/utils";
+'use client';
+import React, { useRef, useEffect, useState } from 'react';
+import { useInView } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 class Pixel {
   width: number;
@@ -30,7 +30,7 @@ class Pixel {
     y: number,
     color: string,
     speed: number,
-    delay: number
+    delay: number,
   ) {
     this.width = canvas.width;
     this.height = canvas.height;
@@ -63,7 +63,7 @@ class Pixel {
       this.x + centerOffset,
       this.y + centerOffset,
       this.size,
-      this.size
+      this.size,
     );
   }
 
@@ -120,15 +120,15 @@ interface PixelHighlightProps {
   colors?: string;
   opacity?: number;
   direction?:
-    | "center"
-    | "top"
-    | "bottom"
-    | "left"
-    | "right"
-    | "top-left"
-    | "top-right"
-    | "bottom-left"
-    | "bottom-right";
+    | 'center'
+    | 'top'
+    | 'bottom'
+    | 'left'
+    | 'right'
+    | 'top-left'
+    | 'top-right'
+    | 'bottom-left'
+    | 'bottom-right';
   fontSize?: string | number;
   fontWeight?: string | number;
   fontFamily?: string;
@@ -137,48 +137,48 @@ interface PixelHighlightProps {
 export function PixelHighlight({
   text,
   children,
-  className = "",
+  className = '',
   gap = 3,
   speed = 80,
-  colors = "#fecdd3,#fda4af,#e11d48",
+  colors = '#fecdd3,#fda4af,#e11d48',
   opacity = 1,
-  direction = "center",
+  direction = 'center',
   fontSize = 20,
-  fontWeight = "bold",
-  fontFamily = "sans-serif",
+  fontWeight = 'bold',
+  fontFamily = 'sans-serif',
 }: PixelHighlightProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pixelsRef = useRef<Pixel[]>([]);
   const animationRef = useRef<number | null>(null);
-  const timePreviousRef = useRef(performance.now());
+  const timePreviousRef = useRef<number>(0);
   const isInView = useInView(containerRef, { amount: 0.3, once: false });
-  const [svgMask, setSvgMask] = useState("");
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const [svgMask, setSvgMask] = useState('');
+  const hasAnimatedRef = useRef(false);
 
-  const content = text || React.Children.toArray(children).join("");
+  const content = text || React.Children.toArray(children).join('');
 
   useEffect(() => {
     const updateSvgMask = () => {
       const responsiveFontSize =
-        typeof fontSize === "number" ? `${fontSize}vw` : fontSize;
+        typeof fontSize === 'number' ? `${fontSize}vw` : fontSize;
       const newSvgMask = `<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><text x='50%' y='50%' font-size='${responsiveFontSize}' font-weight='${fontWeight}' text-anchor='middle' dominant-baseline='middle' font-family='${fontFamily}'>${content}</text></svg>`;
       setSvgMask(newSvgMask);
     };
 
     updateSvgMask();
-    window.addEventListener("resize", updateSvgMask);
-    return () => window.removeEventListener("resize", updateSvgMask);
+    window.addEventListener('resize', updateSvgMask);
+    return () => window.removeEventListener('resize', updateSvgMask);
   }, [content, fontSize, fontWeight, fontFamily]);
 
   useEffect(() => {
     if (!isInView) {
-      setHasAnimated(false);
+      hasAnimatedRef.current = false;
       if (animationRef.current !== null) {
         cancelAnimationFrame(animationRef.current);
         animationRef.current = null;
       }
-      const ctx = canvasRef.current?.getContext("2d");
+      const ctx = canvasRef.current?.getContext('2d');
       if (ctx && canvasRef.current) {
         ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
       }
@@ -187,31 +187,31 @@ export function PixelHighlight({
   }, [isInView]);
 
   useEffect(() => {
-    if (!isInView || hasAnimated) return;
+    if (!isInView || hasAnimatedRef.current) return;
 
     const reducedMotionValue = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      '(prefers-reduced-motion: reduce)',
     ).matches;
 
     const getOriginPoint = (width: number, height: number) => {
       switch (direction) {
-        case "top":
+        case 'top':
           return { x: width / 2, y: 0 };
-        case "bottom":
+        case 'bottom':
           return { x: width / 2, y: height };
-        case "left":
+        case 'left':
           return { x: 0, y: height / 2 };
-        case "right":
+        case 'right':
           return { x: width, y: height / 2 };
-        case "top-left":
+        case 'top-left':
           return { x: 0, y: 0 };
-        case "top-right":
+        case 'top-right':
           return { x: width, y: 0 };
-        case "bottom-left":
+        case 'bottom-left':
           return { x: 0, y: height };
-        case "bottom-right":
+        case 'bottom-right':
           return { x: width, y: height };
-        case "center":
+        case 'center':
         default:
           return { x: width / 2, y: height / 2 };
       }
@@ -223,7 +223,7 @@ export function PixelHighlight({
       const rect = containerRef.current.getBoundingClientRect();
       const width = Math.floor(rect.width);
       const height = Math.floor(rect.height);
-      const ctx = canvasRef.current.getContext("2d");
+      const ctx = canvasRef.current.getContext('2d');
 
       if (!ctx) return;
 
@@ -231,7 +231,7 @@ export function PixelHighlight({
       canvasRef.current.height = height;
 
       const origin = getOriginPoint(width, height);
-      const colorsArray = colors.split(",");
+      const colorsArray = colors.split(',');
       const pxs: Pixel[] = [];
 
       for (let x = 0; x < width; x += parseInt(gap.toString(), 10)) {
@@ -251,8 +251,8 @@ export function PixelHighlight({
               y,
               color,
               getEffectiveSpeed(speed, reducedMotionValue),
-              delay
-            )
+              delay,
+            ),
           );
         }
       }
@@ -264,13 +264,14 @@ export function PixelHighlight({
       animationRef.current = requestAnimationFrame(doAnimate);
 
       const timeNow = performance.now();
+      if (timePreviousRef.current === 0) timePreviousRef.current = timeNow;
       const timePassed = timeNow - timePreviousRef.current;
       const timeInterval = 1000 / 60;
 
       if (timePassed < timeInterval) return;
       timePreviousRef.current = timeNow - (timePassed % timeInterval);
 
-      const ctx = canvasRef.current?.getContext("2d");
+      const ctx = canvasRef.current?.getContext('2d');
       if (!ctx || !canvasRef.current) return;
 
       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -286,7 +287,7 @@ export function PixelHighlight({
 
       if (allIdle && animationRef.current !== null) {
         cancelAnimationFrame(animationRef.current);
-        setHasAnimated(true);
+        hasAnimatedRef.current = true;
       }
     };
 
@@ -298,30 +299,30 @@ export function PixelHighlight({
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [gap, speed, colors, direction, isInView, hasAnimated]);
+  }, [gap, speed, colors, direction, isInView]);
 
   const dataUrlMask = `url("data:image/svg+xml,${encodeURIComponent(
-    svgMask
+    svgMask,
   )}")`;
 
   return (
-    <div ref={containerRef} className={cn("relative inline-block", className)}>
+    <div ref={containerRef} className={cn('relative inline-block', className)}>
       <div
-        className="absolute inset-0 flex items-center justify-center"
+        className='absolute inset-0 flex items-center justify-center'
         style={{
           maskImage: dataUrlMask,
           WebkitMaskImage: dataUrlMask,
-          maskSize: "contain",
-          WebkitMaskSize: "contain",
-          maskRepeat: "no-repeat",
-          WebkitMaskRepeat: "no-repeat",
-          maskPosition: "center",
-          WebkitMaskPosition: "center",
+          maskSize: 'contain',
+          WebkitMaskSize: 'contain',
+          maskRepeat: 'no-repeat',
+          WebkitMaskRepeat: 'no-repeat',
+          maskPosition: 'center',
+          WebkitMaskPosition: 'center',
         }}
       >
-        <canvas ref={canvasRef} className="h-full w-full" style={{ opacity }} />
+        <canvas ref={canvasRef} className='h-full w-full' style={{ opacity }} />
       </div>
-      <span className="sr-only">{content}</span>
+      <span className='sr-only'>{content}</span>
     </div>
   );
 }

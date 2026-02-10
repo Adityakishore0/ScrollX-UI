@@ -3,11 +3,7 @@ title: Label
 description: Displays an accessible label associated with controls.
 ---
 
-<ComponentPreview
-  name="label-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='label-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: Displays an accessible label associated with controls.
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion @radix-ui/react-label" />
+<DepsOptions name='motion @radix-ui/react-label' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>label.tsx</code>
-</p>
-<ComponentSource name="label" />
+
+<ComponentSource name='label' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,7 +45,7 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { Label } from "@/components/ui/label"
+import { Label } from '@/components/ui/label';
 ```
 
 ```tsx
@@ -61,7 +53,6 @@ import { Label } from "@/components/ui/label"
 <br />
 <Label htmlFor="email" disableAnimation>Your email address</Label>
 ```
-
 
 ## API Reference
 
@@ -71,15 +62,11 @@ Displays an accessible label associated with controls.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `direction` | `"left" \| "right" \| "top" \| "bottom"` | `"left"` | Animation direction when label appears. |
-| `disableAnimation` | `boolean` | `false` | If true, disables the motion animation. |
-| `className` | `string` | — | Custom CSS classes applied to the label. |
-| `children` | `ReactNode` | — | Content rendered inside the label. |
-| `htmlFor` | `string` | — | ID of the associated form element (from LabelPrimitive). |
-| `disabled` | `boolean` | `false` | Marks the label as disabled and adjusts styling. |
-
-
-
+| Prop               | Type                                     | Default  | Description                                              |
+| ------------------ | ---------------------------------------- | -------- | -------------------------------------------------------- |
+| `direction`        | `"left" \| "right" \| "top" \| "bottom"` | `"left"` | Animation direction when label appears.                  |
+| `disableAnimation` | `boolean`                                | `false`  | If true, disables the motion animation.                  |
+| `className`        | `string`                                 | —        | Custom CSS classes applied to the label.                 |
+| `children`         | `ReactNode`                              | —        | Content rendered inside the label.                       |
+| `htmlFor`          | `string`                                 | —        | ID of the associated form element (from LabelPrimitive). |
+| `disabled`         | `boolean`                                | `false`  | Marks the label as disabled and adjusts styling.         |

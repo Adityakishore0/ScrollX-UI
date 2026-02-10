@@ -1,7 +1,7 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
-import { useSpring } from "@react-spring/web";
-import createGlobe from "cobe";
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import { useSpring } from '@react-spring/web';
+import createGlobe from 'cobe';
 
 interface Marker {
   location: [number, number];
@@ -22,8 +22,8 @@ interface GlobeProps {
 }
 
 const cityCoordinates: Record<string, [number, number]> = {
-  "san francisco": [37.7749, -122.4194],
-  "new york": [40.7128, -74.006],
+  'san francisco': [37.7749, -122.4194],
+  'new york': [40.7128, -74.006],
   london: [51.5074, -0.1278],
   tokyo: [35.6762, 139.6503],
   paris: [48.8566, 2.3522],
@@ -50,7 +50,7 @@ export default function Globe({
     { location: [40.7128, -74.006], size: 0.1 },
   ],
   scale = 1,
-  className = "aspect-square w-full max-w-[600px]",
+  className = 'aspect-square w-full max-w-150',
   rotateToLocation,
   autoRotate = true,
   rotateCities = [],
@@ -87,7 +87,7 @@ export default function Globe({
         const [entry] = entries;
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(container);
@@ -135,7 +135,7 @@ export default function Globe({
     }
 
     let coordinates: [number, number];
-    if (typeof rotateToLocation === "string") {
+    if (typeof rotateToLocation === 'string') {
       const city = rotateToLocation.toLowerCase();
       coordinates = cityCoordinates[city] || [0, 0];
     } else {
@@ -160,7 +160,7 @@ export default function Globe({
       }
     };
 
-    window.addEventListener("resize", onResize);
+    window.addEventListener('resize', onResize);
 
     try {
       globeRef.current = createGlobe(canvasRef.current, {
@@ -208,11 +208,11 @@ export default function Globe({
 
       if (canvasRef.current) {
         setTimeout(() => {
-          if (canvasRef.current) canvasRef.current.style.opacity = "1";
+          if (canvasRef.current) canvasRef.current.style.opacity = '1';
         }, 100);
       }
     } catch (error) {
-      console.error("Error creating globe:", error);
+      console.error('Error creating globe:', error);
     }
 
     return () => {
@@ -220,7 +220,7 @@ export default function Globe({
         globeRef.current.destroy();
         globeRef.current = null;
       }
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener('resize', onResize);
       if (animationFrame) {
         cancelAnimationFrame(animationFrame);
       }
@@ -243,15 +243,15 @@ export default function Globe({
         onPointerDown={(e) => {
           pointerInteracting.current =
             e.clientX - pointerInteractionMovement.current;
-          canvasRef.current?.style?.setProperty("cursor", "grabbing");
+          canvasRef.current?.style?.setProperty('cursor', 'grabbing');
         }}
         onPointerUp={() => {
           pointerInteracting.current = null;
-          canvasRef.current?.style?.setProperty("cursor", "grab");
+          canvasRef.current?.style?.setProperty('cursor', 'grab');
         }}
         onPointerOut={() => {
           pointerInteracting.current = null;
-          canvasRef.current?.style?.setProperty("cursor", "grab");
+          canvasRef.current?.style?.setProperty('cursor', 'grab');
         }}
         onMouseMove={(e) => {
           if (pointerInteracting.current !== null) {
@@ -267,8 +267,8 @@ export default function Globe({
             api.start({ r: delta / 100 });
           }
         }}
-        className="w-full h-full cursor-grab opacity-0 transition-opacity duration-1000"
-        style={{ contain: "layout paint size" }}
+        className='w-full h-full cursor-grab opacity-0 transition-opacity duration-1000'
+        style={{ contain: 'layout paint size' }}
       />
     </div>
   );

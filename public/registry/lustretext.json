@@ -5,13 +5,14 @@
   "title": "Lustre Text",
   "description": "A lustrous text component with animated gradient shine.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "registryDependencies": [],
   "dependencies": [""],
   "files": [
     {
       "type": "registry:component",
       "path": "components/ui/lustretext.tsx",
       "target": "components/ui/lustretext.tsx",
-      "content": "import React from \"react\";\n\ninterface LustreTextProps {\n  text: string;\n  disabled?: boolean;\n  speed?: number;\n  className?: string;\n}\n\nconst LustreText: React.FC<LustreTextProps> = ({\n  text,\n  disabled = false,\n  speed = 5,\n  className = \"\",\n}) => {\n  const animationStyle = {\n    animationDuration: `${speed}s`,\n    animationTimingFunction: \"linear\",\n    animationIterationCount: \"infinite\",\n    animationFillMode: \"forwards\",\n  };\n\n  return (\n    <span\n      className={`\n    lustre-text\n    ${!disabled ? \"animate-shine\" : \"\"}\n    dark:lustre-dark lustre-light\n    ${className}\n  `}\n      style={!disabled ? animationStyle : undefined}\n    >\n      {text}\n    </span>\n  );\n};\n\nexport default LustreText;"
+      "content": "import React from \"react\";\n\ninterface LustreTextProps {\n  text: string;\n  disabled?: boolean;\n  speed?: number;\n  className?: string;\n}\n\nconst LustreText: React.FC<LustreTextProps> = ({\n  text,\n  disabled = false,\n  speed = 5,\n  className = \"\",\n}) => {\n  const animationStyle = {\n    animationDuration: `${speed}s`,\n    animationTimingFunction: \"linear\",\n    animationIterationCount: \"infinite\",\n    animationFillMode: \"forwards\",\n  };\n\n  return (\n    <span\n      className={`\n    lustre-text\n    ${!disabled ? \"animate-shine\" : \"\"}\n    dark:lustre-dark lustre-light\n    ${className}\n  `}\n      style={!disabled ? animationStyle : undefined}\n    >\n      {text}\n    </span>\n  );\n};\n\nexport default LustreText;\n"
     }
   ]
 }

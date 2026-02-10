@@ -3,11 +3,7 @@ title: Tooltip
 description: An interactive, animated popup that displays information related to an element when it receives keyboard focus or when the mouse hovers over it.
 ---
 
-<ComponentPreview
-  name="tooltip-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='tooltip-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: An interactive, animated popup that displays information related to
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion @radix-ui/react-tooltip" />
+<DepsOptions name='motion @radix-ui/react-tooltip' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>tooltip.tsx</code>
-</p>
-<ComponentSource name="tooltip" />
+
+<ComponentSource name='tooltip' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -57,7 +49,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from '@/components/ui/tooltip';
 ```
 
 ```tsx
@@ -69,7 +61,6 @@ import {
 </Tooltip>
 ```
 
-
 ## API Reference
 
 ### Tooltip
@@ -78,15 +69,11 @@ An interactive, animated popup that displays information related to an element w
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `delayDuration` | `number` | `0` | Time in milliseconds to wait before showing the tooltip. Used in TooltipProvider. |
-| `children` | `ReactNode` | `required` | Content of the tooltip or the trigger element. |
-| `sideOffset` | `number` | `0` | Distance in pixels between the trigger and the tooltip. Used in TooltipContent. |
-| `asChild` | `boolean` | `false` | If true, renders children without wrapping them in a default element. Used in TooltipContent. |
-| `className` | `string` | `-` | Custom CSS classes applied to TooltipContent. |
-| `...props` | `any` | `-` | Other props supported by Radix Tooltip primitives (Root, Trigger, Content, Provider). |
-
-
-
+| Prop            | Type        | Default    | Description                                                                                   |
+| --------------- | ----------- | ---------- | --------------------------------------------------------------------------------------------- |
+| `delayDuration` | `number`    | `0`        | Time in milliseconds to wait before showing the tooltip. Used in TooltipProvider.             |
+| `children`      | `ReactNode` | `required` | Content of the tooltip or the trigger element.                                                |
+| `sideOffset`    | `number`    | `0`        | Distance in pixels between the trigger and the tooltip. Used in TooltipContent.               |
+| `asChild`       | `boolean`   | `false`    | If true, renders children without wrapping them in a default element. Used in TooltipContent. |
+| `className`     | `string`    | `-`        | Custom CSS classes applied to TooltipContent.                                                 |
+| `...props`      | `any`       | `-`        | Other props supported by Radix Tooltip primitives (Root, Trigger, Content, Provider).         |

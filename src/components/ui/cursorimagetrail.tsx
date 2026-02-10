@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import React, { useRef, ReactNode, MouseEventHandler } from "react";
-import { motion, useAnimate } from "framer-motion";
+import React, { useRef, ReactNode, MouseEventHandler } from 'react';
+import { motion, useAnimate } from 'motion/react';
 
 interface CursorImageTrailProps {
   children: ReactNode;
   images: string[];
   renderImageBuffer: number;
   rotationRange: number;
-  animationStyle?: "dynamic" | "minimal";
+  animationStyle?: 'dynamic' | 'minimal';
 }
 
 const CursorImageTrail = ({
@@ -16,7 +16,7 @@ const CursorImageTrail = ({
   images,
   renderImageBuffer,
   rotationRange,
-  animationStyle = "dynamic",
+  animationStyle = 'dynamic',
 }: CursorImageTrailProps) => {
   const [scope, animate] = useAnimate();
   const lastRenderPosition = useRef({ x: 0, y: 0 });
@@ -26,7 +26,7 @@ const CursorImageTrail = ({
     x1: number,
     y1: number,
     x2: number,
-    y2: number
+    y2: number,
   ) => {
     const deltaX = x2 - x1;
     const deltaY = y2 - y1;
@@ -49,7 +49,7 @@ const CursorImageTrail = ({
 
     const rotation = Math.random() * rotationRange;
 
-    if (animationStyle === "dynamic") {
+    if (animationStyle === 'dynamic') {
       const scale = 0.8 + Math.random() * 0.4;
       const skewX = Math.random() * 10;
       const skewY = Math.random() * 10;
@@ -67,20 +67,20 @@ const CursorImageTrail = ({
             }deg) skew(0deg, 0deg)`,
           ],
         },
-        { type: "spring", stiffness: 150, damping: 20 }
+        { type: 'spring', stiffness: 150, damping: 20 },
       );
 
       animate(
         selector,
         {
           opacity: [1, 0],
-          y: ["0%", "-40%"],
+          y: ['0%', '-40%'],
         },
         {
           duration: 0.8,
-          ease: "easeOut",
+          ease: 'easeOut',
           delay: 2,
-        }
+        },
       );
     } else {
       animate(
@@ -96,20 +96,20 @@ const CursorImageTrail = ({
             }deg)`,
           ],
         },
-        { type: "spring", stiffness: 150, damping: 20 }
+        { type: 'spring', stiffness: 150, damping: 20 },
       );
 
       animate(
         selector,
         {
           opacity: [1, 0],
-          y: ["0%", "-40%"],
+          y: ['0%', '-40%'],
         },
         {
           duration: 0.8,
-          ease: "easeOut",
+          ease: 'easeOut',
           delay: 2,
-        }
+        },
       );
     }
 
@@ -122,7 +122,7 @@ const CursorImageTrail = ({
       clientX,
       clientY,
       lastRenderPosition.current.x,
-      lastRenderPosition.current.y
+      lastRenderPosition.current.y,
     );
     if (distance >= renderImageBuffer) {
       lastRenderPosition.current = { x: clientX, y: clientY };
@@ -133,7 +133,7 @@ const CursorImageTrail = ({
   return (
     <div
       ref={scope as React.RefObject<HTMLDivElement>}
-      className="relative w-full h-full overflow-hidden"
+      className='relative w-full h-full overflow-hidden'
       onMouseMove={handleMouseMove}
     >
       {children}
@@ -145,9 +145,9 @@ const CursorImageTrail = ({
           src={img}
           alt={`Mouse move image ${index}`}
           className={
-            animationStyle === "dynamic"
-              ? "pointer-events-none absolute h-48 w-auto rounded-xl border border-black/30 bg-white/70 dark:border-white/20 dark:bg-neutral-900 opacity-0 shadow-md transition-all duration-300"
-              : "pointer-events-none absolute h-48 w-auto rounded-xl border border-black bg-neutral-100 opacity-0 dark:border-neutral-800 dark:bg-neutral-900 backdrop-blur-md saturate-150"
+            animationStyle === 'dynamic'
+              ? 'pointer-events-none absolute h-48 w-auto rounded-xl border border-black/30 bg-white/70 dark:border-white/20 dark:bg-neutral-900 opacity-0 shadow-md transition-all duration-300'
+              : 'pointer-events-none absolute h-48 w-auto rounded-xl border border-black bg-neutral-100 opacity-0 dark:border-neutral-800 dark:bg-neutral-900 backdrop-blur-md saturate-150'
           }
           initial={false}
         />

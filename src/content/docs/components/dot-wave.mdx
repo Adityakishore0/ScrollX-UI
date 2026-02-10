@@ -3,11 +3,7 @@ title: Dot Wave
 description: Dot-based waves ripple outward in symmetry, creating a subtle, motion-driven background layer
 ---
 
-<ComponentPreview
-  name="dotwave-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='dotwave-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,18 +19,16 @@ description: Dot-based waves ripple outward in symmetry, creating a subtle, moti
     <Steps>
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>dot-wave.tsx</code>
-</p>
-<ComponentSource name="dot-wave" />
+
+<ComponentSource name='dot-wave' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -48,22 +42,22 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { DotWave } from "@/components/ui/dot-wave";
+import { DotWave } from '@/components/ui/dot-wave';
 ```
 
 ```tsx
 <DotWave
-      dotGap={20}
-      dotRadiusMax={3}
-      expansionSpeed={250}
-      lightIntensity={0.4}
-      fadeIntensity={0.08}
-      className="w-full h-[350px] flex items-center justify-center"
-    >
-      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-600 to-white text-2xl md:text-4xl lg:text-7xl font-sans font-bold tracking-tight relative z-20">
-        Dot Wave, <br /> Background.
-      </h2>
-    </DotWave>
+  dotGap={20}
+  dotRadiusMax={3}
+  expansionSpeed={250}
+  lightIntensity={0.4}
+  fadeIntensity={0.08}
+  className='w-full h-87.5 flex items-center justify-center'
+>
+  <h2 className='bg-clip-text text-transparent text-center bg-linear-to-b from-neutral-600 to-white text-2xl md:text-4xl lg:text-7xl font-sans font-bold tracking-tight relative z-20'>
+    Dot Wave, <br /> Background.
+  </h2>
+</DotWave>
 ```
 
 ## API Reference
@@ -74,22 +68,19 @@ Dot-based waves ripple outward in symmetry, creating a subtle, motion-driven bac
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `dotGap` | `number` | `20` | Distance (in pixels) between each dot in the grid. Smaller values create denser dot patterns. |
-| `sphereRadius` | `number` | `200` | Defines the virtual radius of influence for the wave effect, controlling overall spread. |
-| `dotRadiusMax` | `number` | `3` | Maximum radius (in pixels) of each rendered dot. |
-| `speed` | `number` | `0.15` | Controls the easing speed when the wave center moves automatically. |
-| `expansionSpeed` | `number` | `150` | Speed at which the wave expands outward from the center (pixels per second). |
-| `repeatAnimation` | `boolean` | `true` | Determines whether the wave animation restarts after reaching the screen edges. |
-| `lightIntensity` | `number` | `0.5` | Base brightness of the dots after the wave passes through. |
-| `fadeIntensity` | `number` | `0.15` | Controls how much dots fade after the wave has moved past them. |
-| `followMouse` | `boolean` | `false` | When enabled, the wave center follows the mouse cursor for interactive effects. |
-| `bgColor` | `string` | `"#000000"` | Fallback background color for the canvas when container styles are transparent. |
-| `dotColor` | `string` | `"#ffffff"` | Fallback color used to render dots when no text color is detected. |
-| `className` | `string` | — | Custom classes applied to the outer container element. |
-| `dotClassName` | `string` | — | Custom classes applied directly to the canvas element. |
-| `children` | `React.ReactNode` | — | Content rendered above the animated dot wave, useful for hero sections or overlays. |
-
-
+| Prop              | Type              | Default     | Description                                                                                   |
+| ----------------- | ----------------- | ----------- | --------------------------------------------------------------------------------------------- |
+| `dotGap`          | `number`          | `20`        | Distance (in pixels) between each dot in the grid. Smaller values create denser dot patterns. |
+| `sphereRadius`    | `number`          | `200`       | Defines the virtual radius of influence for the wave effect, controlling overall spread.      |
+| `dotRadiusMax`    | `number`          | `3`         | Maximum radius (in pixels) of each rendered dot.                                              |
+| `speed`           | `number`          | `0.15`      | Controls the easing speed when the wave center moves automatically.                           |
+| `expansionSpeed`  | `number`          | `150`       | Speed at which the wave expands outward from the center (pixels per second).                  |
+| `repeatAnimation` | `boolean`         | `true`      | Determines whether the wave animation restarts after reaching the screen edges.               |
+| `lightIntensity`  | `number`          | `0.5`       | Base brightness of the dots after the wave passes through.                                    |
+| `fadeIntensity`   | `number`          | `0.15`      | Controls how much dots fade after the wave has moved past them.                               |
+| `followMouse`     | `boolean`         | `false`     | When enabled, the wave center follows the mouse cursor for interactive effects.               |
+| `bgColor`         | `string`          | `"#000000"` | Fallback background color for the canvas when container styles are transparent.               |
+| `dotColor`        | `string`          | `"#ffffff"` | Fallback color used to render dots when no text color is detected.                            |
+| `className`       | `string`          | —           | Custom classes applied to the outer container element.                                        |
+| `dotClassName`    | `string`          | —           | Custom classes applied directly to the canvas element.                                        |
+| `children`        | `React.ReactNode` | —           | Content rendered above the animated dot wave, useful for hero sections or overlays.           |

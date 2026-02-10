@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useLayoutEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import React, { useLayoutEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 interface FancyTextProps {
   children: string;
@@ -17,18 +17,18 @@ const FancyText = React.forwardRef<HTMLSpanElement, FancyTextProps>(
   (
     {
       children,
-      className = "text-5xl font-black leading-none text-black/10 dark:text-white/10",
-      fillClassName = "text-black dark:text-white",
+      className = 'text-5xl font-black leading-none text-black/10 dark:text-white/10',
+      fillClassName = 'text-black dark:text-white',
       stagger = 0.08,
       duration = 1.4,
       delay = 0,
     },
-    ref
+    ref,
   ) => {
     const spanRef = useRef<HTMLSpanElement>(null);
     const finalRef = (ref ?? spanRef) as React.RefObject<HTMLSpanElement>;
 
-    const chars = children.split("");
+    const chars = children.split('');
     const [hideBase, setHideBase] = useState(false);
     const [isSmall, setIsSmall] = useState(false);
 
@@ -39,7 +39,7 @@ const FancyText = React.forwardRef<HTMLSpanElement, FancyTextProps>(
     }, [finalRef]);
 
     return (
-      <span ref={finalRef} className="relative inline-block">
+      <span ref={finalRef} className='relative inline-block'>
         <span
           className={cn(className)}
           style={{ opacity: hideBase && isSmall ? 0 : 1 }}
@@ -47,13 +47,13 @@ const FancyText = React.forwardRef<HTMLSpanElement, FancyTextProps>(
           {children}
         </span>
 
-        <span className="absolute inset-0 flex overflow-hidden">
+        <span className='absolute inset-0 flex overflow-hidden'>
           {chars.map((char, i) => (
             <motion.span
               key={i}
               className={cn(className, fillClassName)}
-              initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
-              animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+              initial={{ clipPath: 'inset(100% 0% 0% 0%)' }}
+              animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
               transition={{
                 duration,
                 delay: delay + i * stagger,
@@ -63,18 +63,18 @@ const FancyText = React.forwardRef<HTMLSpanElement, FancyTextProps>(
                 if (i === chars.length - 1 && isSmall) setHideBase(true);
               }}
               style={{
-                display: "inline-block",
-                whiteSpace: char === " " ? "pre" : "normal",
+                display: 'inline-block',
+                whiteSpace: char === ' ' ? 'pre' : 'normal',
               }}
             >
-              {char === " " ? "\u00A0" : char}
+              {char === ' ' ? '\u00A0' : char}
             </motion.span>
           ))}
         </span>
       </span>
     );
-  }
+  },
 );
 
-FancyText.displayName = "FancyText";
+FancyText.displayName = 'FancyText';
 export { FancyText };

@@ -4,9 +4,9 @@ description: Reusable button component with multiple variants and sizes.
 ---
 
 <ComponentPreview
-  name="button-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An accessible Button component built with Radix UI"
+  name='button-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An accessible Button component built with Radix UI'
 />
 
 ## Installation
@@ -23,24 +23,19 @@ description: Reusable button component with multiple variants and sizes.
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="@radix-ui/react-slot" />
+<DepsOptions name='@radix-ui/react-slot' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>button.tsx</code>
-</p>
-<ComponentSource name="button" />
+
+<ComponentSource name='button' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
-
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -51,11 +46,10 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
 
 ```tsx
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 ```
 
 ```tsx
@@ -63,12 +57,12 @@ import { Button } from "@/components/ui/button";
 <Button variant="link">Link</Button>
 <Button variant="success">Success</Button>
 ```
+
 ```tsx
-<Button variant="gradient" size="lg">
+<Button variant='gradient' size='lg'>
   Get Started
 </Button>
 ```
-
 
 ## API Reference
 
@@ -78,14 +72,10 @@ import { Button } from "@/components/ui/button";
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link" \| "success" \| "warning" \| "info" \| "dark" \| "light" \| "gradient" \| "glass"` | `"default"` | Controls the visual style of the button. |
-| `size` | `"sm" \| "default" \| "lg" \| "icon"` | `"default"` | Adjusts the button size. |
-| `asChild` | `boolean` | `false` | Renders the button as its child using Slot. |
-| `className` | `string` | — | Additional custom class names. |
-| `...props` | `HTMLButtonElement attributes` | — | Inherits all standard button attributes and events. |
-
-
-
+| Prop        | Type                                                                                                                                                                  | Default     | Description                                         |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | --------------------------------------------------- |
+| `variant`   | `"default" \| "destructive" \| "outline-solid" \| "secondary" \| "ghost" \| "link" \| "success" \| "warning" \| "info" \| "dark" \| "light" \| "gradient" \| "glass"` | `"default"` | Controls the visual style of the button.            |
+| `size`      | `"sm" \| "default" \| "lg" \| "icon"`                                                                                                                                 | `"default"` | Adjusts the button size.                            |
+| `asChild`   | `boolean`                                                                                                                                                             | `false`     | Renders the button as its child using Slot.         |
+| `className` | `string`                                                                                                                                                              | —           | Additional custom class names.                      |
+| `...props`  | `HTMLButtonElement attributes`                                                                                                                                        | —           | Inherits all standard button attributes and events. |

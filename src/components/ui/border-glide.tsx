@@ -1,5 +1,5 @@
-"use client";
-import React, { useRef, createContext, useContext, useCallback } from "react";
+'use client';
+import React, { useRef, createContext, useContext, useCallback } from 'react';
 import {
   motion,
   AnimatePresence,
@@ -7,7 +7,7 @@ import {
   useSpring,
   useMotionTemplate,
   useTransform,
-} from "framer-motion";
+} from 'motion/react';
 import {
   Card,
   CardContent,
@@ -15,28 +15,27 @@ import {
   CardFooter,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 interface BorderGlideContextType {
-  currentIndex: React.MutableRefObject<number>;
-  direction: React.MutableRefObject<number>;
+  currentIndex: number;
+  direction: number;
   handleDragEnd: (
     e: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
+    info: PanInfo,
   ) => void;
   totalItems: number;
-  triggerUpdate: () => void;
 }
 
 const BorderGlideContext = createContext<BorderGlideContextType | undefined>(
-  undefined
+  undefined,
 );
 
 const useBorderGlideContext = () => {
   const context = useContext(BorderGlideContext);
   if (!context) {
-    throw new Error("BorderGlide components must be used within BorderGlide");
+    throw new Error('BorderGlide components must be used within BorderGlide');
   }
   return context;
 };
@@ -53,11 +52,11 @@ const MovingBorder: React.FC<{
 }> = ({
   children,
   duration = 3000,
-  rx = "1.5rem",
-  ry = "1.5rem",
-  color = "#3b82f6",
-  width = "12rem",
-  height = "0.5rem",
+  rx = '1.5rem',
+  ry = '1.5rem',
+  color = '#3b82f6',
+  width = '12rem',
+  height = '0.5rem',
   opacity = 0.8,
 }) => {
   const pathRef = useRef<SVGRectElement>(null);
@@ -121,10 +120,10 @@ const MovingBorder: React.FC<{
 
   const getBackgroundStyle = (color: string) => {
     if (
-      color.includes("gradient") ||
-      color.includes("linear-gradient") ||
-      color.includes("radial-gradient") ||
-      color.includes("conic-gradient")
+      color.includes('gradient') ||
+      color.includes('linear-gradient') ||
+      color.includes('radial-gradient') ||
+      color.includes('conic-gradient')
     ) {
       return color;
     }
@@ -134,38 +133,38 @@ const MovingBorder: React.FC<{
   return (
     <>
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-        className="absolute h-full w-full pointer-events-none"
-        style={{ willChange: "auto" }}
+        xmlns='http://www.w3.org/2000/svg'
+        preserveAspectRatio='none'
+        className='absolute h-full w-full pointer-events-none'
+        style={{ willChange: 'auto' }}
       >
         <rect
-          fill="none"
-          width="100%"
-          height="100%"
+          fill='none'
+          width='100%'
+          height='100%'
           rx={rx}
           ry={ry}
           ref={pathRef}
-          style={{ willChange: "auto" }}
+          style={{ willChange: 'auto' }}
         />
       </svg>
       <motion.div
         style={{
-          position: "absolute",
+          position: 'absolute',
           top: 0,
           left: 0,
           transform,
-          willChange: "transform",
+          willChange: 'transform',
         }}
       >
         <div
-          className="rounded-full"
+          className='rounded-full'
           style={{
             height,
             width,
             opacity,
             background: getBackgroundStyle(color),
-            borderRadius: "50%",
+            borderRadius: '50%',
           }}
         />
       </motion.div>
@@ -189,16 +188,14 @@ const BorderGlide: React.FC<BorderGlideProps> = ({
   className,
   autoPlayInterval = 5000,
   borderDuration = 3000,
-  borderColor = "#3b82f6",
-  borderWidth = "6rem",
-  borderHeight = "6rem",
+  borderColor = '#3b82f6',
+  borderWidth = '6rem',
+  borderHeight = '6rem',
   borderOpacity = 0.8,
 }) => {
-  const currentIndexRef = useRef(0);
-  const directionRef = useRef(0);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [direction, setDirection] = React.useState(0);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
-  const forceUpdateRef = useRef(0);
-  const [, setForceUpdate] = React.useReducer((x: number) => x + 1, 0);
 
   const childrenArray = React.Children.toArray(children);
   const totalItems = childrenArray.length;
@@ -207,34 +204,22 @@ const BorderGlide: React.FC<BorderGlideProps> = ({
   const swipePower = (offset: number, velocity: number) =>
     Math.abs(offset) * velocity;
 
-  const triggerUpdate = useCallback(() => {
-    forceUpdateRef.current += 1;
-    setForceUpdate();
-  }, []);
-
   const paginate = useCallback(
     (newDirection: number) => {
-      directionRef.current = newDirection;
+      setDirection(newDirection);
       if (newDirection === 1) {
-        currentIndexRef.current =
-          currentIndexRef.current === totalItems - 1
-            ? 0
-            : currentIndexRef.current + 1;
+        setCurrentIndex((prev) => (prev === totalItems - 1 ? 0 : prev + 1));
       } else {
-        currentIndexRef.current =
-          currentIndexRef.current === 0
-            ? totalItems - 1
-            : currentIndexRef.current - 1;
+        setCurrentIndex((prev) => (prev === 0 ? totalItems - 1 : prev - 1));
       }
-      triggerUpdate();
     },
-    [totalItems, triggerUpdate]
+    [totalItems],
   );
 
   const handleDragEnd = useCallback(
     (
       e: MouseEvent | TouchEvent | PointerEvent,
-      { offset, velocity }: PanInfo
+      { offset, velocity }: PanInfo,
     ) => {
       const swipe = swipePower(offset.x, velocity.x);
       if (swipe < -swipeConfidenceThreshold) {
@@ -243,7 +228,7 @@ const BorderGlide: React.FC<BorderGlideProps> = ({
         paginate(-1);
       }
     },
-    [paginate]
+    [paginate],
   );
 
   const setupAutoPlay = useCallback(() => {
@@ -267,35 +252,34 @@ const BorderGlide: React.FC<BorderGlideProps> = ({
   }, [setupAutoPlay]);
 
   const contextValue: BorderGlideContextType = {
-    currentIndex: currentIndexRef,
-    direction: directionRef,
+    currentIndex,
+    direction,
     handleDragEnd,
     totalItems,
-    triggerUpdate,
   };
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? "100%" : "-100%",
+      x: direction > 0 ? '100%' : '-100%',
       opacity: 0,
       scale: 0.95,
     }),
     center: {
       zIndex: 1,
-      x: "0%",
+      x: '0%',
       opacity: 1,
       scale: 1,
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? "100%" : "-100%",
+      x: direction < 0 ? '100%' : '-100%',
       opacity: 0,
       scale: 0.95,
     }),
   };
 
   const spring = {
-    type: "spring" as const,
+    type: 'spring' as const,
     stiffness: 300,
     damping: 30,
     mass: 0.8,
@@ -303,13 +287,13 @@ const BorderGlide: React.FC<BorderGlideProps> = ({
 
   return (
     <BorderGlideContext.Provider value={contextValue}>
-      <div className={cn("relative w-full", className)}>
-        <div className="relative w-full h-full overflow-hidden rounded-xl bg-transparent p-[2px]">
-          <div className="absolute inset-0 pointer-events-none">
+      <div className={cn('relative w-full', className)}>
+        <div className='relative w-full h-full overflow-hidden rounded-xl bg-transparent p-0.5'>
+          <div className='absolute inset-0 pointer-events-none'>
             <MovingBorder
               duration={borderDuration}
-              rx="0.75rem"
-              ry="0.75rem"
+              rx='0.75rem'
+              ry='0.75rem'
               color={borderColor}
               width={borderWidth}
               height={borderHeight}
@@ -318,28 +302,24 @@ const BorderGlide: React.FC<BorderGlideProps> = ({
               <div />
             </MovingBorder>
           </div>
-          <div className="relative w-full h-full rounded-xl overflow-hidden bg-white dark:bg-[#09090b] backdrop-blur-sm">
-            <AnimatePresence
-              initial={false}
-              custom={directionRef.current}
-              mode="wait"
-            >
+          <div className='relative w-full h-full rounded-xl overflow-hidden bg-white dark:bg-[#09090b] backdrop-blur-xs'>
+            <AnimatePresence initial={false} custom={direction} mode='wait'>
               <motion.div
-                key={currentIndexRef.current}
-                custom={directionRef.current}
+                key={currentIndex}
+                custom={direction}
                 variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
+                initial='enter'
+                animate='center'
+                exit='exit'
                 transition={spring}
-                drag="x"
+                drag='x'
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.2}
                 onDragEnd={handleDragEnd}
-                className="absolute inset-0 cursor-grab active:cursor-grabbing will-change-transform"
-                style={{ willChange: "transform" }}
+                className='absolute inset-0 cursor-grab active:cursor-grabbing will-change-transform'
+                style={{ willChange: 'transform' }}
               >
-                {childrenArray[currentIndexRef.current]}
+                {childrenArray[currentIndex]}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -361,8 +341,8 @@ const BorderGlideCard: React.FC<BorderGlideCardProps> = ({
   return (
     <Card
       className={cn(
-        "bg-transparent border shadow-none text-foreground w-full h-full",
-        className
+        'bg-transparent border shadow-none text-foreground w-full h-full',
+        className,
       )}
     >
       {children}
@@ -380,7 +360,7 @@ const BorderGlideContent: React.FC<BorderGlideContentProps> = ({
   className,
 }) => {
   return (
-    <CardContent className={cn("p-0 w-full h-full", className)}>
+    <CardContent className={cn('p-0 w-full h-full', className)}>
       {children}
     </CardContent>
   );
@@ -396,7 +376,7 @@ const BorderGlideHeader: React.FC<BorderGlideHeaderProps> = ({
   className,
 }) => {
   return (
-    <CardHeader className={cn("flex flex-col space-y-1.5 p-6", className)}>
+    <CardHeader className={cn('flex flex-col space-y-1.5 p-6', className)}>
       {children}
     </CardHeader>
   );
@@ -412,7 +392,7 @@ const BorderGlideFooter: React.FC<BorderGlideFooterProps> = ({
   className,
 }) => {
   return (
-    <CardFooter className={cn("flex items-center p-6 pt-0", className)}>
+    <CardFooter className={cn('flex items-center p-6 pt-0', className)}>
       {children}
     </CardFooter>
   );
@@ -429,7 +409,7 @@ const BorderGlideTitle: React.FC<BorderGlideTitleProps> = ({
 }) => {
   return (
     <CardTitle
-      className={cn("font-semibold leading-none tracking-tight", className)}
+      className={cn('font-semibold leading-none tracking-tight', className)}
     >
       {children}
     </CardTitle>
@@ -446,7 +426,7 @@ const BorderGlideDescription: React.FC<BorderGlideDescriptionProps> = ({
   className,
 }) => {
   return (
-    <CardDescription className={cn("text-sm text-muted-foreground", className)}>
+    <CardDescription className={cn('text-sm text-muted-foreground', className)}>
       {children}
     </CardDescription>
   );

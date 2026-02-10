@@ -4,9 +4,9 @@ description: Customizable Avatar component with animated borders for status indi
 ---
 
 <ComponentPreview
-  name="avatar-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An accessible Avatar component built with Radix UI"
+  name='avatar-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An accessible Avatar component built with Radix UI'
 />
 
 ## Installation
@@ -23,23 +23,19 @@ description: Customizable Avatar component with animated borders for status indi
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="@radix-ui/react-avatar" />
+<DepsOptions name='@radix-ui/react-avatar' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>avatar.tsx</code>
-</p>
-<ComponentSource name="avatar" />
+
+<ComponentSource name='avatar' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -50,16 +46,15 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
 
 ```tsx
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 ```
 
 ```tsx
-<Avatar variant="close-friends">
-  <AvatarImage src="https://github.com/Adityakishore0.png" alt="@Ahdeetai" />
+<Avatar variant='close-friends'>
+  <AvatarImage src='https://github.com/Adityakishore0.png' alt='@Ahdeetai' />
   <AvatarFallback>AK</AvatarFallback>
 </Avatar>
 ```
@@ -69,8 +64,8 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 ### Default
 
 ```tsx
-<Avatar variant="none">
-  <AvatarImage src="https://github.com/Adityakishore0.png" alt="@Ahdeetai" />
+<Avatar variant='none'>
+  <AvatarImage src='https://github.com/Adityakishore0.png' alt='@Ahdeetai' />
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>
 ```
@@ -78,8 +73,8 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 ### Close Friends
 
 ```tsx
-<Avatar variant="close-friends">
-  <AvatarImage src="https://github.com/Adityakishore0.png" alt="@Ahdeetai" />
+<Avatar variant='close-friends'>
+  <AvatarImage src='https://github.com/Adityakishore0.png' alt='@Ahdeetai' />
   <AvatarFallback>AK</AvatarFallback>
 </Avatar>
 ```
@@ -87,8 +82,8 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 ### Normal (Instagram style)
 
 ```tsx
-<Avatar variant="normal">
-  <AvatarImage src="https://github.com/Adityakishore0.png" alt="@Ahdeetai" />
+<Avatar variant='normal'>
+  <AvatarImage src='https://github.com/Adityakishore0.png' alt='@Ahdeetai' />
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>
 ```
@@ -101,13 +96,10 @@ The root container for the `Avatar` component.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `"close-friends" \| "normal" \| "none"` | `"none"` | Controls the style variant of the avatar. Used in Avatar. |
-| `src` | `string` | — | Image source URL. Used in AvatarImage. |
-| `alt` | `string` | — | Accessible alt text for the image. Used in AvatarImage. |
-| `children` | `ReactNode` | `required` | Nested content. Used in Avatar and AvatarFallback. |
-| `className` | `string` | — | Optional styling class. Used in Avatar, AvatarImage, and AvatarFallback. |
-
-
+| Prop        | Type                                    | Default    | Description                                                              |
+| ----------- | --------------------------------------- | ---------- | ------------------------------------------------------------------------ |
+| `variant`   | `"close-friends" \| "normal" \| "none"` | `"none"`   | Controls the style variant of the avatar. Used in Avatar.                |
+| `src`       | `string`                                | —          | Image source URL. Used in AvatarImage.                                   |
+| `alt`       | `string`                                | —          | Accessible alt text for the image. Used in AvatarImage.                  |
+| `children`  | `ReactNode`                             | `required` | Nested content. Used in Avatar and AvatarFallback.                       |
+| `className` | `string`                                | —          | Optional styling class. Used in Avatar, AvatarImage, and AvatarFallback. |

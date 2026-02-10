@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React, { useState, createContext, useContext } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, LucideIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import React, { useState, createContext, useContext } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Menu, X, ChevronDown, LucideIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -74,13 +74,13 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     >
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 px-4 md:px-6 py-4",
-          className
+          'fixed top-0 left-0 right-0 z-50 px-4 md:px-6 py-4',
+          className,
         )}
       >
         <motion.div
           className={cn(
-            "flex items-center justify-between max-w-screen-2xl mx-auto"
+            'flex items-center justify-between max-w-(--breakpoint-2xl) mx-auto',
           )}
           transition={{ duration: 0.3 }}
         >
@@ -95,14 +95,14 @@ export const NavBody = ({ children, className }: NavBodyProps) => {
   return (
     <motion.div
       className={cn(
-        "hidden md:flex bg-black dark:bg-white shadow-lg px-6 py-1",
-        className
+        'hidden md:flex bg-black dark:bg-white shadow-lg px-6 py-1',
+        className,
       )}
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 1 }}
       transition={{ duration: 0.5, delay: 0.1 }}
     >
-      <div className="flex items-center gap-1">{children}</div>
+      <div className='flex items-center gap-1'>{children}</div>
     </motion.div>
   );
 };
@@ -117,14 +117,14 @@ export const NavDropdown = ({
 
   return (
     <div
-      className="relative"
+      className='relative'
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
       <motion.button
         className={cn(
-          "relative px-4 py-2 text-sm font-medium text-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white rounded-full flex items-center gap-1",
-          className
+          'relative px-4 py-2 text-sm font-medium text-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white rounded-full flex items-center gap-1',
+          className,
         )}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -133,14 +133,14 @@ export const NavDropdown = ({
         {label}
         <ChevronDown
           size={16}
-          className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`transition-transform ${isOpen ? 'rotate-180' : ''}`}
         />
       </motion.button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute top-full left-0 mt-2 bg-black dark:bg-white rounded-xl shadow-2xl p-4 min-w-[205px]"
+            className='absolute top-full left-0 mt-2 bg-black dark:bg-white rounded-xl shadow-2xl p-4 min-w-51.25'
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -152,10 +152,10 @@ export const NavDropdown = ({
                 <a
                   key={item.label}
                   href={item.href}
-                  className="flex items-center justify-between px-4 py-3 text-gray-200 dark:text-gray-800 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition-colors"
+                  className='flex items-center justify-between px-4 py-3 text-gray-200 dark:text-gray-800 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition-colors'
                 >
-                  <span className="font-medium text-sm">{item.label}</span>
-                  {Icon && <Icon size={18} className="text-gray-400" />}
+                  <span className='font-medium text-sm'>{item.label}</span>
+                  {Icon && <Icon size={18} className='text-gray-400' />}
                 </a>
               );
             })}
@@ -177,8 +177,8 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           href={item.href}
           onClick={onItemClick}
           className={cn(
-            "relative px-4 py-2 text-sm font-medium text-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white rounded-full ",
-            className
+            'relative px-4 py-2 text-sm font-medium text-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white rounded-full ',
+            className,
           )}
           onMouseEnter={() => setHoveredItem(item.label)}
           onMouseLeave={() => setHoveredItem(null)}
@@ -188,12 +188,12 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         >
           {hoveredItem === item.label && (
             <motion.div
-              className="absolute inset-0 bg-gray-100 dark:bg-gray-900 rounded-full"
-              layoutId="navbar-hover"
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              className='absolute inset-0 bg-gray-100 dark:bg-gray-900 rounded-full'
+              layoutId='navbar-hover'
+              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
             />
           )}
-          <span className="relative z-10">{item.label}</span>
+          <span className='relative z-10'>{item.label}</span>
         </motion.a>
       ))}
     </>
@@ -210,12 +210,12 @@ export const MobileNav = ({
   return (
     <motion.div
       className={cn(
-        "md:hidden bg-black dark:bg-white shadow-lg z-20 fixed right-4",
-        className
+        'md:hidden bg-black dark:bg-white shadow-lg z-20 fixed right-4',
+        className,
       )}
       animate={{
-        width: isMobileMenuOpen ? "calc(100vw - 2rem)" : "auto",
-        right: isMobileMenuOpen ? "1rem" : "4",
+        width: isMobileMenuOpen ? 'calc(100vw - 2rem)' : 'auto',
+        right: isMobileMenuOpen ? '1rem' : '4',
       }}
       transition={{ duration: 0.3 }}
     >
@@ -233,9 +233,9 @@ export const MobileNavHeader = ({
   return (
     <div
       className={cn(
-        "flex items-center",
-        isMobileMenuOpen ? "w-full justify-end" : "justify-end",
-        className
+        'flex items-center',
+        isMobileMenuOpen ? 'w-full justify-end' : 'justify-end',
+        className,
       )}
     >
       {children}
@@ -246,7 +246,7 @@ export const MobileNavHeader = ({
 export const MobileNavMenu = ({
   children,
   className,
-}: Omit<MobileNavMenuProps, "isOpen" | "onClose">) => {
+}: Omit<MobileNavMenuProps, 'isOpen' | 'onClose'>) => {
   const { isMobileMenuOpen, setIsMobileMenuOpen } =
     useContext(MobileMenuContext);
 
@@ -258,14 +258,14 @@ export const MobileNavMenu = ({
         {isMobileMenuOpen && (
           <motion.div
             className={cn(
-              "md:hidden fixed inset-x-4 top-16 bg-black dark:bg-white shadow-2xl overflow-hidden origin-top z-50",
-              className
+              'md:hidden fixed inset-x-4 top-16 bg-black dark:bg-white shadow-2xl overflow-hidden origin-top z-50',
+              className,
             )}
             initial={{ opacity: 0, scaleY: 0, height: 0 }}
             animate={{
               opacity: 1,
               scaleY: 1,
-              height: "auto",
+              height: 'auto',
               transition: {
                 duration: 0.4,
                 ease: [0.4, 0.0, 0.2, 1],
@@ -283,7 +283,7 @@ export const MobileNavMenu = ({
               },
             }}
           >
-            <div className="px-6 py-8">{children}</div>
+            <div className='px-6 py-8'>{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -291,7 +291,7 @@ export const MobileNavMenu = ({
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 w-full z-40 md:hidden"
+            className='fixed inset-0 w-full z-40 md:hidden'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -320,29 +320,29 @@ export const MobileNavToggle = ({
   return (
     <motion.button
       onClick={handleClick}
-      className="flex items-center gap-2 text-sm font-medium text-gray-300 dark:text-gray-700 px-4 py-2.5"
+      className='flex items-center gap-2 text-sm font-medium text-gray-300 dark:text-gray-700 px-4 py-2.5'
     >
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode='wait'>
         {isMobileMenuOpen ? (
           <motion.div
-            key="close"
-            initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            exit={{ opacity: 0, filter: "blur(4px)", y: -10 }}
-            transition={{ duration: 0.1, ease: "easeInOut" }}
-            className="flex items-center gap-2"
+            key='close'
+            initial={{ opacity: 0, filter: 'blur(4px)', y: 10 }}
+            animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+            exit={{ opacity: 0, filter: 'blur(4px)', y: -10 }}
+            transition={{ duration: 0.1, ease: 'easeInOut' }}
+            className='flex items-center gap-2'
           >
             <X size={20} />
             <span>Close</span>
           </motion.div>
         ) : (
           <motion.div
-            key="menu"
-            initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            exit={{ opacity: 0, filter: "blur(4px)", y: -10 }}
-            transition={{ duration: 0.1, ease: "easeInOut" }}
-            className="flex items-center gap-2"
+            key='menu'
+            initial={{ opacity: 0, filter: 'blur(4px)', y: 10 }}
+            animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+            exit={{ opacity: 0, filter: 'blur(4px)', y: -10 }}
+            transition={{ duration: 0.1, ease: 'easeInOut' }}
+            className='flex items-center gap-2'
           >
             <Menu size={20} />
             <span>Menu</span>
@@ -358,8 +358,8 @@ export const NavbarLogo = ({ className }: NavbarLogoProps) => {
 
   return (
     <motion.a
-      href="/"
-      className={cn("flex items-center h-10 gap-2 relative z-20", className)}
+      href='/'
+      className={cn('flex items-center h-10 gap-2 relative z-20', className)}
       animate={{
         opacity: isMobileMenuOpen ? 0 : 1,
         x: isMobileMenuOpen ? -100 : 0,
@@ -367,16 +367,16 @@ export const NavbarLogo = ({ className }: NavbarLogoProps) => {
       transition={{ duration: 0.3 }}
     >
       <img
-        src="/images/scrollxuilogo.svg"
-        alt="logo"
+        src='/images/scrollxuilogo.svg'
+        alt='logo'
         width={30}
         height={30}
-        className="md:w-10 md:h-10"
+        className='md:w-10 md:h-10'
       />
       <span
         className={cn(
-          "text-xl md:text-xl font-semibold transition-colors duration-300",
-          className
+          'text-xl md:text-xl font-semibold transition-colors duration-300',
+          className,
         )}
       >
         ScrollX UI
@@ -389,22 +389,22 @@ export const NavbarButton = ({
   href,
   children,
   className,
-  variant = "primary",
+  variant = 'primary',
   onClick,
 }: {
   href?: string;
   children: React.ReactNode;
   className?: string;
-  variant?: "primary" | "secondary";
+  variant?: 'primary' | 'secondary';
   onClick?: () => void;
 }) => {
   const baseStyles =
-    "flex justify-center items-center w-full max-w-[280px] mx-auto px-4 py-2 text-sm font-medium rounded-full transition-colors";
+    'flex justify-center items-center w-full max-w-[280px] mx-auto px-4 py-2 text-sm font-medium rounded-full transition-colors';
 
   const variantStyles = {
-    primary: "text-white bg-orange-500 hover:bg-orange-600 font-semibold",
+    primary: 'text-white bg-orange-500 hover:bg-orange-600 font-semibold',
     secondary:
-      "text-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white",
+      'text-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white',
   };
 
   return (
@@ -421,5 +421,5 @@ export const NavbarButton = ({
 };
 
 export const NavbarDivider = () => {
-  return <div className="w-px h-6 bg-gray-300 mx-2" />;
+  return <div className='w-px h-6 bg-gray-300 mx-2' />;
 };

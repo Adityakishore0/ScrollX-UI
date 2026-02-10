@@ -4,9 +4,9 @@ description: smooth card tilt that responds naturally to your cursor, giving the
 ---
 
 <ComponentPreview
-  name="cardtilt-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An interactive card component with 3d tilt hover effect"
+  name='cardtilt-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An interactive card component with 3d tilt hover effect'
 />
 
 ## Installation
@@ -23,23 +23,19 @@ description: smooth card tilt that responds naturally to your cursor, giving the
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>card-tilt.tsx</code>
-</p>
-<ComponentSource name="card-tilt" />
+
+<ComponentSource name='card-tilt' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,18 +49,18 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { CardTilt, CardTiltContent } from "@/components/ui/card-tilt";
+import { CardTilt, CardTiltContent } from '@/components/ui/card-tilt';
 ```
 
 ```tsx
-<CardTilt className="w-80" tiltMaxAngle={15} scale={1.05}>
-      <CardTiltContent className="relative rounded-2xl bg-white p-6 shadow-xl">
-        <h2 className="text-lg font-semibold mb-2">Interactive Tilt</h2>
-        <p className="text-sm text-slate-600">
-          Move your cursor over this card to see the 3D tilt effect.
-        </p>
-      </CardTiltContent>
-    </CardTilt>
+<CardTilt className='w-80' tiltMaxAngle={15} scale={1.05}>
+  <CardTiltContent className='relative rounded-2xl bg-white p-6 shadow-xl'>
+    <h2 className='text-lg font-semibold mb-2'>Interactive Tilt</h2>
+    <p className='text-sm text-slate-600'>
+      Move your cursor over this card to see the 3D tilt effect.
+    </p>
+  </CardTiltContent>
+</CardTilt>
 ```
 
 ## API Reference
@@ -75,17 +71,12 @@ smooth card tilt that responds naturally to your cursor, giving the card a more 
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | — | Content rendered inside the CardTilt container. |
-| `className` | `string` | — | Optional class for custom styling. |
-| `tiltMaxAngle` | `number` | `15` | Maximum rotation angle applied when tilting. |
-| `tiltReverse` | `boolean` | `false` | Reverses the tilt direction when true. |
-| `glareEnable` | `boolean` | `false` | Reserved for future glare effect support. |
-| `scale` | `number` | `1.05` | Scale value applied on hover tilt interaction. |
-| `ref` | `React.Ref<HTMLDivElement>` | — | Returns the container element reference. |
-
-
-
-
+| Prop           | Type                        | Default | Description                                     |
+| -------------- | --------------------------- | ------- | ----------------------------------------------- |
+| `children`     | `ReactNode`                 | —       | Content rendered inside the CardTilt container. |
+| `className`    | `string`                    | —       | Optional class for custom styling.              |
+| `tiltMaxAngle` | `number`                    | `15`    | Maximum rotation angle applied when tilting.    |
+| `tiltReverse`  | `boolean`                   | `false` | Reverses the tilt direction when true.          |
+| `glareEnable`  | `boolean`                   | `false` | Reserved for future glare effect support.       |
+| `scale`        | `number`                    | `1.05`  | Scale value applied on hover tilt interaction.  |
+| `ref`          | `React.Ref<HTMLDivElement>` | —       | Returns the container element reference.        |

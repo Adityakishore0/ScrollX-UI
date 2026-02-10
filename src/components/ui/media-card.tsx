@@ -1,12 +1,12 @@
-"use client";
-import React, { useEffect, useState, useRef } from "react";
+'use client';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   motion,
   AnimatePresence,
   useMotionValue,
   useSpring,
-} from "framer-motion";
-import { cn } from "@/lib/utils";
+} from 'motion/react';
+import { cn } from '@/lib/utils';
 
 interface MediaCardRootProps {
   children: React.ReactNode;
@@ -26,13 +26,13 @@ interface MediaCardItemProps {
   src: string;
   alt: string;
   title: string;
-  type?: "image" | "video";
+  type?: 'image' | 'video';
   className?: string;
 }
 
 interface CursorContextType {
   setLabel: (label: string | null) => void;
-  containerRef: React.RefObject<HTMLDivElement>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
 }
 
 const CursorContext = React.createContext<CursorContextType | null>(null);
@@ -40,7 +40,7 @@ const CursorContext = React.createContext<CursorContextType | null>(null);
 const useCursor = () => {
   const context = React.useContext(CursorContext);
   if (!context) {
-    throw new Error("MediaCard components must be used within MediaCard root");
+    throw new Error('MediaCard components must be used within MediaCard root');
   }
   return context;
 };
@@ -55,7 +55,7 @@ const Cursor = ({
   marqueeDelay = 0.5,
 }: {
   label: string | null;
-  containerRef: React.RefObject<HTMLDivElement>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
   dotClassName?: string;
   marqueeClassName?: string;
   springConfig?: { stiffness?: number; damping?: number; mass?: number };
@@ -89,21 +89,21 @@ const Cursor = ({
       }
     };
 
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    window.addEventListener('mousemove', move);
+    return () => window.removeEventListener('mousemove', move);
   }, [rawX, rawY, containerRef]);
 
   if (!isInside) return null;
 
   return (
     <motion.div
-      className="fixed pointer-events-none z-[10000]"
-      style={{ left: x, top: y, x: "-50%", y: "-50%" }}
+      className='fixed pointer-events-none z-10000'
+      style={{ left: x, top: y, x: '-50%', y: '-50%' }}
     >
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode='wait'>
         {label ? (
           <motion.div
-            key="marquee"
+            key='marquee'
             initial={{
               opacity: 0,
               scale: 0.8,
@@ -121,47 +121,47 @@ const Cursor = ({
               ease: [0.25, 0.1, 0.25, 1],
             }}
             className={cn(
-              "overflow-hidden backdrop-blur-md shadow-2xl flex items-center justify-center bg-white/95 rounded-full w-40 h-10",
-              marqueeClassName
+              'overflow-hidden backdrop-blur-md shadow-2xl flex items-center justify-center bg-white/95 rounded-full w-40 h-10',
+              marqueeClassName,
             )}
           >
-            <div className="relative w-full h-full flex items-center">
+            <div className='relative w-full h-full flex items-center'>
               <motion.div
-                className="absolute whitespace-nowrap text-sm font-bold tracking-widest flex"
-                initial={{ x: "0%" }}
-                animate={{ x: "-50%" }}
+                className='absolute whitespace-nowrap text-sm font-bold tracking-widest flex'
+                initial={{ x: '0%' }}
+                animate={{ x: '-50%' }}
                 transition={{
                   duration: marqueeSpeed,
                   repeat: Infinity,
-                  ease: "linear",
+                  ease: 'linear',
                   delay: marqueeDelay,
                 }}
               >
-                <span className="px-1">{label}</span>
-                <span className="px-1">{label}</span>
+                <span className='px-1'>{label}</span>
+                <span className='px-1'>{label}</span>
               </motion.div>
             </div>
           </motion.div>
         ) : (
           <motion.div
-            key="dot"
+            key='dot'
             initial={{
-              width: "8px",
-              height: "8px",
+              width: '8px',
+              height: '8px',
               opacity: 1,
             }}
             animate={{
-              width: "8px",
-              height: "8px",
+              width: '8px',
+              height: '8px',
               opacity: 1,
             }}
             exit={{
-              width: "8px",
-              height: "8px",
+              width: '8px',
+              height: '8px',
               opacity: 1,
             }}
             transition={{ duration: 0.2 }}
-            className={cn("rounded-full bg-black", dotClassName)}
+            className={cn('rounded-full bg-black', dotClassName)}
           />
         )}
       </AnimatePresence>
@@ -179,7 +179,7 @@ const MediaCard = ({
   marqueeDelay,
 }: MediaCardRootProps) => {
   const [label, setLabel] = useState<string | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <CursorContext.Provider value={{ setLabel, containerRef }}>
@@ -192,7 +192,7 @@ const MediaCard = ({
         marqueeSpeed={marqueeSpeed}
         marqueeDelay={marqueeDelay}
       />
-      <div ref={containerRef} className={cn("", className)}>
+      <div ref={containerRef} className={cn('', className)}>
         {children}
       </div>
     </CursorContext.Provider>
@@ -203,7 +203,7 @@ const MediaCardItem = ({
   src,
   alt,
   title,
-  type = "image",
+  type = 'image',
   className,
 }: MediaCardItemProps) => {
   const { setLabel } = useCursor();
@@ -212,19 +212,19 @@ const MediaCardItem = ({
     <div
       onMouseEnter={() => setLabel(title)}
       onMouseLeave={() => setLabel(null)}
-      className={cn("relative overflow-hidden rounded-3xl", className)}
+      className={cn('relative overflow-hidden rounded-3xl', className)}
     >
-      {type === "video" ? (
+      {type === 'video' ? (
         <video
           src={src}
-          className="w-full h-full object-cover"
+          className='w-full h-full object-cover'
           loop
           muted
           playsInline
           autoPlay
         />
       ) : (
-        <img src={src} alt={alt} className="w-full h-full object-cover" />
+        <img src={src} alt={alt} className='w-full h-full object-cover' />
       )}
     </div>
   );

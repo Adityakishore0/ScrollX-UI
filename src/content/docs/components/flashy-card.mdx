@@ -3,7 +3,7 @@ title: Flashy Card
 description: Interactive card with smooth animated activation and visual effects.
 ---
 
-<ComponentPreview name="flashycard-demo" className="" description="" />
+<ComponentPreview name='flashycard-demo' className='' description='' />
 
 ## Installation
 
@@ -18,22 +18,17 @@ description: Interactive card with smooth animated activation and visual effects
   <TabsContent value="manual">
     <Steps>
 
-
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>flashy-card.tsx</code>
-</p>
-<ComponentSource name="flashy-card" />
+
+<ComponentSource name='flashy-card' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -47,15 +42,15 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { FlashyCard } from "@/components/ui/flashy-card";
+import { FlashyCard } from '@/components/ui/flashy-card';
 ```
 
 ```tsx
 <FlashyCard
-    className="w-full max-w-sm"
-  defaultSrc="https://images.pexels.com/photos/1933316/pexels-photo-1933316.jpeg"
-  activeSrc="https://www.pexels.com/download/video/1390942/"
-  activeType="video"
+  className='w-full max-w-sm'
+  defaultSrc='https://images.pexels.com/photos/1933316/pexels-photo-1933316.jpeg'
+  activeSrc='https://www.pexels.com/download/video/1390942/'
+  activeType='video'
 />
 ```
 
@@ -67,18 +62,15 @@ Interactive card with smooth animated activation and visual effects.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `-` | Custom content using FlashyCardDefault and FlashyCardActive slots. |
-| `onStateChange` | `function` | `-` | Callback fired when card toggles between active and inactive state. |
-| `disabled` | `boolean` | `false` | Disables interaction and prevents state change animations. |
-| `iconClassName` | `string` | `-` | Custom className applied to the center action button. |
-| `rippleClassName` | `string` | `-` | Custom className for the ripple pulse effect. |
-| `glareClassName` | `string` | `-` | Custom className for the glare sweep overlay. |
-| `defaultSrc` | `string` | `-` | Image source displayed when the card is inactive. |
-| `activeSrc` | `string` | `-` | Image or video source displayed when the card is active. |
-| `activeType` | `string` | `auto` | Forces active content type: image or video. |
-| `className` | `string` | `-` | Additional className applied to the card container. |
-
-
+| Prop              | Type        | Default | Description                                                         |
+| ----------------- | ----------- | ------- | ------------------------------------------------------------------- |
+| `children`        | `ReactNode` | `-`     | Custom content using FlashyCardDefault and FlashyCardActive slots.  |
+| `onStateChange`   | `function`  | `-`     | Callback fired when card toggles between active and inactive state. |
+| `disabled`        | `boolean`   | `false` | Disables interaction and prevents state change animations.          |
+| `iconClassName`   | `string`    | `-`     | Custom className applied to the center action button.               |
+| `rippleClassName` | `string`    | `-`     | Custom className for the ripple pulse effect.                       |
+| `glareClassName`  | `string`    | `-`     | Custom className for the glare sweep overlay.                       |
+| `defaultSrc`      | `string`    | `-`     | Image source displayed when the card is inactive.                   |
+| `activeSrc`       | `string`    | `-`     | Image or video source displayed when the card is active.            |
+| `activeType`      | `string`    | `auto`  | Forces active content type: image or video.                         |
+| `className`       | `string`    | `-`     | Additional className applied to the card container.                 |

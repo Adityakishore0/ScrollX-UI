@@ -1,6 +1,6 @@
-"use client";
-import React, { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
+'use client';
+import React, { useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 interface Cluster {
   cx: number;
@@ -30,7 +30,7 @@ interface AuroraDotsProps {
 }
 
 export function AuroraDots({
-  particleColor = "34, 211, 238",
+  particleColor = '34, 211, 238',
   particleSize = 2,
   glowIntensity = 0.3,
   hoverGlowIntensity = 0.5,
@@ -64,16 +64,29 @@ export function AuroraDots({
   const containerRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: -1000, y: -1000 });
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const autoHoverPosRef = useRef({ x: 0.5, y: 0.5, angle: 0 });
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting && !animationRef.current) {
+          animate();
+        }
+      },
+      { threshold: 0 },
+    );
+
+    observer.observe(container);
 
     const resizeCanvas = () => {
       const rect = container.getBoundingClientRect();
@@ -82,7 +95,7 @@ export function AuroraDots({
     };
 
     resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener('resize', resizeCanvas);
 
     const particles: Particle[] = [];
     clusters.forEach((cluster) => {
@@ -90,7 +103,6 @@ export function AuroraDots({
         const angle = (i / cluster.count) * Math.PI * 2;
         const radiusVariation = Math.random() * cluster.radius;
         const angleOffset = (Math.random() - 0.5) * 0.5;
-
         const x =
           (cluster.cx + Math.cos(angle + angleOffset) * radiusVariation) / 100;
         const y =
@@ -104,80 +116,92 @@ export function AuroraDots({
         });
       }
     });
+
     particlesRef.current = particles;
 
-    const [r, g, b] = particleColor.split(",").map(Number);
+    const [r, g, b] = particleColor.split(',').map(Number);
     const startTime = Date.now();
+    const fpsInterval = 1000 / 30;
+    let lastFrameTime = Date.now();
 
     const animate = () => {
+      if (!isVisibleRef.current) {
+        animationRef.current = undefined;
+        return;
+      }
+
       const now = Date.now();
-      const elapsed = (now - startTime) / 1000;
+      const elapsed = now - lastFrameTime;
 
-      autoHoverPosRef.current.angle += 0.01;
-      const radius = 0.3;
-      autoHoverPosRef.current.x =
-        0.5 + Math.cos(autoHoverPosRef.current.angle) * radius;
-      autoHoverPosRef.current.y =
-        0.5 + Math.sin(autoHoverPosRef.current.angle) * radius;
+      if (elapsed > fpsInterval) {
+        lastFrameTime = now - (elapsed % fpsInterval);
+        const totalElapsed = (now - startTime) / 1000;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+        autoHoverPosRef.current.angle += 0.01;
+        const radius = 0.3;
+        autoHoverPosRef.current.x =
+          0.5 + Math.cos(autoHoverPosRef.current.angle) * radius;
+        autoHoverPosRef.current.y =
+          0.5 + Math.sin(autoHoverPosRef.current.angle) * radius;
 
-      particles.forEach((particle) => {
-        const px = particle.x * canvas.width;
-        const py = particle.y * canvas.height;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        const wave = Math.sin(elapsed / animationSpeed + particle.phase);
-        let opacity =
-          particle.baseOpacity + wave * glowIntensity + glowIntensity;
-        let size = particleSize;
-        let blur = particleSize * 3;
-        let glowAlpha = glowIntensity;
+        particles.forEach((particle) => {
+          const px = particle.x * canvas.width;
+          const py = particle.y * canvas.height;
 
-        const autoHoverX = autoHoverPosRef.current.x * canvas.width;
-        const autoHoverY = autoHoverPosRef.current.y * canvas.height;
-        const autoDx = px - autoHoverX;
-        const autoDy = py - autoHoverY;
-        const autoDistance = Math.sqrt(autoDx * autoDx + autoDy * autoDy);
-        const autoNormalizedDistance =
-          autoDistance / ((canvas.width * hoverRadius) / 100);
+          const wave = Math.sin(totalElapsed / animationSpeed + particle.phase);
+          let opacity =
+            particle.baseOpacity + wave * glowIntensity + glowIntensity;
+          let size = particleSize;
+          let blur = particleSize * 3;
+          let glowAlpha = glowIntensity;
 
-        if (autoNormalizedDistance < 1) {
-          const factor = 1 - autoNormalizedDistance;
-          opacity = Math.min(1, opacity + factor * 0.6);
-          size *= 1 + factor * 0.5;
-          blur = size * 5;
-          glowAlpha = Math.min(1, glowAlpha + factor * hoverGlowIntensity);
-        }
+          const autoHoverX = autoHoverPosRef.current.x * canvas.width;
+          const autoHoverY = autoHoverPosRef.current.y * canvas.height;
+          const autoDx = px - autoHoverX;
+          const autoDy = py - autoHoverY;
+          const autoDistance = Math.sqrt(autoDx * autoDx + autoDy * autoDy);
+          const autoNormalizedDistance =
+            autoDistance / ((canvas.width * hoverRadius) / 100);
 
-        if (interactive) {
-          const dx = px - mouseRef.current.x;
-          const dy = py - mouseRef.current.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          const normalizedDistance =
-            distance / ((canvas.width * hoverRadius) / 100);
-
-          if (normalizedDistance < 1) {
-            const factor = 1 - normalizedDistance;
-            opacity = Math.min(1, opacity + factor * 0.5);
-            size *= 1 + factor * 0.4;
+          if (autoNormalizedDistance < 1) {
+            const factor = 1 - autoNormalizedDistance;
+            opacity = Math.min(1, opacity + factor * 0.6);
+            size *= 1 + factor * 0.5;
             blur = size * 5;
-            glowAlpha = hoverGlowIntensity;
+            glowAlpha = Math.min(1, glowAlpha + factor * hoverGlowIntensity);
           }
-        }
 
-        ctx.save();
-        ctx.shadowBlur = blur;
-        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${glowAlpha})`;
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${Math.min(
-          1,
-          Math.max(0, opacity)
-        )})`;
+          if (interactive) {
+            const dx = px - mouseRef.current.x;
+            const dy = py - mouseRef.current.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const normalizedDistance =
+              distance / ((canvas.width * hoverRadius) / 100);
 
-        ctx.beginPath();
-        ctx.arc(px, py, size / 2, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      });
+            if (normalizedDistance < 1) {
+              const factor = 1 - normalizedDistance;
+              opacity = Math.min(1, opacity + factor * 0.5);
+              size *= 1 + factor * 0.4;
+              blur = size * 5;
+              glowAlpha = hoverGlowIntensity;
+            }
+          }
+
+          ctx.save();
+          ctx.shadowBlur = blur;
+          ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${glowAlpha})`;
+          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${Math.min(
+            1,
+            Math.max(0, opacity),
+          )})`;
+          ctx.beginPath();
+          ctx.arc(px, py, size / 2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -185,7 +209,8 @@ export function AuroraDots({
     animate();
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener('resize', resizeCanvas);
+      observer.disconnect();
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
@@ -201,8 +226,9 @@ export function AuroraDots({
     interactive,
   ]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
     if (!interactive || !containerRef.current) return;
+
     const rect = containerRef.current.getBoundingClientRect();
     mouseRef.current = {
       x: e.clientX - rect.left,
@@ -217,15 +243,17 @@ export function AuroraDots({
   return (
     <div
       ref={containerRef}
-      className={cn(
-        "relative overflow-hidden bg-white dark:bg-black",
-        className
-      )}
+      className={cn('relative w-full h-full', className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
-      {children && <div className="relative z-10">{children}</div>}
+      <canvas
+        ref={canvasRef}
+        className='absolute inset-0 w-full h-full pointer-events-none'
+      />
+      {children && (
+        <div className='relative z-10 w-full h-full'>{children}</div>
+      )}
     </div>
   );
 }

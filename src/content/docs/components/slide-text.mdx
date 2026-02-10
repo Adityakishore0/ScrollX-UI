@@ -3,7 +3,7 @@ title: Slide Text
 description: sliding text animation with smooth staggered motion and loop control.
 ---
 
-<ComponentPreview name="slidetext-demo" className="p-0" description="" />
+<ComponentPreview name='slidetext-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -19,23 +19,19 @@ description: sliding text animation with smooth staggered motion and loop contro
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>slide-text.tsx</code>
-</p>
-<ComponentSource name="slide-text" />
+
+<ComponentSource name='slide-text' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,17 +45,17 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { SlideText } from "@/components/ui/slide-text";
+import { SlideText } from '@/components/ui/slide-text';
 ```
 
 ```tsx
 <SlideText
-      text="Innovation"
-      staggerDelay={0.03}
-      staggerDuration={0.5}
-      pauseDuration={2}
-      className="text-4xl font-semibold"
-    />
+  text='Innovation'
+  staggerDelay={0.03}
+  staggerDuration={0.5}
+  pauseDuration={2}
+  className='text-4xl font-semibold'
+/>
 ```
 
 ## API Reference
@@ -70,14 +66,10 @@ sliding text animation with smooth staggered motion and loop control.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `text` | `string` | `required` | Text content animated per character with vertical slide motion. |
-| `staggerDelay` | `number` | `0.025` | Delay between consecutive character animations. |
-| `staggerDuration` | `number` | `0.4` | Duration of each character’s slide transition. |
-| `pauseDuration` | `number` | `1.5` | Pause before switching animation direction or restarting. |
-| `className` | `string` | `''` | Additional CSS classes applied to the text wrapper. |
-
-
-
+| Prop              | Type     | Default    | Description                                                     |
+| ----------------- | -------- | ---------- | --------------------------------------------------------------- |
+| `text`            | `string` | `required` | Text content animated per character with vertical slide motion. |
+| `staggerDelay`    | `number` | `0.025`    | Delay between consecutive character animations.                 |
+| `staggerDuration` | `number` | `0.4`      | Duration of each character’s slide transition.                  |
+| `pauseDuration`   | `number` | `1.5`      | Pause before switching animation direction or restarting.       |
+| `className`       | `string` | `''`       | Additional CSS classes applied to the text wrapper.             |

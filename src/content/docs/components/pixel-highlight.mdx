@@ -4,9 +4,9 @@ description: Animated pixel-based text reveal with directional shimmer using can
 ---
 
 <ComponentPreview
-  name="pixelhighlight-demo"
-  className="overflow-visible relative p-0"
-  description=""
+  name='pixelhighlight-demo'
+  className='overflow-visible relative p-0'
+  description=''
 />
 
 ## Installation
@@ -23,23 +23,19 @@ description: Animated pixel-based text reveal with directional shimmer using can
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>pixel-highlight.tsx</code>
-</p>
-<ComponentSource name="pixel-highlight" />
+
+<ComponentSource name='pixel-highlight' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,21 +49,20 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { PixelHighlight } from '@/components/ui/pixel-highlight'
+import { PixelHighlight } from '@/components/ui/pixel-highlight';
 ```
 
 ```tsx
 <PixelHighlight
-      text="Top Down"
-      colors="#d8b4fe,#a78bfa,#7c3aed"
-      direction="top"
-      speed={70}
-      gap={3}
-      fontSize={12}
-      className="w-full h-32"
-    />
+  text='Top Down'
+  colors='#d8b4fe,#a78bfa,#7c3aed'
+  direction='top'
+  speed={70}
+  gap={3}
+  fontSize={12}
+  className='w-full h-32'
+/>
 ```
-
 
 ## API Reference
 
@@ -77,20 +72,16 @@ Animated pixel-based text reveal with directional shimmer using canvas-rendered 
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `text` | `string` | `-` | Text to render as the pixel highlight animation. |
-| `children` | `node` | `-` | Custom React content used instead of the text prop. |
-| `colors` | `string` | `gradient` | Comma-separated color values randomly applied to animated pixels. |
-| `gap` | `number` | `6` | Distance between pixels. Smaller values create denser highlights. |
-| `speed` | `number` | `80` | Controls how fast pixels appear and shimmer. |
-| `direction` | `enum` | `center` | Direction from which the pixel animation originates. |
-| `opacity` | `number` | `1` | Overall transparency of the pixel canvas layer. |
-| `fontSize` | `string \| number` | `20` | Font size of the text mask. Numbers scale responsively. |
-| `fontWeight` | `string \| number` | `bold` | Weight of the text used for the pixel mask. |
-| `fontFamily` | `string` | `sans` | Font family applied to the text mask. |
-| `className` | `string` | `-` | Additional class names for the root container. |
-
-
-
+| Prop         | Type               | Default    | Description                                                       |
+| ------------ | ------------------ | ---------- | ----------------------------------------------------------------- |
+| `text`       | `string`           | `-`        | Text to render as the pixel highlight animation.                  |
+| `children`   | `node`             | `-`        | Custom React content used instead of the text prop.               |
+| `colors`     | `string`           | `gradient` | Comma-separated color values randomly applied to animated pixels. |
+| `gap`        | `number`           | `6`        | Distance between pixels. Smaller values create denser highlights. |
+| `speed`      | `number`           | `80`       | Controls how fast pixels appear and shimmer.                      |
+| `direction`  | `enum`             | `center`   | Direction from which the pixel animation originates.              |
+| `opacity`    | `number`           | `1`        | Overall transparency of the pixel canvas layer.                   |
+| `fontSize`   | `string \| number` | `20`       | Font size of the text mask. Numbers scale responsively.           |
+| `fontWeight` | `string \| number` | `bold`     | Weight of the text used for the pixel mask.                       |
+| `fontFamily` | `string`           | `sans`     | Font family applied to the text mask.                             |
+| `className`  | `string`           | `-`        | Additional class names for the root container.                    |

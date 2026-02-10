@@ -4,8 +4,8 @@ description: Renders a card component comprising a header, content section, and 
 ---
 
 <ComponentPreview
-  name="card-demo"
-  description="A subscription card for email and topic selection."
+  name='card-demo'
+  description='A subscription card for email and topic selection.'
 />
 
 ## Installation
@@ -22,20 +22,16 @@ description: Renders a card component comprising a header, content section, and 
     <Steps>
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>card.tsx</code>
-</p>
-<ComponentSource name="card" />
+
+<ComponentSource name='card' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -57,7 +53,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 ```
 
 ```tsx
@@ -77,7 +73,7 @@ import {
 ```
 
 ```tsx
-<Card className="custom-card-style">
+<Card className='custom-card-style'>
   <CardHeader>
     <CardTitle>Custom Card</CardTitle>
     <CardDescription>This card has a custom style.</CardDescription>
@@ -87,15 +83,16 @@ import {
     <p>Additional content with custom styles.</p>
   </CardContent>
   <CardFooter>
-    <Button variant="link">Learn More</Button>
+    <Button variant='link'>Learn More</Button>
   </CardFooter>
 </Card>
 ```
+
 ---
 
 ## Changelog
 
-#### 24-09-2025,  Added CardAction 
+#### 24-09-2025, Added CardAction
 
 - Introduced a new `CardAction` component to place actions (buttons, links) in the CardHeader aligned to the top-right.
 - Minor updates to existing components to include `data-slot` attributes for consistent styling.
@@ -108,16 +105,13 @@ The `Card` component is used to create a customizable container with content sec
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `className` | `string` | — | Custom classes for styling. |
-| `...props` | `React.HTMLAttributes<HTMLDivElement>` | — | All standard div props. |
-| `CardHeader` | `React.ReactNode` | — | Header section. |
-| `CardTitle` | `React.ReactNode` | — | Title inside header. |
-| `CardDescription` | `React.ReactNode` | — | Description inside header. |
-| `CardAction` | `React.ReactNode` | — | Action (e.g., button) in header. |
-| `CardContent` | `React.ReactNode` | — | Main content area. |
-| `CardFooter` | `React.ReactNode` | — | Footer section. |
-
-
+| Prop              | Type                                   | Default | Description                      |
+| ----------------- | -------------------------------------- | ------- | -------------------------------- |
+| `className`       | `string`                               | —       | Custom classes for styling.      |
+| `...props`        | `React.HTMLAttributes<HTMLDivElement>` | —       | All standard div props.          |
+| `CardHeader`      | `React.ReactNode`                      | —       | Header section.                  |
+| `CardTitle`       | `React.ReactNode`                      | —       | Title inside header.             |
+| `CardDescription` | `React.ReactNode`                      | —       | Description inside header.       |
+| `CardAction`      | `React.ReactNode`                      | —       | Action (e.g., button) in header. |
+| `CardContent`     | `React.ReactNode`                      | —       | Main content area.               |
+| `CardFooter`      | `React.ReactNode`                      | —       | Footer section.                  |

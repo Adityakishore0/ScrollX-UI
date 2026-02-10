@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { ChevronsUpDown } from "lucide-react";
+import * as React from 'react';
+import { ChevronsUpDown } from 'lucide-react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+} from '@/components/ui/collapsible';
 
 export default function CollapsibleDemo() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -17,27 +17,27 @@ export default function CollapsibleDemo() {
     <Collapsible
       open={isOpen}
       onOpenChange={setIsOpen}
-      className="flex w-[350px] flex-col gap-2"
+      className='flex w-87.5 flex-col gap-2'
     >
-      <div className="flex items-center justify-between gap-4 px-4">
-        <h4 className="text-sm font-semibold">ScrollX UI | Build faster</h4>
+      <div className='flex items-center justify-between gap-4 px-4'>
+        <h4 className='text-sm font-semibold'>ScrollX UI | Build faster</h4>
         <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="icon" className="size-8">
+          <Button variant='ghost' size='icon' className='size-8'>
             <ChevronsUpDown />
-            <span className="sr-only">Toggle</span>
+            <span className='sr-only'>Toggle</span>
           </Button>
         </CollapsibleTrigger>
       </div>
 
-      <div className="rounded-md border px-4 py-2 font-mono text-sm">
+      <div className='rounded-md border px-4 py-2 font-mono text-sm'>
         70+ cool components
       </div>
 
-      <CollapsibleContent className="flex flex-col gap-2">
-        <div className="rounded-md border px-4 py-2 font-mono text-sm">
+      <CollapsibleContent className='flex flex-col gap-2'>
+        <div className='rounded-md border px-4 py-2 font-mono text-sm'>
           168 GitHub stars
         </div>
-        <div className="rounded-md border px-4 py-2 font-mono text-sm">
+        <div className='rounded-md border px-4 py-2 font-mono text-sm'>
           Open source
         </div>
       </CollapsibleContent>

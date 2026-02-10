@@ -4,9 +4,9 @@ description: A set of diagonal lines that move continuously. Great for hero back
 ---
 
 <ComponentPreview
-  name="movinglinesbackground-demo"
-  className="p-0"
-  description=""
+  name='movinglinesbackground-demo'
+  className='p-0'
+  description=''
 />
 
 ## Installation
@@ -23,23 +23,19 @@ description: A set of diagonal lines that move continuously. Great for hero back
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>movinglines-background.tsx</code>
-</p>
-<ComponentSource name="movinglines-background" />
+
+<ComponentSource name='movinglines-background' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,19 +49,20 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { MovingLinesBackground } from "@/components/ui/movinglines-background";
+import { MovingLinesBackground } from '@/components/ui/movinglines-background';
 ```
 
 ```tsx
-<MovingLinesBackground  className="relative h-[400px] w-full flex flex-col items-center justify-center">
-      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
-        Moving Lines, <br /> Background.
-      </h2>
-      <p className="max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center">
-       flowing right, defining direction.
-      </p>
-    </MovingLinesBackground>
+<MovingLinesBackground className='relative h-100 w-full flex flex-col items-center justify-center'>
+  <h2 className='bg-clip-text text-transparent text-center bg-linear-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight'>
+    Moving Lines, <br /> Background.
+  </h2>
+  <p className='max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center'>
+    flowing right, defining direction.
+  </p>
+</MovingLinesBackground>
 ```
+
 ## Examples
 
 ---
@@ -73,11 +70,10 @@ import { MovingLinesBackground } from "@/components/ui/movinglines-background";
 <Step>Direction</Step>
 
 <ComponentPreview
-  name="movinglinesbackgroundleft-demo"
-  className="p-0"
-  description=""
+  name='movinglinesbackgroundleft-demo'
+  className='p-0'
+  description=''
 />
-
 
 ## API Reference
 
@@ -87,16 +83,12 @@ A set of diagonal lines that move continuously. Great for hero backgrounds.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `speed` | `string` | `"20s"` | The **duration** of the line movement animation (e.g., '10s', '30s'). |
-| `opacity` | `number` | `0.8` | The **transparency** level of the moving lines layer (from 0 to 1). |
-| `direction` | `"left" \| "right"` | `"right"` | The **direction** in which the lines move, affecting the background-position calculation. |
-| `blur` | `string` | `"0px"` | The CSS **blur value** (e.g., '2px', '5px') applied to the moving lines to create a soft, diffused effect. |
-| `className` | `string` | — | Optional **styling** (e.g., Tailwind classes) for the **outer container** (`div`). |
-| `lineClassName` | `string` | — | Optional **styling** (e.g., Tailwind classes) for the **moving line element** (`motion.div`). |
-| `children` | `React.ReactNode` | — | The **content** to be rendered **above** the moving background. |
-
-
-
+| Prop            | Type                | Default   | Description                                                                                                |
+| --------------- | ------------------- | --------- | ---------------------------------------------------------------------------------------------------------- |
+| `speed`         | `string`            | `"20s"`   | The **duration** of the line movement animation (e.g., '10s', '30s').                                      |
+| `opacity`       | `number`            | `0.8`     | The **transparency** level of the moving lines layer (from 0 to 1).                                        |
+| `direction`     | `"left" \| "right"` | `"right"` | The **direction** in which the lines move, affecting the background-position calculation.                  |
+| `blur-sm`       | `string`            | `"0px"`   | The CSS **blur value** (e.g., '2px', '5px') applied to the moving lines to create a soft, diffused effect. |
+| `className`     | `string`            | —         | Optional **styling** (e.g., Tailwind classes) for the **outer container** (`div`).                         |
+| `lineClassName` | `string`            | —         | Optional **styling** (e.g., Tailwind classes) for the **moving line element** (`motion.div`).              |
+| `children`      | `React.ReactNode`   | —         | The **content** to be rendered **above** the moving background.                                            |

@@ -4,9 +4,9 @@ description: A stylish, animated header component with dark/light mode toggle fu
 ---
 
 <ComponentPreview
-  name="lamphome-demo"
-  className=""
-  description="An accessible Lamphome component built with ScrollX UI"
+  name='lamphome-demo'
+  className=''
+  description='An accessible Lamphome component built with ScrollX UI'
 />
 
 ## Installation
@@ -23,13 +23,11 @@ description: A stylish, animated header component with dark/light mode toggle fu
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>lamphome.tsx</code>
-</p>
-<ComponentSource name="lamphome" />
+
+<ComponentSource name='lamphome' />
 
 </Steps>
   </TabsContent>
@@ -40,7 +38,7 @@ description: A stylish, animated header component with dark/light mode toggle fu
 ### Basic Usage
 
 ```tsx
-import { Lamphome } from "@/components/ui/Lamphome";
+import { Lamphome } from '@/components/ui/Lamphome';
 
 export default function MyPage() {
   return <Lamphome />;
@@ -50,7 +48,7 @@ export default function MyPage() {
 ### With Custom Title and Description
 
 ```tsx
-import { Lamphome } from "@/components/ui/Lamphome";
+import { Lamphome } from '@/components/ui/Lamphome';
 
 export default function MyPage() {
   return (
@@ -60,7 +58,7 @@ export default function MyPage() {
       logoSrc={logo.src}
       logoAlt={logo.alt}
       navItems={navItems}
-      className="bg-gray-50 dark:bg-neutral-900"
+      className='bg-gray-50 dark:bg-neutral-900'
     >
       {content}
     </Lamphome>
@@ -71,22 +69,18 @@ export default function MyPage() {
 ### With Child Components
 
 ```tsx
-import { Lamphome } from "@/components/ui/Lamphome";
-import { MyComponent } from "@/components/MyComponent";
+import { Lamphome } from '@/components/ui/Lamphome';
+import { MyComponent } from '@/components/MyComponent';
 
 export default function MyPage() {
   return (
     <Lamphome>
       <MyComponent />
-      <div className="my-custom-content">
-        Additional content here
-      </div>
+      <div className='my-custom-content'>Additional content here</div>
     </Lamphome>
   );
 }
 ```
-
-
 
 ## API Reference
 
@@ -96,22 +90,15 @@ The root container for the `Lamphome` component. A stylish, animated header comp
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `title` | `string` | `"SCROLLX UI"` | Main heading displayed in the component. |
-| `description` | `string` | `"An open-source collection."` | Descriptive text displayed below the title. |
-| `logoSrc` | `string` | `optional` | URL or path for the logo image displayed on the navbar. |
-| `logoAlt` | `string` | `"Logo"` | Alt text for the logo image. |
-| `navItems` | `Array<{ href: string; label: string }>` | `[]` | Navigation links rendered in the navbar. |
-| `children` | `ReactNode` | `optional` | Custom content rendered below the description. |
-| `className` | `string` | `""` | Additional custom CSS classes for the root container. |
-
-
-
-
-
-
+| Prop          | Type                                     | Default                        | Description                                             |
+| ------------- | ---------------------------------------- | ------------------------------ | ------------------------------------------------------- |
+| `title`       | `string`                                 | `"SCROLLX UI"`                 | Main heading displayed in the component.                |
+| `description` | `string`                                 | `"An open-source collection."` | Descriptive text displayed below the title.             |
+| `logoSrc`     | `string`                                 | `optional`                     | URL or path for the logo image displayed on the navbar. |
+| `logoAlt`     | `string`                                 | `"Logo"`                       | Alt text for the logo image.                            |
+| `navItems`    | `Array<{ href: string; label: string }>` | `[]`                           | Navigation links rendered in the navbar.                |
+| `children`    | `ReactNode`                              | `optional`                     | Custom content rendered below the description.          |
+| `className`   | `string`                                 | `""`                           | Additional custom CSS classes for the root container.   |
 
 ## Integration with next-themes
 
@@ -119,13 +106,13 @@ This component is designed to work with the `ThemeProvider` from `next-themes`. 
 
 ```tsx
 // In your layout.tsx
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from 'next-themes';
 
 export default function RootLayout({ children }) {
   return (
     <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
+      attribute='class'
+      defaultTheme='system'
       enableSystem
       disableTransitionOnChange
     >

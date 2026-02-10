@@ -3,11 +3,7 @@ title: ScrollArea Pro
 description: Advanced ScrollArea with auto-hide scrollbars, progress bars, and cross-axis scroll.
 ---
 
-<ComponentPreview
-  name="scrollareapro-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='scrollareapro-demo' className='' description='' />
 
 ## Installation
 
@@ -23,21 +19,19 @@ description: Advanced ScrollArea with auto-hide scrollbars, progress bars, and c
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="@radix-ui/react-scroll-area framer-motion" />
+<DepsOptions name='@radix-ui/react-scroll-area motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>scroll-areapro.tsx</code>
-</p>
-<ComponentSource name="scroll-areapro" />
+
+<ComponentSource name='scroll-areapro' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
- import {(ClassValue, clsx)} from "clsx";
-  import {twMerge} from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -51,49 +45,46 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { ScrollAreaPro } from "@/components/ui/scroll-areapro"
+import { ScrollAreaPro } from '@/components/ui/scroll-areapro';
 ```
 
 ```tsx
 <ScrollAreaPro
-        className="w-96 rounded-md border whitespace-nowrap"
-        crossDirectionalScroll
-        showProgress="horizontal"
-      >
-        <div className="flex w-max space-x-4 p-4">
-          {works.map((artwork) => (
-            <figure key={artwork.artist} className="shrink-0">
-              <div className="overflow-hidden rounded-md">
-                <Image
-                  src={artwork.art}
-                  alt={`Photo by ${artwork.artist}`}
-                  className="aspect-[3/4] object-cover grayscale"
-                  width={300}
-                  height={400}
-                />
-              </div>
-              <figcaption className="pt-2 text-xs text-muted-foreground">
-                Photo by{" "}
-                <span className="font-semibold text-foreground">
-                  {artwork.artist}
-                </span>
-              </figcaption>
-            </figure>
-          ))}
+  className='w-96 rounded-md border whitespace-nowrap'
+  crossDirectionalScroll
+  showProgress='horizontal'
+>
+  <div className='flex w-max space-x-4 p-4'>
+    {works.map((artwork) => (
+      <figure key={artwork.artist} className='shrink-0'>
+        <div className='overflow-hidden rounded-md'>
+          <Image
+            src={artwork.art}
+            alt={`Photo by ${artwork.artist}`}
+            className='aspect-3/4 object-cover grayscale'
+            width={300}
+            height={400}
+          />
         </div>
-      </ScrollAreaPro>
+        <figcaption className='pt-2 text-xs text-muted-foreground'>
+          Photo by{' '}
+          <span className='font-semibold text-foreground'>
+            {artwork.artist}
+          </span>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</ScrollAreaPro>
 ```
+
 ## Examples
 
 ---
 
 <Step>Horizontal</Step>
 
-<ComponentPreview
-  name="scrollareaprohorizontal"
-  className=""
-  description=""
-/>
+<ComponentPreview name='scrollareaprohorizontal' className='' description='' />
 
 ---
 
@@ -105,20 +96,14 @@ Premium ScrollArea with dynamic scrollbars, smooth progress indicators, and cros
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `className` | `string` | `undefined` | Additional classes to style the ScrollAreaPro or ScrollBarPro container. |
-| `children` | `ReactNode` | `required` | Content inside the ScrollAreaPro viewport. |
-| `crossDirectionalScroll` | `boolean` | `false` | Allows horizontal scroll via vertical gestures (wheel/touch) on desktop devices. |
-| `autoHide` | `boolean` | `false` | Hides the scrollbars when not actively scrolling. |
-| `showProgress` | `"horizontal" \| "vertical"` | `undefined` | Shows a progress indicator. Horizontal at the bottom, vertical along the right. |
-| `onScrollChange` | `(progress: { x: number; y: number }) => void` | `undefined` | Callback fired when the scroll position changes. Returns scroll progress in X and Y axes. |
-| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | Orientation of the ScrollBarPro (vertical or horizontal). |
-| `show` | `boolean` | `true` | Controls whether the ScrollBarPro is visible. |
-| `isScrolling` | `boolean` | `false` | Indicates if the user is actively scrolling (used for animations). |
-
-
-
-
-
+| Prop                     | Type                                           | Default      | Description                                                                               |
+| ------------------------ | ---------------------------------------------- | ------------ | ----------------------------------------------------------------------------------------- |
+| `className`              | `string`                                       | `undefined`  | Additional classes to style the ScrollAreaPro or ScrollBarPro container.                  |
+| `children`               | `ReactNode`                                    | `required`   | Content inside the ScrollAreaPro viewport.                                                |
+| `crossDirectionalScroll` | `boolean`                                      | `false`      | Allows horizontal scroll via vertical gestures (wheel/touch) on desktop devices.          |
+| `autoHide`               | `boolean`                                      | `false`      | Hides the scrollbars when not actively scrolling.                                         |
+| `showProgress`           | `"horizontal" \| "vertical"`                   | `undefined`  | Shows a progress indicator. Horizontal at the bottom, vertical along the right.           |
+| `onScrollChange`         | `(progress: { x: number; y: number }) => void` | `undefined`  | Callback fired when the scroll position changes. Returns scroll progress in X and Y axes. |
+| `orientation`            | `"vertical" \| "horizontal"`                   | `"vertical"` | Orientation of the ScrollBarPro (vertical or horizontal).                                 |
+| `show`                   | `boolean`                                      | `true`       | Controls whether the ScrollBarPro is visible.                                             |
+| `isScrolling`            | `boolean`                                      | `false`      | Indicates if the user is actively scrolling (used for animations).                        |

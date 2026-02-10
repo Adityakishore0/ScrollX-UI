@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
-import { cn } from "@/lib/utils";
-import { ComponentProps } from "react";
+import { motion } from 'motion/react';
+import { TypeAnimation } from 'react-type-animation';
+import { cn } from '@/lib/utils';
+import { ComponentProps } from 'react';
 
-type LibrarySpeedType = ComponentProps<typeof TypeAnimation>["speed"];
+type LibrarySpeedType = ComponentProps<typeof TypeAnimation>['speed'];
 
-type SpeedType = number | "slow" | "normal" | "fast";
+type SpeedType = number | 'slow' | 'normal' | 'fast';
 
 interface TypeanimationProps {
   words?: string[];
@@ -20,21 +20,21 @@ interface TypeanimationProps {
 }
 
 const Typeanimation = ({
-  words = [" existence", " reality", " the Internet"],
+  words = [' existence', ' reality', ' the Internet'],
   className,
   typingSpeed = 50,
   deletingSpeed = 50,
   pauseDuration = 1000,
-  gradientFrom = "blue-500",
-  gradientTo = "purple-600",
+  gradientFrom = 'blue-500',
+  gradientTo = 'purple-600',
 }: TypeanimationProps) => {
   const sequence = words.flatMap((word) => [word, pauseDuration]);
 
   return (
     <motion.span
       className={cn(
-        `bg-clip-text text-transparent bg-gradient-to-r from-${gradientFrom} to-${gradientTo}`,
-        className
+        `bg-clip-text text-transparent bg-linear-to-r from-${gradientFrom} to-${gradientTo}`,
+        className,
       )}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -42,9 +42,9 @@ const Typeanimation = ({
     >
       <TypeAnimation
         sequence={sequence}
-        wrapper="span"
+        wrapper='span'
         repeat={Infinity}
-        className=""
+        className=''
         speed={typingSpeed as LibrarySpeedType}
         deletionSpeed={deletingSpeed as LibrarySpeedType}
       />

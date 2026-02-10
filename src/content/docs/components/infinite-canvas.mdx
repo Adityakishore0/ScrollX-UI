@@ -3,7 +3,7 @@ title: Infinite Canvas
 description: Infinite draggable canvas with zoomable, repeating cards and touch/mouse controls.
 ---
 
-<ComponentPreview name="infinitecanvas-demo" className="p-0" description="" />
+<ComponentPreview name='infinitecanvas-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -19,20 +19,16 @@ description: Infinite draggable canvas with zoomable, repeating cards and touch/
     <Steps>
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>infinite-canvas.tsx</code>
-</p>
-<ComponentSource name="infinite-canvas" />
+
+<ComponentSource name='infinite-canvas' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -46,33 +42,27 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { Card, InfiniteCanvas } from "@/components/ui/infinite-canvas";
+import { Card, InfiniteCanvas } from '@/components/ui/infinite-canvas';
 ```
 
 ```tsx
- <InfiniteCanvas 
-      className="relative h-[450px] w-full"
-      showControls={true}
-      showZoom={true}
-      showStatus={true}
-      showInstructions={true}
-    >
-    <Card className="bg-card p-6 rounded-lg shadow-lg border h-full">
-    <p className="text-foreground">
-          Card 1 
-        </p>
-    </Card>
-   <Card className="bg-card p-6 rounded-lg shadow-lg border h-full">
-    <p className="text-foreground">
-          Card 1 
-        </p>
-    </Card>
-    <Card className="bg-card p-6 rounded-lg shadow-lg border h-full">
-    <p className="text-foreground">
-          Card 1 
-        </p>
-    </Card>
-    </InfiniteCanvas>
+<InfiniteCanvas
+  className='relative h-112.5 w-full'
+  showControls={true}
+  showZoom={true}
+  showStatus={true}
+  showInstructions={true}
+>
+  <Card className='bg-card p-6 rounded-lg shadow-lg border h-full'>
+    <p className='text-foreground'>Card 1</p>
+  </Card>
+  <Card className='bg-card p-6 rounded-lg shadow-lg border h-full'>
+    <p className='text-foreground'>Card 1</p>
+  </Card>
+  <Card className='bg-card p-6 rounded-lg shadow-lg border h-full'>
+    <p className='text-foreground'>Card 1</p>
+  </Card>
+</InfiniteCanvas>
 ```
 
 ## API Reference
@@ -83,19 +73,14 @@ Infinite draggable canvas with zoomable, repeating cards and touch/mouse control
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `required` | Card components rendered infinitely across the canvas grid. |
-| `className` | `string` | `-` | Additional CSS classes applied to the canvas container. |
-| `cardWidth` | `number` | `280` | Fixed width of each card in pixels. |
-| `cardHeight` | `number` | `220` | Fixed height of each card in pixels. |
-| `spacing` | `number` | `30` | Space between cards in the infinite grid layout. |
-| `showControls` | `boolean` | `true` | Show button to enable or disable canvas interaction. |
-| `showZoom` | `boolean` | `true` | Display current zoom percentage indicator. |
-| `showStatus` | `boolean` | `true` | Show active/inactive status badge for the canvas. |
-| `showInstructions` | `boolean` | `true` | Display drag and zoom usage instructions overlay. |
-
-
-
-
+| Prop               | Type        | Default    | Description                                                 |
+| ------------------ | ----------- | ---------- | ----------------------------------------------------------- |
+| `children`         | `ReactNode` | `required` | Card components rendered infinitely across the canvas grid. |
+| `className`        | `string`    | `-`        | Additional CSS classes applied to the canvas container.     |
+| `cardWidth`        | `number`    | `280`      | Fixed width of each card in pixels.                         |
+| `cardHeight`       | `number`    | `220`      | Fixed height of each card in pixels.                        |
+| `spacing`          | `number`    | `30`       | Space between cards in the infinite grid layout.            |
+| `showControls`     | `boolean`   | `true`     | Show button to enable or disable canvas interaction.        |
+| `showZoom`         | `boolean`   | `true`     | Display current zoom percentage indicator.                  |
+| `showStatus`       | `boolean`   | `true`     | Show active/inactive status badge for the canvas.           |
+| `showInstructions` | `boolean`   | `true`     | Display drag and zoom usage instructions overlay.           |

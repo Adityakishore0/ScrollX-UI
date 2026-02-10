@@ -3,11 +3,7 @@ title: Wavy Button
 description: Interactive wavybutton with animated text and customizable styles for modern uis.
 ---
 
-<ComponentPreview
-  name="wavybutton-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybutton-demo' className='' description='' />
 
 ## Installation
 
@@ -23,20 +19,17 @@ description: Interactive wavybutton with animated text and customizable styles f
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion @radix-ui/react-slot" />
+<DepsOptions name='motion @radix-ui/react-slot' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>wavy-button.tsx</code>
-</p>
-<ComponentSource name="wavy-button" />
 
+<ComponentSource name='wavy-button' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
+
+  `lib/utils.ts`
+
+```tsx
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -49,17 +42,14 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
 
 ```tsx
-import WavyButton from "@/components/ui/wavy-button";
+import WavyButton from '@/components/ui/wavy-button';
 ```
 
 ```tsx
-<WavyButton variant="outline">
-  Button
- </WavyButton>
+<WavyButton variant='outline'>Button</WavyButton>
 ```
 
 ## Examples
@@ -68,140 +58,92 @@ import WavyButton from "@/components/ui/wavy-button";
 
 <Step>Default</Step>
 
-<ComponentPreview
-  name="wavybuttondefault-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttondefault-demo' className='' description='' />
 
 ---
 
 <Step>Secondary</Step>
 
-<ComponentPreview
-  name="wavybuttonsecondary-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttonsecondary-demo' className='' description='' />
 
 ---
 
 <Step>Destructive</Step>
 
 <ComponentPreview
-  name="wavybuttondestructive-demo"
-  className=""
-  description=""
+  name='wavybuttondestructive-demo'
+  className=''
+  description=''
 />
 
 ---
 
 <Step>Outline</Step>
 
-<ComponentPreview
-  name="wavybuttonoutline-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttonoutline-demo' className='' description='' />
 
 ---
 
 <Step>Link</Step>
 
-<ComponentPreview
-  name="wavybuttonlink-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttonlink-demo' className='' description='' />
 
 ---
 
 <Step>Gradient</Step>
 
-<ComponentPreview
-  name="wavybuttongradient-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttongradient-demo' className='' description='' />
 
 ---
 
 <Step>Success</Step>
 
-<ComponentPreview
-  name="wavybuttonsuccess-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttonsuccess-demo' className='' description='' />
 
 ---
 
 <Step>Info</Step>
 
-<ComponentPreview
-  name="wavybuttoninfo-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttoninfo-demo' className='' description='' />
 
 ---
 
 <Step>Warning</Step>
 
-<ComponentPreview
-  name="wavybuttonwarning-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttonwarning-demo' className='' description='' />
 
 ---
 
 <Step>Icon</Step>
 
-<ComponentPreview
-  name="wavybuttonicon-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttonicon-demo' className='' description='' />
 
 ---
 
 <Step>Duration</Step>
 
-<ComponentPreview
-  name="wavybuttonduration-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttonduration-demo' className='' description='' />
 
 ---
 
 <Step>Radius</Step>
 
-<ComponentPreview
-  name="wavybuttonradius-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttonradius-demo' className='' description='' />
 
 ---
 
 <Step>Size</Step>
 
-<ComponentPreview
-  name="wavybuttonsizes-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='wavybuttonsizes-demo' className='' description='' />
 
 ---
 
 <Step>Disable TextAnim..</Step>
 
 <ComponentPreview
-  name="wavybuttonwavydisable-demo"
-  className=""
-  description=""
+  name='wavybuttonwavydisable-demo'
+  className=''
+  description=''
 />
 
 ## API Reference
@@ -212,20 +154,15 @@ Interactive wavybutton with animated text and customizable styles for modern uis
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `string` | `default` | Visual style of the button (default, destructive, outline, etc.) |
-| `size` | `string` | `default` | Button size (sm, default, lg, xl, icon, icon-sm, icon-lg) |
-| `radius` | `string` | `default` | Border radius (none, sm, default, lg) |
-| `children` | `ReactNode` | — | Button content: text or icons |
-| `animationDuration` | `number` | `0.8` | Duration of the wave animation in seconds |
-| `strokeWidth` | `number` | `30` | Thickness of the wave stroke |
-| `splitDelay` | `number` | `0.04` | Delay between each character animation |
-| `disableTextAnimation` | `boolean` | — | Disables the wavy text effect if true |
-| `className` | `string` | — | Custom CSS classes for styling |
-| `...props` | `button props` | — | Supports standard button attributes and events |
-
-
-
-
+| Prop                   | Type           | Default   | Description                                                      |
+| ---------------------- | -------------- | --------- | ---------------------------------------------------------------- |
+| `variant`              | `string`       | `default` | Visual style of the button (default, destructive, outline, etc.) |
+| `size`                 | `string`       | `default` | Button size (sm, default, lg, xl, icon, icon-sm, icon-lg)        |
+| `radius`               | `string`       | `default` | Border radius (none, sm, default, lg)                            |
+| `children`             | `ReactNode`    | —         | Button content: text or icons                                    |
+| `animationDuration`    | `number`       | `0.8`     | Duration of the wave animation in seconds                        |
+| `strokeWidth`          | `number`       | `30`      | Thickness of the wave stroke                                     |
+| `splitDelay`           | `number`       | `0.04`    | Delay between each character animation                           |
+| `disableTextAnimation` | `boolean`      | —         | Disables the wavy text effect if true                            |
+| `className`            | `string`       | —         | Custom CSS classes for styling                                   |
+| `...props`             | `button props` | —         | Supports standard button attributes and events                   |

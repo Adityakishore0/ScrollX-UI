@@ -3,11 +3,7 @@ title: Layered Button
 description: A layered button with a radial expand effect and smooth sliding hover label animation.
 ---
 
-<ComponentPreview
-  name="layeredbutton-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='layeredbutton-demo' className='' description='' />
 
 ## Installation
 
@@ -23,22 +19,19 @@ description: A layered button with a radial expand effect and smooth sliding hov
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="@radix-ui/react-slot" />
+<DepsOptions name='@radix-ui/react-slot' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>layered-button.tsx</code>
-</p>
-<ComponentSource name="layered-button" />
 
+<ComponentSource name='layered-button' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,17 +42,14 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
 
 ```tsx
-import { LayeredButton } from "@/components/ui/layered-button";
+import { LayeredButton } from '@/components/ui/layered-button';
 ```
 
 ```tsx
-<LayeredButton variant="default">
-    Default
-  </LayeredButton>
+<LayeredButton variant='default'>Default</LayeredButton>
 ```
 
 ## Examples
@@ -68,51 +58,35 @@ import { LayeredButton } from "@/components/ui/layered-button";
 
 <Step>Default</Step>
 
-<ComponentPreview
-  name="layeredbutton-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='layeredbutton-demo' className='' description='' />
 
 ---
 
 <Step>Outline</Step>
 
 <ComponentPreview
-  name="layeredbuttonoutline-demo"
-  className=""
-  description=""
+  name='layeredbuttonoutline-demo'
+  className=''
+  description=''
 />
 
 ---
 
 <Step>Icon</Step>
 
-<ComponentPreview
-  name="layeredbuttonicon-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='layeredbuttonicon-demo' className='' description='' />
 
 ---
 
 <Step>Size</Step>
 
-<ComponentPreview
-  name="layeredbuttonsize-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='layeredbuttonsize-demo' className='' description='' />
 
 ---
 
 <Step>Custom</Step>
 
-<ComponentPreview
-  name="layeredbuttoncustom-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='layeredbuttoncustom-demo' className='' description='' />
 
 ## API Reference
 
@@ -122,18 +96,12 @@ A layered button with a radial expand effect and smooth sliding hover label anim
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `string` | `default` | Button style. |
-| `size` | `string` | `default` | Button size. |
-| `borderWidth` | `number` | `3` | Inner border width. |
-| `asChild` | `boolean` | — | Use Radix Slot. |
-| `children` | `node` | — | Content inside button. |
-| `className` | `string` | — | Custom classes. |
-| `...props` | `button props` | — | All native button attributes. |
-
-
-
-
-
+| Prop          | Type           | Default   | Description                   |
+| ------------- | -------------- | --------- | ----------------------------- |
+| `variant`     | `string`       | `default` | Button style.                 |
+| `size`        | `string`       | `default` | Button size.                  |
+| `borderWidth` | `number`       | `3`       | Inner border width.           |
+| `asChild`     | `boolean`      | —         | Use Radix Slot.               |
+| `children`    | `node`         | —         | Content inside button.        |
+| `className`   | `string`       | —         | Custom classes.               |
+| `...props`    | `button props` | —         | All native button attributes. |

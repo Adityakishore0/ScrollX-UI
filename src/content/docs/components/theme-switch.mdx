@@ -4,9 +4,9 @@ description: A flexible and accessible theme mode switcher component
 ---
 
 <ComponentPreview
-  name="themeswitch-demo"
-  className=""
-  description="Interactive switch, Cycle through three themes, showing All icons"
+  name='themeswitch-demo'
+  className=''
+  description='Interactive switch, Cycle through three themes, showing All icons'
 />
 
 ## Installation
@@ -26,30 +26,27 @@ description: A flexible and accessible theme mode switcher component
 <DepsOptions name="next-themes" />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>theme-switch.tsx</code>
-</p>
-<ComponentSource name="theme-switch" />
+
+<ComponentSource name='theme-switch' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx 
-import {(ClassValue, clsx)} from "clsx";
-import {twMerge} from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 ```
 
-  <Step>Add Theme-provider file</Step>
+<Step>Add Theme-provider file</Step>
 <p>
   <code>theme-provider.tsx</code>
 </p>
-```jsx 
-"use client";
+```tsx "use client";
 
 import type * as React from "react";
 import {
@@ -74,19 +71,19 @@ export function ThemeProvider({
 ## Usage
 
 ```tsx
-import { ThemeSwitch } from "@/components/ui/theme-switch";
-import { Sun, Moon, Laptop } from "lucide-react";
+import { ThemeSwitch } from '@/components/ui/theme-switch';
+import { Sun, Moon, Laptop } from 'lucide-react';
 ```
 
 ```tsx
 <ThemeSwitch
-  modes={["light", "dark", "system"]}
+  modes={['light', 'dark', 'system']}
   icons={[
-    <Sun key="sun-icon" size={16} />,
-    <Moon key="moon-icon" size={16} />,
-    <Laptop key="laptop-icon" size={16} />,
+    <Sun key='sun-icon' size={16} />,
+    <Moon key='moon-icon' size={16} />,
+    <Laptop key='laptop-icon' size={16} />,
   ]}
-  showInactiveIcons="all"
+  showInactiveIcons='all'
 />
 ```
 
@@ -97,9 +94,9 @@ import { Sun, Moon, Laptop } from "lucide-react";
 <Step>Hide Inactive</Step>
 
 <ComponentPreview
-  name="thswitchhideinactive"
-  className=""
-  description="Switch shows only the active theme icon, hiding others."
+  name='thswitchhideinactive'
+  className=''
+  description='Switch shows only the active theme icon, hiding others.'
 />
 
 ---
@@ -107,9 +104,9 @@ import { Sun, Moon, Laptop } from "lucide-react";
 <Step>Show Only Next</Step>
 
 <ComponentPreview
-  name="thswitchtwonext"
-  className=""
-  description="Switch displays current and next theme icons only."
+  name='thswitchtwonext'
+  className=''
+  description='Switch displays current and next theme icons only.'
 />
 
 ---
@@ -117,9 +114,9 @@ import { Sun, Moon, Laptop } from "lucide-react";
 <Step>Three Mode Show Only Next</Step>
 
 <ComponentPreview
-  name="thswitchthreenext"
-  className=""
-  description="Cycle through three themes, showing just next icon."
+  name='thswitchthreenext'
+  className=''
+  description='Cycle through three themes, showing just next icon.'
 />
 
 ---
@@ -127,9 +124,9 @@ import { Sun, Moon, Laptop } from "lucide-react";
 <Step>Three Mode with any Icon Click</Step>
 
 <ComponentPreview
-  name="themeswitchicon"
-  className=""
-  description="supports three theme modes."
+  name='themeswitchicon'
+  className=''
+  description='supports three theme modes.'
 />
 
 ---
@@ -137,9 +134,9 @@ import { Sun, Moon, Laptop } from "lucide-react";
 <Step>Single Centred with Two modes</Step>
 
 <ComponentPreview
-  name="thsinglecentredtwo"
-  className=""
-  description="Only the active theme icon is centered and visible."
+  name='thsinglecentredtwo'
+  className=''
+  description='Only the active theme icon is centered and visible.'
 />
 
 ---
@@ -147,9 +144,9 @@ import { Sun, Moon, Laptop } from "lucide-react";
 <Step>Single Centred wit Three modes</Step>
 
 <ComponentPreview
-  name="thsinglecentredthree"
-  className=""
-  description="Active icon is centered; supports three theme modes."
+  name='thsinglecentredthree'
+  className=''
+  description='Active icon is centered; supports three theme modes.'
 />
 
 ## API Reference
@@ -162,17 +159,14 @@ A flexible and accessible theme mode switcher component for Next.js projects usi
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `modes` | `string[]` | `["light", "dark", "system"]` | Available theme modes to cycle through. |
-| `icons` | `ReactNode[]` | `[]` | Icons representing each mode (same order as `modes`). |
-| `showActiveIconOnly` | `boolean` | `false` | Show only the active icon centered. |
-| `showInactiveIcons` | `"all" \| "none" \| "next"` | `"all"` | How inactive icons are shown. |
-| `className` | `string` | — | Optional class for styling the switch container. |
-| `...props` | `HTMLDivElement attributes` | — | Additional props passed to the root div. |
-
-
+| Prop                 | Type                        | Default                       | Description                                           |
+| -------------------- | --------------------------- | ----------------------------- | ----------------------------------------------------- |
+| `modes`              | `string[]`                  | `["light", "dark", "system"]` | Available theme modes to cycle through.               |
+| `icons`              | `ReactNode[]`               | `[]`                          | Icons representing each mode (same order as `modes`). |
+| `showActiveIconOnly` | `boolean`                   | `false`                       | Show only the active icon centered.                   |
+| `showInactiveIcons`  | `"all" \| "none" \| "next"` | `"all"`                       | How inactive icons are shown.                         |
+| `className`          | `string`                    | —                             | Optional class for styling the switch container.      |
+| `...props`           | `HTMLDivElement attributes` | —                             | Additional props passed to the root div.              |
 
 ---
 
@@ -183,13 +177,15 @@ A flexible and accessible theme mode switcher component for Next.js projects usi
 - **Animated indicator** highlights the current mode.
 - **Accessible**: Uses button-like semantics and focus styles.
 
-
 ## Changelog
+
 ---
+
 #### 2025-06-02 `ThemeSwitch` - `icon-click` Variant
 
 <div style={{ marginTop: '0.5rem' }}>
-  Added a new `variant="icon-click"` prop to the `ThemeSwitch` component that allows users to directly select a theme by clicking on its corresponding icon.
+  Added a new `variant="icon-click"` prop to the `ThemeSwitch` component that
+  allows users to directly select a theme by clicking on its corresponding icon.
 </div>
 
 This provides a more intuitive UX compared to the default sequential toggle.
@@ -200,15 +196,15 @@ Add the `variant` prop as shown below:
 
 `ThemeSwitch.tsx`
 
-```tsx 
+```tsx
 <ThemeSwitch
-  variant="icon-click"
-  modes={["light", "dark", "system"]}
+  variant='icon-click'
+  modes={['light', 'dark', 'system']}
   icons={[
-    <Sun key="sun-icon" size={16} />,
-    <Moon key="moon-icon" size={16} />,
-    <Laptop key="laptop-icon" size={16} />,
+    <Sun key='sun-icon' size={16} />,
+    <Moon key='moon-icon' size={16} />,
+    <Laptop key='laptop-icon' size={16} />,
   ]}
-  showInactiveIcons="all"
+  showInactiveIcons='all'
 />
 ```

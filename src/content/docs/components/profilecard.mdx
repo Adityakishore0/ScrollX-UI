@@ -1,11 +1,11 @@
 ---
 title: Profile Card
-description:  A reusable profile card component displaying a user's image, name, bio, skills, and social links with interactive animations.
+description: A reusable profile card component displaying a user's image, name, bio, skills, and social links with interactive animations.
 ---
 
 <ComponentPreview
-  name="profilecard-demo"
-  description="Animated reusable profile card component"
+  name='profilecard-demo'
+  description='Animated reusable profile card component'
 />
 
 ## Installation
@@ -23,43 +23,41 @@ description:  A reusable profile card component displaying a user's image, name,
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>profilecard.tsx</code>
-</p>
-<ComponentSource name="profilecard" />
 
-
+<ComponentSource name='profilecard' />
 
 </Steps>
   </TabsContent>
 </Tabs>
 
-
 ## Usage
+
 ```tsx
-import ProfileCard from "@/components/ui/profilecard";
+import ProfileCard from '@/components/ui/profilecard';
 ```
 
 ```tsx
 <ProfileCard
-      spotlight
-      spotlightColor="99,102,241"
-      img="https://github.com/Adityakishore0.png"
-      name="Ahdeetai"
-      bio="Creator of ScrolIX UI, a modern component library built for speed and scalability."
-      skills={skills}
-      socialLinks={socialLinks}
-      position="Senior Software Engineer"
-    />
+  spotlight
+  spotlightColor='99,102,241'
+  img='https://github.com/Adityakishore0.png'
+  name='Ahdeetai'
+  bio='Creator of ScrolIX UI, a modern component library built for speed and scalability.'
+  skills={skills}
+  socialLinks={socialLinks}
+  position='Senior Software Engineer'
+/>
 ```
+
 ---
 
 ## Changelog
 
 #### 27-08-2025, Added 3d Tilt Effect
+
 <br />
 
 <table>
@@ -85,7 +83,6 @@ import ProfileCard from "@/components/ui/profilecard";
   </tbody>
 </table>
 
-
 ---
 
 ## API Reference
@@ -96,18 +93,13 @@ The `ProfileCard` component is used to create an interactive profile card with u
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `img` | `string` | `required` | Profile image URL or path. |
-| `name` | `string` | `required` | User’s full name. |
-| `position` | `string` | `required` | Job title or role. |
-| `bio` | `string` | `required` | Short user bio or description. |
-| `skills` | `Skill[]` | `required` | Array of skills with name and icon. |
-| `socialLinks` | `SocialLink[]` | `[]` | Array of social links with name, url, and icon. |
-| `spotlight` | `boolean` | `false` | Enables interactive spotlight hover effect. |
-| `spotlightColor` | `string` | `"14, 165, 233"` | RGB color used for the spotlight glow. |
-
-
-
-
+| Prop             | Type           | Default          | Description                                     |
+| ---------------- | -------------- | ---------------- | ----------------------------------------------- |
+| `img`            | `string`       | `required`       | Profile image URL or path.                      |
+| `name`           | `string`       | `required`       | User’s full name.                               |
+| `position`       | `string`       | `required`       | Job title or role.                              |
+| `bio`            | `string`       | `required`       | Short user bio or description.                  |
+| `skills`         | `Skill[]`      | `required`       | Array of skills with name and icon.             |
+| `socialLinks`    | `SocialLink[]` | `[]`             | Array of social links with name, url, and icon. |
+| `spotlight`      | `boolean`      | `false`          | Enables interactive spotlight hover effect.     |
+| `spotlightColor` | `string`       | `"14, 165, 233"` | RGB color used for the spotlight glow.          |

@@ -1,8 +1,8 @@
-"use client";
-import React, { useState, useEffect, useCallback, useRef } from "react";
-import { X, CheckCircle, AlertCircle, Info } from "lucide-react";
-import { cva } from "class-variance-authority";
-import { motion, AnimatePresence } from "framer-motion";
+'use client';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { X, CheckCircle, AlertCircle, Info } from 'lucide-react';
+import { cva } from 'class-variance-authority';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface ToastAction {
   label: string;
@@ -14,18 +14,41 @@ interface ToastCancel {
   onClick: () => void;
 }
 
+type EasingFunction = [number, number, number, number];
+type EasingName =
+  | 'linear'
+  | 'easeIn'
+  | 'easeOut'
+  | 'easeInOut'
+  | 'circIn'
+  | 'circOut'
+  | 'circInOut'
+  | 'backIn'
+  | 'backOut'
+  | 'backInOut'
+  | 'anticipate';
+
+type ToastPosition =
+  | 'top-right'
+  | 'top-left'
+  | 'bottom-right'
+  | 'bottom-left'
+  | 'top'
+  | 'bottom';
+
 interface ToastProps {
   id?: string;
   title?: string;
   description?: string;
+  children?: React.ReactNode;
   variant?:
-    | "default"
-    | "success"
-    | "destructive"
-    | "warning"
-    | "info"
-    | "loading";
-  position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
+    | 'default'
+    | 'success'
+    | 'destructive'
+    | 'warning'
+    | 'info'
+    | 'loading';
+  position?: ToastPosition;
   duration?: number;
   action?: React.ReactNode | ToastAction;
   cancel?: ToastCancel;
@@ -34,9 +57,25 @@ interface ToastProps {
   isVisible?: boolean;
   isStacked?: boolean;
   isHovered?: boolean;
-  stackDirection?: "up" | "down";
+  stackDirection?: 'up' | 'down';
   isExiting?: boolean;
   totalCount?: number;
+  className?: string;
+  unstyled?: boolean;
+  closeButton?: boolean;
+  animation?: {
+    enter?: {
+      duration?: number;
+      ease?: EasingName | EasingFunction;
+      type?: 'spring' | 'tween';
+      damping?: number;
+      stiffness?: number;
+    };
+    exit?: {
+      duration?: number;
+      ease?: EasingName | EasingFunction;
+    };
+  };
 }
 
 interface ToastState extends ToastProps {
@@ -48,17 +87,34 @@ interface ToastOptions {
   id?: string;
   title?: string;
   description?: string;
+  children?: React.ReactNode;
   variant?:
-    | "default"
-    | "success"
-    | "destructive"
-    | "warning"
-    | "info"
-    | "loading";
-  position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
+    | 'default'
+    | 'success'
+    | 'destructive'
+    | 'warning'
+    | 'info'
+    | 'loading';
+  position?: ToastPosition;
   duration?: number;
   action?: React.ReactNode | ToastAction;
   cancel?: ToastCancel;
+  className?: string;
+  unstyled?: boolean;
+  closeButton?: boolean;
+  animation?: {
+    enter?: {
+      duration?: number;
+      ease?: EasingName | EasingFunction;
+      type?: 'spring' | 'tween';
+      damping?: number;
+      stiffness?: number;
+    };
+    exit?: {
+      duration?: number;
+      ease?: EasingName | EasingFunction;
+    };
+  };
 }
 
 type ToastListener = (toasts: ToastState[]) => void;
@@ -78,8 +134,8 @@ class ToastManager {
 
   add(props: ToastProps) {
     const id = props.id || Math.random().toString(36).substr(2, 9);
-
     const existingIndex = this.toasts.findIndex((toast) => toast.id === id);
+
     if (existingIndex !== -1) {
       this.toasts[existingIndex] = {
         ...this.toasts[existingIndex],
@@ -134,12 +190,18 @@ const toastManager = new ToastManager();
 export function toast(message: string, options?: ToastOptions): string;
 export function toast(options: ToastOptions & { title: string }): string;
 export function toast(
-  messageOrOptions: string | (ToastOptions & { title: string }),
-  options?: ToastOptions
+  options: ToastOptions & { children: React.ReactNode },
+): string;
+export function toast(
+  messageOrOptions:
+    | string
+    | (ToastOptions & ({ title: string } | { children: React.ReactNode })),
+  options?: ToastOptions,
 ): string {
-  let toastProps: ToastOptions & { title: string };
+  let toastProps: ToastOptions &
+    ({ title?: string } | { children?: React.ReactNode });
 
-  if (typeof messageOrOptions === "string") {
+  if (typeof messageOrOptions === 'string') {
     toastProps = {
       title: messageOrOptions,
       ...options,
@@ -152,43 +214,83 @@ export function toast(
 }
 
 toast.success = (message: string, options?: ToastOptions) =>
-  toast({ title: message, variant: "success", ...options });
+  toast({ title: message, variant: 'success', ...options });
 
 toast.error = (message: string, options?: ToastOptions) =>
-  toast({ title: message, variant: "destructive", ...options });
+  toast({ title: message, variant: 'destructive', ...options });
 
 toast.warning = (message: string, options?: ToastOptions) =>
-  toast({ title: message, variant: "warning", ...options });
+  toast({ title: message, variant: 'warning', ...options });
 
 toast.info = (message: string, options?: ToastOptions) =>
-  toast({ title: message, variant: "info", ...options });
+  toast({ title: message, variant: 'info', ...options });
 
 toast.loading = (message: string, options?: ToastOptions) =>
-  toast({ title: message, variant: "loading", duration: Infinity, ...options });
+  toast({ title: message, variant: 'loading', duration: Infinity, ...options });
+
+toast.custom = (children: React.ReactNode, options?: ToastOptions) =>
+  toast({ children, unstyled: true, closeButton: false, ...options });
 
 toast.promise = <T,>(
   promise: Promise<T>,
   options: {
-    loading: string;
-    success: string;
-    error: string;
-  }
+    loading: string | { title?: string; children?: React.ReactNode };
+    success:
+      | string
+      | { title?: string; children?: React.ReactNode }
+      | ((data: T) => string | { title?: string; children?: React.ReactNode });
+    error:
+      | string
+      | { title?: string; children?: React.ReactNode }
+      | ((
+          error: Error,
+        ) => string | { title?: string; children?: React.ReactNode });
+  },
+  toastOptions?: ToastOptions,
 ): Promise<T> => {
-  const id = toast.loading(options.loading);
+  const loadingContent =
+    typeof options.loading === 'string'
+      ? { title: options.loading }
+      : options.loading;
+
+  const id = toast.loading(loadingContent.title || '', {
+    ...toastOptions,
+    ...loadingContent,
+  });
 
   promise
-    .then(() => {
+    .then((data) => {
+      const successContent =
+        typeof options.success === 'function'
+          ? options.success(data)
+          : options.success;
+
+      const content =
+        typeof successContent === 'string'
+          ? { title: successContent }
+          : successContent;
+
       toastManager.update(id, {
-        title: options.success,
-        variant: "success",
+        variant: 'success',
         duration: 5000,
+        ...content,
       });
     })
-    .catch(() => {
+    .catch((error: Error) => {
+      const errorContent =
+        typeof options.error === 'function'
+          ? options.error(error)
+          : options.error;
+
+      const content =
+        typeof errorContent === 'string'
+          ? { title: errorContent }
+          : errorContent;
+
       toastManager.update(id, {
-        title: options.error,
-        variant: "destructive",
+        variant: 'destructive',
         duration: 5000,
+        ...content,
       });
     });
 
@@ -204,56 +306,50 @@ toast.dismiss = (id?: string) => {
 };
 
 const toastVariants = cva(
-  "toast-base fixed z-[100] pointer-events-auto flex w-[calc(100%-2rem)] max-w-sm h-20 items-center justify-between space-x-4 rounded-lg p-4 pr-8 shadow-lg",
+  'toast-base fixed z-100 pointer-events-auto flex w-[calc(100%-2rem)] max-w-sm min-h-20 items-center justify-between space-x-4 rounded-lg p-4 pr-8 shadow-lg',
   {
     variants: {
       variant: {
-        default: "bg-background text-foreground border border-border",
+        default: 'bg-background text-foreground border border-border',
         success:
-          "bg-green-100 text-green-900 border-green-200 dark:bg-green-950 dark:text-green-50 dark:border-green-800",
+          'bg-green-100 text-green-900 border-green-200 dark:bg-green-950 dark:text-green-50 dark:border-green-800',
         destructive:
-          "bg-red-100 text-red-900 border-red-200 dark:bg-red-950 dark:text-red-50 dark:border-red-800",
+          'bg-red-100 text-red-900 border-red-200 dark:bg-red-950 dark:text-red-50 dark:border-red-800',
         warning:
-          "bg-yellow-100 text-yellow-900 border-yellow-200 dark:bg-yellow-950 dark:text-yellow-50 dark:border-yellow-800",
-        info: "bg-blue-100 text-blue-900 border-blue-200 dark:bg-blue-950 dark:text-blue-50 dark:border-blue-800",
+          'bg-yellow-100 text-yellow-900 border-yellow-200 dark:bg-yellow-950 dark:text-yellow-50 dark:border-yellow-800',
+        info: 'bg-blue-100 text-blue-900 border-blue-200 dark:bg-blue-950 dark:text-blue-50 dark:border-blue-800',
         loading:
-          "bg-blue-100 text-blue-900 border-blue-200 dark:bg-blue-950 dark:text-blue-50 dark:border-blue-800",
+          'bg-blue-100 text-blue-900 border-blue-200 dark:bg-blue-950 dark:text-blue-50 dark:border-blue-800',
       },
       position: {
-        "top-right": "top-4 right-4",
-        "top-left": "top-4 left-4",
-        "bottom-right": "bottom-4 right-4",
-        "bottom-left": "bottom-4 left-4",
+        'top-right': 'top-4 right-4',
+        'top-left': 'top-4 left-4',
+        'bottom-right': 'bottom-4 right-4',
+        'bottom-left': 'bottom-4 left-4',
+        top: 'top-4 left-1/2',
+        bottom: 'bottom-4 left-1/2',
       },
     },
     defaultVariants: {
-      variant: "default",
-      position: "top-right",
+      variant: 'default',
+      position: 'top-right',
     },
-  }
+  },
 );
 
 const ToastIcons = {
   success: (
-    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
+    <CheckCircle className='h-5 w-5 text-green-600 dark:text-green-400 shrink-0' />
   ),
   destructive: (
-    <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0" />
+    <AlertCircle className='h-5 w-5 text-red-600 dark:text-red-400 shrink-0' />
   ),
   warning: (
-    <AlertCircle className="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0" />
+    <AlertCircle className='h-5 w-5 text-yellow-600 dark:text-yellow-400 shrink-0' />
   ),
-  info: (
-    <Info className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
-  ),
+  info: <Info className='h-5 w-5 text-blue-600 dark:text-blue-400 shrink-0' />,
   loading: (
-    <div className="w-5 h-5 flex-shrink-0 relative">
-      <motion.div
-        className="absolute inset-0 bg-blue-600 dark:bg-blue-400 shadow-[0_0_4px_rgba(59,130,246,0.6)] dark:shadow-[0_0_4px_rgba(96,165,250,0.6)]"
-        animate={{ rotateX: [0, 180, 0], rotateY: [0, 180, 0] }}
-        transition={{ repeat: Infinity, duration: 1.1, ease: "linear" }}
-      />
-    </div>
+    <div className='h-5 w-5 border-2 border-blue-600 border-t-transparent dark:border-blue-400 dark:border-t-transparent rounded-full animate-spin shrink-0' />
   ),
 };
 
@@ -261,8 +357,9 @@ const ToastComponent: React.FC<ToastProps> = ({
   id,
   title,
   description,
-  variant = "default",
-  position = "top-right",
+  children,
+  variant = 'default',
+  position = 'top-right',
   duration = 5000,
   onClose,
   action,
@@ -271,11 +368,17 @@ const ToastComponent: React.FC<ToastProps> = ({
   isVisible = true,
   isStacked = false,
   isHovered = false,
-  stackDirection = "down",
+  stackDirection = 'down',
   isExiting = false,
   totalCount = 1,
+  className,
+  unstyled = false,
+  closeButton = true,
+  animation,
 }) => {
   const [translateX, setTranslateX] = useState(0);
+  const [toastWidth, setToastWidth] = useState(320);
+  const [toastHeight, setToastHeight] = useState(88);
   const toastRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const startX = useRef(0);
@@ -284,13 +387,19 @@ const ToastComponent: React.FC<ToastProps> = ({
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    if (toastRef.current) {
+      setToastWidth(toastRef.current.offsetWidth);
+      setToastHeight(toastRef.current.offsetHeight + 8);
+    }
+  }, [children, title, description]);
+
+  useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const handleClose = useCallback(
@@ -301,7 +410,7 @@ const ToastComponent: React.FC<ToastProps> = ({
       }
       onClose?.();
     },
-    [onClose]
+    [onClose],
   );
 
   const handleTouchStart = useCallback(
@@ -319,12 +428,11 @@ const ToastComponent: React.FC<ToastProps> = ({
       e.stopPropagation();
 
       const clientX =
-        "touches" in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
-
+        'touches' in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
       startX.current = clientX;
       isDragging.current = true;
     },
-    []
+    [],
   );
 
   const handleTouchMove = useCallback(
@@ -336,20 +444,20 @@ const ToastComponent: React.FC<ToastProps> = ({
       e.preventDefault();
 
       const clientX =
-        "touches" in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+        'touches' in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
       const diff = clientX - startX.current;
 
       if (isMobile) {
         setTranslateX(diff);
       } else {
-        if (position.includes("right") && diff > 0) {
+        if (position.includes('right') && diff > 0) {
           setTranslateX(diff);
-        } else if (position.includes("left") && diff < 0) {
+        } else if (position.includes('left') && diff < 0) {
           setTranslateX(diff);
         }
       }
     },
-    [position, isMobile]
+    [position, isMobile],
   );
 
   const handleTouchEnd = useCallback(
@@ -374,7 +482,7 @@ const ToastComponent: React.FC<ToastProps> = ({
 
       isDragging.current = false;
     },
-    [translateX, handleClose]
+    [translateX, handleClose],
   );
 
   useEffect(() => {
@@ -393,62 +501,61 @@ const ToastComponent: React.FC<ToastProps> = ({
     const currentRef = toastRef.current;
     if (currentRef) {
       const touchStartOptions = { passive: false };
-
       currentRef.addEventListener(
-        "touchstart",
+        'touchstart',
         handleTouchStart as unknown as EventListener,
-        touchStartOptions
+        touchStartOptions,
       );
       window.addEventListener(
-        "touchmove",
+        'touchmove',
         handleTouchMove as unknown as EventListener,
-        { passive: false }
+        { passive: false },
       );
       window.addEventListener(
-        "touchend",
-        handleTouchEnd as unknown as EventListener
+        'touchend',
+        handleTouchEnd as unknown as EventListener,
       );
 
       currentRef.addEventListener(
-        "mousedown",
-        handleTouchStart as unknown as EventListener
+        'mousedown',
+        handleTouchStart as unknown as EventListener,
       );
       window.addEventListener(
-        "mousemove",
-        handleTouchMove as unknown as EventListener
+        'mousemove',
+        handleTouchMove as unknown as EventListener,
       );
       window.addEventListener(
-        "mouseup",
-        handleTouchEnd as unknown as EventListener
+        'mouseup',
+        handleTouchEnd as unknown as EventListener,
       );
     }
 
     return () => {
       if (currentRef) {
         currentRef.removeEventListener(
-          "touchstart",
-          handleTouchStart as unknown as EventListener
+          'touchstart',
+          handleTouchStart as unknown as EventListener,
         );
         window.removeEventListener(
-          "touchmove",
-          handleTouchMove as unknown as EventListener
+          'touchmove',
+          handleTouchMove as unknown as EventListener,
         );
         window.removeEventListener(
-          "touchend",
-          handleTouchEnd as unknown as EventListener
+          'touchend',
+          handleTouchEnd as unknown as EventListener,
         );
 
         currentRef.removeEventListener(
-          "mousedown",
-          handleTouchStart as unknown as EventListener
+          'mousedown',
+          handleTouchStart as unknown as EventListener,
         );
         window.removeEventListener(
-          "mousemove",
-          handleTouchMove as unknown as EventListener
+          'mousemove',
+          handleTouchMove as unknown as EventListener,
         );
         window.removeEventListener(
-          "mouseup",
-          handleTouchEnd as unknown as EventListener
+          'mouseup',
+          handleTouchEnd as unknown as EventListener,
         );
       }
     };
@@ -457,40 +564,49 @@ const ToastComponent: React.FC<ToastProps> = ({
   if (!isVisible) return null;
 
   const getTransform = () => {
+    const isCenter = position === 'top' || position === 'bottom';
+
     if (isStacked && stackIndex > 0) {
       const offset = stackIndex * 8;
       const scale = Math.max(0.85, 1 - stackIndex * 0.05);
-
-      if (stackDirection === "up") {
-        return `translateX(${translateX}px) translateY(-${offset}px) scale(${scale})`;
+      if (stackDirection === 'up') {
+        return isCenter
+          ? `translateX(-50%) translateY(-${offset}px) scale(${scale})`
+          : `translateX(${translateX}px) translateY(-${offset}px) scale(${scale})`;
       } else {
-        return `translateX(${translateX}px) translateY(${offset}px) scale(${scale})`;
+        return isCenter
+          ? `translateX(-50%) translateY(${offset}px) scale(${scale})`
+          : `translateX(${translateX}px) translateY(${offset}px) scale(${scale})`;
       }
     } else if (!isStacked && stackIndex > 0) {
-      const expandedOffset = stackIndex * 88;
-
-      if (stackDirection === "up") {
-        return `translateX(${translateX}px) translateY(-${expandedOffset}px)`;
+      const expandedOffset = stackIndex * toastHeight;
+      if (stackDirection === 'up') {
+        return isCenter
+          ? `translateX(-50%) translateY(-${expandedOffset}px)`
+          : `translateX(${translateX}px) translateY(-${expandedOffset}px)`;
       } else {
-        return `translateX(${translateX}px) translateY(${expandedOffset}px)`;
+        return isCenter
+          ? `translateX(-50%) translateY(${expandedOffset}px)`
+          : `translateX(${translateX}px) translateY(${expandedOffset}px)`;
       }
+    }
+
+    if (isCenter) {
+      return translateX !== 0
+        ? `translateX(calc(-50% + ${translateX}px))`
+        : `translateX(-50%)`;
     }
 
     return `translateX(${translateX}px)`;
   };
 
-  const getOpacity = () => {
+  const calculateOpacity = () => {
     if (translateX !== 0) {
-      return Math.max(
-        0.3,
-        1 - Math.abs(translateX) / (toastRef.current?.offsetWidth || 320)
-      );
+      return Math.max(0.3, 1 - Math.abs(translateX) / toastWidth);
     }
-
     if (isStacked && stackIndex >= 3) {
       return 0.4;
     }
-
     return 1;
   };
 
@@ -506,7 +622,10 @@ const ToastComponent: React.FC<ToastProps> = ({
         onClick?: (e: React.MouseEvent) => void;
       }>;
       return (
-        <div className="ml-2 flex-shrink-0">
+        <div
+          className='flex items-center gap-2 ml-auto shrink-0'
+          onClick={(e) => e.stopPropagation()}
+        >
           {React.cloneElement(actionElement, {
             onClick: (e: React.MouseEvent) => {
               e.stopPropagation();
@@ -521,21 +640,24 @@ const ToastComponent: React.FC<ToastProps> = ({
     }
 
     if (
-      typeof action === "object" &&
+      typeof action === 'object' &&
       action !== null &&
-      "label" in action &&
-      "onClick" in action
+      'label' in action &&
+      'onClick' in action
     ) {
       const actionObj = action as ToastAction;
       return (
-        <div className="ml-2 flex-shrink-0">
+        <div
+          className='flex items-center gap-2 shrink-0 w-full sm:w-auto sm:ml-auto'
+          onClick={(e) => e.stopPropagation()}
+        >
           <button
             onClick={(e) => {
               e.stopPropagation();
               actionObj.onClick();
               handleClose();
             }}
-            className="text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-1 rounded transition-colors"
+            className='text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-1 rounded transition-colors'
           >
             {actionObj.label}
           </button>
@@ -546,96 +668,159 @@ const ToastComponent: React.FC<ToastProps> = ({
     return null;
   };
 
+  const defaultEnterAnimation = {
+    duration: 0.3,
+    type: 'spring' as const,
+    damping: 30,
+    stiffness: 400,
+  };
+
+  const defaultExitAnimation = {
+    duration: 0.2,
+    ease: 'easeIn' as const,
+  };
+
+  const enterAnimation = animation?.enter || defaultEnterAnimation;
+  const exitAnimation = animation?.exit || defaultExitAnimation;
+
+  if (unstyled && children) {
+    const isCenter = position === 'top' || position === 'bottom';
+    return (
+      <motion.div
+        ref={toastRef}
+        initial={{
+          x: isCenter ? '-50%' : position.includes('right') ? 400 : -400,
+          y: position === 'top' ? -100 : position === 'bottom' ? 100 : 0,
+          opacity: 0,
+          scale: 0.9,
+        }}
+        animate={{
+          x: isCenter ? '-50%' : 0,
+          y: 0,
+          opacity: calculateOpacity(),
+          scale: stackIndex > 0 ? Math.max(0.85, 1 - stackIndex * 0.05) : 1,
+          transform: getTransform(),
+        }}
+        exit={{
+          x: isCenter ? '-50%' : position.includes('right') ? 400 : -400,
+          y: position === 'top' ? -100 : position === 'bottom' ? 100 : 0,
+          opacity: 0,
+          scale: 0.9,
+          transition: exitAnimation as never,
+        }}
+        transition={enterAnimation as never}
+        className={className}
+        style={{
+          zIndex: getZIndex(),
+          pointerEvents: 'auto',
+        }}
+      >
+        {children}
+        {closeButton && (
+          <button
+            ref={closeButtonRef}
+            onClick={handleClose}
+            className='absolute top-2 right-2 text-current/70 hover:text-current transition-colors'
+            aria-label='Close'
+          >
+            <X className='h-4 w-4' />
+          </button>
+        )}
+      </motion.div>
+    );
+  }
+
+  const isCenter = position === 'top' || position === 'bottom';
+
   return (
     <motion.div
       ref={toastRef}
-      role="alert"
-      aria-live="polite"
-      className={toastVariants({ variant, position })}
+      className={
+        unstyled
+          ? className
+          : `${toastVariants({ variant, position })} ${className || ''}`
+      }
       initial={{
-        x: position.includes("right") ? 400 : -400,
-        y: position.includes("top") ? -100 : 100,
+        x: isCenter ? '-50%' : position.includes('right') ? 400 : -400,
+        y: position === 'top' ? -100 : position === 'bottom' ? 100 : 0,
         opacity: 0,
         scale: 0.9,
       }}
       animate={{
-        x: 0,
+        x: isCenter ? '-50%' : 0,
         y: 0,
-        opacity: getOpacity(),
-        scale:
-          isStacked && stackIndex > 0
-            ? Math.max(0.85, 1 - stackIndex * 0.05)
-            : 1,
+        opacity: calculateOpacity(),
+        scale: stackIndex > 0 ? Math.max(0.85, 1 - stackIndex * 0.05) : 1,
         transform: getTransform(),
       }}
       exit={{
-        x: position.includes("right") ? 400 : -400,
+        x: isCenter ? '-50%' : position.includes('right') ? 400 : -400,
+        y: position === 'top' ? -100 : position === 'bottom' ? 100 : 0,
         opacity: 0,
         scale: 0.9,
-        transition: { duration: 0.2, ease: "easeIn" },
+        transition: exitAnimation as never,
       }}
-      transition={{
-        type: "spring",
-        damping: 30,
-        stiffness: 400,
-        duration: 0.3,
-      }}
+      transition={enterAnimation as never}
       style={{
         zIndex: getZIndex(),
-        pointerEvents: "auto",
+        pointerEvents: 'auto',
       }}
     >
-      <div className="flex items-center space-x-3 w-full min-w-0">
-        {variant !== "default" &&
+      <div className='flex flex-col sm:flex-row items-start gap-3 flex-1 min-w-0'>
+        {variant !== 'default' &&
           ToastIcons[variant as keyof typeof ToastIcons]}
-        <div className="flex-1 min-w-0">
-          {title && (
-            <div className="font-semibold text-sm truncate">{title}</div>
-          )}
-          {description && (
-            <div className="text-xs opacity-70 truncate mt-1">
-              {description}
-            </div>
+        <div className='flex-1 min-w-0 w-full'>
+          {children ? (
+            <div className='flex-1'>{children}</div>
+          ) : (
+            <>
+              {title && (
+                <div className='font-semibold text-sm leading-tight mb-1'>
+                  {title}
+                </div>
+              )}
+              {description && (
+                <div className='text-xs opacity-90 leading-relaxed'>
+                  {description}
+                </div>
+              )}
+            </>
           )}
         </div>
-      </div>
-
-      {isStacked && stackIndex === 0 && totalCount > 3 && (
-        <motion.div
-          className="absolute -top-1 -right-1 bg-muted-foreground text-muted rounded-full w-5 h-5 flex items-center justify-center font-medium text-xs z-20"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          +{totalCount - 3}
-        </motion.div>
-      )}
-
-      {renderAction()}
-
-      {cancel && (
-        <div className="ml-2 flex-shrink-0">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              cancel.onClick();
-              handleClose();
-            }}
-            className="text-xs font-medium bg-muted text-muted-foreground hover:bg-muted/80 px-3 py-1 rounded transition-colors"
+        {renderAction()}
+        {cancel && (
+          <div
+            className='flex items-center gap-2 shrink-0 w-full sm:w-auto sm:ml-2'
+            onClick={(e) => e.stopPropagation()}
           >
-            {cancel.label}
-          </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                cancel.onClick();
+                handleClose();
+              }}
+              className='text-xs font-medium bg-muted text-muted-foreground hover:bg-muted/80 px-3 py-1 rounded transition-colors'
+            >
+              {cancel.label}
+            </button>
+          </div>
+        )}
+      </div>
+      {isStacked && stackIndex === 0 && totalCount > 3 && (
+        <div className='absolute -bottom-2 -right-2 bg-primary text-primary-foreground text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-md'>
+          +{totalCount - 3}
         </div>
       )}
-
-      <button
-        ref={closeButtonRef}
-        onClick={handleClose}
-        className="absolute top-2 right-2 hover:opacity-75 transition-opacity z-10 p-1 rounded-full hover:bg-black hover:bg-opacity-10"
-        aria-label="Close"
-      >
-        <X className="w-4 h-4" />
-      </button>
+      {closeButton && (
+        <button
+          ref={closeButtonRef}
+          onClick={handleClose}
+          className='absolute top-2 right-2 text-current/70 hover:text-current transition-colors'
+          aria-label='Close'
+        >
+          <X className='h-4 w-4' />
+        </button>
+      )}
     </motion.div>
   );
 };
@@ -660,30 +845,25 @@ const ToastStack: React.FC<ToastStackProps> = ({
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     checkMobile();
-    window.addEventListener("resize", checkMobile);
-
+    window.addEventListener('resize', checkMobile);
     return () => {
-      window.removeEventListener("resize", checkMobile);
+      window.removeEventListener('resize', checkMobile);
     };
   }, []);
 
   const handleMouseEnter = useCallback(() => {
     if (isMobile) return;
-
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
       hoverTimeoutRef.current = null;
     }
-
     setIsHovered(true);
   }, [isMobile]);
 
   const handleMouseLeave = useCallback(
     (e: React.MouseEvent) => {
       if (isMobile) return;
-
       const rect = e.currentTarget.getBoundingClientRect();
       const { clientX, clientY } = e;
 
@@ -701,7 +881,7 @@ const ToastStack: React.FC<ToastStackProps> = ({
         hoverTimeoutRef.current = null;
       }, 150);
     },
-    [isMobile]
+    [isMobile],
   );
 
   useEffect(() => {
@@ -725,7 +905,7 @@ const ToastStack: React.FC<ToastStackProps> = ({
       }
       onRemoveToast(id);
     },
-    [toasts, onRemoveToast]
+    [toasts, onRemoveToast],
   );
 
   const handleStackInteraction = () => {
@@ -749,7 +929,7 @@ const ToastStack: React.FC<ToastStackProps> = ({
   const visibleToasts = getVisibleToasts();
 
   const getStackDirection = (pos: string) => {
-    return pos.includes("bottom") ? "up" : "down";
+    return pos.includes('bottom') ? 'up' : 'down';
   };
 
   const stackDirection = getStackDirection(position);
@@ -760,50 +940,40 @@ const ToastStack: React.FC<ToastStackProps> = ({
 
   return (
     <div
-      className="fixed pointer-events-none z-[100]"
-      style={{
-        [position.includes("top") ? "top" : "bottom"]: "1rem",
-        [position.includes("right") ? "right" : "left"]: "1rem",
-      }}
+      className='fixed pointer-events-none z-1000'
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleStackInteraction}
     >
-      <div
-        className="pointer-events-auto"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onClick={handleStackInteraction}
-      >
-        <AnimatePresence mode="popLayout">
-          {visibleToasts.map((toastProps, index) => (
-            <ToastComponent
-              key={toastProps.id}
-              {...toastProps}
-              stackIndex={index}
-              isVisible={true}
-              isStacked={shouldStack && !isExpanded}
-              isHovered={isHovered || isTapped}
-              stackDirection={stackDirection}
-              totalCount={toasts.length}
-              onClose={() => handleRemoveToast(toastProps.id)}
-            />
-          ))}
-        </AnimatePresence>
-      </div>
+      <AnimatePresence mode='popLayout'>
+        {visibleToasts.map((toastProps, index) => (
+          <ToastComponent
+            key={toastProps.id}
+            {...toastProps}
+            stackIndex={index}
+            isStacked={shouldStack && !isExpanded}
+            isHovered={isHovered || isTapped}
+            stackDirection={stackDirection}
+            totalCount={toasts.length}
+            onClose={() => handleRemoveToast(toastProps.id)}
+          />
+        ))}
+      </AnimatePresence>
     </div>
   );
 };
 
 export function ToastContainer() {
-  const [toasts, setToasts] = useState(toastManager.getToasts());
+  const [toasts, setToasts] = useState<ToastState[]>(toastManager.getToasts());
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
@@ -818,20 +988,26 @@ export function ToastContainer() {
   }, []);
 
   const processedToasts = toasts.map((toast) => {
-    if (isMobile && toast.variant !== "info") {
-      return { ...toast, position: "top-right" as const };
+    if (isMobile && toast.position !== 'top' && toast.position !== 'bottom') {
+      return {
+        ...toast,
+        position: 'top-right' as const,
+      };
     }
     return toast;
   });
 
-  const toastsByPosition = processedToasts.reduce((acc, toast) => {
-    const position = toast.position || "top-right";
-    if (!acc[position]) {
-      acc[position] = [];
-    }
-    acc[position].push(toast);
-    return acc;
-  }, {} as Record<string, ToastState[]>);
+  const toastsByPosition = processedToasts.reduce(
+    (acc, toast) => {
+      const position = toast.position || 'top-right';
+      if (!acc[position]) {
+        acc[position] = [];
+      }
+      acc[position].push(toast);
+      return acc;
+    },
+    {} as Record<string, ToastState[]>,
+  );
 
   if (toasts.length === 0) return null;
 

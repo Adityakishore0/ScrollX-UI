@@ -3,11 +3,7 @@ title: Showcase
 description: An interactive showcase component with smooth content and image transitions.
 ---
 
-<ComponentPreview
-  name="showcase-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='showcase-demo' className='' description='' />
 
 ## Installation
 
@@ -22,24 +18,20 @@ description: An interactive showcase component with smooth content and image tra
   <TabsContent value="manual">
     <Steps>
 
- <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<Step>Install the following dependencies:</Step>
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>showcase.tsx</code>
-</p>
-<ComponentSource name="showcase" />
+
+<ComponentSource name='showcase' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,15 +45,11 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import  {Showcase } from "@/components/ui/showcase";
+import { Showcase } from '@/components/ui/showcase';
 ```
 
 ```tsx
-<Showcase
-  items={sections}
-  cycleDelay={6000}
-  mediaClass="h-[300px] md:h-auto"
-/>
+<Showcase items={sections} cycleDelay={6000} mediaClass='h-75 md:h-auto' />
 ```
 
 ## API Reference
@@ -72,12 +60,9 @@ An interactive showcase component with smooth content and image transitions.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `items` | `Step[]` | `required` | List of showcase steps containing heading, description, and media. |
-| `containerClass` | `string` | `-` | Custom classes applied to the root showcase container. |
-| `cycleDelay` | `number` | `3000` | Duration (ms) for the progress bar before auto-advancing. |
-| `mediaClass` | `string` | `h-[400px]` | Controls height and layout of the media section. |
-
-
+| Prop             | Type     | Default    | Description                                                        |
+| ---------------- | -------- | ---------- | ------------------------------------------------------------------ |
+| `items`          | `Step[]` | `required` | List of showcase steps containing heading, description, and media. |
+| `containerClass` | `string` | `-`        | Custom classes applied to the root showcase container.             |
+| `cycleDelay`     | `number` | `3000`     | Duration (ms) for the progress bar before auto-advancing.          |
+| `mediaClass`     | `string` | `h-100`    | Controls height and layout of the media section.                   |

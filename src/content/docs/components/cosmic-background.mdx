@@ -3,11 +3,7 @@ title: Cosmic Background
 description: A modern cosmic background featuring smooth motion and immersive depth effects.
 ---
 
-<ComponentPreview
-  name="cosmicbackground-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='cosmicbackground-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,13 +19,11 @@ description: A modern cosmic background featuring smooth motion and immersive de
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="three" />
+<DepsOptions name='three' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>cosmic-background.tsx</code>
-</p>
-<ComponentSource name="cosmic-background" />
+
+<ComponentSource name='cosmic-background' />
 
 </Steps>
   </TabsContent>
@@ -38,16 +32,25 @@ description: A modern cosmic background featuring smooth motion and immersive de
 ## Usage
 
 ```tsx
-import  { CosmicBackground } from "@/components/ui/cosmic-background";
+import { CosmicBackground } from '@/components/ui/cosmic-background';
 ```
 
 ```tsx
-<CosmicBackground variant="cosmic" intensity={1.0} speed={1.0} interactive={true} quality="high" overlay={false} className="relative h-[400px] w-full flex flex-col items-center justify-center">
-<h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-white to-neutral-200 drop-shadow-[0_0_20px_rgba(255,255,255,0.25)] text-2xl md:text-4xl lg:text-6xl py-2 md:py-10 relative z-20 font-bold tracking-tight">
-  Feeling cosmic?
-</h2>
+<CosmicBackground
+  variant='cosmic'
+  intensity={1.0}
+  speed={1.0}
+  interactive={true}
+  quality='high'
+  overlay={false}
+  className='relative h-100 w-full flex flex-col items-center justify-center'
+>
+  <h2 className='bg-clip-text text-transparent text-center bg-linear-to-b from-white to-neutral-200 drop-shadow-[0_0_20px_rgba(255,255,255,0.25)] text-2xl md:text-4xl lg:text-6xl py-2 md:py-10 relative z-20 font-bold tracking-tight'>
+    Feeling cosmic?
+  </h2>
 </CosmicBackground>
 ```
+
 ## Examples
 
 ---
@@ -55,9 +58,9 @@ import  { CosmicBackground } from "@/components/ui/cosmic-background";
 <Step>Aurora</Step>
 
 <ComponentPreview
-  name="cosmicbackgroundaurora-demo"
-  className="p-0"
-  description=""
+  name='cosmicbackgroundaurora-demo'
+  className='p-0'
+  description=''
 />
 
 ---
@@ -65,9 +68,9 @@ import  { CosmicBackground } from "@/components/ui/cosmic-background";
 <Step>Neon</Step>
 
 <ComponentPreview
-  name="cosmicbackgroundneon-demo"
-  className="p-0"
-  description=""
+  name='cosmicbackgroundneon-demo'
+  className='p-0'
+  description=''
 />
 
 ## API Reference
@@ -78,18 +81,13 @@ A modern cosmic background featuring smooth motion and immersive depth effects.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `"aurora" \| "cosmic" \| "neon"` | `"aurora"` | Selects the **visual style** of the cosmic background, controlling colors and motion behavior. |
-| `intensity` | `number` | `1.0` | Controls the **overall brightness and strength** of the visual effect. |
-| `speed` | `number` | `1.0` | Adjusts the **animation speed**, affecting how fast the background flows. |
-| `interactive` | `boolean` | `true` | Enables **mouse-based interaction**, adding subtle motion response. |
-| `quality` | `"low" \| "medium" \| "high" \| "ultra"` | `"high"` | Controls **rendering quality and performance**, adapting to device capabilities. |
-| `overlay` | `boolean` | `false` | Reserved for adding an **overlay layer** above the background (future use). |
-| `className` | `string` | — | Optional **styling** (e.g., Tailwind classes) for the **outer container**. |
-| `children` | `React.ReactNode` | — | Content rendered **above** the cosmic background. |
-
-
-
-
+| Prop          | Type                                     | Default    | Description                                                                                    |
+| ------------- | ---------------------------------------- | ---------- | ---------------------------------------------------------------------------------------------- |
+| `variant`     | `"aurora" \| "cosmic" \| "neon"`         | `"aurora"` | Selects the **visual style** of the cosmic background, controlling colors and motion behavior. |
+| `intensity`   | `number`                                 | `1.0`      | Controls the **overall brightness and strength** of the visual effect.                         |
+| `speed`       | `number`                                 | `1.0`      | Adjusts the **animation speed**, affecting how fast the background flows.                      |
+| `interactive` | `boolean`                                | `true`     | Enables **mouse-based interaction**, adding subtle motion response.                            |
+| `quality`     | `"low" \| "medium" \| "high" \| "ultra"` | `"high"`   | Controls **rendering quality and performance**, adapting to device capabilities.               |
+| `overlay`     | `boolean`                                | `false`    | Reserved for adding an **overlay layer** above the background (future use).                    |
+| `className`   | `string`                                 | —          | Optional **styling** (e.g., Tailwind classes) for the **outer container**.                     |
+| `children`    | `React.ReactNode`                        | —          | Content rendered **above** the cosmic background.                                              |

@@ -4,9 +4,9 @@ description: A modal dialog used to convey critical information and require a us
 ---
 
 <ComponentPreview
-  name="alertdialog-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An accessible Alert Dialog component built with Radix UI"
+  name='alertdialog-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An accessible Alert Dialog component built with Radix UI'
 />
 
 ## Installation
@@ -23,22 +23,19 @@ description: A modal dialog used to convey critical information and require a us
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="@radix-ui/react-alert-dialog framer-motion" />
+<DepsOptions name='@radix-ui/react-alert-dialog motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>alert-dialog.tsx</code>
-</p>
-<ComponentSource name="alert-dialog" />
 
+<ComponentSource name='alert-dialog' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -51,7 +48,7 @@ export function cn(...inputs: ClassValue[]) {
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import {
   AlertDialog,
   AlertDialogAction,
@@ -62,7 +59,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from '@/components/ui/alert-dialog';
 ```
 
 ```tsx
@@ -92,13 +89,7 @@ The root container for the alert dialog component.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `asChild` | `boolean` | `false` | Render the trigger as its child element. Used in: AlertDialogTrigger. |
-| `className` | `string` | — | Optional class name for custom styling. Used in: Content, Header, Footer, Title, Description, Action, Cancel. |
-
-
-
-
-
+| Prop        | Type      | Default | Description                                                                                                   |
+| ----------- | --------- | ------- | ------------------------------------------------------------------------------------------------------------- |
+| `asChild`   | `boolean` | `false` | Render the trigger as its child element. Used in: AlertDialogTrigger.                                         |
+| `className` | `string`  | —       | Optional class name for custom styling. Used in: Content, Header, Footer, Title, Description, Action, Cancel. |

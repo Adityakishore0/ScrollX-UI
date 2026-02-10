@@ -1,7 +1,7 @@
-"use client";
-import React, { useState, useEffect, useId } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
+'use client';
+import React, { useState, useEffect, useId } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 export interface MorphoTextFlipProps {
   words?: string[];
@@ -9,20 +9,20 @@ export interface MorphoTextFlipProps {
   className?: string;
   textClassName?: string;
   animationDuration?: number;
-  animationType?: "slideUp" | "fadeScale" | "flipY" | "slideRotate" | "elastic";
+  animationType?: 'slideUp' | 'fadeScale' | 'flipY' | 'slideRotate' | 'elastic';
 }
 
 export function MorphoTextFlip({
-  words = ["remarkable", "bold", "scalable", "beautiful"],
+  words = ['remarkable', 'bold', 'scalable', 'beautiful'],
   interval = 3000,
   className,
   textClassName,
   animationDuration = 700,
-  animationType = "slideUp",
+  animationType = 'slideUp',
 }: MorphoTextFlipProps) {
   const id = useId();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [width, setWidth] = useState("auto");
+  const [width, setWidth] = useState('auto');
   const textRef = React.useRef<HTMLDivElement>(null);
   const measureRef = React.useRef<HTMLDivElement>(null);
 
@@ -85,29 +85,29 @@ export function MorphoTextFlip({
       animate={{ width }}
       transition={{
         duration: duration * 0.4,
-        ease: "easeInOut",
-        type: "spring",
+        ease: 'easeInOut',
+        type: 'spring',
         stiffness: 300,
         damping: 30,
       }}
       className={cn(
-        "relative inline-block overflow-hidden rounded-2xl px-6 pt-2 pb-3 backdrop-blur-sm border border-gray-200 shadow-xl bg-white/70 dark:bg-slate-800/70 dark:border-slate-700",
-        className
+        'relative inline-block overflow-hidden rounded-2xl px-6 pt-2 pb-3 backdrop-blur-xs border border-gray-200 shadow-xl bg-white/70 dark:bg-slate-800/70 dark:border-slate-700',
+        className,
       )}
     >
-      <div className="relative flex items-center justify-center">
+      <div className='relative flex items-center justify-center'>
         <div
           ref={measureRef}
           className={cn(
-            "absolute opacity-0 pointer-events-none whitespace-nowrap",
-            textClassName || "text-4xl font-bold md:text-7xl"
+            'absolute opacity-0 pointer-events-none whitespace-nowrap',
+            textClassName || 'text-4xl font-bold md:text-7xl',
           )}
           style={{ top: -9999 }}
         >
           {words[currentWordIndex]}
         </div>
 
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode='wait'>
           <motion.div
             key={words[currentWordIndex]}
             initial={currentVariant.initial}
@@ -116,14 +116,14 @@ export function MorphoTextFlip({
             transition={{
               duration: duration * 0.6,
               ease:
-                animationType === "elastic"
+                animationType === 'elastic'
                   ? [0.68, -0.55, 0.265, 1.55]
-                  : "easeInOut",
+                  : 'easeInOut',
             }}
             className={cn(
-              "whitespace-nowrap",
+              'whitespace-nowrap',
               textClassName ||
-                "text-4xl font-bold text-rose-600 dark:text-rose-400 md:text-7xl"
+                'text-4xl font-bold text-rose-600 dark:text-rose-400 md:text-7xl',
             )}
             ref={textRef}
           >

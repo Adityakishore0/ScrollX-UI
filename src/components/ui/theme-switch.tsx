@@ -1,34 +1,34 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { useTheme } from "next-themes";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { useTheme } from 'next-themes';
+import { cn } from '@/lib/utils';
 
 interface ThemeSwitchProps extends React.HTMLAttributes<HTMLDivElement> {
   modes?: string[];
   icons?: React.ReactNode[];
   showActiveIconOnly?: boolean;
-  showInactiveIcons?: "all" | "none" | "next";
-  variant?: "default" | "icon-click";
+  showInactiveIcons?: 'all' | 'none' | 'next';
+  variant?: 'default' | 'icon-click';
 }
 
 const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
   (
     {
       className,
-      modes = ["light", "dark", "system"],
+      modes = ['light', 'dark', 'system'],
       icons = [],
       showActiveIconOnly = false,
-      showInactiveIcons = "all",
-      variant = "default",
+      showInactiveIcons = 'all',
+      variant = 'default',
       ...props
     },
-    ref
+    ref,
   ) => {
     const { theme, setTheme } = useTheme();
 
     const currentModeIndex = React.useMemo(() => {
-      const index = modes.indexOf(theme || "");
+      const index = modes.indexOf(theme || '');
       return index !== -1 ? index : 0;
     }, [theme, modes]);
 
@@ -44,16 +44,16 @@ const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
 
     if (!isClient) return null;
 
-    const switchWidth = modes.length === 2 ? "w-14" : "w-20";
+    const switchWidth = modes.length === 2 ? 'w-14' : 'w-20';
 
     const isIconVisible = (index: number) => {
       if (index === currentModeIndex) return true;
       switch (showInactiveIcons) {
-        case "none":
+        case 'none':
           return false;
-        case "next":
+        case 'next':
           return index === (currentModeIndex + 1) % modes.length;
-        case "all":
+        case 'all':
         default:
           return true;
       }
@@ -62,23 +62,23 @@ const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
     return (
       <div
         className={cn(
-          "relative inline-flex h-8 rounded-full border border-input bg-background p-1 shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+          'relative inline-flex h-8 rounded-full border border-input bg-background p-1 shadow-xs transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring',
           switchWidth,
-          className
+          className,
         )}
-        onClick={variant === "default" ? handleToggle : undefined}
+        onClick={variant === 'default' ? handleToggle : undefined}
         ref={ref}
         {...props}
       >
         {showActiveIconOnly ? (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-foreground text-background z-10">
+          <div className='absolute inset-0 flex items-center justify-center'>
+            <div className='flex h-6 w-6 items-center justify-center rounded-full bg-foreground text-background z-10'>
               {icons[currentModeIndex]}
             </div>
           </div>
         ) : (
           <>
-            <div className="flex w-full h-full items-center justify-between">
+            <div className='flex w-full h-full items-center justify-between'>
               {icons.map((icon, idx) => {
                 const key = `theme-icon-${idx}`;
                 const visible = isIconVisible(idx);
@@ -87,14 +87,14 @@ const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
                   <div
                     key={key}
                     className={cn(
-                      "flex h-6 w-6 cursor-pointer items-center justify-center rounded-full z-10 transition-opacity duration-200",
+                      'flex h-6 w-6 cursor-pointer items-center justify-center rounded-full z-10 transition-opacity duration-200',
                       currentModeIndex === idx
-                        ? "text-background"
-                        : "text-muted-foreground",
-                      visible ? "opacity-100" : "opacity-0"
+                        ? 'text-background'
+                        : 'text-muted-foreground',
+                      visible ? 'opacity-100' : 'opacity-0',
                     )}
                     onClick={(e) => {
-                      if (variant === "icon-click") {
+                      if (variant === 'icon-click') {
                         e.stopPropagation();
                         setTheme(modes[idx]);
                       }
@@ -110,23 +110,23 @@ const ThemeSwitch = React.forwardRef<HTMLDivElement, ThemeSwitchProps>(
 
             <div
               className={cn(
-                "absolute top-1 h-6 w-6 rounded-full bg-foreground transition-all duration-200 ease-in-out",
+                'absolute top-1 h-6 w-6 rounded-full bg-foreground transition-all duration-200 ease-in-out',
                 currentModeIndex === 0
-                  ? "left-1"
+                  ? 'left-1'
                   : currentModeIndex === 1
-                  ? modes.length === 2
-                    ? "left-7"
-                    : "left-[calc(50%-12px)]"
-                  : "left-[calc(100%-28px)]"
+                    ? modes.length === 2
+                      ? 'left-7'
+                      : 'left-[calc(50%-12px)]'
+                    : 'left-[calc(100%-28px)]',
               )}
             />
           </>
         )}
       </div>
     );
-  }
+  },
 );
 
-ThemeSwitch.displayName = "ThemeSwitch";
+ThemeSwitch.displayName = 'ThemeSwitch';
 
 export { ThemeSwitch };

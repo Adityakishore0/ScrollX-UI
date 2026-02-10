@@ -3,11 +3,7 @@ title: Radio Group
 description: A group of radio buttons that lets you pick only one option at a time.
 ---
 
-<ComponentPreview
-  name="radiogroup-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='radiogroup-demo' className='' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: A group of radio buttons that lets you pick only one option at a ti
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion @radix-ui/react-radio-group" />
+<DepsOptions name='motion @radix-ui/react-radio-group' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>radio-group.tsx</code>
-</p>
-<ComponentSource name="radio-group" />
+
+<ComponentSource name='radio-group' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,25 +45,21 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/components/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 ```
 
 ```tsx
-<RadioGroup defaultValue="option-one">
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="option-one" id="option-one" />
-    <Label htmlFor="option-one">Option One</Label>
+<RadioGroup defaultValue='option-one'>
+  <div className='flex items-center space-x-2'>
+    <RadioGroupItem value='option-one' id='option-one' />
+    <Label htmlFor='option-one'>Option One</Label>
   </div>
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="option-two" id="option-two" />
-    <Label htmlFor="option-two">Option Two</Label>
+  <div className='flex items-center space-x-2'>
+    <RadioGroupItem value='option-two' id='option-two' />
+    <Label htmlFor='option-two'>Option Two</Label>
   </div>
 </RadioGroup>
 ```
-
 
 ## API Reference
 
@@ -81,23 +69,17 @@ A group of radio buttons that lets you pick only one option at a time.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `defaultValue` | `string` | — | Initial selected value for uncontrolled usage. RadioGroup. |
-| `value (group)` | `string` | — | Selected value for controlled usage. RadioGroup. |
-| `onValueChange` | `function` | — | Callback when selection changes. RadioGroup. |
-| `disabled` | `boolean` | `false` | Disables the entire group and all items. RadioGroup. |
-| `required` | `boolean` | `false` | Required for form submission. RadioGroup. |
-| `name` | `string` | — | Form field name. RadioGroup. |
-| `asChild` | `boolean` | `false` | Render a custom root element. Both components. |
-| `id` | `string` | — | Unique identifier. RadioGroupItem. |
-| `value (item)` | `string` | — | The option's value. RadioGroupItem. |
-| `disabled (item)` | `boolean` | `false` | Disable this specific radio item. RadioGroupItem. |
-| `className` | `string` | — | Custom styles. Both components. |
-| `children` | `ReactNode` | — | Custom element when using asChild. Both components. |
-
-
-
-
-
+| Prop              | Type        | Default | Description                                                |
+| ----------------- | ----------- | ------- | ---------------------------------------------------------- |
+| `defaultValue`    | `string`    | —       | Initial selected value for uncontrolled usage. RadioGroup. |
+| `value (group)`   | `string`    | —       | Selected value for controlled usage. RadioGroup.           |
+| `onValueChange`   | `function`  | —       | Callback when selection changes. RadioGroup.               |
+| `disabled`        | `boolean`   | `false` | Disables the entire group and all items. RadioGroup.       |
+| `required`        | `boolean`   | `false` | Required for form submission. RadioGroup.                  |
+| `name`            | `string`    | —       | Form field name. RadioGroup.                               |
+| `asChild`         | `boolean`   | `false` | Render a custom root element. Both components.             |
+| `id`              | `string`    | —       | Unique identifier. RadioGroupItem.                         |
+| `value (item)`    | `string`    | —       | The option's value. RadioGroupItem.                        |
+| `disabled (item)` | `boolean`   | `false` | Disable this specific radio item. RadioGroupItem.          |
+| `className`       | `string`    | —       | Custom styles. Both components.                            |
+| `children`        | `ReactNode` | —       | Custom element when using asChild. Both components.        |

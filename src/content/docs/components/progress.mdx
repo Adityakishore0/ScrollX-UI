@@ -3,7 +3,7 @@ title: Progress
 description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
 ---
 
-<ComponentPreview name="progress-demo" className="p-5" description="" />
+<ComponentPreview name='progress-demo' className='p-5' description='' />
 
 ## Installation
 
@@ -19,23 +19,19 @@ description: Displays an indicator showing the completion progress of a task, ty
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="@radix-ui/react-progress" />
+<DepsOptions name='@radix-ui/react-progress' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>progress.tsx</code>
-</p>
-<ComponentSource name="progress" />
+
+<ComponentSource name='progress' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,11 +45,11 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { Progress } from "@/components/ui/progress"
+import { Progress } from '@/components/ui/progress';
 ```
 
 ```tsx
-<Progress variant="slim" value={33} />
+<Progress variant='slim' value={33} />
 ```
 
 ## Examples
@@ -62,19 +58,19 @@ import { Progress } from "@/components/ui/progress"
 
 <Step>Default</Step>
 
-<ComponentPreview name="progressdefault-demo" className="p-5" description="" />
+<ComponentPreview name='progressdefault-demo' className='p-5' description='' />
 
 ---
 
 <Step>Outline</Step>
 
-<ComponentPreview name="progressoutline-demo" className="p-5" description="" />
+<ComponentPreview name='progressoutline-demo' className='p-5' description='' />
 
 ---
 
 <Step>Slim</Step>
 
-<ComponentPreview name="progressslim-demo" className="p-5" description="" />
+<ComponentPreview name='progressslim-demo' className='p-5' description='' />
 
 ## API Reference
 
@@ -84,16 +80,12 @@ Displays an indicator showing the completion progress of a task, typically displ
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `value` | `number` | `0` | The current progress value, typically between 0 and 100. |
-| `variant` | `"default" \| "slim" \| "outline"` | `"default"` | Visual style of the progress bar. |
-| `indicatorClassName` | `string` | `_` | Optional CSS class applied to the progress indicator. |
-| `indicatorStyle` | `React.CSSProperties` | `_` | Optional inline styles applied to the progress indicator. |
-| `className` | `string` | `_` | CSS class for the outer progress container. |
-| `style` | `React.CSSProperties` | `_` | Inline styles for the outer progress container. |
-| `children` | `React.ReactNode` | `_` | Optional children to render inside the progress container (rarely used). |
-
-
-
+| Prop                 | Type                                     | Default     | Description                                                              |
+| -------------------- | ---------------------------------------- | ----------- | ------------------------------------------------------------------------ |
+| `value`              | `number`                                 | `0`         | The current progress value, typically between 0 and 100.                 |
+| `variant`            | `"default" \| "slim" \| "outline-solid"` | `"default"` | Visual style of the progress bar.                                        |
+| `indicatorClassName` | `string`                                 | `_`         | Optional CSS class applied to the progress indicator.                    |
+| `indicatorStyle`     | `React.CSSProperties`                    | `_`         | Optional inline styles applied to the progress indicator.                |
+| `className`          | `string`                                 | `_`         | CSS class for the outer progress container.                              |
+| `style`              | `React.CSSProperties`                    | `_`         | Inline styles for the outer progress container.                          |
+| `children`           | `React.ReactNode`                        | `_`         | Optional children to render inside the progress container (rarely used). |

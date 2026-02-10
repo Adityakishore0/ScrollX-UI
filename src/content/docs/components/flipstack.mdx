@@ -3,7 +3,7 @@ title: FlipStack
 description: A stylish and animated card stack UI for showcasing content in layered views.
 ---
 
-<ComponentPreview name="flipstack-demo" className="" description="" />
+<ComponentPreview name='flipstack-demo' className='' description='' />
 
 ## Installation
 
@@ -18,25 +18,20 @@ description: A stylish and animated card stack UI for showcasing content in laye
   <TabsContent value="manual">
     <Steps>
 
-{" "}
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />{" "}
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>flipstack.tsx</code>
-</p>
-<ComponentSource name="flipstack" />
+
+<ComponentSource name='flipstack' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -50,15 +45,15 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import FlipStack from "@/components/ui/flipstack";
+import FlipStack from '@/components/ui/flipstack';
 ```
 
 ```tsx
 <FlipStack
   cards={[
-    { id: 1, content: "Card One" },
-    { id: 2, content: "Card Two" },
-    { id: 3, content: "Card Three" },
+    { id: 1, content: 'Card One' },
+    { id: 2, content: 'Card Two' },
+    { id: 3, content: 'Card Three' },
   ]}
 />
 ```
@@ -69,7 +64,6 @@ import FlipStack from "@/components/ui/flipstack";
 
 - Introduced a new `mobileDirection` prop (`"top"` | `"bottom"`) to control the mobile bounce direction.
 
-
 ## API Reference
 
 ### FlipStack
@@ -78,12 +72,9 @@ A stylish and animated card stack UI for showcasing content in layered views.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `cards` | `FlipStackCard[]` | `id` | Array of cards to display in the stack. |
-| `FlipStackCard.id` | `number` | `required` | Unique identifier for the card. Used as React key and to manage animations. |
-| `mobileDirection` | `"top" \| "bottom"` | `"top"` | Controls the bounce direction of the active card on mobile devices. |
-| `FlipStackCard.content` | `ReactNode` | `optional` | Custom content to render inside the card. Can be text, images, or any JSX element. |
-
-
+| Prop                    | Type                | Default    | Description                                                                        |
+| ----------------------- | ------------------- | ---------- | ---------------------------------------------------------------------------------- |
+| `cards`                 | `FlipStackCard[]`   | `id`       | Array of cards to display in the stack.                                            |
+| `FlipStackCard.id`      | `number`            | `required` | Unique identifier for the card. Used as React key and to manage animations.        |
+| `mobileDirection`       | `"top" \| "bottom"` | `"top"`    | Controls the bounce direction of the active card on mobile devices.                |
+| `FlipStackCard.content` | `ReactNode`         | `optional` | Custom content to render inside the card. Can be text, images, or any JSX element. |

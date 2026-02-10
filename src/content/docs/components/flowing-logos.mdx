@@ -1,9 +1,9 @@
 ---
 title: Flowing Logos
-description:  Flowing logo showcase with smooth animations, hover effects, and modern UI.
+description: Flowing logo showcase with smooth animations, hover effects, and modern UI.
 ---
 
-<ComponentPreview name="flowinglogos-demo" className="p-0" description="" />
+<ComponentPreview name='flowinglogos-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -18,97 +18,135 @@ description:  Flowing logo showcase with smooth animations, hover effects, and m
   <TabsContent value="manual">
     <Steps>
 
-
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>flowing-logos.tsx</code>
-</p>
-<ComponentSource name="flowing-logos" />
+
+<ComponentSource name='flowing-logos' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx 
-import {(ClassValue, clsx)} from "clsx";
-import {twMerge} from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 ```
+<Step>Update your configuration</Step>
+
+<Tabs defaultValue="tailwind-v4" className="w-full">
+  <TabsList>
+    <TabsTrigger value="tailwind-v4">Tailwind v4</TabsTrigger>
+    <TabsTrigger value="tailwind-v3">Tailwind v3</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="tailwind-v4">
+
+<Step>Add these animations to your `globals.css:`</Step>
+
+`globals.css`
+
+```css
+/* ---------------- THEME ---------------- */
+@theme {
+  /* animations */
+  --animation-canopy-horizontal: canopy-x var(--duration) infinite linear;
+  --animation-canopy-vertical: canopy-y var(--duration) linear infinite;
+}
+
+/* ---------------- KEYFRAMES ---------------- */
+@keyframes canopy-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes canopy-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+```
+
+  </TabsContent>
+  <TabsContent value="tailwind-v3">
+
+<Step>Add these animations to your `tailwind.config.ts:`</Step>
+
+`tailwind.config.ts`
+
+```ts
+export default {
+  theme: {
+    extend: {
+      keyframes: {
+        'canopy-x': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+        },
+        'canopy-y': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(calc(-100% - var(--gap)))' },
+        },
+      },
+      animation: {
+        'canopy-horizontal': 'canopy-x var(--duration) infinite linear',
+        'canopy-vertical': 'canopy-y var(--duration) linear infinite',
+      },
+    },
+  },
+};
+```
+
+  </TabsContent>
+</Tabs>
 
 </Steps>
   </TabsContent>
 </Tabs>
 
-<Step>Add these animations to your `tailwind.config.ts:`</Step>
-<p>
-  <code>tailwind.config.ts</code>
-</p>
-```ts
-// tailwind.config.ts
-export default {
-  theme: {
-    extend: {
-      keyframes: {
-        "canopy-x": {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-100% - var(--gap)))" },
-        },
-        "canopy-y": {
-          from: { transform: "translateY(0)" },
-          to: { transform: "translateY(calc(-100% - var(--gap)))" },
-        },
-      },
-      animation: {
-        "canopy-horizontal": "canopy-x var(--duration) infinite linear",
-        "canopy-vertical": "canopy-y var(--duration) linear infinite",
-      },
-    },
-  },
-}
-```
-
 ## Usage
 
 ```tsx
-import { FlowingLogos } from "@/components/ui/flowing-logo";
+import { FlowingLogos } from '@/components/ui/flowing-logo';
 ```
 
 ```tsx
 <FlowingLogos
-     data={[
-       { image: "https://logo.clearbit.com/microsoft.com", name: "Microsoft" },
-       { image: "https://logo.clearbit.com/apple.com", name: "Apple" },
-       { image: "https://logo.clearbit.com/amazon.com", name: "Amazon" },
-       { image: "https://logo.clearbit.com/netflix.com", name: "Netflix" },
-       { image: "https://logo.clearbit.com/samsung.com", name: "Samsung" },
-       { image: "https://logo.clearbit.com/github.com", name: "GitHub" },
-       { image: "https://logo.clearbit.com/tesla.com", name: "Tesla" },
-     ]}
-   />
+  data={[
+    { image: "/assets/logos/tesla.jpg", name: "Tesla" },
+    { image: "/assets/logos/meta.jpg", name: "Meta" },
+    { image: "/assets/logos/openai.jpg", name: "OpenAI" },
+    { image: "/assets/logos/nvidia.jpg", name: "NVIDIA" },
+    { image: "/assets/logos/intel.jpg", name: "Intel" },
+    { image: "/assets/logos/sony.jpg", name: "Sony" },
+    { image: "/assets/logos/paypal.jpg", name: "PayPal" },
+    { image: "/assets/logos/uber.jpg", name: "Uber" },
+    { image: "/assets/logos/stripe.jpg", name: "Stripe" },
+  ]}
+/>
 ```
-
 
 ## API Reference
 
-###  Flowing Logos
+### Flowing Logos
 
 Flowing logo showcase with smooth animations, hover effects, and modern UI.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `data` | `Array<Logo>` | `required` | An array of logo objects to display. |
-| `name` | `string` | `required` | Name of the logo or brand. Used inside each logo object. |
-| `image` | `string` | `required` | URL of the logo image. Used inside each logo object. |
-| `className` | `string` | `undefined` | Optional additional CSS classes applied to the container. |
-| `cardClassName` | `string` | `undefined` | Optional additional CSS classes applied to each logo card. |
-
-
-
-
-
+| Prop            | Type          | Default     | Description                                                |
+| --------------- | ------------- | ----------- | ---------------------------------------------------------- |
+| `data`          | `Array<Logo>` | `required`  | An array of logo objects to display.                       |
+| `name`          | `string`      | `required`  | Name of the logo or brand. Used inside each logo object.   |
+| `image`         | `string`      | `required`  | URL of the logo image. Used inside each logo object.       |
+| `className`     | `string`      | `undefined` | Optional additional CSS classes applied to the container.  |
+| `cardClassName` | `string`      | `undefined` | Optional additional CSS classes applied to each logo card. |

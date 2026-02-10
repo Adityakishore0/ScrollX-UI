@@ -3,7 +3,7 @@ title: Social Orbit
 description: orbits your socials in smooth motion where icons spin, ripple, and glow with purpose.
 ---
 
-<ComponentPreview name="socialorbit-demo" className="" description="" />
+<ComponentPreview name='socialorbit-demo' className='' description='' />
 
 ## Installation
 
@@ -19,23 +19,20 @@ description: orbits your socials in smooth motion where icons spin, ripple, and 
     <Steps>
 
     <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />  
+
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>social-orbit.tsx</code>
-</p>
-<ComponentSource name="social-orbit" />
+
+<ComponentSource name='social-orbit' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,13 +46,13 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { SocialOrbit } from "@/components/ui/social-orbit";
+import { SocialOrbit } from '@/components/ui/social-orbit';
 ```
 
 ```tsx
 <SocialOrbit
   rippleCount={3}
-  text="SCROLLX*UI*COMPONENTS*"
+  text='SCROLLX*UI*COMPONENTS*'
   rippleDuration={2}
   textOrbitIndex={1}
   textDuration={20}
@@ -63,17 +60,17 @@ import { SocialOrbit } from "@/components/ui/social-orbit";
   iconDelay={200}
   iconDuration={800}
 >
-  <div className="flex items-center justify-center w-16 h-16 rounded-full">
+  <div className='flex items-center justify-center w-16 h-16 rounded-full'>
     <svg
-      data-testid="geist-icon"
-      height="32"
-      stroke-linejoin="round"
-      viewBox="0 0 16 16"
-      width="32"
+      data-testid='geist-icon'
+      height='32'
+      stroke-linejoin='round'
+      viewBox='0 0 16 16'
+      width='32'
     >
       <path
-        d="M8 0C8.26264 0 8.5144 0.104413 8.7002 0.290039L10.4639 2.05273H12.9551C13.0853 2.05258 13.2146 2.07819 13.335 2.12793C13.4554 2.17773 13.5651 2.25063 13.6572 2.34277C13.7494 2.43492 13.8223 2.54461 13.8721 2.66504C13.9218 2.7854 13.9474 2.91468 13.9473 3.04492V5.53711L15.71 7.2998C15.8956 7.4856 16 7.73736 16 8C16 8.26264 15.8956 8.5144 15.71 8.7002L13.9473 10.4639V12.9551C13.9474 13.0853 13.9218 13.2146 13.8721 13.335C13.8223 13.4554 13.7494 13.5651 13.6572 13.6572C13.5651 13.7494 13.4554 13.8223 13.335 13.8721C13.2146 13.9218 13.0853 13.9474 12.9551 13.9473H10.4639L8.7002 15.71C8.5144 15.8956 8.26264 16 8 16C7.73736 16 7.4856 15.8956 7.2998 15.71L5.53613 13.9473H3.04492C2.49748 13.9473 2.05273 13.5037 2.05273 12.9551V10.4639L0.290039 8.7002C0.104413 8.5144 0 8.26264 0 8C0 7.73736 0.104413 7.4856 0.290039 7.2998L2.05273 5.53613V3.04492C2.05258 2.91468 2.07819 2.7854 2.12793 2.66504C2.17773 2.54461 2.25063 2.43492 2.34277 2.34277C2.43492 2.25063 2.54461 2.17773 2.66504 2.12793C2.7854 2.07819 2.91468 2.05258 3.04492 2.05273H5.53711L7.2998 0.290039C7.4856 0.104413 7.73736 0 8 0ZM6.9375 8.5332L5.875 7.4707L4.81445 8.53125L6.40723 10.124C6.70012 10.4169 7.17488 10.4169 7.46777 10.124L11.1855 6.40625L10.125 5.3457L6.9375 8.5332Z"
-        fill="currentColor"
+        d='M8 0C8.26264 0 8.5144 0.104413 8.7002 0.290039L10.4639 2.05273H12.9551C13.0853 2.05258 13.2146 2.07819 13.335 2.12793C13.4554 2.17773 13.5651 2.25063 13.6572 2.34277C13.7494 2.43492 13.8223 2.54461 13.8721 2.66504C13.9218 2.7854 13.9474 2.91468 13.9473 3.04492V5.53711L15.71 7.2998C15.8956 7.4856 16 7.73736 16 8C16 8.26264 15.8956 8.5144 15.71 8.7002L13.9473 10.4639V12.9551C13.9474 13.0853 13.9218 13.2146 13.8721 13.335C13.8223 13.4554 13.7494 13.5651 13.6572 13.6572C13.5651 13.7494 13.4554 13.8223 13.335 13.8721C13.2146 13.9218 13.0853 13.9474 12.9551 13.9473H10.4639L8.7002 15.71C8.5144 15.8956 8.26264 16 8 16C7.73736 16 7.4856 15.8956 7.2998 15.71L5.53613 13.9473H3.04492C2.49748 13.9473 2.05273 13.5037 2.05273 12.9551V10.4639L0.290039 8.7002C0.104413 8.5144 0 8.26264 0 8C0 7.73736 0.104413 7.4856 0.290039 7.2998L2.05273 5.53613V3.04492C2.05258 2.91468 2.07819 2.7854 2.12793 2.66504C2.17773 2.54461 2.25063 2.43492 2.34277 2.34277C2.43492 2.25063 2.54461 2.17773 2.66504 2.12793C2.7854 2.07819 2.91468 2.05258 3.04492 2.05273H5.53711L7.2998 0.290039C7.4856 0.104413 7.73736 0 8 0ZM6.9375 8.5332L5.875 7.4707L4.81445 8.53125L6.40723 10.124C6.70012 10.4169 7.17488 10.4169 7.46777 10.124L11.1855 6.40625L10.125 5.3457L6.9375 8.5332Z'
+        fill='currentColor'
       ></path>
     </svg>
   </div>
@@ -86,7 +83,7 @@ import { SocialOrbit } from "@/components/ui/social-orbit";
 
 <Step>Text</Step>
 
-<ComponentPreview name="socialorbittext-demo" className="" description="" />
+<ComponentPreview name='socialorbittext-demo' className='' description='' />
 
 ## API Reference
 
@@ -96,22 +93,18 @@ orbits your socials in smooth motion where icons spin, ripple, and glow with pur
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `icons` | `SocialIcon[]` | `[]` | Array of icons to display in the orbit. Each icon can have optional orbitIndex and position. |
-| `text` | `string` | `""` | Text to display around a central orbit. Letters are evenly spaced and rotate. |
-| `textClassName` | `string` | `""` | Tailwind classes applied to each letter of the text. |
-| `textOrbitIndex` | `number` | `2` | Index of the ripple box used as radius for the text orbit. |
-| `children` | `ReactNode` | `-` | Optional content displayed at the center of the orbit. |
-| `rippleCount` | `number` | `5` | Number of concentric ripple circles in the orbit. |
-| `rippleDuration` | `number` | `2` | Duration (seconds) of ripple animation. |
-| `textDuration` | `number` | `20` | Duration (seconds) for the text to rotate one full circle. |
-| `iconDelay` | `number` | `150` | Delay (ms) between consecutive icon entrance animations. |
-| `iconDuration` | `number` | `800` | Duration (ms) for each icon's entrance animation. |
-| `orbitDuration` | `number` | `30` | Duration (seconds) for icons in an orbit to complete a full rotation. |
-| `size` | `number` | `500` | Width and height of the entire orbit container in pixels. |
-| `className` | `string` | `""` | Additional Tailwind classes applied to the orbit container. |
-
-
-
+| Prop             | Type           | Default | Description                                                                                  |
+| ---------------- | -------------- | ------- | -------------------------------------------------------------------------------------------- |
+| `icons`          | `SocialIcon[]` | `[]`    | Array of icons to display in the orbit. Each icon can have optional orbitIndex and position. |
+| `text`           | `string`       | `""`    | Text to display around a central orbit. Letters are evenly spaced and rotate.                |
+| `textClassName`  | `string`       | `""`    | Tailwind classes applied to each letter of the text.                                         |
+| `textOrbitIndex` | `number`       | `2`     | Index of the ripple box used as radius for the text orbit.                                   |
+| `children`       | `ReactNode`    | `-`     | Optional content displayed at the center of the orbit.                                       |
+| `rippleCount`    | `number`       | `5`     | Number of concentric ripple circles in the orbit.                                            |
+| `rippleDuration` | `number`       | `2`     | Duration (seconds) of ripple animation.                                                      |
+| `textDuration`   | `number`       | `20`    | Duration (seconds) for the text to rotate one full circle.                                   |
+| `iconDelay`      | `number`       | `150`   | Delay (ms) between consecutive icon entrance animations.                                     |
+| `iconDuration`   | `number`       | `800`   | Duration (ms) for each icon's entrance animation.                                            |
+| `orbitDuration`  | `number`       | `30`    | Duration (seconds) for icons in an orbit to complete a full rotation.                        |
+| `size`           | `number`       | `500`   | Width and height of the entire orbit container in pixels.                                    |
+| `className`      | `string`       | `""`    | Additional Tailwind classes applied to the orbit container.                                  |

@@ -3,7 +3,7 @@ title: Border Glide
 description: Modern UI cards with a moving border and smooth transitions.
 ---
 
-<ComponentPreview name="borderglide-demo" className="" description="" />
+<ComponentPreview name='borderglide-demo' className='' description='' />
 
 ## Installation
 
@@ -19,21 +19,20 @@ description: Modern UI cards with a moving border and smooth transitions.
     <Steps>
 
     <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>border-glide.tsx</code>
-</p>
-<ComponentSource name="border-glide" />
+
+<ComponentSource name='border-glide' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx 
-import {(ClassValue, clsx)} from "clsx";
-import {twMerge} from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -47,15 +46,15 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { 
-  BorderGlide, 
-  BorderGlideCard, 
-  BorderGlideContent, 
-  BorderGlideHeader, 
-  BorderGlideFooter, 
-  BorderGlideTitle, 
-  BorderGlideDescription 
-} from "@/components/ui/border-glide"
+import {
+  BorderGlide,
+  BorderGlideCard,
+  BorderGlideContent,
+  BorderGlideHeader,
+  BorderGlideFooter,
+  BorderGlideTitle,
+  BorderGlideDescription,
+} from '@/components/ui/border-glide';
 ```
 
 ```tsx
@@ -80,16 +79,13 @@ Modern UI cards with a moving border and smooth transitions.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `required` | Content to be rendered inside BorderGlide or its subcomponents. |
-| `className` | `string` | `-` | Additional Tailwind CSS classes to style the component container. |
-| `autoPlayInterval` | `number` | `5000` | Time in ms before automatically sliding to the next card. Set 0 to disable autoplay. |
-| `borderDuration` | `number` | `3000` | Duration in ms for the moving border animation to complete one cycle. |
-| `borderColor` | `string` | `#3b82f6` |  Accepts Tailwind color hex, CSS color, or gradient. |
-| `borderWidth` | `string` | `6rem` | Width of the moving border element. |
-| `borderHeight` | `string` | `6rem` | Height of the moving border element. |
-| `borderOpacity` | `number` | `0.8` | Opacity of the animated border. |
-
-
+| Prop               | Type        | Default    | Description                                                                          |
+| ------------------ | ----------- | ---------- | ------------------------------------------------------------------------------------ |
+| `children`         | `ReactNode` | `required` | Content to be rendered inside BorderGlide or its subcomponents.                      |
+| `className`        | `string`    | `-`        | Additional Tailwind CSS classes to style the component container.                    |
+| `autoPlayInterval` | `number`    | `5000`     | Time in ms before automatically sliding to the next card. Set 0 to disable autoplay. |
+| `borderDuration`   | `number`    | `3000`     | Duration in ms for the moving border animation to complete one cycle.                |
+| `borderColor`      | `string`    | `#3b82f6`  | Accepts Tailwind color hex, CSS color, or gradient.                                  |
+| `borderWidth`      | `string`    | `6rem`     | Width of the moving border element.                                                  |
+| `borderHeight`     | `string`    | `6rem`     | Height of the moving border element.                                                 |
+| `borderOpacity`    | `number`    | `0.8`      | Opacity of the animated border.                                                      |

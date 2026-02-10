@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Card } from "@/components/ui/card";
+import * as React from 'react';
+import { Card } from '@/components/ui/card';
 
 interface ParallaxCard {
   lightBg: string;
@@ -16,15 +16,15 @@ interface ParallaxCardsProps {
 
 export default function ParallaxCards({
   cards,
-  height = "100vh",
+  height = '100vh',
 }: ParallaxCardsProps) {
   const cardCount = cards?.length || 0;
 
   return (
-    <section className="relative w-full" style={{ height }}>
-      <div style={{ height: `${cardCount * 70}vh` }} className="relative">
+    <section className='relative w-full' style={{ height }}>
+      <div style={{ height: `${cardCount * 70}vh` }} className='relative'>
         {cards?.map((card, index) => (
-          <div key={index} className="sticky top-0 h-[70vh] z-[1]">
+          <div key={index} className='sticky top-0 h-[70vh] z-1'>
             <Card
               className={`w-full h-full flex items-center justify-center text-center p-8 rounded-none ${card.lightBg} ${card.darkBg}`}
             >
@@ -33,7 +33,7 @@ export default function ParallaxCards({
           </div>
         ))}
       </div>
-      <div className="h-screen bg-white dark:bg-black" />
+      <div className='h-screen bg-white dark:bg-black' />
     </section>
   );
 }

@@ -1,36 +1,37 @@
-"use client";
-import * as React from "react";
-import { motion } from "framer-motion";
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+'use client';
+import * as React from 'react';
+import { motion } from 'motion/react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
 
-const thunderLoaderVariants = cva("inline-block overflow-visible", {
+const thunderLoaderVariants = cva('inline-block overflow-visible', {
   variants: {
     size: {
-      xs: "w-4 h-4",
-      sm: "w-6 h-6",
-      md: "w-8 h-8",
-      lg: "w-12 h-12",
-      xl: "w-16 h-16",
-      "2xl": "w-20 h-20",
+      xs: 'w-4 h-4',
+      sm: 'w-6 h-6',
+      md: 'w-8 h-8',
+      lg: 'w-12 h-12',
+      xl: 'w-16 h-16',
+      '2xl': 'w-20 h-20',
     },
     variant: {
-      default: "",
-      electric: "",
-      fire: "",
-      ice: "",
-      rainbow: "",
-      subtle: "",
+      default: '',
+      electric: '',
+      fire: '',
+      ice: '',
+      rainbow: '',
+      subtle: '',
     },
   },
   defaultVariants: {
-    size: "md",
-    variant: "default",
+    size: 'md',
+    variant: 'default',
   },
 });
 
 interface ThunderLoaderProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof thunderLoaderVariants> {
   fillDuration?: number;
   glowDuration?: number;
@@ -41,53 +42,53 @@ interface ThunderLoaderProps
   strokeWidth?: number;
   showGlow?: boolean;
   showFill?: boolean;
-  animate?: boolean | "thunder";
+  animate?: boolean | 'thunder';
   viewBox?: string;
   customPath?: string;
 }
 
 const variantColors = {
   default: {
-    shimmer: "#60a5fa",
-    glow: "#3b82f6",
-    base: "#1e40af",
+    shimmer: '#60a5fa',
+    glow: '#3b82f6',
+    base: '#1e40af',
   },
   fire: {
-    shimmer: "#fbbf24",
-    glow: "#f59e0b",
-    base: "#d97706",
+    shimmer: '#fbbf24',
+    glow: '#f59e0b',
+    base: '#d97706',
   },
   electric: {
-    shimmer: "#fb7185",
-    glow: "#f43f5e",
-    base: "#e11d48",
+    shimmer: '#fb7185',
+    glow: '#f43f5e',
+    base: '#e11d48',
   },
   ice: {
-    shimmer: "#67e8f9",
-    glow: "#06b6d4",
-    base: "#0891b2",
+    shimmer: '#67e8f9',
+    glow: '#06b6d4',
+    base: '#0891b2',
   },
   rainbow: {
-    shimmer: "#a855f7",
-    glow: "#8b5cf6",
-    base: "#7c3aed",
+    shimmer: '#a855f7',
+    glow: '#8b5cf6',
+    base: '#7c3aed',
   },
   subtle: {
-    shimmer: "#94a3b8",
-    glow: "#64748b",
-    base: "#475569",
+    shimmer: '#94a3b8',
+    glow: '#64748b',
+    base: '#475569',
   },
 };
 
 const defaultThunderPath =
-  "M50 10 L 35 45 L 55 45 L 40 70 L 70 35 L 50 35 L 65 10 Z";
+  'M50 10 L 35 45 L 55 45 L 40 70 L 70 35 L 50 35 L 65 10 Z';
 
 const ThunderLoader = React.forwardRef<HTMLDivElement, ThunderLoaderProps>(
   (
     {
       className,
       size,
-      variant = "default",
+      variant = 'default',
       fillDuration = 2,
       glowDuration = 3,
       animateDuration = 2,
@@ -98,26 +99,24 @@ const ThunderLoader = React.forwardRef<HTMLDivElement, ThunderLoaderProps>(
       showGlow = false,
       showFill = false,
       animate = false,
-      viewBox = "0 0 100 80",
+      viewBox = '0 0 100 80',
       customPath,
       ...props
     },
-    ref
+    ref,
   ) => {
     const colors = variantColors[variant!] || variantColors.default;
     const finalFillColor = fillColor || colors.shimmer;
     const finalGlowColor = glowColor || colors.glow;
     const finalBaseColor = baseColor || colors.base;
     const thunderPath = customPath || defaultThunderPath;
-    const isThunderAnimation = animate === "thunder";
+    const isThunderAnimation = animate === 'thunder';
 
-    const gradientId = React.useMemo(
+    const [gradientId] = React.useState(
       () => `thunder-gradient-${Math.random().toString(36).substr(2, 9)}`,
-      []
     );
-    const filterId = React.useMemo(
+    const [filterId] = React.useState(
       () => `thunder-filter-${Math.random().toString(36).substr(2, 9)}`,
-      []
     );
 
     const pathRef = React.useRef<SVGPathElement>(null);
@@ -161,40 +160,40 @@ const ThunderLoader = React.forwardRef<HTMLDivElement, ThunderLoaderProps>(
         {...props}
       >
         <motion.svg
-          className="w-full h-full"
+          className='w-full h-full'
           viewBox={viewBox}
-          fill="none"
+          fill='none'
           initial={animate ? { opacity: 0, scale: 0.8 } : undefined}
           animate={animate ? { opacity: 1, scale: 1 } : undefined}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
         >
           <defs>
             {showFill && (
-              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
+              <linearGradient id={gradientId} x1='0%' y1='100%' x2='0%' y2='0%'>
                 <stop
-                  offset="0%"
+                  offset='0%'
                   stopColor={finalFillColor}
-                  stopOpacity="0.7"
+                  stopOpacity='0.7'
                 />
                 <stop
-                  offset="100%"
+                  offset='100%'
                   stopColor={finalFillColor}
-                  stopOpacity="0.1"
+                  stopOpacity='0.1'
                 />
               </linearGradient>
             )}
             {showGlow && (
               <filter
                 id={filterId}
-                x="-100%"
-                y="-100%"
-                width="300%"
-                height="300%"
+                x='-100%'
+                y='-100%'
+                width='300%'
+                height='300%'
               >
-                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feGaussianBlur stdDeviation='3' result='coloredBlur' />
                 <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
+                  <feMergeNode in='coloredBlur' />
+                  <feMergeNode in='SourceGraphic' />
                 </feMerge>
               </filter>
             )}
@@ -204,18 +203,18 @@ const ThunderLoader = React.forwardRef<HTMLDivElement, ThunderLoaderProps>(
               d={thunderPath}
               stroke={finalGlowColor}
               strokeWidth={strokeWidth + 1}
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              fill='none'
+              strokeLinecap='round'
+              strokeLinejoin='round'
               filter={`url(#${filterId})`}
               initial={{ opacity: 0.6 }}
               animate={{ opacity: 0.6 }}
             >
               <animate
-                attributeName="opacity"
-                values="0.3;0.8;0.3"
+                attributeName='opacity'
+                values='0.3;0.8;0.3'
                 dur={`${glowDuration}s`}
-                repeatCount="indefinite"
+                repeatCount='indefinite'
               />
             </motion.path>
           )}
@@ -224,15 +223,15 @@ const ThunderLoader = React.forwardRef<HTMLDivElement, ThunderLoaderProps>(
             d={thunderPath}
             stroke={finalBaseColor}
             strokeWidth={strokeWidth}
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            fill='none'
+            strokeLinecap='round'
+            strokeLinejoin='round'
             initial={
               isThunderAnimation
                 ? false
                 : animate
-                ? { pathLength: 0, opacity: 0 }
-                : undefined
+                  ? { pathLength: 0, opacity: 0 }
+                  : undefined
             }
             animate={
               isThunderAnimation
@@ -241,29 +240,29 @@ const ThunderLoader = React.forwardRef<HTMLDivElement, ThunderLoaderProps>(
                     strokeDashoffset: [pathLength, -pathLength],
                   }
                 : animate
-                ? { pathLength: 1, opacity: 1 }
-                : undefined
+                  ? { pathLength: 1, opacity: 1 }
+                  : undefined
             }
             transition={
               isThunderAnimation
                 ? {
                     repeat: Infinity,
                     duration: animateDuration,
-                    ease: "linear",
+                    ease: 'linear',
                   }
                 : animate
-                ? { duration: animateDuration, delay: 0.5, ease: "easeInOut" }
-                : undefined
+                  ? { duration: animateDuration, delay: 0.5, ease: 'easeInOut' }
+                  : undefined
             }
           />
           {showFill && (
             <mask id={`fill-mask-${gradientId}`}>
               <rect
-                x="0"
+                x='0'
                 y={80 - fillProgress * 80}
-                width="100"
+                width='100'
                 height={fillProgress * 80}
-                fill="white"
+                fill='white'
               />
             </mask>
           )}
@@ -271,15 +270,15 @@ const ThunderLoader = React.forwardRef<HTMLDivElement, ThunderLoaderProps>(
             <path
               d={thunderPath}
               fill={`url(#${gradientId})`}
-              stroke="none"
+              stroke='none'
               mask={`url(#fill-mask-${gradientId})`}
             />
           )}
-          {variant === "rainbow" && (
+          {variant === 'rainbow' && (
             <motion.circle
-              cx="50"
-              cy="40"
-              r="1"
+              cx='50'
+              cy='40'
+              r='1'
               fill={finalFillColor}
               initial={{ opacity: 0, scale: 0 }}
               animate={{
@@ -297,9 +296,9 @@ const ThunderLoader = React.forwardRef<HTMLDivElement, ThunderLoaderProps>(
         </motion.svg>
       </div>
     );
-  }
+  },
 );
 
-ThunderLoader.displayName = "ThunderLoader";
+ThunderLoader.displayName = 'ThunderLoader';
 
 export { ThunderLoader, thunderLoaderVariants, type ThunderLoaderProps };

@@ -3,7 +3,7 @@ title: Folder
 description: Interactive 3D Folder UI component with hover & click animations for modern sites.
 ---
 
-<ComponentPreview name="folder-demo" className="" description="" />
+<ComponentPreview name='folder-demo' className='' description='' />
 
 ## Installation
 
@@ -19,20 +19,16 @@ description: Interactive 3D Folder UI component with hover & click animations fo
     <Steps>
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>folder.tsx</code>
-</p>
-<ComponentSource name="folder" />
+
+<ComponentSource name='folder' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -46,15 +42,15 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { Folder, FolderContent } from "@/components/ui/folder";
+import { Folder, FolderContent } from '@/components/ui/folder';
 ```
 
 ```tsx
 <Folder>
   <FolderContent>
-    <div className="text-center">
-      <h2 className="text-2xl font-bold">ScrollX UI</h2>
-      <p className="mt-2 text-gray-400 font-medium">
+    <div className='text-center'>
+      <h2 className='text-2xl font-bold'>ScrollX UI</h2>
+      <p className='mt-2 text-gray-400 font-medium'>
         Cool components for modern UI
       </p>
     </div>
@@ -70,13 +66,10 @@ Interactive 3D Folder UI component with hover & click animations for modern site
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `color` | `string` | `"hsl(173, 80%, 70%)"` | Background color of the main folder body. |
-| `tabColor` | `string` | `"hsl(173, 84%, 42%)"` | Color of the folder's top tab section. |
-| `size` | `"xxs" \| "xs" \| "sm" \| "md"` | `"sm"` | Determines the overall folder size. |
-| `className` | `string` | — | Optional class name for custom styling or positioning. |
-| `children` | `ReactNode` | — | Elements to render inside the folder. Commonly includes `<FolderContent>`. |
-
-
+| Prop        | Type                            | Default                | Description                                                                |
+| ----------- | ------------------------------- | ---------------------- | -------------------------------------------------------------------------- |
+| `color`     | `string`                        | `"hsl(173, 80%, 70%)"` | Background color of the main folder body.                                  |
+| `tabColor`  | `string`                        | `"hsl(173, 84%, 42%)"` | Color of the folder's top tab section.                                     |
+| `size`      | `"xxs" \| "xs" \| "sm" \| "md"` | `"sm"`                 | Determines the overall folder size.                                        |
+| `className` | `string`                        | —                      | Optional class name for custom styling or positioning.                     |
+| `children`  | `ReactNode`                     | —                      | Elements to render inside the folder. Commonly includes `<FolderContent>`. |

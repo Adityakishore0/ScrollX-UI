@@ -1,14 +1,14 @@
-"use client";
-import type React from "react";
-import { useEffect, useRef, useState, useCallback } from "react";
-import * as d3 from "d3";
-import { feature } from "topojson-client";
+'use client';
+import type React from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import * as d3 from 'd3';
+import { feature } from 'topojson-client';
 import type {
   Topology,
   GeometryCollection,
   GeometryObject,
-} from "topojson-specification";
-import type { GeoPermissibleObjects } from "d3";
+} from 'topojson-specification';
+import type { GeoPermissibleObjects } from 'd3';
 
 interface GlobeWireframeProps {
   width?: number;
@@ -32,7 +32,7 @@ interface GlobeWireframeProps {
   startAsGlobe?: boolean;
   countryFillColor?: string;
   countryHoverColor?: string;
-  variant?: "wireframe" | "wireframesolid" | "solid";
+  variant?: 'wireframe' | 'wireframesolid' | 'solid';
   scale?: number;
   backgroundColor?: string;
 }
@@ -55,8 +55,8 @@ interface CustomProjection extends d3.GeoProjection {
 }
 
 const cityCoordinates: Record<string, [number, number]> = {
-  "san francisco": [37.7749, -122.4194],
-  "new york": [40.7128, -74.006],
+  'san francisco': [37.7749, -122.4194],
+  'new york': [40.7128, -74.006],
   london: [51.5074, -0.1278],
   tokyo: [35.6762, 139.6503],
   paris: [48.8566, 2.3522],
@@ -65,7 +65,7 @@ const cityCoordinates: Record<string, [number, number]> = {
   singapore: [1.3521, 103.8198],
   sydney: [-33.8688, 151.2093],
   mumbai: [19.076, 72.8777],
-  "los angeles": [34.0522, -118.2437],
+  'los angeles': [34.0522, -118.2437],
   chicago: [41.8781, -87.6298],
 };
 
@@ -80,12 +80,12 @@ function equirectangularRaw(lambda: number, phi: number): [number, number] {
 
 function interpolateProjection(
   raw0: (lambda: number, phi: number) => [number, number],
-  raw1: (lambda: number, phi: number) => [number, number]
+  raw1: (lambda: number, phi: number) => [number, number],
 ): CustomProjection {
   let t = 0;
 
   const createRawProjection = (
-    alpha: number
+    alpha: number,
   ): ((lambda: number, phi: number) => [number, number]) => {
     return (lambda: number, phi: number): [number, number] => {
       const [x0, y0] = raw0(lambda, phi);
@@ -95,14 +95,14 @@ function interpolateProjection(
   };
 
   const projection = d3.geoProjection(
-    createRawProjection(t)
+    createRawProjection(t),
   ) as unknown as CustomProjection;
 
   const alphaMethod = ((value?: number): CustomProjection | number => {
     if (value !== undefined) {
       t = +value;
       const newProjection = d3.geoProjection(
-        createRawProjection(t)
+        createRawProjection(t),
       ) as unknown as CustomProjection;
 
       if (projection.scale()) newProjection.scale(projection.scale());
@@ -112,12 +112,12 @@ function interpolateProjection(
       if (projection.precision())
         newProjection.precision(projection.precision());
 
-      newProjection.alpha = alphaMethod as CustomProjection["alpha"];
+      newProjection.alpha = alphaMethod as CustomProjection['alpha'];
 
       return newProjection;
     }
     return t;
-  }) as CustomProjection["alpha"];
+  }) as CustomProjection['alpha'];
 
   projection.alpha = alphaMethod;
 
@@ -127,12 +127,12 @@ function interpolateProjection(
 export default function GlobeWireframe({
   width,
   height,
-  className = "aspect-square w-full max-w-[600px]",
-  strokeColor = "currentColor",
+  className = 'aspect-square w-full max-w-150',
+  strokeColor = 'currentColor',
   strokeWidth = 1.0,
-  graticuleColor = "currentColor",
+  graticuleColor = 'currentColor',
   graticuleOpacity = 0.2,
-  sphereOutlineColor = "currentColor",
+  sphereOutlineColor = 'currentColor',
   sphereOutlineWidth = 1,
   autoRotate = true,
   autoRotateSpeed = 0.5,
@@ -146,7 +146,7 @@ export default function GlobeWireframe({
   startAsGlobe = true,
   countryFillColor,
   countryHoverColor,
-  variant = "wireframe",
+  variant = 'wireframe',
   scale = 1,
   backgroundColor,
 }: GlobeWireframeProps) {
@@ -178,12 +178,12 @@ export default function GlobeWireframe({
   const finalWidth = useResponsive ? dimensions.width : width || 800;
   const finalHeight = useResponsive ? dimensions.height : height || 500;
 
-  const defaultStrokeColor = strokeColor || "currentColor";
-  const defaultGraticuleColor = graticuleColor || "currentColor";
-  const defaultSphereOutlineColor = sphereOutlineColor || "currentColor";
+  const defaultStrokeColor = strokeColor || 'currentColor';
+  const defaultGraticuleColor = graticuleColor || 'currentColor';
+  const defaultSphereOutlineColor = sphereOutlineColor || 'currentColor';
   const defaultCountryFillColor =
-    countryFillColor || (variant === "solid" ? "currentColor" : "none");
-  const defaultBackgroundColor = backgroundColor || "transparent";
+    countryFillColor || (variant === 'solid' ? 'currentColor' : 'none');
+  const defaultBackgroundColor = backgroundColor || 'transparent';
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -209,7 +209,7 @@ export default function GlobeWireframe({
         const [entry] = entries;
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(container);
@@ -226,19 +226,19 @@ export default function GlobeWireframe({
     const loadWorldData = async () => {
       try {
         const response = await fetch(
-          "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
+          'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json',
         );
         const world = (await response.json()) as WorldAtlasTopology;
         const countries = feature(world, world.objects.countries)
           .features as GeoFeature[];
         setWorldData(countries);
       } catch (error) {
-        console.error("Error loading world data:", error);
+        console.error('Error loading world data:', error);
         const fallbackData: GeoFeature[] = [
           {
-            type: "Feature",
+            type: 'Feature',
             geometry: {
-              type: "Polygon",
+              type: 'Polygon',
               coordinates: [
                 [
                   [-180, -90],
@@ -314,7 +314,7 @@ export default function GlobeWireframe({
 
       rotationAnimFrame.current = requestAnimationFrame(animate);
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -328,7 +328,7 @@ export default function GlobeWireframe({
       if (coordinates) {
         animateRotationTo(
           [-coordinates[1], -coordinates[0]],
-          rotationSpeed * 0.6
+          rotationSpeed * 0.6,
         );
         setCurrentCityIndex(nextIndex);
       }
@@ -340,7 +340,7 @@ export default function GlobeWireframe({
     if (coordinates) {
       animateRotationTo(
         [-coordinates[1], -coordinates[0]],
-        rotationSpeed * 0.6
+        rotationSpeed * 0.6,
       );
     }
 
@@ -361,7 +361,7 @@ export default function GlobeWireframe({
     if (!rotateToLocation) return;
 
     let coordinates: [number, number];
-    if (typeof rotateToLocation === "string") {
+    if (typeof rotateToLocation === 'string') {
       const city = rotateToLocation.toLowerCase();
       coordinates = cityCoordinates[city] || [0, 0];
     } else {
@@ -392,7 +392,7 @@ export default function GlobeWireframe({
     const t = progress / 100;
     let sensitivity: number;
 
-    if (variant === "wireframe") {
+    if (variant === 'wireframe') {
       sensitivity = t < 0.5 ? 0.5 : 0.25;
     } else {
       sensitivity = 0.5;
@@ -419,30 +419,30 @@ export default function GlobeWireframe({
     if (useResponsive && dimensions.width === 0) return;
 
     const svg = d3.select(svgRef.current);
-    svg.selectAll("*").remove();
+    svg.selectAll('*').remove();
 
-    let finalCountryFill = "none";
+    let finalCountryFill = 'none';
     let finalStrokeWidth = strokeWidth;
     let finalOpacity = 1.0;
     let renderGraticule = showGraticule;
     let finalGraticuleOpacity = graticuleOpacity;
     let finalSphereOutlineWidth = sphereOutlineWidth;
 
-    if (variant === "wireframe") {
-      finalCountryFill = "none";
+    if (variant === 'wireframe') {
+      finalCountryFill = 'none';
       finalStrokeWidth = strokeWidth;
       finalOpacity = 1.0;
       renderGraticule = showGraticule;
       finalGraticuleOpacity = graticuleOpacity;
       finalSphereOutlineWidth = sphereOutlineWidth;
-    } else if (variant === "wireframesolid") {
-      finalCountryFill = "none";
+    } else if (variant === 'wireframesolid') {
+      finalCountryFill = 'none';
       finalStrokeWidth = strokeWidth;
       finalOpacity = 1.0;
       renderGraticule = false;
       finalGraticuleOpacity = 0;
       finalSphereOutlineWidth = 1.5;
-    } else if (variant === "solid") {
+    } else if (variant === 'solid') {
       finalCountryFill = defaultCountryFillColor;
       finalStrokeWidth = strokeWidth * 0.5;
       finalOpacity = 0.3;
@@ -451,20 +451,20 @@ export default function GlobeWireframe({
       finalSphereOutlineWidth = 1.5;
     }
 
-    if (defaultBackgroundColor !== "transparent") {
+    if (defaultBackgroundColor !== 'transparent') {
       const radius = (Math.min(finalWidth, finalHeight) / 2) * scale * 0.9;
       svg
-        .append("circle")
-        .attr("cx", finalWidth / 2)
-        .attr("cy", finalHeight / 2)
-        .attr("r", radius)
-        .attr("fill", defaultBackgroundColor);
+        .append('circle')
+        .attr('cx', finalWidth / 2)
+        .attr('cy', finalHeight / 2)
+        .attr('r', radius)
+        .attr('fill', defaultBackgroundColor);
     }
 
     let projection: d3.GeoProjection | CustomProjection;
     const path = d3.geoPath();
 
-    if (variant === "wireframe") {
+    if (variant === 'wireframe') {
       const t = progress / 100;
       const alpha = Math.pow(t, 0.5);
 
@@ -500,75 +500,76 @@ export default function GlobeWireframe({
         const graticulePath = path(graticule());
         if (graticulePath) {
           svg
-            .append("path")
+            .append('path')
             .datum(graticule())
-            .attr("d", graticulePath)
-            .attr("fill", "none")
-            .attr("stroke", defaultGraticuleColor)
-            .attr("stroke-width", 1)
-            .attr("opacity", finalGraticuleOpacity);
+            .attr('d', graticulePath)
+            .attr('fill', 'none')
+            .attr('stroke', defaultGraticuleColor)
+            .attr('stroke-width', 1)
+            .attr('opacity', finalGraticuleOpacity);
         }
       } catch (error) {
-        console.error("Error creating graticule:", error);
+        console.error('Error creating graticule:', error);
       }
     }
 
     svg
-      .selectAll(".country")
+      .selectAll('.country')
       .data(worldData)
       .enter()
-      .append("path")
-      .attr("class", "country")
-      .attr("d", (d: GeoFeature) => {
+      .append('path')
+      .attr('class', 'country')
+      .attr('d', (d: GeoFeature) => {
         try {
           const pathString = path(d as unknown as GeoPermissibleObjects);
-          if (!pathString) return "";
+          if (!pathString) return '';
           if (
-            typeof pathString === "string" &&
-            (pathString.includes("NaN") || pathString.includes("Infinity"))
+            typeof pathString === 'string' &&
+            (pathString.includes('NaN') || pathString.includes('Infinity'))
           ) {
-            return "";
+            return '';
           }
           return pathString;
         } catch (error) {
-          return "";
+          return '';
         }
       })
-      .attr("fill", finalCountryFill)
-      .attr("stroke", defaultStrokeColor)
-      .attr("stroke-width", finalStrokeWidth)
-      .attr("opacity", finalOpacity)
-      .style("visibility", function (this: SVGPathElement) {
-        const pathData = d3.select(this).attr("d");
-        return pathData && pathData.length > 0 && !pathData.includes("NaN")
-          ? "visible"
-          : "hidden";
+      .attr('fill', finalCountryFill)
+      .attr('stroke', defaultStrokeColor)
+      .attr('stroke-width', finalStrokeWidth)
+      .attr('opacity', finalOpacity)
+      // eslint-disable-next-line react-hooks/unsupported-syntax
+      .style('visibility', function (this: SVGPathElement) {
+        const pathData = d3.select(this).attr('d');
+        return pathData && pathData.length > 0 && !pathData.includes('NaN')
+          ? 'visible'
+          : 'hidden';
       })
-      .on("mouseenter", function (this: SVGPathElement) {
-        if (countryHoverColor && variant === "solid") {
-          d3.select(this).attr("fill", countryHoverColor);
+      .on('mouseenter', function (this: SVGPathElement) {
+        if (countryHoverColor && variant === 'solid') {
+          d3.select(this).attr('fill', countryHoverColor);
         }
       })
-      .on("mouseleave", function (this: SVGPathElement) {
-        if (variant === "solid") {
-          d3.select(this).attr("fill", finalCountryFill);
+      .on('mouseleave', function (this: SVGPathElement) {
+        if (variant === 'solid') {
+          d3.select(this).attr('fill', finalCountryFill);
         }
       });
 
     try {
-      const sphereOutline = path({ type: "Sphere" });
+      const sphereOutline = path({ type: 'Sphere' });
       if (sphereOutline) {
         svg
-          .append("path")
-          .datum({ type: "Sphere" })
-          .attr("d", sphereOutline)
-          .attr("fill", "none")
-          .attr("stroke", defaultSphereOutlineColor)
-          .attr("stroke-width", finalSphereOutlineWidth)
-          .attr("opacity", variant === "wireframe" ? 1.0 : 0.8);
+          .append('path')
+          .datum({ type: 'Sphere' })
+          .attr('d', sphereOutline)
+          .attr('fill', 'none')
+          .attr('stroke', defaultSphereOutlineColor)
+          .attr('stroke-width', finalSphereOutlineWidth)
+          .attr('opacity', variant === 'wireframe' ? 1.0 : 0.8);
       }
     } catch (error) {
-      console.error("Error creating sphere outline:", error);
+      console.error('Error creating sphere outline:', error);
     }
   }, [
     worldData,
@@ -605,15 +606,15 @@ export default function GlobeWireframe({
         onMouseLeave={handleMouseLeave}
         className={
           useResponsive
-            ? "w-full h-full opacity-0 transition-opacity duration-1000"
-            : ""
+            ? 'w-full h-full opacity-0 transition-opacity duration-1000'
+            : ''
         }
         style={{
           cursor: enableInteraction
             ? isDragging
-              ? "grabbing"
-              : "grab"
-            : "default",
+              ? 'grabbing'
+              : 'grab'
+            : 'default',
           opacity: useResponsive ? (dimensions.width > 0 ? 1 : 0) : 1,
         }}
       />

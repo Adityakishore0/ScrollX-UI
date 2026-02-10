@@ -1,13 +1,9 @@
 ---
-title: Announcement 
+title: Announcement
 description: An announcement component that highlights key info with icons, effects, and expandable content.
 ---
 
-<ComponentPreview
-  name="announcement-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='announcement-demo' className='' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: An announcement component that highlights key info with icons, effe
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>announcement.tsx</code>
-</p>
-<ComponentSource name="announcement" />
+
+<ComponentSource name='announcement' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -57,18 +49,19 @@ import {
   Announcement,
   AnnouncementTag,
   AnnouncementTitle,
-} from '@/components/ui/announcement'; 
+} from '@/components/ui/announcement';
 ```
 
 ```tsx
 <Announcement movingBorder>
-    <AnnouncementTag lustre>Latest update</AnnouncementTag>
-    <AnnouncementTitle>
-      New feature added
-      <ArrowUpRightIcon className="shrink-0 text-muted-foreground" size={16} />
-    </AnnouncementTitle>
-  </Announcement>
+  <AnnouncementTag lustre>Latest update</AnnouncementTag>
+  <AnnouncementTitle>
+    New feature added
+    <ArrowUpRightIcon className='shrink-0 text-muted-foreground' size={16} />
+  </AnnouncementTitle>
+</Announcement>
 ```
+
 ## Examples
 
 ---
@@ -76,9 +69,9 @@ import {
 <Step>Default</Step>
 
 <ComponentPreview
-  name="announcementdefault-demo"
-  className=""
-  description="Default badge with primary color and shine effect"
+  name='announcementdefault-demo'
+  className=''
+  description='Default badge with primary color and shine effect'
 />
 
 ---
@@ -86,9 +79,9 @@ import {
 <Step>Themes</Step>
 
 <ComponentPreview
-  name="announcementthemes-demo"
-  className=""
-  description="Subtle badge with secondary color theme and shine"
+  name='announcementthemes-demo'
+  className=''
+  description='Subtle badge with secondary color theme and shine'
 />
 
 ---
@@ -96,9 +89,9 @@ import {
 <Step>Styled</Step>
 
 <ComponentPreview
-  name="announcementstyled-demo"
-  className=""
-  description="Subtle badge with secondary color theme and shine"
+  name='announcementstyled-demo'
+  className=''
+  description='Subtle badge with secondary color theme and shine'
 />
 
 ---
@@ -106,9 +99,9 @@ import {
 <Step>Expandable</Step>
 
 <ComponentPreview
-  name="announcementexpandable-demo"
-  className=""
-  description="Subtle badge with secondary color theme and shine"
+  name='announcementexpandable-demo'
+  className=''
+  description='Subtle badge with secondary color theme and shine'
 />
 
 ## API Reference
@@ -119,22 +112,17 @@ An announcement component that highlights key info with icons, effects, and expa
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `string` | `'outline'` | Badge style variant. Used in: Announcement. |
-| `styled` | `boolean` | `false` | Adds subtle border styling. Used in: Announcement. |
-| `animation` | `'fade'` | `'fade'` | Controls announcement animation. Used in: Announcement. |
-| `icon` | `ReactNode` | `-` | Optional icon element. Used in: Announcement. |
-| `iconPosition` | `'left' \| 'right'` | `'left'` | Controls icon placement. Used in: Announcement. |
-| `shiny` | `boolean` | `false` | Applies lustre text effect to children. Used in: Announcement. |
-| `movingBorder` | `boolean` | `false` | Enables animated moving border. Used in: Announcement, AnnouncementTag. |
-| `movingBorderDuration` | `number` | `3000` | Duration of moving border animation in ms. Used in: Announcement, AnnouncementTag. |
-| `movingBorderClassName` | `string` | `-` | Custom classes for moving border element. Used in: Announcement, AnnouncementTag. |
-| `lustre` | `boolean` | `false` | Applies lustre text effect to text. Used in: AnnouncementTag, AnnouncementTitle. |
-| `multiTags` | `boolean` | `false` | Allows multiple tags by wrapping content. Used in: AnnouncementTitle. |
-| `children` | `ReactNode` | `required` | Content inside the component. Used in: Announcement, AnnouncementTag, AnnouncementTitle, AnnouncementContainer, AnnouncementExpandedContent. |
-
-
-
-
+| Prop                    | Type                | Default           | Description                                                                                                                                  |
+| ----------------------- | ------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `variant`               | `string`            | `'outline-solid'` | Badge style variant. Used in: Announcement.                                                                                                  |
+| `styled`                | `boolean`           | `false`           | Adds subtle border styling. Used in: Announcement.                                                                                           |
+| `animation`             | `'fade'`            | `'fade'`          | Controls announcement animation. Used in: Announcement.                                                                                      |
+| `icon`                  | `ReactNode`         | `-`               | Optional icon element. Used in: Announcement.                                                                                                |
+| `iconPosition`          | `'left' \| 'right'` | `'left'`          | Controls icon placement. Used in: Announcement.                                                                                              |
+| `shiny`                 | `boolean`           | `false`           | Applies lustre text effect to children. Used in: Announcement.                                                                               |
+| `movingBorder`          | `boolean`           | `false`           | Enables animated moving border. Used in: Announcement, AnnouncementTag.                                                                      |
+| `movingBorderDuration`  | `number`            | `3000`            | Duration of moving border animation in ms. Used in: Announcement, AnnouncementTag.                                                           |
+| `movingBorderClassName` | `string`            | `-`               | Custom classes for moving border element. Used in: Announcement, AnnouncementTag.                                                            |
+| `lustre`                | `boolean`           | `false`           | Applies lustre text effect to text. Used in: AnnouncementTag, AnnouncementTitle.                                                             |
+| `multiTags`             | `boolean`           | `false`           | Allows multiple tags by wrapping content. Used in: AnnouncementTitle.                                                                        |
+| `children`              | `ReactNode`         | `required`        | Content inside the component. Used in: Announcement, AnnouncementTag, AnnouncementTitle, AnnouncementContainer, AnnouncementExpandedContent. |

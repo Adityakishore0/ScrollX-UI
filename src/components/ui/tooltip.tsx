@@ -1,8 +1,8 @@
-"use client";
-import * as React from "react";
-import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+'use client';
+import * as React from 'react';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 function TooltipProvider({
   delayDuration = 0,
@@ -10,7 +10,7 @@ function TooltipProvider({
 }: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
   return (
     <TooltipPrimitive.Provider
-      data-slot="tooltip-provider"
+      data-slot='tooltip-provider'
       delayDuration={delayDuration}
       {...props}
     />
@@ -22,7 +22,7 @@ function Tooltip({
 }: React.ComponentProps<typeof TooltipPrimitive.Root>) {
   return (
     <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+      <TooltipPrimitive.Root data-slot='tooltip' {...props} />
     </TooltipProvider>
   );
 }
@@ -30,7 +30,7 @@ function Tooltip({
 function TooltipTrigger({
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
+  return <TooltipPrimitive.Trigger data-slot='tooltip-trigger' {...props} />;
 }
 
 function TooltipContent({
@@ -42,9 +42,9 @@ function TooltipContent({
   return (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
-        data-slot="tooltip-content"
+        data-slot='tooltip-content'
         sideOffset={sideOffset}
-        className="z-50"
+        className='z-50'
         {...props}
         asChild
       >
@@ -70,14 +70,14 @@ function TooltipContent({
             opacity: { duration: 0.2 },
             scale: {
               duration: 0.6,
-              type: "spring",
+              type: 'spring',
               damping: 12,
               stiffness: 400,
               mass: 0.8,
             },
             y: {
               duration: 0.5,
-              type: "spring",
+              type: 'spring',
               damping: 10,
               stiffness: 300,
               mass: 0.9,
@@ -85,27 +85,17 @@ function TooltipContent({
             x: {
               duration: 0.7,
               delay: 0.2,
-              ease: "easeOut",
+              ease: 'easeOut',
               times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1],
-            },
-            exit: {
-              opacity: { duration: 0.25 },
-              scale: { duration: 0.25, ease: "easeIn" },
-              y: { duration: 0.25, ease: "easeIn" },
-              x: {
-                duration: 0.4,
-                ease: "easeOut",
-                times: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 1],
-              },
             },
           }}
           className={cn(
-            "bg-primary text-primary-foreground w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance",
-            className
+            'bg-primary text-primary-foreground w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance',
+            className,
           )}
         >
           {children}
-          <TooltipPrimitive.Arrow className="bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
+          <TooltipPrimitive.Arrow className='bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs' />
         </motion.div>
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>

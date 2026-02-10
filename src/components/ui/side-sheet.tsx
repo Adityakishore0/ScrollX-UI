@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, {
   createContext,
   useContext,
@@ -8,8 +8,9 @@ import React, {
   useEffect,
   forwardRef,
   ReactElement,
-} from "react";
-import { createPortal } from "react-dom";
+  useSyncExternalStore,
+} from 'react';
+import { createPortal } from 'react-dom';
 import {
   motion,
   useAnimation,
@@ -17,10 +18,10 @@ import {
   useMotionValue,
   useTransform,
   HTMLMotionProps,
-} from "framer-motion";
-import { cn } from "@/lib/utils";
+} from 'motion/react';
+import { cn } from '@/lib/utils';
 
-type SheetSide = "left" | "right";
+type SheetSide = 'left' | 'right';
 
 interface SideSheetContextValue {
   isOpen: boolean;
@@ -39,7 +40,7 @@ const useSideSheetContext = () => {
   const context = useContext(SideSheetContext);
   if (!context) {
     throw new Error(
-      "SideSheet compound components must be used within SideSheet"
+      'SideSheet compound components must be used within SideSheet',
     );
   }
   return context;
@@ -62,8 +63,8 @@ const SideSheetRoot = ({
   onOpenChange,
   defaultOpen,
   className,
-  side = "right",
-  width = "400px",
+  side = 'right',
+  width = '400px',
   closeThreshold = 0.3,
 }: SideSheetRootProps) => {
   const [internalOpen, setInternalOpen] = useState(defaultOpen ?? false);
@@ -80,12 +81,12 @@ const SideSheetRoot = ({
         setInternalOpen(newOpen);
       }
     },
-    [onOpenChange, isControlled]
+    [onOpenChange, isControlled],
   );
 
   const contentProps = {
     width,
-    className: className || "",
+    className: className || '',
     closeThreshold,
     side,
   };
@@ -110,13 +111,13 @@ const SideSheetPortal = ({
   container,
   className,
 }: SideSheetPortalProps) => {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted || typeof document === "undefined") {
+  if (!mounted) {
     return null;
   }
 
@@ -129,7 +130,7 @@ const SideSheetPortal = ({
   return createPortal(portalContent, container || document.body);
 };
 
-interface SideSheetOverlayProps extends HTMLMotionProps<"div"> {
+interface SideSheetOverlayProps extends HTMLMotionProps<'div'> {
   className?: string;
 }
 
@@ -143,7 +144,7 @@ const SideSheetOverlay = forwardRef<HTMLDivElement, SideSheetOverlayProps>(
           onOpenChange(false);
         }
       },
-      [onOpenChange]
+      [onOpenChange],
     );
 
     return (
@@ -151,19 +152,19 @@ const SideSheetOverlay = forwardRef<HTMLDivElement, SideSheetOverlayProps>(
         ref={ref}
         initial={{ opacity: 0 }}
         animate={{ opacity: isOpen ? 1 : 0 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
         onClick={handleClick}
         className={cn(
-          "absolute inset-0 bg-black/20 backdrop-blur-sm",
-          className
+          'absolute inset-0 bg-black/20 backdrop-blur-xs',
+          className,
         )}
-        style={{ pointerEvents: isOpen ? "auto" : "none" }}
+        style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
         {...props}
       />
     );
-  }
+  },
 );
-SideSheetOverlay.displayName = "SideSheetOverlay";
+SideSheetOverlay.displayName = 'SideSheetOverlay';
 
 interface SideSheetTriggerProps {
   asChild?: boolean;
@@ -197,7 +198,7 @@ const SideSheetTrigger = ({
   }
 
   return (
-    <div onClick={handleClick} className={cn("", className)}>
+    <div onClick={handleClick} className={cn('', className)}>
       {children}
     </div>
   );
@@ -210,7 +211,7 @@ interface SideSheetContentProps {
 
 const SideSheetContent = ({
   children,
-  className = "",
+  className = '',
 }: SideSheetContentProps) => {
   const { isOpen, onOpenChange, contentProps } = useSideSheetContext();
   const { width, closeThreshold, side } = contentProps;
@@ -223,7 +224,7 @@ const SideSheetContent = ({
   const onClose = useCallback(() => onOpenChange(false), [onOpenChange]);
 
   const calculateWidth = useCallback(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const vw = window.innerWidth;
 
       let calculatedWidth;
@@ -232,11 +233,11 @@ const SideSheetContent = ({
       } else if (vw <= 1024) {
         calculatedWidth = vw * 0.7;
       } else {
-        if (width.includes("px")) {
+        if (width.includes('px')) {
           calculatedWidth = parseInt(width);
-        } else if (width.includes("vw")) {
+        } else if (width.includes('vw')) {
           calculatedWidth = (parseInt(width) / 100) * vw;
-        } else if (width.includes("%")) {
+        } else if (width.includes('%')) {
           calculatedWidth = (parseInt(width) / 100) * vw;
         } else {
           calculatedWidth = 400;
@@ -254,17 +255,17 @@ const SideSheetContent = ({
     };
 
     updateWidth();
-    window.addEventListener("resize", updateWidth);
+    window.addEventListener('resize', updateWidth);
 
-    return () => window.removeEventListener("resize", updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
   }, [calculateWidth]);
 
   const getInitialX = useCallback(() => {
-    return side === "left" ? -(sheetWidth + 50) : sheetWidth + 50;
+    return side === 'left' ? -(sheetWidth + 50) : sheetWidth + 50;
   }, [side, sheetWidth]);
 
   const getPositionStyles = useCallback(() => {
-    if (side === "left") {
+    if (side === 'left') {
       return {
         left: 0,
         top: 0,
@@ -281,43 +282,43 @@ const SideSheetContent = ({
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
       controls.start({
         x: 0,
         transition: {
-          type: "spring",
+          type: 'spring',
           stiffness: 400,
           damping: 40,
           mass: 0.8,
         },
       });
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
       controls.start({
         x: getInitialX(),
         transition: {
-          type: "tween",
+          type: 'tween',
           ease: [0.25, 0.46, 0.45, 0.94],
           duration: 0.3,
         },
       });
     }
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     };
   }, [isOpen, controls, getInitialX]);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+      if (e.key === 'Escape' && isOpen) {
         onClose();
       }
     };
     if (isOpen) {
-      document.addEventListener("keydown", handleEscape);
+      document.addEventListener('keydown', handleEscape);
     }
     return () => {
-      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener('keydown', handleEscape);
     };
   }, [isOpen, onClose]);
 
@@ -326,7 +327,7 @@ const SideSheetContent = ({
       const threshold = sheetWidth * closeThreshold;
       let shouldClose = false;
 
-      if (side === "left") {
+      if (side === 'left') {
         shouldClose = info.offset.x < -threshold || info.velocity.x < -800;
       } else {
         shouldClose = info.offset.x > threshold || info.velocity.x > 800;
@@ -338,14 +339,14 @@ const SideSheetContent = ({
         controls.start({
           x: 0,
           transition: {
-            type: "spring",
+            type: 'spring',
             stiffness: 500,
             damping: 40,
           },
         });
       }
     },
-    [controls, onClose, closeThreshold, sheetWidth, side]
+    [controls, onClose, closeThreshold, sheetWidth, side],
   );
 
   const handleOverlayClick = useCallback(
@@ -354,11 +355,11 @@ const SideSheetContent = ({
         onClose();
       }
     },
-    [onClose]
+    [onClose],
   );
 
   const getDragConstraints = useCallback(() => {
-    if (side === "left") {
+    if (side === 'left') {
       return { left: -sheetWidth, right: 0 };
     } else {
       return { left: 0, right: sheetWidth };
@@ -370,22 +371,19 @@ const SideSheetContent = ({
   return (
     <SideSheetPortal>
       <div
-        className={cn(
-          "fixed inset-0 z-[999]",
-          !isOpen && "pointer-events-none"
-        )}
+        className={cn('fixed inset-0 z-999', !isOpen && 'pointer-events-none')}
       >
         <motion.div
           ref={overlayRef}
           initial={{ opacity: 0 }}
           animate={{ opacity: isOpen ? 1 : 0 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
           onClick={handleOverlayClick}
-          className="absolute inset-0 bg-black/20 backdrop-blur-sm"
-          style={{ pointerEvents: isOpen ? "auto" : "none" }}
+          className='absolute inset-0 bg-black/20 backdrop-blur-xs'
+          style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
         />
         <motion.div
-          drag="x"
+          drag='x'
           dragConstraints={getDragConstraints()}
           dragElastic={0}
           dragMomentum={false}
@@ -393,21 +391,21 @@ const SideSheetContent = ({
           animate={controls}
           initial={{ x: getInitialX() }}
           className={cn(
-            "absolute bg-white dark:bg-[#0A0A0A] shadow-2xl",
-            side === "left" ? "rounded-r-lg" : "rounded-l-lg",
-            className
+            'absolute bg-white dark:bg-[#0A0A0A] shadow-2xl',
+            side === 'left' ? 'rounded-r-lg' : 'rounded-l-lg',
+            className,
           )}
           style={{
             width: sheetWidth,
             ...getPositionStyles(),
           }}
         >
-          <div className="h-full overflow-hidden">
+          <div className='h-full overflow-hidden'>
             <div
-              className="h-full overflow-y-auto px-6 py-6 scrollbar-hide"
+              className='h-full overflow-y-auto px-6 py-6 scrollbar-hide'
               style={{
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
               }}
             >
               {children}
@@ -416,11 +414,11 @@ const SideSheetContent = ({
 
           <div
             className={cn(
-              "absolute top-1/2 -translate-y-1/2 flex items-center",
-              side === "left" ? "right-0 pr-2" : "left-0 pl-2"
+              'absolute top-1/2 -translate-y-1/2 flex items-center',
+              side === 'left' ? 'right-0 pr-2' : 'left-0 pl-2',
             )}
           >
-            <div className="w-2 h-16 rounded-full bg-muted cursor-grab active:cursor-grabbing" />
+            <div className='w-2 h-16 rounded-full bg-muted cursor-grab active:cursor-grabbing' />
           </div>
         </motion.div>
       </div>
@@ -435,7 +433,7 @@ interface SideSheetHeaderProps {
 
 const SideSheetHeader = ({ children, className }: SideSheetHeaderProps) => {
   return (
-    <div className={cn("flex flex-col space-y-1.5 text-left pb-4", className)}>
+    <div className={cn('flex flex-col space-y-1.5 text-left pb-4', className)}>
       {children}
     </div>
   );
@@ -450,8 +448,8 @@ const SideSheetTitle = ({ children, className }: SideSheetTitleProps) => {
   return (
     <h3
       className={cn(
-        "text-lg font-semibold leading-none tracking-tight",
-        className
+        'text-lg font-semibold leading-none tracking-tight',
+        className,
       )}
     >
       {children}
@@ -469,7 +467,7 @@ const SideSheetDescription = ({
   className,
 }: SideSheetDescriptionProps) => {
   return (
-    <p className={cn("text-sm text-gray-600 dark:text-gray-400", className)}>
+    <p className={cn('text-sm text-gray-600 dark:text-gray-400', className)}>
       {children}
     </p>
   );
@@ -484,8 +482,8 @@ const SideSheetFooter = ({ children, className }: SideSheetFooterProps) => {
   return (
     <div
       className={cn(
-        "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 pt-4",
-        className
+        'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 pt-4',
+        className,
       )}
     >
       {children}
@@ -525,7 +523,7 @@ const SideSheetClose = ({
   }
 
   return (
-    <button onClick={handleClick} type="button" className={cn("", className)}>
+    <button onClick={handleClick} type='button' className={cn('', className)}>
       {children}
     </button>
   );

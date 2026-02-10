@@ -3,11 +3,7 @@ title: Flex Navbar
 description: A modern navbar with smooth expansion, media panels, and theme controls.
 ---
 
-<ComponentPreview
-  name="flexnavbar-demo"
-  className="p-0"
-  description="" 
-/>
+<ComponentPreview name='flexnavbar-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -24,23 +20,19 @@ description: A modern navbar with smooth expansion, media panels, and theme cont
 
     <Step>Install the following dependencies:</Step>
 
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>flex-navbar.tsx</code>
-</p>
-<ComponentSource name="flex-navbar" />
+
+<ComponentSource name='flex-navbar' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -54,39 +46,31 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { FlexNavbar } from "@/components/ui/flex-navbar";
+import { FlexNavbar } from '@/components/ui/flex-navbar';
 ```
 
 ```tsx
 <FlexNavbar
-  brandName="ScrollX UI"
-  tagline="Motion-first component library"
-  launchText="Open-source"
+  brandName='ScrollX UI'
+  tagline='Motion-first component library'
+  launchText='Open-source'
   navLinks={[
-    { label: "Components", href: "/docs/components" },
-    { label: "Docs", href: "/docs" },
+    { label: 'Components', href: '/docs/components' },
+    { label: 'Docs', href: '/docs' },
     {
-      label: "GitHub",
-      href: "https://github.com/Adityakishore0/ScrollX-UI",
+      label: 'GitHub',
+      href: 'https://github.com/Adityakishore0/ScrollX-UI',
     },
-    { label: "Showcase", href: "/Showcase" },
+    { label: 'Showcase', href: '/Showcase' },
   ]}
   media={{
-    type: "video",
-    src: "/assets/scrollxuilaunch.webm",
+    type: 'video',
+    src: '/assets/scrollxuilaunch.webm',
     autoplay: false,
   }}
-  mediaButtonText="Watch intro"
+  mediaButtonText='Watch intro'
 />
 ```
-
-## Changelog
-
-#### 20-01-2026, Improved Navigation Interaction
-
-- Updated `FlexNavbar` to automatically collapse when a navigation link is clicked. 
-- Added a slight delay before closing the navbar to allow link interactions and transitions to feel smoother. 
-- Exposed the collapse behavior via a reusable `closeNavbar` handler and ensured `onExpand` stays in sync. 
 
 ## API Reference
 
@@ -96,27 +80,24 @@ A modern navbar with smooth expansion, media panels, and theme controls.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `logo` | `ReactNode` | `SVG` | Logo element displayed on the left side of the navbar. |
-| `brandName` | `string` | `STARTUP` | Centered brand name text shown in the navbar header. |
-| `tagline` | `string` | `Text` | Short tagline displayed in the footer section when expanded. |
-| `launchText` | `string` | `Text` | Right-aligned secondary text shown in the expanded footer. |
-| `navLinks` | `array` | `empty` | Primary navigation links displayed when the navbar expands. |
-| `media` | `object` | `none` | Media content configuration (image or video) shown inside the expanded navbar. |
-| `mediaButtonText` | `string` | `OurStory` | Text displayed on the media overlay action button. |
-| `onMediaClick` | `function` | `none` | Callback triggered when media is clicked or played. |
-| `collapsedWidth` | `string` | `90vw` | Width of the navbar in collapsed state. |
-| `collapsedMaxWidth` | `string` | `20rem` | Maximum width of the navbar when collapsed. |
-| `collapsedHeight` | `string` | `3.75rem` | Height of the navbar in collapsed state. |
-| `expandedWidth` | `string` | `95vw` | Width of the navbar when expanded. |
-| `expandedMaxWidth` | `string` | `48.75rem` | Maximum width of the expanded navbar. |
-| `expandedHeight` | `string` | `28rem` | Expanded navbar height on desktop screens. |
-| `expandedHeightMobile` | `string` | `33rem` | Expanded navbar height on mobile devices. |
-| `animationDuration` | `number` | `0.5` | Duration of expand/collapse animation in seconds. |
-| `animationEasing` | `array` | `bezier` | Cubic-bezier easing array used by Framer Motion. |
-| `showThemeToggle` | `boolean` | `true` | Controls visibility of the theme switcher in the footer. |
-| `onExpand` | `function` | `none` | Callback fired whenever the navbar expands or collapses. |
-
-
+| Prop                   | Type        | Default    | Description                                                                    |
+| ---------------------- | ----------- | ---------- | ------------------------------------------------------------------------------ |
+| `logo`                 | `ReactNode` | `SVG`      | Logo element displayed on the left side of the navbar.                         |
+| `brandName`            | `string`    | `STARTUP`  | Centered brand name text shown in the navbar header.                           |
+| `tagline`              | `string`    | `Text`     | Short tagline displayed in the footer section when expanded.                   |
+| `launchText`           | `string`    | `Text`     | Right-aligned secondary text shown in the expanded footer.                     |
+| `navLinks`             | `array`     | `empty`    | Primary navigation links displayed when the navbar expands.                    |
+| `media`                | `object`    | `none`     | Media content configuration (image or video) shown inside the expanded navbar. |
+| `mediaButtonText`      | `string`    | `OurStory` | Text displayed on the media overlay action button.                             |
+| `onMediaClick`         | `function`  | `none`     | Callback triggered when media is clicked or played.                            |
+| `collapsedWidth`       | `string`    | `90vw`     | Width of the navbar in collapsed state.                                        |
+| `collapsedMaxWidth`    | `string`    | `20rem`    | Maximum width of the navbar when collapsed.                                    |
+| `collapsedHeight`      | `string`    | `3.75rem`  | Height of the navbar in collapsed state.                                       |
+| `expandedWidth`        | `string`    | `95vw`     | Width of the navbar when expanded.                                             |
+| `expandedMaxWidth`     | `string`    | `48.75rem` | Maximum width of the expanded navbar.                                          |
+| `expandedHeight`       | `string`    | `28rem`    | Expanded navbar height on desktop screens.                                     |
+| `expandedHeightMobile` | `string`    | `33rem`    | Expanded navbar height on mobile devices.                                      |
+| `animationDuration`    | `number`    | `0.5`      | Duration of expand/collapse animation in seconds.                              |
+| `animationEasing`      | `array`     | `bezier`   | Cubic-bezier easing array used by Framer Motion.                               |
+| `showThemeToggle`      | `boolean`   | `true`     | Controls visibility of the theme switcher in the footer.                       |
+| `onExpand`             | `function`  | `none`     | Callback fired whenever the navbar expands or collapses.                       |

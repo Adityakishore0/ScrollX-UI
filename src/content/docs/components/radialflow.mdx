@@ -4,9 +4,9 @@ description: Dynamic radial graph for visualizing networks & hierarchies with an
 ---
 
 <ComponentPreview
-  name="radialflow-demo"
-  className=""
-  description="Interactive radial graph visualization with animated nodes and connection paths."
+  name='radialflow-demo'
+  className=''
+  description='Interactive radial graph visualization with animated nodes and connection paths.'
 />
 
 ## Installation
@@ -23,13 +23,11 @@ description: Dynamic radial graph for visualizing networks & hierarchies with an
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>radialflow.tsx</code>
-</p>
-<ComponentSource name="radialflow" />
+
+<ComponentSource name='radialflow' />
 
 </Steps>
   </TabsContent>
@@ -38,27 +36,87 @@ description: Dynamic radial graph for visualizing networks & hierarchies with an
 ## Usage
 
 ```tsx
-import { Topic, RadialFlow } from "@/components/ui/Radialflow";
+import { Topic, RadialFlow } from '@/components/ui/Radialflow';
 
 const demoTopics: Topic[] = [
-  { id: "chatgpt", name: "ChatGPT", position: { x: 10, y: 20 }, color: "#F0DB4F", highlighted: true },
-  { id: "deepseek", name: "DeepSeek", position: { x: 10, y: 35 }, color: "#F0DB4F", highlighted: true },
-  { id: "gemini", name: "Gemini", position: { x: 10, y: 50 }, color: "#F0DB4F", highlighted: true },
-  { id: "claude", name: "Claude", position: { x: 10, y: 65 }, color: "#F0DB4F", highlighted: true },
-  { id: "mistral", name: "Mistral", position: { x: 10, y: 80 }, color: "#F0DB4F", highlighted: true },
-  { id: "grok", name: "Grok", position: { x: 90, y: 20 }, color: "#F0DB4F", highlighted: true },
-  { id: "llama", name: "LLaMA", position: { x: 90, y: 35 }, color: "#F0DB4F", highlighted: true },
-  { id: "copilot", name: "Copilot", position: { x: 90, y: 50 }, color: "#F0DB4F", highlighted: true },
-  { id: "perplexity", name: "Perplexity", position: { x: 90, y: 65 }, color: "#F0DB4F", highlighted: true },
-  { id: "anthropic", name: "Anthropic", position: { x: 90, y: 80 }, color: "#F0DB4F", highlighted: true },
+  {
+    id: 'chatgpt',
+    name: 'ChatGPT',
+    position: { x: 10, y: 20 },
+    color: '#F0DB4F',
+    highlighted: true,
+  },
+  {
+    id: 'deepseek',
+    name: 'DeepSeek',
+    position: { x: 10, y: 35 },
+    color: '#F0DB4F',
+    highlighted: true,
+  },
+  {
+    id: 'gemini',
+    name: 'Gemini',
+    position: { x: 10, y: 50 },
+    color: '#F0DB4F',
+    highlighted: true,
+  },
+  {
+    id: 'claude',
+    name: 'Claude',
+    position: { x: 10, y: 65 },
+    color: '#F0DB4F',
+    highlighted: true,
+  },
+  {
+    id: 'mistral',
+    name: 'Mistral',
+    position: { x: 10, y: 80 },
+    color: '#F0DB4F',
+    highlighted: true,
+  },
+  {
+    id: 'grok',
+    name: 'Grok',
+    position: { x: 90, y: 20 },
+    color: '#F0DB4F',
+    highlighted: true,
+  },
+  {
+    id: 'llama',
+    name: 'LLaMA',
+    position: { x: 90, y: 35 },
+    color: '#F0DB4F',
+    highlighted: true,
+  },
+  {
+    id: 'copilot',
+    name: 'Copilot',
+    position: { x: 90, y: 50 },
+    color: '#F0DB4F',
+    highlighted: true,
+  },
+  {
+    id: 'perplexity',
+    name: 'Perplexity',
+    position: { x: 90, y: 65 },
+    color: '#F0DB4F',
+    highlighted: true,
+  },
+  {
+    id: 'anthropic',
+    name: 'Anthropic',
+    position: { x: 90, y: 80 },
+    color: '#F0DB4F',
+    highlighted: true,
+  },
 ];
 ```
 
 ```tsx
 <RadialFlow
   topics={demoTopics}
-  badgeName="Productivity"
-  centralDotColor="#FFFFFF"
+  badgeName='Productivity'
+  centralDotColor='#FFFFFF'
 />
 ```
 
@@ -70,11 +128,8 @@ const demoTopics: Topic[] = [
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `topics` | `Array<{   id: string;   name: string;   position: { x: number; y: number };   color: string;   highlighted: boolean; }>` | `required` | Array of topic nodes with ID, label, position, color, and highlight state. |
-| `badgeName` | `string` | `required` | Label displayed in the center badge. |
-| `centralDotColor` | `string` | `"#FFFFFF"` | Color of the center badge dot. |
-
-
+| Prop              | Type                                                                                                                      | Default     | Description                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------- |
+| `topics`          | `Array<{   id: string;   name: string;   position: { x: number; y: number };   color: string;   highlighted: boolean; }>` | `required`  | Array of topic nodes with ID, label, position, color, and highlight state. |
+| `badgeName`       | `string`                                                                                                                  | `required`  | Label displayed in the center badge.                                       |
+| `centralDotColor` | `string`                                                                                                                  | `"#FFFFFF"` | Color of the center badge dot.                                             |

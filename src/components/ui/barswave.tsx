@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+'use client';
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 interface BarsWaveProps {
   barCount?: number;
@@ -11,7 +11,7 @@ interface BarsWaveProps {
   borderColor?: string;
   barOpacity?: number;
   animationDuration?: number;
-  variant?: "filled" | "outlined";
+  variant?: 'filled' | 'outlined';
   className?: string;
   children?: React.ReactNode;
 }
@@ -24,13 +24,13 @@ export function BarsWave({
   borderColor,
   barOpacity = 1,
   animationDuration = 3,
-  variant = "outlined",
+  variant = 'outlined',
   className,
   children,
 }: BarsWaveProps) {
   const halfCount = Math.ceil(barCount / 2);
 
-  const barAnimations = React.useMemo(() => {
+  const [barAnimations] = useState(() => {
     return Array.from({ length: halfCount }, (_, i) => {
       const heights = [
         Math.random() * (maxHeight - minHeight) + minHeight,
@@ -45,7 +45,7 @@ export function BarsWave({
         duration: animationDuration + Math.random() * 2,
       };
     });
-  }, [halfCount, minHeight, maxHeight, animationDuration]);
+  });
 
   const allBars = React.useMemo(() => {
     const leftBars = barAnimations.map((bar, i) => ({
@@ -64,22 +64,22 @@ export function BarsWave({
   }, [barAnimations, halfCount, barCount]);
 
   return (
-    <div className={cn("relative overflow-hidden", className)}>
-      <div className="absolute inset-0 flex items-end justify-around gap-1 px-4">
+    <div className={cn('relative overflow-hidden', className)}>
+      <div className='absolute inset-0 flex items-end justify-around gap-1 px-4'>
         {allBars.map((bar) => (
           <motion.div
             key={bar.id}
             className={cn(
-              "w-full max-w-[80px] rounded-t-md",
-              variant === "filled"
-                ? "bg-gray-900/10 dark:bg-white/10"
-                : "bg-transparent border-2 border-gray-900/20 dark:border-white/20"
+              'w-full max-w-20 rounded-t-md',
+              variant === 'filled'
+                ? 'bg-gray-900/10 dark:bg-white/10'
+                : 'bg-transparent border-2 border-gray-900/20 dark:border-white/20',
             )}
             style={{
               ...(fillColor &&
-                variant === "filled" && { backgroundColor: fillColor }),
+                variant === 'filled' && { backgroundColor: fillColor }),
               ...(borderColor &&
-                variant === "outlined" && { borderColor: borderColor }),
+                variant === 'outlined' && { borderColor: borderColor }),
               opacity: barOpacity,
             }}
             initial={{ height: `${bar.heights[0]}%` }}
@@ -90,13 +90,13 @@ export function BarsWave({
               duration: bar.duration,
               delay: bar.delay,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: 'easeInOut',
             }}
           />
         ))}
       </div>
 
-      {children && <div className="relative z-10">{children}</div>}
+      {children && <div className='relative z-10'>{children}</div>}
     </div>
   );
 }

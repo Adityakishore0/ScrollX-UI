@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 interface AnimatedTextGenerateProps {
   text: string;
@@ -30,26 +30,35 @@ export const AnimatedTextGenerate = ({
   linkHrefs = [],
   linkClassNames = [],
 }: AnimatedTextGenerateProps) => {
+  const [currentText, setCurrentText] = useState(text);
   const [visibleCount, setVisibleCount] = useState(0);
-  const splitWords = text.split(" ");
+  const splitWords = text.split(' ');
+
+  if (currentText !== text) {
+    setCurrentText(text);
+    setVisibleCount(0);
+  }
 
   useEffect(() => {
-    setVisibleCount(0);
-    const intervalId = setInterval(() => {
-      setVisibleCount((prev) => {
-        if (prev >= splitWords.length) {
-          clearInterval(intervalId);
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, Math.max(speed * 200, 100));
+    const intervalId = setInterval(
+      () => {
+        setVisibleCount((prev) => {
+          if (prev >= splitWords.length) {
+            clearInterval(intervalId);
+            return prev;
+          }
+          return prev + 1;
+        });
+      },
+      Math.max(speed * 200, 100),
+    );
+
     return () => clearInterval(intervalId);
-  }, [text, speed, splitWords.length]);
+  }, [speed, splitWords.length]);
 
   const generateWords = () => {
     return (
-      <div className="flex flex-wrap items-center gap-1">
+      <div className='flex flex-wrap items-center gap-1'>
         {splitWords.map((word, idx) => {
           const isVisible = idx < visibleCount;
           const remaining = splitWords.length - visibleCount;
@@ -64,10 +73,10 @@ export const AnimatedTextGenerate = ({
           const isHighlight =
             highlightWords.length > 0 &&
             highlightWords.some((hw) =>
-              word.toLowerCase().includes(hw.toLowerCase())
+              word.toLowerCase().includes(hw.toLowerCase()),
             );
           const linkIndex = linkWords.findIndex((lw) =>
-            word.toLowerCase().includes(lw.toLowerCase())
+            word.toLowerCase().includes(lw.toLowerCase()),
           );
           const isLink = linkIndex !== -1;
 
@@ -77,19 +86,19 @@ export const AnimatedTextGenerate = ({
                 key={`${word}-${idx}`}
                 initial={{
                   opacity: 0,
-                  filter: blurEffect ? "blur(10px)" : "none",
+                  filter: blurEffect ? 'blur(10px)' : 'none',
                 }}
                 animate={{
                   opacity: 1,
-                  filter: blurEffect ? "blur(0px)" : "none",
+                  filter: blurEffect ? 'blur(0px)' : 'none',
                 }}
                 transition={{
                   duration: speed * 0.3,
-                  ease: "easeOut",
+                  ease: 'easeOut',
                 }}
                 className={cn(
-                  "dark:text-white text-black",
-                  isHighlight && highlightClassName
+                  'dark:text-white text-black',
+                  isHighlight && highlightClassName,
                 )}
               >
                 {word}
@@ -118,11 +127,11 @@ export const AnimatedTextGenerate = ({
                 animate={{ opacity: 0.4, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.2 }}
-                className="bg-black dark:bg-gray-600 rounded-full"
+                className='bg-black dark:bg-gray-600 rounded-full'
                 style={{
                   width: `${Math.max(word.length * 0.7, 2.5)}em`,
-                  height: "0.9em",
-                  display: "inline-block",
+                  height: '0.9em',
+                  display: 'inline-block',
                 }}
               />
             );
@@ -135,12 +144,12 @@ export const AnimatedTextGenerate = ({
   };
 
   return (
-    <div className={cn("font-bold", className)}>
-      <div className="mt-4">
+    <div className={cn('font-bold', className)}>
+      <div className='mt-4'>
         <div
           className={cn(
-            "dark:text-white text-black text-2xl leading-snug tracking-wide",
-            textClassName
+            'dark:text-white text-black text-2xl leading-snug tracking-wide',
+            textClassName,
           )}
         >
           {generateWords()}

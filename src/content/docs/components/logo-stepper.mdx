@@ -3,7 +3,7 @@ title: Logo Stepper
 description: logo showcase with names, smooth animations, hover effects, and modern UI.
 ---
 
-<ComponentPreview name="logostepper-demo" className="p-0" description="" />
+<ComponentPreview name='logostepper-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -19,21 +19,20 @@ description: logo showcase with names, smooth animations, hover effects, and mod
     <Steps>
 
     <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>logo-stepper.tsx</code>
-</p>
-<ComponentSource name="logo-stepper" />
+
+<ComponentSource name='logo-stepper' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -47,13 +46,13 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { LogoStepper } from "@/components/ui/logo-stepper";
+import { LogoStepper } from '@/components/ui/logo-stepper';
 ```
 
 ```tsx
 <LogoStepper
   logos={logos}
-  direction="loop"
+  direction='loop'
   animationDelay={1.2}
   animationDuration={0.6}
   visibleCount={5}
@@ -66,7 +65,7 @@ import { LogoStepper } from "@/components/ui/logo-stepper";
 
 <Step>Visible loop</Step>
 
-<ComponentPreview name="logosteppervloop-demo" className="p-0" description="" />
+<ComponentPreview name='logosteppervloop-demo' className='p-0' description='' />
 
 ## API Reference
 
@@ -76,14 +75,10 @@ logo showcase with names, smooth animations, hover effects, and modern UI.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `logos` | `Array<{ icon: React.ReactNode; label: string }>` | `required` | An array of logo objects, each containing an icon and a label to display. |
-| `animationDuration` | `number` | `0.6` | Duration (in seconds) for the logo transition animation using Framer Motion. |
-| `animationDelay` | `number` | `1.2` | Time delay (in seconds) between automatic transitions of the logo stepper. |
-| `direction` | `'loop' \| 'vloop'` | `'loop'` | Determines the visiblity of loop |
-| `visibleCount` | `number` | `5` | Number of logos visible at a time in the stepper viewport. |
-
-
-
+| Prop                | Type                                              | Default    | Description                                                                  |
+| ------------------- | ------------------------------------------------- | ---------- | ---------------------------------------------------------------------------- |
+| `logos`             | `Array<{ icon: React.ReactNode; label: string }>` | `required` | An array of logo objects, each containing an icon and a label to display.    |
+| `animationDuration` | `number`                                          | `0.6`      | Duration (in seconds) for the logo transition animation using Framer Motion. |
+| `animationDelay`    | `number`                                          | `1.2`      | Time delay (in seconds) between automatic transitions of the logo stepper.   |
+| `direction`         | `'loop' \| 'vloop'`                               | `'loop'`   | Determines the visiblity of loop                                             |
+| `visibleCount`      | `number`                                          | `5`        | Number of logos visible at a time in the stepper viewport.                   |

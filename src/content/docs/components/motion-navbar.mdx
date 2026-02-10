@@ -3,7 +3,7 @@ title: Motion Navbar
 description: modern react navbar with smooth animations, dropdown menus, and mobile-friendly design.
 ---
 
-<ComponentPreview name="motionnavbar-demo" className="p-0" description="" />
+<ComponentPreview name='motionnavbar-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -19,23 +19,20 @@ description: modern react navbar with smooth animations, dropdown menus, and mob
     <Steps>
 
     <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>motion-navbar.tsx</code>
-</p>
-<ComponentSource name="motion-navbar" />
+
+<ComponentSource name='motion-navbar' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -60,34 +57,33 @@ import {
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
-} from "@/components/ui/motion-navbar";
+} from '@/components/ui/motion-navbar';
 ```
 
 ```tsx
-<Navbar className="bg-black dark:bg-white text-white dark:text-black">
-      <NavbarLogo />
-      <NavBody>
-        <NavItems items={navItems} />
-        <NavDropdown label="resources" items={dropdownItems} />
-        <NavbarButton href="/get-started" variant="primary">
-          get started
-        </NavbarButton>
-      </NavBody>
+<Navbar className='bg-black dark:bg-white text-white dark:text-black'>
+  <NavbarLogo />
+  <NavBody>
+    <NavItems items={navItems} />
+    <NavDropdown label='resources' items={dropdownItems} />
+    <NavbarButton href='/get-started' variant='primary'>
+      get started
+    </NavbarButton>
+  </NavBody>
 
-      <MobileNav>
-        <MobileNavHeader>
-          <MobileNavToggle isOpen={false} onClick={() => {}} />
-        </MobileNavHeader>
-        <MobileNavMenu>
-          <NavItems items={navItems} />
-          <NavDropdown label="resources" items={dropdownItems} />
-          <NavbarButton href="/get-started" variant="primary">
-            get started
-          </NavbarButton>
-        </MobileNavMenu>
-      </MobileNav>
-    </Navbar>
-
+  <MobileNav>
+    <MobileNavHeader>
+      <MobileNavToggle isOpen={false} onClick={() => {}} />
+    </MobileNavHeader>
+    <MobileNavMenu>
+      <NavItems items={navItems} />
+      <NavDropdown label='resources' items={dropdownItems} />
+      <NavbarButton href='/get-started' variant='primary'>
+        get started
+      </NavbarButton>
+    </MobileNavMenu>
+  </MobileNav>
+</Navbar>
 ```
 
 ## API Reference
@@ -96,24 +92,19 @@ import {
 
 modern react navbar with smooth animations, dropdown menus, and mobile-friendly design.
 
-
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `Navbar` | `ReactNode` | — | Main navbar container that wraps all elements. |
-| `NavBody` | `ReactNode` | — | Holds navigation items and dropdowns (desktop view). |
-| `NavItems` | `array` | `[]` | List of navigation links with labels and hrefs. |
-| `NavDropdown` | `object` | `[]` | Dropdown menu with grouped links and optional icons. |
-| `MobileNav` | `ReactNode` | — | Container for mobile navigation layout. |
-| `MobileNavHeader` | `ReactNode` | — | Top section inside the mobile menu. |
-| `MobileNavMenu` | `ReactNode` | — | Expandable mobile menu content area. |
-| `MobileNavToggle` | `boolean \| function` | `false` | Controls open and close state of the mobile menu. |
-| `NavbarLogo` | `ReactNode` | — | Animated brand logo for the navbar. |
-| `NavbarButton` | `object` | — | Button for primary or secondary navbar actions. |
-| `NavbarDivider` | `ReactNode` | — | Visual divider between navbar sections. |
-| `className` | `string` | `''` | Optional Tailwind classes for styling. |
-
-
-
+| Prop              | Type                  | Default | Description                                          |
+| ----------------- | --------------------- | ------- | ---------------------------------------------------- |
+| `Navbar`          | `ReactNode`           | —       | Main navbar container that wraps all elements.       |
+| `NavBody`         | `ReactNode`           | —       | Holds navigation items and dropdowns (desktop view). |
+| `NavItems`        | `array`               | `[]`    | List of navigation links with labels and hrefs.      |
+| `NavDropdown`     | `object`              | `[]`    | Dropdown menu with grouped links and optional icons. |
+| `MobileNav`       | `ReactNode`           | —       | Container for mobile navigation layout.              |
+| `MobileNavHeader` | `ReactNode`           | —       | Top section inside the mobile menu.                  |
+| `MobileNavMenu`   | `ReactNode`           | —       | Expandable mobile menu content area.                 |
+| `MobileNavToggle` | `boolean \| function` | `false` | Controls open and close state of the mobile menu.    |
+| `NavbarLogo`      | `ReactNode`           | —       | Animated brand logo for the navbar.                  |
+| `NavbarButton`    | `object`              | —       | Button for primary or secondary navbar actions.      |
+| `NavbarDivider`   | `ReactNode`           | —       | Visual divider between navbar sections.              |
+| `className`       | `string`              | `''`    | Optional Tailwind classes for styling.               |

@@ -1,0 +1,101 @@
+import { visit } from 'unist-util-visit';
+import type { Root, Parent, InlineCode } from 'mdast';
+import type { MdxJsxTextElement } from 'mdast-util-mdx';
+
+export function remarkInlineFileIcons() {
+  return (tree: Root) => {
+    visit(tree, 'inlineCode', (node: InlineCode, index, parent) => {
+      if (!parent || typeof index !== 'number') return;
+
+      const value = node.value.toLowerCase();
+      let iconSvg = '';
+      let shouldTransform = false;
+
+      if (value.endsWith('.tsx') || value.endsWith('.ts')) {
+        shouldTransform = true;
+        iconSvg = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M19.131 3H4.869c-.955 0-1.73.787-1.73 1.758v14.484c0 .97.775 1.758 1.73 1.758h14.262c.956 0 1.73-.787 1.73-1.758V4.758c0-.97-.774-1.758-1.73-1.758m-5.712 9.984h-2.215v6.434H9.439v-6.434H7.223v-1.441h6.196zm5.712 5.277c-.139.317-.377.552-.658.739a3 3 0 0 1-.969.386a5.6 5.6 0 0 1-1.177.12a6.5 6.5 0 0 1-1.211-.11a3.7 3.7 0 0 1-1.004-.33v-1.689l-.066-.053l.066-.015v.068q.441.357.972.545c.347.133.727.2 1.108.2c.242 0 .426-.021.589-.06a1.4 1.4 0 0 0 .415-.168a.7.7 0 0 0 .246-.253a.7.7 0 0 0-.052-.738a1.3 1.3 0 0 0-.346-.335a3 3 0 0 0-.52-.295c-.207-.095-.418-.194-.657-.292c-.589-.281-1.053-.562-1.35-.95c-.301-.35-.45-.808-.45-1.335c0-.422.08-.76.242-1.055c.173-.316.377-.548.658-.738c.277-.193.588-.334.969-.422c.38-.088.762-.133 1.177-.133s.762.024 1.073.073c.311.05.602.127.865.229v1.652a2.3 2.3 0 0 0-.415-.242a3.8 3.8 0 0 0-.97-.275a3 3 0 0 0-.45-.033a2.4 2.4 0 0 0-.553.057a1.3 1.3 0 0 0-.416.161a.8.8 0 0 0-.26.25a.6.6 0 0 0-.093.327q0 .194.104.351q.103.152.295.296c.114.091.27.183.45.274c.207.091.394.183.623.278c.311.133.588.281.83.422c.243.14.447.305.623.492c.187.175.322.387.416.633s.142.523.142.843c0 .457-.108.809-.246 1.125'/%3E%3C/svg%3E")`;
+      } else if (value.endsWith('.css')) {
+        shouldTransform = true;
+        iconSvg = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='m3 2l1.578 17.834L12 22l7.468-2.165L21 2zm13.3 14.722l-4.293 1.204H12l-4.297-1.204l-.297-3.167h2.108l.15 1.526l2.335.639l2.34-.64l.245-3.05h-7.27l-.187-2.006h7.64l.174-2.006H6.924l-.176-2.006h10.506z'/%3E%3C/svg%3E")`;
+      } else if (value.endsWith('.json')) {
+        shouldTransform = true;
+        iconSvg = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M7.835 3.97A1 1 0 0 1 6.865 5c-.41.012-.722.077-.955.17a.87.87 0 0 0-.398.29c-.051.085-.116.263-.116.606V9.23c0 .928-.25 1.782-.84 2.459l-.01.012q-.136.15-.288.281q.159.141.3.306c.592.666.838 1.515.838 2.436v3.231c0 .34.07.514.124.598l.012.019c.062.1.152.183.323.244l.033.013c.23.092.547.158.976.17a1 1 0 0 1-.057 2c-.591-.017-1.147-.11-1.646-.307a2.57 2.57 0 0 1-1.324-1.059c-.322-.5-.441-1.084-.441-1.678v-3.23c0-.568-.147-.9-.337-1.112l-.023-.026c-.18-.214-.53-.438-1.212-.56A1 1 0 0 1 1 12.044v-.132a1 1 0 0 1 .821-.984c.665-.12 1.032-.338 1.233-.558c.198-.231.342-.578.342-1.14V6.067c0-.605.118-1.204.447-1.71l.02-.028a2.86 2.86 0 0 1 1.304-1.015c.5-.2 1.053-.295 1.639-.313a1 1 0 0 1 1.029.97m8.33 0a1 1 0 0 1 1.03-.97c.585.018 1.138.113 1.638.313a2.86 2.86 0 0 1 1.324 1.043c.33.506.447 1.105.447 1.71V9.23c0 .56.144.908.343 1.139c.2.22.567.437 1.232.558a1 1 0 0 1 .821.984v.132a1 1 0 0 1-.824.984c-.682.122-1.033.346-1.212.56l-.023.026c-.19.211-.337.544-.337 1.111v3.231c0 .594-.12 1.179-.44 1.678a2.57 2.57 0 0 1-1.325 1.06c-.499.196-1.055.289-1.646.306a1 1 0 1 1-.057-2c.429-.012.746-.078.976-.17l.029-.011l.004-.002a.58.58 0 0 0 .323-.244l.012-.02c.055-.083.124-.257.124-.597v-3.23c0-.922.246-1.771.839-2.437q.14-.165.3-.306a3 3 0 0 1-.288-.281l-.011-.012c-.59-.677-.84-1.53-.84-2.46V6.067c0-.343-.065-.521-.116-.607a.87.87 0 0 0-.398-.289c-.233-.093-.544-.158-.955-.17a1 1 0 0 1-.97-1.03M9 14a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1m3 0a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1m3 0a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1' clip-rule='evenodd'/%3E%3C/svg%3E")`;
+      }
+
+      if (!shouldTransform) return;
+
+      (parent as Parent).children[index] = {
+        type: 'mdxJsxTextElement',
+        name: 'code',
+        attributes: [
+          {
+            type: 'mdxJsxAttribute',
+            name: 'className',
+            value:
+              'inline-flex items-center gap-0.5 rounded font-mono text-xs bg-muted/50 border border-border/50 align-middle',
+          },
+        ],
+        children: [
+          {
+            type: 'mdxJsxTextElement',
+            name: 'span',
+            attributes: [
+              {
+                type: 'mdxJsxAttribute',
+                name: 'className',
+                value: 'inline-block w-5 h-5 bg-current shrink-0',
+              },
+              {
+                type: 'mdxJsxAttribute',
+                name: 'style',
+                value: {
+                  type: 'mdxJsxAttributeValueExpression',
+                  value: `{ WebkitMask: "${iconSvg} no-repeat center / contain", mask: "${iconSvg} no-repeat center / contain" }`,
+                  data: {
+                    estree: {
+                      type: 'Program',
+                      body: [
+                        {
+                          type: 'ExpressionStatement',
+                          expression: {
+                            type: 'ObjectExpression',
+                            properties: [
+                              {
+                                type: 'Property',
+                                key: { type: 'Identifier', name: 'WebkitMask' },
+                                value: {
+                                  type: 'Literal',
+                                  value: `${iconSvg} no-repeat center / contain`,
+                                },
+                                kind: 'init',
+                              },
+                              {
+                                type: 'Property',
+                                key: { type: 'Identifier', name: 'mask' },
+                                value: {
+                                  type: 'Literal',
+                                  value: `${iconSvg} no-repeat center / contain`,
+                                },
+                                kind: 'init',
+                              },
+                            ],
+                          },
+                        },
+                      ],
+                      sourceType: 'module',
+                    },
+                  },
+                } as never,
+              },
+            ],
+            children: [],
+          },
+          {
+            type: 'text',
+            value: node.value,
+          },
+        ],
+      } as MdxJsxTextElement;
+    });
+  };
+}

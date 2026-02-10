@@ -4,9 +4,9 @@ description: A lustrous text component with animated gradient shine.
 ---
 
 <ComponentPreview
-  name="lustretext-demo"
-  className=""
-  description="Interactive lustrous text effect with glowing gradient shine"
+  name='lustretext-demo'
+  className=''
+  description='Interactive lustrous text effect with glowing gradient shine'
 />
 
 ## Installation
@@ -22,13 +22,9 @@ description: A lustrous text component with animated gradient shine.
   <TabsContent value="manual">
     <Steps>
 
-
-
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>lustretext.tsx</code>
-</p>
-<ComponentSource name="lustretext" />
+
+<ComponentSource name='lustretext' />
 
 </Steps>
   </TabsContent>
@@ -41,68 +37,68 @@ description: A lustrous text component with animated gradient shine.
 ```css
 @layer utilities {
   .lustre-text {
-    @apply inline-block font-extrabold text-transparent bg-clip-text bg-[length:200%_auto] bg-[position:0%_center];
+    @apply inline-block font-extrabold text-transparent bg-clip-text bg-size-[200%_auto] bg-[position:0%_center];
   }
 
-  .lustre-light {
-    background-image: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.05) 0%,
-      rgba(0, 0, 0, 0.3) 30%,
-      rgba(0, 0, 0, 0.7) 45%,
-      #ffffff 50%,
-      rgba(0, 0, 0, 0.7) 55%,
-      rgba(0, 0, 0, 0.3) 70%,
-      rgba(0, 0, 0, 0.05) 100%
-    );
-  }
-
-  .lustre-dark {
-    background-image: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(255, 255, 255, 0.15) 30%,
-      rgba(255, 255, 255, 0.4) 45%,
-      #ffffff 50%,
-      rgba(255, 255, 255, 0.4) 55%,
-      rgba(255, 255, 255, 0.15) 70%,
-      rgba(255, 255, 255, 0.05) 100%
-    );
-  }
+.lustre-light {
+background-image: linear-gradient(
+90deg,
+rgba(0, 0, 0, 0.05) 0%,
+rgba(0, 0, 0, 0.3) 30%,
+rgba(0, 0, 0, 0.7) 45%,
+#ffffff 50%,
+rgba(0, 0, 0, 0.7) 55%,
+rgba(0, 0, 0, 0.3) 70%,
+rgba(0, 0, 0, 0.05) 100%
+);
 }
-```
+
+.lustre-dark {
+background-image: linear-gradient(
+90deg,
+rgba(255, 255, 255, 0.05) 0%,
+rgba(255, 255, 255, 0.15) 30%,
+rgba(255, 255, 255, 0.4) 45%,
+#ffffff 50%,
+rgba(255, 255, 255, 0.4) 55%,
+rgba(255, 255, 255, 0.15) 70%,
+rgba(255, 255, 255, 0.05) 100%
+);
+}
+}
+
+````
 
 `tailwind.config.ts`
 
-```jsx
-module.exports = { 
-   theme: { 
-     extend: { 
-       keyframes: { 
-         shine: { 
-           '0%': { 'background-position': '100%' }, 
-          '100%': { 'background-position': '-100%' }, 
-         }, 
-      }, 
-       animation: { 
-        shine: 'shine 5s linear infinite', 
-       }, 
-     }, 
-    }, 
-    plugins: [], 
+```tsx
+module.exports = {
+   theme: {
+     extend: {
+       keyframes: {
+         shine: {
+           '0%': { 'background-position': '100%' },
+          '100%': { 'background-position': '-100%' },
+         },
+      },
+       animation: {
+        shine: 'shine 5s linear infinite',
+       },
+     },
+    },
+    plugins: [],
  };
- ```
+````
 
 ## Usage
 
 ```tsx
-import LustreText from "@/components/ui/lustretext";
+import LustreText from '@/components/ui/lustretext';
 ```
 
 ```tsx
-<LustreText text="Shine your UI with ScrollX UI!" />
+<LustreText text='Shine your UI with ScrollX UI!' />
 ```
-
 
 ## API Reference
 
@@ -112,12 +108,9 @@ A lustrous or shiny text component that gives a glowing, reflective appearance u
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `text` | `string` | `required` | The content to display with shine animation. |
-| `disabled` | `boolean` | `false` | Disables the shine effect if true. |
-| `speed` | `number` | `5` | Animation speed in seconds. |
-| `className` | `string` | — | Optional class names for styling. |
-
-
+| Prop        | Type      | Default    | Description                                  |
+| ----------- | --------- | ---------- | -------------------------------------------- |
+| `text`      | `string`  | `required` | The content to display with shine animation. |
+| `disabled`  | `boolean` | `false`    | Disables the shine effect if true.           |
+| `speed`     | `number`  | `5`        | Animation speed in seconds.                  |
+| `className` | `string`  | —          | Optional class names for styling.            |

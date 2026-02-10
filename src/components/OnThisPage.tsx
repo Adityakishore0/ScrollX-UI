@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useEffect, useState, useRef } from "react";
-import { usePathname } from "next/navigation";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import GithubStarSpotlightCard from "@/components/githubstarspotlightcard";
-import AZFilter from "@/components/az-filter";
-import Feedback from "@/components/feedback";
+import { useEffect, useState, useRef } from 'react';
+import { usePathname } from 'next/navigation';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import GithubStarSpotlightCard from '@/components/githubstarspotlightcard';
+import AZFilter from '@/components/az-filter';
+import Feedback from '@/components/feedback';
 
 function slugify(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9 -]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
+    .replace(/[^a-z0-9 -]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
 }
 
 export default function OnThisPage() {
@@ -28,47 +28,48 @@ export default function OnThisPage() {
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const contentRoot = document.querySelector<HTMLDivElement>(".prose");
+    const contentRoot = document.querySelector<HTMLDivElement>('.prose');
     if (!contentRoot) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHeadings([]);
       return;
     }
 
     const excludedClasses = [
-      "my-6",
-      "overflow-hidden",
-      "rounded-lg",
-      "border",
-      "border-gray-200",
-      "dark:border-gray-800",
+      'my-6',
+      'overflow-hidden',
+      'rounded-lg',
+      'border',
+      'border-gray-200',
+      'dark:border-gray-800',
     ];
 
     const previewWrappers = Array.from(
-      contentRoot.querySelectorAll<HTMLDivElement>("div.my-6")
+      contentRoot.querySelectorAll<HTMLDivElement>('div.my-6'),
     ).filter((div) => excludedClasses.every((c) => div.classList.contains(c)));
 
     const rawHeadings = Array.from(
-      contentRoot.querySelectorAll<HTMLHeadingElement>("h1, h2, h3, h4")
+      contentRoot.querySelectorAll<HTMLHeadingElement>('h1, h2, h3, h4'),
     );
 
     const filtered = rawHeadings.filter(
-      (h) => !previewWrappers.some((wrapper) => wrapper.contains(h))
+      (h) => !previewWrappers.some((wrapper) => wrapper.contains(h)),
     );
 
     const slugCount = new Map<string, number>();
     const toc = filtered.map((el) => {
-      const text = el.textContent?.trim() ?? "";
+      const text = el.textContent?.trim() ?? '';
       const base = slugify(text);
       const count = slugCount.get(base) ?? 0;
       slugCount.set(base, count + 1);
       const id = count === 0 ? base : `${base}-${count}`;
       el.id = id;
-      el.style.scrollMarginTop = "100px";
+      el.style.scrollMarginTop = '100px';
       return { id, text, level: +el.tagName[1] };
     });
 
     const stopIndex = toc.findIndex(
-      (h) => h.text.toLowerCase() === "api reference"
+      (h) => h.text.toLowerCase() === 'api reference',
     );
     const truncatedToc = stopIndex === -1 ? toc : toc.slice(0, stopIndex + 1);
     setHeadings(truncatedToc);
@@ -82,11 +83,13 @@ export default function OnThisPage() {
         setContentHeight(totalHeight);
       }, 0);
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setContentHeight(0);
     }
   }, [headings]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setActiveId(null);
     setClickedId(null);
   }, [pathname]);
@@ -132,12 +135,12 @@ export default function OnThisPage() {
         }
       },
       {
-        rootMargin: "-100px 0px -70% 0px",
+        rootMargin: '-100px 0px -70% 0px',
         threshold: 1.0,
-      }
+      },
     );
 
-    const targets = document.querySelectorAll("h1, h2, h3, h4");
+    const targets = document.querySelectorAll('h1, h2, h3, h4');
     targets.forEach((target) => observer.observe(target));
 
     return () => {
@@ -154,12 +157,12 @@ export default function OnThisPage() {
 
     scrollTimeoutRef.current = setTimeout(() => {
       const activeLink = document.querySelector(
-        `a[href="#${activeId}"]`
+        `a[href="#${activeId}"]`,
       ) as HTMLElement;
       if (!activeLink) return;
 
       const scrollArea = activeLink.closest(
-        "[data-radix-scroll-area-viewport]"
+        '[data-radix-scroll-area-viewport]',
       ) as HTMLElement;
       if (!scrollArea) return;
 
@@ -180,7 +183,7 @@ export default function OnThisPage() {
           linkTop - scrollArea.clientHeight / 2 + linkRect.height / 2;
         scrollArea.scrollTo({
           top: Math.max(0, targetScroll),
-          behavior: "smooth",
+          behavior: 'smooth',
         });
       }
     }, 100);
@@ -206,8 +209,8 @@ export default function OnThisPage() {
 
     const offset = 100;
     const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.history.pushState(null, "", `#${id}`);
-    window.scrollTo({ top, behavior: "smooth" });
+    window.history.pushState(null, '', `#${id}`);
+    window.scrollTo({ top, behavior: 'smooth' });
 
     clickTimeoutRef.current = setTimeout(() => {
       setClickedId(null);
@@ -222,14 +225,14 @@ export default function OnThisPage() {
     };
   }, []);
 
-  if (pathname === "/docs/components") {
+  if (pathname === '/docs/components') {
     return (
-      <div className="relative space-y-4">
+      <div className='relative space-y-4'>
         <GithubStarSpotlightCard />
         <AZFilter
           onLetterClick={(letter) => {
             window.dispatchEvent(
-              new CustomEvent("filterByLetter", { detail: { letter } })
+              new CustomEvent('filterByLetter', { detail: { letter } }),
             );
           }}
           activeLetter={null}
@@ -241,7 +244,7 @@ export default function OnThisPage() {
 
   if (!headings.length) {
     return (
-      <div className="relative">
+      <div className='relative'>
         <Feedback />
       </div>
     );
@@ -249,39 +252,39 @@ export default function OnThisPage() {
 
   // Calculate dynamic height
   const maxHeight =
-    typeof window !== "undefined" ? window.innerHeight * 0.5 : 400;
+    typeof window !== 'undefined' ? window.innerHeight * 0.5 : 400;
   const shouldScroll = contentHeight > maxHeight;
   const dynamicHeight = shouldScroll ? maxHeight : contentHeight;
 
   return (
-    <div className="relative">
-      <h4 className="text-sm font-medium mb-4">On This Page</h4>
-      <div className="group">
+    <div className='relative'>
+      <h4 className='text-sm font-medium mb-4'>On This Page</h4>
+      <div className='group'>
         <ScrollArea
-          style={{ height: dynamicHeight > 0 ? `${dynamicHeight}px` : "auto" }}
-          className="pr-3
-          [&>[data-radix-scroll-area-viewport]]:overflow-y-auto
-          [&_[data-radix-scroll-area-scrollbar]]:opacity-0
-          [&_[data-radix-scroll-area-scrollbar]]:transition-opacity
-          [&_[data-radix-scroll-area-scrollbar]]:duration-300
-          group-hover:[&_[data-radix-scroll-area-scrollbar]]:opacity-100
-          [&_[data-radix-scroll-area-scrollbar]]:hover:bg-transparent
-          dark:[&_[data-radix-scroll-area-scrollbar]]:hover:bg-transparent"
+          style={{ height: dynamicHeight > 0 ? `${dynamicHeight}px` : 'auto' }}
+          className='pr-3
+          *:data-radix-scroll-area-viewport:overflow-y-auto
+          **:data-radix-scroll-area-scrollbar:opacity-0
+          **:data-radix-scroll-area-scrollbar:transition-opacity
+          **:data-radix-scroll-area-scrollbar:duration-300
+          **:data-radix-scroll-area-scrollbar:group-hover:opacity-100
+          hover:**:data-radix-scroll-area-scrollbar:bg-transparent
+          dark:hover:**:data-radix-scroll-area-scrollbar:bg-transparent'
         >
-          <nav ref={navRef} className="space-y-1">
+          <nav ref={navRef} className='space-y-1'>
             {headings.map((h) => {
               const isActive = activeId === h.id;
               const base =
-                "flex w-fit transition-all relative text-sm py-1 px-2 rounded transition-colors";
-              const level = h.level === 2 ? "font-medium" : "pl-4";
+                'flex w-fit transition-all relative text-sm py-1 px-2 rounded transition-colors';
+              const level = h.level === 2 ? 'font-medium' : 'pl-4';
               const hover =
-                "hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black";
+                'hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black';
               const active =
-                "bg-black text-white dark:bg-white dark:text-black";
+                'bg-black text-white dark:bg-white dark:text-black';
               const inactive =
                 h.level === 2
-                  ? "text-black dark:text-white"
-                  : "text-gray-600 dark:text-gray-400";
+                  ? 'text-black dark:text-white'
+                  : 'text-gray-600 dark:text-gray-400';
               const className = `${base} ${level} ${
                 isActive ? active : `${inactive} ${hover}`
               }`;

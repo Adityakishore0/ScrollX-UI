@@ -1,8 +1,8 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 
-type AnimationDirection = "loop" | "vloop";
+type AnimationDirection = 'loop' | 'vloop';
 
 interface LogoItem {
   icon: React.ReactNode;
@@ -21,7 +21,7 @@ export const LogoStepper: React.FC<LogoStepperProps> = ({
   logos,
   animationDuration = 0.6,
   animationDelay = 1.2,
-  direction = "loop",
+  direction = 'loop',
   visibleCount = 5,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,12 +53,12 @@ export const LogoStepper: React.FC<LogoStepperProps> = ({
   const visibleLogos = getVisibleLogos();
 
   return (
-    <div className="relative w-full flex items-start justify-center overflow-hidden py-4">
+    <div className='relative w-full flex items-start justify-center overflow-hidden py-4'>
       <div
-        className="flex items-start justify-center gap-6"
-        style={{ width: "fit-content" }}
+        className='flex items-start justify-center gap-6'
+        style={{ width: 'fit-content' }}
       >
-        <AnimatePresence initial={false} mode="popLayout">
+        <AnimatePresence initial={false} mode='popLayout'>
           {visibleLogos.map(({ logo, originalIndex, position }) => {
             let lineOpacity = 0;
             if (position === 0) lineOpacity = 1;
@@ -68,9 +68,9 @@ export const LogoStepper: React.FC<LogoStepperProps> = ({
             return (
               <motion.div
                 key={originalIndex}
-                layout="position"
+                layout='position'
                 initial={{
-                  x: direction === "loop" ? 120 : -120,
+                  x: direction === 'loop' ? 120 : -120,
                   opacity: 0,
                   scale: 0.7,
                 }}
@@ -80,7 +80,7 @@ export const LogoStepper: React.FC<LogoStepperProps> = ({
                   scale: position === 0 ? 1 : 0.75,
                 }}
                 exit={{
-                  x: direction === "loop" ? -120 : 120,
+                  x: direction === 'loop' ? -120 : 120,
                   opacity: 0,
                   scale: 0.7,
                 }}
@@ -88,10 +88,10 @@ export const LogoStepper: React.FC<LogoStepperProps> = ({
                   duration: animationDuration,
                   ease: [0.4, 0, 0.2, 1],
                 }}
-                className="flex flex-col items-center flex-shrink-0 min-h-[200px] w-[80px]"
+                className='flex flex-col items-center shrink-0 min-h-50 w-20'
               >
-                <motion.div className="rounded-xl border border-border bg-card p-4 hover:border-primary transition-colors">
-                  <div className="w-12 h-12 flex items-center justify-center">
+                <motion.div className='rounded-xl border border-border bg-card p-4 hover:border-primary transition-colors'>
+                  <div className='w-12 h-12 flex items-center justify-center'>
                     {logo.icon}
                   </div>
                 </motion.div>
@@ -104,10 +104,10 @@ export const LogoStepper: React.FC<LogoStepperProps> = ({
                     duration: animationDuration,
                     ease: [0.4, 0, 0.2, 1],
                   }}
-                  className="flex flex-col items-center mt-4 h-28"
+                  className='flex flex-col items-center mt-4 h-28'
                 >
-                  <div className="w-0.5 h-16 mb-4 bg-border" />
-                  <span className="text-muted-foreground uppercase text-xs font-medium tracking-wider whitespace-nowrap">
+                  <div className='w-0.5 h-16 mb-4 bg-border' />
+                  <span className='text-muted-foreground uppercase text-xs font-medium tracking-wider whitespace-nowrap'>
                     {logo.label}
                   </span>
                 </motion.div>

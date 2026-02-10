@@ -4,9 +4,9 @@ description: Animated statistics counter with responsive layout and scroll trigg
 ---
 
 <ComponentPreview
-  name="statscount-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An Animated statistics counter"
+  name='statscount-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An Animated statistics counter'
 />
 
 ## Installation
@@ -23,23 +23,19 @@ description: Animated statistics counter with responsive layout and scroll trigg
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>statscount.tsx</code>
-</p>
-<ComponentSource name="statscount" />
+
+<ComponentSource name='statscount' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,22 +49,22 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import StatsCount from "@/components/ui/statscount";
+import StatsCount from '@/components/ui/statscount';
 
- const stats = [
-   { value: 30, suffix: "+", label: "Handcrafted animated components" },
-   { value: 12, suffix: "K+", label: "Developers building with ScrollX-UI"},
-   { value: 99, suffix: "%", label: "Performance optimized for web"},
- ];
+const stats = [
+  { value: 30, suffix: '+', label: 'Handcrafted animated components' },
+  { value: 12, suffix: 'K+', label: 'Developers building with ScrollX-UI' },
+  { value: 99, suffix: '%', label: 'Performance optimized for web' },
+];
 ```
 
 ```tsx
 <StatsCount
-    stats={stats}
-    title="CREATE STUNNING INTERFACES WITH SCROLLX-UI COMPONENTS"
-    showDividers={true}
-    className=""
-  />
+  stats={stats}
+  title='CREATE STUNNING INTERFACES WITH SCROLLX-UI COMPONENTS'
+  showDividers={true}
+  className=''
+/>
 ```
 
 ## API Reference
@@ -79,13 +75,9 @@ The root component for displaying animated, responsive statistics counters with 
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `stats` | `Array<{ value: number; suffix?: string; label: string; duration?: number }>` | — | Array of stat items with value, label, optional suffix, and animation duration. |
-| `title` | `string` | — | Custom title text; splits on 'WITH' for responsiveness. |
-| `showDividers` | `boolean` | `true` | Show or hide vertical divider lines. |
-| `className` | `string` | — | Optional class for styling the container. |
-
-
-
+| Prop           | Type                                                                          | Default | Description                                                                     |
+| -------------- | ----------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------- |
+| `stats`        | `Array<{ value: number; suffix?: string; label: string; duration?: number }>` | —       | Array of stat items with value, label, optional suffix, and animation duration. |
+| `title`        | `string`                                                                      | —       | Custom title text; splits on 'WITH' for responsiveness.                         |
+| `showDividers` | `boolean`                                                                     | `true`  | Show or hide vertical divider lines.                                            |
+| `className`    | `string`                                                                      | —       | Optional class for styling the container.                                       |

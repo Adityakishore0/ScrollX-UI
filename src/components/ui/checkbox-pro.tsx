@@ -1,10 +1,10 @@
-"use client";
-import * as React from "react";
-import { CheckIcon, MinusIcon } from "lucide-react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+'use client';
+import * as React from 'react';
+import { CheckIcon, MinusIcon } from 'lucide-react';
+import { motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
-type CheckedState = boolean | "indeterminate";
+type CheckedState = boolean | 'indeterminate';
 
 interface CheckboxProProps {
   className?: string;
@@ -18,9 +18,9 @@ interface CheckboxProProps {
   required?: boolean;
   asChild?: boolean;
   forceMount?: boolean;
-  "aria-label"?: string;
-  "aria-labelledby"?: string;
-  "aria-describedby"?: string;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+  'aria-describedby'?: string;
 }
 
 function AsChild({
@@ -37,7 +37,7 @@ function AsChild({
       ...props,
       className: cn(
         (children.props as { className?: string }).className,
-        props.className
+        props.className,
       ),
     } as React.HTMLAttributes<HTMLElement>);
   }
@@ -56,9 +56,9 @@ function CheckboxPro({
   required = false,
   asChild = false,
   forceMount = false,
-  "aria-label": ariaLabel,
-  "aria-labelledby": ariaLabelledby,
-  "aria-describedby": ariaDescribedby,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledby,
+  'aria-describedby': ariaDescribedby,
   children,
   ...props
 }: CheckboxProProps &
@@ -71,14 +71,14 @@ function CheckboxPro({
 
   const isControlled = checkedProp !== undefined;
   const checked = isControlled ? checkedProp : internalChecked;
-  const isIndeterminate = checked === "indeterminate";
+  const isIndeterminate = checked === 'indeterminate';
   const isChecked = checked === true;
 
   const getDataState = (
-    checked: CheckedState
-  ): "checked" | "unchecked" | "indeterminate" => {
-    if (checked === "indeterminate") return "indeterminate";
-    return checked ? "checked" : "unchecked";
+    checked: CheckedState,
+  ): 'checked' | 'unchecked' | 'indeterminate' => {
+    if (checked === 'indeterminate') return 'indeterminate';
+    return checked ? 'checked' : 'unchecked';
   };
 
   const handleToggle = React.useCallback(() => {
@@ -118,17 +118,17 @@ function CheckboxPro({
     (event: React.KeyboardEvent<HTMLButtonElement>) => {
       setIsKeyboardUser(true);
 
-      if (event.key === " ") {
+      if (event.key === ' ') {
         event.preventDefault();
         event.stopPropagation();
         handleToggle();
-      } else if (event.key === "Enter") {
+      } else if (event.key === 'Enter') {
         event.preventDefault();
         event.stopPropagation();
         handleToggle();
       }
     },
-    [handleToggle]
+    [handleToggle],
   );
 
   const handleClick = React.useCallback(
@@ -138,14 +138,14 @@ function CheckboxPro({
       event.stopPropagation();
       handleToggle();
     },
-    [handleToggle]
+    [handleToggle],
   );
 
   const handleFocus = React.useCallback(
     (event: React.FocusEvent<HTMLButtonElement>) => {
       props.onFocus?.(event);
     },
-    [props]
+    [props],
   );
 
   const handleBlur = React.useCallback(
@@ -153,12 +153,12 @@ function CheckboxPro({
       setIsKeyboardUser(false);
       props.onBlur?.(event);
     },
-    [props]
+    [props],
   );
 
   React.useEffect(() => {
     const handleGlobalKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Tab") {
+      if (event.key === 'Tab') {
         setIsKeyboardUser(true);
       }
     };
@@ -167,17 +167,17 @@ function CheckboxPro({
       setIsKeyboardUser(false);
     };
 
-    document.addEventListener("keydown", handleGlobalKeyDown);
-    document.addEventListener("mousedown", handleGlobalMouseDown);
+    document.addEventListener('keydown', handleGlobalKeyDown);
+    document.addEventListener('mousedown', handleGlobalMouseDown);
 
     return () => {
-      document.removeEventListener("keydown", handleGlobalKeyDown);
-      document.removeEventListener("mousedown", handleGlobalMouseDown);
+      document.removeEventListener('keydown', handleGlobalKeyDown);
+      document.removeEventListener('mousedown', handleGlobalMouseDown);
     };
   }, []);
 
-  const getAriaChecked = (checked: CheckedState): boolean | "mixed" => {
-    if (checked === "indeterminate") return "mixed";
+  const getAriaChecked = (checked: CheckedState): boolean | 'mixed' => {
+    if (checked === 'indeterminate') return 'mixed';
     return checked === true;
   };
 
@@ -185,8 +185,8 @@ function CheckboxPro({
     <motion.button
       ref={buttonRef}
       key={`checkbox-${animationKey}`}
-      type="button"
-      role="checkbox"
+      type='button'
+      role='checkbox'
       aria-checked={getAriaChecked(checked)}
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledby}
@@ -195,15 +195,15 @@ function CheckboxPro({
       disabled={disabled}
       id={id}
       data-state={getDataState(checked)}
-      data-disabled={disabled ? "" : undefined}
+      data-disabled={disabled ? '' : undefined}
       className={cn(
-        "relative peer border bg-input-background dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground dark:data-[state=checked]:bg-primary dark:data-[state=indeterminate]:bg-primary data-[state=checked]:border-primary data-[state=indeterminate]:border-primary size-4 shrink-0 rounded-[4px] shadow-xs transition-colors outline-none",
+        'relative peer border bg-input-background dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground dark:data-[state=checked]:bg-primary dark:data-[state=indeterminate]:bg-primary data-[state=checked]:border-primary data-[state=indeterminate]:border-primary size-4 shrink-0 rounded-[4px] shadow-2xs transition-colors outline-hidden',
         isKeyboardUser &&
-          "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         disabled
-          ? "opacity-50 cursor-not-allowed"
-          : "cursor-pointer hover:bg-accent/50",
-        className
+          ? 'opacity-50 cursor-not-allowed'
+          : 'cursor-pointer hover:bg-accent/50',
+        className,
       )}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
@@ -219,14 +219,14 @@ function CheckboxPro({
       }}
       transition={{
         duration: 0.4,
-        ease: "easeInOut",
+        ease: 'easeInOut',
         times: [0, 0.15, 0.3, 0.5, 0.7, 1],
       }}
       whileHover={
         disabled ? {} : { scale: 1.05, transition: { duration: 0.1 } }
       }
       whileTap={disabled ? {} : { scale: 0.95, transition: { duration: 0.05 } }}
-      style={{ transformOrigin: "center" }}
+      style={{ transformOrigin: 'center' }}
     >
       {(forceMount || isChecked || isIndeterminate) && (
         <CheckboxProIndicator forceMount={forceMount} checked={checked} />
@@ -236,14 +236,14 @@ function CheckboxPro({
 
   const hiddenInput = (name || value) && (
     <input
-      type="checkbox"
+      type='checkbox'
       name={name}
       value={value}
       checked={isChecked}
       onChange={() => {}}
       tabIndex={-1}
-      aria-hidden="true"
-      className="sr-only absolute -left-[9999px]"
+      aria-hidden='true'
+      className='sr-only absolute -left-2499.75'
       disabled={disabled}
       required={required}
     />
@@ -277,7 +277,7 @@ function CheckboxProIndicator({
   asChild = false,
   children,
 }: CheckboxProIndicatorProps) {
-  const isIndeterminate = checked === "indeterminate";
+  const isIndeterminate = checked === 'indeterminate';
   const isChecked = checked === true;
   const shouldShow = forceMount || isChecked || isIndeterminate;
 
@@ -285,10 +285,10 @@ function CheckboxProIndicator({
 
   const indicator = (
     <motion.div
-      data-slot="checkbox-indicator"
+      data-slot='checkbox-indicator'
       className={cn(
-        "flex items-center justify-center text-current w-full h-full pointer-events-none absolute inset-0",
-        className
+        'flex items-center justify-center text-current w-full h-full pointer-events-none absolute inset-0',
+        className,
       )}
       initial={{ scale: 0, opacity: 0, rotate: isIndeterminate ? 0 : -90 }}
       animate={{ scale: 1, opacity: 1, rotate: 0 }}
@@ -296,7 +296,7 @@ function CheckboxProIndicator({
       transition={{
         delay: 0.1,
         duration: 0.2,
-        type: "spring",
+        type: 'spring',
         stiffness: 400,
         damping: 25,
       }}
@@ -306,16 +306,16 @@ function CheckboxProIndicator({
         animate={{ scale: 1 }}
         transition={{
           delay: 0.15,
-          type: "spring",
+          type: 'spring',
           stiffness: 600,
           damping: 30,
           duration: 0.15,
         }}
       >
         {isIndeterminate ? (
-          <MinusIcon className="size-3.5 pointer-events-none" />
+          <MinusIcon className='size-3.5 pointer-events-none' />
         ) : (
-          <CheckIcon className="size-3.5 pointer-events-none" />
+          <CheckIcon className='size-3.5 pointer-events-none' />
         )}
       </motion.div>
     </motion.div>

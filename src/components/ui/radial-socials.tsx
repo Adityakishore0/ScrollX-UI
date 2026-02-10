@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect, createContext, useContext } from "react";
-import { cn } from "@/lib/utils";
+import React, { useState, useEffect, createContext, useContext } from 'react';
+import { cn } from '@/lib/utils';
 
 interface RadialSocialsContextType {
   animatedIcons: Set<string>;
@@ -10,7 +10,7 @@ interface RadialSocialsContextType {
   expandDuration: number;
   calculatePosition: (
     radius: number,
-    angle: number
+    angle: number,
   ) => { x: number; y: number };
 }
 
@@ -65,14 +65,14 @@ interface RadialSocialsContentInternalProps extends RadialSocialsContentProps {
 }
 
 const RadialSocialsContext = createContext<RadialSocialsContextType | null>(
-  null
+  null,
 );
 
 const useRadialSocials = () => {
   const context = useContext(RadialSocialsContext);
   if (!context) {
     throw new Error(
-      "RadialSocials components must be used within RadialSocials"
+      'RadialSocials components must be used within RadialSocials',
     );
   }
   return context;
@@ -92,7 +92,7 @@ const RadialIcon = React.forwardRef<HTMLDivElement, InternalRadialIconProps>(
       angle,
       ...props
     },
-    ref
+    ref,
   ) => {
     const {
       animatedIcons,
@@ -108,15 +108,15 @@ const RadialIcon = React.forwardRef<HTMLDivElement, InternalRadialIconProps>(
     return (
       <div
         ref={ref}
-        className="absolute"
+        className='absolute'
         style={{
-          left: "50%",
-          top: "50%",
+          left: '50%',
+          top: '50%',
           marginLeft: `-20px`,
           marginTop: `-20px`,
           transform: isAnimated
             ? `translate(${position.x}px, ${position.y}px) scale(1)`
-            : "translate(0px, 0px) scale(0)",
+            : 'translate(0px, 0px) scale(0)',
           transition: `transform ${expandDuration}ms cubic-bezier(0.34, 1.56, 0.64, 1)`,
           opacity: isAnimated ? 1 : 0,
         }}
@@ -124,22 +124,22 @@ const RadialIcon = React.forwardRef<HTMLDivElement, InternalRadialIconProps>(
       >
         <div
           className={cn(
-            "flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-card/90 text-card-foreground hover:bg-card hover:text-card-foreground transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-border/50 shadow-lg",
-            className
+            'flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-card/90 text-card-foreground hover:bg-card hover:text-card-foreground transition-all duration-300 hover:scale-110 backdrop-blur-xs border border-border/50 shadow-lg',
+            className,
           )}
           style={{
             animation: rotationStarted
               ? `counter-rotate-${circleIndex} ${duration}s linear infinite`
-              : "none",
+              : 'none',
           }}
         >
-          <div className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center">
+          <div className='w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center'>
             {icon}
           </div>
         </div>
       </div>
     );
-  }
+  },
 );
 
 const RadialCircular = React.forwardRef<
@@ -158,47 +158,47 @@ const RadialCircular = React.forwardRef<
       startAngle = 0,
       ...props
     },
-    ref
+    ref,
   ) => {
     const { rotationStarted } = useRadialSocials();
 
     const icons = React.Children.toArray(children).filter(
       (child): child is React.ReactElement<InternalRadialIconProps> =>
-        React.isValidElement(child) && child.type === RadialIcon
+        React.isValidElement(child) && child.type === RadialIcon,
     );
 
     return (
-      <div ref={ref} className="absolute inset-0" {...props}>
+      <div ref={ref} className='absolute inset-0' {...props}>
         <div
           className={cn(
-            "absolute rounded-full border-2 border-black/30 dark:border-white/30",
+            'absolute rounded-full border-2 border-black/30 dark:border-white/30',
             circleLineClassName,
-            className
+            className,
           )}
           style={{
             width: `${radius * 2}px`,
             height: `${radius * 2}px`,
-            left: "50%",
-            top: "50%",
+            left: '50%',
+            top: '50%',
             marginLeft: `-${radius}px`,
             marginTop: `-${radius}px`,
             boxShadow:
-              "0 0 10px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 255, 255, 0.1)",
+              '0 0 10px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 255, 255, 0.1)',
           }}
         />
 
         <div
-          className="absolute"
+          className='absolute'
           style={{
             width: `${radius * 2}px`,
             height: `${radius * 2}px`,
-            left: "50%",
-            top: "50%",
+            left: '50%',
+            top: '50%',
             marginLeft: `-${radius}px`,
             marginTop: `-${radius}px`,
             animation: rotationStarted
               ? `rotate-${circleIndex} ${duration}s linear infinite`
-              : "none",
+              : 'none',
           }}
         >
           {React.Children.map(children, (child, iconIndex) => {
@@ -221,7 +221,7 @@ const RadialCircular = React.forwardRef<
         </div>
       </div>
     );
-  }
+  },
 );
 
 const RadialSocials = React.forwardRef<HTMLDivElement, RadialSocialsProps>(
@@ -233,7 +233,7 @@ const RadialSocials = React.forwardRef<HTMLDivElement, RadialSocialsProps>(
       expandDuration = 800,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [animatedIcons, setAnimatedIcons] = useState<Set<string>>(new Set());
     const [rotationStarted, setRotationStarted] = useState(false);
@@ -248,22 +248,37 @@ const RadialSocials = React.forwardRef<HTMLDivElement, RadialSocialsProps>(
     };
 
     useEffect(() => {
-      if (totalIcons > 0) {
+      if (totalIcons === 0) return;
+
+      // Schedule all state updates asynchronously to avoid cascading renders
+      const timeouts: NodeJS.Timeout[] = [];
+
+      // Reset icons asynchronously
+      const resetTimeout = setTimeout(() => {
         setAnimatedIcons(new Set());
+      }, 0);
+      timeouts.push(resetTimeout);
 
-        Array.from({ length: totalIcons }, (_, index) => index).forEach(
-          (index) => {
-            setTimeout(() => {
-              setAnimatedIcons((prev) => new Set([...prev, index.toString()]));
-            }, index * animationDelay);
-          }
-        );
+      // Animate icons one by one
+      Array.from({ length: totalIcons }, (_, index) => index).forEach(
+        (index) => {
+          const timeout = setTimeout(() => {
+            setAnimatedIcons((prev) => new Set([...prev, index.toString()]));
+          }, index * animationDelay);
+          timeouts.push(timeout);
+        },
+      );
 
-        const totalAnimationTime = totalIcons * animationDelay + expandDuration;
-        setTimeout(() => {
-          setRotationStarted(true);
-        }, totalAnimationTime);
-      }
+      // Start rotation after all animations complete
+      const totalAnimationTime = totalIcons * animationDelay + expandDuration;
+      const rotationTimeout = setTimeout(() => {
+        setRotationStarted(true);
+      }, totalAnimationTime);
+      timeouts.push(rotationTimeout);
+
+      return () => {
+        timeouts.forEach((timeout) => clearTimeout(timeout));
+      };
     }, [totalIcons, animationDelay, expandDuration]);
 
     const contextValue: RadialSocialsContextType = {
@@ -276,7 +291,7 @@ const RadialSocials = React.forwardRef<HTMLDivElement, RadialSocialsProps>(
 
     return (
       <RadialSocialsContext.Provider value={contextValue}>
-        <div ref={ref} className={cn("w-full h-full", className)} {...props}>
+        <div ref={ref} className={cn('w-full h-full', className)} {...props}>
           {React.Children.map(children, (child) => {
             if (
               React.isValidElement<RadialSocialsContentInternalProps>(child)
@@ -288,7 +303,7 @@ const RadialSocials = React.forwardRef<HTMLDivElement, RadialSocialsProps>(
         </div>
       </RadialSocialsContext.Provider>
     );
-  }
+  },
 );
 
 const RadialSocialsContent = React.forwardRef<
@@ -297,11 +312,11 @@ const RadialSocialsContent = React.forwardRef<
 >(
   (
     { children, className, containerClassName, setTotalIcons, ...props },
-    ref
+    ref,
   ) => {
     const circles = React.Children.toArray(children).filter(
       (child): child is React.ReactElement<InternalRadialCircularProps> =>
-        React.isValidElement(child) && child.type === RadialCircular
+        React.isValidElement(child) && child.type === RadialCircular,
     );
 
     useEffect(() => {
@@ -310,7 +325,7 @@ const RadialSocialsContent = React.forwardRef<
       circles.forEach((circle) => {
         const icons = React.Children.toArray(circle.props.children).filter(
           (child): child is React.ReactElement<InternalRadialIconProps> =>
-            React.isValidElement(child) && child.type === RadialIcon
+            React.isValidElement(child) && child.type === RadialIcon,
         );
         totalIconCount += icons.length;
       });
@@ -320,68 +335,95 @@ const RadialSocialsContent = React.forwardRef<
       }
     }, [children, setTotalIcons, circles]);
 
-    let cumulativeIconCount = 0;
-    const circlesWithIconCount = circles.map((circle) => {
+    useEffect(() => {
+      const styleId = 'radial-socials-keyframes';
+      let styleElement = document.getElementById(styleId) as HTMLStyleElement;
+
+      if (!styleElement) {
+        styleElement = document.createElement('style');
+        styleElement.id = styleId;
+        document.head.appendChild(styleElement);
+      }
+
+      const keyframes = circles
+        .map(
+          (_, index) => `
+          @keyframes rotate-${index} {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+          @keyframes counter-rotate-${index} {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+          }
+        `,
+        )
+        .join('\n');
+
+      styleElement.textContent = keyframes;
+
+      return () => {
+        if (styleElement && styleElement.parentNode) {
+          styleElement.parentNode.removeChild(styleElement);
+        }
+      };
+    }, [circles, circles.length]);
+
+    const circlesWithIconCount = circles.reduce<
+      Array<{
+        circle: React.ReactElement<InternalRadialCircularProps>;
+        startIndex: number;
+        iconCount: number;
+      }>
+    >((acc, circle) => {
       const icons = React.Children.toArray(circle.props.children).filter(
         (child): child is React.ReactElement<InternalRadialIconProps> =>
-          React.isValidElement(child) && child.type === RadialIcon
+          React.isValidElement(child) && child.type === RadialIcon,
       );
-      const startIndex = cumulativeIconCount;
-      cumulativeIconCount += icons.length;
-      return { circle, startIndex, iconCount: icons.length };
-    });
+      const startIndex =
+        acc.length > 0
+          ? acc[acc.length - 1].startIndex + acc[acc.length - 1].iconCount
+          : 0;
+      acc.push({
+        circle: circle as React.ReactElement<InternalRadialCircularProps>,
+        startIndex,
+        iconCount: icons.length,
+      });
+      return acc;
+    }, []);
 
     return (
-      <>
+      <div
+        ref={ref}
+        className={cn(
+          'w-full h-full flex items-center justify-center p-4',
+          containerClassName,
+        )}
+        {...props}
+      >
         <div
-          ref={ref}
           className={cn(
-            "w-full h-full flex items-center justify-center p-4",
-            containerClassName
+            'relative aspect-square w-full max-w-md flex items-center justify-center',
+            className,
           )}
-          {...props}
         >
-          <div
-            className={cn(
-              "relative aspect-square w-full max-w-md flex items-center justify-center",
-              className
-            )}
-          >
-            {circlesWithIconCount.map(({ circle, startIndex }, circleIndex) => {
-              return React.cloneElement(circle, {
-                circleIndex,
-                globalIconStartIndex: startIndex,
-                key: circleIndex,
-              });
-            })}
-          </div>
+          {circlesWithIconCount.map(({ circle, startIndex }, circleIndex) => {
+            return React.cloneElement(circle, {
+              circleIndex,
+              globalIconStartIndex: startIndex,
+              key: circleIndex,
+            });
+          })}
         </div>
-
-        <style jsx>{`
-          ${circles
-            .map(
-              (_, index) => `
-            @keyframes rotate-${index} {
-              from { transform: rotate(0deg); }
-              to { transform: rotate(360deg); }
-            }
-            @keyframes counter-rotate-${index} {
-              from { transform: rotate(0deg); }
-              to { transform: rotate(-360deg); }
-            }
-          `
-            )
-            .join("\n")}
-        `}</style>
-      </>
+      </div>
     );
-  }
+  },
 );
 
-RadialSocials.displayName = "RadialSocials";
-RadialSocialsContent.displayName = "RadialSocialsContent";
-RadialCircular.displayName = "RadialCircular";
-RadialIcon.displayName = "RadialIcon";
+RadialSocials.displayName = 'RadialSocials';
+RadialSocialsContent.displayName = 'RadialSocialsContent';
+RadialCircular.displayName = 'RadialCircular';
+RadialIcon.displayName = 'RadialIcon';
 
 export {
   RadialSocials,

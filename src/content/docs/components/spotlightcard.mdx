@@ -4,9 +4,9 @@ description: An interactive card with a spotlight hover effect that highlights c
 ---
 
 <ComponentPreview
-  name="spotlightcard-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An interactive card component with spotlight hover effect"
+  name='spotlightcard-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An interactive card component with spotlight hover effect'
 />
 
 ## Installation
@@ -23,13 +23,11 @@ description: An interactive card with a spotlight hover effect that highlights c
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>spotlightcard.tsx</code>
-</p>
-<ComponentSource name="spotlightcard" />
+
+<ComponentSource name='spotlightcard' />
 
 </Steps>
   </TabsContent>
@@ -38,18 +36,18 @@ description: An interactive card with a spotlight hover effect that highlights c
 ## Usage
 
 ```tsx
-import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { SpotlightCard } from '@/components/ui/spotlight-card';
 ```
 
 ```tsx
-<SpotlightCard className="w-80 h-72" spotlightColor="34, 211, 238">
-    <div className="w-full h-full flex flex-col items-center justify-center text-center">
-      <h3 className="text-xl font-semibold mb-1">Spotlight Card</h3>
-      <p className="text-sm text-muted-foreground">
-        Hover to see the spotlight effect.
-      </p>
-    </div>
-  </SpotlightCard>
+<SpotlightCard className='w-80 h-72' spotlightColor='34, 211, 238'>
+  <div className='w-full h-full flex flex-col items-center justify-center text-center'>
+    <h3 className='text-xl font-semibold mb-1'>Spotlight Card</h3>
+    <p className='text-sm text-muted-foreground'>
+      Hover to see the spotlight effect.
+    </p>
+  </div>
+</SpotlightCard>
 ```
 
 ## API Reference
@@ -60,12 +58,8 @@ The root component that creates the spotlight effect card.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `spotlightColor` | `string` | `"14, 165, 233"` | RGB values for spotlight glow. |
-| `className` | `string` | — | Optional class for custom styling. |
-| `children` | `ReactNode` | `optional` | Content rendered inside the spotlight container. |
-
-
-
+| Prop             | Type        | Default          | Description                                      |
+| ---------------- | ----------- | ---------------- | ------------------------------------------------ |
+| `spotlightColor` | `string`    | `"14, 165, 233"` | RGB values for spotlight glow.                   |
+| `className`      | `string`    | —                | Optional class for custom styling.               |
+| `children`       | `ReactNode` | `optional`       | Content rendered inside the spotlight container. |

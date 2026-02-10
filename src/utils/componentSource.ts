@@ -1,23 +1,23 @@
-import { demoComponents } from "@/app/registry/demos";
-
-const sources: Record<string, () => Promise<string>> = demoComponents.reduce(
-  (acc, name) => {
-    acc[name] = async () =>
-      (await import(`@/components/demos/${name}.tsx?raw`)).default;
-    return acc;
-  },
-  {} as Record<string, () => Promise<string>>
-);
+import fs from 'fs';
+import path from 'path';
+import { demoComponents } from '@/app/registry/demos';
 
 export async function getComponentSource(name: string): Promise<string> {
   try {
-    if (sources[name]) {
-      const mod = await sources[name]();
-      return mod;
-    } else {
+    if (!(demoComponents as readonly string[]).includes(name)) {
       return `// Source for ${name} not found`;
     }
+
+    const filePath = path.join(
+      process.cwd(),
+      'src/components/demos',
+      `${name}.tsx`,
+    );
+
+    const source = fs.readFileSync(filePath, 'utf-8');
+    return source;
   } catch (error) {
+    console.error(`Error loading source for ${name}:`, error);
     return `// Error loading source for ${name}`;
   }
 }

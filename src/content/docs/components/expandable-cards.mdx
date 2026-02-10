@@ -4,9 +4,9 @@ description: Interactive card layout where hovered cards expand smoothly for foc
 ---
 
 <ComponentPreview
-  name="expandablecards-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An interactive card component with  hover effect"
+  name='expandablecards-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An interactive card component with  hover effect'
 />
 
 ## Installation
@@ -23,23 +23,19 @@ description: Interactive card layout where hovered cards expand smoothly for foc
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>expandable-cards.tsx</code>
-</p>
-<ComponentSource name="expandable-cards" />
+
+<ComponentSource name='expandable-cards' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,15 +49,12 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import ExpandableCards from "@/components/ui/expandable-cards";
+import ExpandableCards from '@/components/ui/expandable-cards';
 ```
 
 ```tsx
-<div className="h-[100px] sm:h-[300px] w-full select-none">
-  <ExpandableCards
-    cards={cards}
-    defaultExpanded={3}
-  />
+<div className='h-25 sm:h-75 w-full select-none'>
+  <ExpandableCards cards={cards} defaultExpanded={3} />
 </div>
 ```
 
@@ -73,13 +66,8 @@ Interactive card layout where hovered cards expand smoothly for focused content 
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `cards` | `ExpandableCard[]` | `required` | Array of card objects, each containing an id and JSX content. |
-| `defaultExpanded` | `number` | `1` | ID of the card that should be expanded initially. |
-| `className` | `string` | — | Optional additional class for custom styling of the container. |
-
-
-
-
+| Prop              | Type               | Default    | Description                                                    |
+| ----------------- | ------------------ | ---------- | -------------------------------------------------------------- |
+| `cards`           | `ExpandableCard[]` | `required` | Array of card objects, each containing an id and JSX content.  |
+| `defaultExpanded` | `number`           | `1`        | ID of the card that should be expanded initially.              |
+| `className`       | `string`           | —          | Optional additional class for custom styling of the container. |

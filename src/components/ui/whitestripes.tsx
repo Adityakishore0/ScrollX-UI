@@ -1,6 +1,6 @@
-"use client";
-import { motion } from "framer-motion";
-import React from "react";
+'use client';
+import { motion } from 'motion/react';
+import React from 'react';
 
 interface WhiteStripesProps {
   children?: React.ReactNode;
@@ -9,7 +9,7 @@ interface WhiteStripesProps {
 
 export default function WhiteStripes({
   children,
-  className = "",
+  className = '',
 }: WhiteStripesProps) {
   const stripeCount = 15;
 
@@ -34,10 +34,10 @@ export default function WhiteStripes({
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: 'easeInOut',
               delay,
             }}
-            className="w-full bg-white dark:bg-black"
+            className='w-full bg-white dark:bg-black'
             style={{
               height: `${height}px`,
               marginBottom: `${margin}px`,
@@ -47,7 +47,7 @@ export default function WhiteStripes({
       })}
 
       {children && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center p-8">
+        <div className='absolute inset-0 z-10 flex items-center justify-center p-8'>
           {children}
         </div>
       )}

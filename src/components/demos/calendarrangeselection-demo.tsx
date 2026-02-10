@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { type DateRange } from "react-day-picker";
+import * as React from 'react';
+import { type DateRange } from 'react-day-picker';
 
-import { Calendar } from "@/components/ui/calendar";
+import { Calendar } from '@/components/ui/calendar';
 
 export default function CalendarRangeSelectionDemo() {
   const [dateRange, setDateRange] = React.useState<DateRange | undefined>({
@@ -13,11 +13,11 @@ export default function CalendarRangeSelectionDemo() {
 
   return (
     <Calendar
-      mode="range"
+      mode='range'
       defaultMonth={dateRange?.from}
       selected={dateRange}
       onSelect={setDateRange}
-      className="rounded-lg border shadow-sm"
+      className='rounded-lg border shadow-xs'
     />
   );
 }

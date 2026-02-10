@@ -1,13 +1,13 @@
-"use client";
-import React, { useEffect, useState, ReactNode, Children } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+'use client';
+import React, { useEffect, useState, ReactNode, Children } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 
 const slotBase = [
-  "bg-white shadow-md text-gray-900 w-full max-w-[85%]",
-  "z-20 bg-white shadow-md text-gray-900 w-full max-w-[90%]",
-  "z-40 shadow-lg w-full max-w-[95%]",
-  "z-20 bg-white shadow-md text-gray-900 w-full max-w-[90%]",
-  "bg-white shadow-md text-gray-900 w-full max-w-[85%]",
+  'bg-white shadow-md text-gray-900 w-full max-w-[85%]',
+  'z-20 bg-white shadow-md text-gray-900 w-full max-w-[90%]',
+  'z-40 shadow-lg w-full max-w-[95%]',
+  'z-20 bg-white shadow-md text-gray-900 w-full max-w-[90%]',
+  'bg-white shadow-md text-gray-900 w-full max-w-[85%]',
 ];
 
 interface MotionCardsProps {
@@ -17,7 +17,7 @@ interface MotionCardsProps {
 
 export function MotionCardContent({
   children,
-  className = "",
+  className = '',
   ...props
 }: {
   children: ReactNode;
@@ -51,9 +51,9 @@ export default function MotionCards({
   }, [nextId, interval]);
 
   return (
-    <div className="flex items-center justify-center relative px-2 h-[480px] overflow-hidden w-full">
-      <div className="flex flex-col space-y-2 relative z-10 items-center w-full justify-center h-full max-w-md mx-auto">
-        <AnimatePresence initial={false} mode="popLayout">
+    <div className='flex items-center justify-center relative px-2 h-120 overflow-hidden w-full'>
+      <div className='flex flex-col space-y-2 relative z-10 items-center w-full justify-center h-full max-w-md mx-auto'>
+        <AnimatePresence initial={false} mode='popLayout'>
           {cards.map((cardId, i) => {
             const isMiddle = i === 2;
             const currentItem =
@@ -68,25 +68,25 @@ export default function MotionCards({
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{
                   duration: 0.8,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                   layout: { duration: 0.8 },
                 }}
                 className={`flex items-center rounded-2xl px-3 py-4 shadow-xl relative overflow-hidden ${slotBase[i]}`}
               >
                 <motion.div
-                  className="absolute inset-0 rounded-2xl -z-10"
+                  className='absolute inset-0 rounded-2xl -z-10'
                   initial={false}
                   animate={{
-                    backgroundColor: isMiddle ? "#f87171" : "#ffffff",
+                    backgroundColor: isMiddle ? '#f87171' : '#ffffff',
                   }}
                   transition={{
                     duration: 1.8,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                   }}
                 />
                 <div
                   className={`w-full text-sm font-semibold relative ${
-                    isMiddle ? "text-white" : "text-gray-900"
+                    isMiddle ? 'text-white' : 'text-gray-900'
                   }`}
                 >
                   {currentItem}
