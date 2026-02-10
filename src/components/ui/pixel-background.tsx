@@ -1,4 +1,6 @@
-import { useEffect, useRef } from "react";
+'use client';
+
+import { useEffect, useRef } from 'react';
 
 class Pixel {
   width: number;
@@ -27,7 +29,7 @@ class Pixel {
     y: number,
     color: string,
     speed: number,
-    delay: number
+    delay: number,
   ) {
     this.width = canvas.width;
     this.height = canvas.height;
@@ -60,7 +62,7 @@ class Pixel {
       this.x + centerOffset,
       this.y + centerOffset,
       this.size,
-      this.size
+      this.size,
     );
   }
 
@@ -114,15 +116,15 @@ interface PixelBackgroundProps {
   colors?: string;
   opacity?: number;
   direction?:
-    | "center"
-    | "top"
-    | "bottom"
-    | "left"
-    | "right"
-    | "top-left"
-    | "top-right"
-    | "bottom-left"
-    | "bottom-right";
+    | 'center'
+    | 'top'
+    | 'bottom'
+    | 'left'
+    | 'right'
+    | 'top-left'
+    | 'top-right'
+    | 'bottom-left'
+    | 'bottom-right';
   className?: string;
   canvasClassName?: string;
   children?: React.ReactNode;
@@ -131,42 +133,42 @@ interface PixelBackgroundProps {
 export default function PixelBackground({
   gap = 6,
   speed = 80,
-  colors = "#fecdd3,#fda4af,#e11d48",
+  colors = '#fecdd3,#fda4af,#e11d48',
   opacity = 1,
-  direction = "center",
-  className = "",
-  canvasClassName = "",
+  direction = 'center',
+  className = '',
+  canvasClassName = '',
   children,
 }: PixelBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pixelsRef = useRef<Pixel[]>([]);
   const animationRef = useRef<number | null>(null);
-  const timePreviousRef = useRef(performance.now());
+  const timePreviousRef = useRef<number>(0);
 
   useEffect(() => {
     const reducedMotionValue = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      '(prefers-reduced-motion: reduce)',
     ).matches;
     const getOriginPoint = (width: number, height: number) => {
       switch (direction) {
-        case "top":
+        case 'top':
           return { x: width / 2, y: 0 };
-        case "bottom":
+        case 'bottom':
           return { x: width / 2, y: height };
-        case "left":
+        case 'left':
           return { x: 0, y: height / 2 };
-        case "right":
+        case 'right':
           return { x: width, y: height / 2 };
-        case "top-left":
+        case 'top-left':
           return { x: 0, y: 0 };
-        case "top-right":
+        case 'top-right':
           return { x: width, y: 0 };
-        case "bottom-left":
+        case 'bottom-left':
           return { x: 0, y: height };
-        case "bottom-right":
+        case 'bottom-right':
           return { x: width, y: height };
-        case "center":
+        case 'center':
         default:
           return { x: width / 2, y: height / 2 };
       }
@@ -178,7 +180,7 @@ export default function PixelBackground({
       const rect = containerRef.current.getBoundingClientRect();
       const width = Math.floor(rect.width);
       const height = Math.floor(rect.height);
-      const ctx = canvasRef.current.getContext("2d");
+      const ctx = canvasRef.current.getContext('2d');
 
       canvasRef.current.width = width;
       canvasRef.current.height = height;
@@ -186,7 +188,7 @@ export default function PixelBackground({
       canvasRef.current.style.height = `${height}px`;
 
       const origin = getOriginPoint(width, height);
-      const colorsArray = colors.split(",");
+      const colorsArray = colors.split(',');
       const pxs: Pixel[] = [];
 
       for (let x = 0; x < width; x += parseInt(gap.toString(), 10)) {
@@ -207,8 +209,8 @@ export default function PixelBackground({
               y,
               color,
               getEffectiveSpeed(speed, reducedMotionValue),
-              delay
-            )
+              delay,
+            ),
           );
         }
       }
@@ -216,17 +218,18 @@ export default function PixelBackground({
       pixelsRef.current = pxs;
     };
 
-    const doAnimate = (fnName: "appear") => {
+    const doAnimate = (fnName: 'appear') => {
       animationRef.current = requestAnimationFrame(() => doAnimate(fnName));
 
       const timeNow = performance.now();
+      if (timePreviousRef.current === 0) timePreviousRef.current = timeNow;
       const timePassed = timeNow - timePreviousRef.current;
       const timeInterval = 1000 / 60;
 
       if (timePassed < timeInterval) return;
       timePreviousRef.current = timeNow - (timePassed % timeInterval);
 
-      const ctx = canvasRef.current?.getContext("2d");
+      const ctx = canvasRef.current?.getContext('2d');
       if (!ctx || !canvasRef.current) return;
 
       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
@@ -245,7 +248,7 @@ export default function PixelBackground({
       }
     };
 
-    const handleAnimation = (name: "appear") => {
+    const handleAnimation = (name: 'appear') => {
       if (animationRef.current !== null) {
         cancelAnimationFrame(animationRef.current);
       }
@@ -253,7 +256,7 @@ export default function PixelBackground({
     };
 
     initPixels();
-    handleAnimation("appear");
+    handleAnimation('appear');
 
     return () => {
       if (animationRef.current !== null) {
@@ -270,7 +273,7 @@ export default function PixelBackground({
         style={{ opacity }}
       />
 
-      {children && <div className="relative z-10">{children}</div>}
+      {children && <div className='relative z-10'>{children}</div>}
     </div>
   );
 }
