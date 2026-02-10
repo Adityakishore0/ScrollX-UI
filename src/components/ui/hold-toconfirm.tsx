@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 import {
   motion,
   AnimatePresence,
   useMotionValue,
   animate,
   useTransform,
-} from "framer-motion";
-import { cn } from "@/lib/utils";
-import { buttonVariants, type ButtonProps } from "@/components/ui/button";
+} from 'motion/react';
+import { cn } from '@/lib/utils';
+import { buttonVariants, type ButtonProps } from '@/components/ui/button';
 
-interface HoldToConfirmProps extends Omit<ButtonProps, "asChild"> {
+interface HoldToConfirmProps extends Omit<ButtonProps, 'asChild'> {
   asChild?: boolean;
   duration?: number;
   onConfirm?: () => void;
-  animation?: "border" | "fill";
+  animation?: 'border' | 'fill';
   fillClassName?: string;
   confirmedChildren?: React.ReactNode;
   confirmedClassName?: string;
@@ -28,7 +28,7 @@ const HoldToConfirm = React.forwardRef<HTMLButtonElement, HoldToConfirmProps>(
     {
       duration = 2000,
       onConfirm,
-      animation = "fill",
+      animation = 'fill',
       variant,
       size,
       className,
@@ -38,10 +38,10 @@ const HoldToConfirm = React.forwardRef<HTMLButtonElement, HoldToConfirmProps>(
       resetAfter = 2000,
       showProgressOnConfirm = false,
       asChild = false,
-      children = "Hold to confirm",
+      children = 'Hold to confirm',
       ...props
     },
-    ref
+    ref,
   ) => {
     const [confirmed, setConfirmed] = React.useState(false);
     const textRef = React.useRef<HTMLSpanElement>(null);
@@ -56,7 +56,7 @@ const HoldToConfirm = React.forwardRef<HTMLButtonElement, HoldToConfirmProps>(
       if (smooth) {
         controlsRef.current = animate(progress, 0, {
           duration: 0.3,
-          ease: "easeOut",
+          ease: 'easeOut',
         });
       } else {
         progress.set(0);
@@ -68,7 +68,7 @@ const HoldToConfirm = React.forwardRef<HTMLButtonElement, HoldToConfirmProps>(
 
       controlsRef.current = animate(progress, 1, {
         duration: duration / 1000,
-        ease: "linear",
+        ease: 'linear',
       });
 
       holdTimerRef.current = setTimeout(() => {
@@ -96,18 +96,18 @@ const HoldToConfirm = React.forwardRef<HTMLButtonElement, HoldToConfirmProps>(
       if (!confirmed) resetHold(true);
     };
 
-    const width = useTransform(progress, [0, 1], ["0%", "100%"]);
+    const width = useTransform(progress, [0, 1], ['0%', '100%']);
     const borderClip = useTransform(
       progress,
       [0, 1],
-      ["inset(0 100% 0 0 round 0.375rem)", "inset(0 0% 0 0 round 0.375rem)"]
+      ['inset(0 100% 0 0 round 0.375rem)', 'inset(0 0% 0 0 round 0.375rem)'],
     );
 
     const textProgress = useTransform(progress, (value) => {
       if (!textRef.current) return 0;
 
       const buttonRect = textRef.current
-        .closest("button")
+        .closest('button')
         ?.getBoundingClientRect();
       const textRect = textRef.current.getBoundingClientRect();
 
@@ -125,7 +125,7 @@ const HoldToConfirm = React.forwardRef<HTMLButtonElement, HoldToConfirmProps>(
       return Math.min(Math.max(adjustedProgress, 0), 1);
     });
 
-    const textWidth = useTransform(textProgress, [0, 1], ["0%", "100%"]);
+    const textWidth = useTransform(textProgress, [0, 1], ['0%', '100%']);
 
     React.useEffect(() => {
       return () => {
@@ -135,7 +135,7 @@ const HoldToConfirm = React.forwardRef<HTMLButtonElement, HoldToConfirmProps>(
       };
     }, []);
 
-    const Comp = asChild ? "span" : "button";
+    const Comp = asChild ? 'span' : 'button';
 
     return (
       <Comp
@@ -147,59 +147,59 @@ const HoldToConfirm = React.forwardRef<HTMLButtonElement, HoldToConfirmProps>(
         onTouchStart={startHold}
         onTouchEnd={cancelHold}
         className={cn(
-          "relative overflow-hidden",
+          'relative overflow-hidden',
           buttonVariants({ variant, size }),
-          className
+          className,
         )}
       >
-        {animation === "fill" && (!confirmed || showProgressOnConfirm) && (
+        {animation === 'fill' && (!confirmed || showProgressOnConfirm) && (
           <motion.div
-            className={cn("absolute left-0 top-0 h-full", fillClassName)}
+            className={cn('absolute left-0 top-0 h-full', fillClassName)}
             style={{ width }}
           />
         )}
 
-        {animation === "border" && (!confirmed || showProgressOnConfirm) && (
+        {animation === 'border' && (!confirmed || showProgressOnConfirm) && (
           <motion.div
             className={cn(
-              "absolute inset-0 border-2 rounded-md pointer-events-none",
-              fillClassName
+              'absolute inset-0 border-2 rounded-md pointer-events-none',
+              fillClassName,
             )}
             style={{ clipPath: borderClip }}
           />
         )}
 
-        <span className="relative z-10 flex items-center justify-center w-full">
-          <AnimatePresence mode="wait">
+        <span className='relative z-10 flex items-center justify-center w-full'>
+          <AnimatePresence mode='wait'>
             {confirmed && confirmedChildren ? (
               <motion.span
-                key="confirmed"
+                key='confirmed'
                 initial={{ opacity: 0, scale: 0.9, y: 8 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: -8 }}
                 transition={{ duration: 0.3 }}
-                className={cn("flex items-center gap-2", confirmedClassName)}
+                className={cn('flex items-center gap-2', confirmedClassName)}
               >
                 {confirmedChildren}
               </motion.span>
             ) : (
               <motion.span
-                key="default"
+                key='default'
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.25 }}
-                className="relative flex items-center gap-2"
+                className='relative flex items-center gap-2'
               >
-                <span ref={textRef} className="relative">
+                <span ref={textRef} className='relative'>
                   {children}
-                  {animation === "fill" && (
+                  {animation === 'fill' && (
                     <motion.span
                       className={cn(
-                        "absolute inset-0 overflow-hidden",
-                        fillClassName?.includes("text-")
+                        'absolute inset-0 overflow-hidden',
+                        fillClassName?.includes('text-')
                           ? fillClassName
-                          : "text-white dark:text-black"
+                          : 'text-white dark:text-black',
                       )}
                       style={{ width: textWidth }}
                     >
@@ -213,9 +213,9 @@ const HoldToConfirm = React.forwardRef<HTMLButtonElement, HoldToConfirmProps>(
         </span>
       </Comp>
     );
-  }
+  },
 );
 
-HoldToConfirm.displayName = "HoldToConfirm";
+HoldToConfirm.displayName = 'HoldToConfirm';
 
 export { HoldToConfirm };
