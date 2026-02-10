@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 import {
   motion,
   useMotionValue,
   useSpring,
   useTransform,
   MotionValue,
-} from "framer-motion";
-import { cn } from "@/lib/utils";
+} from 'motion/react';
+import { cn } from '@/lib/utils';
 
 interface CardTiltProps {
   children: React.ReactNode;
@@ -40,7 +40,7 @@ const CardTilt = React.forwardRef<HTMLDivElement, CardTiltProps>(
       scale = 1.05,
       ...props
     },
-    forwardedRef
+    forwardedRef,
   ) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const x = useMotionValue(0);
@@ -54,14 +54,14 @@ const CardTilt = React.forwardRef<HTMLDivElement, CardTiltProps>(
       [-0.5, 0.5],
       tiltReverse
         ? [tiltMaxAngle, -tiltMaxAngle]
-        : [-tiltMaxAngle, tiltMaxAngle]
+        : [-tiltMaxAngle, tiltMaxAngle],
     );
     const rotateY = useTransform(
       mouseXSpring,
       [-0.5, 0.5],
       tiltReverse
         ? [-tiltMaxAngle, tiltMaxAngle]
-        : [tiltMaxAngle, -tiltMaxAngle]
+        : [tiltMaxAngle, -tiltMaxAngle],
     );
 
     const scaleValue = useSpring(1, { stiffness: 300, damping: 30 });
@@ -96,25 +96,25 @@ const CardTilt = React.forwardRef<HTMLDivElement, CardTiltProps>(
           ref={containerRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className={cn("relative inline-block", className)}
-          style={{ perspective: "1000px" }}
+          className={cn('relative inline-block', className)}
+          style={{ perspective: '1000px' }}
           {...props}
         >
-          <div className="absolute inset-0 rounded-2xl border-2 border-dashed border-slate-300" />
+          <div className='absolute inset-0 rounded-2xl border-2 border-dashed border-slate-300' />
           {children}
         </div>
       </CardTiltContext.Provider>
     );
-  }
+  },
 );
-CardTilt.displayName = "CardTilt";
+CardTilt.displayName = 'CardTilt';
 
 const CardTiltContent = React.forwardRef<HTMLDivElement, CardTiltContentProps>(
   ({ children, className, ...props }, ref) => {
     const context = React.useContext(CardTiltContext);
 
     if (!context) {
-      throw new Error("CardTiltContent must be used within CardTilt");
+      throw new Error('CardTiltContent must be used within CardTilt');
     }
 
     const { rotateX, rotateY, scale } = context;
@@ -126,16 +126,16 @@ const CardTiltContent = React.forwardRef<HTMLDivElement, CardTiltContentProps>(
           rotateX,
           rotateY,
           scale,
-          transformStyle: "preserve-3d",
+          transformStyle: 'preserve-3d',
         }}
-        className={cn("relative", className)}
+        className={cn('relative', className)}
         {...props}
       >
         {children}
       </motion.div>
     );
-  }
+  },
 );
-CardTiltContent.displayName = "CardTiltContent";
+CardTiltContent.displayName = 'CardTiltContent';
 
 export { CardTilt, CardTiltContent };
