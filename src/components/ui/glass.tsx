@@ -1,12 +1,12 @@
-"use client";
-import { useRef, useEffect, useState, ReactNode, CSSProperties } from "react";
+'use client';
+import { useRef, useEffect, useState, ReactNode, CSSProperties } from 'react';
 import {
   motion,
   useMotionValue,
   useSpring,
   AnimatePresence,
-} from "framer-motion";
-import { cn } from "@/lib/utils";
+} from 'motion/react';
+import { cn } from '@/lib/utils';
 
 type GlassProps = {
   children?: ReactNode;
@@ -37,7 +37,7 @@ export const Glass = ({
   blur = 2,
   ripple = false,
   followMouse = false,
-  className = "",
+  className = '',
   style = {},
   onClick,
 }: GlassProps) => {
@@ -56,8 +56,8 @@ export const Glass = ({
     const parent = glass?.parentElement;
     if (!glass || !parent) return;
 
-    const w = typeof width === "number" ? width : glass.offsetWidth;
-    const h = typeof height === "number" ? height : glass.offsetHeight;
+    const w = typeof width === 'number' ? width : glass.offsetWidth;
+    const h = typeof height === 'number' ? height : glass.offsetHeight;
 
     const handleTouch = (e: TouchEvent) => {
       const touch = e.touches[0];
@@ -73,14 +73,14 @@ export const Glass = ({
       top.set(e.clientY - parentRect.top - h / 2);
     };
 
-    window.addEventListener("mousemove", handleMouse);
-    window.addEventListener("touchmove", handleTouch);
-    window.addEventListener("touchstart", handleTouch);
+    window.addEventListener('mousemove', handleMouse);
+    window.addEventListener('touchmove', handleTouch);
+    window.addEventListener('touchstart', handleTouch);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouse);
-      window.removeEventListener("touchmove", handleTouch);
-      window.removeEventListener("touchstart", handleTouch);
+      window.removeEventListener('mousemove', handleMouse);
+      window.removeEventListener('touchmove', handleTouch);
+      window.removeEventListener('touchstart', handleTouch);
     };
   }, [width, height, left, top, followMouse]);
 
@@ -96,18 +96,18 @@ export const Glass = ({
       setRipples((prev) => [...prev, newRipple]);
       setTimeout(
         () => setRipples((prev) => prev.filter((r) => r.id !== newRipple.id)),
-        1000
+        1000,
       );
     };
 
-    window.addEventListener("click", handleClick);
-    return () => window.removeEventListener("click", handleClick);
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
   }, [ripple]);
 
   const baseStyles: CSSProperties = {
-    "--lg-border-radius": `${borderRadius}px`,
-    "--lg-tint-opacity": tintOpacity,
-    "--lg-blur": `${blur}px`,
+    '--lg-border-radius': `${borderRadius}px`,
+    '--lg-tint-opacity': tintOpacity,
+    '--lg-blur': `${blur}px`,
     width,
     height,
     borderRadius: `${borderRadius}px`,
@@ -116,23 +116,23 @@ export const Glass = ({
   } as CSSProperties;
 
   const baseClasses = cn(
-    followMouse ? "absolute" : "relative",
-    "isolate z-[40] shadow-lg",
-    "before:absolute before:inset-0 before:z-0 before:rounded-[var(--lg-border-radius)] before:bg-[rgba(255,255,255,var(--lg-tint-opacity))] before:shadow-[inset_0_0_20px_-5px_rgba(255,255,255,0.7)] before:content-['']",
-    "after:absolute after:inset-0 after:isolate after:-z-[1] after:rounded-[var(--lg-border-radius)] after:[filter:url(#glass-distortion)] after:backdrop-blur-[var(--lg-blur)] after:content-['']",
-    className
+    followMouse ? 'absolute' : 'relative',
+    'isolate z-40 shadow-lg',
+    "before:absolute before:inset-0 before:z-0 before:rounded-(--lg-border-radius) before:bg-[rgba(255,255,255,var(--lg-tint-opacity))] before:shadow-[inset_0_0_20px_-5px_rgba(255,255,255,0.7)] before:content-['']",
+    "after:absolute after:inset-0 after:isolate after:-z-1 after:rounded-(--lg-border-radius) after:filter-[url(#glass-distortion)] after:backdrop-blur-(--lg-blur) after:content-['']",
+    className,
   );
   useEffect(() => {
     if (
-      typeof document !== "undefined" &&
-      !document.getElementById("glass-distortion-filter")
+      typeof document !== 'undefined' &&
+      !document.getElementById('glass-distortion-filter')
     ) {
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      svg.setAttribute("width", "0");
-      svg.setAttribute("height", "0");
-      svg.style.position = "absolute";
-      svg.style.overflow = "hidden";
-      svg.id = "glass-distortion-filter";
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '0');
+      svg.setAttribute('height', '0');
+      svg.style.position = 'absolute';
+      svg.style.overflow = 'hidden';
+      svg.id = 'glass-distortion-filter';
       svg.innerHTML = `
         <defs>
           <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
@@ -154,25 +154,25 @@ export const Glass = ({
         style={baseStyles}
         onClick={onClick}
       >
-        <div className="relative z-10 w-full h-full">{children}</div>
+        <div className='relative z-10 w-full h-full'>{children}</div>
 
         {ripple && (
           <AnimatePresence>
             {ripples.map((ripple) => (
               <motion.div
                 key={ripple.id}
-                className="absolute rounded-full bg-white/30 pointer-events-none"
+                className='absolute rounded-full bg-white/30 pointer-events-none'
                 style={{ left: ripple.x, top: ripple.y }}
                 initial={{ width: 0, height: 0, x: 0, y: 0, opacity: 1 }}
                 animate={{
-                  width: typeof width === "number" ? width * 2 : 200,
-                  height: typeof width === "number" ? width * 2 : 200,
-                  x: typeof width === "number" ? -width : -100,
-                  y: typeof width === "number" ? -width : -100,
+                  width: typeof width === 'number' ? width * 2 : 200,
+                  height: typeof width === 'number' ? width * 2 : 200,
+                  x: typeof width === 'number' ? -width : -100,
+                  y: typeof width === 'number' ? -width : -100,
                   opacity: 0,
                 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 1, ease: 'easeOut' }}
               />
             ))}
           </AnimatePresence>
