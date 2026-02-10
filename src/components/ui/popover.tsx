@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 function Popover({
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Root>) {
-  return <PopoverPrimitive.Root data-slot="popover" {...props} />;
+  return <PopoverPrimitive.Root data-slot='popover' {...props} />;
 }
 
 function PopoverTrigger({
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Trigger>) {
-  return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />;
+  return <PopoverPrimitive.Trigger data-slot='popover-trigger' {...props} />;
 }
 
 function PopoverContent({
   className,
-  align = "center",
+  align = 'center',
   sideOffset = 4,
   children,
   ...props
@@ -27,7 +27,7 @@ function PopoverContent({
   return (
     <PopoverPrimitive.Portal>
       <PopoverPrimitive.Content
-        data-slot="popover-content"
+        data-slot='popover-content'
         align={align}
         sideOffset={sideOffset}
         asChild
@@ -48,11 +48,11 @@ function PopoverContent({
             x: [0, -3, 3, -2, 2, -1, 1, 0],
             transition: {
               opacity: { duration: 0.25 },
-              scale: { duration: 0.25, ease: "easeIn" },
-              y: { duration: 0.25, ease: "easeIn" },
+              scale: { duration: 0.25, ease: 'easeIn' },
+              y: { duration: 0.25, ease: 'easeIn' },
               x: {
                 duration: 0.4,
-                ease: "easeOut",
+                ease: 'easeOut',
                 times: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 1],
               },
             },
@@ -61,14 +61,14 @@ function PopoverContent({
             opacity: { duration: 0.2 },
             scale: {
               duration: 0.6,
-              type: "spring",
+              type: 'spring',
               damping: 12,
               stiffness: 400,
               mass: 0.8,
             },
             y: {
               duration: 0.5,
-              type: "spring",
+              type: 'spring',
               damping: 10,
               stiffness: 300,
               mass: 0.9,
@@ -76,13 +76,13 @@ function PopoverContent({
             x: {
               duration: 0.7,
               delay: 0.2,
-              ease: "easeOut",
+              ease: 'easeOut',
               times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1],
             },
           }}
           className={cn(
-            "bg-popover text-popover-foreground z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden",
-            className
+            'bg-popover text-popover-foreground z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden',
+            className,
           )}
         >
           {children}
@@ -95,7 +95,7 @@ function PopoverContent({
 function PopoverAnchor({
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Anchor>) {
-  return <PopoverPrimitive.Anchor data-slot="popover-anchor" {...props} />;
+  return <PopoverPrimitive.Anchor data-slot='popover-anchor' {...props} />;
 }
 
 export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor };
