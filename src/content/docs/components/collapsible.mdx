@@ -3,7 +3,7 @@ title: Collapsible
 description: An interactive component which expands/collapses a panel with a smooth motion.
 ---
 
-<ComponentPreview name="collapsible-demo" className="p-0" description="" />
+<ComponentPreview name='collapsible-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -19,19 +19,15 @@ description: An interactive component which expands/collapses a panel with a smo
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion @radix-ui/react-collapsible" />
+<DepsOptions name='motion @radix-ui/react-collapsible' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>collapsible.tsx</code>
-</p>
-<ComponentSource name="collapsible" />
 
+<ComponentSource name='collapsible' />
 
 </Steps>
   </TabsContent>
 </Tabs>
-
 
 ## Usage
 
@@ -40,7 +36,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from '@/components/ui/collapsible';
 ```
 
 ```tsx
@@ -53,23 +49,19 @@ import {
 </Collapsible>
 ```
 
-
 ## API Reference
 
-###  Collapsible
+### Collapsible
 
 An interactive component which expands/collapses a panel with a smooth motion.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `asChild` | `boolean` | `false` | Render a custom component instead of the default element. |
-| `open` | `boolean` | `-` | Controls the open state of the collapsible. |
-| `defaultOpen` | `boolean` | `false` | Sets the initial open state. |
-| `onOpenChange` | `(open: boolean) => void` | `-` | Fires when the open state changes. |
-| `children` | `React.ReactNode` | `required` | Content inside the collapsible. |
-| `data-slot` | `string` | `-` | Internal attribute for styling/testing. |
-
-
+| Prop           | Type                      | Default    | Description                                               |
+| -------------- | ------------------------- | ---------- | --------------------------------------------------------- |
+| `asChild`      | `boolean`                 | `false`    | Render a custom component instead of the default element. |
+| `open`         | `boolean`                 | `-`        | Controls the open state of the collapsible.               |
+| `defaultOpen`  | `boolean`                 | `false`    | Sets the initial open state.                              |
+| `onOpenChange` | `(open: boolean) => void` | `-`        | Fires when the open state changes.                        |
+| `children`     | `React.ReactNode`         | `required` | Content inside the collapsible.                           |
+| `data-slot`    | `string`                  | `-`        | Internal attribute for styling/testing.                   |

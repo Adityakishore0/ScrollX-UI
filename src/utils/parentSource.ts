@@ -1,4 +1,4 @@
-import { parentComponents } from "@/app/registry/parents";
+import { parentComponents } from '@/app/registry/parents';
 
 const sources: Record<string, () => Promise<string>> = parentComponents.reduce(
   (acc, name) => {
@@ -6,7 +6,7 @@ const sources: Record<string, () => Promise<string>> = parentComponents.reduce(
       (await import(`@/components/ui/${name}.tsx?raw`)).default;
     return acc;
   },
-  {} as Record<string, () => Promise<string>>
+  {} as Record<string, () => Promise<string>>,
 );
 
 export async function getParentSource(name: string): Promise<string> {
@@ -18,6 +18,6 @@ export async function getParentSource(name: string): Promise<string> {
       return `// Source for ${name} not found`;
     }
   } catch (error) {
-    return `// Error loading source for ${name}`;
+    return `// Error loading source for ${name}: ${(error as Error).message}`;
   }
 }

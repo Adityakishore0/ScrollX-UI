@@ -4,9 +4,9 @@ description: Overlapping avatar circles that expand smoothly to reveal each user
 ---
 
 <ComponentPreview
-  name="avatargroup-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description=""
+  name='avatargroup-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description=''
 />
 
 ## Installation
@@ -23,20 +23,16 @@ description: Overlapping avatar circles that expand smoothly to reveal each user
     <Steps>
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>avatar-group.tsx</code>
-</p>
-<ComponentSource name="avatar-group" />
+
+<ComponentSource name='avatar-group' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -47,24 +43,25 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
 
 ```tsx
-import { AvatarGroup } from "@/components/ui/avatar-group";
+import { AvatarGroup } from '@/components/ui/avatar-group';
 
 const avatars = [
-    {
-      imageUrl: "https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=1480&auto=format&fit=crop",
-      profileUrl: "#",
-      name: "Sarah Chen"
-    },
-    {
-      imageUrl: "https://plus.unsplash.com/premium_photo-1671656349218-5218444643d8?q=80&w=1287&auto=format&fit=crop",
-      profileUrl: "#",
-      name: "Marcus Johnson"
-    }
-  ]
+  {
+    imageUrl:
+      'https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=1480&auto=format&fit=crop',
+    profileUrl: '#',
+    name: 'Sarah Chen',
+  },
+  {
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1671656349218-5218444643d8?q=80&w=1287&auto=format&fit=crop',
+    profileUrl: '#',
+    name: 'Marcus Johnson',
+  },
+];
 ```
 
 ```tsx
@@ -79,11 +76,7 @@ Overlapping avatar circles that expand smoothly to reveal each user's name on ho
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `className` | `string` | — | Optional Tailwind/utility classes to style the container. |
+| Prop         | Type                                    | Default    | Description                                                 |
+| ------------ | --------------------------------------- | ---------- | ----------------------------------------------------------- |
+| `className`  | `string`                                | —          | Optional Tailwind/utility classes to style the container.   |
 | `avatarUrls` | `{ imageUrl: string; name: string; }[]` | `required` | Array of avatar objects containing image URL and user name. |
-
-
-

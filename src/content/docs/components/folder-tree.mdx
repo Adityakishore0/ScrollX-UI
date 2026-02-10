@@ -4,9 +4,9 @@ description: A customizable folder tree component for displaying hierarchical da
 ---
 
 <ComponentPreview
-  name="foldertree-demo"
-  className="p-4"
-  description="A folder tree component with expandable nodes and file icons."
+  name='foldertree-demo'
+  className='p-4'
+  description='A folder tree component with expandable nodes and file icons.'
 />
 
 ## Installation
@@ -22,22 +22,19 @@ description: A customizable folder tree component for displaying hierarchical da
   <TabsContent value="manual">
     <Steps>
       <Step>Install the following dependencies:</Step>
-      <DepsOptions name="framer-motion" />
+      <DepsOptions name="motion" />
 
       <Step>Copy and paste the following code into your project.</Step>
-      <p>
-        <code>folder-tree.tsx</code>
-      </p>
+
       <ComponentSource name="folder-tree" />
 
       <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -52,22 +49,22 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { FolderTree } from "@/components/ui/folder-tree";
+import { FolderTree } from '@/components/ui/folder-tree';
 ```
 
 ```tsx
 <FolderTree.Root
-  defaultExpanded={["root", "folder1"]}
-  defaultSelected="file1"
-  className="w-full"
+  defaultExpanded={['root', 'folder1']}
+  defaultSelected='file1'
+  className='w-full'
 >
-  <FolderTree.Item id="root" label="Root Folder">
+  <FolderTree.Item id='root' label='Root Folder'>
     <FolderTree.Content>
-      <FolderTree.Item id="folder1" label="Documents">
+      <FolderTree.Item id='folder1' label='Documents'>
         <FolderTree.Content>
-          <FolderTree.Item id="file1" label="File 1.txt" />
-          <FolderTree.Item id="file2" label="File 2.txt" />
-          <FolderTree.Item id="file3" label="Image.png" />
+          <FolderTree.Item id='file1' label='File 1.txt' />
+          <FolderTree.Item id='file2' label='File 2.txt' />
+          <FolderTree.Item id='file3' label='Image.png' />
         </FolderTree.Content>
       </FolderTree.Item>
     </FolderTree.Content>
@@ -82,9 +79,9 @@ import { FolderTree } from "@/components/ui/folder-tree";
 <Step>With Badges</Step>
 
 <ComponentPreview
-  name="foldertree-badge"
-  className=""
-  description="A folder tree component with badges."
+  name='foldertree-badge'
+  className=''
+  description='A folder tree component with badges.'
 />
 
 ## API Reference
@@ -95,20 +92,17 @@ The root component that provides context and manages global state.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `defaultExpanded` | `string[]` | `[]` | IDs expanded by default. |
-| `defaultSelected` | `string` | `null` | ID selected by default. |
-| `onSelect` | `(id, label) => void` | `undefined` | Fires on select. |
-| `id` | `string` | `"folder-tree"` | Tree ID. |
-| `itemId` | `string` | `required` | Item ID. |
-| `label` | `string` | `required` | Item label. |
-| `icon` | `LucideIcon` | `Folder \| File` | Custom icon. |
-| `badge` | `string \| number` | — | Right badge. |
-| `modified` | `boolean \| { content, className?, ariaLabel? }` | `false` | Modified state. |
-| `untracked` | `boolean \| { content, className?, ariaLabel? }` | `false` | Untracked state. |
-| `className` | `string` | — | Custom style. |
-| `children` | `ReactNode` | — | Nested items. |
-
-
+| Prop              | Type                                             | Default          | Description              |
+| ----------------- | ------------------------------------------------ | ---------------- | ------------------------ |
+| `defaultExpanded` | `string[]`                                       | `[]`             | IDs expanded by default. |
+| `defaultSelected` | `string`                                         | `null`           | ID selected by default.  |
+| `onSelect`        | `(id, label) => void`                            | `undefined`      | Fires on select.         |
+| `id`              | `string`                                         | `"folder-tree"`  | Tree ID.                 |
+| `itemId`          | `string`                                         | `required`       | Item ID.                 |
+| `label`           | `string`                                         | `required`       | Item label.              |
+| `icon`            | `LucideIcon`                                     | `Folder \| File` | Custom icon.             |
+| `badge`           | `string \| number`                               | —                | Right badge.             |
+| `modified`        | `boolean \| { content, className?, ariaLabel? }` | `false`          | Modified state.          |
+| `untracked`       | `boolean \| { content, className?, ariaLabel? }` | `false`          | Untracked state.         |
+| `className`       | `string`                                         | —                | Custom style.            |
+| `children`        | `ReactNode`                                      | —                | Nested items.            |

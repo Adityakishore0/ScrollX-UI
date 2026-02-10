@@ -3,11 +3,7 @@ title: Top Sheet
 description: A customizable sheet component for creating elegant slide-out interfaces.
 ---
 
-<ComponentPreview
-  name="topsheet-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='topsheet-demo' className='' description='' />
 
 ## Installation
 
@@ -23,24 +19,19 @@ description: A customizable sheet component for creating elegant slide-out inter
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
-
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>top-sheet.tsx</code>
-</p>
-<ComponentSource name="top-sheet" />
+
+<ComponentSource name='top-sheet' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -54,7 +45,7 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import TopSheet from '@/components/ui/top-sheet'
+import TopSheet from '@/components/ui/top-sheet';
 ```
 
 ```tsx
@@ -77,7 +68,6 @@ import TopSheet from '@/components/ui/top-sheet'
 </TopSheet>
 ```
 
-
 ## API Reference
 
 ### Top Sheet
@@ -86,18 +76,13 @@ A customizable component for creating elegant, slide-out panels from the top of 
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `open` | `boolean` | `false` | Controlled open state. |
-| `onOpenChange` | `(open: boolean) => void` | `-` | Called when the open state changes. |
-| `defaultOpen` | `boolean` | `false` | Initial open state for uncontrolled usage. |
-| `asChild` | `boolean` | `false` | Render without adding an extra wrapper element. |
-| `height` | `string` | `'70vh'` | Height of the sheet. |
-| `closeThreshold` | `number` | `0.3` | Drag distance ratio required to close the sheet. |
-| `container` | `HTMLElement` | `document.body` | DOM element where the portal is mounted. |
-| `className` | `string` | `''` | Custom CSS classes. |
-
-
-
-
+| Prop             | Type                      | Default         | Description                                      |
+| ---------------- | ------------------------- | --------------- | ------------------------------------------------ |
+| `open`           | `boolean`                 | `false`         | Controlled open state.                           |
+| `onOpenChange`   | `(open: boolean) => void` | `-`             | Called when the open state changes.              |
+| `defaultOpen`    | `boolean`                 | `false`         | Initial open state for uncontrolled usage.       |
+| `asChild`        | `boolean`                 | `false`         | Render without adding an extra wrapper element.  |
+| `height`         | `string`                  | `'70vh'`        | Height of the sheet.                             |
+| `closeThreshold` | `number`                  | `0.3`           | Drag distance ratio required to close the sheet. |
+| `container`      | `HTMLElement`             | `document.body` | DOM element where the portal is mounted.         |
+| `className`      | `string`                  | `''`            | Custom CSS classes.                              |

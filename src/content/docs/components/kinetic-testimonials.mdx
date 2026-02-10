@@ -24,19 +24,59 @@ description: Smoothly scrolling, animated testimonials for modern developer webs
 
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>kinetic-testimonials.tsx</code>
-</p>
+
 <ComponentSource name="kinetic-testimonials" />
 
+<Step>Update your configuration</Step>
 
-</Steps>
+<Tabs defaultValue="tailwind-v4" className="w-full">
+  <TabsList>
+    <TabsTrigger value="tailwind-v4">Tailwind v4</TabsTrigger>
+    <TabsTrigger value="tailwind-v3">Tailwind v3</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="tailwind-v4">
+
+<Step>Add these animations to your `globals.css:`</Step>
+
+`globals.css`
+
+```css
+/* ---------------- THEME ---------------- */
+@theme {
+  /* animations */
+  --animation-scroll-up: scroll-up-smooth var(--duration) linear infinite;
+  --animation-scroll-down: scroll-down-smooth var(--duration) linear infinite;
+}
+
+/* ---------------- KEYFRAMES ---------------- */
+@keyframes scroll-up-smooth {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-down-smooth {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+```
+
   </TabsContent>
-</Tabs>
+  <TabsContent value="tailwind-v3">
 
-<Step>Update tailwind.config.ts</Step>
+<Step>Add these animations to your `tailwind.config.ts:`</Step>
 
-```tsx
+`tailwind.config.ts`
+
+```ts
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
@@ -60,6 +100,13 @@ module.exports = {
 };
 ```
 
+  </TabsContent>
+</Tabs>
+
+</Steps>
+  </TabsContent>
+</Tabs> 
+
 ## Usage
 
 ```tsx
@@ -69,7 +116,7 @@ import KineticTestimonial from "@/components/ui/kinetic-testimonials";
 ```tsx
 <KineticTestimonial
       testimonials={testimonials}
-      className="bg-gradient-to-br from-slate-100 to-slate-200 dark:from-black dark:to-black md:py-0 py-0 not-prose"
+      className="bg-linear-to-br from-slate-100 to-slate-200 dark:from-black dark:to-black md:py-0 py-0 not-prose"
       cardClassName="hover:scale-105 shadow-lg"
       avatarClassName="ring-2 ring-purple-500"
       desktopColumns={3}

@@ -3,11 +3,7 @@ title: BarsWave
 description: Vertical wave bars animate in symmetry, forming a subtle motion-driven background layer.
 ---
 
-<ComponentPreview
-  name="barswave-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='barswave-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,21 +19,19 @@ description: Vertical wave bars animate in symmetry, forming a subtle motion-dri
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>barswave.tsx</code>
-</p>
-<ComponentSource name="barswave" />
+
+<ComponentSource name='barswave' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -51,34 +45,31 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { BarsWave } from "@/components/ui/barswave";
+import { BarsWave } from '@/components/ui/barswave';
 ```
 
 ```tsx
 <BarsWave
-      barCount={14}
-      minHeight={20}
-      maxHeight={80}
-      variant="filled"
-      animationDuration={2}
-      className="w-full h-[350px]"
-    >
-      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
-        Bars Animation, <br /> Background.
-      </h2>
-    </BarsWave>
+  barCount={14}
+  minHeight={20}
+  maxHeight={80}
+  variant='filled'
+  animationDuration={2}
+  className='w-full h-87.5'
+>
+  <h2 className='bg-clip-text text-transparent text-center bg-linear-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight'>
+    Bars Animation, <br /> Background.
+  </h2>
+</BarsWave>
 ```
+
 ## Examples
 
 ---
 
 <Step>Filled Variant</Step>
 
-<ComponentPreview
-  name="barswavefilled-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='barswavefilled-demo' className='p-0' description='' />
 
 ## API Reference
 
@@ -88,20 +79,15 @@ Vertical wave bars animate in symmetry, forming a subtle motion-driven backgroun
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `barCount` | `number` | `15` | Controls the total number of animated bars rendered across the background. |
-| `minHeight` | `number` | `15` | Sets the minimum height percentage each bar can animate to. |
-| `maxHeight` | `number` | `85` | Defines the maximum height percentage bars can reach during animation. |
-| `fillColor` | `string` | — | Custom fill color applied when using the filled variant. |
-| `borderColor` | `string` | — | Overrides the border color when using the outlined variant. |
-| `barOpacity` | `number` | `1` | Adjusts the transparency of the animated bars for subtle blending. |
-| `animationDuration` | `number` | `3` | Base duration (in seconds) of the bar height animation cycle. |
-| `variant` | `"filled" \| "outlined"` | `"outlined"` | Switches between filled bars or outlined bars for different styles. |
-| `className` | `string` | — | Custom classes applied to the outer container. |
-| `children` | `React.ReactNode` | — | Content rendered above the animated bars, ideal for hero sections. |
-
-
-
-
+| Prop                | Type                     | Default      | Description                                                                |
+| ------------------- | ------------------------ | ------------ | -------------------------------------------------------------------------- |
+| `barCount`          | `number`                 | `15`         | Controls the total number of animated bars rendered across the background. |
+| `minHeight`         | `number`                 | `15`         | Sets the minimum height percentage each bar can animate to.                |
+| `maxHeight`         | `number`                 | `85`         | Defines the maximum height percentage bars can reach during animation.     |
+| `fillColor`         | `string`                 | —            | Custom fill color applied when using the filled variant.                   |
+| `borderColor`       | `string`                 | —            | Overrides the border color when using the outlined variant.                |
+| `barOpacity`        | `number`                 | `1`          | Adjusts the transparency of the animated bars for subtle blending.         |
+| `animationDuration` | `number`                 | `3`          | Base duration (in seconds) of the bar height animation cycle.              |
+| `variant`           | `"filled" \| "outlined"` | `"outlined"` | Switches between filled bars or outlined bars for different styles.        |
+| `className`         | `string`                 | —            | Custom classes applied to the outer container.                             |
+| `children`          | `React.ReactNode`        | —            | Content rendered above the animated bars, ideal for hero sections.         |

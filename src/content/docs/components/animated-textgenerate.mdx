@@ -4,9 +4,9 @@ description: Generates animated text word-by-word with blur, highlights, links, 
 ---
 
 <ComponentPreview
-  name="animatedtextgenerate-demo"
-  className=""
-  description=""
+  name='animatedtextgenerate-demo'
+  className=''
+  description=''
 />
 
 ## Installation
@@ -23,23 +23,19 @@ description: Generates animated text word-by-word with blur, highlights, links, 
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>animated-textgenerate.tsx</code>
-</p>
-<ComponentSource name="animated-textgenerate" />
+
+<ComponentSource name='animated-textgenerate' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,24 +49,23 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { AnimatedTextGenerate } from "@/components/ui/animated-textgenerate";
+import { AnimatedTextGenerate } from '@/components/ui/animated-textgenerate';
 ```
 
 ```tsx
- <AnimatedTextGenerate
-      text="Pressure changes everything. Some people focus, others fold."
-      className="text-center my-10"
-      textClassName="text-3xl text-gray-800 dark:text-white"
-      blurEffect={true}
-      speed={0.5}
-      highlightWords={["Pressure", "focus"]}
-      highlightClassName="text-blue-500"
-      linkWords={["everything"]}
-      linkHrefs={["/about"]}
-      linkClassNames={["underline text-red-500"]}
-    />
+<AnimatedTextGenerate
+  text='Pressure changes everything. Some people focus, others fold.'
+  className='text-center my-10'
+  textClassName='text-3xl text-gray-800 dark:text-white'
+  blurEffect={true}
+  speed={0.5}
+  highlightWords={['Pressure', 'focus']}
+  highlightClassName='text-blue-500'
+  linkWords={['everything']}
+  linkHrefs={['/about']}
+  linkClassNames={['underline text-red-500']}
+/>
 ```
-
 
 ## API Reference
 
@@ -80,19 +75,15 @@ Creates a flowing reading effect with staggered words, styling emphasis, and int
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `text` | `string` | `required` | The full string of text to animate word-by-word. |
-| `className` | `string` | `optional` | Additional classNames for styling the outer container. |
-| `textClassName` | `string` | `optional` | Additional classNames for styling the text container. |
-| `blurEffect` | `boolean` | `true` | Applies a blur-in animation when words appear. |
-| `speed` | `number` | `0.5` | Controls the speed of the animation. Lower is faster. |
-| `highlightWords` | `string[]` | `[]` | Array of words to highlight visually when they appear. |
-| `highlightClassName` | `string` | `optional` | Class applied to highlighted words for styling (e.g., color). |
-| `linkWords` | `string[]` | `[]` | Words to turn into links during animation. |
-| `linkHrefs` | `string[]` | `[]` | Corresponding href values for `linkWords`. Must match `linkWords` length. |
-| `linkClassNames` | `string[]` | `[]` | ClassNames applied individually to each link in `linkWords`. |
-
-
-
+| Prop                 | Type       | Default    | Description                                                               |
+| -------------------- | ---------- | ---------- | ------------------------------------------------------------------------- |
+| `text`               | `string`   | `required` | The full string of text to animate word-by-word.                          |
+| `className`          | `string`   | `optional` | Additional classNames for styling the outer container.                    |
+| `textClassName`      | `string`   | `optional` | Additional classNames for styling the text container.                     |
+| `blurEffect`         | `boolean`  | `true`     | Applies a blur-in animation when words appear.                            |
+| `speed`              | `number`   | `0.5`      | Controls the speed of the animation. Lower is faster.                     |
+| `highlightWords`     | `string[]` | `[]`       | Array of words to highlight visually when they appear.                    |
+| `highlightClassName` | `string`   | `optional` | Class applied to highlighted words for styling (e.g., color).             |
+| `linkWords`          | `string[]` | `[]`       | Words to turn into links during animation.                                |
+| `linkHrefs`          | `string[]` | `[]`       | Corresponding href values for `linkWords`. Must match `linkWords` length. |
+| `linkClassNames`     | `string[]` | `[]`       | ClassNames applied individually to each link in `linkWords`.              |

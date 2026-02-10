@@ -3,11 +3,7 @@ title: Stripe Button
 description: Smooth animated button crafted with refined glow and modern motion.
 ---
 
-<ComponentPreview
-  name="stripebutton-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='stripebutton-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: Smooth animated button crafted with refined glow and modern motion.
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>stripe-button.tsx</code>
-</p>
-<ComponentSource name="stripe-button" />
+
+<ComponentSource name='stripe-button' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,14 +45,13 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { StripeButton } from "@/components/ui/stripe-button";
+import { StripeButton } from '@/components/ui/stripe-button';
 ```
 
 ```tsx
-<StripeButton className="italic">
-      Enter the Arena!
-    </StripeButton>
+<StripeButton className='italic'>Enter the Arena!</StripeButton>
 ```
+
 ## Examples
 
 ---
@@ -68,39 +59,31 @@ import { StripeButton } from "@/components/ui/stripe-button";
 <Step>Compact</Step>
 
 <ComponentPreview
-  name="stripebuttoncompact-demo"
-  className="p-0"
-  description=""
+  name='stripebuttoncompact-demo'
+  className='p-0'
+  description=''
 />
 
 ---
 
 <Step>Size</Step>
 
-<ComponentPreview
-  name="stripebuttonsize-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='stripebuttonsize-demo' className='p-0' description='' />
 
 ---
 
 <Step>Icon</Step>
 
-<ComponentPreview
-  name="stripebuttonicon-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='stripebuttonicon-demo' className='p-0' description='' />
 
 ---
 
 <Step>Animation</Step>
 
 <ComponentPreview
-  name="stripebuttonspeed-demo"
-  className="p-0"
-  description=""
+  name='stripebuttonspeed-demo'
+  className='p-0'
+  description=''
 />
 
 ## API Reference
@@ -111,16 +94,12 @@ Smooth animated button crafted with refined glow and modern motion.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `React.ReactNode` | — | Content displayed inside the button, typically text or icons. |
-| `stripesSpeed` | `number` | `500` | Duration (in ms) for the diagonal stripe background shift on hover. |
-| `variant` | `"default" \| "compact"` | `"default"` | Controls internal padding style. `compact` keeps height full with tighter layout. |
-| `size` | `"default" \| "sm" \| "lg" \| "icon"` | `"default"` | Defines button height and padding. `icon` creates a square icon-only button. |
-| `className` | `string` | — | Additional Tailwind or custom classes applied to the outer button wrapper. |
-| `onClick` | `() => void` | — | Callback fired when the button is clicked. |
-| `disabled` | `boolean` | `false` | Disables the button and prevents user interaction. |
-
-
-
+| Prop           | Type                                  | Default     | Description                                                                       |
+| -------------- | ------------------------------------- | ----------- | --------------------------------------------------------------------------------- |
+| `children`     | `React.ReactNode`                     | —           | Content displayed inside the button, typically text or icons.                     |
+| `stripesSpeed` | `number`                              | `500`       | Duration (in ms) for the diagonal stripe background shift on hover.               |
+| `variant`      | `"default" \| "compact"`              | `"default"` | Controls internal padding style. `compact` keeps height full with tighter layout. |
+| `size`         | `"default" \| "sm" \| "lg" \| "icon"` | `"default"` | Defines button height and padding. `icon` creates a square icon-only button.      |
+| `className`    | `string`                              | —           | Additional Tailwind or custom classes applied to the outer button wrapper.        |
+| `onClick`      | `() => void`                          | —           | Callback fired when the button is clicked.                                        |
+| `disabled`     | `boolean`                             | `false`     | Disables the button and prevents user interaction.                                |

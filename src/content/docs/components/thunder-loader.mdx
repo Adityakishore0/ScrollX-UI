@@ -1,13 +1,9 @@
 ---
 title: Thunder Loader
-description: Animated thunderbolt loader with glow and shimmer effects, customizable sizes and colors. 
+description: Animated thunderbolt loader with glow and shimmer effects, customizable sizes and colors.
 ---
 
-<ComponentPreview
-  name="thunderloader-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='thunderloader-demo' className='' description='' />
 
 ## Installation
 
@@ -23,22 +19,19 @@ description: Animated thunderbolt loader with glow and shimmer effects, customiz
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>thunder-loader.tsx</code>
-</p>
-<ComponentSource name="thunder-loader" />
 
+<ComponentSource name='thunder-loader' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,15 +42,14 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
 
 ```tsx
-import { ThunderLoader } from "@/components/ui/thunder-loader";
+import { ThunderLoader } from '@/components/ui/thunder-loader';
 ```
 
 ```tsx
-<ThunderLoader className="w-40 h-40"/>
+<ThunderLoader className='w-40 h-40' />
 ```
 
 ## Examples
@@ -67,49 +59,41 @@ import { ThunderLoader } from "@/components/ui/thunder-loader";
 <Step>Default</Step>
 
 <ComponentPreview
-  name="thunderloaderdefault-demo"
-  className=""
-  description=""
+  name='thunderloaderdefault-demo'
+  className=''
+  description=''
 />
 
 ---
 
 <Step>Size</Step>
 
-<ComponentPreview
-  name="thunderloadersize-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='thunderloadersize-demo' className='' description='' />
 
 ---
 
 <Step>Variants</Step>
 
 <ComponentPreview
-  name="thunderloadervariants-demo"
-  className=""
-  description=""
+  name='thunderloadervariants-demo'
+  className=''
+  description=''
 />
 
 ---
 
 <Step>Custom Colors</Step>
 
-<ComponentPreview
-  name="thunderloadercolors-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='thunderloadercolors-demo' className='' description='' />
 
 ---
 
 <Step>Effects</Step>
 
 <ComponentPreview
-  name="thunderloadereffects-demo"
-  className=""
-  description=""
+  name='thunderloadereffects-demo'
+  className=''
+  description=''
 />
 
 ---
@@ -117,9 +101,9 @@ import { ThunderLoader } from "@/components/ui/thunder-loader";
 <Step>Duration</Step>
 
 <ComponentPreview
-  name="thunderloaderduration-demo"
-  className=""
-  description=""
+  name='thunderloaderduration-demo'
+  className=''
+  description=''
 />
 
 ## API Reference
@@ -130,27 +114,21 @@ Animated thunderbolt loader with glow and shimmer effects, customizable sizes an
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl"` | `"md"` | Controls the size of the loader. |
-| `variant` | `"default" \| "electric" \| "fire" \| "ice" \| "rainbow" \| "subtle"` | `"default"` | Controls the color style of the loader. |
-| `fillDuration` | `number` | `2` | Duration in seconds for the fill animation. |
-| `glowDuration` | `number` | `3` | Duration in seconds for the glow animation. |
-| `animateDuration` | `number` | `2` | Duration in seconds for the thunder path animation. |
-| `showGlow` | `boolean` | `false` | Enables the glow effect. |
-| `showFill` | `boolean` | `false` | Enables the fill animation inside the loader. |
-| `animate` | `boolean \| 'thunder'` | `false` | Enables path animation; 'thunder' uses stroke dash offset animation. |
-| `fillColor` | `string` | — | Custom color for the fill animation. |
-| `glowColor` | `string` | — | Custom color for the glow effect. |
-| `baseColor` | `string` | — | Custom base color of the loader stroke. |
-| `strokeWidth` | `number` | `2` | Width of the loader stroke. |
-| `viewBox` | `string` | `"0 0 100 80"` | Custom SVG viewBox. |
-| `customPath` | `string` | — | Custom SVG path for the loader shape. |
-| `className` | `string` | — | Custom class names for styling the loader. |
-| `...props` | `HTMLDivElement attributes` | — | Supports all standard div props and events. |
-
-
-
-
-
+| Prop              | Type                                                                  | Default        | Description                                                          |
+| ----------------- | --------------------------------------------------------------------- | -------------- | -------------------------------------------------------------------- |
+| `size`            | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl"`                       | `"md"`         | Controls the size of the loader.                                     |
+| `variant`         | `"default" \| "electric" \| "fire" \| "ice" \| "rainbow" \| "subtle"` | `"default"`    | Controls the color style of the loader.                              |
+| `fillDuration`    | `number`                                                              | `2`            | Duration in seconds for the fill animation.                          |
+| `glowDuration`    | `number`                                                              | `3`            | Duration in seconds for the glow animation.                          |
+| `animateDuration` | `number`                                                              | `2`            | Duration in seconds for the thunder path animation.                  |
+| `showGlow`        | `boolean`                                                             | `false`        | Enables the glow effect.                                             |
+| `showFill`        | `boolean`                                                             | `false`        | Enables the fill animation inside the loader.                        |
+| `animate`         | `boolean \| 'thunder'`                                                | `false`        | Enables path animation; 'thunder' uses stroke dash offset animation. |
+| `fillColor`       | `string`                                                              | —              | Custom color for the fill animation.                                 |
+| `glowColor`       | `string`                                                              | —              | Custom color for the glow effect.                                    |
+| `baseColor`       | `string`                                                              | —              | Custom base color of the loader stroke.                              |
+| `strokeWidth`     | `number`                                                              | `2`            | Width of the loader stroke.                                          |
+| `viewBox`         | `string`                                                              | `"0 0 100 80"` | Custom SVG viewBox.                                                  |
+| `customPath`      | `string`                                                              | —              | Custom SVG path for the loader shape.                                |
+| `className`       | `string`                                                              | —              | Custom class names for styling the loader.                           |
+| `...props`        | `HTMLDivElement attributes`                                           | —              | Supports all standard div props and events.                          |

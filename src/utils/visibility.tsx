@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, RefObject } from "react";
+import { useState, useEffect, useRef, RefObject } from 'react';
 
 interface UseVisibilityOptions {
   threshold?: number;
@@ -6,9 +6,9 @@ interface UseVisibilityOptions {
 }
 
 export function useVisibility(
-  options: UseVisibilityOptions = {}
-): [RefObject<HTMLDivElement>, boolean] {
-  const { threshold = 0.1, rootMargin = "50px" } = options;
+  options: UseVisibilityOptions = {},
+): [RefObject<HTMLDivElement | null>, boolean] {
+  const { threshold = 0.1, rootMargin = '50px' } = options;
   const [isVisible, setIsVisible] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -19,7 +19,7 @@ export function useVisibility(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold, rootMargin }
+      { threshold, rootMargin },
     );
 
     if (element) {

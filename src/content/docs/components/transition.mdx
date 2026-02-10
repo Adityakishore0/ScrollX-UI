@@ -3,11 +3,7 @@ title: Transition
 description: Smooth page transitions  with curved or slide effects.
 ---
 
-<ComponentPreview
-  name="transition-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='transition-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,15 +19,11 @@ description: Smooth page transitions  with curved or slide effects.
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>transition.tsx</code>
-</p>
-<ComponentSource name="transition" />
 
-
+<ComponentSource name='transition' />
 
 </Steps>
   </TabsContent>
@@ -40,28 +32,33 @@ description: Smooth page transitions  with curved or slide effects.
 ## Usage
 
 ```tsx
-import Transition from "@/components/ui/transition";
+import Transition from '@/components/ui/transition';
 ```
 
 ```tsx
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <Transition
       intro={
-        <div className="text-center text-white dark:text-black">
-          <h1 className="text-3xl font-bold">Welcome!</h1>
+        <div className='text-center text-white dark:text-black'>
+          <h1 className='text-3xl font-bold'>Welcome!</h1>
         </div>
       }
       introDuration={2}
       transitionDuration={1}
-      type="curved"
-      direction="bottom"
+      type='curved'
+      direction='bottom'
     >
       {children}
     </Transition>
   );
 }
 ```
+
 ## Examples
 
 ---
@@ -71,9 +68,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 <Step>Top</Step>
 
 <ComponentPreview
-  name="transitioncurvetop-demo"
-  className="p-0"
-  description=""
+  name='transitioncurvetop-demo'
+  className='p-0'
+  description=''
 />
 
 ---
@@ -81,9 +78,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 <Step>Left</Step>
 
 <ComponentPreview
-  name="transitioncurveleft-demo"
-  className="p-0"
-  description=""
+  name='transitioncurveleft-demo'
+  className='p-0'
+  description=''
 />
 
 ---
@@ -91,9 +88,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 <Step>Right</Step>
 
 <ComponentPreview
-  name="transitioncurveright-demo"
-  className="p-0"
-  description=""
+  name='transitioncurveright-demo'
+  className='p-0'
+  description=''
 />
 
 ---
@@ -103,74 +100,65 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 <Step>Top</Step>
 
 <ComponentPreview
-  name="transitionslidetop-demo"
-  className="p-0"
-  description=""
+  name='transitionslidetop-demo'
+  className='p-0'
+  description=''
 />
 
 ---
 
 <Step>Bottom</Step>
 
-<ComponentPreview
-  name="transitionslide-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='transitionslide-demo' className='p-0' description='' />
 
 ---
 
 <Step>Left</Step>
 
 <ComponentPreview
-  name="transitionslideleft-demo"
-  className="p-0"
-  description=""
+  name='transitionslideleft-demo'
+  className='p-0'
+  description=''
 />
-
 
 ---
 
 <Step>Right</Step>
 
 <ComponentPreview
-  name="transitionslideright-demo"
-  className="p-0"
-  description=""
+  name='transitionslideright-demo'
+  className='p-0'
+  description=''
 />
-
 
 ---
 
 <Step>Trigger</Step>
 
 <ComponentPreview
-  name="transitiontrigger-demo"
-  className="p-0"
-  description=""
+  name='transitiontrigger-demo'
+  className='p-0'
+  description=''
 />
 
 ## API Reference
 
 ### Transition
 
-Smooth page transitions  with curved or slide effects.
+Smooth page transitions with curved or slide effects.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `intro` | `ReactNode \| (triggerExit: () => void) => ReactNode` | `required` | Content or function shown during the intro animation. |
-| `children` | `ReactNode` | `required` | Main content displayed after the intro transition completes. |
-| `introDuration` | `number` | `1.5` | Duration in seconds for which the intro is displayed. |
-| `transitionDuration` | `number` | `0.9` | Time in seconds for the transition animation to complete. |
-| `type` | `'curved' \| 'slide'` | `curved` | Transition style: curved clipping or sliding effect. |
-| `direction` | `'top' \| 'bottom' \| 'left' \| 'right'` | `bottom` | Direction from which the transition occurs. |
-| `className` | `string` | `-` | CSS classes applied to the overlay element. |
-| `skip` | `boolean` | — | If true, skips the intro animation and immediately shows content. |
-| `autoExit` | `boolean` | `true` | If true, automatically starts exit transition after introDuration. |
-| `trigger` | `boolean` | `-` | Optional external trigger to start the transition manually. |
-| `onFinished` | `() => void` | `-` | Callback fired when the transition completes. |
-
-
+| Prop                 | Type                                                  | Default    | Description                                                        |
+| -------------------- | ----------------------------------------------------- | ---------- | ------------------------------------------------------------------ |
+| `intro`              | `ReactNode \| (triggerExit: () => void) => ReactNode` | `required` | Content or function shown during the intro animation.              |
+| `children`           | `ReactNode`                                           | `required` | Main content displayed after the intro transition completes.       |
+| `introDuration`      | `number`                                              | `1.5`      | Duration in seconds for which the intro is displayed.              |
+| `transitionDuration` | `number`                                              | `0.9`      | Time in seconds for the transition animation to complete.          |
+| `type`               | `'curved' \| 'slide'`                                 | `curved`   | Transition style: curved clipping or sliding effect.               |
+| `direction`          | `'top' \| 'bottom' \| 'left' \| 'right'`              | `bottom`   | Direction from which the transition occurs.                        |
+| `className`          | `string`                                              | `-`        | CSS classes applied to the overlay element.                        |
+| `skip`               | `boolean`                                             | —          | If true, skips the intro animation and immediately shows content.  |
+| `autoExit`           | `boolean`                                             | `true`     | If true, automatically starts exit transition after introDuration. |
+| `trigger`            | `boolean`                                             | `-`        | Optional external trigger to start the transition manually.        |
+| `onFinished`         | `() => void`                                          | `-`        | Callback fired when the transition completes.                      |

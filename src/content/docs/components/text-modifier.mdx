@@ -3,7 +3,7 @@ title: Text Modifier
 description: text highlighter with solid background and decorative markers for emphasis.
 ---
 
-<ComponentPreview name="textmodifier-demo" className="" description="" />
+<ComponentPreview name='textmodifier-demo' className='' description='' />
 
 ## Installation
 
@@ -19,13 +19,11 @@ description: text highlighter with solid background and decorative markers for e
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>text-modifier.tsx</code>
-</p>
-<ComponentSource name="text-modifier" />
+
+<ComponentSource name='text-modifier' />
 
 </Steps>
   </TabsContent>
@@ -34,15 +32,15 @@ description: text highlighter with solid background and decorative markers for e
 ## Usage
 
 ```tsx
-import TextModifier from "@/components/ui/text-modifier";
+import TextModifier from '@/components/ui/text-modifier';
 ```
 
 ```tsx
 <TextModifier
-  variant="solid"
-  highlightColorClass="bg-yellow-200"
-  markerColorClass="bg-yellow-500"
-  className="text-black dark:text-black"
+  variant='solid'
+  highlightColorClass='bg-yellow-200'
+  markerColorClass='bg-yellow-500'
+  className='text-black dark:text-black'
 >
   You can ask an AI assistant.
 </TextModifier>
@@ -56,20 +54,16 @@ text highlighter with solid background and decorative markers for emphasis.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `highlightColorClass` | `string` | `"bg-yellow-200"` | Background color class for the solid highlight of the text. |
-| `markerColorClass` | `string` | `"bg-yellow-500"` | Color class for decorative top and bottom markers around the text. |
-| `opacity` | `number` | `0.6` | Opacity level of the highlight background. |
-| `animationDuration` | `number` | `0.6` | Duration of the highlight and marker animation in seconds. |
-| `animationDelay` | `number` | — | Delay before starting the highlight animation in seconds. |
-| `animate` | `boolean` | `true` | Enable or disable animation for highlight and markers. |
-| `triggerOnView` | `boolean` | `true` | Animate only when the component comes into viewport. |
-| `repeat` | `boolean` | — | Allow animation to repeat when the component leaves and re-enters viewport. |
-| `padding` | `string` | `"0.125rem 0.375rem"` | Padding around the text inside the highlight. |
-| `className` | `string` | `"optional"` | Custom className to style the text content. |
-| `children` | `ReactNode` | `required` | Text or JSX content to be highlighted. |
-
-
-
+| Prop                  | Type        | Default               | Description                                                                 |
+| --------------------- | ----------- | --------------------- | --------------------------------------------------------------------------- |
+| `highlightColorClass` | `string`    | `"bg-yellow-200"`     | Background color class for the solid highlight of the text.                 |
+| `markerColorClass`    | `string`    | `"bg-yellow-500"`     | Color class for decorative top and bottom markers around the text.          |
+| `opacity`             | `number`    | `0.6`                 | Opacity level of the highlight background.                                  |
+| `animationDuration`   | `number`    | `0.6`                 | Duration of the highlight and marker animation in seconds.                  |
+| `animationDelay`      | `number`    | —                     | Delay before starting the highlight animation in seconds.                   |
+| `animate`             | `boolean`   | `true`                | Enable or disable animation for highlight and markers.                      |
+| `triggerOnView`       | `boolean`   | `true`                | Animate only when the component comes into viewport.                        |
+| `repeat`              | `boolean`   | —                     | Allow animation to repeat when the component leaves and re-enters viewport. |
+| `padding`             | `string`    | `"0.125rem 0.375rem"` | Padding around the text inside the highlight.                               |
+| `className`           | `string`    | `"optional"`          | Custom className to style the text content.                                 |
+| `children`            | `ReactNode` | `required`            | Text or JSX content to be highlighted.                                      |

@@ -3,11 +3,7 @@ title: Dropdown Menu
 description: Animated Dropdown Reveals a menu of options or actions when activated by a button.
 ---
 
-<ComponentPreview
-  name="dropdownmenu-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='dropdownmenu-demo' className='' description='' />
 
 ## Installation
 
@@ -23,22 +19,20 @@ description: Animated Dropdown Reveals a menu of options or actions when activat
     <Steps>
 
     <Step>Install the following dependencies:</Step>
-<DepsOptions name="@radix-ui/react-dropdown-menu framer-motion" />
+
+<DepsOptions name='@radix-ui/react-dropdown-menu motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>dropdown-menu.tsx</code>
-</p>
-<ComponentSource name="dropdown-menu" />
+
+<ComponentSource name='dropdown-menu' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -59,7 +53,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from '@/components/ui/dropdown-menu';
 ```
 
 ```tsx
@@ -82,30 +76,17 @@ import {
 
 <Step>Checkboxes</Step>
 
-<ComponentPreview
-  name="dropdownmenucheckboxes"
-  className=""
-  description=""
-/>
+<ComponentPreview name='dropdownmenucheckboxes' className='' description='' />
 
 ---
 
 <Step>Radio Group</Step>
 
 <ComponentPreview
-  name="dropdownmenuradiogroup-demo"
-  className=""
-  description=""
+  name='dropdownmenuradiogroup-demo'
+  className=''
+  description=''
 />
-
-## Changelog
-
-#### 30-01-2026, Visual Updates and Mobile Fixes
-
-- Updated color system: Light mode uses `#ffffff` background with `#f5f5f5` hover, dark mode uses `#262626` background with `#404040` hover.
-- Added `animate` prop to `DropdownMenu` component (default: `true`) to control all animations globally.
-- Fixed critical mobile bug where dropdown would auto-close immediately after opening on touch devices.
-- Added `touchAction: "manipulation"` to all interactive components to prevent tap delays and improve mobile responsiveness.
 
 ## API Reference
 
@@ -115,19 +96,14 @@ The `Dropdown Menu` component displays a clickable trigger that reveals a list o
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `required` | Content inside the component. Applies to all DropdownMenu components. |
-| `className` | `string` | `-` | Custom CSS classes for styling. Applies to all components. |
-| `inset` | `boolean` | `false` | Applies to DropdownMenuItem, DropdownMenuLabel, DropdownMenuSubTrigger. |
-| `variant` | `"default" \| "destructive"` | `"default"` | Visual style of the item. Only applies to DropdownMenuItem. |
-| `checked` | `boolean` | `false` | Indicates whether the checkbox is selected. Only applies to DropdownMenuCheckboxItem. |
-| `value` | `string` | `required` | Value of the item. Applies to DropdownMenuRadioItem and DropdownMenuRadioGroup. |
-| `onValueChange` | `(value: string) => void` | `-` | Callback when selected value changes. Only for DropdownMenuRadioGroup. |
-| `sideOffset` | `number` | `4` | Offset in pixels from the trigger element. Only applies to DropdownMenuContent. |
-| `maxHeight` | `string \| number` | `16rem` | Maximum height for scrollable dropdown content. Only applies to DropdownMenuContent. |
-
-
-
-
+| Prop            | Type                         | Default     | Description                                                                           |
+| --------------- | ---------------------------- | ----------- | ------------------------------------------------------------------------------------- |
+| `children`      | `ReactNode`                  | `required`  | Content inside the component. Applies to all DropdownMenu components.                 |
+| `className`     | `string`                     | `-`         | Custom CSS classes for styling. Applies to all components.                            |
+| `inset`         | `boolean`                    | `false`     | Applies to DropdownMenuItem, DropdownMenuLabel, DropdownMenuSubTrigger.               |
+| `variant`       | `"default" \| "destructive"` | `"default"` | Visual style of the item. Only applies to DropdownMenuItem.                           |
+| `checked`       | `boolean`                    | `false`     | Indicates whether the checkbox is selected. Only applies to DropdownMenuCheckboxItem. |
+| `value`         | `string`                     | `required`  | Value of the item. Applies to DropdownMenuRadioItem and DropdownMenuRadioGroup.       |
+| `onValueChange` | `(value: string) => void`    | `-`         | Callback when selected value changes. Only for DropdownMenuRadioGroup.                |
+| `sideOffset`    | `number`                     | `4`         | Offset in pixels from the trigger element. Only applies to DropdownMenuContent.       |
+| `maxHeight`     | `string \| number`           | `16rem`     | Maximum height for scrollable dropdown content. Only applies to DropdownMenuContent.  |

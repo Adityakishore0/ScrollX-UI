@@ -3,11 +3,7 @@ title: Popover
 description: Displays rich content in a animated portal, triggered by a button.
 ---
 
-<ComponentPreview
-  name="popover-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='popover-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: Displays rich content in a animated portal, triggered by a button.
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion @radix-ui/react-popover" />
+<DepsOptions name='motion @radix-ui/react-popover' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>popover.tsx</code>
-</p>
-<ComponentSource name="popover" />
+
+<ComponentSource name='popover' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -57,7 +49,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from '@/components/ui/popover';
 ```
 
 ```tsx
@@ -67,7 +59,6 @@ import {
 </Popover>
 ```
 
-
 ## API Reference
 
 ### Popover
@@ -76,14 +67,10 @@ Displays rich content in a animated portal, triggered by a button.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `required` | Content to be rendered inside the Popover. Required for Popover, PopoverTrigger, PopoverContent, and PopoverAnchor. |
-| `align` | `"start" \| "center" \| "end" \| "baseline"` | `"center"` | Alignment of the PopoverContent relative to the trigger. Used in PopoverContent. |
-| `sideOffset` | `number` | `4` | Offset distance in pixels between the PopoverContent and its trigger. Used in PopoverContent. |
-| `className` | `string` | `-` | Additional CSS classes to style PopoverContent. Used in PopoverContent. |
-| `...props` | `ComponentProps` | `-` | All other native Popover props from @radix-ui/react-popover Root, Trigger, Content, or Anchor. |
-
-
-
+| Prop         | Type                                         | Default    | Description                                                                                                         |
+| ------------ | -------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------- |
+| `children`   | `ReactNode`                                  | `required` | Content to be rendered inside the Popover. Required for Popover, PopoverTrigger, PopoverContent, and PopoverAnchor. |
+| `align`      | `"start" \| "center" \| "end" \| "baseline"` | `"center"` | Alignment of the PopoverContent relative to the trigger. Used in PopoverContent.                                    |
+| `sideOffset` | `number`                                     | `4`        | Offset distance in pixels between the PopoverContent and its trigger. Used in PopoverContent.                       |
+| `className`  | `string`                                     | `-`        | Additional CSS classes to style PopoverContent. Used in PopoverContent.                                             |
+| `...props`   | `ComponentProps`                             | `-`        | All other native Popover props from @radix-ui/react-popover Root, Trigger, Content, or Anchor.                      |

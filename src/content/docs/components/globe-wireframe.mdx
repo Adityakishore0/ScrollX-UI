@@ -1,13 +1,9 @@
 ---
 title: Globe Wireframe
-description:  globe with smooth city rotations, responsive design, and premium motion
+description: globe with smooth city rotations, responsive design, and premium motion
 ---
 
-<ComponentPreview
-  name="globewireframe-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='globewireframe-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,14 +19,11 @@ description:  globe with smooth city rotations, responsive design, and premium m
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="d3 topojson-client @types/d3 @types/topojson-client @types/topojson-specification" />
+<DepsOptions name='d3 topojson-client @types/d3 @types/topojson-client @types/topojson-specification' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>globe-wireframe.tsx</code>
-</p>
-<ComponentSource name="globe-wireframe" />
 
+<ComponentSource name='globe-wireframe' />
 
 </Steps>
   </TabsContent>
@@ -39,16 +32,12 @@ description:  globe with smooth city rotations, responsive design, and premium m
 ## Usage
 
 ```tsx
-import GlobeWireframe from "@/components/ui/globe-wireframe";
+import GlobeWireframe from '@/components/ui/globe-wireframe';
 ```
 
 ```tsx
-<GlobeWireframe
-  className="w-full h-full"
-  variant="solid"
-/>
+<GlobeWireframe className='w-full h-full' variant='solid' />
 ```
-
 
 ## Examples
 
@@ -56,10 +45,10 @@ import GlobeWireframe from "@/components/ui/globe-wireframe";
 
 <Step>Cities based Rotation</Step>
 
-<ComponentPreview 
- name="globewireframerotatecities" 
- className="p-0" 
- description="" 
+<ComponentPreview
+  name='globewireframerotatecities'
+  className='p-0'
+  description=''
 />
 
 ## API Reference
@@ -70,27 +59,23 @@ The `Globe Wireframe` component creates beautiful globe with smooth city rotatio
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `"wireframe" \| "wireframesolid" \| "solid"` | `"wireframe"` | Rendering style of the globe. |
-| `scale` | `number` | `1` | Scales the globe size relative to its container. |
-| `className` | `string` | `"aspect-square w-full max-w-[600px]"` | CSS classes applied to the globe container. |
-| `strokeColor` | `string` | `"currentColor"` | Stroke color for countries and outlines. |
-| `strokeWidth` | `number` | `1` | Stroke width for country borders. |
-| `sphereOutlineColor` | `string` | `"currentColor"` | Outline color of the globe sphere. |
-| `sphereOutlineWidth` | `number` | `1` | Width of the globe outline stroke. |
-| `showGraticule` | `boolean` | `true` | Show latitude and longitude grid lines. |
-| `graticuleOpacity` | `number` | `0.2` | Opacity of the graticule lines. |
-| `autoRotate` | `boolean` | `true` | Automatically rotate the globe when idle. |
-| `autoRotateSpeed` | `number` | `0.5` | Speed of idle rotation. |
-| `rotateToLocation` | `string \| [number, number]` | — | Rotate globe to a city name or coordinates. |
-| `rotateCities` | `string[]` | `[]` | Automatically rotate through listed cities. |
-| `rotationSpeed` | `number` | `3000` | Interval (ms) between city rotations. |
-| `enableInteraction` | `boolean` | `true` | Enable drag interaction to rotate the globe. |
-| `countryFillColor` | `string` | — | Fill color for countries in solid variant. |
-| `countryHoverColor` | `string` | — | Hover color for countries (solid variant only). |
-| `backgroundColor` | `string` | `"transparent"` | Background color behind the globe sphere. |
-
-
-
+| Prop                 | Type                                         | Default                            | Description                                      |
+| -------------------- | -------------------------------------------- | ---------------------------------- | ------------------------------------------------ |
+| `variant`            | `"wireframe" \| "wireframesolid" \| "solid"` | `"wireframe"`                      | Rendering style of the globe.                    |
+| `scale`              | `number`                                     | `1`                                | Scales the globe size relative to its container. |
+| `className`          | `string`                                     | `"aspect-square w-full max-w-150"` | CSS classes applied to the globe container.      |
+| `strokeColor`        | `string`                                     | `"currentColor"`                   | Stroke color for countries and outlines.         |
+| `strokeWidth`        | `number`                                     | `1`                                | Stroke width for country borders.                |
+| `sphereOutlineColor` | `string`                                     | `"currentColor"`                   | Outline color of the globe sphere.               |
+| `sphereOutlineWidth` | `number`                                     | `1`                                | Width of the globe outline stroke.               |
+| `showGraticule`      | `boolean`                                    | `true`                             | Show latitude and longitude grid lines.          |
+| `graticuleOpacity`   | `number`                                     | `0.2`                              | Opacity of the graticule lines.                  |
+| `autoRotate`         | `boolean`                                    | `true`                             | Automatically rotate the globe when idle.        |
+| `autoRotateSpeed`    | `number`                                     | `0.5`                              | Speed of idle rotation.                          |
+| `rotateToLocation`   | `string \| [number, number]`                 | —                                  | Rotate globe to a city name or coordinates.      |
+| `rotateCities`       | `string[]`                                   | `[]`                               | Automatically rotate through listed cities.      |
+| `rotationSpeed`      | `number`                                     | `3000`                             | Interval (ms) between city rotations.            |
+| `enableInteraction`  | `boolean`                                    | `true`                             | Enable drag interaction to rotate the globe.     |
+| `countryFillColor`   | `string`                                     | —                                  | Fill color for countries in solid variant.       |
+| `countryHoverColor`  | `string`                                     | —                                  | Hover color for countries (solid variant only).  |
+| `backgroundColor`    | `string`                                     | `"transparent"`                    | Background color behind the globe sphere.        |

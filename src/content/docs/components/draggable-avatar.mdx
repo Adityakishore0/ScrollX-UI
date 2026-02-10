@@ -3,7 +3,7 @@ title: Draggable Avatar
 description: It displays a circular, draggable avatar with customizable size and style.
 ---
 
-<ComponentPreview name="draggableavatar-demo" className="" description="" />
+<ComponentPreview name='draggableavatar-demo' className='' description='' />
 
 ## Installation
 
@@ -19,13 +19,11 @@ description: It displays a circular, draggable avatar with customizable size and
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>draggable-avatar.tsx</code>
-</p>
-<ComponentSource name="draggable-avatar" />
+
+<ComponentSource name='draggable-avatar' />
 
 </Steps>
   </TabsContent>
@@ -34,13 +32,13 @@ description: It displays a circular, draggable avatar with customizable size and
 ## Usage
 
 ```tsx
-import DraggableAvatar from "@/components/ui/draggable-avatar";
+import DraggableAvatar from '@/components/ui/draggable-avatar';
 ```
 
 ```tsx
 <DraggableAvatar
-  image="/image.jpg"
-  borderColor="#60A5FA"
+  image='/image.jpg'
+  borderColor='#60A5FA'
   range={200}
   size={90}
 />
@@ -54,12 +52,9 @@ It displays a circular, draggable avatar with customizable size and style.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `image` | `string` | `-` | URL of the avatar image displayed inside the draggable circle. |
-| `borderColor` | `string` | `"#60A5FA"` | Color of the avatar’s circular border and the bottom marker line. |
-| `range` | `number` | `300` | Maximum drag distance (in pixels) allowed from the initial position. |
-| `size` | `number` | `100` | Diameter of the circular avatar in pixels. |
-
-
+| Prop          | Type     | Default     | Description                                                          |
+| ------------- | -------- | ----------- | -------------------------------------------------------------------- |
+| `image`       | `string` | `-`         | URL of the avatar image displayed inside the draggable circle.       |
+| `borderColor` | `string` | `"#60A5FA"` | Color of the avatar’s circular border and the bottom marker line.    |
+| `range`       | `number` | `300`       | Maximum drag distance (in pixels) allowed from the initial position. |
+| `size`        | `number` | `100`       | Diameter of the circular avatar in pixels.                           |

@@ -4,9 +4,9 @@ description: MacOS-style React dock with smooth animation and customizable magni
 ---
 
 <ComponentPreview
-  name="magicdock-demo"
-  className=""
-  description="Animated dock with smooth animations, interactive hover effects"
+  name='magicdock-demo'
+  className=''
+  description='Animated dock with smooth animations, interactive hover effects'
 />
 
 ## Installation
@@ -23,14 +23,11 @@ description: MacOS-style React dock with smooth animation and customizable magni
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>magicdock.tsx</code>
-</p>
-<ComponentSource name="magicdock" />
 
+<ComponentSource name='magicdock' />
 
 </Steps>
   </TabsContent>
@@ -41,75 +38,76 @@ description: MacOS-style React dock with smooth animation and customizable magni
 ### Basic Usage
 
 ```tsx
-import StylishDock from "@/components/ui/magicdock";
-import { Home as HomeIcon, Settings as SettingsIcon } from "lucide-react";
+import StylishDock from '@/components/ui/magicdock';
+import { Home as HomeIcon, Settings as SettingsIcon } from 'lucide-react';
 
 const dockItems = [
   {
     id: 1,
     icon: <HomeIcon size={24} />,
-    label: "Home",
-    description: "Go to homepage",
+    label: 'Home',
+    description: 'Go to homepage',
     onClick: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
   },
   {
     id: 2,
     icon: <SettingsIcon size={24} />,
-    label: "Settings",
-    description: "Customize options",
-    onClick: () => console.log("Settings clicked"),
+    label: 'Settings',
+    description: 'Customize options',
+    onClick: () => console.log('Settings clicked'),
   },
 ];
 
 function App() {
   return (
-    <div className="relative">
+    <div className='relative'>
       <StylishDock
         items={dockItems}
         distance={150}
         panelHeight={64}
         baseItemSize={50}
         magnification={70}
-        variant="default"
+        variant='default'
       />
     </div>
   );
 }
 ```
+
 ### With NextRouter
 
 ```tsx
-import StylishDock from "@/components/ui/magicdock";
-import { Home as HomeIcon, Docs as DocsIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
+import StylishDock from '@/components/ui/magicdock';
+import { Home as HomeIcon, Docs as DocsIcon } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const dockItems = [
   {
     id: 1,
     icon: <HomeIcon size={24} />,
-    label: "Home",
-    description: "Go to homepage",
+    label: 'Home',
+    description: 'Go to homepage',
     onClick: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
   },
   {
     id: 2,
     icon: <DocsIcon size={24} />,
-    label: "Docs",
-    description: "Read documentation",
-    onClick: () => router.push("/docs"),
+    label: 'Docs',
+    description: 'Read documentation',
+    onClick: () => router.push('/docs'),
   },
 ];
 
 function App() {
   return (
-    <div className="relative">
+    <div className='relative'>
       <StylishDock
         items={dockItems}
         distance={150}
         panelHeight={64}
         baseItemSize={50}
         magnification={70}
-        variant="tooltip"
+        variant='tooltip'
       />
     </div>
   );
@@ -126,14 +124,13 @@ function App() {
 <MagicDock items={dockItems} variant="gradient" />
 
 // Tooltip variant with custom magnification
-<MagicDock 
-  items={dockItems} 
-  variant="tooltip" 
+<MagicDock
+  items={dockItems}
+  variant="tooltip"
   magnification={90}
   baseItemSize={60}
 />
 ```
-
 
 # API Reference
 
@@ -143,18 +140,14 @@ The `MagicDock` component provides a customizable, animated dock.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `items` | `DockItemData[]` | `required` | Array of dock items with id, icon, label, description, and onClick. |
-| `className` | `string` | — | Custom classes for the dock container. |
-| `distance` | `number` | `150` | Distance used for magnification effect. |
-| `panelHeight` | `number` | `64` | Fixed height of the dock panel. |
-| `baseItemSize` | `number` | `50` | Base size of each dock item. |
-| `dockHeight` | `number` | `256` | Max height of the expanded dock. |
-| `magnification` | `number` | `70` | Max size increase on item hover. |
-| `spring` | `{ mass: number; stiffness: number; damping: number }` | `{ mass: 0.1, stiffness: 150, damping: 12 }` | Spring animation config for item movement. |
-| `variant` | `"default" \| "gradient" \| "tooltip"` | `"default"` | Visual style of the dock. |
-
-
-
+| Prop            | Type                                                   | Default                                      | Description                                                         |
+| --------------- | ------------------------------------------------------ | -------------------------------------------- | ------------------------------------------------------------------- |
+| `items`         | `DockItemData[]`                                       | `required`                                   | Array of dock items with id, icon, label, description, and onClick. |
+| `className`     | `string`                                               | —                                            | Custom classes for the dock container.                              |
+| `distance`      | `number`                                               | `150`                                        | Distance used for magnification effect.                             |
+| `panelHeight`   | `number`                                               | `64`                                         | Fixed height of the dock panel.                                     |
+| `baseItemSize`  | `number`                                               | `50`                                         | Base size of each dock item.                                        |
+| `dockHeight`    | `number`                                               | `256`                                        | Max height of the expanded dock.                                    |
+| `magnification` | `number`                                               | `70`                                         | Max size increase on item hover.                                    |
+| `spring`        | `{ mass: number; stiffness: number; damping: number }` | `{ mass: 0.1, stiffness: 150, damping: 12 }` | Spring animation config for item movement.                          |
+| `variant`       | `"default" \| "gradient" \| "tooltip"`                 | `"default"`                                  | Visual style of the dock.                                           |

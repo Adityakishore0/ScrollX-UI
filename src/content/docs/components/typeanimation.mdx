@@ -3,11 +3,7 @@ title: Type Animation
 description: Displays an animated typing effect.
 ---
 
-<ComponentPreview
-  name="typeanimation-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='typeanimation-demo' className='' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: Displays an animated typing effect.
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion react-type-animation" />
+<DepsOptions name='motion react-type-animation' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>typeanimation.tsx</code>
-</p>
-<ComponentSource name="typeanimation" />
+
+<ComponentSource name='typeanimation' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -58,14 +50,13 @@ import Typeanimation from '@/components/ui/typeanimation';
 
 ```tsx
 <Typeanimation
-    words={[' possibilities', ' opportunities', ' potential']}
-    typingSpeed="slow"
-    deletingSpeed="slow"
-    pauseDuration={2000}
-    className="text-3xl md:text-5xl font-extrabold text-teal-600"
-  />
+  words={[' possibilities', ' opportunities', ' potential']}
+  typingSpeed='slow'
+  deletingSpeed='slow'
+  pauseDuration={2000}
+  className='text-3xl md:text-5xl font-extrabold text-teal-600'
+/>
 ```
-
 
 ## API Reference
 
@@ -75,16 +66,12 @@ Displays an animated typing effect with gradient text.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `words` | `string[]` | `required` | Array of words to animate through the typing effect |
-| `className` | `string` | — | Optional class name for custom styling |
-| `typingSpeed` | `number \| 'slow' \| 'normal' \| 'fast'` | `50` | Typing speed in milliseconds or preset speed values |
-| `deletingSpeed` | `number \| 'slow' \| 'normal' \| 'fast'` | `50` | Deleting speed in milliseconds or preset speed values |
-| `pauseDuration` | `number` | `1000` | Delay between each word transition in milliseconds |
-| `gradientFrom` | `string` | `'blue-500'` | Tailwind color suffix for gradient start color |
-| `gradientTo` | `string` | `'purple-600'` | Tailwind color suffix for gradient end color |
-
-
-
+| Prop            | Type                                     | Default        | Description                                           |
+| --------------- | ---------------------------------------- | -------------- | ----------------------------------------------------- |
+| `words`         | `string[]`                               | `required`     | Array of words to animate through the typing effect   |
+| `className`     | `string`                                 | —              | Optional class name for custom styling                |
+| `typingSpeed`   | `number \| 'slow' \| 'normal' \| 'fast'` | `50`           | Typing speed in milliseconds or preset speed values   |
+| `deletingSpeed` | `number \| 'slow' \| 'normal' \| 'fast'` | `50`           | Deleting speed in milliseconds or preset speed values |
+| `pauseDuration` | `number`                                 | `1000`         | Delay between each word transition in milliseconds    |
+| `gradientFrom`  | `string`                                 | `'blue-500'`   | Tailwind color suffix for gradient start color        |
+| `gradientTo`    | `string`                                 | `'purple-600'` | Tailwind color suffix for gradient end color          |

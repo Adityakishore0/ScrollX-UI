@@ -3,11 +3,7 @@ title: Striped Grid
 description: Animated diagonal stripes with optional base grid, creating a dynamic textured background.
 ---
 
-<ComponentPreview
-  name="stripedgrid-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='stripedgrid-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: Animated diagonal stripes with optional base grid, creating a dynam
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>striped-grid.tsx</code>
-</p>
-<ComponentSource name="striped-grid" />
+
+<ComponentSource name='striped-grid' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,34 +45,30 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { StripedGrid } from "@/components/ui/striped-grid";
+import { StripedGrid } from '@/components/ui/striped-grid';
 ```
 
 ```tsx
 <StripedGrid
-      speed="3s"
-      className="relative h-[400px] w-full flex flex-col items-center justify-center"
-    >
-      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
-        StripedGrid, <br /> Background.
-      </h2>
-      <p className="max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center">
-        gliding right, setting the path.
-      </p>
-    </StripedGrid>
+  speed='3s'
+  className='relative h-100 w-full flex flex-col items-center justify-center'
+>
+  <h2 className='bg-clip-text text-transparent text-center bg-linear-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight'>
+    StripedGrid, <br /> Background.
+  </h2>
+  <p className='max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center'>
+    gliding right, setting the path.
+  </p>
+</StripedGrid>
 ```
+
 ## Examples
 
 ---
 
 <Step>Direction</Step>
 
-<ComponentPreview
-  name="stripedgridleft-demo"
-  className="p-0"
-  description=""
-/>
-
+<ComponentPreview name='stripedgridleft-demo' className='p-0' description='' />
 
 ## API Reference
 
@@ -90,19 +78,16 @@ Animated diagonal stripes with optional base grid, creating a dynamic textured b
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `speed` | `string` | `"15s"` | Controls the animation duration of the moving diagonal stripes (e.g., '10s', '20s'). |
-| `opacity` | `number` | `0.3` | Opacity of the moving stripes. Lower values make stripes subtle, higher values more visible. |
-| `direction` | `"left" \| "right"` | `"right"` | Direction in which the diagonal stripes move. Determines whether animation shifts left or right. |
-| `stripeColor` | `string` | `"16, 185, 129"` | RGB values (without alpha) for stripe color. Used inside rgba(). Example: '255, 99, 71'. |
-| `stripeWidth` | `string` | `"2px"` | Thickness of each diagonal stripe (e.g., '2px', '4px'). |
-| `stripeSpacing` | `string` | `"8px"` | Spacing between repeated diagonal stripes. Controls density of pattern. |
-| `backgroundColor` | `string` | `"#ffffff"` | Base background color behind all grid and stripe layers. |
-| `enableBaseGrid` | `boolean` | `true` | Enables the underlying static square grid behind the moving stripes. |
-| `baseGridOpacity` | `number` | `0.15` | Opacity of the static base grid lines. Works when enableBaseGrid is true. |
-| `className` | `string` | — | Additional Tailwind or custom class names applied to the container. |
-| `children` | `React.ReactNode` | — | Content rendered above all animated layers. |
-
-
+| Prop              | Type                | Default          | Description                                                                                      |
+| ----------------- | ------------------- | ---------------- | ------------------------------------------------------------------------------------------------ |
+| `speed`           | `string`            | `"15s"`          | Controls the animation duration of the moving diagonal stripes (e.g., '10s', '20s').             |
+| `opacity`         | `number`            | `0.3`            | Opacity of the moving stripes. Lower values make stripes subtle, higher values more visible.     |
+| `direction`       | `"left" \| "right"` | `"right"`        | Direction in which the diagonal stripes move. Determines whether animation shifts left or right. |
+| `stripeColor`     | `string`            | `"16, 185, 129"` | RGB values (without alpha) for stripe color. Used inside rgba(). Example: '255, 99, 71'.         |
+| `stripeWidth`     | `string`            | `"2px"`          | Thickness of each diagonal stripe (e.g., '2px', '4px').                                          |
+| `stripeSpacing`   | `string`            | `"8px"`          | Spacing between repeated diagonal stripes. Controls density of pattern.                          |
+| `backgroundColor` | `string`            | `"#ffffff"`      | Base background color behind all grid and stripe layers.                                         |
+| `enableBaseGrid`  | `boolean`           | `true`           | Enables the underlying static square grid behind the moving stripes.                             |
+| `baseGridOpacity` | `number`            | `0.15`           | Opacity of the static base grid lines. Works when enableBaseGrid is true.                        |
+| `className`       | `string`            | —                | Additional Tailwind or custom class names applied to the container.                              |
+| `children`        | `React.ReactNode`   | —                | Content rendered above all animated layers.                                                      |

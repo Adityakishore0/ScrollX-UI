@@ -3,7 +3,7 @@ title: Card Flip
 description: Renders a card component with flip animation, supporting front/back content.
 ---
 
-<ComponentPreview name="cardflip-demo" className="p-8" description="" />
+<ComponentPreview name='cardflip-demo' className='p-8' description='' />
 
 ## Installation
 
@@ -19,23 +19,19 @@ description: Renders a card component with flip animation, supporting front/back
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>card-flip.tsx</code>
-</p>
-<ComponentSource name="card-flip" />
+
+<ComponentSource name='card-flip' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -59,7 +55,7 @@ import {
   CardFlipDescription,
   CardFlipContent,
   CardFlipAction,
-} from "@/components/ui/card-flip";
+} from '@/components/ui/card-flip';
 ```
 
 ```tsx
@@ -88,11 +84,10 @@ import {
 
 #### 04-11-2025, Safari CardFlip Bug
 
-- Fixed a Safari-specific issue where the `Info` and `X` buttons were not hiding correctly during card flip transitions.  
-- Improved compatibility by adding `WebkitBackfaceVisibility` and refining `transformStyle` for smoother 3D rendering in Safari.  
-- Enhanced transition handling for button opacity and pointer events to ensure consistent behavior across all browsers.  
+- Fixed a Safari-specific issue where the `Info` and `X` buttons were not hiding correctly during card flip transitions.
+- Improved compatibility by adding `WebkitBackfaceVisibility` and refining `transformStyle` for smoother 3D rendering in Safari.
+- Enhanced transition handling for button opacity and pointer events to ensure consistent behavior across all browsers.
 - Verified consistent and stable performance in Chrome, Safari, and Edge.
-
 
 ## API Reference
 
@@ -102,19 +97,16 @@ Renders a card component with flip animation, supporting front/back content.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `className` | `string` | — | Custom CSS classes for the root card container. |
-| `...props` | `div props` | — | All standard HTML div attributes. |
-| `children` | `ReactNode[]` | — | Front and back card content as two nodes. |
-| `CardFlipFront` | `React.ReactNode` | — | Front side of the card, containing main content. |
-| `CardFlipBack` | `React.ReactNode` | — | Back side of the card, shown on flip. |
-| `CardFlipHeader` | `React.ReactNode` | — | Header section inside front or back card. |
-| `CardFlipTitle` | `React.ReactNode` | — | Title inside the header section. |
-| `CardFlipDescription` | `React.ReactNode` | — | Description inside the header section. |
-| `CardFlipAction` | `React.ReactNode` | — | Action element (e.g., button) in the header. |
-| `CardFlipContent` | `React.ReactNode` | — | Main content area inside the card. |
-| `CardFlipFooter` | `React.ReactNode` | — | Footer section inside the card. |
-
-
+| Prop                  | Type              | Default | Description                                      |
+| --------------------- | ----------------- | ------- | ------------------------------------------------ |
+| `className`           | `string`          | —       | Custom CSS classes for the root card container.  |
+| `...props`            | `div props`       | —       | All standard HTML div attributes.                |
+| `children`            | `ReactNode[]`     | —       | Front and back card content as two nodes.        |
+| `CardFlipFront`       | `React.ReactNode` | —       | Front side of the card, containing main content. |
+| `CardFlipBack`        | `React.ReactNode` | —       | Back side of the card, shown on flip.            |
+| `CardFlipHeader`      | `React.ReactNode` | —       | Header section inside front or back card.        |
+| `CardFlipTitle`       | `React.ReactNode` | —       | Title inside the header section.                 |
+| `CardFlipDescription` | `React.ReactNode` | —       | Description inside the header section.           |
+| `CardFlipAction`      | `React.ReactNode` | —       | Action element (e.g., button) in the header.     |
+| `CardFlipContent`     | `React.ReactNode` | —       | Main content area inside the card.               |
+| `CardFlipFooter`      | `React.ReactNode` | —       | Footer section inside the card.                  |

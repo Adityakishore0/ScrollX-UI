@@ -4,9 +4,9 @@ description: Animated text component that flips between words with smooth transi
 ---
 
 <ComponentPreview
-  name="morphotextflip-demo"
-  className="p-0"
-  description="flips words with smooth transitions."
+  name='morphotextflip-demo'
+  className='p-0'
+  description='flips words with smooth transitions.'
 />
 
 ## Installation
@@ -23,13 +23,11 @@ description: Animated text component that flips between words with smooth transi
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>morphotextflip.tsx</code>
-</p>
-<ComponentSource name="morphotextflip" />
+
+<ComponentSource name='morphotextflip' />
 
 </Steps>
   </TabsContent>
@@ -38,65 +36,49 @@ description: Animated text component that flips between words with smooth transi
 ## Usage
 
 ```tsx
-import { MorphoTextFlip } from "@/components/ui/morphotextflip";
+import { MorphoTextFlip } from '@/components/ui/morphotextflip';
 ```
 
 ```tsx
 <MorphoTextFlip
-  words={["remarkable", "bold", "scalable", "beautiful"]}
-  textClassName="text-4xl md:text-7xl text-rose-600 dark:text-rose-400 font-bold mt-1"
-  animationType="flipY"
+  words={['remarkable', 'bold', 'scalable', 'beautiful']}
+  textClassName='text-4xl md:text-7xl text-rose-600 dark:text-rose-400 font-bold mt-1'
+  animationType='flipY'
 />
 ```
+
 ## Examples
 
 ---
 
 <Step>SlideUp Variant</Step>
 
-<ComponentPreview
-  name="morphotextslideup"
-  className=""
-  description=""
-/>
+<ComponentPreview name='morphotextslideup' className='' description='' />
 
 ---
 
 <Step>FadeScale Variant</Step>
 
-<ComponentPreview
-  name="morphotextfadescale"
-  className=""
-  description=""
-/>
+<ComponentPreview name='morphotextfadescale' className='' description='' />
 
 ---
 
 <Step>SlideRotate Variant</Step>
 
-<ComponentPreview
-  name="morphotextsliderotate"
-  className=""
-  description=""
-/>
+<ComponentPreview name='morphotextsliderotate' className='' description='' />
 
 ---
 
 <Step>Elastic Variant</Step>
 
-<ComponentPreview
-  name="morphotextelastic"
-  className=""
-  description=""
-/>
+<ComponentPreview name='morphotextelastic' className='' description='' />
 
 ## Changelog
 
-#### 19-11-2025,  Updated MorphoTextFlip
+#### 19-11-2025, Updated MorphoTextFlip
 
 - Refined width auto-measure system for smoother container resizing and stability.
 - Improved animation variant logic and unified className handling for cleaner structure.
-
 
 ## API Reference
 
@@ -106,16 +88,11 @@ The `MorphoTextFlip` component renders animated text component that flips betwee
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `words` | `string[]` | `required` | Words to animate through. |
-| `interval` | `number` | — | Time between word changes (ms). |
-| `animationType` | `"slideUp" \| "fadeScale" \| "flipY" \| "slideRotate" \| "elastic"` | — | Transition animation style. |
-| `animationDuration` | `number` | — | Duration of each animation (ms). |
-| `className` | `string` | — | Class for the outer container. |
-| `textClassName` | `string` | — | Class for the animated text element. |
-
-
-
-
+| Prop                | Type                                                                | Default    | Description                          |
+| ------------------- | ------------------------------------------------------------------- | ---------- | ------------------------------------ |
+| `words`             | `string[]`                                                          | `required` | Words to animate through.            |
+| `interval`          | `number`                                                            | —          | Time between word changes (ms).      |
+| `animationType`     | `"slideUp" \| "fadeScale" \| "flipY" \| "slideRotate" \| "elastic"` | —          | Transition animation style.          |
+| `animationDuration` | `number`                                                            | —          | Duration of each animation (ms).     |
+| `className`         | `string`                                                            | —          | Class for the outer container.       |
+| `textClassName`     | `string`                                                            | —          | Class for the animated text element. |

@@ -3,11 +3,7 @@ title: Electric Text
 description: Animated electric text with glowing, distorted outline for dynamic neon effects.
 ---
 
-<ComponentPreview
-  name="electrictext-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='electrictext-demo' className='' description='' />
 
 ## Installation
 
@@ -23,20 +19,16 @@ description: Animated electric text with glowing, distorted outline for dynamic 
     <Steps>
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>electric-text.tsx</code>
-</p>
-<ComponentSource name="electric-text" />
+
+<ComponentSource name='electric-text' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -50,23 +42,22 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { ElectricText } from "@/components/ui/electric-text";
+import { ElectricText } from '@/components/ui/electric-text';
 ```
 
 ```tsx
 <ElectricText
-        color="#BB8A2C"
-        showFill={false}
-        speed={1}
-        glowIntensity="high"
-        chaos={1}
-        strokeWidth={3}
-        className="text-5xl font-bold"
-      >
-        Feel the Spark
-      </ElectricText>
+  color='#BB8A2C'
+  showFill={false}
+  speed={1}
+  glowIntensity='high'
+  chaos={1}
+  strokeWidth={3}
+  className='text-5xl font-bold'
+>
+  Feel the Spark
+</ElectricText>
 ```
-
 
 ## API Reference
 
@@ -76,17 +67,14 @@ Animated electric text with glowing, distorted outline for dynamic neon effects.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `-` | The text or React nodes to display with the electric effect. |
-| `color` | `string` | `#5227FF` | Primary stroke color for the electric outline. |
-| `speed` | `number` | `1` | Animation speed multiplier for the electric effect. |
-| `chaos` | `number` | `1` | Intensity of the distortion in the electric effect. |
-| `strokeWidth` | `number` | `2` | Width of the text stroke for the electric outline. |
-| `className` | `string` | `-` | Custom class names for styling the root container. |
-| `glowIntensity` | `'low' \| 'medium' \| 'high'` | `medium` | Controls blur and opacity levels of the glow layers. |
-| `fillColor` | `string` | `rgba(0,0,0,0.8)` | Fill color for the text when `showFill` is true. |
-| `showFill` | `boolean` | `true` | Toggles the fill layer. Set to false to show only electric outline. |
-
-
+| Prop            | Type                          | Default           | Description                                                         |
+| --------------- | ----------------------------- | ----------------- | ------------------------------------------------------------------- |
+| `children`      | `ReactNode`                   | `-`               | The text or React nodes to display with the electric effect.        |
+| `color`         | `string`                      | `#5227FF`         | Primary stroke color for the electric outline.                      |
+| `speed`         | `number`                      | `1`               | Animation speed multiplier for the electric effect.                 |
+| `chaos`         | `number`                      | `1`               | Intensity of the distortion in the electric effect.                 |
+| `strokeWidth`   | `number`                      | `2`               | Width of the text stroke for the electric outline.                  |
+| `className`     | `string`                      | `-`               | Custom class names for styling the root container.                  |
+| `glowIntensity` | `'low' \| 'medium' \| 'high'` | `medium`          | Controls blur and opacity levels of the glow layers.                |
+| `fillColor`     | `string`                      | `rgba(0,0,0,0.8)` | Fill color for the text when `showFill` is true.                    |
+| `showFill`      | `boolean`                     | `true`            | Toggles the fill layer. Set to false to show only electric outline. |

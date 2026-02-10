@@ -4,9 +4,9 @@ description: An animated text component that creates a smooth, staggered charact
 ---
 
 <ComponentPreview
-  name="staggerchars-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An animated text component that creates a smooth, staggered character animation effect when hovered."
+  name='staggerchars-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An animated text component that creates a smooth, staggered character animation effect when hovered.'
 />
 
 ## Installation
@@ -22,29 +22,24 @@ description: An animated text component that creates a smooth, staggered charact
   <TabsContent value="manual">
     <Steps>
       <Step>Install the following dependencies:</Step>
-      <DepsOptions name="framer-motion" />
+      <DepsOptions name="motion" />
 
       <Step>Copy and paste the following code into your project.</Step>
-      <p>
-        <code>stagger-chars.tsx</code>
-      </p>
+
       <ComponentSource name="stagger-chars" />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 ```
-
 
     </Steps>
 
@@ -54,16 +49,16 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { StaggerChars } from "@/components/ui/stagger-chars";
+import { StaggerChars } from '@/components/ui/stagger-chars';
 ```
 
 ```tsx
 <StaggerChars
-  text="HELLO"
-  className="font-extrabold text-5xl md:text-6xl lg:text-8xl text-green-400"
-  hoverText="WORLD"
- hoverClassName="text-orange-400"
-    />
+  text='HELLO'
+  className='font-extrabold text-5xl md:text-6xl lg:text-8xl text-green-400'
+  hoverText='WORLD'
+  hoverClassName='text-orange-400'
+/>
 ```
 
 ## Examples
@@ -73,9 +68,9 @@ import { StaggerChars } from "@/components/ui/stagger-chars";
 <Step>With Different Hover Text</Step>
 
 <ComponentPreview
-  name="staggercharsdifferenttexthover-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An animated text component with staggered character effects"
+  name='staggercharsdifferenttexthover-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An animated text component with staggered character effects'
 />
 
 ---
@@ -83,9 +78,9 @@ import { StaggerChars } from "@/components/ui/stagger-chars";
 <Step>Up Direction</Step>
 
 <ComponentPreview
-  name="staggercharsup-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An animated text component with staggered character effects"
+  name='staggercharsup-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An animated text component with staggered character effects'
 />
 
 ---
@@ -93,9 +88,9 @@ import { StaggerChars } from "@/components/ui/stagger-chars";
 <Step>Down Direction</Step>
 
 <ComponentPreview
-  name="staggercharsdown-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An animated text component with staggered character effects"
+  name='staggercharsdown-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An animated text component with staggered character effects'
 />
 
 ---
@@ -108,19 +103,16 @@ The `StaggerChars` component renders an animated text component with staggered c
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `text` | `string` | `(required)` | The base text to display |
-| `hoverText` | `string` | `text` | Text to show on hover (defaults to `text` if not provided) |
-| `delay` | `number` | `0.05` | Delay between each character's animation in seconds |
-| `duration` | `number` | `1` | Duration of the animation in seconds |
-| `className` | `string` | — | Additional classes for the container |
-| `hoverClassName` | `string` | — | Classes for the hover text |
-| `direction` | `'up' \| 'down' \| 'alternate'` | `'alternate'` | Animation direction |
-| `easing` | `number[]` | `[0.22, 1, 0.36, 1]` | Custom easing function for the animation |
-| `disabled` | `boolean` | `false` | Disable the hover effect |
-| `onAnimationStart` | `() => void` | — | Callback when animation starts |
-| `onAnimationComplete` | `() => void` | — | Callback when animation completes |
-
-
+| Prop                  | Type                            | Default              | Description                                                |
+| --------------------- | ------------------------------- | -------------------- | ---------------------------------------------------------- |
+| `text`                | `string`                        | `(required)`         | The base text to display                                   |
+| `hoverText`           | `string`                        | `text`               | Text to show on hover (defaults to `text` if not provided) |
+| `delay`               | `number`                        | `0.05`               | Delay between each character's animation in seconds        |
+| `duration`            | `number`                        | `1`                  | Duration of the animation in seconds                       |
+| `className`           | `string`                        | —                    | Additional classes for the container                       |
+| `hoverClassName`      | `string`                        | —                    | Classes for the hover text                                 |
+| `direction`           | `'up' \| 'down' \| 'alternate'` | `'alternate'`        | Animation direction                                        |
+| `easing`              | `number[]`                      | `[0.22, 1, 0.36, 1]` | Custom easing function for the animation                   |
+| `disabled`            | `boolean`                       | `false`              | Disable the hover effect                                   |
+| `onAnimationStart`    | `() => void`                    | —                    | Callback when animation starts                             |
+| `onAnimationComplete` | `() => void`                    | —                    | Callback when animation completes                          |

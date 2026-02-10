@@ -3,11 +3,7 @@ title: MotionCards
 description: Elegant cards in seamless flow for clean web design.
 ---
 
-<ComponentPreview
-  name="motioncards-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='motioncards-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,14 +19,11 @@ description: Elegant cards in seamless flow for clean web design.
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>motioncards.tsx</code>
-</p>
-<ComponentSource name="motioncards" />
 
+<ComponentSource name='motioncards' />
 
 </Steps>
   </TabsContent>
@@ -39,26 +32,25 @@ description: Elegant cards in seamless flow for clean web design.
 ## Usage
 
 ```tsx
-import MotionCards, { MotionCardContent } from "@/components/ui/motioncards";
+import MotionCards, { MotionCardContent } from '@/components/ui/motioncards';
 ```
 
 ```tsx
 <MotionCards interval={1300}>
-      <MotionCardContent>
-        <div className="p-4 text-center">Card 1: Analytics</div>
-      </MotionCardContent>
-      <MotionCardContent>
-        <div className="p-4 text-center">Card 2: Performance</div>
-      </MotionCardContent>
-      <MotionCardContent>
-        <div className="p-4 text-center">Card 3: Components</div>
-      </MotionCardContent>
-      <MotionCardContent>
-        <div className="p-4 text-center">Card 4: Developers</div>
-      </MotionCardContent>
-    </MotionCards>
+  <MotionCardContent>
+    <div className='p-4 text-center'>Card 1: Analytics</div>
+  </MotionCardContent>
+  <MotionCardContent>
+    <div className='p-4 text-center'>Card 2: Performance</div>
+  </MotionCardContent>
+  <MotionCardContent>
+    <div className='p-4 text-center'>Card 3: Components</div>
+  </MotionCardContent>
+  <MotionCardContent>
+    <div className='p-4 text-center'>Card 4: Developers</div>
+  </MotionCardContent>
+</MotionCards>
 ```
-
 
 ## API Reference
 
@@ -68,11 +60,7 @@ Elegant cards in seamless flow for clean web design.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Prop       | Type        | Default    | Description                                                     |
+| ---------- | ----------- | ---------- | --------------------------------------------------------------- |
 | `children` | `ReactNode` | `required` | The content of each card. Can be any valid ReactNode. Required. |
-| `interval` | `number` | `2000` | Time in milliseconds between card transitions. Optional. |
-
-
-
+| `interval` | `number`    | `2000`     | Time in milliseconds between card transitions. Optional.        |

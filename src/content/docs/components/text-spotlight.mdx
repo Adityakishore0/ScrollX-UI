@@ -3,7 +3,7 @@ title: Text Spotlight
 description: spotlight text effect with hover and mobile reveal, customizable size and color.
 ---
 
-<ComponentPreview name="textspotlight-demo" className="" description="" />
+<ComponentPreview name='textspotlight-demo' className='' description='' />
 
 ## Installation
 
@@ -19,23 +19,19 @@ description: spotlight text effect with hover and mobile reveal, customizable si
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>text-spotlight.tsx</code>
-</p>
-<ComponentSource name="text-spotlight" />
+
+<ComponentSource name='text-spotlight' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,14 +45,14 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { TextSpotlight } from "@/components/ui/text-spotlight";
+import { TextSpotlight } from '@/components/ui/text-spotlight';
 ```
 
 ```tsx
 <TextSpotlight
-  textClassName="text-xl md:text-4xl font-semibold"
-  text="Hover over me and watch the soft spotlight glide around like magic across the text."
-  spotlightColor="255, 255, 255"
+  textClassName='text-xl md:text-4xl font-semibold'
+  text='Hover over me and watch the soft spotlight glide around like magic across the text.'
+  spotlightColor='255, 255, 255'
   animateOnPhone={true}
   spotlightArea={90}
   spotlightSize={100}
@@ -70,9 +66,9 @@ import { TextSpotlight } from "@/components/ui/text-spotlight";
 <Step>AnimateOnPhone</Step>
 
 <ComponentPreview
-  name="textspotlightautophone-demo"
-  className=""
-  description=""
+  name='textspotlightautophone-demo'
+  className=''
+  description=''
 />
 
 ## API Reference
@@ -83,18 +79,15 @@ spotlight text effect with hover and mobile reveal, customizable size and color.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `text` | `string` | `required` | The text content to display with the spotlight or reveal animation. |
-| `className` | `string` | `-` | Additional CSS classes for the container element. |
-| `textClassName` | `string` | `-` | Additional CSS classes for the text element. |
-| `spotlightColor` | `string` | `"255, 255, 255"` | RGB color used for the spotlight gradient effect. |
-| `spotlightSize` | `number` | `450` | Defines the radius of the spotlight effect in pixels. |
-| `spotlightOpacity` | `number` | `1` | Controls the opacity of the spotlight (from 0 to 1). |
-| `spotlightArea` | `number` | `-` | Optional area radius for spotlight detection (not required in most cases). |
-| `animateOnPhone` | `boolean` | `false` | Enables the mobile text reveal animation when true. |
-| `colorDuration` | `number` | `2000` | Duration (in milliseconds) of the mobile reveal animation. |
-| `...props` | `HTMLDivElement attributes` | `-` | Any other standard div attributes (like id, style, etc.). |
-
-
+| Prop               | Type                        | Default           | Description                                                                |
+| ------------------ | --------------------------- | ----------------- | -------------------------------------------------------------------------- |
+| `text`             | `string`                    | `required`        | The text content to display with the spotlight or reveal animation.        |
+| `className`        | `string`                    | `-`               | Additional CSS classes for the container element.                          |
+| `textClassName`    | `string`                    | `-`               | Additional CSS classes for the text element.                               |
+| `spotlightColor`   | `string`                    | `"255, 255, 255"` | RGB color used for the spotlight gradient effect.                          |
+| `spotlightSize`    | `number`                    | `450`             | Defines the radius of the spotlight effect in pixels.                      |
+| `spotlightOpacity` | `number`                    | `1`               | Controls the opacity of the spotlight (from 0 to 1).                       |
+| `spotlightArea`    | `number`                    | `-`               | Optional area radius for spotlight detection (not required in most cases). |
+| `animateOnPhone`   | `boolean`                   | `false`           | Enables the mobile text reveal animation when true.                        |
+| `colorDuration`    | `number`                    | `2000`            | Duration (in milliseconds) of the mobile reveal animation.                 |
+| `...props`         | `HTMLDivElement attributes` | `-`               | Any other standard div attributes (like id, style, etc.).                  |

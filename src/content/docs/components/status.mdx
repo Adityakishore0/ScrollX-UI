@@ -1,13 +1,9 @@
 ---
 title: Status
-description: A small status component with customizable variants, indicator and shiny animation effects. 
+description: A small status component with customizable variants, indicator and shiny animation effects.
 ---
 
-<ComponentPreview
-  name="status-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='status-demo' className='' description='' />
 
 ## Installation
 
@@ -22,67 +18,101 @@ description: A small status component with customizable variants, indicator and 
   <TabsContent value="manual">
     <Steps>
 
-
-
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>status.tsx</code>
-</p>
-<ComponentSource name="status" />
 
+<ComponentSource name='status' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 ```
 
+<Step>Update your configuration</Step>
+
+<Tabs defaultValue="tailwind-v4" className="w-full">
+  <TabsList>
+    <TabsTrigger value="tailwind-v4">Tailwind v4</TabsTrigger>
+    <TabsTrigger value="tailwind-v3">Tailwind v3</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="tailwind-v4">
+
+<Step>Add these animations to your `globals.css:`</Step>
+
+`globals.css`
+
+```css
+/* ---------------- THEME ---------------- */
+@theme {
+  --animation-shine: shine 5s linear infinite;
+}
+
+/* ---------------- KEYFRAMES ---------------- */
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+```
+
+  </TabsContent>
+  <TabsContent value="tailwind-v3">
+
+<Step>Add these animations to your `tailwind.config.ts:`</Step>
+
+`tailwind.config.ts`
+
+```tsx
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        shine: {
+          '0%': { 'background-position': '100%' },
+          '100%': { 'background-position': '-100%' },
+        },
+      },
+      animation: {
+        shine: 'shine 5s linear infinite',
+      },
+    },
+  },
+  plugins: [],
+};
+```
+
+  </TabsContent>
+</Tabs>
+
 </Steps>
   </TabsContent>
 </Tabs>
 
-<Step>Add Utilities</Step>
-
-<p>
-  <code>tailwind.config.ts</code>
-</p>
-
-```tsx
-module.exports = { 
-   theme: { 
-     extend: { 
-       keyframes: { 
-         shine: { 
-           '0%': { 'background-position': '100%' }, 
-          '100%': { 'background-position': '-100%' }, 
-         }, 
-      }, 
-       animation: { 
-        shine: 'shine 5s linear infinite', 
-       }, 
-     }, 
-    }, 
-    plugins: [], 
- };
-```
-
 ## Usage
 
 ```tsx
-import { Status } from "@/components/ui/status";
+import { Status } from '@/components/ui/status';
 ```
 
 ```tsx
-<div className="flex gap-3">
-<Status status="online" statusindicator>Online</Status>
-<Status status="pending" shiny shinySpeed={2}>Fast Shine</Status>
+<div className='flex gap-3'>
+  <Status status='online' statusindicator>
+    Online
+  </Status>
+  <Status status='pending' shiny shinySpeed={2}>
+    Fast Shine
+  </Status>
 </div>
 ```
 
@@ -92,22 +122,13 @@ import { Status } from "@/components/ui/status";
 
 <Step>Indicator</Step>
 
-<ComponentPreview
-  name="statusindicator-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='statusindicator-demo' className='' description='' />
 
 ---
 
 <Step>Shiny</Step>
 
-<ComponentPreview
-  name="statusshiny-demo"
-  className=""
-  description=""
-/>
-
+<ComponentPreview name='statusshiny-demo' className='' description='' />
 
 ## API Reference
 
@@ -117,19 +138,13 @@ The Status component creates a customizable label with optional indicator and sh
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `status` | `"online" \| "offline" \| "away" \| "busy" \| "idle" \| "pending" \| "success" \| "error" \| "warning" \| "info"` | `"offline"` | Semantic status — controls the badge background color. |
-| `statusindicator` | `boolean` | `false` | When true shows a small circular indicator to the left of the label. |
-| `indicatorClassName` | `string` | — | Additional classes applied to the indicator (use w-/h- classes to set size). |
-| `shiny` | `boolean` | `false` | Enable the animated shine effect (forwarded to the underlying Badge). |
-| `shinySpeed` | `number` | — | Shine animation speed in seconds (forwarded to the Badge). |
-| `className` | `string` | — | Custom class names applied to the outer Badge element. |
-| `children` | `React.ReactNode` | — | Content rendered inside the Status (typically a text label). |
-| `...props` | `HTMLDivElement attributes` | — | All other standard div props/events are supported and forwarded to the Badge. |
-
-
-
-
-
+| Prop                 | Type                                                                                                              | Default     | Description                                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------- |
+| `status`             | `"online" \| "offline" \| "away" \| "busy" \| "idle" \| "pending" \| "success" \| "error" \| "warning" \| "info"` | `"offline"` | Semantic status — controls the badge background color.                        |
+| `statusindicator`    | `boolean`                                                                                                         | `false`     | When true shows a small circular indicator to the left of the label.          |
+| `indicatorClassName` | `string`                                                                                                          | —           | Additional classes applied to the indicator (use w-/h- classes to set size).  |
+| `shiny`              | `boolean`                                                                                                         | `false`     | Enable the animated shine effect (forwarded to the underlying Badge).         |
+| `shinySpeed`         | `number`                                                                                                          | —           | Shine animation speed in seconds (forwarded to the Badge).                    |
+| `className`          | `string`                                                                                                          | —           | Custom class names applied to the outer Badge element.                        |
+| `children`           | `React.ReactNode`                                                                                                 | —           | Content rendered inside the Status (typically a text label).                  |
+| `...props`           | `HTMLDivElement attributes`                                                                                       | —           | All other standard div props/events are supported and forwarded to the Badge. |

@@ -4,9 +4,9 @@ description: A customizable and responsive toast notification system.
 ---
 
 <ComponentPreview
-  name="toastaddtocart-demo"
-  className=""
-  description="Shows confirmation when product added to shopping cart."
+  name='toastaddtocart-demo'
+  className=''
+  description='Shows confirmation when product added to shopping cart.'
 />
 
 ## Installation
@@ -23,24 +23,21 @@ description: A customizable and responsive toast notification system.
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>toast.tsx</code>
-</p>
-<ComponentSource name="toast" />
+
+<ComponentSource name='toast' />
 
 </Steps>
   </TabsContent>
 </Tabs>
 
-
 ## Usage
 
 ```tsx
 //First, wrap your application with the ToastProvider:
-import { ToastProvider } from "@/components/ui/toast";
+import { ToastProvider } from '@/components/ui/toast';
 
 function App() {
   return (
@@ -52,19 +49,19 @@ function App() {
 ```
 
 ```tsx
-import { useToast } from "@/components/ui/toast";
+import { useToast } from '@/components/ui/toast';
 
- return function MyComponent() {
+return function MyComponent() {
   const { toast } = useToast();
-  
+
   const showToast = () => {
     toast({
-      title: "Success!",
-      description: "Your action was completed successfully.",
-      variant: "success",
+      title: 'Success!',
+      description: 'Your action was completed successfully.',
+      variant: 'success',
     });
-  }
- }
+  };
+};
 ```
 
 ## Examples
@@ -74,9 +71,9 @@ import { useToast } from "@/components/ui/toast";
 <Step>Default</Step>
 
 <ComponentPreview
-  name="toastdefault-demo"
-  className=""
-  description="Standard notification with neutral styling and tone."
+  name='toastdefault-demo'
+  className=''
+  description='Standard notification with neutral styling and tone.'
 />
 
 ---
@@ -84,9 +81,9 @@ import { useToast } from "@/components/ui/toast";
 <Step>Warning</Step>
 
 <ComponentPreview
-  name="toastwarning-demo"
-  className=""
-  description="Alerts user to potential issues needing attention."
+  name='toastwarning-demo'
+  className=''
+  description='Alerts user to potential issues needing attention.'
 />
 
 ---
@@ -94,9 +91,9 @@ import { useToast } from "@/components/ui/toast";
 <Step>Error</Step>
 
 <ComponentPreview
-  name="toasterror-demo"
-  className=""
-  description="Indicates action failure with prominent styling."
+  name='toasterror-demo'
+  className=''
+  description='Indicates action failure with prominent styling.'
 />
 
 ---
@@ -104,9 +101,9 @@ import { useToast } from "@/components/ui/toast";
 <Step>Delete</Step>
 
 <ComponentPreview
-  name="toastdelete-demo"
-  className=""
-  description="Confirms removal of content with destructive tone."
+  name='toastdelete-demo'
+  className=''
+  description='Confirms removal of content with destructive tone.'
 />
 
 ---
@@ -114,80 +111,52 @@ import { useToast } from "@/components/ui/toast";
 <Step>Info</Step>
 
 <ComponentPreview
-  name="toastinfo-demo"
-  className=""
-  description="Provides contextual information in a subtle way."
+  name='toastinfo-demo'
+  className=''
+  description='Provides contextual information in a subtle way.'
 />
 
 ---
 
 <Step>Success</Step>
 
-<ComponentPreview
-  name="toastsuccess-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='toastsuccess-demo' className='' description='' />
 
 ---
 
 <Step>With Action</Step>
 
-<ComponentPreview
-  name="toastwithaction-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='toastwithaction-demo' className='' description='' />
 
 ---
 
 <Step>Persistent</Step>
 
-<ComponentPreview
-  name="toastpersistent-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='toastpersistent-demo' className='' description='' />
 
 ---
 
 <Step>Promise</Step>
 
-<ComponentPreview
-  name="toastpromise-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='toastpromise-demo' className='' description='' />
 
 ---
 
 <Step>Rich Content</Step>
 
-<ComponentPreview
-  name="toastrichcontent-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='toastrichcontent-demo' className='' description='' />
 
 ---
 
 <Step>Custom Duration</Step>
 
-<ComponentPreview
-  name="toastcustomduration-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='toastcustomduration-demo' className='' description='' />
 
 ---
 
 <Step>Bulk Actions</Step>
 
-<ComponentPreview
-  name="toastbulkactions-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='toastbulkactions-demo' className='' description='' />
 
 ## API Reference
 
@@ -197,25 +166,21 @@ Triggers a toast notification.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `id` | `string` | `auto` | Unique identifier for the toast. Auto-generated if not provided. |
-| `title` | `string` | — | Main heading text of the toast. |
-| `description` | `string` | — | Optional descriptive message body. |
-| `variant` | `"default" \| "success" \| "destructive" \| "warning" \| "info" \| "loading"` | `"default"` | Visual style of the toast. Affects colors and icon. |
-| `position` | `"top-right" \| "top-left" \| "bottom-right" \| "bottom-left"` | `"top-right"` | Screen position where the toast appears. |
-| `duration` | `number` | `5000` | Auto-dismiss timeout in milliseconds. Use `Infinity` to disable auto-dismiss. |
-| `action` | `ReactNode \| { label: string; onClick: () => void }` | — | Optional custom action element or config object with label and callback. |
-| `cancel` | `{ label: string; onClick: () => void }` | — | Optional cancel button with label and callback. |
-| `onClose` | `() => void` | — | Callback fired when the toast is closed or dismissed. |
-| `stackIndex` | `number` | `0` | Index of the toast in a stack (used internally for stacked animations). |
-| `isVisible` | `boolean` | `true` | Controls the visibility of the toast. |
-| `isStacked` | `boolean` | `false` | Indicates if the toast is visually stacked with others. |
-| `isHovered` | `boolean` | `false` | Indicates if the stack is hovered (pauses auto-dismiss). |
-| `stackDirection` | `"up" \| "down"` | `"down"` | Direction in which stacked toasts collapse/expand. |
-| `isExiting` | `boolean` | `false` | Indicates if the toast is currently exiting (used for animation timing). |
-| `totalCount` | `number` | `1` | Total number of toasts in the stack (used for '+N' badge). |
-
-
-
+| Prop             | Type                                                                          | Default       | Description                                                                   |
+| ---------------- | ----------------------------------------------------------------------------- | ------------- | ----------------------------------------------------------------------------- |
+| `id`             | `string`                                                                      | `auto`        | Unique identifier for the toast. Auto-generated if not provided.              |
+| `title`          | `string`                                                                      | —             | Main heading text of the toast.                                               |
+| `description`    | `string`                                                                      | —             | Optional descriptive message body.                                            |
+| `variant`        | `"default" \| "success" \| "destructive" \| "warning" \| "info" \| "loading"` | `"default"`   | Visual style of the toast. Affects colors and icon.                           |
+| `position`       | `"top-right" \| "top-left" \| "bottom-right" \| "bottom-left"`                | `"top-right"` | Screen position where the toast appears.                                      |
+| `duration`       | `number`                                                                      | `5000`        | Auto-dismiss timeout in milliseconds. Use `Infinity` to disable auto-dismiss. |
+| `action`         | `ReactNode \| { label: string; onClick: () => void }`                         | —             | Optional custom action element or config object with label and callback.      |
+| `cancel`         | `{ label: string; onClick: () => void }`                                      | —             | Optional cancel button with label and callback.                               |
+| `onClose`        | `() => void`                                                                  | —             | Callback fired when the toast is closed or dismissed.                         |
+| `stackIndex`     | `number`                                                                      | `0`           | Index of the toast in a stack (used internally for stacked animations).       |
+| `isVisible`      | `boolean`                                                                     | `true`        | Controls the visibility of the toast.                                         |
+| `isStacked`      | `boolean`                                                                     | `false`       | Indicates if the toast is visually stacked with others.                       |
+| `isHovered`      | `boolean`                                                                     | `false`       | Indicates if the stack is hovered (pauses auto-dismiss).                      |
+| `stackDirection` | `"up" \| "down"`                                                              | `"down"`      | Direction in which stacked toasts collapse/expand.                            |
+| `isExiting`      | `boolean`                                                                     | `false`       | Indicates if the toast is currently exiting (used for animation timing).      |
+| `totalCount`     | `number`                                                                      | `1`           | Total number of toasts in the stack (used for '+N' badge).                    |

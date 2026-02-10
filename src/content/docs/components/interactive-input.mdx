@@ -4,9 +4,9 @@ description: InteractiveInput is a highly customizable interactive input compone
 ---
 
 <ComponentPreview
-  name="interactiveinput-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An accessible Input component built with Radix UI"
+  name='interactiveinput-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An accessible Input component built with Radix UI'
 />
 
 ## Installation
@@ -23,24 +23,19 @@ description: InteractiveInput is a highly customizable interactive input compone
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="@radix-ui/react-slot" />
+<DepsOptions name='@radix-ui/react-slot' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>interactive-input.tsx</code>
-</p>
-<ComponentSource name="interactive-input" />
+
+<ComponentSource name='interactive-input' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
-
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -51,32 +46,30 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
 
 ```tsx
-import { InteractiveInput } from "@/components/ui/interactive-input";
+import { InteractiveInput } from '@/components/ui/interactive-input';
 ```
 
 ```tsx
 <InteractiveInput
-        className="bg-green-500 text-white"
-        variant="default"
-        inputSize="default"
-        glow={true}
-        rounded="custom"
-        hideAnimations={false}
-        uppercase={true}
-        textEffect="normal"
-        shimmerColor="#39FF14"
-        shimmerSize="0.15em"
-        shimmerDuration="3s"
-        borderRadius="100px"
-        background="rgba(0, 0, 0, 1)"
-        placeholder="Generate with ScrollX UI"
-       />
+  className='bg-green-500 text-white'
+  variant='default'
+  inputSize='default'
+  glow={true}
+  rounded='custom'
+  hideAnimations={false}
+  uppercase={true}
+  textEffect='normal'
+  shimmerColor='#39FF14'
+  shimmerSize='0.15em'
+  shimmerDuration='3s'
+  borderRadius='100px'
+  background='rgba(0, 0, 0, 1)'
+  placeholder='Generate with ScrollX UI'
+/>
 ```
-
 
 ## API Reference
 
@@ -86,24 +79,20 @@ import { InteractiveInput } from "@/components/ui/interactive-input";
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `"default" \| "outline" \| "ghost" \| "glow"` | `"default"` | Visual style of the input. |
-| `inputSize` | `"sm" \| "default" \| "lg" \| "icon"` | `"default"` | Adjusts the size of the input. |
-| `rounded` | `"none" \| "default" \| "full" \| "custom"` | `"default"` | Border radius style. |
-| `borderRadius` | `string` | `"—"` | Custom border radius (used when rounded is 'custom'). |
-| `glow` | `boolean` | `false` | Enables glowing animation around the input. |
-| `textEffect` | `"normal" \| "spread"` | `"normal"` | Applies animated text styling. |
-| `uppercase` | `boolean` | `false` | Transforms text to uppercase. |
-| `background` | `string` | `"—"` | Sets background color or gradient. |
-| `shimmerColor` | `string` | `"—"` | Shimmer color value (e.g., '#39FF14'). |
-| `shimmerSize` | `string` | `"—"` | Size or thickness of shimmer (e.g., '0.15em'). |
-| `shimmerDuration` | `string` | `"—"` | Duration of shimmer animation (e.g., '3s'). |
-| `asChild` | `boolean` | `false` | Renders input as a child using Slot. |
-| `hideAnimations` | `boolean` | `false` | Disables all input animations. |
-| `className` | `string` | `"undefined"` | Additional classes to style the input. |
-| `...props` | `HTMLInputElement attributes` | — | Inherits all standard input element props. |
-
-
-
+| Prop              | Type                                                | Default       | Description                                           |
+| ----------------- | --------------------------------------------------- | ------------- | ----------------------------------------------------- |
+| `variant`         | `"default" \| "outline-solid" \| "ghost" \| "glow"` | `"default"`   | Visual style of the input.                            |
+| `inputSize`       | `"sm" \| "default" \| "lg" \| "icon"`               | `"default"`   | Adjusts the size of the input.                        |
+| `rounded`         | `"none" \| "default" \| "full" \| "custom"`         | `"default"`   | Border radius style.                                  |
+| `borderRadius`    | `string`                                            | `"—"`         | Custom border radius (used when rounded is 'custom'). |
+| `glow`            | `boolean`                                           | `false`       | Enables glowing animation around the input.           |
+| `textEffect`      | `"normal" \| "spread"`                              | `"normal"`    | Applies animated text styling.                        |
+| `uppercase`       | `boolean`                                           | `false`       | Transforms text to uppercase.                         |
+| `background`      | `string`                                            | `"—"`         | Sets background color or gradient.                    |
+| `shimmerColor`    | `string`                                            | `"—"`         | Shimmer color value (e.g., '#39FF14').                |
+| `shimmerSize`     | `string`                                            | `"—"`         | Size or thickness of shimmer (e.g., '0.15em').        |
+| `shimmerDuration` | `string`                                            | `"—"`         | Duration of shimmer animation (e.g., '3s').           |
+| `asChild`         | `boolean`                                           | `false`       | Renders input as a child using Slot.                  |
+| `hideAnimations`  | `boolean`                                           | `false`       | Disables all input animations.                        |
+| `className`       | `string`                                            | `"undefined"` | Additional classes to style the input.                |
+| `...props`        | `HTMLInputElement attributes`                       | —             | Inherits all standard input element props.            |

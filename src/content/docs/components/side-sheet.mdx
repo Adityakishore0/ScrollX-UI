@@ -3,7 +3,7 @@ title: Side Sheet
 description: A customizable sheet component for creating elegant slide-out interfaces.
 ---
 
-<ComponentPreview name="sidesheetleft-demo" className="" description="" />
+<ComponentPreview name='sidesheetleft-demo' className='' description='' />
 
 ## Installation
 
@@ -20,23 +20,19 @@ description: A customizable sheet component for creating elegant slide-out inter
 
     <Step>Install the following dependencies:</Step>
 
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>side-sheet.tsx</code>
-</p>
-<ComponentSource name="side-sheet" />
+
+<ComponentSource name='side-sheet' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -59,11 +55,13 @@ import {
   SideSheetDescription,
   SideSheetFooter,
   SideSheetClose,
-} from "@/components/ui/side-sheet";
+} from '@/components/ui/side-sheet';
 ```
 
 ```tsx
-<SideSheet side="right"> // or left
+<SideSheet side='right'>
+  {' '}
+  // or left
   <SideSheetTrigger asChild>
     <Button>Open Sheet</Button>
   </SideSheetTrigger>
@@ -88,7 +86,7 @@ import {
 
 <Step>Right side</Step>
 
-<ComponentPreview name="sidesheetright-demo" className="" description="" />
+<ComponentPreview name='sidesheetright-demo' className='' description='' />
 
 ## API Reference
 
@@ -98,15 +96,13 @@ A customizable sheet component for creating elegant slide-out interfaces.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `open` | `boolean` | `undefined` | Controlled open state. If provided, SideSheet becomes controlled. |
-| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled). Used when `open` is not controlled. |
-| `onOpenChange` | `(open: boolean) => void` | `undefined` | Callback fired when the open state changes. Works for controlled and uncontrolled usage. |
-| `side` | `"left" \| "right"` | `"right"` | Which side the sheet slides in from. |
-| `width` | `string` | `"400px"` | Width of the sheet. Accepts `px`, `%`, `vw` values. Adjusts responsively on smaller screens. |
-| `closeThreshold` | `number` | `0.3` | Drag threshold (fraction of width) at which the sheet will close when swiped. |
-| `className` | `string` | `-` | Additional classNames applied to the SideSheet container. |
-| `children` | `ReactNode` | `required` | Content of the SideSheet. Usually composed of compound components like `SideSheetHeader`, `SideSheetContent`, `SideSheetFooter`. |
-
+| Prop             | Type                      | Default     | Description                                                                                                                      |
+| ---------------- | ------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `open`           | `boolean`                 | `undefined` | Controlled open state. If provided, SideSheet becomes controlled.                                                                |
+| `defaultOpen`    | `boolean`                 | `false`     | Initial open state (uncontrolled). Used when `open` is not controlled.                                                           |
+| `onOpenChange`   | `(open: boolean) => void` | `undefined` | Callback fired when the open state changes. Works for controlled and uncontrolled usage.                                         |
+| `side`           | `"left" \| "right"`       | `"right"`   | Which side the sheet slides in from.                                                                                             |
+| `width`          | `string`                  | `"400px"`   | Width of the sheet. Accepts `px`, `%`, `vw` values. Adjusts responsively on smaller screens.                                     |
+| `closeThreshold` | `number`                  | `0.3`       | Drag threshold (fraction of width) at which the sheet will close when swiped.                                                    |
+| `className`      | `string`                  | `-`         | Additional classNames applied to the SideSheet container.                                                                        |
+| `children`       | `ReactNode`               | `required`  | Content of the SideSheet. Usually composed of compound components like `SideSheetHeader`, `SideSheetContent`, `SideSheetFooter`. |

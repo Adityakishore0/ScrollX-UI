@@ -4,9 +4,9 @@ description: a clean text reveal component providing directional animation and s
 ---
 
 <ComponentPreview
-  name="revealtext-demo"
-  className="overflow-visible relative p-0"
-  description=""
+  name='revealtext-demo'
+  className='overflow-visible relative p-0'
+  description=''
 />
 
 ## Installation
@@ -23,23 +23,19 @@ description: a clean text reveal component providing directional animation and s
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>reveal-text.tsx</code>
-</p>
-<ComponentSource name="reveal-text" />
+
+<ComponentSource name='reveal-text' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,14 +49,20 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { RevealText } from "@/components/ui/reveal-text";
+import { RevealText } from '@/components/ui/reveal-text';
 ```
 
 ```tsx
-<RevealText mode="auto" delay={0.2} stagger={0.15} className="text-5xl font-bold">
+<RevealText
+  mode='auto'
+  delay={0.2}
+  stagger={0.15}
+  className='text-5xl font-bold'
+>
   Bold research to unlock
 </RevealText>
 ```
+
 ## Examples
 
 ---
@@ -68,9 +70,9 @@ import { RevealText } from "@/components/ui/reveal-text";
 <Step>Auto</Step>
 
 <ComponentPreview
-  name="revealtext-demo"
-  className="overflow-visible relative p-0"
-  description=""
+  name='revealtext-demo'
+  className='overflow-visible relative p-0'
+  description=''
 />
 
 ---
@@ -78,9 +80,9 @@ import { RevealText } from "@/components/ui/reveal-text";
 <Step>Manual</Step>
 
 <ComponentPreview
-  name="revealtextmanual-demo"
-  className="overflow-visible relative p-0"
-  description=""
+  name='revealtextmanual-demo'
+  className='overflow-visible relative p-0'
+  description=''
 />
 
 ---
@@ -88,9 +90,9 @@ import { RevealText } from "@/components/ui/reveal-text";
 <Step>Up</Step>
 
 <ComponentPreview
-  name="revealtextup-demo"
-  className="overflow-visible relative p-0"
-  description=""
+  name='revealtextup-demo'
+  className='overflow-visible relative p-0'
+  description=''
 />
 
 ---
@@ -98,9 +100,9 @@ import { RevealText } from "@/components/ui/reveal-text";
 <Step>Down</Step>
 
 <ComponentPreview
-  name="revealtext-demo"
-  className="overflow-visible relative p-0"
-  description=""
+  name='revealtext-demo'
+  className='overflow-visible relative p-0'
+  description=''
 />
 
 ---
@@ -108,9 +110,9 @@ import { RevealText } from "@/components/ui/reveal-text";
 <Step>Left</Step>
 
 <ComponentPreview
-  name="revealtextleft-demo"
-  className="overflow-visible relative p-0"
-  description=""
+  name='revealtextleft-demo'
+  className='overflow-visible relative p-0'
+  description=''
 />
 
 ---
@@ -118,9 +120,9 @@ import { RevealText } from "@/components/ui/reveal-text";
 <Step>Right</Step>
 
 <ComponentPreview
-  name="revealtextright-demo"
-  className="overflow-visible relative p-0"
-  description=""
+  name='revealtextright-demo'
+  className='overflow-visible relative p-0'
+  description=''
 />
 
 ---
@@ -128,11 +130,10 @@ import { RevealText } from "@/components/ui/reveal-text";
 <Step>Trigger</Step>
 
 <ComponentPreview
-  name="revealtexttrigger-demo"
-  className="overflow-visible relative p-0"
-  description=""
+  name='revealtexttrigger-demo'
+  className='overflow-visible relative p-0'
+  description=''
 />
-
 
 ## API Reference
 
@@ -142,17 +143,14 @@ a clean text reveal component providing directional animation and stagger option
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `-` | Text or elements to animate. |
-| `className` | `string` | `-` | Classes applied to the visible text. |
-| `boxClassName` | `string` | `-` | Classes applied to the reveal animation layer. |
-| `delay` | `number` | `0` | Animation delay before the reveal starts. |
-| `duration` | `number` | `0.8` | Duration of the reveal animation. |
-| `direction` | `"up" \| "down" \| "left" \| "right"` | `"down"` | Direction from which the reveal layer moves. |
-| `mode` | `"manual" \| "auto"` | `"manual"` | Animate full text or auto-split into words. |
-| `stagger` | `number` | `0.1` | Delay between word animations in auto mode. |
-| `once` | `boolean` | `true` | Run animation once or every time it enters view. |
-
-
+| Prop           | Type                                  | Default    | Description                                      |
+| -------------- | ------------------------------------- | ---------- | ------------------------------------------------ |
+| `children`     | `ReactNode`                           | `-`        | Text or elements to animate.                     |
+| `className`    | `string`                              | `-`        | Classes applied to the visible text.             |
+| `boxClassName` | `string`                              | `-`        | Classes applied to the reveal animation layer.   |
+| `delay`        | `number`                              | `0`        | Animation delay before the reveal starts.        |
+| `duration`     | `number`                              | `0.8`      | Duration of the reveal animation.                |
+| `direction`    | `"up" \| "down" \| "left" \| "right"` | `"down"`   | Direction from which the reveal layer moves.     |
+| `mode`         | `"manual" \| "auto"`                  | `"manual"` | Animate full text or auto-split into words.      |
+| `stagger`      | `number`                              | `0.1`      | Delay between word animations in auto mode.      |
+| `once`         | `boolean`                             | `true`     | Run animation once or every time it enters view. |

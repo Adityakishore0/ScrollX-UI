@@ -3,11 +3,7 @@ title: Loader
 description: Animated versatile loader with different variants, customizable size and content.
 ---
 
-<ComponentPreview
-  name="loader-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='loader-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: Animated versatile loader with different variants, customizable siz
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>loader.tsx</code>
-</p>
-<ComponentSource name="loader" />
+
+<ComponentSource name='loader' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,71 +45,52 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { Loader } from "@/components/ui/loader";
+import { Loader } from '@/components/ui/loader';
 ```
 
 ```tsx
 <Loader variant={24}>
-      <span className="text-black dark:text-white">please wait</span>
-    </Loader>
+  <span className='text-black dark:text-white'>please wait</span>
+</Loader>
 ```
+
 ## Examples
 
 ---
 
 <Step>Default Variant</Step>
 
-<ComponentPreview
-  name="loader-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='loader-demo' className='' description='' />
 
 ---
 
 <Step>Magnetic-dots Variant</Step>
 
-<ComponentPreview
-  name="loadermagnetic-dots"
-  className=""
-  description=""
-/>
+<ComponentPreview name='loadermagnetic-dots' className='' description='' />
 
 ---
 
 <Step>Dual-ring Variant</Step>
 
-<ComponentPreview
-  name="loaderdual-ring"
-  className=""
-  description=""
-/>
+<ComponentPreview name='loaderdual-ring' className='' description='' />
 
 ---
 
 <Step>Cube Variant</Step>
 
-<ComponentPreview
-  name="loadercube"
-  className=""
-  description=""
-/>
+<ComponentPreview name='loadercube' className='' description='' />
 
 ## API Reference
 
-###  Loader
+### Loader
 
 Flexible animated loader offering multiple styles, adjustable size, and children.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `optional` | Optional content displayed next to the loader animation. |
-| `className` | `string` | `""` | Additional CSS classes to customize the loader container. |
-| `variant` | `"default" \| "cube" \| "dual-ring" \| "magnetic-dots"` | `"default"` | Selects the loader animation style variant. |
-| `size` | `number` | `24` | Sets the loader’s width and height in pixels. |
-
-
-
+| Prop        | Type                                                    | Default     | Description                                               |
+| ----------- | ------------------------------------------------------- | ----------- | --------------------------------------------------------- |
+| `children`  | `ReactNode`                                             | `optional`  | Optional content displayed next to the loader animation.  |
+| `className` | `string`                                                | `""`        | Additional CSS classes to customize the loader container. |
+| `variant`   | `"default" \| "cube" \| "dual-ring" \| "magnetic-dots"` | `"default"` | Selects the loader animation style variant.               |
+| `size`      | `number`                                                | `24`        | Sets the loader’s width and height in pixels.             |

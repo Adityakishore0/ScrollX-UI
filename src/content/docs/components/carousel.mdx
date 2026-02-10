@@ -1,12 +1,12 @@
 ---
 title: Carousel
-description:  A carousel component with card stack visualization for cycling through content.
+description: A carousel component with card stack visualization for cycling through content.
 ---
 
 <ComponentPreview
-  name="carousel-demo"
-  className=""
-  description="A vertical card stack carousel with navigation controls."
+  name='carousel-demo'
+  className=''
+  description='A vertical card stack carousel with navigation controls.'
 />
 
 ## Installation
@@ -22,22 +22,17 @@ description:  A carousel component with card stack visualization for cycling thr
   <TabsContent value="manual">
     <Steps>
 
-
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>carousel.tsx</code>
-</p>
-<ComponentSource name="carousel" />
+
+<ComponentSource name='carousel' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -51,25 +46,29 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { Carousel, CarouselContent, CarouselItem, } from "@/components/ui/carousel"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
 ```
 
 ```tsx
-<Carousel className="w-full max-w-xs">
-      <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index}>
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-4xl font-semibold">{index + 1}</span>
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-    </Carousel>
+<Carousel className='w-full max-w-xs'>
+  <CarouselContent>
+    {Array.from({ length: 5 }).map((_, index) => (
+      <CarouselItem key={index}>
+        <div className='p-1'>
+          <Card>
+            <CardContent className='flex aspect-square items-center justify-center p-6'>
+              <span className='text-4xl font-semibold'>{index + 1}</span>
+            </CardContent>
+          </Card>
+        </div>
+      </CarouselItem>
+    ))}
+  </CarouselContent>
+</Carousel>
 ```
 
 ## Examples
@@ -79,16 +78,16 @@ import { Carousel, CarouselContent, CarouselItem, } from "@/components/ui/carous
 <Step>Carousel with Image</Step>
 
 <ComponentPreview
-  name="carouselimage-demo"
-  className=""
-  description="A carousel displaying images in a stacked format."
+  name='carouselimage-demo'
+  className=''
+  description='A carousel displaying images in a stacked format.'
 />
 
 ---
 
 ## Changelog
 
-#### 25-10-2025,  Carousel Refactor
+#### 25-10-2025, Carousel Refactor
 
 - Rebuilt Carousel with React Context for shared state.
 - Added keyboard navigation (↑ ↓).
@@ -105,18 +104,13 @@ The `Carousel` component is the main container for the card stack carousel.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `className` | `string` | — | Extra CSS classes. Used in all components. |
-| `children` | `ReactNode` | `required` | Inner content. Used in Carousel, CarouselContent, CarouselItem. |
-| `maxVisible` | `number` | `3` | Number of visible stacked cards. Used in CarouselContent. |
-| `stackOffset` | `number` | `20` | Vertical gap between stacked cards. Used in CarouselContent. |
-| `variant` | `"default" \| "outline" \| "ghost" \| "link"` | `"outline"` | Button style. Used in CarouselPrevious, CarouselNext. |
-| `size` | `"default" \| "sm" \| "lg" \| "icon"` | `"icon"` | Button size. Used in CarouselPrevious, CarouselNext. |
-| `onClick` | `() => void` | — | Click handler. Used in CarouselPrevious, CarouselNext. |
-| `disabled` | `boolean` | `false` | Disables button. Used in CarouselPrevious, CarouselNext. |
-
-
-
-
+| Prop          | Type                                                | Default           | Description                                                     |
+| ------------- | --------------------------------------------------- | ----------------- | --------------------------------------------------------------- |
+| `className`   | `string`                                            | —                 | Extra CSS classes. Used in all components.                      |
+| `children`    | `ReactNode`                                         | `required`        | Inner content. Used in Carousel, CarouselContent, CarouselItem. |
+| `maxVisible`  | `number`                                            | `3`               | Number of visible stacked cards. Used in CarouselContent.       |
+| `stackOffset` | `number`                                            | `20`              | Vertical gap between stacked cards. Used in CarouselContent.    |
+| `variant`     | `"default" \| "outline-solid" \| "ghost" \| "link"` | `"outline-solid"` | Button style. Used in CarouselPrevious, CarouselNext.           |
+| `size`        | `"default" \| "sm" \| "lg" \| "icon"`               | `"icon"`          | Button size. Used in CarouselPrevious, CarouselNext.            |
+| `onClick`     | `() => void`                                        | —                 | Click handler. Used in CarouselPrevious, CarouselNext.          |
+| `disabled`    | `boolean`                                           | `false`           | Disables button. Used in CarouselPrevious, CarouselNext.        |

@@ -3,11 +3,7 @@ title: Decorated Text
 description: a decorative text frame with corner accents and a compact entrance effect.
 ---
 
-<ComponentPreview
-  name="decoratedtext-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='decoratedtext-demo' className='' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: a decorative text frame with corner accents and a compact entrance 
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>decorated-text.tsx</code>
-</p>
-<ComponentSource name="decorated-text" />
+
+<ComponentSource name='decorated-text' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,15 +45,12 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { DecoratedText } from "@/components/ui/decorated-text";
+import { DecoratedText } from '@/components/ui/decorated-text';
 ```
 
 ```tsx
-<DecoratedText className="text-4xl font-bold">
-    DecoratedText
-  </DecoratedText>
+<DecoratedText className='text-4xl font-bold'>DecoratedText</DecoratedText>
 ```
-
 
 ## API Reference
 
@@ -71,18 +60,13 @@ a decorative text frame with corner accents and a compact entrance effect.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `text` | `string` | `-` | Text content to display. If omitted, `children` will be used. |
-| `children` | `ReactNode` | `-` | React node content rendered when `text` is not provided. |
-| `className` | `string` | `-` | Custom classes for styling the root element. |
-| `bordered` | `boolean` | `true` | Toggles the border around the text. |
-| `showIcons` | `boolean` | `true` | Controls visibility of corner icons. |
-| `iconClassName` | `string` | `-` | Custom classes for styling each corner icon. |
-| `glowEffect` | `boolean` | `true` | Enables the hover glow animation on the frame. |
-| `flicker` | `boolean` | `true` | Controls the entrance flicker animation. |
-
-
-
-
+| Prop            | Type        | Default | Description                                                   |
+| --------------- | ----------- | ------- | ------------------------------------------------------------- |
+| `text`          | `string`    | `-`     | Text content to display. If omitted, `children` will be used. |
+| `children`      | `ReactNode` | `-`     | React node content rendered when `text` is not provided.      |
+| `className`     | `string`    | `-`     | Custom classes for styling the root element.                  |
+| `bordered`      | `boolean`   | `true`  | Toggles the border around the text.                           |
+| `showIcons`     | `boolean`   | `true`  | Controls visibility of corner icons.                          |
+| `iconClassName` | `string`    | `-`     | Custom classes for styling each corner icon.                  |
+| `glowEffect`    | `boolean`   | `true`  | Enables the hover glow animation on the frame.                |
+| `flicker`       | `boolean`   | `true`  | Controls the entrance flicker animation.                      |

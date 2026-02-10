@@ -3,7 +3,7 @@ title: Stats Carousel
 description: Animated statistics counter in stacked carousel for modern websites.
 ---
 
-<ComponentPreview name="statscarousel-demo" className="p-0" description="" />
+<ComponentPreview name='statscarousel-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -19,13 +19,11 @@ description: Animated statistics counter in stacked carousel for modern websites
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>statscarousel.tsx</code>
-</p>
-<ComponentSource name="statscarousel" />
+
+<ComponentSource name='statscarousel' />
 
 </Steps>
   </TabsContent>
@@ -34,19 +32,19 @@ description: Animated statistics counter in stacked carousel for modern websites
 ## Usage
 
 ```tsx
-import StatsCarouselcount from "@/components/ui/statscarousel";
+import StatsCarouselcount from '@/components/ui/statscarousel';
 ```
 
 ```tsx
 <StatsCarouselcount
-  title="CREATE STUNNING INTERFACES WITH SCROLLX UI COMPONENTS"
+  title='CREATE STUNNING INTERFACES WITH SCROLLX UI COMPONENTS'
   stats={[
-    { value: 40, suffix: "+", label: "Handcrafted animated components" },
-    { value: 12, suffix: "K+", label: "Developers building with ScrollX UI" },
-    { value: 99, suffix: "%", label: "Performance optimized for web" },
+    { value: 40, suffix: '+', label: 'Handcrafted animated components' },
+    { value: 12, suffix: 'K+', label: 'Developers building with ScrollX UI' },
+    { value: 99, suffix: '%', label: 'Performance optimized for web' },
   ]}
-  className=""
-  cardClassName=""
+  className=''
+  cardClassName=''
 />
 ```
 
@@ -57,9 +55,9 @@ import StatsCarouselcount from "@/components/ui/statscarousel";
 <Step>Drag</Step>
 
 <ComponentPreview
-  name="statscarouseldrag-demo"
-  className="p-0"
-  description=""
+  name='statscarouseldrag-demo'
+  className='p-0'
+  description=''
 />
 
 ## API Reference
@@ -70,13 +68,10 @@ Animated number stack for next-gen websites in stacked carousel.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `stats` | `{ value: number; suffix?: string; label: string; id?: number; }[]` | `optional` | Array of stats with value, suffix (like %, K+), label, and optional id. |
-| `animation` | `"drag" \| auto` | `auto` | If set to "drag", enables draggable top card mode instead of automatic stacked animation. |
-| `title` | `string` | `optional` | Optional title shown above the carousel cards. |
-| `className` | `string` | `""` | Additional classes for the outer wrapper section. |
-| `cardClassName` | `string` | `""` | Additional classes for styling individual stat cards. |
-
-
+| Prop            | Type                                                                | Default    | Description                                                                               |
+| --------------- | ------------------------------------------------------------------- | ---------- | ----------------------------------------------------------------------------------------- |
+| `stats`         | `{ value: number; suffix?: string; label: string; id?: number; }[]` | `optional` | Array of stats with value, suffix (like %, K+), label, and optional id.                   |
+| `animation`     | `"drag" \| auto`                                                    | `auto`     | If set to "drag", enables draggable top card mode instead of automatic stacked animation. |
+| `title`         | `string`                                                            | `optional` | Optional title shown above the carousel cards.                                            |
+| `className`     | `string`                                                            | `""`       | Additional classes for the outer wrapper section.                                         |
+| `cardClassName` | `string`                                                            | `""`       | Additional classes for styling individual stat cards.                                     |

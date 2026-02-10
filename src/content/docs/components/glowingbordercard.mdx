@@ -4,8 +4,8 @@ description: A customizable card with a glowing border effect that changes color
 ---
 
 <ComponentPreview
-  name="glowingbordercard-demo"
-  description="A card with a glowing border that changes colors in light and dark modes."
+  name='glowingbordercard-demo'
+  description='A card with a glowing border that changes colors in light and dark modes.'
 />
 
 ## Installation
@@ -22,20 +22,16 @@ description: A customizable card with a glowing border effect that changes color
     <Steps>
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>glowingbordercard.tsx</code>
-</p>
-<ComponentSource name="glowingbordercard" />
+
+<ComponentSource name='glowingbordercard' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
 ```tsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,17 +45,21 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import GlowingBorderCard from "@/components/ui/glowingbordercard";
+import GlowingBorderCard from '@/components/ui/glowingbordercard';
 ```
 
 ```tsx
-<GlowingBorderCard  className="w-80 h-72" fromColor="purple-600" toColor="purple-600">
-  <div className="w-full h-full flex flex-col items-center justify-center text-center">
-      <h3 className="text-xl font-semibold mb-1">GlowingBorder Card</h3> 
-        <p className="text-sm text-muted-foreground">
-          Hover to see the glowing border effect. 
-        </p>
-    </div>
+<GlowingBorderCard
+  className='w-80 h-72'
+  fromColor='purple-600'
+  toColor='purple-600'
+>
+  <div className='w-full h-full flex flex-col items-center justify-center text-center'>
+    <h3 className='text-xl font-semibold mb-1'>GlowingBorder Card</h3>
+    <p className='text-sm text-muted-foreground'>
+      Hover to see the glowing border effect.
+    </p>
+  </div>
 </GlowingBorderCard>
 ```
 
@@ -71,12 +71,9 @@ The `GlowingBorderCard` component is used to create a customizable card with a g
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `className` | `string` | — | Optional class name for custom styling. |
-| `children` | `ReactNode` | — | Optional content to render inside. |
-| `fromColor` | `string` | `required` | Starting gradient color (e.g., 'red-500'). |
-| `toColor` | `string` | `required` | Ending gradient color (e.g., 'blue-500'). |
-
-
+| Prop        | Type        | Default    | Description                                |
+| ----------- | ----------- | ---------- | ------------------------------------------ |
+| `className` | `string`    | —          | Optional class name for custom styling.    |
+| `children`  | `ReactNode` | —          | Optional content to render inside.         |
+| `fromColor` | `string`    | `required` | Starting gradient color (e.g., 'red-500'). |
+| `toColor`   | `string`    | `required` | Ending gradient color (e.g., 'blue-500').  |

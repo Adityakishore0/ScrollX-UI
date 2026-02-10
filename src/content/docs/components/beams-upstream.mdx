@@ -3,11 +3,7 @@ title: Beams Upstream
 description: Multiple background beams travel upstream, forming a hero section background.
 ---
 
-<ComponentPreview
-  name="beamsupstream-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='beamsupstream-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: Multiple background beams travel upstream, forming a hero section b
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>beams-upstream.tsx</code>
-</p>
-<ComponentSource name="beams-upstream" />
+
+<ComponentSource name='beams-upstream' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,21 +45,20 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { BeamsUpstream } from "@/components/ui/beams-upstream";
+import { BeamsUpstream } from '@/components/ui/beams-upstream';
 ```
 
 ```tsx
-<div className="relative h-screen w-full">
-  <div className="relative z-10 flex flex-col items-center justify-center h-full">
-    <h1 className="text-5xl font-bold text-white">Welcome to Upstream</h1>
-    <p className="mt-4 text-neutral-300">
+<div className='relative h-screen w-full'>
+  <div className='relative z-10 flex flex-col items-center justify-center h-full'>
+    <h1 className='text-5xl font-bold text-white'>Welcome to Upstream</h1>
+    <p className='mt-4 text-neutral-300'>
       Flow with energy and creativity, powered by animated SVG beams.
     </p>
   </div>
-  <BeamsUpstream className="z-0" />
+  <BeamsUpstream className='z-0' />
 </div>
 ```
-
 
 ## API Reference
 
@@ -77,10 +68,6 @@ Multiple background beams travel upstream, forming a hero section background.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `className` | `string` | `-` | Optional Tailwind or custom class names to style or position the beams container. |
-
-
-
+| Prop        | Type     | Default | Description                                                                       |
+| ----------- | -------- | ------- | --------------------------------------------------------------------------------- |
+| `className` | `string` | `-`     | Optional Tailwind or custom class names to style or position the beams container. |

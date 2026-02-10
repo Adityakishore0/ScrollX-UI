@@ -1,12 +1,9 @@
 ---
 title: Input Otp
-description:  A flexible Accessible one-time password component
+description: A flexible Accessible one-time password component
 ---
 
-<ComponentPreview
-  name="inputotp-demo"
-  description=""
-/>
+<ComponentPreview name='inputotp-demo' description='' />
 
 ## Installation
 
@@ -23,21 +20,19 @@ description:  A flexible Accessible one-time password component
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>input-otp.tsx</code>
-</p>
-<ComponentSource name="input-otp" />
+
+<ComponentSource name='input-otp' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
- import {(ClassValue, clsx)} from "clsx";
-  import {twMerge} from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -48,15 +43,15 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
+
 ```tsx
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/components/ui/input-otp"
+} from '@/components/ui/input-otp';
 ```
 
 ```tsx
@@ -66,7 +61,7 @@ import {
     <InputOTPSlot index={1} />
     <InputOTPSlot index={2} />
   </InputOTPGroup>
-  <InputOTPSeparator separatorSymbol="+"  />
+  <InputOTPSeparator separatorSymbol='+' />
   <InputOTPGroup>
     <InputOTPSlot index={3} />
     <InputOTPSlot index={4} />
@@ -75,29 +70,24 @@ import {
 </InputOTP>
 ```
 
-
 ## API Reference
 
- ### Input Otp
+### Input Otp
 
 The `InputOTP` is a root component that creates an animated OTP input field with masking support and paste functionality.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `maxLength` | `number` | `required` | Total number of OTP digits. Used in: InputOTP. |
-| `onComplete` | `(otp: string) => void` | — | Callback fired when OTP is fully entered. Used in: InputOTP. |
-| `mask` | `boolean` | `false` | Whether to mask each digit. Used in: InputOTP. |
-| `maskSymbol` | `string` | `•` | Symbol to show when masking. Used in: InputOTP. |
-| `maskDelay` | `number` | `1000` | Delay (ms) before masking input. Used in: InputOTP. |
-| `index` | `number` | `required` | Slot index position. Used in: InputOTPSlot. |
-| `separatorSymbol` | `string` | `'-'` | Symbol displayed between OTP slots. Used in: InputOTPSeparator. |
-| `className` | `string` | — | Optional styling class. Used in: InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator. |
-| `containerClassName` | `string` | — | Class name for outer container. Used in: InputOTP. |
-| `inputClassName` | `string` | — | Class name for each OTP input. Used in: InputOTP. |
-| `children` | `ReactNode` | `optional` | Nested content. Used in: InputOTP, InputOTPGroup. |
-
-
-
+| Prop                 | Type                    | Default    | Description                                                                                |
+| -------------------- | ----------------------- | ---------- | ------------------------------------------------------------------------------------------ |
+| `maxLength`          | `number`                | `required` | Total number of OTP digits. Used in: InputOTP.                                             |
+| `onComplete`         | `(otp: string) => void` | —          | Callback fired when OTP is fully entered. Used in: InputOTP.                               |
+| `mask`               | `boolean`               | `false`    | Whether to mask each digit. Used in: InputOTP.                                             |
+| `maskSymbol`         | `string`                | `•`        | Symbol to show when masking. Used in: InputOTP.                                            |
+| `maskDelay`          | `number`                | `1000`     | Delay (ms) before masking input. Used in: InputOTP.                                        |
+| `index`              | `number`                | `required` | Slot index position. Used in: InputOTPSlot.                                                |
+| `separatorSymbol`    | `string`                | `'-'`      | Symbol displayed between OTP slots. Used in: InputOTPSeparator.                            |
+| `className`          | `string`                | —          | Optional styling class. Used in: InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator. |
+| `containerClassName` | `string`                | —          | Class name for outer container. Used in: InputOTP.                                         |
+| `inputClassName`     | `string`                | —          | Class name for each OTP input. Used in: InputOTP.                                          |
+| `children`           | `ReactNode`             | `optional` | Nested content. Used in: InputOTP, InputOTPGroup.                                          |

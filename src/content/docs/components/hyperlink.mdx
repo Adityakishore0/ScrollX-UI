@@ -3,11 +3,7 @@ title: Hyperlink
 description: Hyperlink component with animated underline, smooth hover & customizable style.
 ---
 
-<ComponentPreview
-  name="hyperlink-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='hyperlink-demo' className='' description='' />
 
 ## Installation
 
@@ -22,26 +18,22 @@ description: Hyperlink component with animated underline, smooth hover & customi
   <TabsContent value="manual">
     <Steps>
 
-
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>hyperlink.tsx</code>
-</p>
-<ComponentSource name="hyperlink" />
+
+<ComponentSource name='hyperlink' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 ```
-
 
 </Steps>
   </TabsContent>
@@ -50,25 +42,22 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { Hyperlink } from "@/components/ui/hyperlink";
+import { Hyperlink } from '@/components/ui/hyperlink';
 ```
 
 ```tsx
-<Hyperlink href="/components" className="text-lg">
+<Hyperlink href='/components' className='text-lg'>
   Components
 </Hyperlink>
 ```
+
 ## Examples
 
 ---
 
 <Step>Custom</Step>
 
-<ComponentPreview
-  name="hyperlinkcustom-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='hyperlinkcustom-demo' className='' description='' />
 
 ## API Reference
 
@@ -78,13 +67,9 @@ Hyperlink component with animated underline, smooth hover & customizable style.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `href` | `string` | `required` | URL the link navigates to when clicked. |
-| `children` | `React.ReactNode` | `required` | Content displayed inside the hyperlink, e.g., text, button, or icon. |
-| `className` | `string` | `optional` | Custom CSS classes applied to the link container for styling. |
-| `underlineClassName` | `string` | `optional` | Custom CSS classes applied to the animated underline. |
-
-
-
+| Prop                 | Type              | Default    | Description                                                          |
+| -------------------- | ----------------- | ---------- | -------------------------------------------------------------------- |
+| `href`               | `string`          | `required` | URL the link navigates to when clicked.                              |
+| `children`           | `React.ReactNode` | `required` | Content displayed inside the hyperlink, e.g., text, button, or icon. |
+| `className`          | `string`          | `optional` | Custom CSS classes applied to the link container for styling.        |
+| `underlineClassName` | `string`          | `optional` | Custom CSS classes applied to the animated underline.                |

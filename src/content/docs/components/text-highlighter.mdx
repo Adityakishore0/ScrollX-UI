@@ -3,7 +3,7 @@ title: Text Highlighter
 description: TextHighlighter with smooth animated highlights to emphasize key text.
 ---
 
-<ComponentPreview name="texthighlighter-demo" className="" description="" />
+<ComponentPreview name='texthighlighter-demo' className='' description='' />
 
 ## Installation
 
@@ -19,23 +19,19 @@ description: TextHighlighter with smooth animated highlights to emphasize key te
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>text-highlighter.tsx</code>
-</p>
-<ComponentSource name="text-highlighter" />
+
+<ComponentSource name='text-highlighter' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,11 +45,11 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import TextHighlighter from "@/components/ui/text-highlighter";
+import TextHighlighter from '@/components/ui/text-highlighter';
 ```
 
 ```tsx
-<TextHighlighter type="wavy" highlightColor="#00ffb7ff">
+<TextHighlighter type='wavy' highlightColor='#00ffb7ff'>
   <span>share</span>
 </TextHighlighter>
 ```
@@ -64,7 +60,7 @@ import TextHighlighter from "@/components/ui/text-highlighter";
 
 <Step>Zigzag</Step>
 
-<ComponentPreview name="texthighlighterzigzag" className="" description="" />
+<ComponentPreview name='texthighlighterzigzag' className='' description='' />
 
 ## API Reference
 
@@ -74,19 +70,16 @@ TextHighlighter with smooth animated highlights to emphasize key text.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `required` | The text or elements to be highlighted. |
-| `highlightColor` | `string` | `#ff6b9d` | Color of the highlight stroke applied under the text. |
-| `highlightOpacity` | `number` | `1` | Opacity of the highlight stroke (0 to 1). |
-| `animationDuration` | `number` | `1.2` | Duration of the highlight drawing animation in seconds. |
-| `animationDelay` | `number` | `0` | Delay before the highlight animation starts (in seconds). |
-| `strokeWidth` | `number` | `2` | Width of the highlight stroke. |
-| `className` | `string` | `''` | Additional CSS classes for the wrapper span. |
-| `style` | `React.CSSProperties` | `{}` | Inline styles applied to the wrapper span. |
-| `type` | `'wavy' \| 'zigzag'` | `'wavy'` | Type of highlight path shape drawn beneath the text. |
-| `triggerOnView` | `boolean` | `true` | If true, the animation triggers when the element enters the viewport. |
-| `repeat` | `boolean` | `false` | If true, animation retriggers every time the element enters the viewport. |
-
-
+| Prop                | Type                  | Default    | Description                                                               |
+| ------------------- | --------------------- | ---------- | ------------------------------------------------------------------------- |
+| `children`          | `ReactNode`           | `required` | The text or elements to be highlighted.                                   |
+| `highlightColor`    | `string`              | `#ff6b9d`  | Color of the highlight stroke applied under the text.                     |
+| `highlightOpacity`  | `number`              | `1`        | Opacity of the highlight stroke (0 to 1).                                 |
+| `animationDuration` | `number`              | `1.2`      | Duration of the highlight drawing animation in seconds.                   |
+| `animationDelay`    | `number`              | `0`        | Delay before the highlight animation starts (in seconds).                 |
+| `strokeWidth`       | `number`              | `2`        | Width of the highlight stroke.                                            |
+| `className`         | `string`              | `''`       | Additional CSS classes for the wrapper span.                              |
+| `style`             | `React.CSSProperties` | `{}`       | Inline styles applied to the wrapper span.                                |
+| `type`              | `'wavy' \| 'zigzag'`  | `'wavy'`   | Type of highlight path shape drawn beneath the text.                      |
+| `triggerOnView`     | `boolean`             | `true`     | If true, the animation triggers when the element enters the viewport.     |
+| `repeat`            | `boolean`             | `false`    | If true, animation retriggers every time the element enters the viewport. |

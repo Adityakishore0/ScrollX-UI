@@ -3,11 +3,7 @@ title: DualSparks
 description: Corner-based spark waves that radiate inward and outward with smooth motion.
 ---
 
-<ComponentPreview
-  name="dualsparks-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='dualsparks-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -22,20 +18,17 @@ description: Corner-based spark waves that radiate inward and outward with smoot
   <TabsContent value="manual">
     <Steps>
 
-
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>dualsparks.tsx</code>
-</p>
-<ComponentSource name="dualsparks" />
+
+<ComponentSource name='dualsparks' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,25 +42,25 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { DualSparks } from "@/components/ui/dualsparks";
+import { DualSparks } from '@/components/ui/dualsparks';
 ```
 
 ```tsx
 <DualSparks
-       sparkColor="#000000"
-      sparkColorDark="#ffffff"
-      sparkSize={2}
-      sparkCount={22}
-      ringsPerWave={3}
-      waveInterval={1200}
-      maxRadius={1000}
-      corners="both"
-      className="w-full h-[350px] flex items-center bg-black justify-center"
-    >
-      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans font-bold tracking-tight relative z-20">
-        DualSparks, <br /> Background.
-      </h2>
-    </DualSparks>
+  sparkColor='#000000'
+  sparkColorDark='#ffffff'
+  sparkSize={2}
+  sparkCount={22}
+  ringsPerWave={3}
+  waveInterval={1200}
+  maxRadius={1000}
+  corners='both'
+  className='w-full h-87.5 flex items-center bg-black justify-center'
+>
+  <h2 className='bg-clip-text text-transparent text-center bg-linear-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans font-bold tracking-tight relative z-20'>
+    DualSparks, <br /> Background.
+  </h2>
+</DualSparks>
 ```
 
 ## Examples
@@ -76,21 +69,13 @@ import { DualSparks } from "@/components/ui/dualsparks";
 
 <Step>Left</Step>
 
-<ComponentPreview
-  name="dualsparksleft-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='dualsparksleft-demo' className='p-0' description='' />
 
 ---
 
 <Step>Rightt</Step>
 
-<ComponentPreview
-  name="dualsparksright-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='dualsparksright-demo' className='p-0' description='' />
 
 ## API Reference
 
@@ -100,27 +85,24 @@ Corner-based spark waves that radiate inward and outward with smooth motion.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `sparkColor` | `string` | `"#000000"` | Spark color used in light mode. |
-| `sparkColorDark` | `string` | `"#ffffff"` | Spark color used when dark mode is active. |
-| `sparkSize` | `number` | `10` | Length of each spark line segment. |
-| `sparkCount` | `number` | `24` | Number of sparks emitted per ring. |
-| `duration` | `number` | `3500` | Time (ms) for a spark wave to complete. |
-| `easing` | `string` | `"ease-out"` | Easing function applied to spark motion. |
-| `waveInterval` | `number` | `1400` | Delay (ms) between consecutive waves. |
-| `maxRadius` | `number` | `800` | Maximum outward expansion radius. |
-| `ringsPerWave` | `number` | `5` | Number of concentric rings per wave. |
-| `ringSpacing` | `number` | `40` | Distance between successive rings. |
-| `enableInward` | `boolean` | `true` | Enables inward collapsing spark waves. |
-| `corners` | `"both" \| "left" \| "right"` | `"both"` | Corner origin(s) for spark emission. |
-| `backgroundColor` | `string` | `"white"` | Background fill color in light mode. |
-| `backgroundColorDark` | `string` | `"black"` | Background fill color in dark mode. |
-| `clearBackground` | `boolean` | `true` | Clears or repaints the canvas each frame. |
-| `backgroundOpacity` | `number` | `0.15` | Overrides alpha value of background color. |
-| `forceDarkMode` | `boolean` | — | Forces dark mode regardless of theme. |
-| `className` | `string` | — | Custom classes for the container wrapper. |
-| `children` | `ReactNode` | — | Content rendered above the spark canvas. |
-
-
+| Prop                  | Type                          | Default      | Description                                |
+| --------------------- | ----------------------------- | ------------ | ------------------------------------------ |
+| `sparkColor`          | `string`                      | `"#000000"`  | Spark color used in light mode.            |
+| `sparkColorDark`      | `string`                      | `"#ffffff"`  | Spark color used when dark mode is active. |
+| `sparkSize`           | `number`                      | `10`         | Length of each spark line segment.         |
+| `sparkCount`          | `number`                      | `24`         | Number of sparks emitted per ring.         |
+| `duration`            | `number`                      | `3500`       | Time (ms) for a spark wave to complete.    |
+| `easing`              | `string`                      | `"ease-out"` | Easing function applied to spark motion.   |
+| `waveInterval`        | `number`                      | `1400`       | Delay (ms) between consecutive waves.      |
+| `maxRadius`           | `number`                      | `800`        | Maximum outward expansion radius.          |
+| `ringsPerWave`        | `number`                      | `5`          | Number of concentric rings per wave.       |
+| `ringSpacing`         | `number`                      | `40`         | Distance between successive rings.         |
+| `enableInward`        | `boolean`                     | `true`       | Enables inward collapsing spark waves.     |
+| `corners`             | `"both" \| "left" \| "right"` | `"both"`     | Corner origin(s) for spark emission.       |
+| `backgroundColor`     | `string`                      | `"white"`    | Background fill color in light mode.       |
+| `backgroundColorDark` | `string`                      | `"black"`    | Background fill color in dark mode.        |
+| `clearBackground`     | `boolean`                     | `true`       | Clears or repaints the canvas each frame.  |
+| `backgroundOpacity`   | `number`                      | `0.15`       | Overrides alpha value of background color. |
+| `forceDarkMode`       | `boolean`                     | —            | Forces dark mode regardless of theme.      |
+| `className`           | `string`                      | —            | Custom classes for the container wrapper.  |
+| `children`            | `ReactNode`                   | —            | Content rendered above the spark canvas.   |

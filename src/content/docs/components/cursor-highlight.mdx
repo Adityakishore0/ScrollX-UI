@@ -3,11 +3,7 @@ title: Cursor Highlight
 description: Text is revealed on scroll with pointer, gradient, and border effects.
 ---
 
-<ComponentPreview
-  name="cursorhighlight-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='cursorhighlight-demo' className='' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: Text is revealed on scroll with pointer, gradient, and border effec
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>cursor-highlight.tsx</code>
-</p>
-<ComponentSource name="cursor-highlight" />
+
+<ComponentSource name='cursor-highlight' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,21 +45,22 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { CursorHighlight } from "@/components/ui/cursor-highlight";
+import { CursorHighlight } from '@/components/ui/cursor-highlight';
 ```
 
 ```tsx
 <CursorHighlight
-    className="text-2xl sm:text-3xl md:text-4xl font-bold"
-    gradient="from-pink-500 via-red-500 to-yellow-500"
-    showPointer={true}
-    pointerClassName="text-pink-500"
-    direction="right"
-    rectangle="bg-pink-200 dark:bg-green-950 border-blue dark:border-white/20 rounded-lg p-4"
-  >
-    <h1>Premium</h1>
-  </CursorHighlight>
+  className='text-2xl sm:text-3xl md:text-4xl font-bold'
+  gradient='from-pink-500 via-red-500 to-yellow-500'
+  showPointer={true}
+  pointerClassName='text-pink-500'
+  direction='right'
+  rectangle='bg-pink-200 dark:bg-green-950 border-blue dark:border-white/20 rounded-lg p-4'
+>
+  <h1>Premium</h1>
+</CursorHighlight>
 ```
+
 ## Examples
 
 ---
@@ -75,9 +68,9 @@ import { CursorHighlight } from "@/components/ui/cursor-highlight";
 <Step>Default</Step>
 
 <ComponentPreview
-  name="cursorhighlightdefault-demo"
-  className=""
-  description=""
+  name='cursorhighlightdefault-demo'
+  className=''
+  description=''
 />
 
 ---
@@ -85,9 +78,9 @@ import { CursorHighlight } from "@/components/ui/cursor-highlight";
 <Step>Gradient</Step>
 
 <ComponentPreview
-  name="cursorhighlightgradient-demo"
-  className=""
-  description=""
+  name='cursorhighlightgradient-demo'
+  className=''
+  description=''
 />
 
 ---
@@ -95,9 +88,9 @@ import { CursorHighlight } from "@/components/ui/cursor-highlight";
 <Step>Pointer</Step>
 
 <ComponentPreview
-  name="cursorhighlightpointer-demo"
-  className=""
-  description=""
+  name='cursorhighlightpointer-demo'
+  className=''
+  description=''
 />
 
 ---
@@ -105,51 +98,42 @@ import { CursorHighlight } from "@/components/ui/cursor-highlight";
 <Step>Selection</Step>
 
 <ComponentPreview
-  name="cursorhighlightselection-demo"
-  className=""
-  description=""
+  name='cursorhighlightselection-demo'
+  className=''
+  description=''
 />
 
 ---
 
 <Step>Top</Step>
 
-<ComponentPreview
-  name="cursorhighlighttop-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='cursorhighlighttop-demo' className='' description='' />
 
 ---
 
 <Step>Botttom</Step>
 
 <ComponentPreview
-  name="cursorhighlightbottom-demo"
-  className=""
-  description=""
+  name='cursorhighlightbottom-demo'
+  className=''
+  description=''
 />
 
 ---
 
 <Step>Left</Step>
 
-<ComponentPreview
-  name="cursorhighlightleft-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='cursorhighlightleft-demo' className='' description='' />
 
 ---
 
 <Step>Right</Step>
 
 <ComponentPreview
-  name="cursorhighlightright-demo"
-  className=""
-  description=""
+  name='cursorhighlightright-demo'
+  className=''
+  description=''
 />
-
 
 ## API Reference
 
@@ -159,21 +143,17 @@ Text is revealed on scroll with pointer, gradient, and border effects.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `text` | `string` | `-` | Text content to be highlighted. If not provided, `children` will be used. |
-| `children` | `ReactNode` | `-` | Any React node to be highlighted, used when `text` is not provided. |
-| `className` | `string` | `-` | Custom classes for styling the text. |
-| `gradient` | `string` | `purple gradient` | Tailwind gradient classes used for the highlight animation. |
-| `direction` | `"left" \| "right" \| "top" \| "bottom"` | `"left"` | The animation direction for the gradient filling effect. |
-| `animate` | `boolean` | `false` | Controls whether the highlight animation plays. |
-| `duration` | `number` | `2` | Duration (in seconds) of the highlight animation. |
-| `showPointer` | `boolean` | `false` | Whether to display a moving pointer along the highlight. |
-| `pointerDuration` | `number` | `1` | Duration (in seconds) of the pointer's movement. |
-| `pointerClassName` | `string` | `-` | Custom classes for styling the pointer. |
-| `containerClassName` | `string` | `-` | Custom classes for styling the outer container element. |
-| `rectangle` | `boolean \| string` | `false` | Enables a rectangle border around the text. |
-
-
-
+| Prop                 | Type                                     | Default           | Description                                                               |
+| -------------------- | ---------------------------------------- | ----------------- | ------------------------------------------------------------------------- |
+| `text`               | `string`                                 | `-`               | Text content to be highlighted. If not provided, `children` will be used. |
+| `children`           | `ReactNode`                              | `-`               | Any React node to be highlighted, used when `text` is not provided.       |
+| `className`          | `string`                                 | `-`               | Custom classes for styling the text.                                      |
+| `gradient`           | `string`                                 | `purple gradient` | Tailwind gradient classes used for the highlight animation.               |
+| `direction`          | `"left" \| "right" \| "top" \| "bottom"` | `"left"`          | The animation direction for the gradient filling effect.                  |
+| `animate`            | `boolean`                                | `false`           | Controls whether the highlight animation plays.                           |
+| `duration`           | `number`                                 | `2`               | Duration (in seconds) of the highlight animation.                         |
+| `showPointer`        | `boolean`                                | `false`           | Whether to display a moving pointer along the highlight.                  |
+| `pointerDuration`    | `number`                                 | `1`               | Duration (in seconds) of the pointer's movement.                          |
+| `pointerClassName`   | `string`                                 | `-`               | Custom classes for styling the pointer.                                   |
+| `containerClassName` | `string`                                 | `-`               | Custom classes for styling the outer container element.                   |
+| `rectangle`          | `boolean \| string`                      | `false`           | Enables a rectangle border around the text.                               |

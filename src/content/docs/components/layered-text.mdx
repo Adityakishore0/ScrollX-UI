@@ -3,7 +3,7 @@ title: Layered Text
 description: Layered text effect with offset shadows, customizable styling, and animations.
 ---
 
-<ComponentPreview name="layeredtext-demo" className="p-0" description="" />
+<ComponentPreview name='layeredtext-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -19,23 +19,20 @@ description: Layered text effect with offset shadows, customizable styling, and 
     <Steps>
 
     <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>layered-text.tsx</code>
-</p>
-<ComponentSource name="layered-text" />
+
+<ComponentSource name='layered-text' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,14 +46,14 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { LayeredText } from "@/components/ui/layered-text";
+import { LayeredText } from '@/components/ui/layered-text';
 ```
 
 ```tsx
 <LayeredText
-  text="ScrollX UI"
-  className="text-4xl md:text-6xl font-bold text-black dark:text-white [--stroke-color:#FFFFFF] dark:[--stroke-color:#000000]"
-  layers={["#06B6D4", "#14B8A6", "#84CC16"]}
+  text='ScrollX UI'
+  className='text-4xl md:text-6xl font-bold text-black dark:text-white [--stroke-color:#FFFFFF] dark:[--stroke-color:#000000]'
+  layers={['#06B6D4', '#14B8A6', '#84CC16']}
   offsetX={2}
   offsetY={2}
   strokeWidth={2}
@@ -72,17 +69,13 @@ Layered text effect with offset shadows, customizable styling, and animations.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `text` | `string` | `required` | Main text to be displayed in layered style. |
-| `layers` | `string[]` | `required` | Array of colors used to create layered depth effects. |
-| `offsetX` | `number` | `6` | Horizontal offset applied between each text layer. |
-| `offsetY` | `number` | `6` | Vertical offset applied between each text layer. |
-| `strokeWidth` | `number` | `4` | Width of the text stroke for the top visible layer. |
-| `animate` | `boolean` | `true` | Whether to apply fade-in animation on text layers. |
-| `animationDuration` | `number` | `0.6` | Duration (in seconds) of the fade-in animation. |
-| `className` | `string` | `-` | Optional className for additional styling. |
-
-
-
+| Prop                | Type       | Default    | Description                                           |
+| ------------------- | ---------- | ---------- | ----------------------------------------------------- |
+| `text`              | `string`   | `required` | Main text to be displayed in layered style.           |
+| `layers`            | `string[]` | `required` | Array of colors used to create layered depth effects. |
+| `offsetX`           | `number`   | `6`        | Horizontal offset applied between each text layer.    |
+| `offsetY`           | `number`   | `6`        | Vertical offset applied between each text layer.      |
+| `strokeWidth`       | `number`   | `4`        | Width of the text stroke for the top visible layer.   |
+| `animate`           | `boolean`  | `true`     | Whether to apply fade-in animation on text layers.    |
+| `animationDuration` | `number`   | `0.6`      | Duration (in seconds) of the fade-in animation.       |
+| `className`         | `string`   | `-`        | Optional className for additional styling.            |

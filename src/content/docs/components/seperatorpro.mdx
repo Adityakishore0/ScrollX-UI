@@ -4,9 +4,9 @@ description: Separates layout sections with customizable styles and orientations
 ---
 
 <ComponentPreview
-  name="seperatorpro-demo"
-  className=""
-  description="Default horizontal and vertical line separator"
+  name='seperatorpro-demo'
+  className=''
+  description='Default horizontal and vertical line separator'
 />
 
 ## Installation
@@ -23,28 +23,24 @@ description: Separates layout sections with customizable styles and orientations
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="@radix-ui/react-separator" />
+<DepsOptions name='@radix-ui/react-separator' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>seperatorpro.tsx</code>
-</p>
-<ComponentSource name="seperatorpro" />
 
+<ComponentSource name='seperatorpro' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 ```
-
 
 </Steps>
   </TabsContent>
@@ -53,7 +49,7 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { SeparatorPro } from "@/components/ui/seperatorpro";
+import { SeparatorPro } from '@/components/ui/seperatorpro';
 ```
 
 ```tsx
@@ -68,9 +64,9 @@ import { SeparatorPro } from "@/components/ui/seperatorpro";
 <Step>Dotted Seperator</Step>
 
 <ComponentPreview
-  name="seperatorprodotted"
-  className=""
-  description="A dotted style separator with vertical support"
+  name='seperatorprodotted'
+  className=''
+  description='A dotted style separator with vertical support'
 />
 
 ---
@@ -78,9 +74,9 @@ import { SeparatorPro } from "@/components/ui/seperatorpro";
 <Step>Wavy Seperator</Step>
 
 <ComponentPreview
-  name="seperatorprowavy"
-  className=""
-  description="A wavy styled separator for creative layouts"
+  name='seperatorprowavy'
+  className=''
+  description='A wavy styled separator for creative layouts'
 />
 
 ---
@@ -93,15 +89,9 @@ The `SeparatorPro` component renders a visual divider with support for multiple 
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `"default" \| "dots" \| "wave"` | `"default"` | Visual style of the separator. |
-| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Direction of the separator. |
-| `className` | `string` | — | Optional class for custom styling. |
-| `...props` | `HTMLDivElement attributes` | — | All standard div element props. |
-
-
-
-
-
+| Prop          | Type                            | Default        | Description                        |
+| ------------- | ------------------------------- | -------------- | ---------------------------------- |
+| `variant`     | `"default" \| "dots" \| "wave"` | `"default"`    | Visual style of the separator.     |
+| `orientation` | `"horizontal" \| "vertical"`    | `"horizontal"` | Direction of the separator.        |
+| `className`   | `string`                        | —              | Optional class for custom styling. |
+| `...props`    | `HTMLDivElement attributes`     | —              | All standard div element props.    |

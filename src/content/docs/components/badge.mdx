@@ -1,12 +1,12 @@
 ---
 title: Badge
-description: A small badge component with customizable variants and shiny animation effects. 
+description: A small badge component with customizable variants and shiny animation effects.
 ---
 
 <ComponentPreview
-  name="badge-demo"
-  className=""
-  description="Interactive badge with default styling and animation"
+  name='badge-demo'
+  className=''
+  description='Interactive badge with default styling and animation'
 />
 
 ## Installation
@@ -22,65 +22,97 @@ description: A small badge component with customizable variants and shiny animat
   <TabsContent value="manual">
     <Steps>
 
-
-
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>badge.tsx</code>
-</p>
-<ComponentSource name="badge" />
 
+<ComponentSource name='badge' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 ```
 
+<Step>Update your configuration</Step>
+
+<Tabs defaultValue="tailwind-v4" className="w-full">
+  <TabsList>
+    <TabsTrigger value="tailwind-v4">Tailwind v4</TabsTrigger>
+    <TabsTrigger value="tailwind-v3">Tailwind v3</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="tailwind-v4">
+
+<Step>Add these animations to your `globals.css:`</Step>
+
+`globals.css`
+
+```css
+/* ---------------- THEME ---------------- */
+@theme {
+  --animation-shine: shine 5s linear infinite;
+}
+
+/* ---------------- KEYFRAMES ---------------- */
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+```
+
+  </TabsContent>
+  <TabsContent value="tailwind-v3">
+
+<Step>Add these animations to your `tailwind.config.ts:`</Step>
+
+`tailwind.config.ts`
+
+```tsx
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        shine: {
+          '0%': { 'background-position': '100%' },
+          '100%': { 'background-position': '-100%' },
+        },
+      },
+      animation: {
+        shine: 'shine 5s linear infinite',
+      },
+    },
+  },
+  plugins: [],
+};
+```
+
+  </TabsContent>
+</Tabs>
+
 </Steps>
   </TabsContent>
 </Tabs>
 
-<Step>Add Utilities</Step>
-
-<p>
-  <code>tailwind.config.ts</code>
-</p>
-
-```tsx
-module.exports = { 
-   theme: { 
-     extend: { 
-       keyframes: { 
-         shine: { 
-           '0%': { 'background-position': '100%' }, 
-          '100%': { 'background-position': '-100%' }, 
-         }, 
-      }, 
-       animation: { 
-        shine: 'shine 5s linear infinite', 
-       }, 
-     }, 
-    }, 
-    plugins: [], 
- };
-```
-
 ## Usage
 
 ```tsx
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge';
 ```
 
 ```tsx
-<Badge variant="default" shiny={true}>Badge</Badge>
+<Badge variant='default' shiny={true}>
+  Badge
+</Badge>
 ```
 
 ## Examples
@@ -90,9 +122,9 @@ import { Badge } from "@/components/ui/badge";
 <Step>Default</Step>
 
 <ComponentPreview
-  name="badge-demo"
-  className=""
-  description="Default badge with primary color and shine effect"
+  name='badge-demo'
+  className=''
+  description='Default badge with primary color and shine effect'
 />
 
 ---
@@ -100,9 +132,9 @@ import { Badge } from "@/components/ui/badge";
 <Step>Secondary</Step>
 
 <ComponentPreview
-  name="badge-secondary"
-  className=""
-  description="Subtle badge with secondary color theme and shine"
+  name='badge-secondary'
+  className=''
+  description='Subtle badge with secondary color theme and shine'
 />
 
 ---
@@ -110,9 +142,9 @@ import { Badge } from "@/components/ui/badge";
 <Step>Destructive</Step>
 
 <ComponentPreview
-  name="badge-destructive"
-  className=""
-  description="High-contrast badge for warnings and errors"
+  name='badge-destructive'
+  className=''
+  description='High-contrast badge for warnings and errors'
 />
 
 ---
@@ -120,9 +152,9 @@ import { Badge } from "@/components/ui/badge";
 <Step>Outline</Step>
 
 <ComponentPreview
-  name="badge-outline"
-  className=""
-  description="Minimal badge with border and transparent background"
+  name='badge-outline'
+  className=''
+  description='Minimal badge with border and transparent background'
 />
 
 ## API Reference
@@ -133,15 +165,10 @@ The `Badge` component creates a customizable label with variant styling and opti
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `variant` | `"default" \| "secondary" \| "destructive" \| "outline"` | `"default"` | Controls the visual style of the badge. |
-| `shiny` | `boolean` | `false` | Enables an animated shine effect. |
-| `shinySpeed` | `number` | — | Controls shine animation speed in seconds. |
-| `className` | `string` | — | Custom class names to style the badge. |
-| `...props` | `HTMLDivElement attributes` | — | Supports all standard div props and events. |
-
-
-
-
+| Prop         | Type                                                           | Default     | Description                                 |
+| ------------ | -------------------------------------------------------------- | ----------- | ------------------------------------------- |
+| `variant`    | `"default" \| "secondary" \| "destructive" \| "outline-solid"` | `"default"` | Controls the visual style of the badge.     |
+| `shiny`      | `boolean`                                                      | `false`     | Enables an animated shine effect.           |
+| `shinySpeed` | `number`                                                       | —           | Controls shine animation speed in seconds.  |
+| `className`  | `string`                                                       | —           | Custom class names to style the badge.      |
+| `...props`   | `HTMLDivElement attributes`                                    | —           | Supports all standard div props and events. |

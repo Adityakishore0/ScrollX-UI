@@ -3,7 +3,7 @@ title: Expandable Dock
 description: Smooth animated expandable dock with header and collapsible content area.
 ---
 
-<ComponentPreview name="expandabledock-demo" className="p-0" description="" />
+<ComponentPreview name='expandabledock-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -19,23 +19,19 @@ description: Smooth animated expandable dock with header and collapsible content
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>expandable-dock.tsx</code>
-</p>
-<ComponentSource name="expandable-dock" />
+
+<ComponentSource name='expandable-dock' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,19 +45,19 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import ExpandableDock from "@/components/ui/expandable-dock";
+import ExpandableDock from '@/components/ui/expandable-dock';
 ```
 
 ```tsx
 <ExpandableDock
   headerContent={
-    <div className="flex items-center gap-2">
-      <span className="text-lg font-semibold">Open Dock</span>
+    <div className='flex items-center gap-2'>
+      <span className='text-lg font-semibold'>Open Dock</span>
     </div>
   }
-  className="max-w-lg"
+  className='max-w-lg'
 >
-  <p className="text-white">
+  <p className='text-white'>
     This is the expandable content area. Put anything you want here, like
     navigation, controls, or info.
   </p>
@@ -76,11 +72,8 @@ Smooth animated expandable dock with header and collapsible content area.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
+| Prop            | Type        | Default    | Description                                                     |
+| --------------- | ----------- | ---------- | --------------------------------------------------------------- |
 | `headerContent` | `ReactNode` | `required` | Content displayed in the dock header area, clickable to toggle. |
-| `children` | `ReactNode` | `required` | Content displayed inside the expanded dock area. |
-| `className` | `string` | `optional` | Additional CSS classes to customize the dock container style. |
-
-
+| `children`      | `ReactNode` | `required` | Content displayed inside the expanded dock area.                |
+| `className`     | `string`    | `optional` | Additional CSS classes to customize the dock container style.   |

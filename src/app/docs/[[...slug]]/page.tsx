@@ -1,40 +1,44 @@
-import { notFound } from "next/navigation";
-import React from "react";
-import fs from "fs";
-import path from "path";
-import { compileMDX } from "next-mdx-remote/rsc";
-import { mdxComponents } from "@/components/mdx-components";
-import { cache } from "react";
-import rehypePrettyCode from "rehype-pretty-code";
-import CodeBlock from "@/components/CodeBlock";
-import remarkGfm from "remark-gfm";
-import ComponentNavigator from "@/components/Navigator";
+import { notFound } from 'next/navigation';
+import React from 'react';
+import fs from 'fs';
+import path from 'path';
+import { compileMDX } from 'next-mdx-remote/rsc';
+import { mdxComponents } from '@/components/mdx-components';
+import { cache } from 'react';
+import rehypePrettyCode from 'rehype-pretty-code';
+import CodeBlock from '@/components/CodeBlock';
+import remarkGfm from 'remark-gfm';
+import ComponentNavigator from '@/components/Navigator';
+import { remarkInlineFileIcons } from '@/lib/remark-icons';
 
 interface DocFrontmatter {
   title: string;
   description: string;
   category?: string;
   version?: string;
-  status?: "draft" | "published";
+  status?: 'draft' | 'published';
   lastUpdated?: string;
 }
 
 const getDocBySlug = cache(async (slug: string[]) => {
   const filePath = path.join(
     process.cwd(),
-    "src/content/docs",
-    `${slug.join("/") || "introduction"}.mdx`
+    'src/content/docs',
+    `${slug.join('/') || 'introduction'}.mdx`,
   );
 
   try {
-    const fileContent = await fs.promises.readFile(filePath, "utf8");
+    const fileContent = await fs.promises.readFile(filePath, 'utf8');
 
     const prettyCodeOptions = {
-      theme: "github-dark",
+      theme: {
+        dark: 'github-dark',
+        light: 'github-light',
+      },
       keepBackground: false,
       onVisitLine(node: { children: { type: string; value: string }[] }) {
         if (node.children.length === 0) {
-          node.children = [{ type: "text", value: " " }];
+          node.children = [{ type: 'text', value: ' ' }];
         }
       },
     };
@@ -44,18 +48,18 @@ const getDocBySlug = cache(async (slug: string[]) => {
       options: {
         parseFrontmatter: true,
         mdxOptions: {
-          remarkPlugins: [remarkGfm],
+          remarkPlugins: [remarkGfm, remarkInlineFileIcons],
           rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
-          format: "mdx",
+          format: 'mdx',
         },
       },
       components: {
         ...mdxComponents,
         pre: ({ children, className }) => {
-          const language = className?.replace("language-", "");
+          const language = className?.replace('language-', '');
           const code = React.Children.toArray(
-            children
-          )[0] as React.ReactElement;
+            children,
+          )[0] as React.ReactElement<{ children: string }>;
           return (
             <CodeBlock language={language}>{code.props.children}</CodeBlock>
           );
@@ -69,7 +73,7 @@ const getDocBySlug = cache(async (slug: string[]) => {
       slug,
     };
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
       return null;
     }
     throw error;
@@ -82,7 +86,7 @@ interface PageProps {
 
 export default async function DocsPage({ params }: PageProps) {
   const resolvedParams = await params;
-  const slug = resolvedParams.slug || ["introduction"];
+  const slug = resolvedParams.slug || ['introduction'];
 
   const doc = await getDocBySlug(slug);
 
@@ -91,10 +95,10 @@ export default async function DocsPage({ params }: PageProps) {
   }
 
   return (
-    <article className="prose prose-lg mx-auto dark:prose-invert [&_h2,&_h3,&_h4]:scroll-mt-24  sm:px-6 md:px-8 max-w-[calc(100vw-2rem)] sm:max-w-3xl overflow-hidden">
-      <h1 className="mt-0 mb-2">{doc.frontmatter.title}</h1>
+    <article className='prose prose-lg mx-auto dark:prose-invert [&_h2,&_h3,&_h4]:scroll-mt-24  sm:px-6 md:px-8 max-w-[calc(100vw-2rem)] sm:max-w-3xl overflow-hidden'>
+      <h1 className='mt-0 mb-2'>{doc.frontmatter.title}</h1>
       {doc.frontmatter.description && (
-        <p className="mt-0 mb-10 text-muted-foreground text-base">
+        <p className='mt-0 mb-10 text-muted-foreground text-base'>
           {doc.frontmatter.description}
         </p>
       )}
@@ -106,24 +110,24 @@ export default async function DocsPage({ params }: PageProps) {
 
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
-  const slug = resolvedParams.slug || ["introduction"];
+  const slug = resolvedParams.slug || ['introduction'];
   const doc = await getDocBySlug(slug);
-  const url = `https://scrollxui.dev/docs/${slug.join("/")}`;
+  const url = `https://scrollxui.dev/docs/${slug.join('/')}`;
 
   if (!doc) {
     return {
-      title: "Not Found",
-      description: "The page you are looking for does not exist.",
+      title: 'Not Found',
+      description: 'The page you are looking for does not exist.',
       openGraph: {
-        title: "Not Found",
-        description: "The page you are looking for does not exist.",
+        title: 'Not Found',
+        description: 'The page you are looking for does not exist.',
         url,
         images: [
           {
-            url: "https://scrollxui.dev/images/ui.png",
+            url: 'https://scrollxui.dev/images/ui.png',
             width: 1200,
             height: 630,
-            alt: "ScrollX UI",
+            alt: 'ScrollX UI',
           },
         ],
       },
@@ -132,9 +136,9 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   const imageUrl = `https://scrollxui.dev/api/og?title=${encodeURIComponent(
-    doc.frontmatter.title
+    doc.frontmatter.title,
   )}&description=${encodeURIComponent(
-    doc.frontmatter.description || ""
+    doc.frontmatter.description || '',
   )}&logo=https://scrollxui.dev/favicon.ico`;
 
   return {
@@ -154,7 +158,7 @@ export async function generateMetadata({ params }: PageProps) {
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: `ScrollX UI | ${doc.frontmatter.title}`,
       description: doc.frontmatter.description,
       images: [imageUrl],
@@ -164,7 +168,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const docsPath = path.join(process.cwd(), "src/content/docs");
+  const docsPath = path.join(process.cwd(), 'src/content/docs');
 
   function getAllMdxFiles(dir: string): string[][] {
     const files = fs.readdirSync(dir);
@@ -176,9 +180,9 @@ export async function generateStaticParams() {
 
       if (stat.isDirectory()) {
         paths = [...paths, ...getAllMdxFiles(filePath)];
-      } else if (file.endsWith(".mdx")) {
+      } else if (file.endsWith('.mdx')) {
         const relativePath = path.relative(docsPath, filePath);
-        const slug = relativePath.replace(/\.mdx$/, "").split(path.sep);
+        const slug = relativePath.replace(/\.mdx$/, '').split(path.sep);
         paths.push(slug);
       }
     }

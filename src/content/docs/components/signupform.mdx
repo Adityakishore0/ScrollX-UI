@@ -4,9 +4,9 @@ description: Modern, responsive signup form with smooth transitions and gradient
 ---
 
 <ComponentPreview
-  name="signupform-demo"
-  className="p-0 bg-muted"
-  description=""
+  name='signupform-demo'
+  className='p-0 bg-muted'
+  description=''
 />
 
 ## Installation
@@ -23,23 +23,19 @@ description: Modern, responsive signup form with smooth transitions and gradient
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>signupform.tsx</code>
-</p>
-<ComponentSource name="signupform" />
+
+<ComponentSource name='signupform' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,7 +49,7 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { SignupForm } from "@/components/ui/signupform";
+import { SignupForm } from '@/components/ui/signupform';
 ```
 
 ```tsx

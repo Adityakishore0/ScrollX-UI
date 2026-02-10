@@ -1,12 +1,9 @@
 ---
 title: Pagination
-description:  A flexible and animated pagination component with active and hover states.
+description: A flexible and animated pagination component with active and hover states.
 ---
 
-<ComponentPreview
-  name="pagination-demo"
-  description=""
-/>
+<ComponentPreview name='pagination-demo' description='' />
 
 ## Installation
 
@@ -23,21 +20,19 @@ description:  A flexible and animated pagination component with active and hover
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>pagination.tsx</code>
-</p>
-<ComponentSource name="pagination" />
+
+<ComponentSource name='pagination' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
-```jsx
- import {(ClassValue, clsx)} from "clsx";
-  import {twMerge} from "tailwind-merge";
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -48,8 +43,8 @@ export function cn(...inputs: ClassValue[]) {
   </TabsContent>
 </Tabs>
 
-
 ## Usage
+
 ```tsx
 import {
   Pagination,
@@ -59,57 +54,50 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
+} from '@/components/ui/pagination';
 ```
 
 ```tsx
 <Pagination>
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious href="#" onClick={handlePrevious} />
-        </PaginationItem>
-        {[1, 2, 3].map((page) => (
-          <PaginationItem key={page}>
-            <PaginationLink
-              href="#"
-              isActive={activePage === page}
-              onClick={() => handlePageClick(page)}
-            >
-              {page}
-            </PaginationLink>
-          </PaginationItem>
-        ))}
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationNext href="#" onClick={handleNext} />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href='#' onClick={handlePrevious} />
+    </PaginationItem>
+    {[1, 2, 3].map((page) => (
+      <PaginationItem key={page}>
+        <PaginationLink
+          href='#'
+          isActive={activePage === page}
+          onClick={() => handlePageClick(page)}
+        >
+          {page}
+        </PaginationLink>
+      </PaginationItem>
+    ))}
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href='#' onClick={handleNext} />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>
 ```
-
 
 ## API Reference
 
- ### Pagination
+### Pagination
 
- Root container (`className`, nav props)
+Root container (`className`, nav props)
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `className` | `string` | — | Applies to: PaginationContent, PaginationItem, PaginationLink, PaginationEllipsis. |
-| `isActive` | `boolean` | `false` | Highlights active page. Used in: PaginationLink. |
-| `shiny` | `boolean` | `false` | Enables shimmer animation. Used in: PaginationLink. |
-| `shinySpeed` | `number` | — | Speed of shimmer effect (in seconds). Used in: PaginationLink. |
-| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Size of the link. Used in: PaginationLink. |
-| `variant` | `"default" \| "outline" \| "ghost" \| "gradient"` | `"default"` | Visual style. Used in: PaginationLink. |
-| `...props` | `HTML element attributes` | — | Passed to: ul (PaginationContent), li (PaginationItem), a (PaginationLink), span (PaginationEllipsis). |
-
-
-
-
-
+| Prop         | Type                                                    | Default     | Description                                                                                            |
+| ------------ | ------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------ |
+| `className`  | `string`                                                | —           | Applies to: PaginationContent, PaginationItem, PaginationLink, PaginationEllipsis.                     |
+| `isActive`   | `boolean`                                               | `false`     | Highlights active page. Used in: PaginationLink.                                                       |
+| `shiny`      | `boolean`                                               | `false`     | Enables shimmer animation. Used in: PaginationLink.                                                    |
+| `shinySpeed` | `number`                                                | —           | Speed of shimmer effect (in seconds). Used in: PaginationLink.                                         |
+| `size`       | `"sm" \| "default" \| "lg"`                             | `"default"` | Size of the link. Used in: PaginationLink.                                                             |
+| `variant`    | `"default" \| "outline-solid" \| "ghost" \| "gradient"` | `"default"` | Visual style. Used in: PaginationLink.                                                                 |
+| `...props`   | `HTML element attributes`                               | —           | Passed to: ul (PaginationContent), li (PaginationItem), a (PaginationLink), span (PaginationEllipsis). |

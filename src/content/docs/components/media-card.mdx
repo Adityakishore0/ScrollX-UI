@@ -3,11 +3,7 @@ title: Media Card
 description: An Interactive media cards with a fluid cursor and a polished, modern aesthetic.
 ---
 
-<ComponentPreview
-  name="mediacard-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='mediacard-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description: An Interactive media cards with a fluid cursor and a polished, mode
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>media-card.tsx</code>
-</p>
-<ComponentSource name="media-card" />
+
+<ComponentSource name='media-card' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,23 +45,23 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { MediaCard, MediaCardItem } from "@/components/ui/media-card";
+import { MediaCard, MediaCardItem } from '@/components/ui/media-card';
 ```
 
 ```tsx
 <MediaCard
-      className="w-full min-h-[350px] flex items-center justify-center p-10"
-      dotClassName="bg-blue-500 w-4 h-4"
-      marqueeClassName="bg-blue-500/95 text-white"
-    >
-      <MediaCardItem
-        src="https://www.pexels.com/download/video/1390942/"
-        alt="Video"
-        title="Lost in the view."
-        type="video"
-        className="w-full max-w-sm"
-      />
-    </MediaCard>
+  className='w-full min-h-87.5 flex items-center justify-center p-10'
+  dotClassName='bg-blue-500 w-4 h-4'
+  marqueeClassName='bg-blue-500/95 text-white'
+>
+  <MediaCardItem
+    src='https://www.pexels.com/download/video/1390942/'
+    alt='Video'
+    title='Lost in the view.'
+    type='video'
+    className='w-full max-w-sm'
+  />
+</MediaCard>
 ```
 
 ## Examples
@@ -78,11 +70,7 @@ import { MediaCard, MediaCardItem } from "@/components/ui/media-card";
 
 <Step>Image</Step>
 
-<ComponentPreview
-  name="mediacardimage-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='mediacardimage-demo' className='p-0' description='' />
 
 ## API Reference
 
@@ -92,17 +80,12 @@ An Interactive media cards with a fluid cursor and a polished, modern aesthetic.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `className` | `string` | — | Custom class for the media card container. |
-| `dotClassName` | `string` | — | Styles applied to the cursor dot. |
-| `marqueeClassName` | `string` | — | Styles applied to the marquee cursor. |
-| `springConfig` | `{ stiffness?, damping?, mass? }` | `-` | Spring physics configuration for cursor motion. |
-| `marqueeSpeed` | `number` | `10` | Speed of the marquee text animation. |
-| `marqueeDelay` | `number` | `0.5` | Delay before marquee animation starts. |
-| `children` | `ReactNode` | `required` | MediaCardItem components. |
-
-
-
-
+| Prop               | Type                              | Default    | Description                                     |
+| ------------------ | --------------------------------- | ---------- | ----------------------------------------------- |
+| `className`        | `string`                          | —          | Custom class for the media card container.      |
+| `dotClassName`     | `string`                          | —          | Styles applied to the cursor dot.               |
+| `marqueeClassName` | `string`                          | —          | Styles applied to the marquee cursor.           |
+| `springConfig`     | `{ stiffness?, damping?, mass? }` | `-`        | Spring physics configuration for cursor motion. |
+| `marqueeSpeed`     | `number`                          | `10`       | Speed of the marquee text animation.            |
+| `marqueeDelay`     | `number`                          | `0.5`      | Delay before marquee animation starts.          |
+| `children`         | `ReactNode`                       | `required` | MediaCardItem components.                       |

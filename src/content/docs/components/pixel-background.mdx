@@ -3,11 +3,7 @@ title: Pixel Background
 description: A flexible pixel animation background with customizable origins and smooth atmospheric motion.
 ---
 
-<ComponentPreview
-  name="pixelbackground-demo"
-  className="p-0"
-  description=""
-/>
+<ComponentPreview name='pixelbackground-demo' className='p-0' description='' />
 
 ## Installation
 
@@ -23,10 +19,8 @@ description: A flexible pixel animation background with customizable origins and
     <Steps>
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>pixel-background.tsx</code>
-</p>
-<ComponentSource name="pixel-background" />
+
+<ComponentSource name='pixel-background' />
 
 </Steps>
   </TabsContent>
@@ -35,16 +29,17 @@ description: A flexible pixel animation background with customizable origins and
 ## Usage
 
 ```tsx
-import PixelBackground from "@/components/ui/pixel-background";
+import PixelBackground from '@/components/ui/pixel-background';
 ```
 
 ```tsx
-<PixelBackground  className="relative h-[400px] w-full flex flex-col items-center justify-center">
-      <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight">
-        Pixel Animation, <br /> Background.
-      </h2>
-    </PixelBackground>
+<PixelBackground className='relative h-100 w-full flex flex-col items-center justify-center'>
+  <h2 className='bg-clip-text text-transparent text-center bg-linear-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight'>
+    Pixel Animation, <br /> Background.
+  </h2>
+</PixelBackground>
 ```
+
 ## Examples
 
 ---
@@ -52,9 +47,9 @@ import PixelBackground from "@/components/ui/pixel-background";
 <Step>Direction</Step>
 
 <ComponentPreview
-  name="pixelbackgrounddirection-demo"
-  className="p-0"
-  description=""
+  name='pixelbackgrounddirection-demo'
+  className='p-0'
+  description=''
 />
 
 ## API Reference
@@ -65,16 +60,13 @@ A flexible pixel animation background with customizable origins and smooth atmos
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `gap` | `number` | `6` | Controls the distance between each pixel in the grid. Smaller gaps create a denser, more detailed animation. |
-| `speed` | `number` | `80` | Defines how fast each pixel grows and shimmers during the animation. Higher values create more energetic motion. |
-| `colors` | `string` | `"—"` | Comma-separated list of colors used for the pixels. Each pixel randomly picks one from the list. |
-| `opacity` | `number` | `1` | Sets the transparency of the canvas layer. Lower values allow the background content to blend through. |
-| `direction` | `string` | `"center"` | Determines where the animation originates. You can start from the center, edges, or corners for different effects. |
-| `className` | `string` | — | Custom styling applied to the container wrapping the canvas. |
-| `canvasClassName` | `string` | — | Optional classes for styling the underlying canvas element. |
-| `children` | `React.ReactNode` | — | Any elements you want rendered above the animated pixel background. |
-
-
+| Prop              | Type              | Default    | Description                                                                                                        |
+| ----------------- | ----------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| `gap`             | `number`          | `6`        | Controls the distance between each pixel in the grid. Smaller gaps create a denser, more detailed animation.       |
+| `speed`           | `number`          | `80`       | Defines how fast each pixel grows and shimmers during the animation. Higher values create more energetic motion.   |
+| `colors`          | `string`          | `"—"`      | Comma-separated list of colors used for the pixels. Each pixel randomly picks one from the list.                   |
+| `opacity`         | `number`          | `1`        | Sets the transparency of the canvas layer. Lower values allow the background content to blend through.             |
+| `direction`       | `string`          | `"center"` | Determines where the animation originates. You can start from the center, edges, or corners for different effects. |
+| `className`       | `string`          | —          | Custom styling applied to the container wrapping the canvas.                                                       |
+| `canvasClassName` | `string`          | —          | Optional classes for styling the underlying canvas element.                                                        |
+| `children`        | `React.ReactNode` | —          | Any elements you want rendered above the animated pixel background.                                                |

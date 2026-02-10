@@ -4,9 +4,9 @@ description: An interactive card with a drift hover effect that visually highlig
 ---
 
 <ComponentPreview
-  name="driftcard-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An interactive card component works on hover effect"
+  name='driftcard-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='An interactive card component works on hover effect'
 />
 
 ## Installation
@@ -22,21 +22,17 @@ description: An interactive card with a drift hover effect that visually highlig
   <TabsContent value="manual">
     <Steps>
 
-
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>drift-card.tsx</code>
-</p>
-<ComponentSource name="drift-card" />
+
+<ComponentSource name='drift-card' />
 
 <Step>Add util file</Step>
-<p>
-  <code>lib/utils.ts</code>
-</p>
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -50,35 +46,30 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import DriftCard from "@/components/ui/drift-card";
+import DriftCard from '@/components/ui/drift-card';
 ```
 
 ```tsx
-<DriftCard className="w-full max-w-md h-72 mx-auto relative overflow-hidden">
-      <img
-        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"
-        alt="Preview"
-        className="w-full h-full object-cover rounded-xl"
-      />
-    </DriftCard>
+<DriftCard className='w-full max-w-md h-72 mx-auto relative overflow-hidden'>
+  <img
+    src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop'
+    alt='Preview'
+    className='w-full h-full object-cover rounded-xl'
+  />
+</DriftCard>
 ```
 
 ## API Reference
 
-###  Drift Card
+### Drift Card
 
 An interactive card with a drift hover effect that visually highlights content
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | — | Content rendered inside the drifting card. |
-| `className` | `string` | — | Additional classes to customize the container styling. |
-| `style` | `CSSProperties` | — | Inline styles passed to the outermost container. |
-| `...props` | `HTMLAttributes<HTMLDivElement>` | — | Any additional div attributes. |
-
-
-
-
+| Prop        | Type                             | Default | Description                                            |
+| ----------- | -------------------------------- | ------- | ------------------------------------------------------ |
+| `children`  | `ReactNode`                      | —       | Content rendered inside the drifting card.             |
+| `className` | `string`                         | —       | Additional classes to customize the container styling. |
+| `style`     | `CSSProperties`                  | —       | Inline styles passed to the outermost container.       |
+| `...props`  | `HTMLAttributes<HTMLDivElement>` | —       | Any additional div attributes.                         |

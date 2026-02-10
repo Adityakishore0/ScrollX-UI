@@ -1,13 +1,9 @@
 ---
 title: Vercel Card
-description:  A smooth interactive vercel inspired card.
+description: A smooth interactive vercel inspired card.
 ---
 
-<ComponentPreview
-  name="vercelcard-demo"
-  className=""
-  description=""
-/>
+<ComponentPreview name='vercelcard-demo' className='' description='' />
 
 ## Installation
 
@@ -23,23 +19,19 @@ description:  A smooth interactive vercel inspired card.
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="framer-motion" />
+<DepsOptions name='motion' />
 
 <Step>Copy and paste the following code into your project.</Step>
-<p>
-  <code>vercel-card.tsx</code>
-</p>
-<ComponentSource name="vercel-card" />
+
+<ComponentSource name='vercel-card' />
 
 <Step>Add util file</Step>
 
-<p>
-  <code>lib/utils.ts</code>
-</p>
+`lib/utils.ts`
 
-```jsx
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -53,23 +45,26 @@ export function cn(...inputs: ClassValue[]) {
 ## Usage
 
 ```tsx
-import { VercelCard } from "@/components/ui/vercelcard";
+import { VercelCard } from '@/components/ui/vercelcard';
 ```
 
 ```tsx
-<VercelCard className="w-full max-w-sm h-64 flex items-center justify-center" animateOnHover glowEffect>
-        <div className="text-center px-6">
-          <h1 className="text-2xl font-semibold text-black dark:text-white mb-3">
-            Vercel Inspired Card
-          </h1>
-          <p className="text-gray-700 dark:text-gray-300">
-            A smooth interactive card built with <b>Framer Motion</b> and{" "}
-            <b>Tailwind CSS</b>.
-          </p>
-        </div>
-      </VercelCard>
+<VercelCard
+  className='w-full max-w-sm h-64 flex items-center justify-center'
+  animateOnHover
+  glowEffect
+>
+  <div className='text-center px-6'>
+    <h1 className='text-2xl font-semibold text-black dark:text-white mb-3'>
+      Vercel Inspired Card
+    </h1>
+    <p className='text-gray-700 dark:text-gray-300'>
+      A smooth interactive card built with <b>Framer Motion</b> and{' '}
+      <b>Tailwind CSS</b>.
+    </p>
+  </div>
+</VercelCard>
 ```
-
 
 ## API Reference
 
@@ -79,17 +74,13 @@ A smooth interactive vercel inspired card.
 
 ## Props
 
-
-| Prop | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `children` | `ReactNode` | `required` | Content of the card. Placed inside the centered area of the card. |
-| `showIcons` | `boolean` | `true` | Whether to display the corner icons (+) around the card. |
-| `iconClassName` | `string` | `''` | Additional classes to style the corner icons. |
-| `animateOnHover` | `boolean` | `false` | Whether the card should scale slightly on hover. |
-| `glowEffect` | `boolean` | `false` | Whether to show a glowing gradient effect on hover. |
-| `bordered` | `boolean` | `true` | Whether to show the card border. |
-| `className` | `string` | `''` | Custom classes applied to the card container. |
-| `...props` | `HTMLMotionProps<'div'>` | `-` | Any other props supported by Framer Motion's div, e.g., id, style, onClick. |
-
-
-
+| Prop             | Type                     | Default    | Description                                                                 |
+| ---------------- | ------------------------ | ---------- | --------------------------------------------------------------------------- |
+| `children`       | `ReactNode`              | `required` | Content of the card. Placed inside the centered area of the card.           |
+| `showIcons`      | `boolean`                | `true`     | Whether to display the corner icons (+) around the card.                    |
+| `iconClassName`  | `string`                 | `''`       | Additional classes to style the corner icons.                               |
+| `animateOnHover` | `boolean`                | `false`    | Whether the card should scale slightly on hover.                            |
+| `glowEffect`     | `boolean`                | `false`    | Whether to show a glowing gradient effect on hover.                         |
+| `bordered`       | `boolean`                | `true`     | Whether to show the card border.                                            |
+| `className`      | `string`                 | `''`       | Custom classes applied to the card container.                               |
+| `...props`       | `HTMLMotionProps<'div'>` | `-`        | Any other props supported by Framer Motion's div, e.g., id, style, onClick. |
