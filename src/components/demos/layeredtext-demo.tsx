@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { LayeredText } from "@/components/ui/layered-text";
-import { Button } from "@/components/ui/button";
-import { RefreshCw } from "lucide-react";
-import { twMerge } from "tailwind-merge";
+import { useState } from 'react';
+import { motion } from 'motion/react';
+import { LayeredText } from '@/components/ui/layered-text';
+import { Button } from '@/components/ui/button';
+import { RefreshCw } from 'lucide-react';
+import { twMerge } from 'tailwind-merge';
 
 export default function LayeredTextDemo() {
   const [key, setKey] = useState(0);
@@ -21,14 +21,14 @@ export default function LayeredTextDemo() {
     <div
       key={key}
       className={twMerge(
-        "relative flex min-h-[350px] w-full justify-center items-center rounded"
+        'relative flex min-h-87.5 w-full justify-center items-center rounded',
       )}
     >
       <LayeredText
         key={key}
-        text="ScrollX UI"
-        className="text-4xl md:text-6xl font-bold text-black dark:text-white [--stroke-color:#FFFFFF] dark:[--stroke-color:#000000]"
-        layers={["#06B6D4", "#14B8A6", "#84CC16"]}
+        text='ScrollX UI'
+        className='text-4xl md:text-6xl font-bold text-black dark:text-white [--stroke-color:#FFFFFF] dark:[--stroke-color:#000000]'
+        layers={['#06B6D4', '#14B8A6', '#84CC16']}
         offsetX={2}
         offsetY={2}
         strokeWidth={2}
@@ -37,15 +37,15 @@ export default function LayeredTextDemo() {
 
       <Button
         onClick={handleReload}
-        className="absolute right-4 top-4 p-2"
-        aria-label="Reload animation"
-        variant="outline"
+        className='absolute right-4 top-4 p-2'
+        aria-label='Reload animation'
+        variant='outline'
       >
         <motion.div
           animate={{ rotate: rotate ? 360 : 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
         >
-          <RefreshCw className="w-6 h-6" />
+          <RefreshCw className='w-6 h-6' />
         </motion.div>
       </Button>
     </div>
