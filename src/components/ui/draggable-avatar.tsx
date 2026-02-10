@@ -1,6 +1,6 @@
-"use client";
-import React, { useState, useRef, useEffect } from "react";
-import { motion, PanInfo } from "framer-motion";
+'use client';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, PanInfo } from 'motion/react';
 
 interface DraggableAvatarProps {
   image?: string;
@@ -10,8 +10,8 @@ interface DraggableAvatarProps {
 }
 
 export default function DraggableAvatar({
-  image = "https://cdn.pixabay.com/photo/2023/06/26/04/38/ai-generated-8088680_1280.jpg",
-  borderColor = "#60A5FA",
+  image = 'https://cdn.pixabay.com/photo/2023/06/26/04/38/ai-generated-8088680_1280.jpg',
+  borderColor = '#60A5FA',
   range = 300,
   size = 100,
 }: DraggableAvatarProps) {
@@ -35,7 +35,7 @@ export default function DraggableAvatar({
         const maxX = Math.min(range, window.innerWidth - rect.left - size);
         const maxY = Math.min(
           range,
-          window.innerHeight - rect.top - size - lineLength - markerSize
+          window.innerHeight - rect.top - size - lineLength - markerSize,
         );
         const minX = Math.max(-range, -rect.left);
         const minY = Math.max(-range, -rect.top);
@@ -50,13 +50,13 @@ export default function DraggableAvatar({
     };
 
     updateConstraints();
-    window.addEventListener("resize", updateConstraints);
-    return () => window.removeEventListener("resize", updateConstraints);
+    window.addEventListener('resize', updateConstraints);
+    return () => window.removeEventListener('resize', updateConstraints);
   }, [range, size, lineLength, markerSize]);
 
   const handleDragEnd = (
     _event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
+    info: PanInfo,
   ) => {
     setIsHolding(false);
     const distance = Math.sqrt(info.offset.x ** 2 + info.offset.y ** 2);
@@ -73,7 +73,7 @@ export default function DraggableAvatar({
   const currentLineLength = isHolding ? lineLengthHolding : lineLength;
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className='relative'>
       <motion.div
         ref={motionRef}
         drag
@@ -83,36 +83,36 @@ export default function DraggableAvatar({
         onPointerDown={() => setIsHolding(true)}
         onPointerUp={() => setIsHolding(false)}
         onDragEnd={handleDragEnd}
-        transition={{ type: "spring", stiffness: 400, damping: 35 }}
-        className="cursor-grab active:cursor-grabbing relative"
+        transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+        className='cursor-grab active:cursor-grabbing relative'
         style={{ width: size, height: size }}
         whileTap={{ scale: 1.05 }}
       >
         <motion.div
-          className="relative w-full h-full rounded-full overflow-hidden"
+          className='relative w-full h-full rounded-full overflow-hidden'
           style={{
             border: `3px solid ${borderColor}`,
           }}
           animate={{
             boxShadow: isHolding
-              ? "0 20px 50px rgba(0,0,0,0.25), 0 10px 20px rgba(0,0,0,0.15)"
-              : "0 8px 30px rgba(0,0,0,0.12)",
+              ? '0 20px 50px rgba(0,0,0,0.25), 0 10px 20px rgba(0,0,0,0.15)'
+              : '0 8px 30px rgba(0,0,0,0.12)',
           }}
           transition={{ duration: 0.2 }}
         >
           <img
             src={image}
-            alt="Avatar"
-            className="w-full h-full object-cover"
+            alt='Avatar'
+            className='w-full h-full object-cover'
             draggable={false}
           />
         </motion.div>
 
         <motion.span
-          className="absolute left-1/2"
+          className='absolute left-1/2'
           style={{
             bottom: `-${currentLineLength + markerSize + 4}px`,
-            transform: "translateX(-50%)",
+            transform: 'translateX(-50%)',
           }}
           animate={{
             bottom: `-${currentLineLength + markerSize + 4}px`,
@@ -120,9 +120,9 @@ export default function DraggableAvatar({
           transition={{ duration: 0.2 }}
         >
           <motion.span
-            className="block"
+            className='block'
             style={{
-              width: "2px",
+              width: '2px',
               backgroundColor: borderColor,
               marginLeft: `${(markerSize - 2) / 2}px`,
             }}
@@ -132,7 +132,7 @@ export default function DraggableAvatar({
             transition={{ duration: 0.2 }}
           />
           <span
-            className="block rounded-full"
+            className='block rounded-full'
             style={{
               width: `${markerSize}px`,
               height: `${markerSize}px`,
