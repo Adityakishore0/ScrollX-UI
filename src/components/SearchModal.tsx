@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   useState,
@@ -8,13 +8,13 @@ import {
   useCallback,
   memo,
   startTransition,
-} from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Search, Circle, Sparkle } from "lucide-react";
-import navigation, { NavItem } from "@/constants/navItems";
-import { SeparatorPro } from "@/components/ui/seperatorpro";
-import { Status } from "@/components/ui/status";
-import { cn } from "@/lib/utils";
+} from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { X, Search, Circle, Sparkle } from 'lucide-react';
+import navigation, { NavItem } from '@/constants/navItems';
+import { SeparatorPro } from '@/components/ui/seperatorpro';
+import { Status } from '@/components/ui/status';
+import { cn } from '@/lib/utils';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -23,7 +23,7 @@ interface SearchModalProps {
 
 const ANIMATION_CONFIG = Object.freeze({
   modal: { duration: 0.15 },
-  content: { duration: 0.15, ease: "easeOut" as const },
+  content: { duration: 0.15, ease: 'easeOut' as const },
 });
 
 export function SearchModal(props: SearchModalProps) {
@@ -31,15 +31,15 @@ export function SearchModal(props: SearchModalProps) {
 }
 
 const STYLES = Object.freeze({
-  maxHeight: "300px",
-  scrollbarWidth: "thin" as const,
-  scrollbarColor: "#ccc transparent",
+  maxHeight: '300px',
+  scrollbarWidth: 'thin' as const,
+  scrollbarColor: '#ccc transparent',
 });
 
 const CSS_CLASSES = Object.freeze({
   button:
-    "w-full text-left p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg group",
-  span: "group-hover:border-b group-hover:border-black dark:group-hover:border-white pb-px transition-all duration-200",
+    'w-full text-left p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg group',
+  span: 'group-hover:border-b group-hover:border-black dark:group-hover:border-white pb-px transition-all duration-200',
 });
 
 let flattenedItems: NavItem[] | null = null;
@@ -105,15 +105,15 @@ const OptimizedStatusBadge = memo(
   }) => {
     const defaultClassName = useMemo(
       () =>
-        "bg-green-900 text-green-400 font-medium rounded-full border border-green-500 px-2 py-0.5 text-xs",
-      []
+        'bg-green-900 text-green-400 font-medium rounded-full border border-green-500 px-2 py-0.5 text-xs',
+      [],
     );
 
     return (
       <Status
         className={cn(
-          "flex-shrink-0 transition-all duration-200",
-          categoryClassName || defaultClassName
+          'shrink-0 transition-all duration-200',
+          categoryClassName || defaultClassName,
         )}
         shiny={isHovered}
         shinySpeed={3}
@@ -121,10 +121,10 @@ const OptimizedStatusBadge = memo(
         {category}
       </Status>
     );
-  }
+  },
 );
 
-OptimizedStatusBadge.displayName = "OptimizedStatusBadge";
+OptimizedStatusBadge.displayName = 'OptimizedStatusBadge';
 
 const NavigationItem = memo(
   ({
@@ -169,23 +169,23 @@ const NavigationItem = memo(
         onMouseLeave={handleMouseLeave}
         disabled={!item.href}
       >
-        <div className="flex items-center">
-          <div className="flex items-center">
+        <div className='flex items-center'>
+          <div className='flex items-center'>
             {isChild && (
-              <Sparkle className="w-3 h-3 text-black dark:text-white opacity-80 mr-2 flex-shrink-0" />
+              <Sparkle className='w-3 h-3 text-black dark:text-white opacity-80 mr-2 shrink-0' />
             )}
-            <span className={cn("truncate", item.href ? CSS_CLASSES.span : "")}>
+            <span className={cn('truncate', item.href ? CSS_CLASSES.span : '')}>
               {item.title}
             </span>
           </div>
-          {categoryBadge && <div className="ml-2">{categoryBadge}</div>}
+          {categoryBadge && <div className='ml-2'>{categoryBadge}</div>}
         </div>
       </button>
     );
-  }
+  },
 );
 
-NavigationItem.displayName = "NavigationItem";
+NavigationItem.displayName = 'NavigationItem';
 
 const NavigationSection = memo(
   ({
@@ -195,14 +195,14 @@ const NavigationSection = memo(
     item: NavItem;
     onNavigate: (href: string) => void;
   }) => (
-    <div className="mb-3">
-      <div className="flex items-center mb-1">
-        <Circle className="w-3 h-3 text-black dark:text-white opacity-80 mr-2 flex-shrink-0" />
-        <p className="text-gray-600 dark:text-neutral-400 text-sm truncate">
+    <div className='mb-3'>
+      <div className='flex items-center mb-1'>
+        <Circle className='w-3 h-3 text-black dark:text-white opacity-80 mr-2 shrink-0' />
+        <p className='text-gray-600 dark:text-neutral-400 text-sm truncate'>
           {item.title}
         </p>
       </div>
-      <div className="pl-2">
+      <div className='pl-2'>
         {item.href && (
           <NavigationItem item={item} onClick={onNavigate} isChild={true} />
         )}
@@ -216,10 +216,10 @@ const NavigationSection = memo(
         ))}
       </div>
     </div>
-  )
+  ),
 );
 
-NavigationSection.displayName = "NavigationSection";
+NavigationSection.displayName = 'NavigationSection';
 
 const SearchResults = memo(
   ({
@@ -230,7 +230,7 @@ const SearchResults = memo(
     onNavigate: (href: string) => void;
   }) => (
     <>
-      <p className="text-gray-600 dark:text-neutral-400 text-sm mb-2">
+      <p className='text-gray-600 dark:text-neutral-400 text-sm mb-2'>
         Search Results
       </p>
       {results.map((item) => (
@@ -242,57 +242,57 @@ const SearchResults = memo(
         />
       ))}
     </>
-  )
+  ),
 );
 
-SearchResults.displayName = "SearchResults";
+SearchResults.displayName = 'SearchResults';
 
 const TwitterLink = memo(() => {
   const handleClick = useCallback(() => {
-    window.open("https://x.com/Ahdeetai", "_blank");
+    window.open('https://x.com/Ahdeetai', '_blank');
   }, []);
   return (
     <button className={CSS_CLASSES.button} onClick={handleClick}>
-      <div className="flex items-center">
-        <Sparkle className="w-3 h-3 text-black dark:text-white opacity-80 mr-2 flex-shrink-0" />
+      <div className='flex items-center'>
+        <Sparkle className='w-3 h-3 text-black dark:text-white opacity-80 mr-2 shrink-0' />
         <span className={CSS_CLASSES.span}>Twitter @Ahdeetai</span>
       </div>
     </button>
   );
 });
 
-TwitterLink.displayName = "TwitterLink";
+TwitterLink.displayName = 'TwitterLink';
 
 const DefaultContent = memo(
   ({ onNavigate }: { onNavigate: (href: string) => void }) => (
     <>
-      <div className="mb-4">
-        <p className="text-gray-600 dark:text-neutral-400 text-sm">
+      <div className='mb-4'>
+        <p className='text-gray-600 dark:text-neutral-400 text-sm'>
           Follow for updates
         </p>
         <TwitterLink />
       </div>
       {navigation.map((item) => (
         <div key={item.title}>
-          {["Components", "Installation Guide", "Getting Started"].includes(
-            item.title
-          ) && <SeparatorPro variant="default" className="my-4" />}
+          {['Components', 'Installation Guide', 'Getting Started'].includes(
+            item.title,
+          ) && <SeparatorPro variant='default' className='my-4' />}
           <NavigationSection item={item} onNavigate={onNavigate} />
         </div>
       ))}
     </>
-  )
+  ),
 );
 
-DefaultContent.displayName = "DefaultContent";
+DefaultContent.displayName = 'DefaultContent';
 
 const NoResults = memo(() => (
-  <div className="text-center py-8">
-    <p className="text-gray-800 dark:text-white">No results found</p>
+  <div className='text-center py-8'>
+    <p className='text-gray-800 dark:text-white'>No results found</p>
   </div>
 ));
 
-NoResults.displayName = "NoResults";
+NoResults.displayName = 'NoResults';
 
 const ModalContent = memo(
   ({
@@ -306,15 +306,15 @@ const ModalContent = memo(
     searchResults: NavItem[];
     onNavigate: (href: string) => void;
   }) => (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode='wait'>
       {hasSearchQuery ? (
         <motion.div
-          key="search-results"
+          key='search-results'
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={ANIMATION_CONFIG.content}
-          className="mb-4"
+          className='mb-4'
         >
           {hasSearchResults ? (
             <SearchResults results={searchResults} onNavigate={onNavigate} />
@@ -324,7 +324,7 @@ const ModalContent = memo(
         </motion.div>
       ) : (
         <motion.div
-          key="default-content"
+          key='default-content'
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
@@ -334,20 +334,20 @@ const ModalContent = memo(
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  ),
 );
 
-ModalContent.displayName = "ModalContent";
+ModalContent.displayName = 'ModalContent';
 
 const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [deferredQuery, setDeferredQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
+  const [deferredQuery, setDeferredQuery] = useState('');
 
   const searchResults = useMemo(
     () => searchItems(deferredQuery),
-    [deferredQuery]
+    [deferredQuery],
   );
 
   const handleNavigate = useCallback(
@@ -355,7 +355,7 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
       window.location.href = href;
       onClose();
     },
-    [onClose]
+    [onClose],
   );
 
   const handleInputChange = useCallback(
@@ -366,19 +366,19 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
         setDeferredQuery(value.trim());
       });
     },
-    []
+    [],
   );
 
   const handleClose = useCallback(() => {
-    setSearchQuery("");
-    setDeferredQuery("");
+    setSearchQuery('');
+    setDeferredQuery('');
     onClose();
   }, [onClose]);
 
   useEffect(() => {
     if (!isOpen) return;
     const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -390,15 +390,15 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         handleClose();
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside, {
+    document.addEventListener('mousedown', handleClickOutside, {
       passive: true,
     });
-    document.addEventListener("keydown", handleKeyDown, { passive: true });
+    document.addEventListener('keydown', handleKeyDown, { passive: true });
 
     requestAnimationFrame(() => {
       if (inputRef.current && !/Mobi|Android/i.test(navigator.userAgent)) {
@@ -408,8 +408,8 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
 
     return () => {
       document.body.style.overflow = originalOverflow;
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, handleClose]);
 
@@ -419,23 +419,23 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
   const hasSearchResults = searchResults.length > 0;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
+    <div className='fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-xs z-50'>
       <motion.div
         ref={modalRef}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         transition={ANIMATION_CONFIG.modal}
-        className="w-full max-w-md bg-white dark:bg-neutral-900 text-black dark:text-white rounded-xl shadow-lg p-5"
+        className='w-full max-w-md bg-white dark:bg-neutral-900 text-black dark:text-white rounded-xl shadow-lg p-5'
       >
-        <div className="flex justify-between items-center">
-          <div className="flex items-center w-full">
-            <Search className="w-4 h-4 text-gray-600 dark:text-neutral-400 mr-2 flex-shrink-0" />
+        <div className='flex justify-between items-center'>
+          <div className='flex items-center w-full'>
+            <Search className='w-4 h-4 text-gray-600 dark:text-neutral-400 mr-2 shrink-0' />
             <input
               ref={inputRef}
-              type="text"
-              placeholder="Type a command or search..."
-              className="w-full bg-transparent border-none outline-none text-lg placeholder-gray-600 dark:placeholder-neutral-400"
+              type='text'
+              placeholder='Type a command or search...'
+              className='w-full bg-transparent border-none outline-hidden text-lg placeholder-gray-600 dark:placeholder-neutral-400'
               autoFocus
               value={searchQuery}
               onChange={handleInputChange}
@@ -443,15 +443,15 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
           </div>
           <button
             onClick={handleClose}
-            className="text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-white flex-shrink-0 transition-colors duration-200"
-            aria-label="Close search"
+            className='text-gray-600 dark:text-neutral-400 hover:text-black dark:hover:text-white shrink-0 transition-colors duration-200'
+            aria-label='Close search'
           >
-            <X className="w-5 h-5" />
+            <X className='w-5 h-5' />
           </button>
         </div>
 
         <div
-          className="mt-4 border-t border-gray-300 dark:border-neutral-700 pt-3 overflow-y-auto relative custom-scrollbar"
+          className='mt-4 border-t border-gray-300 dark:border-neutral-700 pt-3 overflow-y-auto relative custom-scrollbar'
           style={STYLES}
         >
           <style jsx global>{`
@@ -486,7 +486,7 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
             }
           `}</style>
 
-          <div className="overflow-y-auto pr-1">
+          <div className='overflow-y-auto pr-1'>
             <ModalContent
               hasSearchQuery={hasSearchQuery}
               hasSearchResults={hasSearchResults}
@@ -500,4 +500,4 @@ const SearchModalComponent = memo(({ isOpen, onClose }: SearchModalProps) => {
   );
 });
 
-SearchModalComponent.displayName = "SearchModalComponent";
+SearchModalComponent.displayName = 'SearchModalComponent';
