@@ -1,9 +1,9 @@
-"use client";
-import React, { useState, useRef, useEffect, useCallback } from "react";
-import { createPortal } from "react-dom";
-import type { ComponentProps, HTMLAttributes, ReactNode } from "react";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+'use client';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
+import type { ComponentProps, HTMLAttributes, ReactNode } from 'react';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 import {
   motion,
   AnimatePresence,
@@ -11,11 +11,11 @@ import {
   useMotionTemplate,
   useMotionValue,
   useTransform,
-} from "framer-motion";
-import { ChevronDown } from "lucide-react";
-import LustreText from "@/components/ui/lustretext";
+} from 'motion/react';
+import { ChevronDown } from 'lucide-react';
+import LustreText from '@/components/ui/lustretext';
 
-const EXPANDABLE_CONTENT_SYMBOL = Symbol.for("AnnouncementExpandedContent");
+const EXPANDABLE_CONTENT_SYMBOL = Symbol.for('AnnouncementExpandedContent');
 
 const MovingBorder = ({
   children,
@@ -42,28 +42,28 @@ const MovingBorder = ({
 
   const x = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).x ?? 0
+    (val) => pathRef.current?.getPointAtLength(val).x ?? 0,
   );
   const y = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).y ?? 0
+    (val) => pathRef.current?.getPointAtLength(val).y ?? 0,
   );
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
 
   return (
     <>
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-        className="absolute h-full w-full"
-        width="100%"
-        height="100%"
+        xmlns='http://www.w3.org/2000/svg'
+        preserveAspectRatio='none'
+        className='absolute h-full w-full'
+        width='100%'
+        height='100%'
         {...otherProps}
       >
         <rect
-          fill="none"
-          width="100%"
-          height="100%"
+          fill='none'
+          width='100%'
+          height='100%'
           rx={rx}
           ry={ry}
           ref={pathRef}
@@ -71,10 +71,10 @@ const MovingBorder = ({
       </svg>
       <motion.div
         style={{
-          position: "absolute",
+          position: 'absolute',
           top: 0,
           left: 0,
-          display: "inline-block",
+          display: 'inline-block',
           transform,
         }}
       >
@@ -84,11 +84,11 @@ const MovingBorder = ({
   );
 };
 
-export type AnnouncementProps = Omit<ComponentProps<typeof Badge>, "ref"> & {
+export type AnnouncementProps = Omit<ComponentProps<typeof Badge>, 'ref'> & {
   styled?: boolean;
-  animation?: "fade";
+  animation?: 'fade';
   icon?: ReactNode;
-  iconPosition?: "left" | "right";
+  iconPosition?: 'left' | 'right';
   shiny?: boolean;
   movingBorder?: boolean;
   movingBorderDuration?: number;
@@ -96,11 +96,11 @@ export type AnnouncementProps = Omit<ComponentProps<typeof Badge>, "ref"> & {
 };
 
 function AnnouncementComponent({
-  variant = "outline",
+  variant = 'outline',
   styled = false,
-  animation = "fade",
+  animation = 'fade',
   icon,
-  iconPosition = "left",
+  iconPosition = 'left',
   shiny = false,
   movingBorder = false,
   movingBorderDuration = 3000,
@@ -115,18 +115,12 @@ function AnnouncementComponent({
     left: 0,
     width: 0,
   });
-  const [isMounted, setIsMounted] = useState(false);
-  const [hasExpandable, setHasExpandable] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const expandedContentRef = useRef<ReactNode>(null);
-  const mainContentRef = useRef<ReactNode[]>([]);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = typeof window !== 'undefined';
 
-  useEffect(() => {
+  const { expandedContent, mainContent, hasExpandable } = React.useMemo(() => {
     const childArray = React.Children.toArray(children);
     const main: ReactNode[] = [];
     let expanded: ReactNode = null;
@@ -135,20 +129,22 @@ function AnnouncementComponent({
     childArray.forEach((child) => {
       if (
         React.isValidElement(child) &&
-        (child.type as unknown as Record<symbol, boolean>)[
+        (child.type as unknown as { [key: symbol]: boolean })?.[
           EXPANDABLE_CONTENT_SYMBOL
         ]
       ) {
-        expanded = child.props.children;
+        expanded = (child.props as { children?: ReactNode }).children;
         found = true;
       } else {
         main.push(child);
       }
     });
 
-    expandedContentRef.current = expanded;
-    mainContentRef.current = main;
-    setHasExpandable(found);
+    return {
+      expandedContent: expanded,
+      mainContent: main,
+      hasExpandable: found,
+    };
   }, [children]);
 
   const updatePosition = useCallback(() => {
@@ -180,7 +176,7 @@ function AnnouncementComponent({
     };
 
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         setIsOpen(false);
       }
     };
@@ -193,16 +189,16 @@ function AnnouncementComponent({
       updatePosition();
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscape);
-    window.addEventListener("scroll", handleScroll, true);
-    window.addEventListener("resize", handleResize);
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscape);
+    window.addEventListener('scroll', handleScroll, true);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscape);
-      window.removeEventListener("scroll", handleScroll, true);
-      window.removeEventListener("resize", handleResize);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+      window.removeEventListener('scroll', handleScroll, true);
+      window.removeEventListener('resize', handleResize);
     };
   }, [isOpen, hasExpandable, updatePosition]);
 
@@ -215,10 +211,10 @@ function AnnouncementComponent({
   };
 
   const displayContent = shiny
-    ? React.Children.map(mainContentRef.current, (child) =>
-        typeof child === "string" ? <LustreText text={child} /> : child
+    ? React.Children.map(mainContent, (child) =>
+        typeof child === 'string' ? <LustreText text={child} /> : child,
       )
-    : mainContentRef.current;
+    : mainContent;
 
   const handleToggle = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -229,40 +225,40 @@ function AnnouncementComponent({
   const badgeContent = (
     <Badge
       className={cn(
-        "group relative max-w-full overflow-hidden rounded-full bg-background px-4 py-1.5 font-medium shadow-sm",
-        styled && "border-foreground/5",
-        className
+        'group relative max-w-full overflow-hidden rounded-full bg-background px-4 py-1.5 font-medium shadow-xs',
+        styled && 'border-foreground/5',
+        className,
       )}
       variant={variant}
       data-expandable={hasExpandable}
       {...props}
     >
-      <div className="relative flex items-center gap-2">
-        {icon && iconPosition === "left" && (
-          <span className="shrink-0">{icon}</span>
+      <div className='relative flex items-center gap-2'>
+        {icon && iconPosition === 'left' && (
+          <span className='shrink-0'>{icon}</span>
         )}
-        <div className="flex-1 flex items-center gap-2 truncate">
+        <div className='flex-1 flex items-center gap-2 truncate'>
           {displayContent}
         </div>
-        {icon && iconPosition === "right" && (
-          <span className="shrink-0">{icon}</span>
+        {icon && iconPosition === 'right' && (
+          <span className='shrink-0'>{icon}</span>
         )}
         {hasExpandable ? (
           <button
-            type="button"
+            type='button'
             onClick={handleToggle}
-            data-state={isOpen ? "open" : "closed"}
-            className="flex shrink-0 items-center rounded p-1 hover:bg-foreground/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 ml-1"
+            data-state={isOpen ? 'open' : 'closed'}
+            className='flex shrink-0 items-center rounded p-1 hover:bg-foreground/10 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 ml-1'
             aria-expanded={isOpen}
-            aria-haspopup="true"
+            aria-haspopup='true'
             aria-label={
-              isOpen ? "Collapse announcement" : "Expand announcement"
+              isOpen ? 'Collapse announcement' : 'Expand announcement'
             }
           >
             <ChevronDown
-              className="size-3 shrink-0 transition-transform duration-300 data-[state=open]:rotate-180"
-              aria-hidden="true"
-              data-state={isOpen ? "open" : "closed"}
+              className='size-3 shrink-0 transition-transform duration-300 data-[state=open]:rotate-180'
+              aria-hidden='true'
+              data-state={isOpen ? 'open' : 'closed'}
             />
           </button>
         ) : null}
@@ -274,19 +270,19 @@ function AnnouncementComponent({
     <>
       <motion.div
         ref={containerRef}
-        data-state={isOpen ? "open" : "closed"}
+        data-state={isOpen ? 'open' : 'closed'}
         {...animations[animation]}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="relative inline-block"
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+        className='relative inline-block'
       >
         {movingBorder ? (
-          <div className="relative overflow-hidden rounded-full bg-transparent p-[1px]">
-            <div className="absolute inset-0 pointer-events-none">
-              <MovingBorder duration={movingBorderDuration} rx="50%" ry="50%">
+          <div className='relative overflow-hidden rounded-full bg-transparent p-px'>
+            <div className='absolute inset-0 pointer-events-none'>
+              <MovingBorder duration={movingBorderDuration} rx='50%' ry='50%'>
                 <div
                   className={cn(
-                    "h-20 w-20 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-[0.8]",
-                    movingBorderClassName
+                    'h-20 w-20 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-[0.8]',
+                    movingBorderClassName,
                   )}
                 />
               </MovingBorder>
@@ -309,22 +305,22 @@ function AnnouncementComponent({
                 exit={{ opacity: 0, scale: 0.95, y: -10 }}
                 transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 style={{
-                  position: "absolute",
+                  position: 'absolute',
                   top: `${dropdownPosition.top + 8}px`,
                   left: `${dropdownPosition.left}px`,
                   width: `${Math.max(dropdownPosition.width, 200)}px`,
                   zIndex: 50,
                 }}
-                className="rounded-lg border bg-popover text-popover-foreground p-4 text-sm shadow-lg"
-                role="dialog"
-                aria-modal="false"
-                aria-label="Expanded announcement content"
+                className='rounded-lg border bg-popover text-popover-foreground p-4 text-sm shadow-lg'
+                role='dialog'
+                aria-modal='false'
+                aria-label='Expanded announcement content'
               >
-                {expandedContentRef.current}
+                {expandedContent}
               </motion.div>
             )}
           </AnimatePresence>,
-          document.body
+          document.body,
         )}
     </>
   );
@@ -351,19 +347,19 @@ export function AnnouncementTag({
   const tagContent = (
     <span
       className={cn(
-        "relative inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold rounded-full bg-background",
-        className
+        'relative inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold rounded-full bg-background',
+        className,
       )}
       {...props}
     >
-      <span className="absolute inset-0 rounded-full bg-foreground/5 opacity-70 pointer-events-none" />
-      <span className="relative z-10">
+      <span className='absolute inset-0 rounded-full bg-foreground/5 opacity-70 pointer-events-none' />
+      <span className='relative z-10'>
         {React.Children.map(children, (child) =>
-          lustre && typeof child === "string" ? (
+          lustre && typeof child === 'string' ? (
             <LustreText text={child} />
           ) : (
             child
-          )
+          ),
         )}
       </span>
     </span>
@@ -371,18 +367,18 @@ export function AnnouncementTag({
 
   if (movingBorder) {
     return (
-      <span className="relative inline-block overflow-hidden rounded-full p-[1px]">
-        <span className="absolute inset-0 pointer-events-none">
-          <MovingBorder duration={movingBorderDuration} rx="50%" ry="50%">
+      <span className='relative inline-block overflow-hidden rounded-full p-px'>
+        <span className='absolute inset-0 pointer-events-none'>
+          <MovingBorder duration={movingBorderDuration} rx='50%' ry='50%'>
             <div
               className={cn(
-                "h-12 w-12 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-80",
-                movingBorderClassName
+                'h-12 w-12 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-80',
+                movingBorderClassName,
               )}
             />
           </MovingBorder>
         </span>
-        <span className="relative">{tagContent}</span>
+        <span className='relative'>{tagContent}</span>
       </span>
     );
   }
@@ -405,18 +401,18 @@ export function AnnouncementTitle({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 py-1",
-        multiTags ? "flex-wrap" : "truncate",
-        className
+        'inline-flex items-center gap-1.5 py-1',
+        multiTags ? 'flex-wrap' : 'truncate',
+        className,
       )}
       {...props}
     >
       {React.Children.map(children, (child) =>
-        lustre && typeof child === "string" ? (
+        lustre && typeof child === 'string' ? (
           <LustreText text={child} />
         ) : (
           child
-        )
+        ),
       )}
     </span>
   );
@@ -430,7 +426,7 @@ export function AnnouncementContainer({
 }: AnnouncementContainerProps) {
   return (
     <div
-      className={cn("flex flex-wrap items-center gap-1.5", className)}
+      className={cn('flex flex-wrap items-center gap-1.5', className)}
       {...props}
     />
   );
@@ -444,6 +440,6 @@ export function AnnouncementExpandedContent({
   return null;
 }
 
-(AnnouncementExpandedContent as unknown as Record<symbol, boolean>)[
+(AnnouncementExpandedContent as unknown as { [key: symbol]: boolean })[
   EXPANDABLE_CONTENT_SYMBOL
 ] = true;
