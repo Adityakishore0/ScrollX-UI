@@ -1,24 +1,31 @@
-import React from "react";
-import { PropsTable } from "@/components/propstable";
+import React from 'react';
+import { PropsTable } from '@/components/propstable';
+
+interface ReactElementWithChildren extends React.ReactElement {
+  props: {
+    children?: React.ReactNode;
+  };
+}
 
 function getText(node: React.ReactNode): string {
-  if (typeof node === "string" || typeof node === "number") {
+  if (typeof node === 'string' || typeof node === 'number') {
     return String(node);
   }
 
   if (Array.isArray(node)) {
-    return node.map(getText).join("");
+    return node.map(getText).join('');
   }
 
   if (React.isValidElement(node)) {
-    return getText(node.props.children);
+    const element = node as ReactElementWithChildren;
+    return getText(element.props.children);
   }
 
-  return "";
+  return '';
 }
 
 export function MDXPropsTable(
-  props: React.TableHTMLAttributes<HTMLTableElement>
+  props: React.TableHTMLAttributes<HTMLTableElement>,
 ) {
   const rows: {
     prop: string;
@@ -28,8 +35,8 @@ export function MDXPropsTable(
   }[] = [];
 
   const tbody = React.Children.toArray(props.children).find(
-    (child): child is React.ReactElement =>
-      React.isValidElement(child) && child.type === "tbody"
+    (child): child is ReactElementWithChildren =>
+      React.isValidElement(child) && child.type === 'tbody',
   );
 
   if (!tbody) {
@@ -37,12 +44,12 @@ export function MDXPropsTable(
   }
 
   const trs = React.Children.toArray(tbody.props.children).filter(
-    (child): child is React.ReactElement => React.isValidElement(child)
+    (child): child is ReactElementWithChildren => React.isValidElement(child),
   );
 
   for (const tr of trs) {
     const tds = React.Children.toArray(tr.props.children).filter(
-      (child): child is React.ReactElement => React.isValidElement(child)
+      (child): child is ReactElementWithChildren => React.isValidElement(child),
     );
 
     if (tds.length < 4) continue;
