@@ -1,7 +1,7 @@
-"use client";
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+'use client';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface FlipStackCard {
   id: number;
@@ -10,12 +10,12 @@ interface FlipStackCard {
 
 interface FlipStackProps {
   cards?: FlipStackCard[];
-  mobileDirection?: "top" | "bottom";
+  mobileDirection?: 'top' | 'bottom';
 }
 
 export default function FlipStack({
   cards = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
-  mobileDirection = "top",
+  mobileDirection = 'top',
 }: FlipStackProps) {
   const [isInView, setIsInView] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -25,17 +25,17 @@ export default function FlipStack({
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
-    window.addEventListener("resize", checkMobile);
+    window.addEventListener('resize', checkMobile);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setIsInView(true);
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
     const currentRef = containerRef.current;
     if (currentRef) observer.observe(currentRef);
     return () => {
-      window.removeEventListener("resize", checkMobile);
+      window.removeEventListener('resize', checkMobile);
       if (currentRef) observer.unobserve(currentRef);
     };
   }, []);
@@ -60,8 +60,8 @@ export default function FlipStack({
     const centerIndex = Math.floor(totalCards / 2);
     const positionFromCenter = index - centerIndex;
     if (isMobile) {
-      const yInitial = mobileDirection === "bottom" ? -100 : 100;
-      const yBounce = mobileDirection === "bottom" ? [0, 80, 0] : [0, -80, 0];
+      const yInitial = mobileDirection === 'bottom' ? -100 : 100;
+      const yBounce = mobileDirection === 'bottom' ? [0, 80, 0] : [0, -80, 0];
 
       return {
         initial: {
@@ -100,24 +100,24 @@ export default function FlipStack({
   };
 
   return (
-    <div className="h-full w-full py-2">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center items-center">
+    <div className='h-full w-full py-2'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='flex justify-center items-center'>
           <div
             ref={containerRef}
-            className="relative h-96 w-full max-w-md mx-auto"
+            className='relative h-96 w-full max-w-md mx-auto'
           >
             {isMobile ? (
-              <div className="relative h-full w-full">
+              <div className='relative h-full w-full'>
                 <AnimatePresence>
                   {cards.map((card, index: number) => {
                     const variants = getCardVariants(index);
                     return (
                       <motion.div
                         key={card.id}
-                        className="absolute inset-0 origin-bottom"
-                        initial="initial"
-                        animate={isInView ? "animate" : "initial"}
+                        className='absolute inset-0 origin-bottom'
+                        initial='initial'
+                        animate={isInView ? 'animate' : 'initial'}
                         exit={{
                           opacity: 0,
                           scale: 0.9,
@@ -125,10 +125,10 @@ export default function FlipStack({
                           rotate: getRotation(index),
                         }}
                         variants={variants}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        transition={{ duration: 0.4, ease: 'easeInOut' }}
                       >
-                        <Card className="w-full h-full shadow-2xl border-0 bg-white dark:bg-gray-800 overflow-hidden">
-                          <CardContent className="p-0 h-full flex items-center justify-center">
+                        <Card className='w-full h-full shadow-2xl border-0 bg-white dark:bg-gray-800 overflow-hidden'>
+                          <CardContent className='p-0 h-full flex items-center justify-center'>
                             {card.content}
                           </CardContent>
                         </Card>
@@ -139,26 +139,26 @@ export default function FlipStack({
               </div>
             ) : (
               <div
-                className="relative h-full w-full flex items-center justify-center"
-                style={{ perspective: "1000px" }}
+                className='relative h-full w-full flex items-center justify-center'
+                style={{ perspective: '1000px' }}
               >
                 {cards.map((card, index: number) => {
                   const variants = getCardVariants(index);
                   return (
                     <motion.div
                       key={card.id}
-                      className="absolute origin-bottom"
-                      initial="initial"
-                      animate={isInView ? "animate" : "initial"}
+                      className='absolute origin-bottom'
+                      initial='initial'
+                      animate={isInView ? 'animate' : 'initial'}
                       variants={variants}
                       transition={{
                         duration: 0.8,
                         delay: index * 0.1,
-                        ease: "easeOut",
+                        ease: 'easeOut',
                       }}
                     >
-                      <Card className="w-80 h-96 shadow-2xl border-0 bg-white dark:bg-gray-800 overflow-hidden">
-                        <CardContent className="p-0 h-full flex items-center justify-center">
+                      <Card className='w-80 h-96 shadow-2xl border-0 bg-white dark:bg-gray-800 overflow-hidden'>
+                        <CardContent className='p-0 h-full flex items-center justify-center'>
                           {card.content}
                         </CardContent>
                       </Card>
