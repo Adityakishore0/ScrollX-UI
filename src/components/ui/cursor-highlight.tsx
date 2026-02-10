@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import React, { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import { cn } from "@/lib/utils";
+import React, { useRef, useEffect, useState } from 'react';
+import { motion, useInView } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 interface CursorHighlightProps {
   text?: string;
   children?: React.ReactNode;
   className?: string;
   gradient?: string;
-  direction?: "left" | "right" | "top" | "bottom";
+  direction?: 'left' | 'right' | 'top' | 'bottom';
   animate?: boolean;
   duration?: number;
   showPointer?: boolean;
@@ -21,18 +21,18 @@ interface CursorHighlightProps {
 
 const Pointer = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    stroke="currentColor"
-    fill="currentColor"
-    strokeWidth="1"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    viewBox="0 0 16 16"
-    height="1em"
-    width="1em"
-    xmlns="http://www.w3.org/2000/svg"
+    stroke='currentColor'
+    fill='currentColor'
+    strokeWidth='1'
+    strokeLinecap='round'
+    strokeLinejoin='round'
+    viewBox='0 0 16 16'
+    height='1em'
+    width='1em'
+    xmlns='http://www.w3.org/2000/svg'
     {...props}
   >
-    <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"></path>
+    <path d='M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z'></path>
   </svg>
 );
 
@@ -45,8 +45,8 @@ export function CursorHighlight({
   text,
   children,
   className,
-  gradient = "from-purple-800 via-purple-600 to-purple-800",
-  direction = "left",
+  gradient = 'from-purple-800 via-purple-600 to-purple-800',
+  direction = 'left',
   animate = false,
   duration = 2,
   showPointer = false,
@@ -90,12 +90,12 @@ export function CursorHighlight({
   const content = text || children;
   const hasCustomTextColor =
     className &&
-    className.includes("text-") &&
-    (className.includes("dark:text-") || !className.includes("dark:"));
+    className.includes('text-') &&
+    (className.includes('dark:text-') || !className.includes('dark:'));
 
   const defaultTextColors = hasCustomTextColor
-    ? ""
-    : "text-black dark:text-white";
+    ? ''
+    : 'text-black dark:text-white';
 
   const getPointerAnimation = (): PointerAnim => {
     const startOffset = 15;
@@ -103,22 +103,22 @@ export function CursorHighlight({
     const yPos = dimensions.height / 2;
 
     switch (direction) {
-      case "left":
+      case 'left':
         return {
           initial: { x: -startOffset, y: yPos, rotate: 275 },
           animate: { x: dimensions.width + endOffset, y: yPos, rotate: 275 },
         };
-      case "right":
+      case 'right':
         return {
           initial: { x: dimensions.width + startOffset, y: yPos, rotate: 5 },
           animate: { x: -20, y: yPos, rotate: 5 },
         };
-      case "top":
+      case 'top':
         return {
           initial: { x: -startOffset, y: yPos, rotate: 275 },
           animate: { x: dimensions.width + endOffset, y: yPos, rotate: 275 },
         };
-      case "bottom":
+      case 'bottom':
         return {
           initial: { x: -startOffset, y: yPos, rotate: 275 },
           animate: { x: dimensions.width + endOffset, y: yPos, rotate: 275 },
@@ -134,61 +134,61 @@ export function CursorHighlight({
   const delay = showPointer ? pointerDuration + 0.2 : 0.2;
 
   const directionStyles: Record<
-    "left" | "right" | "top" | "bottom",
+    'left' | 'right' | 'top' | 'bottom',
     {
       initial: { clipPath: string };
       animate: { clipPath: string };
-      transition: { duration: number; ease: "easeInOut"; delay: number };
+      transition: { duration: number; ease: 'easeInOut'; delay: number };
     }
   > = {
     left: {
-      initial: { clipPath: "inset(0 100% 0 0)" },
+      initial: { clipPath: 'inset(0 100% 0 0)' },
       animate: {
-        clipPath: isInView ? "inset(0 0% 0 0)" : "inset(0 100% 0 0)",
+        clipPath: isInView ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)',
       },
-      transition: { duration, ease: "easeInOut", delay },
+      transition: { duration, ease: 'easeInOut', delay },
     },
     right: {
-      initial: { clipPath: "inset(0 0 0 100%)" },
+      initial: { clipPath: 'inset(0 0 0 100%)' },
       animate: {
-        clipPath: isInView ? "inset(0 0 0 0%)" : "inset(0 0 0 100%)",
+        clipPath: isInView ? 'inset(0 0 0 0%)' : 'inset(0 0 0 100%)',
       },
-      transition: { duration, ease: "easeInOut", delay },
+      transition: { duration, ease: 'easeInOut', delay },
     },
     top: {
-      initial: { clipPath: "inset(100% 0 0 0)" },
+      initial: { clipPath: 'inset(100% 0 0 0)' },
       animate: {
-        clipPath: isInView ? "inset(0% 0 0 0)" : "inset(100% 0 0 0)",
+        clipPath: isInView ? 'inset(0% 0 0 0)' : 'inset(100% 0 0 0)',
       },
-      transition: { duration, ease: "easeInOut", delay },
+      transition: { duration, ease: 'easeInOut', delay },
     },
     bottom: {
-      initial: { clipPath: "inset(0 0 100% 0)" },
+      initial: { clipPath: 'inset(0 0 100% 0)' },
       animate: {
-        clipPath: isInView ? "inset(0 0 0% 0)" : "inset(0 0 100% 0)",
+        clipPath: isInView ? 'inset(0 0 0% 0)' : 'inset(0 0 100% 0)',
       },
-      transition: { duration, ease: "easeInOut", delay },
+      transition: { duration, ease: 'easeInOut', delay },
     },
   };
 
   const pointerAnimation = getPointerAnimation();
-  const gradientClass = `bg-gradient-to-r ${gradient}`;
+  const gradientClass = `bg-linear-to-r ${gradient}`;
 
   return (
     <div
       ref={containerRef}
-      className={cn("relative inline-block", containerClassName)}
+      className={cn('relative inline-block', containerClassName)}
     >
       {rectangle && dimensions.width > 0 && dimensions.height > 0 && (
         <motion.div
           className={cn(
-            "absolute z-10 pointer-events-none",
-            "border border-neutral-800 dark:border-neutral-200 bg-transparent",
-            typeof rectangle === "string" ? rectangle : ""
+            'absolute z-10 pointer-events-none',
+            'border border-neutral-800 dark:border-neutral-200 bg-transparent',
+            typeof rectangle === 'string' ? rectangle : '',
           )}
           style={{
-            left: direction === "right" ? "auto" : 0,
-            right: direction === "right" ? 0 : "auto",
+            left: direction === 'right' ? 'auto' : 0,
+            right: direction === 'right' ? 0 : 'auto',
           }}
           initial={{ width: 0, height: dimensions.height }}
           animate={
@@ -196,21 +196,21 @@ export function CursorHighlight({
               ? { width: dimensions.width, height: dimensions.height }
               : { width: 0, height: dimensions.height }
           }
-          transition={{ duration: pointerDuration, ease: "easeInOut" }}
+          transition={{ duration: pointerDuration, ease: 'easeInOut' }}
         />
       )}
 
-      <div className="relative z-40">
-        <span className={cn(defaultTextColors, "relative z-20", className)}>
+      <div className='relative z-40'>
+        <span className={cn(defaultTextColors, 'relative z-20', className)}>
           {content}
         </span>
 
         <motion.span
           key={resetKey}
           className={cn(
-            "absolute inset-0 bg-clip-text text-transparent z-30",
+            'absolute inset-0 bg-clip-text text-transparent z-30',
             gradientClass,
-            className
+            className,
           )}
           initial={directionStyles[direction].initial}
           animate={directionStyles[direction].animate}
@@ -222,7 +222,7 @@ export function CursorHighlight({
 
       {showPointer && dimensions.width > 0 && dimensions.height > 0 && (
         <motion.div
-          className="pointer-events-none absolute z-40"
+          className='pointer-events-none absolute z-40'
           initial={{ opacity: 0, ...pointerAnimation.initial }}
           animate={
             isInView
@@ -231,11 +231,11 @@ export function CursorHighlight({
           }
           transition={{
             duration: pointerDuration,
-            ease: "easeInOut",
-            opacity: { duration: 0.2, ease: "easeInOut" },
+            ease: 'easeInOut',
+            opacity: { duration: 0.2, ease: 'easeInOut' },
           }}
         >
-          <Pointer className={cn("h-4 w-4 text-blue-500", pointerClassName)} />
+          <Pointer className={cn('h-4 w-4 text-blue-500', pointerClassName)} />
         </motion.div>
       )}
     </div>
