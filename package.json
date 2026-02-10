@@ -9,7 +9,7 @@
     "url": "https://twitter.com/Ahdeetai"
   },
   "scripts": {
-    "dev": "next dev --webpack",
+    "dev": "next dev",
     "build:loader": "tsc -p tsconfig.build.json",
     "prepare:sw": "pnpm build:loader && node --import ./dist/register-ts-node.js scripts/copy-sw.ts",
     "convert": "tsx scripts/convert.ts ./src/content/docs",
@@ -17,7 +17,7 @@
     "populate-registry:component": "tsx scripts/populate-registry.ts --component",
     "build:registry": "node --import ./dist/register-ts-node.js scripts/build-registry.ts",
     "build:llms": "node --import ./dist/register-ts-node.js scripts/generateLlmsText.ts",
-    "build": "pnpm prepare:sw && pnpm convert && pnpm build:registry && pnpm build:llms && next build --webpack",
+    "build": "pnpm prepare:sw && pnpm convert && pnpm build:registry && pnpm build:llms && next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:file": "eslint",
