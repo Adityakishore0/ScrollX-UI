@@ -1,7 +1,7 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 interface SocialIcon {
   icon: React.ReactNode;
@@ -27,8 +27,8 @@ interface SocialOrbitProps {
 
 export function SocialOrbit({
   icons = [],
-  text = "",
-  textClassName = "",
+  text = '',
+  textClassName = '',
   textOrbitIndex = 2,
   children,
   rippleCount = 5,
@@ -38,7 +38,7 @@ export function SocialOrbit({
   iconDuration = 800,
   orbitDuration = 30,
   size = 500,
-  className = "",
+  className = '',
 }: SocialOrbitProps) {
   const [animatedIcons, setAnimatedIcons] = useState<Set<number>>(new Set());
   const [rotationStarted, setRotationStarted] = useState(false);
@@ -75,7 +75,7 @@ export function SocialOrbit({
     index: number,
     total: number,
     radius: number,
-    customAngle?: number
+    customAngle?: number,
   ) => {
     const angle =
       customAngle !== undefined ? customAngle : (360 / total) * index;
@@ -83,28 +83,31 @@ export function SocialOrbit({
     return { x: Math.cos(radian) * radius, y: Math.sin(radian) * radius };
   };
 
-  const iconsByOrbit = icons.reduce((acc, icon, index) => {
-    const orbitIdx = icon.orbitIndex ?? 0;
-    if (!acc[orbitIdx]) acc[orbitIdx] = [];
-    acc[orbitIdx].push({ ...icon, originalIndex: index });
-    return acc;
-  }, {} as Record<number, Array<SocialIcon & { originalIndex: number }>>);
+  const iconsByOrbit = icons.reduce(
+    (acc, icon, index) => {
+      const orbitIdx = icon.orbitIndex ?? 0;
+      if (!acc[orbitIdx]) acc[orbitIdx] = [];
+      acc[orbitIdx].push({ ...icon, originalIndex: index });
+      return acc;
+    },
+    {} as Record<number, Array<SocialIcon & { originalIndex: number }>>,
+  );
 
   return (
     <div
-      className={cn("relative", className)}
+      className={cn('relative', className)}
       style={{ width: size, height: size }}
     >
-      <div className="absolute inset-0">
+      <div className='absolute inset-0'>
         {rippleBoxes.map((box, i) => (
           <motion.div
             key={`ripple-${i}`}
-            className="absolute rounded-full border-2 border-border/50 bg-gradient-to-b from-muted/10 to-muted/20"
+            className='absolute rounded-full border-2 border-border/50 bg-linear-to-b from-muted/10 to-muted/20'
             style={{
               width: box.radius * 2,
               height: box.radius * 2,
-              left: "50%",
-              top: "50%",
+              left: '50%',
+              top: '50%',
               marginLeft: -box.radius,
               marginTop: -box.radius,
               zIndex: box.zIndex,
@@ -113,16 +116,16 @@ export function SocialOrbit({
             animate={{
               scale: [1, 1.15, 1],
               boxShadow: [
-                "rgba(0,0,0,0.3) 0px 10px 10px 0px",
-                "rgba(0,0,0,0.3) 0px 30px 20px 0px",
-                "rgba(0,0,0,0.3) 0px 10px 10px 0px",
+                'rgba(0,0,0,0.3) 0px 10px 10px 0px',
+                'rgba(0,0,0,0.3) 0px 30px 20px 0px',
+                'rgba(0,0,0,0.3) 0px 10px 10px 0px',
               ],
             }}
             transition={{
               repeat: Infinity,
               duration: rippleDuration,
               delay: box.delay,
-              ease: "easeInOut",
+              ease: 'easeInOut',
             }}
           />
         ))}
@@ -130,12 +133,12 @@ export function SocialOrbit({
 
       {text && (
         <motion.div
-          className="absolute cursor-pointer"
+          className='absolute cursor-pointer'
           style={{
             width: textRippleRadius * 2,
             height: textRippleRadius * 2,
-            left: "50%",
-            top: "50%",
+            left: '50%',
+            top: '50%',
             marginLeft: -textRippleRadius,
             marginTop: -textRippleRadius,
             zIndex: 100,
@@ -149,12 +152,12 @@ export function SocialOrbit({
               repeat: Infinity,
               duration: rippleDuration,
               delay: rippleBoxes[textRippleIndex].delay,
-              ease: "easeInOut",
+              ease: 'easeInOut',
             },
             rotate: {
               repeat: Infinity,
               duration: isHovering ? textDuration / 4 : textDuration,
-              ease: "linear",
+              ease: 'linear',
             },
           }}
           onHoverStart={() => setIsHovering(true)}
@@ -168,24 +171,24 @@ export function SocialOrbit({
             return (
               <div
                 key={`letter-${i}`}
-                className="absolute"
+                className='absolute'
                 style={{
-                  left: "50%",
-                  top: "50%",
+                  left: '50%',
+                  top: '50%',
                   transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
                 }}
               >
                 <motion.span
                   className={cn(
-                    "inline-block text-lg font-bold text-foreground/90 transition-all duration-300 hover:text-foreground hover:scale-110",
-                    textClassName
+                    'inline-block text-lg font-bold text-foreground/90 transition-all duration-300 hover:text-foreground hover:scale-110',
+                    textClassName,
                   )}
                   style={{
                     animation: rotationStarted
                       ? `counter-orbit ${
                           isHovering ? textDuration / 4 : textDuration
                         }s linear infinite`
-                      : "none",
+                      : 'none',
                   }}
                 >
                   {letter}
@@ -202,12 +205,12 @@ export function SocialOrbit({
         return (
           <motion.div
             key={`orbit-${orbitIdx}`}
-            className="absolute"
+            className='absolute'
             style={{
               width: iconRippleRadius * 2,
               height: iconRippleRadius * 2,
-              left: "50%",
-              top: "50%",
+              left: '50%',
+              top: '50%',
               marginLeft: -iconRippleRadius,
               marginTop: -iconRippleRadius,
               zIndex: 101 + parseInt(orbitIdx),
@@ -221,12 +224,12 @@ export function SocialOrbit({
                 repeat: Infinity,
                 duration: rippleDuration,
                 delay: rippleBoxes[orbitIndex].delay,
-                ease: "easeInOut",
+                ease: 'easeInOut',
               },
               rotate: {
                 repeat: Infinity,
                 duration: orbitDuration,
-                ease: "linear",
+                ease: 'linear',
               },
             }}
           >
@@ -235,31 +238,31 @@ export function SocialOrbit({
                 localIndex,
                 orbitIcons.length,
                 iconRippleRadius,
-                social.position
+                social.position,
               );
               const isAnimated = animatedIcons.has(social.originalIndex);
               return (
                 <div
                   key={`icon-${social.originalIndex}`}
-                  className="absolute"
+                  className='absolute'
                   style={{
-                    left: "50%",
-                    top: "50%",
+                    left: '50%',
+                    top: '50%',
                     marginLeft: -24,
                     marginTop: -24,
                     transform: isAnimated
                       ? `translate(${position.x}px, ${position.y}px) scale(1)`
-                      : "translate(0px,0px) scale(0)",
+                      : 'translate(0px,0px) scale(0)',
                     transition: `transform ${iconDuration}ms cubic-bezier(0.34,1.56,0.64,1)`,
                     opacity: isAnimated ? 1 : 0,
                   }}
                 >
                   <motion.div
-                    className="flex items-center justify-center w-12 h-12 rounded-full bg-background text-foreground border border-border shadow-lg"
+                    className='flex items-center justify-center w-12 h-12 rounded-full bg-background text-foreground border border-border shadow-lg'
                     style={{
                       animation: rotationStarted
                         ? `counter-orbit ${orbitDuration}s linear infinite`
-                        : "none",
+                        : 'none',
                     }}
                     whileHover={{ scale: 1.2 }}
                   >
@@ -273,11 +276,11 @@ export function SocialOrbit({
       })}
 
       {children && (
-        <div className="absolute inset-0 flex items-center justify-center z-[200] pointer-events-none">
+        <div className='absolute inset-0 flex items-center justify-center z-200 pointer-events-none'>
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 2, duration: 0.8, type: "spring" }}
+            transition={{ delay: 2, duration: 0.8, type: 'spring' }}
           >
             {children}
           </motion.div>
