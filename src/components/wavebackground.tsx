@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef, forwardRef } from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import React, { useEffect, useRef, forwardRef } from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
 
-type ArcPosition = "top" | "bottom" | "left" | "right" | "both";
+type ArcPosition = 'top' | 'bottom' | 'left' | 'right' | 'both';
 
 interface ArcDefaults {
   radius: number;
@@ -24,35 +24,35 @@ interface ArcData extends ArcDefaults {
 }
 
 const waveBackgroundVariants = cva(
-  "relative w-full h-full transition-colors duration-300",
+  'relative w-full h-full transition-colors duration-300',
   {
     variants: {
       variant: {
-        violet: "bg-white dark:bg-black",
-        ocean: "bg-white dark:bg-[#000a0f]",
-        ember: "bg-white dark:bg-[#0f0000]",
-        emerald: "bg-white dark:bg-[#000f05]",
-        aurora: "bg-white dark:bg-[#050510]",
+        violet: 'bg-white dark:bg-black',
+        ocean: 'bg-white dark:bg-[#000a0f]',
+        ember: 'bg-white dark:bg-[#0f0000]',
+        emerald: 'bg-white dark:bg-[#000f05]',
+        aurora: 'bg-white dark:bg-[#050510]',
       },
     },
-    defaultVariants: { variant: "violet" },
-  }
+    defaultVariants: { variant: 'violet' },
+  },
 );
 
 const ARC_COLORS: Record<string, string[]> = {
-  violet: ["#8B7AFF", "#A593FF", "#6B5AEF", "#7B6AFF", "#5B4ADF", "#9B8AFF"],
-  ocean: ["#00B4D8", "#48CAE4", "#0096C7", "#0077B6", "#90E0EF", "#ADE8F4"],
-  ember: ["#FF6B35", "#FF8C42", "#E84855", "#D62828", "#F4A261", "#E76F51"],
-  emerald: ["#2D6A4F", "#40916C", "#52B788", "#74C69D", "#1B4332", "#95D5B2"],
-  aurora: ["#7209B7", "#3A0CA3", "#4CC9F0", "#00B4D8", "#F72585", "#B5179E"],
+  violet: ['#8B7AFF', '#A593FF', '#6B5AEF', '#7B6AFF', '#5B4ADF', '#9B8AFF'],
+  ocean: ['#00B4D8', '#48CAE4', '#0096C7', '#0077B6', '#90E0EF', '#ADE8F4'],
+  ember: ['#FF6B35', '#FF8C42', '#E84855', '#D62828', '#F4A261', '#E76F51'],
+  emerald: ['#2D6A4F', '#40916C', '#52B788', '#74C69D', '#1B4332', '#95D5B2'],
+  aurora: ['#7209B7', '#3A0CA3', '#4CC9F0', '#00B4D8', '#F72585', '#B5179E'],
 };
 
 const CENTER_GLOW_COLORS: Record<string, string> = {
-  violet: "#6B5AEF",
-  ocean: "#0096C7",
-  ember: "#E84855",
-  emerald: "#40916C",
-  aurora: "#4CC9F0",
+  violet: '#6B5AEF',
+  ocean: '#0096C7',
+  ember: '#E84855',
+  emerald: '#40916C',
+  aurora: '#4CC9F0',
 };
 
 const DEFAULT_ARC_PARAMS: ArcDefaults[] = [
@@ -148,7 +148,7 @@ function hexToRGB(hex: string): [number, number, number] {
 function compileShader(
   gl: WebGLRenderingContext,
   src: string,
-  type: number
+  type: number,
 ): WebGLShader | null {
   const s = gl.createShader(type);
   if (!s) return null;
@@ -165,7 +165,7 @@ function compileShader(
 function linkProgram(
   gl: WebGLRenderingContext,
   vs: WebGLShader,
-  fs: WebGLShader
+  fs: WebGLShader,
 ): WebGLProgram | null {
   const p = gl.createProgram();
   if (!p) return null;
@@ -182,16 +182,16 @@ function linkProgram(
 
 function buildVertexShader(): string {
   const names = [
-    "radius",
-    "thickness",
-    "speed",
-    "offset",
-    "opacity",
-    "waveAmp",
-    "glowRadius",
-    "glowIntensity",
+    'radius',
+    'thickness',
+    'speed',
+    'offset',
+    'opacity',
+    'waveAmp',
+    'glowRadius',
+    'glowIntensity',
   ];
-  let accessors = "";
+  let accessors = '';
   names.forEach((name) => {
     accessors += `float get_${name}(int i) {\n`;
     for (let i = 0; i < MAX_ARCS; i++) {
@@ -329,7 +329,8 @@ const GLOW_FS_SRC = `
 `;
 
 export interface WaveBackgroundProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof waveBackgroundVariants> {
   position?: ArcPosition;
   arcCount?: number;
@@ -351,8 +352,8 @@ export interface WaveBackgroundProps
 const WaveBackground = forwardRef<HTMLDivElement, WaveBackgroundProps>(
   (
     {
-      variant = "violet",
-      position = "both",
+      variant = 'violet',
+      position = 'both',
       arcCount,
       arcRadii,
       arcThicknesses,
@@ -372,17 +373,17 @@ const WaveBackground = forwardRef<HTMLDivElement, WaveBackgroundProps>(
       style,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const isVisibleRef = useRef(true);
-    const animIdRef = useRef<number>();
+    const animIdRef = useRef<number | undefined>(undefined);
 
-    const colors = ARC_COLORS[variant || "violet"];
+    const colors = ARC_COLORS[variant || 'violet'];
     const count =
       arcCount !== undefined ? clamp(arcCount, 1, MAX_ARCS) : colors.length;
-    const glowColor = CENTER_GLOW_COLORS[variant || "violet"];
+    const glowColor = CENTER_GLOW_COLORS[variant || 'violet'];
 
     useEffect(() => {
       const canvas = canvasRef.current;
@@ -396,18 +397,18 @@ const WaveBackground = forwardRef<HTMLDivElement, WaveBackgroundProps>(
             animate();
           }
         },
-        { threshold: 0 }
+        { threshold: 0 },
       );
 
       observer.observe(container);
 
-      const gl = canvas.getContext("webgl", {
+      const gl = canvas.getContext('webgl', {
         alpha: true,
         antialias: true,
         preserveDrawingBuffer: false,
       }) as WebGLRenderingContext | null;
       if (!gl) {
-        canvas.style.display = "none";
+        canvas.style.display = 'none';
         observer.disconnect();
         return;
       }
@@ -450,7 +451,7 @@ const WaveBackground = forwardRef<HTMLDivElement, WaveBackgroundProps>(
       gl.bindBuffer(gl.ARRAY_BUFFER, arcBuf);
       gl.bufferData(gl.ARRAY_BUFFER, verts, gl.STATIC_DRAW);
 
-      const aPos = gl.getAttribLocation(prog, "a_pos");
+      const aPos = gl.getAttribLocation(prog, 'a_pos');
       gl.enableVertexAttribArray(aPos);
       gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
 
@@ -460,35 +461,35 @@ const WaveBackground = forwardRef<HTMLDivElement, WaveBackgroundProps>(
       gl.bufferData(gl.ARRAY_BUFFER, glowVerts, gl.STATIC_DRAW);
 
       const loc = (n: string) => gl.getUniformLocation(prog, n);
-      const uRadius = loc("u_radius");
-      const uThickness = loc("u_thickness");
-      const uSpeed = loc("u_speed");
-      const uOffset = loc("u_offset");
-      const uOpacity = loc("u_opacity");
-      const uWaveAmp = loc("u_waveAmp");
-      const uGlowRadius = loc("u_glowRadius");
-      const uGlowIntensity = loc("u_glowIntensity");
-      const uArcIndex = loc("u_arcIndex");
-      const uTime = loc("u_time");
-      const uRes = loc("u_resolution");
-      const uColor = loc("u_color");
-      const uSide = loc("u_side");
-      const uCenterX = loc("u_centerX");
-      const uCenterY = loc("u_centerY");
-      const uArcSpacing = loc("u_arcSpacing");
+      const uRadius = loc('u_radius');
+      const uThickness = loc('u_thickness');
+      const uSpeed = loc('u_speed');
+      const uOffset = loc('u_offset');
+      const uOpacity = loc('u_opacity');
+      const uWaveAmp = loc('u_waveAmp');
+      const uGlowRadius = loc('u_glowRadius');
+      const uGlowIntensity = loc('u_glowIntensity');
+      const uArcIndex = loc('u_arcIndex');
+      const uTime = loc('u_time');
+      const uRes = loc('u_resolution');
+      const uColor = loc('u_color');
+      const uSide = loc('u_side');
+      const uCenterX = loc('u_centerX');
+      const uCenterY = loc('u_centerY');
+      const uArcSpacing = loc('u_arcSpacing');
 
       const glowLoc = (n: string) => gl.getUniformLocation(glowProg, n);
-      const uGlowRes = glowLoc("u_resolution");
-      const uGlowColor = glowLoc("u_glowColor");
-      const uGlowRadius2 = glowLoc("u_glowRadius");
-      const uGlowIntensity2 = glowLoc("u_glowIntensity");
-      const aGlowPos = gl.getAttribLocation(glowProg, "a_pos");
+      const uGlowRes = glowLoc('u_resolution');
+      const uGlowColor = glowLoc('u_glowColor');
+      const uGlowRadius2 = glowLoc('u_glowRadius');
+      const uGlowIntensity2 = glowLoc('u_glowIntensity');
+      const aGlowPos = gl.getAttribLocation(glowProg, 'a_pos');
 
       const arcs: ArcData[] = [];
       for (let i = 0; i < count; i++) {
         const d = DEFAULT_ARC_PARAMS[i];
         arcs.push({
-          color: colors[i] ?? "#ffffff",
+          color: colors[i] ?? '#ffffff',
           radius: arcRadii?.[i] ?? d.radius,
           thickness: arcThicknesses?.[i] ?? d.thickness,
           speed: (arcSpeeds?.[i] ?? d.speed) * speed,
@@ -517,31 +518,31 @@ const WaveBackground = forwardRef<HTMLDivElement, WaveBackgroundProps>(
       gl.useProgram(prog);
       gl.uniform1fv(
         uRadius,
-        pad((a) => a.radius)
+        pad((a) => a.radius),
       );
       gl.uniform1fv(
         uThickness,
-        pad((a) => a.thickness)
+        pad((a) => a.thickness),
       );
       gl.uniform1fv(
         uSpeed,
-        pad((a) => a.speed)
+        pad((a) => a.speed),
       );
       gl.uniform1fv(
         uOpacity,
-        pad((a) => a.opacity)
+        pad((a) => a.opacity),
       );
       gl.uniform1fv(
         uWaveAmp,
-        pad((a) => a.waveAmp)
+        pad((a) => a.waveAmp),
       );
       gl.uniform1fv(
         uGlowRadius,
-        pad((a) => a.glowRadius)
+        pad((a) => a.glowRadius),
       );
       gl.uniform1fv(
         uGlowIntensity,
-        pad((a) => a.glowIntensity)
+        pad((a) => a.glowIntensity),
       );
       gl.uniform1f(uArcSpacing, arcSpacing);
 
@@ -621,16 +622,16 @@ const WaveBackground = forwardRef<HTMLDivElement, WaveBackgroundProps>(
           gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
           gl.uniform1f(uTime, time);
 
-          if (position === "both") {
+          if (position === 'both') {
             drawSide(0, offsetArr);
             drawSide(1, mirroredOffsetArr);
-          } else if (position === "top") {
+          } else if (position === 'top') {
             drawSide(2, offsetArr);
-          } else if (position === "bottom") {
+          } else if (position === 'bottom') {
             drawSide(3, offsetArr);
-          } else if (position === "left") {
+          } else if (position === 'left') {
             drawSide(0, offsetArr);
-          } else if (position === "right") {
+          } else if (position === 'right') {
             drawSide(1, offsetArr);
           }
 
@@ -682,7 +683,7 @@ const WaveBackground = forwardRef<HTMLDivElement, WaveBackgroundProps>(
     const setRefs = (el: HTMLDivElement | null) => {
       (containerRef as React.MutableRefObject<HTMLDivElement | null>).current =
         el;
-      if (typeof ref === "function") ref(el);
+      if (typeof ref === 'function') ref(el);
       else if (ref)
         (ref as React.MutableRefObject<HTMLDivElement | null>).current = el;
     };
@@ -696,13 +697,13 @@ const WaveBackground = forwardRef<HTMLDivElement, WaveBackgroundProps>(
       >
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-full pointer-events-none"
+          className='absolute inset-0 w-full h-full pointer-events-none'
         />
         {children}
       </div>
     );
-  }
+  },
 );
 
-WaveBackground.displayName = "WaveBackground";
+WaveBackground.displayName = 'WaveBackground';
 export default WaveBackground;
