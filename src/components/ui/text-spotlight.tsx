@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useRef, useState, useEffect } from "react";
-import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
-import { cn } from "@/lib/utils";
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useMotionValue, useMotionTemplate } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 interface TextSpotlightProps extends React.HTMLAttributes<HTMLDivElement> {
   text: string;
@@ -23,8 +23,8 @@ const useIsMobile = () => {
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < BREAKPOINT);
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return isMobile;
@@ -34,7 +34,7 @@ export function TextSpotlight({
   text,
   className,
   textClassName,
-  spotlightColor = "255, 255, 255",
+  spotlightColor = '255, 255, 255',
   spotlightSize = 450,
   spotlightOpacity = 1,
   spotlightArea,
@@ -60,7 +60,7 @@ export function TextSpotlight({
           setRevealProgress(0);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     observer.observe(containerRef.current);
@@ -105,7 +105,7 @@ export function TextSpotlight({
     )
   `;
 
-  const chars = text.split("");
+  const chars = text.split('');
   const shouldShowMobileReveal = animateOnPhone && isMobile;
 
   return (
@@ -113,12 +113,12 @@ export function TextSpotlight({
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={cn("relative w-full overflow-hidden", className)}
+      className={cn('relative w-full overflow-hidden', className)}
       {...props}
     >
       {shouldShowMobileReveal ? (
         <p
-          className={cn("relative z-10 select-none text-center", textClassName)}
+          className={cn('relative z-10 select-none text-center', textClassName)}
         >
           {chars.map((char, index) => {
             const charProgress = (revealProgress * chars.length - index) / 1;
@@ -129,11 +129,11 @@ export function TextSpotlight({
               <span
                 key={index}
                 style={{
-                  transition: "all 0.3s ease-out",
-                  color: isRevealed ? "inherit" : undefined,
+                  transition: 'all 0.3s ease-out',
+                  color: isRevealed ? 'inherit' : undefined,
                 }}
                 className={
-                  isRevealed ? "" : "text-gray-600/10 dark:text-white/15"
+                  isRevealed ? '' : 'text-gray-600/10 dark:text-white/15'
                 }
               >
                 {char}
@@ -145,22 +145,22 @@ export function TextSpotlight({
         <>
           <p
             className={cn(
-              "relative z-10 text-gray-600/10 dark:text-white/15 select-none text-center",
-              textClassName
+              'relative z-10 text-gray-600/10 dark:text-white/15 select-none text-center',
+              textClassName,
             )}
           >
             {text}
           </p>
 
           <motion.div
-            className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
+            className='absolute inset-0 z-20 flex items-center justify-center pointer-events-none'
             style={{
               WebkitMaskImage: background,
               maskImage: background,
               opacity: isHovered ? 1 : 0,
             }}
           >
-            <p className={cn("text-foreground text-center", textClassName)}>
+            <p className={cn('text-foreground text-center', textClassName)}>
               {text}
             </p>
           </motion.div>
