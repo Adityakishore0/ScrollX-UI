@@ -1,70 +1,71 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
 
 interface CustomCSSProperties extends React.CSSProperties {
-  "--shimmer-color"?: string;
-  "--radius"?: string;
-  "--speed"?: string;
-  "--cut"?: string;
-  "--bg"?: string;
-  "--spread"?: string;
-  "--border-width"?: string;
-  "--border-segment"?: string;
+  '--shimmer-color'?: string;
+  '--radius'?: string;
+  '--speed'?: string;
+  '--cut'?: string;
+  '--bg'?: string;
+  '--spread'?: string;
+  '--border-width'?: string;
+  '--border-segment'?: string;
 }
 
 const inputVariants = cva(
-  "group relative z-0 bg-white dark:bg-[rgba(0,0,0,1)] flex items-center overflow-hidden whitespace-nowrap transform-gpu transition-all duration-300 ease-in-out focus-within:shadow-glow-scoped",
+  'group relative z-0 bg-white dark:bg-[rgba(0,0,0,1)] flex items-center overflow-hidden whitespace-nowrap transform-gpu transition-all duration-300 ease-in-out focus-within:shadow-glow-scoped',
   {
     variants: {
       variant: {
-        default: "text-cyan-400 border border-cyan-400/20 hover:text-cyan-300",
+        default: 'text-cyan-400 border border-cyan-400/20 hover:text-cyan-300',
         outline:
-          "bg-transparent text-cyan-400 border border-cyan-400 hover:text-cyan-300",
-        ghost: "bg-transparent text-cyan-400 hover:bg-cyan-950/30",
-        glow: "text-cyan-400 border border-cyan-400/30 hover:text-cyan-300 hover:shadow-glow",
+          'bg-transparent text-cyan-400 border border-cyan-400 hover:text-cyan-300',
+        ghost: 'bg-transparent text-cyan-400 hover:bg-cyan-950/30',
+        glow: 'text-cyan-400 border border-cyan-400/30 hover:text-cyan-300 hover:shadow-glow',
       },
       inputSize: {
-        default: "h-10 px-6 py-2",
-        sm: "h-8 px-4 py-1 text-xs",
-        lg: "h-12 px-8 py-3 text-base",
-        icon: "h-10 w-10",
+        default: 'h-10 px-6 py-2',
+        sm: 'h-8 px-4 py-1 text-xs',
+        lg: 'h-12 px-8 py-3 text-base',
+        icon: 'h-10 w-10',
       },
       glow: {
-        true: "hover:shadow-[0_0_5px_#03e9f4,0_0_25px_#03e9f4]",
-        false: "",
+        true: 'hover:shadow-[0_0_5px_#03e9f4,0_0_25px_#03e9f4]',
+        false: '',
       },
       textEffect: {
-        normal: "group-hover:tracking-normal",
-        spread: "group-hover:tracking-wider",
+        normal: 'group-hover:tracking-normal',
+        spread: 'group-hover:tracking-wider',
       },
       uppercase: {
-        true: "",
-        false: "",
+        true: '',
+        false: '',
       },
       rounded: {
-        default: "rounded-md",
-        full: "rounded-full",
-        none: "rounded-none",
-        custom: "rounded-[0.95rem]",
+        default: 'rounded-md',
+        full: 'rounded-full',
+        none: 'rounded-none',
+        custom: 'rounded-[0.95rem]',
       },
     },
     defaultVariants: {
-      variant: "default",
-      inputSize: "default",
+      variant: 'default',
+      inputSize: 'default',
       glow: false,
-      textEffect: "normal",
+      textEffect: 'normal',
       uppercase: true,
-      rounded: "custom",
+      rounded: 'custom',
     },
-  }
+  },
 );
 
 export interface InteractiveInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
+  extends
+    React.InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputVariants> {
   asChild?: boolean;
   hideAnimations?: boolean;
@@ -91,27 +92,27 @@ const InteractiveInput = React.forwardRef<
       rounded,
       asChild = false,
       hideAnimations = false,
-      shimmerColor = "#03e9f4",
-      shimmerSize = "0.05em",
-      shimmerDuration = "3s",
-      borderRadius = "100px",
-      background = "rgba(0, 0, 0, 1)",
+      shimmerColor = '#03e9f4',
+      shimmerSize = '0.05em',
+      shimmerDuration = '3s',
+      borderRadius = '100px',
+      background = 'rgba(0, 0, 0, 1)',
       style,
       ...props
     },
-    ref
+    ref,
   ) => {
-    const InputComp = asChild ? Slot : "input";
+    const InputComp = asChild ? Slot : 'input';
 
     const combinedStyle: CustomCSSProperties = {
       ...style,
-      "--shimmer-color": shimmerColor,
-      "--radius": borderRadius,
-      "--speed": shimmerDuration,
-      "--cut": shimmerSize,
-      "--bg": background,
-      "--spread": "90deg",
-      borderRadius: rounded === "custom" ? borderRadius : undefined,
+      '--shimmer-color': shimmerColor,
+      '--radius': borderRadius,
+      '--speed': shimmerDuration,
+      '--cut': shimmerSize,
+      '--bg': background,
+      '--spread': '90deg',
+      borderRadius: rounded === 'custom' ? borderRadius : undefined,
     };
 
     const inputStyle = `
@@ -178,7 +179,7 @@ const InteractiveInput = React.forwardRef<
     return (
       <div
         className={cn(
-          "animated-input animated-input-mobile",
+          'animated-input animated-input-mobile',
           inputVariants({
             variant,
             inputSize,
@@ -188,35 +189,35 @@ const InteractiveInput = React.forwardRef<
             rounded,
             className,
           }),
-          glow && "shadow-glow-scoped"
+          glow && 'shadow-glow-scoped',
         )}
         style={combinedStyle}
       >
         <style jsx>{inputStyle}</style>
 
         {!hideAnimations && (
-          <div className="absolute inset-0 overflow-visible -z-30 blur-[2px] [container-type:size]">
-            <div className="absolute inset-0 h-[100cqh] animate-shimmer-slide-scoped [aspect-ratio:1]">
-              <div className="absolute -inset-full w-auto rotate-0 animate-spin-around-scoped [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))]" />
+          <div className='absolute inset-0 overflow-visible -z-30 blur-[2px] @container-[size]'>
+            <div className='absolute inset-0 h-[100cqh] animate-shimmer-slide-scoped aspect-[1]'>
+              <div className='absolute -inset-full w-auto rotate-0 animate-spin-around-scoped [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))]' />
             </div>
           </div>
         )}
 
         <div
-          className="absolute -z-20 [background:var(--bg)]"
+          className='absolute -z-20 [background:var(--bg)]'
           style={{ inset: shimmerSize, borderRadius }}
         />
 
         <InputComp
-          className="w-full h-full bg-transparent outline-none border-none relative z-10 text-inherit placeholder:text-cyan-400/50"
+          className='w-full h-full bg-transparent outline-hidden border-none relative z-10 text-inherit placeholder:text-cyan-400/50'
           ref={ref}
           {...props}
         />
       </div>
     );
-  }
+  },
 );
 
-InteractiveInput.displayName = "InteractiveInput";
+InteractiveInput.displayName = 'InteractiveInput';
 
 export { InteractiveInput, inputVariants };
