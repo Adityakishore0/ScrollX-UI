@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import {
   motion,
   useMotionValue,
   useSpring,
   useTransform,
   AnimatePresence,
-} from "framer-motion";
+} from 'motion/react';
 
 type SpringOptions = {
   stiffness?: number;
@@ -19,7 +19,7 @@ type SpringOptions = {
 };
 
 const cn = (...classes: (string | undefined | false | null)[]) => {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 };
 
 export type DockItemData = {
@@ -41,7 +41,7 @@ export type MagicDockProps = {
   dockHeight?: number;
   magnification?: number;
   spring?: SpringOptions;
-  variant?: "default" | "gradient" | "tooltip";
+  variant?: 'default' | 'gradient' | 'tooltip';
 };
 
 type DockItemProps = {
@@ -51,7 +51,7 @@ type DockItemProps = {
   distance: number;
   baseItemSize: number;
   magnification: number;
-  variant: "default" | "gradient" | "tooltip";
+  variant: 'default' | 'gradient' | 'tooltip';
   setHoveredIndex: React.Dispatch<React.SetStateAction<number | null>>;
   hoveredIndex: number | null;
   isTouchDevice: boolean;
@@ -77,11 +77,11 @@ function DockItem({
 
   const rotate = useSpring(
     useTransform(x, [-100, 100], [-15, 15]),
-    tooltipSpringConfig
+    tooltipSpringConfig,
   );
   const translateX = useSpring(
     useTransform(x, [-100, 100], [-20, 20]),
-    tooltipSpringConfig
+    tooltipSpringConfig,
   );
 
   useEffect(() => {
@@ -102,14 +102,14 @@ function DockItem({
       mouseXMotion.set(distance);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, [mouseXMotion, isTouchDevice]);
 
   const handleItemMouseMove = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     if (isTouchDevice) return;
     const halfWidth = event.currentTarget.offsetWidth / 2;
@@ -119,25 +119,25 @@ function DockItem({
   const targetSize = useTransform(
     mouseXMotion,
     [-distance, 0, distance],
-    [baseItemSize, isTouchDevice ? baseItemSize : magnification, baseItemSize]
+    [baseItemSize, isTouchDevice ? baseItemSize : magnification, baseItemSize],
   );
   const size = useSpring(targetSize, spring);
 
   const getBorderStyles = () => {
     switch (variant) {
-      case "gradient":
-        return "border-transparent group-hover:border-slate-700 dark:border-white/[0.2]";
-      case "tooltip":
-        return "border-white/[0.4] group-hover:border-white";
+      case 'gradient':
+        return 'border-transparent group-hover:border-slate-700 dark:border-white/20';
+      case 'tooltip':
+        return 'border-white/40 group-hover:border-white';
       default:
-        return "border-neutral-700";
+        return 'border-neutral-700';
     }
   };
 
   return (
     <motion.div
       ref={ref}
-      className={`group relative ${item.className || ""}`}
+      className={`group relative ${item.className || ''}`}
       style={{
         width: size,
         height: size,
@@ -147,13 +147,13 @@ function DockItem({
       onMouseMove={handleItemMouseMove}
       onClick={item.onClick}
       tabIndex={0}
-      role="button"
-      aria-haspopup="true"
+      role='button'
+      aria-haspopup='true'
     >
       <motion.div
         className={cn(
-          "relative flex h-full w-full items-center justify-center rounded-full bg-black border-2 shadow-md transition-colors duration-300",
-          getBorderStyles()
+          'relative flex h-full w-full items-center justify-center rounded-full bg-black border-2 shadow-md transition-colors duration-300',
+          getBorderStyles(),
         )}
         initial={{}}
       >
@@ -161,10 +161,10 @@ function DockItem({
           <img
             src={item.image}
             alt={item.label}
-            className="h-full w-full rounded-full object-cover object-center p-1"
+            className='h-full w-full rounded-full object-cover object-center p-1'
           />
         ) : (
-          <div className="flex items-center justify-center">{item.icon}</div>
+          <div className='flex items-center justify-center'>{item.icon}</div>
         )}
       </motion.div>
 
@@ -178,37 +178,37 @@ function DockItem({
                 y: -20,
                 scale: 1,
                 transition: {
-                  type: "spring",
+                  type: 'spring',
                   stiffness: 260,
                   damping: 10,
                 },
               }}
               exit={{ opacity: 0, y: -10, scale: 0.8 }}
               style={
-                variant === "tooltip"
+                variant === 'tooltip'
                   ? {
                       translateX: translateX,
                       rotate: rotate,
-                      whiteSpace: "nowrap",
+                      whiteSpace: 'nowrap',
                     }
-                  : { whiteSpace: "nowrap" }
+                  : { whiteSpace: 'nowrap' }
               }
               className={cn(
-                "absolute z-50 -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl",
-                variant === "tooltip" ? "-top-16" : "-top-12"
+                'absolute z-50 -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl',
+                variant === 'tooltip' ? '-top-16' : '-top-12',
               )}
             >
-              {variant === "tooltip" && (
+              {variant === 'tooltip' && (
                 <>
-                  <div className="absolute inset-x-10 -bottom-px z-30 h-px w-[20%] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
-                  <div className="absolute -bottom-px z-30 h-px w-[40%] bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
+                  <div className='absolute inset-x-10 -bottom-px z-30 h-px w-[20%] bg-linear-to-r from-transparent via-emerald-500 to-transparent' />
+                  <div className='absolute -bottom-px z-30 h-px w-[40%] bg-linear-to-r from-transparent via-sky-500 to-transparent' />
                 </>
               )}
-              <div className="relative z-30 text-base font-bold text-white">
+              <div className='relative z-30 text-base font-bold text-white'>
                 {item.label}
               </div>
               {item.description && (
-                <div className="text-xs text-white/70">{item.description}</div>
+                <div className='text-xs text-white/70'>{item.description}</div>
               )}
             </motion.div>
           )}
@@ -220,14 +220,14 @@ function DockItem({
 
 export default function MagicDock({
   items,
-  className = "",
+  className = '',
   spring = { mass: 0.1, stiffness: 150, damping: 12 },
   magnification = 70,
   distance = 150,
   panelHeight = 64,
   dockHeight = 256,
   baseItemSize = 50,
-  variant = "default",
+  variant = 'default',
 }: MagicDockProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -235,19 +235,27 @@ export default function MagicDock({
   const isHovered = useMotionValue(0);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(pointer: coarse)");
+    const mediaQuery = window.matchMedia('(pointer: coarse)');
 
     const handleChange = (e: MediaQueryListEvent) => {
       setIsTouchDevice(e.matches);
     };
 
-    setIsTouchDevice(mediaQuery.matches);
+    // initial value without triggering a render
+    if (mediaQuery.matches !== isTouchDevice) {
+      // we already have the correct value, no need to setState
+    }
 
-    mediaQuery.addEventListener("change", handleChange);
+    mediaQuery.addEventListener('change', handleChange);
 
     return () => {
-      mediaQuery.removeEventListener("change", handleChange);
+      mediaQuery.removeEventListener('change', handleChange);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
   }, []);
 
   const maxHeight = Math.max(dockHeight, magnification + magnification / 2 + 4);
@@ -256,19 +264,19 @@ export default function MagicDock({
 
   const getBgStyles = () => {
     switch (variant) {
-      case "gradient":
-        return "bg-black/85 backdrop-blur-md";
-      case "tooltip":
-        return "bg-black/70 backdrop-blur-lg";
+      case 'gradient':
+        return 'bg-black/85 backdrop-blur-md';
+      case 'tooltip':
+        return 'bg-black/70 backdrop-blur-lg';
       default:
-        return "bg-black/90";
+        return 'bg-black/90';
     }
   };
 
   return (
     <motion.div
-      style={{ height, scrollbarWidth: "none" }}
-      className="mx-2 flex max-w-full items-center"
+      style={{ height, scrollbarWidth: 'none' }}
+      className='mx-2 flex max-w-full items-center'
     >
       <motion.div
         onMouseMove={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -285,11 +293,11 @@ export default function MagicDock({
         }}
         className={cn(
           `absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-end w-fit gap-4 rounded-2xl border-neutral-700/50 border-2 pb-2 px-4 ${getBgStyles()}`,
-          className
+          className,
         )}
         style={{ height: panelHeight }}
-        role="toolbar"
-        aria-label="Application dock"
+        role='toolbar'
+        aria-label='Application dock'
       >
         {items.map((item) => (
           <DockItem
