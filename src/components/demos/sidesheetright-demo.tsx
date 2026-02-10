@@ -1,9 +1,9 @@
-"use client";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+'use client';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
-import { Plus, Minus } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Plus, Minus } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import {
   SideSheet,
   SideSheetTrigger,
@@ -13,7 +13,7 @@ import {
   SideSheetDescription,
   SideSheetFooter,
   SideSheetClose,
-} from "@/components/ui/side-sheet";
+} from '@/components/ui/side-sheet';
 
 export default function SideSheetRightDemo() {
   const [level, setLevel] = useState(4);
@@ -22,56 +22,56 @@ export default function SideSheetRightDemo() {
   const decreaseLevel = () => setLevel((prev) => Math.max(prev - 1, 0));
 
   return (
-    <SideSheet side="right" width="">
+    <SideSheet side='right' width=''>
       <SideSheetTrigger asChild>
         <Button>Open Right</Button>
       </SideSheetTrigger>
-      <SideSheetContent className="flex flex-col h-full overflow-hidden">
-        <SideSheetHeader className="flex-shrink-0 px-6 pt-6">
+      <SideSheetContent className='flex flex-col h-full overflow-hidden'>
+        <SideSheetHeader className='shrink-0 px-6 pt-6'>
           <SideSheetTitle>Drink Water</SideSheetTitle>
           <SideSheetDescription>
             Track and maintain your daily water intake.
           </SideSheetDescription>
         </SideSheetHeader>
-        <div className="flex items-center justify-center gap-6 flex-1 min-h-0 px-6">
+        <div className='flex items-center justify-center gap-6 flex-1 min-h-0 px-6'>
           <Button
-            variant="outline"
-            size="icon"
+            variant='outline'
+            size='icon'
             onClick={decreaseLevel}
-            className="w-12 h-12 flex-shrink-0"
+            className='w-12 h-12 shrink-0'
           >
-            <Minus className="h-6 w-6" />
+            <Minus className='h-6 w-6' />
           </Button>
-          <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-col-reverse border-2 rounded-b-lg overflow-hidden border-black dark:border-white w-24 h-32">
+          <div className='flex flex-col items-center justify-center'>
+            <div className='flex flex-col-reverse border-2 rounded-b-lg overflow-hidden border-black dark:border-white w-24 h-32'>
               {[...Array(8)].map((_, i) => {
                 const isFilled = i < level;
                 return (
                   <div
                     key={i}
                     className={cn(
-                      "flex-1 transition-colors duration-300",
-                      isFilled ? "bg-black dark:bg-white" : "bg-transparent"
+                      'flex-1 transition-colors duration-300',
+                      isFilled ? 'bg-black dark:bg-white' : 'bg-transparent',
                     )}
                   />
                 );
               })}
             </div>
-            <span className="mt-3 text-sm font-medium">
-              {level} Glass{level !== 1 ? "es" : ""} Drank
+            <span className='mt-3 text-sm font-medium'>
+              {level} Glass{level !== 1 ? 'es' : ''} Drank
             </span>
           </div>
           <Button
-            variant="outline"
-            size="icon"
+            variant='outline'
+            size='icon'
             onClick={increaseLevel}
-            className="w-12 h-12 flex-shrink-0"
+            className='w-12 h-12 shrink-0'
           >
-            <Plus className="h-6 w-6" />
+            <Plus className='h-6 w-6' />
           </Button>
         </div>
 
-        <SideSheetFooter className="flex-shrink-0 px-6 pb-6">
+        <SideSheetFooter className='shrink-0 px-6 pb-6'>
           <SideSheetClose asChild>
             <Button>Close</Button>
           </SideSheetClose>
