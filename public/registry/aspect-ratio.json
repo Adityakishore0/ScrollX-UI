@@ -5,13 +5,14 @@
   "title": "Aspect Ratio",
   "description": "A responsive container component that maintains a fixed aspect ratio, commonly used for media like images and videos.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "registryDependencies": [],
   "dependencies": ["@radix-ui/react-aspect-ratio"],
   "files": [
     {
       "type": "registry:component",
       "path": "components/ui/aspect-ratio.tsx",
       "target": "components/ui/aspect-ratio.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\";\nimport type { AspectRatioProps } from \"@radix-ui/react-aspect-ratio\";\n\nconst AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(\n  ({ ratio = 16 / 9, className, ...props }, ref) => (\n    <AspectRatioPrimitive.Root\n      ref={ref}\n      ratio={ratio}\n      className={className}\n      {...props}\n    />\n  )\n);\n\nAspectRatio.displayName = \"AspectRatio\";\n\nexport { AspectRatio };"
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\";\nimport type { AspectRatioProps } from \"@radix-ui/react-aspect-ratio\";\n\nconst AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(\n  ({ ratio = 16 / 9, className, ...props }, ref) => (\n    <AspectRatioPrimitive.Root\n      ref={ref}\n      ratio={ratio}\n      className={className}\n      {...props}\n    />\n  )\n);\n\nAspectRatio.displayName = \"AspectRatio\";\n\nexport { AspectRatio };\n"
     }
   ]
 }
