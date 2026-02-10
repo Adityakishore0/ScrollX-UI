@@ -1,8 +1,21 @@
-"use client";
-import React, { useState, useCallback, createContext, useContext, useRef, useEffect } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ChevronRight, Folder, FolderOpen, File, LucideIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+'use client';
+import React, {
+  useState,
+  useCallback,
+  createContext,
+  useContext,
+  useRef,
+  useEffect,
+} from 'react';
+import { motion, AnimatePresence, Variants, easeInOut } from 'motion/react';
+import {
+  ChevronRight,
+  Folder,
+  FolderOpen,
+  File,
+  LucideIcon,
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const animationVariants: Variants = {
   rootInitial: { opacity: 0, y: 20 },
@@ -10,7 +23,7 @@ const animationVariants: Variants = {
   itemInitial: { opacity: 0, x: -10 },
   itemAnimate: { opacity: 1, x: 0 },
   contentHidden: { opacity: 0, height: 0 },
-  contentVisible: { opacity: 1, height: "auto" },
+  contentVisible: { opacity: 1, height: 'auto' },
   chevronClosed: { rotate: 0 },
   chevronOpen: { rotate: 90 },
 };
@@ -18,7 +31,7 @@ const animationVariants: Variants = {
 const transitions = {
   root: { duration: 0.4 },
   item: { duration: 0.2 },
-  content: { duration: 0.3, ease: "easeInOut" },
+  content: { duration: 0.3, ease: easeInOut },
   chevron: { duration: 0.2 },
 };
 
@@ -53,7 +66,9 @@ const LevelContext = createContext<LevelContextType>({ level: 0 });
 const useExpansion = () => {
   const context = useContext(ExpansionContext);
   if (!context) {
-    throw new Error("FolderTree components must be used within FolderTree.Root");
+    throw new Error(
+      'FolderTree components must be used within FolderTree.Root',
+    );
   }
   return context;
 };
@@ -61,7 +76,9 @@ const useExpansion = () => {
 const useSelection = () => {
   const context = useContext(SelectionContext);
   if (!context) {
-    throw new Error("FolderTree components must be used within FolderTree.Root");
+    throw new Error(
+      'FolderTree components must be used within FolderTree.Root',
+    );
   }
   return context;
 };
@@ -69,7 +86,9 @@ const useSelection = () => {
 const useTree = () => {
   const context = useContext(TreeContext);
   if (!context) {
-    throw new Error("FolderTree components must be used within FolderTree.Root");
+    throw new Error(
+      'FolderTree components must be used within FolderTree.Root',
+    );
   }
   return context;
 };
@@ -80,14 +99,14 @@ const useLevel = () => {
 
 const getPaddingClass = (level: number): string => {
   const paddingMap: Record<number, string> = {
-    0: "pl-3",
-    1: "pl-8",
-    2: "pl-12",
-    3: "pl-16",
-    4: "pl-20",
-    5: "pl-24",
-    6: "pl-28",
-    7: "pl-32",
+    0: 'pl-3',
+    1: 'pl-8',
+    2: 'pl-12',
+    3: 'pl-16',
+    4: 'pl-20',
+    5: 'pl-24',
+    6: 'pl-28',
+    7: 'pl-32',
   };
   return paddingMap[level] || `pl-[${Math.min(level * 4 + 12, 48)}px]`;
 };
@@ -131,15 +150,15 @@ const Root: React.FC<RootProps> = ({
   defaultExpanded = [],
   defaultSelected,
   onSelect,
-  className = "",
+  className = '',
   children,
-  id = "folder-tree",
+  id = 'folder-tree',
 }) => {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(
-    new Set(defaultExpanded)
+    new Set(defaultExpanded),
   );
   const [selectedId, setSelectedId] = useState<string | null>(
-    defaultSelected || null
+    defaultSelected || null,
   );
   const [focusedId, setFocusedId] = useState<string | null>(null);
   const [keyboardMode, setKeyboardMode] = useState(false);
@@ -162,19 +181,25 @@ const Root: React.FC<RootProps> = ({
   }, []);
 
   const getVisibleItemIds = useCallback(() => {
-    const items = Array.from(treeRef.current?.querySelectorAll('[role="treeitem"]') || []);
+    const items = Array.from(
+      treeRef.current?.querySelectorAll('[role="treeitem"]') || [],
+    );
     return items
-      .filter(item => {
+      .filter((item) => {
         const element = item as HTMLElement;
         return element.offsetHeight > 0 && element.offsetWidth > 0;
       })
-      .map(item => item.getAttribute('data-id'))
+      .map((item) => item.getAttribute('data-id'))
       .filter(Boolean) as string[];
   }, []);
 
   const getAllItemIds = useCallback(() => {
-    const items = Array.from(treeRef.current?.querySelectorAll('[role="treeitem"]') || []);
-    return items.map(item => item.getAttribute('data-id')).filter(Boolean) as string[];
+    const items = Array.from(
+      treeRef.current?.querySelectorAll('[role="treeitem"]') || [],
+    );
+    return items
+      .map((item) => item.getAttribute('data-id'))
+      .filter(Boolean) as string[];
   }, []);
 
   const [treeHasFocus, setTreeHasFocus] = useState(false);
@@ -194,108 +219,130 @@ const Root: React.FC<RootProps> = ({
     }
   }, []);
 
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    const getVisibleItems = () => {
-      return Array.from(treeRef.current?.querySelectorAll('[role="treeitem"]') || [])
-        .filter(item => {
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      const getVisibleItems = () => {
+        return Array.from(
+          treeRef.current?.querySelectorAll('[role="treeitem"]') || [],
+        ).filter((item) => {
           const element = item as HTMLElement;
           return element.offsetHeight > 0 && element.offsetWidth > 0;
         });
-    };
+      };
 
-    if (e.key === "Tab") {
-      if (treeHasFocus && !focusedId) {
-        const visibleItemIds = getVisibleItemIds();
-        if (visibleItemIds.length > 0) {
-          setFocusedId(visibleItemIds[0]);
+      if (e.key === 'Tab') {
+        if (treeHasFocus && !focusedId) {
+          const visibleItemIds = getVisibleItemIds();
+          if (visibleItemIds.length > 0) {
+            setFocusedId(visibleItemIds[0]);
+            e.preventDefault();
+            return;
+          }
+        }
+
+        if (focusedId) {
+          const visibleItems = getVisibleItems();
+          const currentIndex = visibleItems.findIndex(
+            (item) => item.getAttribute('data-id') === focusedId,
+          );
+
+          if (e.shiftKey) {
+            if (currentIndex === 0) {
+              setFocusedId(null);
+              setTreeHasFocus(false);
+              setKeyboardMode(false);
+              return;
+            }
+            const nextIndex = Math.max(0, currentIndex - 1);
+            const nextItem = visibleItems[nextIndex] as HTMLElement;
+            const nextId = nextItem?.getAttribute('data-id');
+            if (nextId) {
+              setFocusedId(nextId);
+              e.preventDefault();
+            }
+          } else {
+            if (currentIndex === visibleItems.length - 1) {
+              setFocusedId(null);
+              setTreeHasFocus(false);
+              setKeyboardMode(false);
+              return;
+            }
+            const nextIndex = Math.min(
+              visibleItems.length - 1,
+              currentIndex + 1,
+            );
+            const nextItem = visibleItems[nextIndex] as HTMLElement;
+            const nextId = nextItem?.getAttribute('data-id');
+            if (nextId) {
+              setFocusedId(nextId);
+              e.preventDefault();
+            }
+          }
+        }
+        return;
+      }
+
+      if (!keyboardMode || !focusedId) return;
+
+      const visibleItems = getVisibleItems();
+      const currentIndex = visibleItems.findIndex(
+        (item) => item.getAttribute('data-id') === focusedId,
+      );
+
+      switch (e.key) {
+        case 'ArrowDown':
           e.preventDefault();
-          return;
-        }
+          if (currentIndex < visibleItems.length - 1) {
+            const nextItem = visibleItems[currentIndex + 1] as HTMLElement;
+            const nextId = nextItem.getAttribute('data-id');
+            if (nextId) setFocusedId(nextId);
+          }
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          if (currentIndex > 0) {
+            const prevItem = visibleItems[currentIndex - 1] as HTMLElement;
+            const prevId = prevItem.getAttribute('data-id');
+            if (prevId) setFocusedId(prevId);
+          }
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          if (!expandedIds.has(focusedId)) {
+            toggleExpanded(focusedId);
+          }
+          break;
+        case 'ArrowLeft':
+          e.preventDefault();
+          if (expandedIds.has(focusedId)) {
+            toggleExpanded(focusedId);
+          }
+          break;
+        case 'Enter':
+        case ' ':
+          e.preventDefault();
+          setSelected(focusedId);
+          if (onSelect) {
+            const currentItem = visibleItems[currentIndex] as HTMLElement;
+            const label =
+              currentItem.querySelector('span:nth-of-type(2)')?.textContent ||
+              '';
+            onSelect(focusedId, label);
+          }
+          break;
       }
-
-      if (focusedId) {
-        const visibleItems = getVisibleItems();
-        const currentIndex = visibleItems.findIndex(item => item.getAttribute('data-id') === focusedId);
-
-        if (e.shiftKey) {
-          if (currentIndex === 0) {
-            setFocusedId(null);
-            setTreeHasFocus(false);
-            setKeyboardMode(false);
-            return;
-          }
-          const nextIndex = Math.max(0, currentIndex - 1);
-          const nextItem = visibleItems[nextIndex] as HTMLElement;
-          const nextId = nextItem?.getAttribute('data-id');
-          if (nextId) {
-            setFocusedId(nextId);
-            e.preventDefault();
-          }
-        } else {
-          if (currentIndex === visibleItems.length - 1) {
-            setFocusedId(null);
-            setTreeHasFocus(false);
-            setKeyboardMode(false);
-            return;
-          }
-          const nextIndex = Math.min(visibleItems.length - 1, currentIndex + 1);
-          const nextItem = visibleItems[nextIndex] as HTMLElement;
-          const nextId = nextItem?.getAttribute('data-id');
-          if (nextId) {
-            setFocusedId(nextId);
-            e.preventDefault();
-          }
-        }
-      }
-      return;
-    }
-
-    if (!keyboardMode || !focusedId) return;
-
-    const visibleItems = getVisibleItems();
-    const currentIndex = visibleItems.findIndex(item => item.getAttribute('data-id') === focusedId);
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        if (currentIndex < visibleItems.length - 1) {
-          const nextItem = visibleItems[currentIndex + 1] as HTMLElement;
-          const nextId = nextItem.getAttribute('data-id');
-          if (nextId) setFocusedId(nextId);
-        }
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        if (currentIndex > 0) {
-          const prevItem = visibleItems[currentIndex - 1] as HTMLElement;
-          const prevId = prevItem.getAttribute('data-id');
-          if (prevId) setFocusedId(prevId);
-        }
-        break;
-      case 'ArrowRight':
-        e.preventDefault();
-        if (!expandedIds.has(focusedId)) {
-          toggleExpanded(focusedId);
-        }
-        break;
-      case 'ArrowLeft':
-        e.preventDefault();
-        if (expandedIds.has(focusedId)) {
-          toggleExpanded(focusedId);
-        }
-        break;
-      case 'Enter':
-      case ' ':
-        e.preventDefault();
-        setSelected(focusedId);
-        if (onSelect) {
-          const currentItem = visibleItems[currentIndex] as HTMLElement;
-          const label = currentItem.querySelector('span:nth-of-type(2)')?.textContent || '';
-          onSelect(focusedId, label);
-        }
-        break;
-    }
-  }, [focusedId, keyboardMode, expandedIds, toggleExpanded, setSelected, onSelect, getVisibleItemIds, treeHasFocus]);
+    },
+    [
+      focusedId,
+      keyboardMode,
+      expandedIds,
+      toggleExpanded,
+      setSelected,
+      onSelect,
+      getVisibleItemIds,
+      treeHasFocus,
+    ],
+  );
 
   useEffect(() => {
     const handleMouseDown = () => setKeyboardMode(false);
@@ -332,21 +379,21 @@ const Root: React.FC<RootProps> = ({
             <motion.div
               ref={treeRef}
               variants={animationVariants}
-              initial="rootInitial"
-              animate="rootAnimate"
+              initial='rootInitial'
+              animate='rootAnimate'
               transition={transitions.root}
               className={cn(
-                "bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden",
-                className
+                'bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden',
+                className,
               )}
-              role="tree"
+              role='tree'
               aria-labelledby={`${id}-label`}
               tabIndex={0}
               onKeyDown={handleKeyDown}
               onFocus={handleTreeFocus}
               onBlur={handleTreeBlur}
             >
-              <div className="w-full overflow-y-auto bg-background text-sm">
+              <div className='w-full overflow-y-auto bg-background text-sm'>
                 {children}
               </div>
             </motion.div>
@@ -371,7 +418,7 @@ const Item: React.FC<ItemProps> = ({
   badge,
   modified,
   untracked,
-  className = "",
+  className = '',
   children,
 }) => {
   const expansionContext = useExpansion();
@@ -411,7 +458,8 @@ const Item: React.FC<ItemProps> = ({
     }
   }, [isFocused]);
 
-  const IconComponent = icon || (hasChildren ? (isExpanded ? FolderOpen : Folder) : File);
+  const IconComponent =
+    icon || (hasChildren ? (isExpanded ? FolderOpen : Folder) : File);
 
   const itemContextValue = {
     itemId: id,
@@ -420,7 +468,11 @@ const Item: React.FC<ItemProps> = ({
     toggleExpanded,
   };
 
-  const renderBadge = (badgeData: boolean | CustomBadge | undefined, defaultContent: string, defaultClassName: string) => {
+  const renderBadge = (
+    badgeData: boolean | CustomBadge | undefined,
+    defaultContent: string,
+    defaultClassName: string,
+  ) => {
     if (!badgeData) return null;
 
     if (typeof badgeData === 'boolean') {
@@ -436,7 +488,10 @@ const Item: React.FC<ItemProps> = ({
 
     return (
       <span
-        className={cn("ml-auto text-xs px-2 py-0.5 rounded-full", badgeData.className)}
+        className={cn(
+          'ml-auto text-xs px-2 py-0.5 rounded-full',
+          badgeData.className,
+        )}
         aria-label={badgeData.ariaLabel || `Custom badge: ${badgeData.content}`}
       >
         {badgeData.content}
@@ -451,22 +506,22 @@ const Item: React.FC<ItemProps> = ({
           <motion.div
             ref={itemRef}
             variants={animationVariants}
-            initial="itemInitial"
-            animate="itemAnimate"
+            initial='itemInitial'
+            animate='itemAnimate'
             transition={{ ...transitions.item, delay: level * 0.05 }}
-            data-selected={isSelected ? "true" : "false"}
+            data-selected={isSelected ? 'true' : 'false'}
             data-id={id}
             className={cn(
-              "flex items-center gap-2 py-1.5 text-sm transition-colors cursor-pointer select-none",
+              'flex items-center gap-2 py-1.5 text-sm transition-colors cursor-pointer select-none',
               getPaddingClass(level),
               className,
               isSelected
-                ? "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 border-r-2 border-blue-600"
-                : "",
-              !isSelected && "hover:bg-gray-100 dark:hover:bg-slate-700/50",
+                ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 border-r-2 border-blue-600'
+                : '',
+              !isSelected && 'hover:bg-gray-100 dark:hover:bg-slate-700/50',
               keyboardMode && isFocused
-                ? "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset"
-                : "focus:outline-none"
+                ? 'focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-inset'
+                : 'focus:outline-hidden',
             )}
             onClick={(e: React.MouseEvent) => {
               handleItemClick();
@@ -474,7 +529,7 @@ const Item: React.FC<ItemProps> = ({
               toggleExpanded();
             }}
             onFocus={handleFocus}
-            role="treeitem"
+            role='treeitem'
             tabIndex={isFocused ? 0 : -1}
             aria-expanded={hasChildren ? isExpanded : undefined}
             aria-selected={isSelected}
@@ -483,31 +538,34 @@ const Item: React.FC<ItemProps> = ({
           >
             {hasChildren && (
               <motion.span
-                className="flex-shrink-0 cursor-pointer"
+                className='shrink-0 cursor-pointer'
                 variants={animationVariants}
-                animate={isExpanded ? "chevronOpen" : "chevronClosed"}
+                animate={isExpanded ? 'chevronOpen' : 'chevronClosed'}
                 transition={transitions.chevron}
-                aria-hidden="true"
+                aria-hidden='true'
               >
-                <ChevronRight size={14} className="text-gray-500 dark:text-gray-400" />
+                <ChevronRight
+                  size={14}
+                  className='text-gray-500 dark:text-gray-400'
+                />
               </motion.span>
             )}
-            {!hasChildren && <span className="w-3 mr-2" aria-hidden="true" />}
+            {!hasChildren && <span className='w-3 mr-2' aria-hidden='true' />}
             {IconComponent && (
               <IconComponent
                 size={16}
-                data-selected={isSelected ? "true" : "false"}
-                data-child={hasChildren ? "true" : "false"}
+                data-selected={isSelected ? 'true' : 'false'}
+                data-child={hasChildren ? 'true' : 'false'}
                 className={cn(
-                  "mr-1 flex-shrink-0 text-gray-500 data-[child=true]:text-blue-500 data-[selected=true]:text-blue-600 dark:data-[selected=true]:text-blue-400"
+                  'mr-1 shrink-0 text-gray-500 data-[child=true]:text-blue-500 data-[selected=true]:text-blue-600 dark:data-[selected=true]:text-blue-400',
                 )}
-                aria-hidden="true"
+                aria-hidden='true'
               />
             )}
-            <span className="flex-1">{label}</span>
+            <span className='flex-1'>{label}</span>
             {badge && (
               <span
-                className="ml-auto text-xs bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded-full"
+                className='ml-auto text-xs bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded-full'
                 aria-label={`Badge: ${badge}`}
               >
                 {badge}
@@ -515,13 +573,13 @@ const Item: React.FC<ItemProps> = ({
             )}
             {renderBadge(
               modified,
-              "M",
-              "ml-auto text-xs bg-yellow-200 dark:bg-yellow-700 text-yellow-800 dark:text-yellow-200 px-2 py-0.5 rounded-full"
+              'M',
+              'ml-auto text-xs bg-yellow-200 dark:bg-yellow-700 text-yellow-800 dark:text-yellow-200 px-2 py-0.5 rounded-full',
             )}
             {renderBadge(
               untracked,
-              "U",
-              "ml-auto text-xs bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200 px-2 py-0.5 rounded-full"
+              'U',
+              'ml-auto text-xs bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200 px-2 py-0.5 rounded-full',
             )}
           </motion.div>
           {children}
@@ -531,7 +589,7 @@ const Item: React.FC<ItemProps> = ({
   );
 };
 
-const Trigger: React.FC<TriggerProps> = ({ className = "" }) => {
+const Trigger: React.FC<TriggerProps> = ({ className = '' }) => {
   const itemContext = useContext(ItemContext);
   if (!itemContext || !itemContext.hasChildren) {
     return null;
@@ -539,24 +597,24 @@ const Trigger: React.FC<TriggerProps> = ({ className = "" }) => {
 
   return (
     <motion.span
-      className={cn("mr-2 flex-shrink-0 cursor-pointer", className)}
+      className={cn('mr-2 shrink-0 cursor-pointer', className)}
       variants={animationVariants}
-      animate={itemContext.isExpanded ? "chevronOpen" : "chevronClosed"}
+      animate={itemContext.isExpanded ? 'chevronOpen' : 'chevronClosed'}
       transition={transitions.chevron}
       onClick={(e: React.MouseEvent) => {
         e.stopPropagation();
         itemContext.toggleExpanded();
       }}
-      role="button"
-      aria-label={itemContext.isExpanded ? "Collapse" : "Expand"}
+      role='button'
+      aria-label={itemContext.isExpanded ? 'Collapse' : 'Expand'}
       tabIndex={-1}
     >
-      <ChevronRight size={14} className="text-gray-500 dark:text-gray-400" />
+      <ChevronRight size={14} className='text-gray-500 dark:text-gray-400' />
     </motion.span>
   );
 };
 
-const Content: React.FC<ContentProps> = ({ children, className = "" }) => {
+const Content: React.FC<ContentProps> = ({ children, className = '' }) => {
   const itemContext = useContext(ItemContext);
   if (!itemContext) {
     return <>{children}</>;
@@ -569,13 +627,13 @@ const Content: React.FC<ContentProps> = ({ children, className = "" }) => {
       {hasContent && itemContext.isExpanded && (
         <motion.div
           variants={animationVariants}
-          initial="contentHidden"
-          animate="contentVisible"
-          exit="contentHidden"
+          initial='contentHidden'
+          animate='contentVisible'
+          exit='contentHidden'
           transition={transitions.content}
-          style={{ overflow: "hidden" }}
+          style={{ overflow: 'hidden' }}
           className={className}
-          role="group"
+          role='group'
         >
           {children}
         </motion.div>
