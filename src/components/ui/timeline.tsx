@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, {
   useState,
   useCallback,
@@ -6,12 +6,12 @@ import React, {
   useRef,
   createContext,
   useContext,
-} from "react";
-import { motion, useMotionValue, animate, useInView } from "framer-motion";
-import { cn } from "@/lib/utils";
+} from 'react';
+import { motion, useMotionValue, animate, useInView } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 const TimelineContext = createContext<{
-  textRef: React.RefObject<HTMLDivElement>;
+  textRef: React.RefObject<HTMLDivElement | null>;
   leftPos: number;
   rightPos: number;
   textHeight: number;
@@ -23,7 +23,7 @@ const TimelineContext = createContext<{
 const useTimelineContext = () => {
   const context = useContext(TimelineContext);
   if (!context)
-    throw new Error("Timeline components must be used within a Timeline");
+    throw new Error('Timeline components must be used within a Timeline');
   return context;
 };
 
@@ -75,9 +75,9 @@ const Timeline: React.FC<TimelineProps> = ({
       rightMotion.set(fullRight);
     };
     measureText();
-    window.addEventListener("resize", measureText);
-    return () => window.removeEventListener("resize", measureText);
-  }, [children, rightMotion]);
+    window.addEventListener('resize', measureText);
+    return () => window.removeEventListener('resize', measureText);
+  }, [children, rightMotion, handleWidth]);
 
   useEffect(() => {
     if (!textWidth) return;
@@ -90,10 +90,10 @@ const Timeline: React.FC<TimelineProps> = ({
     } else {
       animate(rightMotion, leftPos + minWidth, {
         duration: 0.6,
-        ease: "easeInOut",
+        ease: 'easeInOut',
       });
     }
-  }, [isInView, textWidth, leftPos, minWidth, rightMotion]);
+  }, [isInView, textWidth, leftPos, minWidth, rightMotion, handleWidth]);
 
   const handleLeftStart = useCallback(
     (clientX: number) => {
@@ -108,21 +108,21 @@ const Timeline: React.FC<TimelineProps> = ({
       const mouseMove = (e: MouseEvent) => handleMove(e.clientX);
       const touchMove = (e: TouchEvent) => handleMove(e.touches[0].clientX);
       const end = () => {
-        document.removeEventListener("mousemove", mouseMove);
-        document.removeEventListener("mouseup", end);
-        document.removeEventListener("touchmove", touchMove);
-        document.removeEventListener("touchend", end);
-        document.body.style.cursor = "";
-        document.body.style.userSelect = "";
+        document.removeEventListener('mousemove', mouseMove);
+        document.removeEventListener('mouseup', end);
+        document.removeEventListener('touchmove', touchMove);
+        document.removeEventListener('touchend', end);
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
       };
-      document.addEventListener("mousemove", mouseMove);
-      document.addEventListener("mouseup", end);
-      document.addEventListener("touchmove", touchMove);
-      document.addEventListener("touchend", end);
-      document.body.style.cursor = "ew-resize";
-      document.body.style.userSelect = "none";
+      document.addEventListener('mousemove', mouseMove);
+      document.addEventListener('mouseup', end);
+      document.addEventListener('touchmove', touchMove);
+      document.addEventListener('touchend', end);
+      document.body.style.cursor = 'ew-resize';
+      document.body.style.userSelect = 'none';
     },
-    [leftPos, rightPos, minWidth, rightMotion]
+    [leftPos, rightPos, minWidth, rightMotion],
   );
 
   const handleRightStart = useCallback(
@@ -140,21 +140,21 @@ const Timeline: React.FC<TimelineProps> = ({
       const mouseMove = (e: MouseEvent) => handleMove(e.clientX);
       const touchMove = (e: TouchEvent) => handleMove(e.touches[0].clientX);
       const end = () => {
-        document.removeEventListener("mousemove", mouseMove);
-        document.removeEventListener("mouseup", end);
-        document.removeEventListener("touchmove", touchMove);
-        document.removeEventListener("touchend", end);
-        document.body.style.cursor = "";
-        document.body.style.userSelect = "";
+        document.removeEventListener('mousemove', mouseMove);
+        document.removeEventListener('mouseup', end);
+        document.removeEventListener('touchmove', touchMove);
+        document.removeEventListener('touchend', end);
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
       };
-      document.addEventListener("mousemove", mouseMove);
-      document.addEventListener("mouseup", end);
-      document.addEventListener("touchmove", touchMove);
-      document.addEventListener("touchend", end);
-      document.body.style.cursor = "ew-resize";
-      document.body.style.userSelect = "none";
+      document.addEventListener('mousemove', mouseMove);
+      document.addEventListener('mouseup', end);
+      document.addEventListener('touchmove', touchMove);
+      document.addEventListener('touchend', end);
+      document.body.style.cursor = 'ew-resize';
+      document.body.style.userSelect = 'none';
     },
-    [leftPos, rightPos, minWidth, textWidth, rightMotion]
+    [leftPos, rightPos, minWidth, textWidth, rightMotion, handleWidth],
   );
 
   const width = Math.max(0, rightPos - leftPos);
@@ -171,9 +171,9 @@ const Timeline: React.FC<TimelineProps> = ({
         handleRightStart,
       }}
     >
-      <div ref={containerRef} className={cn("inline-block", className)}>
+      <div ref={containerRef} className={cn('inline-block', className)}>
         <div
-          className="relative"
+          className='relative'
           style={{
             transform: `rotate(${rotation}deg)`,
             width: `${textWidth + handleWidth * 2}px`,
@@ -182,8 +182,8 @@ const Timeline: React.FC<TimelineProps> = ({
         >
           <div
             className={cn(
-              "absolute top-0 rounded-2xl border border-yellow-500 bg-background overflow-hidden",
-              containerClassName
+              'absolute top-0 rounded-2xl border border-yellow-500 bg-background overflow-hidden',
+              containerClassName,
             )}
             style={{
               left: `${leftPos}px`,
@@ -193,8 +193,8 @@ const Timeline: React.FC<TimelineProps> = ({
           >
             <motion.div
               className={cn(
-                "absolute left-0 top-0 w-7 border border-yellow-500 rounded-full bg-background flex items-center justify-center cursor-ew-resize z-20 select-none",
-                handleClassName
+                'absolute left-0 top-0 w-7 border border-yellow-500 rounded-full bg-background flex items-center justify-center cursor-ew-resize z-20 select-none',
+                handleClassName,
               )}
               onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
                 handleLeftStart(e.clientX)
@@ -208,15 +208,15 @@ const Timeline: React.FC<TimelineProps> = ({
             >
               <div
                 className={cn(
-                  "w-2 h-8 rounded-full bg-yellow-500 pointer-events-none",
-                  handleIndicatorClassName
+                  'w-2 h-8 rounded-full bg-yellow-500 pointer-events-none',
+                  handleIndicatorClassName,
                 )}
               />
             </motion.div>
             <motion.div
               className={cn(
-                "absolute right-0 top-0 w-7 border border-yellow-500 rounded-full bg-background flex items-center justify-center cursor-ew-resize z-20 select-none",
-                handleClassName
+                'absolute right-0 top-0 w-7 border border-yellow-500 rounded-full bg-background flex items-center justify-center cursor-ew-resize z-20 select-none',
+                handleClassName,
               )}
               onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
                 handleRightStart(e.clientX)
@@ -230,8 +230,8 @@ const Timeline: React.FC<TimelineProps> = ({
             >
               <div
                 className={cn(
-                  "w-2 h-8 rounded-full bg-yellow-500 pointer-events-none",
-                  handleIndicatorClassName
+                  'w-2 h-8 rounded-full bg-yellow-500 pointer-events-none',
+                  handleIndicatorClassName,
                 )}
               />
             </motion.div>
@@ -254,8 +254,8 @@ const TimelineText: React.FC<TimelineTextProps> = ({ children, className }) => {
     <div
       ref={textRef}
       className={cn(
-        "absolute left-7 flex items-center text-foreground font-bold text-4xl py-2 whitespace-nowrap pointer-events-none",
-        className
+        'absolute left-7 flex items-center text-foreground font-bold text-4xl py-2 whitespace-nowrap pointer-events-none',
+        className,
       )}
     >
       {children}
