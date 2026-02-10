@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from "react";
+'use client';
+
+import React, { useEffect, useRef } from 'react';
 
 interface Particle {
   x: number;
@@ -16,9 +18,9 @@ interface VenomBeamProps {
   className?: string;
 }
 
-const VenomBeam: React.FC<VenomBeamProps> = ({ children, className = "" }) => {
+const VenomBeam: React.FC<VenomBeamProps> = ({ children, className = '' }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number>(0);
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
   const isDarkRef = useRef(false);
@@ -27,7 +29,7 @@ const VenomBeam: React.FC<VenomBeamProps> = ({ children, className = "" }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const resizeCanvas = () => {
@@ -35,13 +37,13 @@ const VenomBeam: React.FC<VenomBeamProps> = ({ children, className = "" }) => {
       canvas.width = rect.width;
       canvas.height = rect.height;
 
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext('2d');
       if (ctx) {
-        isDarkRef.current = document.documentElement.classList.contains("dark");
+        isDarkRef.current = document.documentElement.classList.contains('dark');
         if (isDarkRef.current) {
-          ctx.fillStyle = "#000000";
+          ctx.fillStyle = '#000000';
         } else {
-          ctx.fillStyle = "#f8f8ff";
+          ctx.fillStyle = '#f8f8ff';
         }
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
@@ -58,7 +60,7 @@ const VenomBeam: React.FC<VenomBeamProps> = ({ children, className = "" }) => {
       }, 100);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     const initParticles = () => {
       particlesRef.current = [];
@@ -85,19 +87,19 @@ const VenomBeam: React.FC<VenomBeamProps> = ({ children, className = "" }) => {
       };
     };
 
-    canvas.addEventListener("mousemove", handleMouseMove);
+    canvas.addEventListener('mousemove', handleMouseMove);
 
     const animate = () => {
-      isDarkRef.current = document.documentElement.classList.contains("dark");
+      isDarkRef.current = document.documentElement.classList.contains('dark');
 
       if (isDarkRef.current) {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       } else {
-        ctx.fillStyle = "rgba(248, 248, 255, 0.1)";
+        ctx.fillStyle = 'rgba(248, 248, 255, 0.1)';
       }
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      particlesRef.current.forEach((particle, index) => {
+      particlesRef.current.forEach((particle) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
         particle.life++;
@@ -140,7 +142,7 @@ const VenomBeam: React.FC<VenomBeamProps> = ({ children, className = "" }) => {
           0,
           particle.x,
           particle.y,
-          particle.size * 2
+          particle.size * 2,
         );
 
         if (isDarkRef.current) {
@@ -186,8 +188,8 @@ const VenomBeam: React.FC<VenomBeamProps> = ({ children, className = "" }) => {
     animate();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-      canvas.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('resize', handleResize);
+      canvas.removeEventListener('mousemove', handleMouseMove);
       if (resizeTimeout) clearTimeout(resizeTimeout);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
@@ -196,20 +198,20 @@ const VenomBeam: React.FC<VenomBeamProps> = ({ children, className = "" }) => {
   }, []);
 
   return (
-    <div className="relative  h-[24rem] md:h-screen w-full overflow-hidden bg-white dark:bg-black">
+    <div className='relative  h-96 md:h-screen w-full overflow-hidden bg-white dark:bg-black'>
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
+        className='absolute inset-0 w-full h-full bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900'
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-white/60 dark:via-black/20 dark:to-black/60" />
+      <div className='absolute inset-0 bg-linear-to-b from-transparent via-white/20 to-white/60 dark:via-black/20 dark:to-black/60' />
 
       <div className={`absolute inset-0 ${className}`}>{children}</div>
 
-      <div className="absolute top-20 left-10 w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse opacity-60" />
-      <div className="absolute top-40 right-20 w-1 h-1 bg-purple-600 dark:bg-purple-400 rounded-full animate-pulse opacity-40" />
-      <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-blue-500 dark:bg-blue-300 rounded-full animate-pulse opacity-50" />
-      <div className="absolute bottom-20 right-1/3 w-1 h-1 bg-purple-500 dark:bg-purple-300 rounded-full animate-pulse opacity-30" />
+      <div className='absolute top-20 left-10 w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse opacity-60' />
+      <div className='absolute top-40 right-20 w-1 h-1 bg-purple-600 dark:bg-purple-400 rounded-full animate-pulse opacity-40' />
+      <div className='absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-blue-500 dark:bg-blue-300 rounded-full animate-pulse opacity-50' />
+      <div className='absolute bottom-20 right-1/3 w-1 h-1 bg-purple-500 dark:bg-purple-300 rounded-full animate-pulse opacity-30' />
     </div>
   );
 };
