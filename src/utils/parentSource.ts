@@ -1,23 +1,23 @@
+import fs from 'fs';
+import path from 'path';
 import { parentComponents } from '@/app/registry/parents';
-
-const sources: Record<string, () => Promise<string>> = parentComponents.reduce(
-  (acc, name) => {
-    acc[name] = async () =>
-      (await import(`@/components/ui/${name}.tsx?raw`)).default;
-    return acc;
-  },
-  {} as Record<string, () => Promise<string>>,
-);
 
 export async function getParentSource(name: string): Promise<string> {
   try {
-    if (sources[name]) {
-      const mod = await sources[name]();
-      return mod;
-    } else {
+    if (!(parentComponents as readonly string[]).includes(name)) {
       return `// Source for ${name} not found`;
     }
+
+    const filePath = path.join(
+      process.cwd(),
+      'src/components/ui',
+      `${name}.tsx`,
+    );
+
+    const source = fs.readFileSync(filePath, 'utf-8');
+    return source;
   } catch (error) {
-    return `// Error loading source for ${name}: ${(error as Error).message}`;
+    console.error(`Error loading source for ${name}:`, error);
+    return `// Error loading source for ${name}`;
   }
 }
