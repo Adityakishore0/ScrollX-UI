@@ -42,11 +42,14 @@ description: Smoothly scrolling, animated testimonials for modern developer webs
 `globals.css`
 
 ```css
-/* ---------------- THEME ---------------- */
-@theme {
-  /* animations */
-  --animation-scroll-up: scroll-up-smooth var(--duration) linear infinite;
-  --animation-scroll-down: scroll-down-smooth var(--duration) linear infinite;
+@layer utilities {
+  .animate-scroll-up {
+    animation: scroll-up-smooth linear infinite;
+  }
+
+  .animate-scroll-down {
+    animation: scroll-down-smooth linear infinite;
+  }
 }
 
 /* ---------------- KEYFRAMES ---------------- */

@@ -53,11 +53,28 @@ export function cn(...inputs: ClassValue[]) {
 `globals.css`
 
 ```css
-/* ---------------- THEME ---------------- */
-@theme {
-  /* animations */
-  --animation-canopy-horizontal: canopy-x var(--duration) infinite linear;
-  --animation-canopy-vertical: canopy-y var(--duration) linear infinite;
+@layer utilities {
+  .animate-canopy-horizontal {
+    animation: canopy-x var(--duration) infinite linear;
+  }
+
+  .animate-canopy-vertical {
+    animation: canopy-y var(--duration) linear infinite;
+  }
+
+  /* Reverse direction support */
+  .direction-reverse.animate-canopy-horizontal {
+    animation-direction: reverse;
+  }
+
+  .direction-reverse.animate-canopy-vertical {
+    animation-direction: reverse;
+  }
+
+  /* Pause on hover support */
+  .group:hover .group-hover\:paused {
+    animation-play-state: paused;
+  }
 }
 
 /* ---------------- KEYFRAMES ---------------- */
