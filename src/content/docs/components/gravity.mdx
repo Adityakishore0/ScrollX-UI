@@ -39,11 +39,57 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
-</Steps>
-  </TabsContent>
-</Tabs>
+<Step>Update your configuration</Step>
 
-<Step>Update tailwind.config.ts</Step>
+<Tabs defaultValue="tailwind-v4" className="w-full">
+  <TabsList>
+    <TabsTrigger value="tailwind-v4">Tailwind v4</TabsTrigger>
+    <TabsTrigger value="tailwind-v3">Tailwind v3</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="tailwind-v4">
+
+<Step>Add these animations to your `globals.css:`</Step>
+
+`globals.css`
+
+```css
+@layer utilities {
+  .animate-rockets-effect {
+    animation: rockets-path var(--duration) ease-in-out infinite;
+  }
+}
+
+/* ---------------- KEYFRAMES ---------------- */
+@keyframes rockets-path {
+  0% {
+    transform: translate(0, 0) rotate(var(--angle));
+    opacity: 1;
+  }
+
+  40% {
+    transform: translate(var(--x), -300px) rotate(var(--angle));
+    opacity: 1;
+  }
+
+  60% {
+    transform: translate(var(--x), -350px) rotate(var(--angle));
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(var(--x), 0) rotate(calc(var(--angle) + 180deg));
+    opacity: 0;
+  }
+}
+```
+
+  </TabsContent>
+  <TabsContent value="tailwind-v3">
+
+<Step>Add these animations to your `tailwind.config.ts:`</Step>
+
+`tailwind.config.ts`
 
 ```tsx
 /** @type {import('tailwindcss').Config} */
@@ -78,6 +124,13 @@ module.exports = {
   },
 };
 ```
+
+  </TabsContent>
+</Tabs>
+
+</Steps>
+  </TabsContent>
+</Tabs>
 
 ## Usage
 

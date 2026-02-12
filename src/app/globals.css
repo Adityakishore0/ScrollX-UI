@@ -347,15 +347,45 @@ code:not(pre code) {
   color: hsl(var(--foreground));
 }
 
+/* ---------------- THEME ---------------- */
+@theme {
+  --duration-announcement: 1.3s;
+  --animation-announcement: announcement var(--duration-announcement) infinite
+    ease-in-out;
+}
+
+/* ---------------- KEYFRAMES ---------------- */
+@keyframes announcement {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    filter: blur(2px);
+  }
+}
+
+/* ---------------- DOT ---------------- */
+.dot-announcement {
+  @apply rounded-full bg-blue-500 w-2 h-2;
+  animation: var(--animation-announcement);
+}
+
+/* ============================================================================
+   COMPONENT ANIMATIONS
+   ============================================================================ */
+
 /* ---------------- Accordion ---------------- */
 @theme {
-  /* animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-shake-smooth: shake-smooth 0.5s ease-in-out;
 }
 
-/* ---------------- KEYFRAMES ---------------- */
 @keyframes accordion-down {
   from {
     height: 0;
@@ -410,15 +440,99 @@ code:not(pre code) {
   }
 }
 
-/* ---------------- Animated Testimonials ---------------- */
-
-@theme {
-  /* animations */
-  --animation-canopy-horizontal: canopy-x var(--duration) infinite linear;
-  --animation-canopy-vertical: canopy-y var(--duration) linear infinite;
+/* ---------------- Badge Shine ---------------- */
+@layer utilities {
+  .animate-shine {
+    animation: shine 5s linear infinite;
+  }
 }
 
-/* ---------------- KEYFRAMES ---------------- */
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+/* ---------------- Toast Animations ---------------- */
+@theme {
+  --animate-slide-in-right: slide-in-right 0.3s ease-out;
+  --animate-slide-in-left: slide-in-left 0.3s ease-out;
+  --animate-slide-out-right: slide-out-right 0.3s ease-in;
+  --animate-slide-out-left: slide-out-left 0.3s ease-in;
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-right {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-left {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* ---------------- Animated Testimonials Canopy ---------------- */
+@layer utilities {
+  .animate-canopy-horizontal {
+    animation: canopy-x var(--duration) infinite linear;
+  }
+
+  .animate-canopy-vertical {
+    animation: canopy-y var(--duration) linear infinite;
+  }
+
+  /* Reverse direction support */
+  .direction-reverse.animate-canopy-horizontal {
+    animation-direction: reverse;
+  }
+
+  .direction-reverse.animate-canopy-vertical {
+    animation-direction: reverse;
+  }
+
+  /* Pause on hover support */
+  .group:hover .group-hover\:paused {
+    animation-play-state: paused;
+  }
+}
+
 @keyframes canopy-x {
   from {
     transform: translateX(0);
@@ -437,29 +551,17 @@ code:not(pre code) {
   }
 }
 
-/* ---------------- Status ---------------- */
-@theme {
-  --animation-shine: shine 5s linear infinite;
-}
-
-/* ---------------- KEYFRAMES ---------------- */
-@keyframes shine {
-  0% {
-    background-position: 100%;
+/* ---------------- Kinetic Testimonials Scroll ---------------- */
+@layer utilities {
+  .animate-scroll-up {
+    animation: scroll-up-smooth linear infinite;
   }
-  100% {
-    background-position: -100%;
+
+  .animate-scroll-down {
+    animation: scroll-down-smooth linear infinite;
   }
 }
 
-/* ---------------- THEME ---------------- */
-@theme {
-  /* animations */
-  --animation-scroll-up: scroll-up-smooth var(--duration) linear infinite;
-  --animation-scroll-down: scroll-down-smooth var(--duration) linear infinite;
-}
-
-/* ---------------- KEYFRAMES ---------------- */
 @keyframes scroll-up-smooth {
   0% {
     transform: translateY(0%);
@@ -478,30 +580,31 @@ code:not(pre code) {
   }
 }
 
-/* ---------------- THEME ---------------- */
-@theme {
-  --duration-announcement: 1.3s;
-  --animation-announcement: announcement var(--duration-announcement) infinite
-    ease-in-out;
+/* ---------------- Gravity Rockets ---------------- */
+@layer utilities {
+  .animate-rockets-effect {
+    animation: rockets-path var(--duration) ease-in-out infinite;
+  }
 }
 
-/* ---------------- KEYFRAMES ---------------- */
-@keyframes announcement {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.8);
-    filter: blur(1px);
-  }
-  50% {
+@keyframes rockets-path {
+  0% {
+    transform: translate(0, 0) rotate(var(--angle));
     opacity: 1;
-    transform: scale(1.2);
-    filter: blur(2px);
   }
-}
 
-/* ---------------- DOT ---------------- */
-.dot-announcement {
-  @apply rounded-full bg-blue-500 w-2 h-2;
-  animation: var(--animation-announcement);
+  40% {
+    transform: translate(var(--x), -300px) rotate(var(--angle));
+    opacity: 1;
+  }
+
+  60% {
+    transform: translate(var(--x), -350px) rotate(var(--angle));
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(var(--x), 0) rotate(calc(var(--angle) + 180deg));
+    opacity: 0;
+  }
 }

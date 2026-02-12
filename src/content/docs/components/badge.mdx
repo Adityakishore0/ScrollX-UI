@@ -54,9 +54,10 @@ export function cn(...inputs: ClassValue[]) {
 `globals.css`
 
 ```css
-/* ---------------- THEME ---------------- */
-@theme {
-  --animation-shine: shine 5s linear infinite;
+@layer utilities {
+  .animate-shine {
+    animation: shine 5s linear infinite;
+  }
 }
 
 /* ---------------- KEYFRAMES ---------------- */
