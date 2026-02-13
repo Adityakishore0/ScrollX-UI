@@ -1033,6 +1033,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "layer-stack",
+      "title": "Layer Stack",
+      "description": "Interactive stacked card layout with drag and scroll momentum.",
+      "type": "registry:component",
+      "dependencies": ["motion", "@radix-ui/react-progress"],
+      "files": [
+        {
+          "path": "components/ui/layer-stack.tsx",
+          "target": "components/ui/layer-stack.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "layered-text",
       "title": "Layered Text",
       "description": "Layered text effect with offset shadows, customizable styling, and animations.",
