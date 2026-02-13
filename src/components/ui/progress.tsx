@@ -48,7 +48,7 @@ function Progress({
           isSlim
             ? {
                 left: '4px',
-                width: `calc(${value || 0}% - 4px)`,
+                width: `calc(${value || 0}% - 8px)`,
                 ...indicatorStyle,
               }
             : { width: `${value || 0}%`, ...indicatorStyle }
