@@ -1,0 +1,84 @@
+---
+title: Layer Stack
+description: Interactive stacked card layout with drag and scroll momentum.
+---
+
+<ComponentPreview name='layerstack-demo' className='' description='' />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="layer-stack" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+    <Step>Install the following dependencies:</Step>
+
+<DepsOptions name='motion' />
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='layer-stack' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { LayerStack, Card } from "@/components/ui/layer-stack";
+```
+
+```tsx
+<LayerStack cardWidth={320} cardGap={16} stageHeight={420}>
+  <Card className="bg-muted rounded-xl p-6">
+    Card One
+  </Card>
+  <Card className="bg-muted rounded-xl p-6">
+    Card Two
+  </Card>
+  <Card className="bg-muted rounded-xl p-6">
+    Card Three
+  </Card>
+</LayerStack>
+```
+
+## API Reference
+
+### Layer Stack
+
+Interactive stacked card layout with drag and scroll momentum.
+
+## Props
+
+| Prop                | Type        | Default | Description                                                 |
+| ------------------- | ----------- | ------- | ------------------------------------------------------------|
+| `cardWidth`         | `number`    | `320`   | Width of each stacked card.                                 |
+| `cardGap`           | `number`    | `16`    | Spacing between cards.                                      |
+| `stageHeight`       | `number`    | `400`   | Height of the stack container.                              |
+| `lastCardFullWidth` | `boolean`   | `false` | Makes last card stretch full width.                         |
+| `mobileSensitivity` | `number`    | `2`     | Controls swipe sensitivity and momentum on mobile devices.  |
+| `className`         | `string`    | `-`     | Wrapper styling (LayerStack & Card supported).              |
+| `children`          | `ReactNode` | `-`     | Card content (used inside `Card`).                          |
+
+
