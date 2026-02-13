@@ -202,9 +202,15 @@ const navigation: NavItem[] = [
         href: '/docs/components/layered-button',
       },
       {
+        title: 'Layer Stack',
+        href: '/docs/components/layer-stack',
+        category: 'New',
+      },
+      {
         title: 'Layered Text',
         href: '/docs/components/layered-text',
       },
+
       { title: 'Loader', href: '/docs/components/loader' },
       { title: 'Login Form', href: '/docs/components/loginform' },
       { title: 'Logo Stepper', href: '/docs/components/logo-stepper' },
