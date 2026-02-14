@@ -276,6 +276,7 @@ const navigation: NavItem[] = [
         href: '/docs/components/reveal-text',
       },
       { title: 'ScrollArea Pro', href: '/docs/components/scroll-areapro' },
+      { title: 'Select', href: '/docs/components/select', category: 'New' },
       {
         title: 'Sensitive Text',
         href: '/docs/components/sensitive-text',

@@ -1,0 +1,99 @@
+---
+title: Select
+description: Displays an animated list of options for the user to choose from —smoothly triggered by a button.
+---
+
+<ComponentPreview name='select-demo' className='' description='' />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="select" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name='motion radix-ui' />
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='select' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+```
+
+```tsx
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectItem value="light">Light</SelectItem>
+      <SelectItem value="dark">Dark</SelectItem>
+      <SelectItem value="system">System</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
+```
+
+
+## API Reference
+
+### Select
+
+Displays an animated list of options for the user to choose from —smoothly triggered by a button.
+
+## Props
+
+| Prop                       | Type                           | Default          | Description                                                              |
+| -------------------------- | ------------------------------ | ---------------- | ------------------------------------------------------------------------ |
+| `animate`                  | `boolean`                      | `true`           | Enables motion animations for trigger, dropdown, items, and separator.   |
+| `value`                    | `string`                       | —                | Controlled selected value.                                               |
+| `defaultValue`             | `string`                       | —                | Initial selected value (uncontrolled mode).                              |
+| `onValueChange`            | `(value: string) => void`      | —                | Callback triggered when selected value changes.                          |
+| `open`                     | `boolean`                      | —                | Controls dropdown open state.                                            |
+| `defaultOpen`              | `boolean`                      | —                | Initial open state (uncontrolled mode).                                  |
+| `onOpenChange`             | `(open: boolean) => void`      | —                | Callback triggered when open state changes.                              |
+| `disabled`                 | `boolean`                      | `false`          | Disables the entire Select component.                                    |
+| `size (SelectTrigger)`     | `"default" \| "sm"`            | `"default"`      | Controls trigger height and radius styling.                              |
+| `position (SelectContent)` | `"item-aligned" \| "popper"`   | `"item-aligned"` | Controls dropdown positioning strategy.                                  |
+| `align (SelectContent)`    | `"start" \| "center" \| "end"` | `"center"`       | Aligns dropdown relative to trigger.                                     |
+| `value (SelectItem)`       | `string`                       | `required`       | Unique value for each Select item.                                       |
+| `disabled (SelectItem)`    | `boolean`                      | `false`          | Disables a specific Select item.                                         |
+| `className`                | `string`                       | —                | Custom Tailwind classes for styling any subcomponent.                    |
+| `children`                 | `ReactNode`                    | `required`       | Used in: Select, Trigger, Content, Item, Group, Label — nested elements. |
+| `...props`                 | `Radix Select props`           | —                | Supports all native Radix Select props and accessibility attributes.     |

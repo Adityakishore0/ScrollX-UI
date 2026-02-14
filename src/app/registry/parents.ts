@@ -98,6 +98,7 @@ export const parentComponents = [
   'radio-group',
   'radial-socials',
   'reveal-text',
+  'select',
   'sensitive-text',
   'shiny-button',
   'showcase',

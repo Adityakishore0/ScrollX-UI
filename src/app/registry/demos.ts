@@ -173,6 +173,7 @@ export const demoComponents = [
   'revealtextleft-demo',
   'revealtextright-demo',
   'revealtexttrigger-demo',
+  'select-demo',
   'sensitivetext-demo',
   'sensitivetextstretch-demo',
   'shinybutton-demo',

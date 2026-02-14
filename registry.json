@@ -1483,6 +1483,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "select",
+      "title": "Select",
+      "description": "Displays an animated list of options for the user to choose from —smoothly triggered by a button.",
+      "type": "registry:component",
+      "dependencies": ["motion", "radix-ui", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "components/ui/select.tsx",
+          "target": "components/ui/select.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "sensitive-text",
       "title": "Sensitive Text",
       "description": "Interactive text that subtly compresses or stretches characters based on cursor proximity.",
