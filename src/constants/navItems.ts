@@ -191,6 +191,7 @@ const navigation: NavItem[] = [
       },
       { title: 'Iphone', href: '/docs/components/iphone' },
       { title: 'Kbd', href: '/docs/components/kbd' },
+      { title: 'Keyboard', href: '/docs/components/keyboard', category: 'New' },
       {
         title: 'Kinetic Testimonials',
         href: '/docs/components/kinetic-testimonials',
