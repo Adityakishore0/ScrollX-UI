@@ -64,6 +64,7 @@ export const parentComponents = [
   'input-otp',
   'interactive-input',
   'kbd',
+  'keyboard',
   'kinetic-testimonials',
   'label',
   'lamphome',
