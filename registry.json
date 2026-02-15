@@ -973,6 +973,21 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "keyboard",
+      "title": "Keyboard",
+      "description": "Interactive keyboard component with customizable key styling and a beautifully minimal interface.",
+      "type": "registry:component",
+      "dependencies": [""],
+      "files": [
+        {
+          "path": "components/ui/keyboard.tsx",
+          "target": "components/ui/keyboard.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "kinetic-testimonials",
       "title": "Kinetic Testimonials",
       "description": "Smoothly scrolling, animated testimonials for modern developer websites to showcase user feedback visually.",
