@@ -1,0 +1,95 @@
+---
+title: Keyboard
+description: Interactive keyboard component with customizable key styling and a beautifully minimal interface.
+---
+
+<ComponentPreview name='keyboard-demo' className='' description='' />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="keyboard" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+<DepsOptions name='lucide-react' />
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='keyboard' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import Keyboard from "@/components/ui/keyboard";
+```
+
+```tsx
+<Keyboard
+     showWASD={true}
+     wasdColorClassName="text-green-500"
+     wasdKeyShadowClassName="shadow-green-500"
+    />
+```
+
+## Examples
+
+---
+
+<Step>Text Color</Step>
+
+<ComponentPreview name='keyboardtextcolor-demo' className='' description='' />
+
+---
+
+<Step>Key Shadow</Step>
+
+<ComponentPreview name='keyboardkeyshadow-demo' className='' description='' />
+
+---
+
+<Step>Game Mode</Step>
+
+<ComponentPreview name='keyboardgamemode-demo' className='' description='' />
+
+## API Reference
+
+### Keyboard
+
+Interactive keyboard component with customizable key styling and a beautifully minimal interface.
+
+## Props
+
+| Prop                     | Type      | Default | Description                                                                 |
+| ------------------------ | --------- | ------- | --------------------------------------------------------------------------- |
+| `className`              | `string`  | —       | Custom classes applied to the keyboard wrapper container.                   |
+| `containerClassName`     | `string`  | —       | Custom classes applied to the outermost background container.               |
+| `showWASD`               | `boolean` | `false` | Highlights the `W`, `A`, `S`, `D` keys when enabled (useful for gaming UI). |
+| `wasdColorClassName`     | `string`  | —       | Custom text color classes applied specifically to highlighted WASD keys.    |
+| `wasdKeyShadowClassName` | `string`  | —       | Custom shadow class applied to highlighted WASD keys.                       |
+| `textClassName`          | `string`  | —       | Overrides text styling for all key labels.                                  |
+| `keyShadowClassName`     | `string`  | —       | Overrides the default key shadow styling for all keys.                      |
