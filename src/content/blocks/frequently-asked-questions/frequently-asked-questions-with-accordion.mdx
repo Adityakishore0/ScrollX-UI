@@ -1,0 +1,50 @@
+---
+title: Frequently asked questions with Accordion
+description: Elegant and minimal FAQs with grid, accordions and micro-interactions
+---
+
+<BlocksPreview
+  name='frequently-asked-questions-with-accordion'
+  className=''
+  description=''
+/>
+
+<BlockTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/frequently-asked-questions/frequently-asked-questions-with-accordion
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash value="deps"
+npm install motion clsx tailwind-merge 
+```
+
+<Step>Add util file</Step>
+
+```ts filename="lib/utils.ts"
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+<Step>Install required UI components: [`Accordion`](/docs/components/accordion)</Step>
+
+</Steps>
+</TabsContent>
+</BlockTabs>
