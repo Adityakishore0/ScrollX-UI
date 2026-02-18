@@ -12,7 +12,6 @@ const CONFIG = {
 interface RegistryFile {
   type: string;
   path: string;
-  target: string;
   content: string;
 }
 
@@ -25,6 +24,8 @@ interface Registry {
   author?: string;
   registryDependencies?: string[];
   dependencies?: string[];
+  cssVars?: Record<string, unknown>;
+  css?: Record<string, unknown>;
   files: RegistryFile[];
 }
 
@@ -82,6 +83,7 @@ function processRegistryFile(registryFilePath: string): ProcessResult {
 
       if (file.path === 'lib/utils.ts') {
         console.log(`  ⏭️  Skipping (always skip): ${file.path}`);
+        delete (file as unknown as Record<string, unknown>).target;
         skippedCount++;
         return;
       }
@@ -90,6 +92,10 @@ function processRegistryFile(registryFilePath: string): ProcessResult {
       if (componentName && componentName !== mainComponentName) {
         componentNames.push(componentName);
       }
+
+      file.type =
+        file.type === 'registry:component' ? 'registry:ui' : file.type;
+      delete (file as unknown as Record<string, unknown>).target;
 
       const actualFilePath = resolveFilePath(file.path);
 
@@ -119,12 +125,15 @@ function processRegistryFile(registryFilePath: string): ProcessResult {
     const orderedRegistry: Registry = {
       $schema: registry.$schema,
       name: registry.name,
-      type: registry.type,
+      type:
+        registry.type === 'registry:component' ? 'registry:ui' : registry.type,
       title: registry.title,
       description: registry.description,
       author: registry.author,
       registryDependencies: uniqueDependencies,
       dependencies: normalizedDependencies,
+      ...(registry.cssVars !== undefined && { cssVars: registry.cssVars }),
+      ...(registry.css !== undefined && { css: registry.css }),
       files: registry.files,
     };
 
