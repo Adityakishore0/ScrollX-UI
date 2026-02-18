@@ -130,7 +130,7 @@ export default function DepsOptions({ name }: DepsOptionsProps) {
   };
 
   return (
-    <div className='relative w-full max-w-4xl rounded-xl bg-muted shadow-lg'>
+    <div className='relative w-full max-w-none! rounded-xl bg-muted shadow-lg'>
       <div className='flex items-center px-4 pt-4 text-sm text-muted-foreground gap-x-4'>
         <div className='bg-gray-800 dark:bg-gray-200 flex items-center justify-center rounded-sm p-1 shrink-0'>
           <Terminal className='h-4 w-4 text-gray-100 dark:text-gray-900' />
@@ -210,7 +210,7 @@ export default function DepsOptions({ name }: DepsOptionsProps) {
         </div>
       </div>
 
-      <pre className='overflow-x-auto not-prose px-4 py-3 text-sm font-mono text-foreground'>
+      <pre className='overflow-x-auto not-prose not-shiki px-4 py-3 text-sm font-mono text-foreground'>
         <code>
           {installCommand.split(' ').map((part, i) => {
             let colorClass = 'text-foreground';
