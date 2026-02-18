@@ -1951,7 +1951,7 @@
       "title": "Frequently asked questions with Accordion",
       "description": "Elegant and minimal FAQs with grid, accordions and micro-interactions",
       "type": "registry:block",
-      "registryDependencies": ["accordion"],
+      "registryDependencies": ["@scrollxui/accordion"],
       "dependencies": ["motion"],
       "files": [
         {
@@ -1965,7 +1965,10 @@
       "title": "Hero Section with Iphone",
       "description": "A hero section with an iPhone mockup and animated background.",
       "type": "registry:block",
-      "registryDependencies": ["iphone", "movinglines-background"],
+      "registryDependencies": [
+        "@scrollxui/iphone",
+        "@scrollxui/movinglines-background"
+      ],
       "dependencies": [],
       "files": [
         {
@@ -1980,9 +1983,9 @@
       "description": "A hero-section for AI startups",
       "type": "registry:block",
       "registryDependencies": [
-        "layer-stack",
-        "movinglines-background",
-        "progress"
+        "@scrollxui/layer-stack",
+        "@scrollxui/movinglines-background",
+        "@scrollxui/progress"
       ],
       "dependencies": [],
       "files": [
@@ -1997,7 +2000,7 @@
       "title": "Logo Cloud Flipflow",
       "description": "A logo-cloud for AI startups with flipflow animation.",
       "type": "registry:block",
-      "registryDependencies": ["flipflow"],
+      "registryDependencies": ["@scrollxui/flipflow"],
       "dependencies": [],
       "files": [
         {
@@ -2011,7 +2014,7 @@
       "title": "Logo Cloud with Marquee",
       "description": "A logo cloud with flowing marquee motion, perfect for bold AI startups.",
       "type": "registry:block",
-      "registryDependencies": ["flowing-logos"],
+      "registryDependencies": ["@scrollxui/flowing-logos"],
       "dependencies": ["motion"],
       "files": [
         {

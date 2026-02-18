@@ -5,7 +5,7 @@
   "title": "Flex Navbar",
   "description": "A modern navbar with smooth expansion, media panels, and theme controls.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["theme-switch"],
+  "registryDependencies": ["@scrollxui/theme-switch"],
   "dependencies": [
     "motion",
     "clsx",

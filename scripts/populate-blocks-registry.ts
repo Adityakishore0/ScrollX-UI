@@ -43,7 +43,6 @@ interface RegistryFile {
   type: string;
   path: string;
   content: string;
-  target: string;
 }
 
 interface ComponentRegistry {
@@ -140,7 +139,10 @@ function extractRegistryDependencies(files: BlockFile[]): string[] {
     ...new Set(
       files
         .filter((f) => f.relativePath.startsWith('ui/'))
-        .map((f) => path.basename(f.relativePath, path.extname(f.relativePath)))
+        .map(
+          (f) =>
+            `@scrollxui/${path.basename(f.relativePath, path.extname(f.relativePath))}`,
+        )
         .sort(),
     ),
   ];
@@ -152,7 +154,8 @@ function getDepsAlreadyCoveredByRegistryDeps(
 ): Set<string> {
   const covered = new Set<string>();
   for (const depName of registryDependencies) {
-    const jsonPath = path.join(cwd, CONFIG.REGISTRY_DIR, `${depName}.json`);
+    const baseName = depName.replace('@scrollxui/', '');
+    const jsonPath = path.join(cwd, CONFIG.REGISTRY_DIR, `${baseName}.json`);
     if (!fs.existsSync(jsonPath)) continue;
     try {
       const json: ComponentRegistry = JSON.parse(
@@ -221,7 +224,8 @@ function registryDepUsesCn(
   cwd: string,
 ): boolean {
   for (const depName of registryDependencies) {
-    const jsonPath = path.join(cwd, CONFIG.REGISTRY_DIR, `${depName}.json`);
+    const baseName = depName.replace('@scrollxui/', '');
+    const jsonPath = path.join(cwd, CONFIG.REGISTRY_DIR, `${baseName}.json`);
     if (!fs.existsSync(jsonPath)) continue;
     try {
       const json = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
@@ -303,8 +307,6 @@ function buildRegistryFiles(
   allFiles: BlockFile[],
   includeUtils: boolean,
 ): RegistryFile[] {
-  const isRoute = block.route === true;
-
   const files = allFiles
     .filter((f) => !f.relativePath.startsWith('ui/'))
     .map((f) => {
@@ -312,16 +314,10 @@ function buildRegistryFiles(
       const registryPath = isPage
         ? `registry/blocks/${block.category}/${block.name}/page.tsx`
         : `registry/blocks/${block.category}/${block.name}/${f.relativePath}`;
-      const target = isPage
-        ? isRoute
-          ? ''
-          : `components/${block.name}.tsx`
-        : `components/${f.relativePath}`;
       return {
         type: 'registry:component',
         path: registryPath,
         content: f.source,
-        target,
       };
     });
 
@@ -329,7 +325,6 @@ function buildRegistryFiles(
     files.push({
       type: 'registry:lib',
       path: 'lib/utils.ts',
-      target: 'lib/utils.ts',
       content: UTILS_CONTENT,
     });
   }
@@ -379,7 +374,7 @@ function generateBlock(block: BlockEntry, mode: Mode): void {
     existing.files = registryFiles;
     fs.writeFileSync(
       outputFile,
-      JSON.stringify(existing, null, 2),
+      JSON.stringify(existing, null, 2) + '\n',
       CONFIG.ENCODING,
     );
   } else {
@@ -404,7 +399,7 @@ function generateBlock(block: BlockEntry, mode: Mode): void {
     };
     fs.writeFileSync(
       outputFile,
-      JSON.stringify(item, null, 2),
+      JSON.stringify(item, null, 2) + '\n',
       CONFIG.ENCODING,
     );
     console.log(`  💾 Saved — title: "${title}"`);

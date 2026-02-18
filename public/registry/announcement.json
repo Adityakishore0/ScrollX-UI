@@ -5,7 +5,7 @@
   "title": "Announcement",
   "description": "An announcement component that highlights key info with icons, effects, and expandable content.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["badge", "lustretext"],
+  "registryDependencies": ["@scrollxui/badge", "@scrollxui/lustretext"],
   "dependencies": [
     "motion",
     "class-variance-authority",

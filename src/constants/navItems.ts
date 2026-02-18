@@ -194,7 +194,7 @@ const navigation: NavItem[] = [
         href: '/docs/components/glowingbordercard',
       },
       { title: 'Gravity', href: '/docs/components/gravity' },
-      { title: 'Hero Sections', href: '/docs/components/hero-sections' },
+      { title: 'Hero Section', href: '/docs/components/hero-section' },
       { title: 'Hold ToConfirm', href: '/docs/components/hold-toconfirm' },
       { title: 'Hyperlink', href: '/docs/components/hyperlink' },
       { title: 'Input OTP', href: '/docs/components/input-otp' },

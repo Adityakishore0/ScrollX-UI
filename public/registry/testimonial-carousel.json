@@ -5,7 +5,11 @@
   "title": "Testimonial Carousel",
   "description": "Minimal, responsive testimonial slider with avatars, names, and quotes for clean, modern design.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["avatar", "button", "card"],
+  "registryDependencies": [
+    "@scrollxui/avatar",
+    "@scrollxui/button",
+    "@scrollxui/card"
+  ],
   "dependencies": [
     "embla-carousel-react",
     "@radix-ui/react-avatar",

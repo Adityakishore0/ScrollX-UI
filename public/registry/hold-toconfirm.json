@@ -5,7 +5,7 @@
   "title": "Hold ToConfirm",
   "description": "A button that requires holding down to confirm irreversible or critical actions.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["button"],
+  "registryDependencies": ["@scrollxui/button"],
   "dependencies": [
     "motion",
     "@radix-ui/react-slot",

@@ -5,7 +5,7 @@
   "title": "Border Glide",
   "description": "Modern UI cards with a moving border and smooth transitions.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["card"],
+  "registryDependencies": ["@scrollxui/card"],
   "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {

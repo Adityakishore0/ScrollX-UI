@@ -5,7 +5,7 @@
   "title": "Table",
   "description": "Powerful responsive data table with sticky headers, smooth scrolling, sorting, and pagination.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["button", "dropdown-menu"],
+  "registryDependencies": ["@scrollxui/button", "@scrollxui/dropdown-menu"],
   "dependencies": [
     "motion",
     "@tanstack/react-table",
