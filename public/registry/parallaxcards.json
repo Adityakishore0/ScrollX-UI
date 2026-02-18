@@ -5,7 +5,7 @@
   "title": "Card",
   "description": "Renders a card component comprising a header, content section, and footer...",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["card"],
+  "registryDependencies": ["@scrollxui/card"],
   "dependencies": ["clsx", "tailwind-merge"],
   "files": [
     {

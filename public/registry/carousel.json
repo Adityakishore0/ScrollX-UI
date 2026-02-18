@@ -5,7 +5,7 @@
   "title": "Carousel",
   "description": "A carousel component with card stack visualization for cycling through content.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["button"],
+  "registryDependencies": ["@scrollxui/button"],
   "dependencies": [
     "lucide-react",
     "@radix-ui/react-slot",

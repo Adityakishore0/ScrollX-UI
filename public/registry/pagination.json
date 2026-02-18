@@ -5,7 +5,7 @@
   "title": "Glowing Border Card",
   "description": "A customizable card with a glowing border effect that changes colors based on light and dark modes.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["badge", "button"],
+  "registryDependencies": ["@scrollxui/badge", "@scrollxui/button"],
   "dependencies": [
     "motion",
     "lucide-react",

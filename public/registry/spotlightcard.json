@@ -5,7 +5,7 @@
   "title": "Spotlight Card",
   "description": "An interactive card with a spotlight hover effect that highlights content and enhances user engagement visually.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["card"],
+  "registryDependencies": ["@scrollxui/card"],
   "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {

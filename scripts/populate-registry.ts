@@ -116,7 +116,9 @@ function processRegistryFile(registryFilePath: string): ProcessResult {
       }
     });
 
-    const uniqueDependencies = [...new Set(componentNames)].sort();
+    const uniqueDependencies = [...new Set(componentNames)]
+      .sort()
+      .map((dep) => `@scrollxui/${dep}`);
 
     const normalizedDependencies = registry.dependencies?.map((dep) =>
       dep === 'motion/react' ? 'motion' : dep,
@@ -141,14 +143,14 @@ function processRegistryFile(registryFilePath: string): ProcessResult {
       console.log(`  📦 Dependencies: [${uniqueDependencies.join(', ')}]`);
     }
 
-    if (updatedCount > 0) {
-      const formattedJson = JSON.stringify(orderedRegistry, null, 2);
+    const formattedJson = JSON.stringify(orderedRegistry, null, 2) + '\n';
+    const existingContent = fs.readFileSync(registryFilePath, CONFIG.ENCODING);
+
+    if (formattedJson !== existingContent) {
       fs.writeFileSync(registryFilePath, formattedJson, CONFIG.ENCODING);
       console.log(`  📝 Saved ${updatedCount} file(s) to registry`);
-    } else if (skippedCount > 0) {
-      console.log(`  ℹ️  ${skippedCount} file(s) already populated`);
     } else {
-      console.log(`  ℹ️  No files were updated`);
+      console.log(`  ℹ️  No changes detected, skipping write`);
     }
 
     return {

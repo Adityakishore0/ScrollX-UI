@@ -5,7 +5,7 @@
   "title": "Facescape",
   "description": "Interactive, animated user avatars with hover effects and responsive layout.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["avatar", "tooltip"],
+  "registryDependencies": ["@scrollxui/avatar", "@scrollxui/tooltip"],
   "dependencies": [
     "@radix-ui/react-avatar",
     "motion",

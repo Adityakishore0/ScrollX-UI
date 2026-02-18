@@ -5,7 +5,7 @@
   "title": "Alert Dialog",
   "description": "A modal dialog used to convey critical information and require a user response before proceeding..",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["button"],
+  "registryDependencies": ["@scrollxui/button"],
   "dependencies": [
     "@radix-ui/react-alert-dialog",
     "motion",

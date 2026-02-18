@@ -5,7 +5,7 @@
   "title": "FlipStack",
   "description": "A stylish and animated card stack UI for showcasing content in layered views.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["card"],
+  "registryDependencies": ["@scrollxui/card"],
   "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {

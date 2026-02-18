@@ -5,7 +5,12 @@
   "title": "Signup Form",
   "description": "Modern, responsive signup form with smooth transitions and gradient accents.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["button", "card", "label", "transition"],
+  "registryDependencies": [
+    "@scrollxui/button",
+    "@scrollxui/card",
+    "@scrollxui/label",
+    "@scrollxui/transition"
+  ],
   "dependencies": [
     "motion",
     "@radix-ui/react-slot",

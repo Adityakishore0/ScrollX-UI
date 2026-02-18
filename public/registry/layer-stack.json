@@ -5,7 +5,7 @@
   "title": "Layer Stack",
   "description": "Interactive stacked card layout with drag and scroll momentum.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["progress"],
+  "registryDependencies": ["@scrollxui/progress"],
   "dependencies": [
     "motion",
     "@radix-ui/react-progress",

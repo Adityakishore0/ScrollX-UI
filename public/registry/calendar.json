@@ -5,7 +5,7 @@
   "title": "Calendar",
   "description": "A date field component that enables users to choose and edit a date.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["button"],
+  "registryDependencies": ["@scrollxui/button"],
   "dependencies": [
     "@radix-ui/react-slot",
     "class-variance-authority",

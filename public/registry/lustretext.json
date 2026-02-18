@@ -7,6 +7,36 @@
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "registryDependencies": [],
   "dependencies": [""],
+  "css": {
+    "@utility lustre-text": {
+      "display": "inline-block",
+      "font-weight": "800",
+      "color": "transparent",
+      "background-clip": "text",
+      "-webkit-background-clip": "text",
+      "background-size": "200% auto",
+      "background-position": "0% center"
+    },
+    "@utility lustre-light": {
+      "background-image": "linear-gradient(90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.7) 45%, #ffffff 50%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.05) 100%)"
+    },
+    "@utility lustre-dark": {
+      "background-image": "linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.15) 30%, rgba(255,255,255,0.4) 45%, #ffffff 50%, rgba(255,255,255,0.4) 55%, rgba(255,255,255,0.15) 70%, rgba(255,255,255,0.05) 100%)"
+    },
+    "@keyframes shine": {
+      "0%": {
+        "background-position": "0% center"
+      },
+      "100%": {
+        "background-position": "200% center"
+      }
+    },
+    "@utility animate-shine": {
+      "animation-name": "shine",
+      "animation-timing-function": "linear",
+      "animation-iteration-count": "infinite"
+    }
+  },
   "files": [
     {
       "type": "registry:ui",
