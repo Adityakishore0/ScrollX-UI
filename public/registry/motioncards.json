@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "motioncards",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "MotionCards",
   "description": "Elegant cards in seamless flow for clean web design.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
@@ -9,9 +9,8 @@
   "dependencies": ["motion"],
   "files": [
     {
-      "type": "registry:component",
+      "type": "registry:ui",
       "path": "components/ui/motioncards.tsx",
-      "target": "components/ui/motioncards.tsx",
       "content": "'use client';\nimport React, { useEffect, useState, ReactNode, Children } from 'react';\nimport { motion, AnimatePresence } from 'motion/react';\n\nconst slotBase = [\n  'bg-white shadow-md text-gray-900 w-full max-w-[85%]',\n  'z-20 bg-white shadow-md text-gray-900 w-full max-w-[90%]',\n  'z-40 shadow-lg w-full max-w-[95%]',\n  'z-20 bg-white shadow-md text-gray-900 w-full max-w-[90%]',\n  'bg-white shadow-md text-gray-900 w-full max-w-[85%]',\n];\n\ninterface MotionCardsProps {\n  children: ReactNode;\n  interval?: number;\n}\n\nexport function MotionCardContent({\n  children,\n  className = '',\n  ...props\n}: {\n  children: ReactNode;\n  className?: string;\n} & React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div className={className} {...props}>\n      {children}\n    </div>\n  );\n}\n\nexport default function MotionCards({\n  children,\n  interval = 2000,\n}: MotionCardsProps) {\n  const contentArray = Children.toArray(children);\n  const [cards, setCards] = useState([0, 1, 2, 3, 4]);\n  const [nextId, setNextId] = useState(5);\n\n  useEffect(() => {\n    const intervalId = setInterval(() => {\n      setCards((prev) => {\n        const rest = prev.slice(1);\n        const newCard = nextId;\n        setNextId((id) => id + 1);\n        return [...rest, newCard];\n      });\n    }, interval);\n    return () => clearInterval(intervalId);\n  }, [nextId, interval]);\n\n  return (\n    <div className='flex items-center justify-center relative px-2 h-120 overflow-hidden w-full'>\n      <div className='flex flex-col space-y-2 relative z-10 items-center w-full justify-center h-full max-w-md mx-auto'>\n        <AnimatePresence initial={false} mode='popLayout'>\n          {cards.map((cardId, i) => {\n            const isMiddle = i === 2;\n            const currentItem =\n              contentArray[cardId % contentArray.length] ||\n              `Item ${cardId + 1}`;\n            return (\n              <motion.div\n                key={cardId}\n                layout\n                initial={{ opacity: 0, scale: 0.9 }}\n                animate={{ opacity: 1, scale: 1 }}\n                exit={{ opacity: 0, scale: 0.9 }}\n                transition={{\n                  duration: 0.8,\n                  ease: 'easeInOut',\n                  layout: { duration: 0.8 },\n                }}\n                className={`flex items-center rounded-2xl px-3 py-4 shadow-xl relative overflow-hidden ${slotBase[i]}`}\n              >\n                <motion.div\n                  className='absolute inset-0 rounded-2xl -z-10'\n                  initial={false}\n                  animate={{\n                    backgroundColor: isMiddle ? '#f87171' : '#ffffff',\n                  }}\n                  transition={{\n                    duration: 1.8,\n                    ease: 'easeInOut',\n                  }}\n                />\n                <div\n                  className={`w-full text-sm font-semibold relative ${\n                    isMiddle ? 'text-white' : 'text-gray-900'\n                  }`}\n                >\n                  {currentItem}\n                </div>\n              </motion.div>\n            );\n          })}\n        </AnimatePresence>\n      </div>\n    </div>\n  );\n}\n"
     }
   ]

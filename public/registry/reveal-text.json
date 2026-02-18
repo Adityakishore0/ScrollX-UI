@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "reveal-text",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Reveal Text",
   "description": "a clean text reveal component providing directional animation and stagger options.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
@@ -9,15 +9,13 @@
   "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {
-      "type": "registry:component",
+      "type": "registry:ui",
       "path": "components/ui/reveal-text.tsx",
-      "target": "components/ui/reveal-text.tsx",
       "content": "'use client';\n\nimport React, { useRef } from 'react';\nimport { motion, useAnimation, useInView } from 'motion/react';\nimport { cn } from '@/lib/utils';\n\ntype Direction = 'up' | 'down' | 'left' | 'right';\ntype Mode = 'manual' | 'auto';\n\ninterface RevealTextProps {\n  children: React.ReactNode;\n  className?: string;\n  boxClassName?: string;\n  delay?: number;\n  duration?: number;\n  direction?: Direction;\n  mode?: Mode;\n  stagger?: number;\n  once?: boolean;\n}\n\nconst baseBoxStyles =\n  'absolute inset-0 z-10 bg-neutral-900 dark:bg-neutral-100';\n\nconst RevealText: React.FC<RevealTextProps> = ({\n  children,\n  className = '',\n  boxClassName = '',\n  delay = 0,\n  duration = 0.8,\n  direction = 'down',\n  mode = 'manual',\n  stagger = 0.1,\n  once = true,\n}) => {\n  const ref = useRef(null);\n  const inView = useInView(ref, { once });\n  const controls = useAnimation();\n\n  React.useEffect(() => {\n    if (inView) {\n      controls.set('initial');\n      controls.start('animate');\n    } else if (!once) {\n      controls.start('initial');\n    }\n  }, [inView, controls, once]);\n\n  const getAnimationValues = () => {\n    switch (direction) {\n      case 'up':\n        return {\n          initial: { scaleY: 1, originY: 0 },\n          animate: { scaleY: 0 },\n        };\n      case 'down':\n        return {\n          initial: { scaleY: 1, originY: 1 },\n          animate: { scaleY: 0 },\n        };\n      case 'left':\n        return {\n          initial: { scaleX: 1, originX: 0 },\n          animate: { scaleX: 0 },\n        };\n      case 'right':\n        return {\n          initial: { scaleX: 1, originX: 1 },\n          animate: { scaleX: 0 },\n        };\n    }\n  };\n\n  const animationValues = getAnimationValues();\n\n  const renderWord = (word: string, i: number) => (\n    <span key={i} className='relative inline-block overflow-hidden mr-2'>\n      <motion.span\n        variants={{\n          initial: animationValues.initial,\n          animate: animationValues.animate,\n        }}\n        initial='initial'\n        animate={controls}\n        transition={{\n          delay: delay + i * stagger,\n          duration,\n          ease: [0.76, 0, 0.24, 1],\n        }}\n        className={cn(baseBoxStyles, boxClassName)}\n      />\n\n      <motion.span\n        variants={{\n          initial: { opacity: 0 },\n          animate: { opacity: 1 },\n        }}\n        initial='initial'\n        animate={controls}\n        transition={{\n          delay: delay + i * stagger + duration * 0.5,\n          duration: duration * 0.5,\n        }}\n        className={className}\n      >\n        {word}\n      </motion.span>\n    </span>\n  );\n\n  if (mode === 'auto' && typeof children === 'string') {\n    const words = children.split(' ');\n    return (\n      <span ref={ref} className='inline-block'>\n        {words.map(renderWord)}\n      </span>\n    );\n  }\n\n  return (\n    <span ref={ref} className='relative inline-block overflow-hidden'>\n      <motion.span\n        variants={{\n          initial: animationValues.initial,\n          animate: animationValues.animate,\n        }}\n        initial='initial'\n        animate={controls}\n        transition={{\n          delay,\n          duration,\n          ease: [0.76, 0, 0.24, 1],\n        }}\n        className={cn(baseBoxStyles, boxClassName)}\n      />\n\n      <motion.span\n        variants={{\n          initial: { opacity: 0 },\n          animate: { opacity: 1 },\n        }}\n        initial='initial'\n        animate={controls}\n        transition={{\n          delay: delay + duration * 0.5,\n          duration: duration * 0.5,\n        }}\n        className={className}\n      >\n        {children}\n      </motion.span>\n    </span>\n  );\n};\n\nexport { RevealText };\n"
     },
     {
       "type": "registry:lib",
       "path": "lib/utils.ts",
-      "target": "lib/utils.ts",
       "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
     }
   ]

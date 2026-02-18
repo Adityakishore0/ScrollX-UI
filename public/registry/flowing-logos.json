@@ -1,23 +1,56 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "flowing-logos",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Flowing Logos",
   "description": "Flowing logo showcase with smooth animations, hover effects, and modern UI.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "registryDependencies": [],
   "dependencies": ["clsx", "tailwind-merge"],
+  "css": {
+    "@layer utilities": {
+      ".animate-canopy-horizontal": {
+        "animation": "canopy-x var(--duration) infinite linear"
+      },
+      ".animate-canopy-vertical": {
+        "animation": "canopy-y var(--duration) linear infinite"
+      },
+      ".direction-reverse.animate-canopy-horizontal": {
+        "animation-direction": "reverse"
+      },
+      ".direction-reverse.animate-canopy-vertical": {
+        "animation-direction": "reverse"
+      },
+      ".group:hover .group-hover\\:paused": {
+        "animation-play-state": "paused"
+      }
+    },
+    "@keyframes canopy-x": {
+      "from": {
+        "transform": "translateX(0)"
+      },
+      "to": {
+        "transform": "translateX(calc(-100% - var(--gap)))"
+      }
+    },
+    "@keyframes canopy-y": {
+      "from": {
+        "transform": "translateY(0)"
+      },
+      "to": {
+        "transform": "translateY(calc(-100% - var(--gap)))"
+      }
+    }
+  },
   "files": [
     {
-      "type": "registry:component",
+      "type": "registry:ui",
       "path": "components/ui/flowing-logos.tsx",
-      "target": "components/ui/flowing-logos.tsx",
-      "content": "import { cn } from \"@/lib/utils\";\n\ninterface Logo {\n  name: string;\n  image: string;\n}\n\ninterface FlowingLogoProps extends React.HTMLAttributes<HTMLDivElement> {\n  vertical?: boolean;\n  repeat?: number;\n  reverse?: boolean;\n  pauseOnHover?: boolean;\n  applyMask?: boolean;\n}\n\nconst FlowingLogo = ({\n  children,\n  vertical = false,\n  repeat = 4,\n  pauseOnHover = false,\n  reverse = false,\n  className,\n  applyMask = true,\n  ...props\n}: FlowingLogoProps) => (\n  <div\n    {...props}\n    className={cn(\n      \"group relative flex h-full w-full overflow-hidden p-1 [--duration:10s] [--gap:12px] gap-(--gap)\",\n      vertical ? \"flex-col\" : \"flex-row\",\n      className\n    )}\n  >\n    {Array.from({ length: repeat }).map((_, index) => (\n      <div\n        key={`item-${index}`}\n        className={cn(\"flex shrink-0 gap-(--gap)\", {\n          \"group-hover:paused\": pauseOnHover,\n          \"direction-reverse\": reverse,\n          \"animate-canopy-horizontal flex-row\": !vertical,\n          \"animate-canopy-vertical flex-col\": vertical,\n        })}\n      >\n        {children}\n      </div>\n    ))}\n    {applyMask && (\n      <div\n        className={cn(\n          \"pointer-events-none absolute inset-0 z-10 h-full w-full\",\n          vertical ? \"bg-linear-to-b\" : \"bg-linear-to-r\"\n        )}\n      />\n    )}\n  </div>\n);\n\nconst LogoCard = ({ logo, className }: { logo: Logo; className?: string }) => (\n  <div\n    className={cn(\n      \"flex h-16 w-16 shrink-0 cursor-pointer overflow-hidden  hover:scale-110 rounded-xl border border-transparent  transition-all hover:border-blue-400 hover:shadow-[0_0_10px_#60a5fa] dark:hover:border-blue-400\",\n      className\n    )}\n  >\n    <img\n      src={logo.image}\n      alt={logo.name}\n      className=\"h-full w-full object-cover rounded-xl\"\n    />\n  </div>\n);\n\nexport const FlowingLogos = ({\n  data,\n  className,\n  cardClassName,\n}: {\n  data: Logo[];\n  className?: string;\n  cardClassName?: string;\n}) => (\n  <div className={cn(\"w-full overflow-hidden\", className)}>\n    {[false, true, false].map((reverse, index) => (\n      <FlowingLogo\n        key={`Canopy-${index}`}\n        reverse={reverse}\n        className=\"[--duration:30s]\"\n        pauseOnHover\n        applyMask\n        repeat={9}\n      >\n        {data.map((logo) => (\n          <LogoCard key={logo.name} logo={logo} className={cardClassName} />\n        ))}\n      </FlowingLogo>\n    ))}\n  </div>\n);\n"
+      "content": "import { cn } from '@/lib/utils';\n\ninterface Logo {\n  name: string;\n  image: string;\n}\n\ninterface FlowingLogoProps extends React.HTMLAttributes<HTMLDivElement> {\n  vertical?: boolean;\n  repeat?: number;\n  reverse?: boolean;\n  pauseOnHover?: boolean;\n  applyMask?: boolean;\n}\n\nconst FlowingLogo = ({\n  children,\n  vertical = false,\n  repeat = 4,\n  pauseOnHover = false,\n  reverse = false,\n  className,\n  applyMask = true,\n  ...props\n}: FlowingLogoProps) => (\n  <div\n    {...props}\n    className={cn(\n      'group relative flex h-full w-full overflow-hidden p-1 [--duration:10s] [--gap:12px] gap-(--gap)',\n      vertical ? 'flex-col' : 'flex-row',\n      className,\n    )}\n  >\n    {Array.from({ length: repeat }).map((_, index) => (\n      <div\n        key={`item-${index}`}\n        className={cn('flex shrink-0 gap-(--gap)', {\n          'group-hover:paused': pauseOnHover,\n          'direction-reverse': reverse,\n          'animate-canopy-horizontal flex-row': !vertical,\n          'animate-canopy-vertical flex-col': vertical,\n        })}\n      >\n        {children}\n      </div>\n    ))}\n    {applyMask && (\n      <div\n        className={cn(\n          'pointer-events-none absolute inset-0 z-10 h-full w-full',\n          vertical ? 'bg-linear-to-b' : 'bg-linear-to-r',\n        )}\n      />\n    )}\n  </div>\n);\n\nconst LogoCard = ({\n  logo,\n  className,\n  variant = 'square',\n}: {\n  logo: Logo;\n  className?: string;\n  variant?: 'square' | 'wide' | 'auto';\n}) => (\n  <div\n    className={cn(\n      'flex items-center justify-center shrink-0 cursor-pointer overflow-hidden hover:scale-110 rounded-xl border border-transparent transition-all hover:border-blue-400 hover:shadow-[0_0_10px_#60a5fa] dark:hover:border-blue-400',\n      {\n        'h-16 w-16': variant === 'square',\n        'h-14 w-auto px-5 py-3 min-w-20 max-w-55': variant === 'wide',\n        'h-auto w-auto p-2': variant === 'auto',\n      },\n      className,\n    )}\n  >\n    <img\n      src={logo.image}\n      alt={logo.name}\n      className={cn('rounded-xl', {\n        'h-full w-full object-cover': variant === 'square',\n        'h-full w-auto object-contain max-h-8': variant === 'wide',\n        'max-h-12 w-auto object-contain': variant === 'auto',\n      })}\n    />\n  </div>\n);\n\nexport const FlowingLogos = ({\n  data,\n  className,\n  cardClassName,\n  variant = 'square',\n}: {\n  data: Logo[];\n  className?: string;\n  cardClassName?: string;\n  variant?: 'square' | 'wide' | 'auto';\n}) => (\n  <div className={cn('w-full overflow-hidden', className)}>\n    {[false, true, false].map((reverse, index) => (\n      <FlowingLogo\n        key={`Canopy-${index}`}\n        reverse={reverse}\n        className='[--duration:30s]'\n        pauseOnHover\n        applyMask\n        repeat={9}\n      >\n        {data.map((logo) => (\n          <LogoCard\n            key={logo.name}\n            logo={logo}\n            variant={variant}\n            className={cardClassName}\n          />\n        ))}\n      </FlowingLogo>\n    ))}\n  </div>\n);"
     },
     {
       "type": "registry:lib",
       "path": "lib/utils.ts",
-      "target": "lib/utils.ts",
       "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
     }
   ]

@@ -1,23 +1,56 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-testimonials",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Animated Testimonials",
   "description": "Minimal testimonials with image and quote for clean, modern design.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
   "registryDependencies": [],
   "dependencies": ["clsx", "tailwind-merge"],
+  "css": {
+    "@layer utilities": {
+      ".animate-canopy-horizontal": {
+        "animation": "canopy-x var(--duration) infinite linear"
+      },
+      ".animate-canopy-vertical": {
+        "animation": "canopy-y var(--duration) linear infinite"
+      },
+      ".direction-reverse.animate-canopy-horizontal": {
+        "animation-direction": "reverse"
+      },
+      ".direction-reverse.animate-canopy-vertical": {
+        "animation-direction": "reverse"
+      },
+      ".group:hover .group-hover\\:paused": {
+        "animation-play-state": "paused"
+      }
+    },
+    "@keyframes canopy-x": {
+      "from": {
+        "transform": "translateX(0)"
+      },
+      "to": {
+        "transform": "translateX(calc(-100% - var(--gap)))"
+      }
+    },
+    "@keyframes canopy-y": {
+      "from": {
+        "transform": "translateY(0)"
+      },
+      "to": {
+        "transform": "translateY(calc(-100% - var(--gap)))"
+      }
+    }
+  },
   "files": [
     {
-      "type": "registry:component",
+      "type": "registry:ui",
       "path": "components/ui/animated-testimonials.tsx",
-      "target": "components/ui/animated-testimonials.tsx",
-      "content": "import React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Testimonial {\n  name: string;\n  image: string;\n  description: string;\n  handle: string;\n}\n\ninterface AnimatedCanopyProps extends React.HTMLAttributes<HTMLDivElement> {\n  vertical?: boolean;\n  repeat?: number;\n  reverse?: boolean;\n  pauseOnHover?: boolean;\n  applyMask?: boolean;\n}\n\nconst AnimatedCanopy = ({\n  children,\n  vertical = false,\n  repeat = 4,\n  pauseOnHover = false,\n  reverse = false,\n  className,\n  applyMask = true,\n  ...props\n}: AnimatedCanopyProps) => (\n  <div\n    {...props}\n    className={cn(\n      \"group relative flex h-full w-full overflow-hidden p-2 [--duration:10s] [--gap:12px] gap-(--gap)\",\n      vertical ? \"flex-col\" : \"flex-row\",\n      className\n    )}\n  >\n    {Array.from({ length: repeat }).map((_, index) => (\n      <div\n        key={`item-${index}`}\n        className={cn(\"flex shrink-0 gap-(--gap)\", {\n          \"group-hover:paused\": pauseOnHover,\n          \"direction-reverse\": reverse,\n          \"animate-canopy-horizontal flex-row\": !vertical,\n          \"animate-canopy-vertical flex-col\": vertical,\n        })}\n      >\n        {children}\n      </div>\n    ))}\n    {applyMask && (\n      <div\n        className={cn(\n          \"pointer-events-none absolute inset-0 z-10 h-full w-full from-white/50 from-5% via-transparent via-50% to-white/50 to-95% dark:from-gray-800/50 dark:via-transparent dark:to-gray-800/50\",\n          vertical ? \"bg-linear-to-b\" : \"bg-linear-to-r\"\n        )}\n      />\n    )}\n  </div>\n);\n\nconst TestimonialCard = ({\n  testimonial,\n  className,\n}: {\n  testimonial: Testimonial;\n  className?: string;\n}) => (\n  <div\n    className={cn(\n      \"group mx-2 flex h-32 w-80 shrink-0 cursor-pointer overflow-hidden rounded-xl border border-transparent p-3 transition-all hover:border-blue-400 hover:shadow-[0_0_10px_#60a5fa] dark:hover:border-blue-400\",\n      className\n    )}\n  >\n    <div className=\"flex items-start gap-3\">\n      <div className=\"relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-gray-200 dark:border-gray-600\">\n        <img\n          src={testimonial.image}\n          alt={testimonial.name}\n          className=\"h-full w-full not-prose object-cover\"\n        />\n      </div>\n      <div className=\"flex-1\">\n        <div className=\"flex items-baseline gap-2\">\n          <span className=\"text-sm font-bold text-foreground\">\n            {testimonial.name}\n          </span>\n          <span className=\"text-xs text-muted-foreground\">\n            {testimonial.handle}\n          </span>\n        </div>\n        <p className=\"mt-1 line-clamp-3 text-sm text-foreground\">\n          {testimonial.description}\n        </p>\n      </div>\n    </div>\n  </div>\n);\n\nexport const AnimatedTestimonials = ({\n  data,\n  className,\n  cardClassName,\n}: {\n  data: Testimonial[];\n  className?: string;\n  cardClassName?: string;\n}) => (\n  <div className={cn(\"w-full overflow-x-hidden py-4\", className)}>\n    {[false, true, false].map((reverse, index) => (\n      <AnimatedCanopy\n        key={`Canopy-${index}`}\n        reverse={reverse}\n        className=\"[--duration:25s]\"\n        pauseOnHover\n        applyMask={false}\n        repeat={3}\n      >\n        {data.map((testimonial) => (\n          <TestimonialCard\n            key={testimonial.name}\n            testimonial={testimonial}\n            className={cardClassName}\n          />\n        ))}\n      </AnimatedCanopy>\n    ))}\n  </div>\n);\n"
+      "content": "import React from 'react';\n\nimport { cn } from '@/lib/utils';\n\ninterface Testimonial {\n  name: string;\n  image: string;\n  description: string;\n  handle: string;\n}\n\ninterface AnimatedCanopyProps extends React.HTMLAttributes<HTMLDivElement> {\n  vertical?: boolean;\n  repeat?: number;\n  reverse?: boolean;\n  pauseOnHover?: boolean;\n  applyMask?: boolean;\n}\n\nconst AnimatedCanopy = ({\n  children,\n  vertical = false,\n  repeat = 4,\n  pauseOnHover = false,\n  reverse = false,\n  className,\n  applyMask = true,\n  ...props\n}: AnimatedCanopyProps) => (\n  <div\n    {...props}\n    className={cn(\n      'group relative flex h-full w-full overflow-hidden p-2 [--duration:10s] [--gap:12px] gap-(--gap)',\n      vertical ? 'flex-col' : 'flex-row',\n      className,\n    )}\n  >\n    {Array.from({ length: repeat }).map((_, index) => (\n      <div\n        key={`item-${index}`}\n        className={cn('flex shrink-0 gap-(--gap)', {\n          'group-hover:paused': pauseOnHover,\n          'direction-reverse': reverse,\n          'animate-canopy-horizontal flex-row': !vertical,\n          'animate-canopy-vertical flex-col': vertical,\n        })}\n      >\n        {children}\n      </div>\n    ))}\n    {applyMask && (\n      <div\n        className={cn(\n          'pointer-events-none absolute inset-0 z-10 h-full w-full from-white/50 from-5% via-transparent via-50% to-white/50 to-95% dark:from-gray-800/50 dark:via-transparent dark:to-gray-800/50',\n          vertical ? 'bg-linear-to-b' : 'bg-linear-to-r',\n        )}\n      />\n    )}\n  </div>\n);\n\nconst TestimonialCard = ({\n  testimonial,\n  className,\n}: {\n  testimonial: Testimonial;\n  className?: string;\n}) => (\n  <div\n    className={cn(\n      'group mx-2 flex h-32 w-80 shrink-0 cursor-pointer overflow-hidden rounded-xl border border-transparent p-3 transition-all hover:border-blue-400 hover:shadow-[0_0_10px_#60a5fa] dark:hover:border-blue-400',\n      className,\n    )}\n  >\n    <div className='flex items-start gap-3'>\n      <div className='relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-gray-200 dark:border-gray-600'>\n        <img\n          src={testimonial.image}\n          alt={testimonial.name}\n          className='h-full w-full not-prose object-cover'\n        />\n      </div>\n      <div className='flex-1'>\n        <div className='flex items-baseline gap-2'>\n          <span className='text-sm font-bold text-foreground'>\n            {testimonial.name}\n          </span>\n          <span className='text-xs text-muted-foreground'>\n            {testimonial.handle}\n          </span>\n        </div>\n        <p className='mt-1 line-clamp-3 text-sm text-foreground'>\n          {testimonial.description}\n        </p>\n      </div>\n    </div>\n  </div>\n);\n\nexport const AnimatedTestimonials = ({\n  data,\n  className,\n  cardClassName,\n}: {\n  data: Testimonial[];\n  className?: string;\n  cardClassName?: string;\n}) => (\n  <div className={cn('w-full overflow-x-hidden py-4', className)}>\n    {[false, true, false].map((reverse, index) => (\n      <AnimatedCanopy\n        key={`Canopy-${index}`}\n        reverse={reverse}\n        className='[--duration:25s]'\n        pauseOnHover\n        applyMask={false}\n        repeat={3}\n      >\n        {data.map((testimonial) => (\n          <TestimonialCard\n            key={testimonial.name}\n            testimonial={testimonial}\n            className={cardClassName}\n          />\n        ))}\n      </AnimatedCanopy>\n    ))}\n  </div>\n);\n"
     },
     {
       "type": "registry:lib",
       "path": "lib/utils.ts",
-      "target": "lib/utils.ts",
       "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
     }
   ]
