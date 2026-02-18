@@ -2,10 +2,15 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "heroui",
   "type": "registry:ui",
-  "title": "Glowing Border Card",
-  "description": "A customizable card with a glowing border effect that changes colors based on light and dark modes.",
+  "title": "Hero Section",
+  "description": "A set of hero sections ranging from simple to complex layouts.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
-  "registryDependencies": ["badge", "button", "globe", "lustretext"],
+  "registryDependencies": [
+    "@scrollxui/badge",
+    "@scrollxui/button",
+    "@scrollxui/globe",
+    "@scrollxui/lustretext"
+  ],
   "dependencies": [
     "motion",
     "@react-spring/web",
