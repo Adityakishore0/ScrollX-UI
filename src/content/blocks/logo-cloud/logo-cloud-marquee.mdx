@@ -1,0 +1,50 @@
+---
+title: Logo Cloud with Marquee
+description: A logo cloud with flowing marquee motion, perfect for bold AI startups.
+---
+
+<BlocksPreview
+  name='logo-cloud-marquee'
+  className=''
+  description=''
+/>
+
+<BlockTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/logo-cloud/logo-cloud-marquee
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash value="deps"
+npm install motion clsx tailwind-merge
+```
+
+<Step>Add util file</Step>
+
+```ts filename="lib/utils.ts"
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+<Step>Install required UI components: [`Flowing Logos`](/docs/components/flowing-logos)</Step>
+
+</Steps>
+</TabsContent>
+</BlockTabs>

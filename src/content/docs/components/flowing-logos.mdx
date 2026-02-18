@@ -152,6 +152,19 @@ import { FlowingLogos } from '@/components/ui/flowing-logo';
 />
 ```
 
+---
+
+## Changelog
+
+`18-02-2026 — Added layout variants`
+
+- Introduced `variant` prop (`square`, `wide`, `auto`) for flexible logo sizing.
+- Updated `LogoCard` to support responsive width, height, and object-fit behaviors.
+- Improved marquee layout to better support brand logos with different aspect ratios.
+- Minor styling refinements for hover scaling and visual consistency.
+
+
+
 ## API Reference
 
 ### Flowing Logos
@@ -160,10 +173,10 @@ Flowing logo showcase with smooth animations, hover effects, and modern UI.
 
 ## Props
 
-| Prop            | Type          | Default     | Description                                                |
-| --------------- | ------------- | ----------- | ---------------------------------------------------------- |
-| `data`          | `Array<Logo>` | `required`  | An array of logo objects to display.                       |
-| `name`          | `string`      | `required`  | Name of the logo or brand. Used inside each logo object.   |
-| `image`         | `string`      | `required`  | URL of the logo image. Used inside each logo object.       |
-| `className`     | `string`      | `undefined` | Optional additional CSS classes applied to the container.  |
-| `cardClassName` | `string`      | `undefined` | Optional additional CSS classes applied to each logo card. |
+| Prop            | Type                               | Default      | Description                                                     |
+| --------------- | ---------------------------------- | ------------ | --------------------------------------------------------------- |
+| `data`          | `Array<{ name: string; image: string }>` | `required`   | Array of logo objects to render in the marquee.                |
+| `variant`       | `'square' \| 'wide' \| 'auto'`     | `'square'`   | Controls the logo card layout and sizing behavior.             |
+| `className`     | `string`                           | `-`  | Additional classes applied to the outer container.             |
+| `cardClassName` | `string`                           | `-`  | Additional classes applied to each individual logo card.       |
+

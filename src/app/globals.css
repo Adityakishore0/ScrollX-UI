@@ -320,11 +320,11 @@ code[data-theme*=' '] span {
   background-color: var(--shiki-dark-bg);
 }
 /* Code blocks with Shiki highlighting */
-pre code span {
+pre:not(.not-shiki) code span {
   color: var(--shiki-light);
 }
 
-.dark pre code span {
+.dark pre:not(.not-shiki) code span {
   color: var(--shiki-dark);
 }
 

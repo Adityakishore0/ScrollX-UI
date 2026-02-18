@@ -24,24 +24,17 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
   const [hovered, setHovered] = useState(false);
 
   const getInstallCommand = (pkgManager: typeof selected): string => {
-    const alias = useShadcnAlias;
-    const target = alias
+    const target = useShadcnAlias
       ? `@scrollxui/${name}`
       : `https://scrollxui.dev/registry/${name}.json`;
 
     switch (pkgManager) {
       case 'pnpm':
-        return alias
-          ? `pnpm dlx shadcn@latest add ${target}`
-          : `pnpm dlx shadcn@latest add ${target}`;
+        return `pnpm dlx shadcn@latest add ${target}`;
       case 'yarn':
-        return alias
-          ? `npx shadcn@latest add ${target}`
-          : `npx shadcn@latest add ${target}`;
+        return `npx shadcn@latest add ${target}`;
       case 'bun':
-        return alias
-          ? `bunx --bun shadcn@latest add ${target}`
-          : `bun x --bun shadcn@latest add ${target}`;
+        return `bunx --bun shadcn@latest add ${target}`;
       default:
         return `npx shadcn@latest add ${target}`;
     }
@@ -144,7 +137,7 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
   };
 
   return (
-    <div className='relative w-full max-w-4xl rounded-xl bg-muted shadow-lg'>
+    <div className='relative w-full max-w-none! rounded-xl bg-muted shadow-lg'>
       <div className='flex items-center px-4 pt-4 text-sm text-muted-foreground gap-x-4'>
         <div className='bg-gray-800 dark:bg-gray-200 flex items-center justify-center rounded-sm p-1 shrink-0'>
           <Terminal className='h-4 w-4 text-gray-100 dark:text-gray-900' />
@@ -253,12 +246,22 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
         </div>
       </div>
 
-      <pre className='overflow-x-auto not-prose px-4 py-3 text-sm font-mono text-foreground'>
+      <pre className='overflow-x-auto not-prose not-shiki px-4 py-3 text-sm font-mono text-foreground'>
         <code>
           {installCommand.split(' ').map((part, i) => {
             let colorClass = 'text-foreground';
 
-            if (['npx', 'pnpm', 'bun', 'yarn', 'shadcn-cli'].includes(part)) {
+            if (
+              [
+                'npx',
+                'pnpm',
+                'dlx',
+                'bunx',
+                'bun',
+                'yarn',
+                'shadcn-cli',
+              ].includes(part)
+            ) {
               colorClass = 'text-blue-600 dark:text-blue-400';
             } else if (part.startsWith('shadcn@')) {
               colorClass = 'text-green-600 dark:text-green-400';
@@ -269,7 +272,7 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
             }
 
             return (
-              <span key={i} className={`${colorClass}`}>
+              <span key={i} className={colorClass}>
                 {part + ' '}
               </span>
             );

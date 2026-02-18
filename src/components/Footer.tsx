@@ -27,10 +27,10 @@ export function Footer() {
               Documentation
             </Link>
             <Link
-              href='/templates'
+              href='/blocks'
               className='text-sm font-medium hover:underline'
             >
-              Templates
+              Blocks
             </Link>
             <Link
               href='/showcase'

@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "accordion",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Accordion",
   "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
@@ -12,17 +12,75 @@
     "clsx",
     "tailwind-merge"
   ],
+  "cssVars": {
+    "theme": {
+      "--animate-accordion-down": "accordion-down 0.2s ease-out",
+      "--animate-accordion-up": "accordion-up 0.2s ease-out",
+      "--animate-shake-smooth": "shake-smooth 0.5s ease-in-out"
+    }
+  },
+  "css": {
+    "@keyframes accordion-down": {
+      "from": {
+        "height": "0"
+      },
+      "to": {
+        "height": "var(--radix-accordion-content-height)"
+      }
+    },
+    "@keyframes accordion-up": {
+      "from": {
+        "height": "var(--radix-accordion-content-height)"
+      },
+      "to": {
+        "height": "0"
+      }
+    },
+    "@keyframes shake-smooth": {
+      "0%": {
+        "transform": "translateX(0)"
+      },
+      "10%": {
+        "transform": "translateX(-12px)"
+      },
+      "20%": {
+        "transform": "translateX(12px)"
+      },
+      "30%": {
+        "transform": "translateX(-10px)"
+      },
+      "40%": {
+        "transform": "translateX(10px)"
+      },
+      "50%": {
+        "transform": "translateX(-6px)"
+      },
+      "60%": {
+        "transform": "translateX(6px)"
+      },
+      "70%": {
+        "transform": "translateX(-3px)"
+      },
+      "80%": {
+        "transform": "translateX(3px)"
+      },
+      "90%": {
+        "transform": "translateX(-1px)"
+      },
+      "100%": {
+        "transform": "translateX(0)"
+      }
+    }
+  },
   "files": [
     {
-      "type": "registry:component",
+      "type": "registry:ui",
       "path": "components/ui/accordion.tsx",
-      "target": "components/ui/accordion.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport * as AccordionPrimitive from \"@radix-ui/react-accordion\";\nimport { Plus } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nconst Accordion = AccordionPrimitive.Root;\n\nconst AccordionItem = React.forwardRef<\n  React.ComponentRef<typeof AccordionPrimitive.Item>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>\n>(({ className, ...props }, ref) => (\n  <AccordionPrimitive.Item ref={ref} className={cn(\"border-b\", className)} {...props} />\n));\nAccordionItem.displayName = \"AccordionItem\";\n\nconst AccordionTrigger = React.forwardRef<\n  React.ComponentRef<typeof AccordionPrimitive.Trigger>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>\n>(({ className, children, ...props }, ref) => (\n  <AccordionPrimitive.Header className=\"flex\">\n    <AccordionPrimitive.Trigger\n      ref={ref}\n      className={cn(\n        \"flex flex-1 items-center justify-between py-4 text-sm font-medium text-foreground text-left hover:underline transition-transform duration-300 ease-in-out\",\n        \"[&[data-state=open]>svg]:rotate-45\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n      <Plus className=\"h-4 w-4 shrink-0 text-primary transition-transform duration-300 ease-in-out\" />\n    </AccordionPrimitive.Trigger>\n  </AccordionPrimitive.Header>\n));\nAccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;\n\nconst AccordionContent = React.forwardRef<\n  React.ComponentRef<typeof AccordionPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>\n>(({ className, children, ...props }, ref) => (\n  <AccordionPrimitive.Content\n    ref={ref}\n    className={cn(\n      \"overflow-hidden text-sm text-foreground transition-all\",\n      \"data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up\",\n      className\n    )}\n    {...props}\n  >\n    <div\n      className={cn(\n        \"w-full p-5 rounded-xl bg-muted/60 backdrop-blur-xs border border-border flex items-center animate-shake-smooth\",\n        className\n      )}\n    >\n      {children}\n    </div>\n  </AccordionPrimitive.Content>\n));\nAccordionContent.displayName = AccordionPrimitive.Content.displayName;\n\nexport { Accordion, AccordionItem, AccordionTrigger, AccordionContent };\n"
+      "content": "'use client';\n\nimport * as React from 'react';\nimport * as AccordionPrimitive from '@radix-ui/react-accordion';\nimport { Plus } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\nconst Accordion = AccordionPrimitive.Root;\n\nconst AccordionItem = React.forwardRef<\n  React.ComponentRef<typeof AccordionPrimitive.Item>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>\n>(({ className, ...props }, ref) => (\n  <AccordionPrimitive.Item\n    ref={ref}\n    className={cn('border-b', className)}\n    {...props}\n  />\n));\nAccordionItem.displayName = 'AccordionItem';\n\nconst AccordionTrigger = React.forwardRef<\n  React.ComponentRef<typeof AccordionPrimitive.Trigger>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>\n>(({ className, children, ...props }, ref) => (\n  <AccordionPrimitive.Header className='flex'>\n    <AccordionPrimitive.Trigger\n      ref={ref}\n      className={cn(\n        'flex flex-1 items-center justify-between py-4 text-sm font-medium text-foreground text-left hover:underline transition-transform duration-300 ease-in-out',\n        '[&[data-state=open]>svg]:rotate-45',\n        className,\n      )}\n      {...props}\n    >\n      {children}\n      <Plus className='h-4 w-4 shrink-0 text-primary transition-transform duration-300 ease-in-out' />\n    </AccordionPrimitive.Trigger>\n  </AccordionPrimitive.Header>\n));\nAccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;\n\nconst AccordionContent = React.forwardRef<\n  React.ComponentRef<typeof AccordionPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>\n>(({ className, children, ...props }, ref) => (\n  <AccordionPrimitive.Content\n    ref={ref}\n    className={cn(\n      'overflow-hidden text-sm text-foreground transition-all',\n      'data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up',\n      className,\n    )}\n    {...props}\n  >\n    <div\n      className={cn(\n        'w-full p-5 rounded-xl bg-muted/60 backdrop-blur-xs border border-border flex items-center animate-shake-smooth',\n        className,\n      )}\n    >\n      {children}\n    </div>\n  </AccordionPrimitive.Content>\n));\nAccordionContent.displayName = AccordionPrimitive.Content.displayName;\n\nexport { Accordion, AccordionItem, AccordionTrigger, AccordionContent };\n"
     },
     {
       "type": "registry:lib",
       "path": "lib/utils.ts",
-      "target": "lib/utils.ts",
       "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
     }
   ]

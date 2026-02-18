@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "expandable-dock",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Expandable Dock",
   "description": "A versatile expandable dock component that can be used to display various sections with expandable functionality.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
@@ -9,15 +9,13 @@
   "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {
-      "type": "registry:component",
+      "type": "registry:ui",
       "path": "components/ui/expandable-dock.tsx",
-      "target": "components/ui/expandable-dock.tsx",
       "content": "'use client';\n\nimport React, { useState, ReactNode, useRef, useEffect } from 'react';\nimport { motion } from 'motion/react';\nimport { cn } from '@/lib/utils';\n\ninterface ExpandableDockProps {\n  headerContent: ReactNode;\n  children: ReactNode;\n  className?: string;\n}\n\nconst ExpandableDock = ({\n  headerContent,\n  children,\n  className,\n}: ExpandableDockProps) => {\n  const [animationStage, setAnimationStage] = useState<\n    | 'collapsed'\n    | 'widthExpanding'\n    | 'heightExpanding'\n    | 'fullyExpanded'\n    | 'contentFadingOut'\n    | 'heightCollapsing'\n    | 'widthCollapsing'\n  >('collapsed');\n\n  const containerRef = useRef<HTMLDivElement>(null);\n\n  const handleExpand = () => {\n    setAnimationStage('widthExpanding');\n    setTimeout(() => setAnimationStage('heightExpanding'), 400);\n    setTimeout(() => setAnimationStage('fullyExpanded'), 850);\n  };\n\n  const handleCollapse = () => {\n    setAnimationStage('contentFadingOut');\n    setTimeout(() => setAnimationStage('heightCollapsing'), 250);\n    setTimeout(() => setAnimationStage('widthCollapsing'), 650);\n    setTimeout(() => setAnimationStage('collapsed'), 1050);\n  };\n\n  const isCollapsed = animationStage === 'collapsed';\n  const isExpanded = animationStage === 'fullyExpanded';\n\n  useEffect(() => {\n    const handleClickOutside = (e: MouseEvent) => {\n      if (\n        containerRef.current &&\n        !containerRef.current.contains(e.target as Node) &&\n        isExpanded\n      ) {\n        handleCollapse();\n      }\n    };\n    document.addEventListener('mousedown', handleClickOutside);\n    return () => document.removeEventListener('mousedown', handleClickOutside);\n  }, [isExpanded]);\n\n  return (\n    <div className='fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-full px-4 sm:px-0'>\n      <motion.div\n        ref={containerRef}\n        initial={{\n          width: 'min(90vw, 360px)',\n          height: 68,\n          borderRadius: 999,\n        }}\n        animate={{\n          width:\n            animationStage === 'collapsed' ||\n            animationStage === 'widthCollapsing'\n              ? 'min(90vw, 360px)'\n              : 'min(90vw, 720px)',\n          height:\n            animationStage === 'collapsed' ||\n            animationStage === 'widthExpanding' ||\n            animationStage === 'widthCollapsing'\n              ? 68\n              : 'min(80vh, 500px)',\n          borderRadius: isCollapsed ? 999 : 20,\n        }}\n        transition={{\n          width: { duration: 0.45, ease: [0.4, 0, 0.2, 1] },\n          height: { duration: 0.45, ease: [0.25, 1, 0.5, 1] },\n          borderRadius: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },\n        }}\n        className={cn(\n          'bg-white dark:bg-black backdrop-blur-md shadow-2xl overflow-hidden flex flex-col-reverse mx-auto',\n          className,\n        )}\n      >\n        <div\n          onClick={isCollapsed ? handleExpand : handleCollapse}\n          className='flex items-center gap-4 px-4 sm:px-6 py-4 text-white w-full h-17 whitespace-nowrap cursor-pointer border-t border-gray-800 shrink-0'\n        >\n          {headerContent}\n        </div>\n        <motion.div\n          animate={{\n            opacity: isExpanded ? 1 : 0,\n            height: isExpanded ? 'auto' : 0,\n          }}\n          transition={{ duration: 0.3 }}\n          className='p-4 sm:p-6 flex-1 flex flex-col overflow-hidden'\n        >\n          <div className='overflow-y-hidden overflow-x-auto scrollbar-none'>\n            {children}\n          </div>\n        </motion.div>\n      </motion.div>\n    </div>\n  );\n};\n\nexport default ExpandableDock;\n"
     },
     {
       "type": "registry:lib",
       "path": "lib/utils.ts",
-      "target": "lib/utils.ts",
       "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
     }
   ]

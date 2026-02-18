@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "seperatorpro",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Seperator Pro",
   "description": "Separates layout sections with customizable styles and orientations.",
   "author": "Ahdeetai <https://aditya.is-cool.dev>",
@@ -9,15 +9,13 @@
   "dependencies": ["@radix-ui/react-separator", "clsx", "tailwind-merge"],
   "files": [
     {
-      "type": "registry:component",
+      "type": "registry:ui",
       "path": "components/ui/seperatorpro.tsx",
-      "target": "components/ui/seperatorpro.tsx",
       "content": "'use client';\nimport * as React from 'react';\nimport * as SeparatorPrimitive from '@radix-ui/react-separator';\nimport { cn } from '@/lib/utils';\n\nconst SeparatorPro = React.memo(\n  React.forwardRef<\n    React.ComponentRef<typeof SeparatorPrimitive.Root>,\n    React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root> & {\n      variant?: 'default' | 'dots' | 'wave';\n    }\n  >(\n    (\n      {\n        className,\n        orientation = 'horizontal',\n        decorative = true,\n        variant = 'default',\n        ...props\n      },\n      ref,\n    ) => {\n      const isHorizontal = orientation === 'horizontal';\n\n      const wavePath = React.useMemo(() => {\n        return isHorizontal\n          ? 'M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 T250,10 T300,10 T350,10 T400,10'\n          : 'M10,0 Q5,50 10,100 T10,200 T10,300 T10,400';\n      }, [isHorizontal]);\n\n      return (\n        <SeparatorPrimitive.Root\n          ref={ref}\n          decorative={decorative}\n          orientation={orientation}\n          className={cn(\n            'shrink-0 flex items-center justify-center overflow-hidden',\n            isHorizontal ? 'w-full' : 'h-full',\n            className,\n          )}\n          {...props}\n        >\n          {variant === 'default' && (\n            <div\n              className={cn(\n                'bg-neutral-400 dark:bg-neutral-800',\n                isHorizontal ? 'h-px w-full' : 'w-px h-full',\n              )}\n            />\n          )}\n\n          {variant === 'dots' && (\n            <div\n              className={cn(\n                'relative',\n                isHorizontal ? 'w-full h-4' : 'h-full w-4',\n              )}\n            >\n              <div\n                className={cn(\n                  'absolute inset-0 bg-repeat',\n                  'text-neutral-400 dark:text-white/20',\n                )}\n                style={{\n                  backgroundImage:\n                    'radial-gradient(circle, currentColor 0.8px, transparent 0.8px)',\n                  backgroundSize: isHorizontal ? '6px 100%' : '100% 6px',\n                  maskImage: isHorizontal\n                    ? 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)'\n                    : 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',\n                }}\n              />\n            </div>\n          )}\n\n          {variant === 'wave' && (\n            <div\n              className={cn(\n                'relative flex items-center justify-center',\n                isHorizontal ? 'w-full h-6' : 'h-full w-6',\n              )}\n            >\n              <svg\n                className={cn(\n                  'text-neutral-400 dark:text-white/20',\n                  isHorizontal ? 'w-full h-6' : 'h-full w-6',\n                )}\n                viewBox={isHorizontal ? '0 0 400 20' : '0 0 20 400'}\n                preserveAspectRatio='none'\n                xmlns='http://www.w3.org/2000/svg'\n              >\n                <path\n                  d={wavePath}\n                  fill='none'\n                  stroke='currentColor'\n                  strokeWidth='2'\n                  strokeLinecap='round'\n                />\n              </svg>\n            </div>\n          )}\n        </SeparatorPrimitive.Root>\n      );\n    },\n  ),\n);\n\nSeparatorPro.displayName = 'SeparatorPro';\n\nexport { SeparatorPro };\n"
     },
     {
       "type": "registry:lib",
       "path": "lib/utils.ts",
-      "target": "lib/utils.ts",
       "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
     }
   ]

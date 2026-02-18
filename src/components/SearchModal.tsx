@@ -142,13 +142,8 @@ const NavigationItem = memo(
       if (item.href) onClick(item.href);
     }, [item.href, onClick]);
 
-    const handleMouseEnter = useCallback(() => {
-      setIsHovered(true);
-    }, []);
-
-    const handleMouseLeave = useCallback(() => {
-      setIsHovered(false);
-    }, []);
+    const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+    const handleMouseLeave = useCallback(() => setIsHovered(false), []);
 
     const categoryBadge = useMemo(() => {
       if (!item.category) return null;
@@ -201,6 +196,15 @@ const NavigationSection = memo(
         <p className='text-gray-600 dark:text-neutral-400 text-sm truncate'>
           {item.title}
         </p>
+        {item.category && (
+          <div className='ml-2'>
+            <OptimizedStatusBadge
+              category={item.category}
+              categoryClassName={item.categoryClassName}
+              isHovered={false}
+            />
+          </div>
+        )}
       </div>
       <div className='pl-2'>
         {item.href && (

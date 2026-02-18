@@ -35,7 +35,7 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
                 href={item.href}
                 onClick={onNavigate}
                 className={cn(
-                  'block font-semibold rounded-md transition-all relative',
+                  'flex items-center gap-1 font-semibold rounded-md transition-all relative',
                   pathname === item.href
                     ? 'bg-black text-white dark:bg-white dark:text-black'
                     : 'text-gray-700 dark:text-gray-400',
@@ -43,14 +43,40 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
                 )}
                 style={{ fontSize: '0.95rem', padding: '0.5rem 0.75rem' }}
               >
-                {item.title}
+                <span>{item.title}</span>
+                {item.category && (
+                  <Status
+                    className={cn(
+                      'shrink-0',
+                      item.categoryClassName ||
+                        'bg-green-900 text-green-400 font-medium rounded-full border border-green-500',
+                    )}
+                    shiny={true}
+                    shinySpeed={2}
+                  >
+                    {item.category}
+                  </Status>
+                )}
               </Link>
             ) : (
               <span
-                className='block font-semibold text-gray-900 dark:text-gray-100'
+                className='flex items-center gap-1 font-semibold text-gray-900 dark:text-gray-100'
                 style={{ fontSize: '0.95rem', padding: '0.5rem 0.75rem' }}
               >
-                {item.title}
+                <span>{item.title}</span>
+                {item.category && (
+                  <Status
+                    className={cn(
+                      'shrink-0',
+                      item.categoryClassName ||
+                        'bg-green-900 text-green-400 font-medium rounded-full border border-green-500',
+                    )}
+                    shiny={true}
+                    shinySpeed={2}
+                  >
+                    {item.category}
+                  </Status>
+                )}
               </span>
             )}
 
@@ -79,13 +105,12 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
                 >
                   <div className='flex items-center gap-1 whitespace-nowrap overflow-hidden'>
                     <span className='truncate'>{typedChild.title}</span>
-
                     {typedChild.category && (
                       <Status
                         className={cn(
                           'shrink-0',
                           typedChild.categoryClassName ||
-                            ' bg-green-900 text-green-400 font-medium rounded-full border border-green-500',
+                            'bg-green-900 text-green-400 font-medium rounded-full border border-green-500',
                         )}
                         shiny={true}
                         shinySpeed={2}

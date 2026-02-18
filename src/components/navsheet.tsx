@@ -10,7 +10,7 @@ import ThemeSwitchIcon from '@/components/demos/themeswitchicon';
 const navigationItems = [
   { href: '/docs', label: 'Docs' },
   { href: '/docs/components', label: 'Components' },
-  { href: '/templates', label: 'Templates' },
+  { href: '/blocks', label: 'Blocks' },
   { href: '/showcase', label: 'Showcase' },
 ];
 

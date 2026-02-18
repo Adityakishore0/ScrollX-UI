@@ -7,6 +7,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import CodeBlock from '@/components/CodeBlock';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
+import { remarkInstallBlocks } from '@/utils/remark-install-blocks';
 
 interface ChangelogEntry {
   title: string;
@@ -71,7 +72,7 @@ async function getChangelogContent() {
         options: {
           parseFrontmatter: true,
           mdxOptions: {
-            remarkPlugins: [remarkGfm],
+            remarkPlugins: [remarkGfm, remarkInstallBlocks],
             rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
             format: 'mdx',
           },

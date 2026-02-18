@@ -45,7 +45,19 @@ const navigation: NavItem[] = [
       { title: 'Dark Mode', href: '/docs/installation/dark-mode' },
     ],
   },
-
+  {
+    title: 'Blocks',
+    href: '',
+    category: 'New',
+    children: [
+      { title: 'Hero Sections', href: '/blocks/hero-sections' },
+      {
+        title: 'Frequently Asked Questions',
+        href: '/blocks/frequently-asked-questions/frequently-asked-questions-with-accordion',
+      },
+      { title: 'Logo Cloud', href: '/blocks/logo-cloud' },
+    ],
+  },
   {
     title: 'Components',
     href: '',
@@ -162,7 +174,12 @@ const navigation: NavItem[] = [
         title: 'FlipStack',
         href: '/docs/components/flipstack',
       },
-      { title: 'Flowing Logos', href: '/docs/components/flowing-logos' },
+      {
+        title: 'Flowing Logos',
+        href: '/docs/components/flowing-logos',
+        category: 'updated',
+        categoryClassName: 'bg-blue-500',
+      },
       { title: 'Folder', href: '/docs/components/folder' },
       { title: 'Folder Tree', href: '/docs/components/folder-tree' },
       { title: 'Follow Cursor', href: '/docs/components/followcursor' },
