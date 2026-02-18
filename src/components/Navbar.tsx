@@ -69,9 +69,9 @@ export function Navbar({ className }: NavbarProps) {
       active: pathname === '/docs/components/accordion',
     },
     {
-      href: '/templates',
-      label: 'Templates',
-      active: pathname === '/templates',
+      href: '/blocks',
+      label: 'Blocks',
+      active: pathname === '/blocks',
     },
     { href: '/docs', label: 'Docs', active: pathname === '/docs' },
     { href: '/showcase', label: 'Showcase', active: pathname === '/showcase' },
