@@ -1,6 +1,6 @@
 {
   "name": "scrollxui",
-  "version": "2.0",
+  "version": "2.1",
   "type": "module",
   "private": true,
   "license": "MIT",
@@ -15,6 +15,8 @@
     "convert": "tsx scripts/convert.ts ./src/content/docs",
     "populate-registry": "tsx scripts/populate-registry.ts",
     "populate-registry:component": "tsx scripts/populate-registry.ts --component",
+    "populate-blocks": "tsx scripts/populate-blocks-registry.ts",
+    "populate-block": "tsx scripts/populate-blocks-registry.ts --block",
     "build:registry": "node --import ./dist/register-ts-node.js scripts/build-registry.ts",
     "build:llms": "node --import ./dist/register-ts-node.js scripts/generateLlmsText.ts",
     "build": "pnpm prepare:sw && pnpm convert && pnpm build:registry && pnpm build:llms && next build",
