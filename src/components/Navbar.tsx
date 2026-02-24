@@ -95,24 +95,11 @@ export function Navbar({ className }: NavbarProps) {
             <Link href='/' className='flex items-center space-x-2'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                className='shrink-0 w-6 h-6 sm:w-6 sm:h-6 md:w-7 md:h-7'
+                className='shrink-0 w-6 h-6 sm:w-6 sm:h-6 md:w-7 md:h-7 text-black dark:text-white'
                 viewBox='0 0 24 24'
               >
-                <defs>
-                  <linearGradient
-                    id='myGradient'
-                    x1='0%'
-                    y1='0%'
-                    x2='100%'
-                    y2='0%'
-                  >
-                    <stop offset='0%' stopColor='#3B82F6' />
-                    <stop offset='50%' stopColor='#8B5CF6' />
-                    <stop offset='100%' stopColor='#EC4899' />
-                  </linearGradient>
-                </defs>
                 <path
-                  fill='url(#myGradient)'
+                  fill='currentColor'
                   d='M5.999 17a3 3 0 0 1-1.873-.658a2.98 2.98 0 0 1-1.107-2.011a2.98 2.98 0 0 1 .639-2.206l4-5c.978-1.225 2.883-1.471 4.143-.523l1.674 1.254l2.184-2.729a3 3 0 1 1 4.682 3.747l-4 5c-.977 1.226-2.882 1.471-4.143.526l-1.674-1.256l-2.184 2.729A2.98 2.98 0 0 1 5.999 17M10 8a1 1 0 0 0-.781.374l-4 5.001a1 1 0 0 0-.213.734c.03.266.161.504.369.67a.996.996 0 0 0 1.406-.155l3.395-4.244L13.4 12.8c.42.316 1.056.231 1.381-.176l4-5.001a1 1 0 0 0 .213-.734a1 1 0 0 0-.369-.67a.996.996 0 0 0-1.406.156l-3.395 4.242L10.6 8.2A1 1 0 0 0 10 8m9 13H5a1 1 0 1 1 0-2h14a1 1 0 1 1 0 2'
                 />
               </svg>
