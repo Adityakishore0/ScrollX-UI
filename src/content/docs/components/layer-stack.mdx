@@ -63,6 +63,13 @@ import { LayerStack, Card } from "@/components/ui/layer-stack";
 </LayerStack>
 ```
 
+## Changelog
+
+`24-02-2026 — Mobile responsiveness upgrade`
+
+- Added automatic dynamic height adjustment for mobile cards.
+- Refined responsive card width handling.
+
 ## API Reference
 
 ### Layer Stack
@@ -75,7 +82,7 @@ Interactive stacked card layout with drag and scroll momentum.
 | ------------------- | ----------- | ------- | ------------------------------------------------------------|
 | `cardWidth`         | `number`    | `320`   | Width of each stacked card.                                 |
 | `cardGap`           | `number`    | `16`    | Spacing between cards.                                      |
-| `stageHeight`       | `number`    | `400`   | Height of the stack container.                              |
+| `stageHeight`       | `number`    | `400`   | Height of the stack container (auto-adjusts on mobile).     |
 | `lastCardFullWidth` | `boolean`   | `false` | Makes last card stretch full width.                         |
 | `mobileSensitivity` | `number`    | `2`     | Controls swipe sensitivity and momentum on mobile devices.  |
 | `className`         | `string`    | `-`     | Wrapper styling (LayerStack & Card supported).              |
