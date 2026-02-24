@@ -53,7 +53,7 @@ const navigation: NavItem[] = [
       { title: 'Hero Sections', href: '/blocks/hero-sections' },
       {
         title: 'Frequently Asked Questions',
-        href: '/blocks/frequently-asked-questions/frequently-asked-questions-with-accordion',
+        href: '/blocks/frequently-asked-questions',
       },
       { title: 'Logo Cloud', href: '/blocks/logo-cloud' },
     ],
@@ -222,7 +222,8 @@ const navigation: NavItem[] = [
       {
         title: 'Layer Stack',
         href: '/docs/components/layer-stack',
-        category: 'New',
+        category: 'updated',
+        categoryClassName: 'bg-blue-500',
       },
       {
         title: 'Layered Text',

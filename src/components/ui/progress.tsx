@@ -28,9 +28,9 @@ function Progress({
       data-slot='progress'
       className={cn(
         'bg-primary/20 relative w-full overflow-hidden rounded-full border h-3',
-        isSlim && 'bg-background border-(--border)',
+        isSlim && 'bg-background border-black dark:border-white',
         isOutline &&
-          'bg-primary/20 relative w-full overflow-hidden rounded-full border h-3 border-(--border)',
+          'bg-primary/20 relative w-full overflow-hidden rounded-full border h-3 border-black dark:border-white',
         className,
       )}
       {...props}

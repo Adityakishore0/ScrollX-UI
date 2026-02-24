@@ -1961,6 +1961,20 @@
       ]
     },
     {
+      "name": "frequently-asked-questions-stack",
+      "title": "Frequently asked questions Stack",
+      "description": "A modern FAQ section with layered stack design and smooth scroll-triggered animations.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/layer-stack", "@scrollxui/progress"],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/blocks/frequently-asked-questions/frequently-asked-questions-stack.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "hero-with-iphone",
       "title": "Hero Section with Iphone",
       "description": "A hero section with an iPhone mockup and animated background.",

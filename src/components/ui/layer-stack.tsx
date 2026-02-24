@@ -39,6 +39,7 @@ interface StackCardInternalProps {
   maxScroll: number;
   renderedWidth: number;
   isMobile: boolean;
+  cardRef?: (el: HTMLDivElement | null) => void;
 }
 
 function Card({ children, className, ref, ...props }: CardProps) {
@@ -62,6 +63,7 @@ const StackCardInternal = React.memo(function StackCardInternal({
   maxScroll,
   renderedWidth,
   isMobile,
+  cardRef,
 }: StackCardInternalProps) {
   const naturalX = index * (cardWidth + cardGap);
   const x = useTransform(
@@ -83,6 +85,7 @@ const StackCardInternal = React.memo(function StackCardInternal({
 
   return (
     <motion.div
+      ref={cardRef}
       style={{
         x: clampedX,
         y: yDrop,
@@ -133,21 +136,18 @@ function LayerStack({
   const lastTouchTime = React.useRef(0);
   const lastTouchX = React.useRef(0);
   const rafRef = React.useRef<number | null>(null);
+  const cardRefs = React.useRef<(HTMLDivElement | null)[]>([]);
 
   const [progressValue, setProgressValue] = React.useState(0);
   const [containerWidth, setContainerWidth] = React.useState(0);
   const [isMobile, setIsMobile] = React.useState(false);
+  const [autoHeight, setAutoHeight] = React.useState(stageHeight);
 
   React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
-
     const mediaQuery = window.matchMedia('(max-width: 767px)');
     const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
@@ -161,6 +161,24 @@ function LayerStack({
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+
+  const effectiveCardWidth = React.useMemo(() => {
+    if (isMobile && containerWidth > 0) return containerWidth - 32;
+    return cardWidth;
+  }, [isMobile, containerWidth, cardWidth]);
+
+  React.useEffect(() => {
+    if (!isMobile || containerWidth === 0) {
+      setAutoHeight(stageHeight);
+      return;
+    }
+    const frame = requestAnimationFrame(() => {
+      const heights = cardRefs.current.map((el) => el?.scrollHeight ?? 0);
+      const max = Math.max(...heights);
+      if (max > 0) setAutoHeight(max + 32);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [isMobile, containerWidth, effectiveCardWidth, stageHeight]);
 
   const scrollX = useMotionValue(0);
   const smoothScrollX = useSpring(scrollX, {
@@ -177,8 +195,13 @@ function LayerStack({
 
   const maxScroll = React.useMemo(
     () =>
-      Math.max(0, cards.length * (cardWidth + cardGap) - cardGap - cardWidth),
-    [cards.length, cardWidth, cardGap],
+      Math.max(
+        0,
+        cards.length * (effectiveCardWidth + cardGap) -
+          cardGap -
+          effectiveCardWidth,
+      ),
+    [cards.length, effectiveCardWidth, cardGap],
   );
 
   const updateScrollX = React.useCallback(
@@ -217,7 +240,6 @@ function LayerStack({
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
       }
-
       isTouching = true;
       isHorizontalScroll = false;
       startX = e.touches[0].clientX;
@@ -230,23 +252,16 @@ function LayerStack({
 
     const onTouchMove = (e: TouchEvent) => {
       if (!isTouching) return;
-
       const currentX = e.touches[0].clientX;
       const currentY = e.touches[0].clientY;
       const deltaX = Math.abs(currentX - startX);
       const deltaY = Math.abs(currentY - startY);
 
-      if (!isHorizontalScroll && deltaX < 10 && deltaY < 10) {
-        return;
-      }
-
-      if (!isHorizontalScroll) {
-        isHorizontalScroll = deltaX > deltaY;
-      }
+      if (!isHorizontalScroll && deltaX < 10 && deltaY < 10) return;
+      if (!isHorizontalScroll) isHorizontalScroll = deltaX > deltaY;
 
       if (isHorizontalScroll) {
         e.preventDefault();
-
         const currentTime = Date.now();
         const scrollDeltaX = (startX - currentX) * mobileSensitivity;
         const deltaTime = currentTime - lastTouchTime.current;
@@ -258,10 +273,7 @@ function LayerStack({
         lastTouchX.current = currentX;
         lastTouchTime.current = currentTime;
 
-        if (rafRef.current) {
-          cancelAnimationFrame(rafRef.current);
-        }
-
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
         rafRef.current = requestAnimationFrame(() => {
           updateScrollX(startScroll + scrollDeltaX);
           rafRef.current = null;
@@ -274,16 +286,12 @@ function LayerStack({
         isTouching = false;
         return;
       }
-
       isTouching = false;
-
       const velocity = velocityRef.current * 250 * mobileSensitivity;
-
       if (Math.abs(velocity) > 15) {
         const momentum = velocity * 0.4;
         const targetScroll = rawScroll.current + momentum;
         const clampedTarget = Math.max(0, Math.min(maxScroll, targetScroll));
-
         animate(rawScroll.current, clampedTarget, {
           type: 'spring',
           stiffness: 100,
@@ -304,9 +312,7 @@ function LayerStack({
       el.removeEventListener('touchmove', onTouchMove);
       el.removeEventListener('touchend', onTouchEnd);
       el.removeEventListener('touchcancel', onTouchEnd);
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [updateScrollX, maxScroll, mobileSensitivity]);
 
@@ -327,8 +333,7 @@ function LayerStack({
 
     const onMouseMove = (e: MouseEvent) => {
       if (!isDragging) return;
-      const delta = dragStartX - e.clientX;
-      updateScrollX(dragStartScroll + delta);
+      updateScrollX(dragStartScroll + (dragStartX - e.clientX));
     };
 
     const onMouseUp = () => {
@@ -369,25 +374,32 @@ function LayerStack({
           'relative w-full overflow-hidden rounded-xl',
           !isMobile && 'cursor-grab active:cursor-grabbing',
         )}
-        style={{ height: stageHeight, perspective: isMobile ? 1000 : 1400 }}
+        style={{
+          height: autoHeight,
+          perspective: isMobile ? 1000 : 1400,
+          transition: 'height 0.2s ease',
+        }}
       >
         {cards.map((card, i) => {
           const isLastCard = i === cards.length - 1;
           const renderedWidth =
             lastCardFullWidth && isLastCard && containerWidth > 0
               ? containerWidth
-              : cardWidth;
+              : effectiveCardWidth;
 
           return (
             <StackCardInternal
               key={i}
               index={i}
-              cardWidth={cardWidth}
+              cardWidth={effectiveCardWidth}
               cardGap={cardGap}
               scrollProgress={smoothScrollX}
               maxScroll={maxScroll}
               renderedWidth={renderedWidth}
               isMobile={isMobile}
+              cardRef={(el: HTMLDivElement | null) => {
+                cardRefs.current[i] = el;
+              }}
             >
               {card}
             </StackCardInternal>
