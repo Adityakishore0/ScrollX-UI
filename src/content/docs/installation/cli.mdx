@@ -129,6 +129,7 @@ Options:
   -p, --path <path>  the path to add the component to.
   -h, --help         display help for command
 ```
+
 ---
 
 <Steps>
@@ -212,7 +213,7 @@ or
 </Steps>
 
 You can install ScrollX UI components through the CLI.
- Use the following command structure:
+Use the following command structure:
 
 <Tabs defaultValue="npm" className="w-full">
   <TabsList>
@@ -291,7 +292,7 @@ Edit `components.json` file
 ```json
 {
   "registries": {
-    "@scrollxui": "https://www.scrollxui.dev/registry/{name}.json"
+    "@scrollxui": "https://scrollxui.dev/registry/{name}.json"
   }
 }
 ```
@@ -365,7 +366,6 @@ Example:
     ```
   </TabsContent> 
 </Tabs>
-
 
 <Step>Search and Discovery</Step>
 
@@ -495,10 +495,11 @@ Add the `ScrollX UI` registry to your project's components.json file.
 ```json
 {
   "registries": {
-    "@scrollxui": "https://www.scrollxui.dev/registry/{name}.json"
+    "@scrollxui": "https://scrollxui.dev/registry/{name}.json"
   }
 }
 ```
+
 For example, you can ask an AI assistant to "Build a landing page using components from the ScrollX UI registry" or "Find me a login form from the ScrollX UI registry".
 
 Add the MCP server to your project:
@@ -546,14 +547,13 @@ Select the AI assistant you want to integrate with your project. Each tab provid
 
 <Tabs defaultValue="cursor" className="w-full">
 
-  <TabsList>
-    <TabsTrigger value="cursor">cursor</TabsTrigger>
-    <TabsTrigger value="claude">claude</TabsTrigger>
-    <TabsTrigger value="VS Code">VS Code</TabsTrigger>
-  </TabsList>
+<TabsList>
+  <TabsTrigger value='cursor'>cursor</TabsTrigger>
+  <TabsTrigger value='claude'>claude</TabsTrigger>
+  <TabsTrigger value='VS Code'>VS Code</TabsTrigger>
+</TabsList>
 
-
-   <Step>Choose Your Preferred Package Manager</Step>
+<Step>Choose Your Preferred Package Manager</Step>
 
   <TabsContent value="cursor">
    <Tabs defaultValue="npm" className="w-full">
