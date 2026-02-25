@@ -7,12 +7,28 @@ const OUTPUT_FILENAME = 'llms.txt';
 const OUTPUT_DIR = path.join(process.cwd(), 'public');
 const OUTPUT_PATH = path.join(OUTPUT_DIR, OUTPUT_FILENAME);
 const COMPONENTS_PATH = path.join(process.cwd(), 'src/content/docs/components');
+const BLOCKS_PATH = path.join(process.cwd(), 'src/content/blocks');
 
 interface ComponentMeta {
   name: string;
   title: string;
   description: string;
   slug: string;
+}
+
+interface BlockMeta {
+  category: string;
+  name: string;
+  title: string;
+  description: string;
+  slug: string;
+}
+
+interface BlockCategory {
+  name: string;
+  title: string;
+  description: string;
+  blocks: BlockMeta[];
 }
 
 function pascalToKebab(name: string): string {
@@ -66,20 +82,88 @@ function extractComponentsFromDocs(): ComponentMeta[] {
   return components.sort((a, b) => a.title.localeCompare(b.title));
 }
 
-function buildHeader(totalComponents: number): string {
+function extractBlocksFromDocs(): BlockCategory[] {
+  const categories: BlockCategory[] = [];
+
+  if (!fs.existsSync(BLOCKS_PATH)) {
+    return categories;
+  }
+
+  const categoryDirs = fs.readdirSync(BLOCKS_PATH);
+
+  for (const categoryDir of categoryDirs) {
+    const categoryPath = path.join(BLOCKS_PATH, categoryDir);
+    const stat = fs.statSync(categoryPath);
+
+    if (!stat.isDirectory()) continue;
+
+    const indexPath = path.join(categoryPath, 'index.mdx');
+    let categoryTitle = categoryDir;
+    let categoryDescription = '';
+
+    if (fs.existsSync(indexPath)) {
+      try {
+        const indexContent = fs.readFileSync(indexPath, 'utf8');
+        const { data } = matter(indexContent);
+
+        if (data.title) categoryTitle = data.title;
+        if (data.description) categoryDescription = data.description;
+      } catch (error) {}
+    }
+
+    const blocks: BlockMeta[] = [];
+    const files = fs.readdirSync(categoryPath);
+
+    for (const file of files) {
+      if (!file.endsWith('.mdx') || file === 'index.mdx') continue;
+
+      const filePath = path.join(categoryPath, file);
+
+      try {
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        const { data } = matter(fileContent);
+
+        if (data.title && data.description) {
+          const blockName = file.replace('.mdx', '');
+
+          blocks.push({
+            category: categoryDir,
+            name: blockName,
+            title: data.title,
+            description: data.description,
+            slug: `${categoryDir}/${blockName}`,
+          });
+        }
+      } catch (error) {}
+    }
+
+    if (blocks.length > 0) {
+      categories.push({
+        name: categoryDir,
+        title: categoryTitle,
+        description: categoryDescription,
+        blocks: blocks.sort((a, b) => a.title.localeCompare(b.title)),
+      });
+    }
+  }
+
+  return categories.sort((a, b) => a.title.localeCompare(b.title));
+}
+
+function buildHeader(totalComponents: number, totalBlocks: number): string {
   return [
     '# ScrollX UI',
     '',
-    '> ScrollX UI is an open-source React component library featuring animated, customizable components designed for modern web interfaces. It provides beautifully crafted animations, theming support, high performance, modular architecture, and responsive design.',
+    '> ScrollX UI is an open-source React component library featuring animated, customizable components and blocks designed for modern web interfaces. It provides beautifully crafted animations, theming support, high performance, modular architecture, and responsive design.',
     '',
-    'All components are written in TypeScript and styled with Tailwind CSS. The library includes a wide range of UI elements such as interactive cards, buttons, modals, text animations, backgrounds, and section blocks — all optimized for accessibility and developer experience.',
+    'All components and blocks are written in TypeScript and styled with Tailwind CSS. The library includes a wide range of UI elements such as interactive cards, buttons, modals, text animations, backgrounds, section blocks, hero sections, FAQ sections, and more — all optimized for accessibility and developer experience.',
     '',
     '**Important notes for agents:**',
     '',
-    `- ScrollX UI has ${totalComponents}+ components and is actively growing with daily additions.`,
-    '- All components are AI-ready and work seamlessly with modern frameworks.',
-    '- Components can be installed via CLI (shadcn) or manually copied.',
-    '- Each component includes variants, dependencies, and usage examples.',
+    `- ScrollX UI has ${totalComponents}+ components and ${totalBlocks}+ blocks and is actively growing with daily additions.`,
+    '- All components and blocks are AI-ready and work seamlessly with modern frameworks.',
+    '- Components and blocks can be installed via CLI (shadcn) or manually copied.',
+    '- Each component/block includes variants, dependencies, and usage examples.',
     '',
   ].join('\n');
 }
@@ -88,27 +172,27 @@ function buildDocs(): string {
   const links = [
     {
       label: 'Homepage',
-      url: 'https://www.scrollxui.dev',
+      url: 'https://scrollxui.dev',
       note: 'Main landing page with component showcase and library overview.',
     },
     {
       label: 'Introduction',
-      url: 'https://www.scrollxui.dev/docs/introduction',
+      url: 'https://scrollxui.dev/docs/introduction',
       note: 'Overview of ScrollX UI, its features, and design philosophy.',
     },
     {
       label: 'Installation',
-      url: 'https://www.scrollxui.dev/docs/installation',
+      url: 'https://scrollxui.dev/docs/installation',
       note: 'Installation guide with both CLI and manual setup options.',
     },
     {
       label: 'Manual Installation',
-      url: 'https://www.scrollxui.dev/docs/installation/manual',
+      url: 'https://scrollxui.dev/docs/installation/manual',
       note: 'Step-by-step manual installation instructions.',
     },
     {
       label: 'CLI Installation',
-      url: 'https://www.scrollxui.dev/docs/installation/cli',
+      url: 'https://scrollxui.dev/docs/installation/cli',
       note: 'Command-line installation using shadcn CLI with MCP server setup.',
     },
   ];
@@ -123,7 +207,7 @@ function buildCliInstructions(): string {
     '',
     '### Using shadcn CLI',
     '',
-    '**Basic Installation:**',
+    '**Install Components:**',
     '```bash',
     'npx shadcn@latest add https://scrollxui.dev/registry/[component].json',
     '```',
@@ -133,13 +217,23 @@ function buildCliInstructions(): string {
     'npx shadcn@latest add https://scrollxui.dev/registry/alert-dialog.json',
     '```',
     '',
+    '**Install Blocks:**',
+    '```bash',
+    'npx shadcn@latest add https://scrollxui.dev/registry/[category]/[block-name].json',
+    '```',
+    '',
+    '**Example:**',
+    '```bash',
+    'npx shadcn@latest add https://scrollxui.dev/registry/hero-sections/hero-with-layers.json',
+    '```',
+    '',
     '### Shadcn CLI 3.0 (Namespaced Registry)',
     '',
     '1. Edit your `components.json` file:',
     '```json',
     '{',
     '  "registries": {',
-    '    "@scrollxui": "https://www.scrollxui.dev/registry/{name}.json"',
+    '    "@scrollxui": "https://scrollxui.dev/registry/{name}.json"',
     '  }',
     '}',
     '```',
@@ -149,9 +243,14 @@ function buildCliInstructions(): string {
     'npx shadcn@latest add @scrollxui/[component]',
     '```',
     '',
-    '**Example:**',
+    '**Example (Component):**',
     '```bash',
     'npx shadcn@latest add @scrollxui/profilecard',
+    '```',
+    '',
+    '**Example (Block):**',
+    '```bash',
+    'npx shadcn@latest add @scrollxui/hero-sections/hero-with-layers',
     '```',
     '',
     '### CLI Commands',
@@ -162,7 +261,7 @@ function buildCliInstructions(): string {
     '',
     '### MCP Server Setup',
     '',
-    'The shadcn MCP Server allows AI assistants to interact with ScrollX UI components:',
+    'The shadcn MCP Server allows AI assistants to interact with ScrollX UI components and blocks:',
     '',
     '1. Initialize the MCP server:',
     '```bash',
@@ -222,7 +321,7 @@ function buildManualInstallation(): string {
     '  "tailwind": {',
     '    "config": "",',
     '    "css": "src/styles/globals.css",',
-    '    "baseColor": "neutral",',
+    '    "baseColor": "zinc",',
     '    "cssVariables": true,',
     '    "prefix": ""',
     '  },',
@@ -237,7 +336,7 @@ function buildManualInstallation(): string {
     '}',
     '```',
     '',
-    'For complete setup including CSS variables and theming, see: https://www.scrollxui.dev/docs/installation/manual',
+    'For complete setup including CSS variables and theming, see: https://scrollxui.dev/docs/installation/manual',
     '',
   ].join('\n');
 }
@@ -248,7 +347,7 @@ function buildComponentsSection(components: ComponentMeta[]): string {
   }
 
   const lines = components.map((comp) => {
-    const url = `https://www.scrollxui.dev/docs/components/${comp.slug}`;
+    const url = `https://scrollxui.dev/docs/components/${comp.slug}`;
     const description = comp.description.replace(/\s+/g, ' ').trim();
     const descriptionSentence = description.endsWith('.')
       ? description
@@ -274,11 +373,63 @@ function buildComponentsSection(components: ComponentMeta[]): string {
   ].join('\n');
 }
 
+function buildBlocksSection(categories: BlockCategory[]): string {
+  if (categories.length === 0) {
+    return '## Blocks\n\nNo blocks found. Please ensure the blocks directory exists and contains MDX files.\n';
+  }
+
+  const totalBlocks = categories.reduce(
+    (sum, cat) => sum + cat.blocks.length,
+    0,
+  );
+
+  const sections: string[] = [
+    '## Blocks',
+    '',
+    `ScrollX UI includes ${totalBlocks}+ pre-built blocks organized into ${categories.length} categories. All blocks are:`,
+    '',
+    '- Full-page sections ready to use',
+    '- Fully responsive and accessible',
+    '- Easy to customize and extend',
+    '- Optimized for performance',
+    '',
+    '**Installation format:** `npx shadcn@latest add @scrollxui/[category]/[block-name]`',
+    '',
+  ];
+
+  categories.forEach((category) => {
+    sections.push(`### ${category.title}`);
+    sections.push('');
+
+    if (category.description) {
+      sections.push(category.description);
+      sections.push('');
+    }
+
+    category.blocks.forEach((block) => {
+      const url = `https://scrollxui.dev/blocks/${block.slug}`;
+      const description = block.description.replace(/\s+/g, ' ').trim();
+      const descriptionSentence = description.endsWith('.')
+        ? description
+        : description + '.';
+
+      sections.push(
+        `- **[${block.title}](${url})** (\`${block.slug}\`): ${descriptionSentence}`,
+      );
+    });
+
+    sections.push('');
+  });
+
+  return sections.join('\n');
+}
+
 function buildKeyFeatures(): string {
   return [
     '## Key Features',
     '',
     '- **Beautiful Animations:** Pre-built animation components with smooth transitions',
+    '- **Pre-built Blocks:** Full-page sections for hero, FAQ, logo clouds, and more',
     '- **Theming Support:** Dark mode and customizable color schemes via CSS variables',
     '- **High Performance:** Optimized for speed with minimal bundle size',
     '- **Modular Architecture:** Import only what you need',
@@ -295,10 +446,12 @@ function buildUsageNotes(): string {
     '## Usage Notes for Agents',
     '',
     '- **Component URLs:** Use kebab-case for component paths (e.g., `/docs/components/profile-card`)',
-    '- **CLI Names:** Use the exact component name from the registry',
-    '- **Dependencies:** Check each component page for specific dependencies before installation',
-    '- **Variants:** Some components may have multiple variants or customization options',
-    '- **Updates:** The library is actively maintained with new components added regularly',
+    '- **Block URLs:** Use category/name format (e.g., `/blocks/hero-sections/hero-with-layers`)',
+    '- **CLI Names (Components):** Use the exact component name from the registry',
+    '- **CLI Names (Blocks):** Use category/block-name format (e.g., `@scrollxui/hero-sections/hero-with-layers`)',
+    '- **Dependencies:** Check each component/block page for specific dependencies before installation',
+    '- **Variants:** Some components and blocks may have multiple variants or customization options',
+    '- **Updates:** The library is actively maintained with new components and blocks added regularly',
     '- **Support:** For issues or questions, refer to the documentation or repository',
     '',
   ].join('\n');
@@ -322,14 +475,23 @@ function buildDevelopment(): string {
   return `## Development\n\n${lines.join('\n')}\n`;
 }
 
-function generateMarkdown(components: ComponentMeta[]): string {
+function generateMarkdown(
+  components: ComponentMeta[],
+  categories: BlockCategory[],
+): string {
+  const totalBlocks = categories.reduce(
+    (sum, cat) => sum + cat.blocks.length,
+    0,
+  );
+
   return [
-    buildHeader(components.length),
+    buildHeader(components.length, totalBlocks),
     buildDocs(),
     buildKeyFeatures(),
     buildCliInstructions(),
     buildManualInstallation(),
     buildComponentsSection(components),
+    buildBlocksSection(categories),
     buildUsageNotes(),
     buildDevelopment(),
   ].join('\n');
@@ -340,8 +502,18 @@ function main() {
   const components = extractComponentsFromDocs();
   console.log(`Found ${components.length} components`);
 
+  console.log('Extracting blocks from documentation...');
+  const blockCategories = extractBlocksFromDocs();
+  const totalBlocks = blockCategories.reduce(
+    (sum, cat) => sum + cat.blocks.length,
+    0,
+  );
+  console.log(
+    `Found ${totalBlocks} blocks in ${blockCategories.length} categories`,
+  );
+
   console.log('Generating llms.txt...');
-  const markdown = generateMarkdown(components);
+  const markdown = generateMarkdown(components, blockCategories);
 
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, markdown, 'utf8');
@@ -350,13 +522,14 @@ function main() {
   if (rootFile !== OUTPUT_PATH && fs.existsSync(rootFile)) {
     try {
       fs.unlinkSync(rootFile);
-    } catch {
-      /* ignore */
-    }
+    } catch {}
   }
 
   console.log(`✅ Generated ${path.relative(process.cwd(), OUTPUT_PATH)}`);
   console.log(`   - ${components.length} components indexed`);
+  console.log(
+    `   - ${totalBlocks} blocks indexed across ${blockCategories.length} categories`,
+  );
   console.log(`   - File size: ${(markdown.length / 1024).toFixed(2)} KB`);
 }
 
