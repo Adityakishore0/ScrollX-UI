@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import React from 'react';
 import fs from 'fs';
 import path from 'path';
@@ -10,6 +11,7 @@ import CodeBlock from '@/components/CodeBlock';
 import remarkGfm from 'remark-gfm';
 import ComponentNavigator from '@/components/Navigator';
 import { remarkInlineFileIcons } from '@/lib/remark-icons';
+import OpeninAI from '@/components/open-ai';
 
 interface DocFrontmatter {
   title: string;
@@ -18,6 +20,13 @@ interface DocFrontmatter {
   version?: string;
   status?: 'draft' | 'published';
   lastUpdated?: string;
+}
+
+function formatSlugPart(part: string) {
+  return part
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 }
 
 const getDocBySlug = cache(async (slug: string[]) => {
@@ -94,14 +103,43 @@ export default async function DocsPage({ params }: PageProps) {
     notFound();
   }
 
+  const docUrl = `https://scrollxui.dev/docs/${slug.join('/')}`;
+
   return (
-    <article className='prose prose-lg mx-auto dark:prose-invert [&_h2,&_h3,&_h4]:scroll-mt-24  sm:px-6 md:px-8 max-w-[calc(100vw-2rem)] sm:max-w-3xl overflow-hidden'>
-      <h1 className='mt-0 mb-2'>{doc.frontmatter.title}</h1>
-      {doc.frontmatter.description && (
-        <p className='mt-0 mb-10 text-muted-foreground text-base'>
-          {doc.frontmatter.description}
-        </p>
-      )}
+    <article className='prose prose-lg sm:pt-3  mx-auto dark:prose-invert [&_h2,&_h3,&_h4]:scroll-mt-24 sm:px-6 md:px-8 max-w-[calc(100vw-2rem)] sm:max-w-3xl overflow-hidden'>
+      <div className='mb-6'>
+        <div className='flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3'>
+          <div className='flex-1 min-w-0'>
+            {slug.length > 1 && (
+              <nav className='flex items-center gap-1.5 text-sm text-muted-foreground mb-3 not-prose'>
+                {slug.slice(0, -1).map((part, index) => (
+                  <React.Fragment key={index}>
+                    <Link
+                      href={`/docs/${slug.slice(0, index + 1).join('/')}`}
+                      className='font-normal hover:text-foreground transition-colors'
+                    >
+                      {formatSlugPart(part)}
+                    </Link>
+                    <span className='text-muted-foreground/50'>›</span>
+                  </React.Fragment>
+                ))}
+                <span className='font-semibold text-foreground'>
+                  {formatSlugPart(slug[slug.length - 1])}
+                </span>
+              </nav>
+            )}
+            <h1 className='mt-0 mb-2'>{doc.frontmatter.title}</h1>
+            {doc.frontmatter.description && (
+              <p className='mt-0 mb-0 text-muted-foreground text-base'>
+                {doc.frontmatter.description}
+              </p>
+            )}
+          </div>
+          <div className='mt-3 sm:mt-1 shrink-0'>
+            <OpeninAI docUrl={docUrl} />
+          </div>
+        </div>
+      </div>
       {doc.content}
       <ComponentNavigator />
     </article>
