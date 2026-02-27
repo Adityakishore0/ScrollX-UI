@@ -329,6 +329,49 @@ export default async function BlockPage({ params }: PageProps) {
     if (blocks.length > 1) {
       return <CategoryListingPage categorySlug={categorySlug} />;
     }
+
+    if (blocks.length === 1) {
+      const fullSlug = blocks[0].href.replace('/blocks/', '').split('/');
+      const block = await getBlockBySlug(fullSlug);
+
+      if (!block) notFound();
+
+      const categoryTitle = slugToTitle(categorySlug);
+
+      return (
+        <div className='w-full sm:pt-10 pt-5'>
+          <div className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8 pt-8 pb-6'>
+            <nav className='mb-4 flex items-center gap-1.5 text-sm text-muted-foreground'>
+              <Link
+                href='/blocks'
+                className='hover:text-foreground transition-colors'
+              >
+                Blocks
+              </Link>
+              <ChevronRight className='h-3.5 w-3.5 shrink-0' />
+              <span className='font-medium text-foreground'>
+                {categoryTitle}
+              </span>
+            </nav>
+            <h1 className='text-3xl font-bold tracking-tight text-foreground'>
+              {block!.frontmatter.title}
+            </h1>
+            {block!.frontmatter.description && (
+              <p className='mt-2 text-muted-foreground text-base'>
+                {block!.frontmatter.description}
+              </p>
+            )}
+          </div>
+          <div className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8 pb-16'>
+            <div className='prose prose-lg dark:prose-invert max-w-none [&_.preview]:not-prose'>
+              {block!.content}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    notFound();
   }
 
   const block = await getBlockBySlug(slug);
@@ -353,10 +396,14 @@ export default async function BlockPage({ params }: PageProps) {
           <ChevronRight className='h-3.5 w-3.5 shrink-0' />
           <Link
             href={`/blocks/${categorySlug}`}
-            className='font-medium text-foreground'
+            className='hover:text-foreground transition-colors'
           >
             {categoryTitle}
           </Link>
+          <ChevronRight className='h-3.5 w-3.5 shrink-0' />
+          <span className='font-medium text-foreground'>
+            {block.frontmatter.title}
+          </span>
         </nav>
         <h1 className='text-3xl font-bold tracking-tight text-foreground'>
           {block.frontmatter.title}
@@ -386,6 +433,14 @@ export async function generateMetadata({ params }: PageProps) {
         'A collection of beautifully crafted UI blocks in ScrollX UI.',
       path: '/blocks',
     });
+  }
+
+  if (slug.length === 1) {
+    const categoryTitle = slugToTitle(slug[0]);
+    return {
+      title: `ScrollX UI | ${categoryTitle}`,
+      description: `Explore ${categoryTitle} blocks in ScrollX UI.`,
+    };
   }
 
   const block = await getBlockBySlug(slug);
