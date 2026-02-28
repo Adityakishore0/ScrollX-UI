@@ -28,6 +28,7 @@ interface BlockEntry {
 interface BlockCategory {
   slug: string;
   title: string;
+  description: string;
   blocks: BlockEntry[];
 }
 
@@ -58,6 +59,7 @@ async function getAllBlocksByCategory(): Promise<BlockCategory[]> {
     const indexPath = path.join(categoryDir, 'index.mdx');
 
     let categoryTitle = slugToTitle(categorySlug);
+    let categoryDescription = '';
 
     if (fs.existsSync(indexPath)) {
       const source = await fs.promises.readFile(indexPath, 'utf8');
@@ -66,6 +68,7 @@ async function getAllBlocksByCategory(): Promise<BlockCategory[]> {
         options: { parseFrontmatter: true },
       });
       categoryTitle = frontmatter.title ?? categoryTitle;
+      categoryDescription = frontmatter.description ?? '';
     }
 
     const blocks: BlockEntry[] = await Promise.all(
@@ -88,6 +91,7 @@ async function getAllBlocksByCategory(): Promise<BlockCategory[]> {
     categories.push({
       slug: categorySlug,
       title: categoryTitle,
+      description: categoryDescription,
       blocks,
     });
   }
@@ -215,7 +219,7 @@ async function BlocksHomePage() {
       <div className='border-t border-border' />
 
       <div id='blocks' className='mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-8'>
-        <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+        <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3 items-stretch'>
           {categories.map((category) => (
             <Link
               key={category.slug}
@@ -244,15 +248,38 @@ async function BlocksHomePage() {
                     {category.blocks.length}
                   </span>
                 </div>
-                {category.blocks[0].description && (
+                {category.description && (
                   <p className='text-sm text-muted-foreground line-clamp-2'>
-                    {category.blocks[0].description}
+                    {category.description}
                   </p>
                 )}
               </div>
             </Link>
           ))}
+
+          <div className='relative overflow-hidden rounded-2xl border border-dashed border-border bg-card flex flex-col items-center justify-center gap-3 p-10 text-center'>
+            <div
+              aria-hidden
+              className='pointer-events-none bg-background absolute inset-0 opacity-[0.03]'
+            />
+            <div className='relative flex flex-col items-center gap-2'>
+              <span className='inline-flex items-center gap-1.5 rounded-full border border-border bg-muted px-3 py-1 text-xs text-muted-foreground'>
+                <span className='inline-block h-1.5 w-1.5 bg-foreground/40 rounded-full dot-announcement' />
+                In Progress
+              </span>
+              <h3 className='text-2xl font-bold tracking-tight text-foreground'>
+                More Blocks Coming Soon
+              </h3>
+              <p className='max-w-sm text-sm text-muted-foreground leading-relaxed'>
+                We&apos;re working hard to bring you even more beautifully
+                crafted blocks.
+                <br />
+                Bookmark this page to stay tuned!
+              </p>
+            </div>
+          </div>
         </div>
+
         {categories.length === 0 && (
           <p className='text-muted-foreground text-center'>No blocks found.</p>
         )}

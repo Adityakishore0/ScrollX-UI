@@ -48,13 +48,17 @@ const navigation: NavItem[] = [
   {
     title: 'Blocks',
     href: '',
-    category: 'New',
     children: [
-      { title: 'Hero Sections', href: '/blocks/hero-sections' },
+      {
+        title: 'CTA Sections',
+        href: '/blocks/cta-sections',
+        category: 'New',
+      },
       {
         title: 'Frequently Asked Questions',
         href: '/blocks/frequently-asked-questions',
       },
+      { title: 'Hero Sections', href: '/blocks/hero-sections' },
       { title: 'Logo Cloud', href: '/blocks/logo-cloud' },
     ],
   },

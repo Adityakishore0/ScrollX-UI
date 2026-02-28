@@ -1947,6 +1947,23 @@
       ]
     },
     {
+      "name": "cta-section-with-avatars",
+      "title": "CTA Section with Avatars",
+      "description": "Modern CTA with avatars and smooth reveal animations.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@scrollxui/avatar-group",
+        "@scrollxui/stripe-button"
+      ],
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/blocks/cta-sections/cta-section-with-avatars.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "frequently-asked-questions-with-accordion",
       "title": "Frequently asked questions with Accordion",
       "description": "Elegant and minimal FAQs with grid, accordions and micro-interactions",
