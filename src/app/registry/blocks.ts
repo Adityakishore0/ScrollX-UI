@@ -1,4 +1,5 @@
 export const blocks = [
+  { category: 'cta-sections', name: 'cta-section-with-avatars' },
   {
     category: 'frequently-asked-questions',
     name: 'frequently-asked-questions-with-accordion',
