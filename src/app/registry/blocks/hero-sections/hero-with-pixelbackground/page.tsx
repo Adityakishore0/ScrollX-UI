@@ -36,18 +36,10 @@ export default function HeroSectionwithPixelBackground() {
         <PixelBackground
           gap={6}
           speed={60}
-          colors='#d4d4d4,#e5e5e5,#c4c4c4,#bababa'
-          opacity={0.7}
-          direction='top'
-          className='w-full h-full dark:[&>canvas]:hidden'
-        />
-        <PixelBackground
-          gap={6}
-          speed={60}
-          colors='#1a1a1a,#2a2a2a,#333333,#111111'
+          colors='#1a1a1a,#2a2a2a,#333333,#111111, #d4d4d4,#e5e5e5,#c4c4c4,#bababa'
           opacity={1}
           direction='top'
-          className='w-full h-full hidden dark:block absolute inset-0'
+          className='w-full h-full absolute inset-0'
         />
       </div>
 
@@ -79,7 +71,7 @@ export default function HeroSectionwithPixelBackground() {
                 delay: 0.2,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className='text-zinc-900 dark:text-white text-4xl md:text-7xl lg:text-9xl font-black tracking-tight leading-none text-center'
+              className='text-zinc-900 dark:text-white text-4xl md:text-7xl font-black tracking-tight leading-none text-center'
             >
               We Design
             </motion.h1>
@@ -92,7 +84,7 @@ export default function HeroSectionwithPixelBackground() {
                 delay: 0.32,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className='text-zinc-900 dark:text-white text-4xl md:text-7xl lg:text-9xl font-black tracking-tight leading-none text-center'
+              className='text-zinc-900 dark:text-white text-4xl md:text-7xl font-black tracking-tight leading-none text-center'
             >
               The Future
             </motion.h1>
@@ -115,7 +107,7 @@ export default function HeroSectionwithPixelBackground() {
                 handleClassName='bg-white dark:bg-[#0a0a0a] border-yellow-400'
                 handleIndicatorClassName='bg-yellow-400'
               >
-                <TimelineText className='text-yellow-500 dark:text-yellow-400 text-4xl md:text-7xl lg:text-9xl font-black tracking-tight py-3'>
+                <TimelineText className='text-yellow-500 dark:text-yellow-400 text-4xl md:text-7xl font-black tracking-tight py-3'>
                   Of Interfaces
                 </TimelineText>
               </Timeline>
