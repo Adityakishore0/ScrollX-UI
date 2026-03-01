@@ -2027,6 +2027,23 @@
       ]
     },
     {
+      "name": "hero-with-pixelbackground",
+      "title": "Hero Section with Pixel Background",
+      "description": "A hero-section for modern AI interfaces with motion.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@scrollxui/pixel-background",
+        "@scrollxui/timeline"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/blocks/hero-sections/hero-with-pixelbackground.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "logo-cloud-flipflow",
       "title": "Logo Cloud Flipflow",
       "description": "A logo-cloud for AI startups with flipflow animation.",
