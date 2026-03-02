@@ -13,6 +13,9 @@ export const blocks = [
   { category: 'hero-sections', name: 'hero-with-pixelbackground' },
   { category: 'logo-cloud', name: 'logo-cloud-flipflow' },
   { category: 'logo-cloud', name: 'logo-cloud-marquee' },
+  { category: 'testimonials', name: 'testimonials-with-carousel' },
+  { category: 'testimonials', name: 'testimonials-with-marquee' },
+  { category: 'testimonials', name: 'testimonials-with-verticalmarquee' },
 ] as const;
 
 export type BlockEntry = (typeof blocks)[number];
