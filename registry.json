@@ -2070,6 +2070,57 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "testimonials-with-carousel",
+      "title": "Testimonials with Carousel",
+      "description": "A testimonial carousel with staggered title animations and smooth transitions, showcasing customer feedback in an elegant layout.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@scrollxui/avatar",
+        "@scrollxui/button",
+        "@scrollxui/card",
+        "@scrollxui/testimonial-carousel"
+      ],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/testimonials/testimonials-with-carousel.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "testimonials-with-verticalmarquee",
+      "title": "Testimonials with Vertical Marquee",
+      "description": "Vertical scrolling testimonial columns with alternating directions and smooth infinite animations.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@scrollxui/avatar",
+        "@scrollxui/card",
+        "@scrollxui/kinetic-testimonials"
+      ],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/testimonials/testimonials-with-verticalmarquee.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "testimonials-with-marquee",
+      "title": "Testimonials with Marquee",
+      "description": "Horizontal scrolling testimonials with infinite marquee animation across multiple rows.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/animated-testimonials"],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/testimonials/testimonials-with-marquee.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
