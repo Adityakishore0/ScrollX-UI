@@ -60,6 +60,7 @@ const navigation: NavItem[] = [
       },
       { title: 'Hero Sections', href: '/blocks/hero-sections' },
       { title: 'Logo Cloud', href: '/blocks/logo-cloud' },
+      { title: 'Testimonials', href: '/blocks/testimonials', category: 'New' },
     ],
   },
   {
