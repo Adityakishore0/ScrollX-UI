@@ -27,6 +27,11 @@ import blocksRegistry from '@/app/registry/blocks-registry';
 import BlocksLoader from '@/components/blocks-loader';
 import { FileTree, buildTree } from '@/components/FileTree';
 import { useClipboard } from '@/utils/useClipboard';
+import {
+  DragHandle,
+  HatchedZone,
+  useResizablePreview,
+} from '@/components/resizable-preview';
 
 type BlocksPreviewProps = {
   name: string;
@@ -76,6 +81,9 @@ export default function BlocksPreview({
   const containerRef = useRef<HTMLDivElement>(null);
   const previewContentRef = useRef<HTMLDivElement>(null);
   const resizeObserverRef = useRef<ResizeObserver | null>(null);
+
+  const { outerRef, paneRef, resizedWidth, onDragHandleMouseDown, resetWidth } =
+    useResizablePreview();
 
   const Block = blocksRegistry[name];
   const activeSource =
@@ -173,7 +181,10 @@ export default function BlocksPreview({
                   key={v}
                   variant='ghost'
                   size='icon'
-                  onClick={() => setViewport(v)}
+                  onClick={() => {
+                    setViewport(v);
+                    resetWidth();
+                  }}
                   title={viewportConfig[v].label}
                   className={twMerge(
                     'h-8 w-8',
@@ -210,37 +221,62 @@ export default function BlocksPreview({
           <div className='overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700'>
             <Tabs.Content
               value='preview'
-              className='preview relative flex min-h-87.5 w-full justify-center p-2 sm:p-10 items-center bg-background'
+              className='preview relative min-h-87.5 w-full overflow-hidden'
             >
+              {/* Resizable row: preview pane + hatched zone + floating drag handle */}
               <div
-                className='w-full flex bg-background'
+                ref={outerRef}
+                className='relative flex w-full items-stretch bg-background'
                 style={{ animationPlayState: isInView ? 'running' : 'paused' }}
               >
+                {/* Preview pane — always the true viewport width, no hacks */}
                 <div
-                  ref={previewContentRef}
-                  className={twMerge(
-                    'transition-all duration-300 not-prose',
-                    className,
-                  )}
-                  style={{ width: viewportConfig[viewport].width }}
+                  ref={paneRef}
+                  className='relative flex shrink-0 justify-center p-2 sm:p-10 items-center bg-background'
+                  style={{
+                    width:
+                      resizedWidth !== null
+                        ? `${resizedWidth}px`
+                        : viewportConfig[viewport].width,
+                  }}
                 >
-                  {!hasLoaded ? (
-                    <div className='flex items-center justify-center w-full min-h-96'>
-                      <BlocksLoader />
-                    </div>
-                  ) : (
-                    <>
-                      <LoadedNotification name={name} />
-                      {Block ? (
-                        <Block key={refreshKey} />
-                      ) : children ? (
-                        children
-                      ) : (
-                        <p>Block &quot;{name}&quot; not found in registry</p>
-                      )}
-                    </>
-                  )}
+                  <div
+                    ref={previewContentRef}
+                    className={twMerge(
+                      'w-full transition-all duration-300 not-prose',
+                      className,
+                    )}
+                  >
+                    {!hasLoaded ? (
+                      <div className='flex items-center justify-center w-full min-h-96'>
+                        <BlocksLoader />
+                      </div>
+                    ) : (
+                      <>
+                        <LoadedNotification name={name} />
+                        {Block ? (
+                          <Block key={refreshKey} />
+                        ) : children ? (
+                          children
+                        ) : (
+                          <p>Block &quot;{name}&quot; not found in registry</p>
+                        )}
+                      </>
+                    )}
+                  </div>
                 </div>
+
+                <HatchedZone />
+
+                {/* Handle floats at the pane's right edge — always visible */}
+                <DragHandle
+                  onMouseDown={onDragHandleMouseDown}
+                  left={
+                    resizedWidth !== null
+                      ? resizedWidth
+                      : viewportConfig[viewport].width
+                  }
+                />
               </div>
             </Tabs.Content>
 
