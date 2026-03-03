@@ -13,6 +13,8 @@ export const blocks = [
   { category: 'hero-sections', name: 'hero-with-pixelbackground' },
   { category: 'logo-cloud', name: 'logo-cloud-flipflow' },
   { category: 'logo-cloud', name: 'logo-cloud-marquee' },
+  { category: 'pricing-sections', name: 'pricing-minimal' },
+  { category: 'pricing-sections', name: 'pricing-with-switch' },
   { category: 'testimonials', name: 'testimonials-with-carousel' },
   { category: 'testimonials', name: 'testimonials-with-marquee' },
   { category: 'testimonials', name: 'testimonials-with-verticalmarquee' },
