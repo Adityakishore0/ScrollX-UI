@@ -28,11 +28,11 @@ Go to [scrollxui.dev](https://scrollxui.dev/) to view the documentation.
 
 ## About
 
-ScrollX UI is a collection of animated, interactive React components built to help your web interfaces feel modern and alive. The library delivers a broad spectrum of components - from text animations and motion-driven interactions to polished UI elements and dynamic backgrounds - all free to use and fully customizable through simple props, giving you exactly what you need right out of the box.
+ScrollX UI is a collection of animated, interactive React components & blocks built to help your web interfaces feel modern and alive. The library delivers a broad spectrum of components - from text animations and motion-driven interactions to polished UI elements and dynamic backgrounds and blocks from hero sections to faq sections - all free to use and fully customizable through simple props, giving you exactly what you need right out of the box.
 
 ## Key Features
 
-- 130+ total components (text animations, animations, interactive components, backgrounds), growing every week
+- 135+ total components (text animations, animations, interactive components, backgrounds), and 11+ blocks growing every week
 - All components are built with minimal dependencies, and are highly customizable through props
 - You get the code, so you can modify, extend, and personalize every detail
 - Designed to integrate seamlessly with any modern React project
@@ -63,7 +63,7 @@ Please review the [Contribution Guide](https://github.com/Adityakishore0/ScrollX
 
 ## Stats
 
-![Alt](https://repobeats.axiom.co/api/embed/15619c3dbdb1173fd11f6c159b23c8d684e88370.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/15619c3dbdb1173fd11f6c159b23c8d684e88370.svg 'Repobeats analytics image')
 
 ## License
 

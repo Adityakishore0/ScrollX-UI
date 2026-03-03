@@ -14,7 +14,13 @@ const navigation: NavItem[] = [
     children: [
       { title: 'Get Started', href: '/docs' },
       { title: 'Components', href: '/docs/components' },
-      { title: 'Changelog', href: '/docs/changelog' },
+      {
+        title: 'Changelog',
+        href: '/docs/changelog',
+        category: 'new',
+        categoryClassName:
+          'ml-2 rounded-md border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs leading-none text-neutral-700 no-underline group-hover:no-underline dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400',
+      },
     ],
   },
 
@@ -60,6 +66,11 @@ const navigation: NavItem[] = [
       },
       { title: 'Hero Sections', href: '/blocks/hero-sections' },
       { title: 'Logo Cloud', href: '/blocks/logo-cloud' },
+      {
+        title: 'Pricing Sections',
+        href: '/blocks/pricing-sections',
+        category: 'New',
+      },
       { title: 'Testimonials', href: '/blocks/testimonials', category: 'New' },
     ],
   },
@@ -182,8 +193,6 @@ const navigation: NavItem[] = [
       {
         title: 'Flowing Logos',
         href: '/docs/components/flowing-logos',
-        category: 'updated',
-        categoryClassName: 'bg-blue-500',
       },
       { title: 'Folder', href: '/docs/components/folder' },
       { title: 'Folder Tree', href: '/docs/components/folder-tree' },
@@ -227,8 +236,6 @@ const navigation: NavItem[] = [
       {
         title: 'Layer Stack',
         href: '/docs/components/layer-stack',
-        category: 'updated',
-        categoryClassName: 'bg-blue-500',
       },
       {
         title: 'Layered Text',
