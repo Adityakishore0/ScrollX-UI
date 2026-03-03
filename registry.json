@@ -2072,6 +2072,34 @@
       ]
     },
     {
+      "name": "pricing-minimal",
+      "title": "Pricing Minimal",
+      "description": "A clean three-tier pricing section with a highlighted popular plan.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/button", "@scrollxui/card"],
+      "dependencies": ["motion", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/blocks/pricing-sections/pricing-minimal.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pricing-with-switch",
+      "title": "Pricing with Switch",
+      "description": "A pricing section with a monthly/yearly billing toggle, animated card reveal.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/button", "@scrollxui/card"],
+      "dependencies": ["motion", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/blocks/pricing-sections/pricing-with-switch.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "testimonials-with-carousel",
       "title": "Testimonials with Carousel",
       "description": "A testimonial carousel with staggered title animations and smooth transitions, showcasing customer feedback in an elegant layout.",
