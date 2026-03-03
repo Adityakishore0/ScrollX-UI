@@ -1,0 +1,50 @@
+---
+title: Pricing with Switch
+description: A pricing section with a monthly/yearly billing toggle, animated card reveal.
+---
+
+<BlocksPreview
+  name='pricing-with-switch'
+  className=''
+  description=''
+/>
+
+<BlockTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/pricing-sections/pricing-with-switch
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash value="deps"
+npm install motion clsx tailwind-merge lucide-react
+```
+
+<Step>Add util file</Step>
+
+```ts filename="lib/utils.ts"
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+<Step>Install required UI components: [`Button`](/docs/components/button), [`Card`](/docs/components/card)</Step>
+
+</Steps>
+</TabsContent>
+</BlockTabs>
