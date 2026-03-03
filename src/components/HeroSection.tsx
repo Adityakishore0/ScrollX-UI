@@ -63,11 +63,14 @@ export function HeroSection() {
               <AnnouncementTag lustre className='text-[8px] sm:text-xs'>
                 <span className='inline-flex items-center gap-2'>
                   <span className='size-2 rounded-full dot-announcement' />
-                  v2.1 Released
+                  New Update
                 </span>
               </AnnouncementTag>
-              <AnnouncementTitle className='flex items-center gap-2 text-[10px] sm:text-xs truncate'>
-                🚀 Introducing Blocks — build faster!
+              <AnnouncementTitle
+                lustre
+                className='flex items-center gap-2 text-[10px] sm:text-xs truncate'
+              >
+                📢 Components & New Blocks
                 <ArrowUpRightIcon
                   size={14}
                   className='transition-transform group-hover:translate-x-1 group-hover:-translate-y-1'
