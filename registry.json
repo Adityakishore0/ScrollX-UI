@@ -1234,6 +1234,20 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "orb-button",
+      "title": "Orb Button",
+      "description": "Modern orb-style button featuring smooth hover expansion and icon reveal.",
+      "type": "registry:ui",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "components/ui/orb-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "pagination",
       "title": "Pagination",
       "description": "A flexible and animated pagination component with active and hover states.",
