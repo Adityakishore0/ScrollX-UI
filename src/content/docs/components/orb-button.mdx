@@ -1,0 +1,82 @@
+---
+title: Orb Button
+description: Modern orb-style button featuring smooth hover expansion and icon reveal.
+---
+
+<ComponentPreview name='orbbutton-demo' className='' description='' />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="orb-button" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='orb-button' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { OrbButton } from "@/components/ui/orb-button";
+```
+
+```tsx
+<OrbButton>Explore</OrbButton>
+```
+
+## Examples
+
+---
+
+<Step>Size</Step>
+
+<ComponentPreview name='orbbuttonsize-demo' className='' description='' />
+
+---
+
+<Step>Custom</Step>
+
+<ComponentPreview name='orbbuttoncustom-demo' className='' description='' />
+
+## API Reference
+
+### Orb Button
+
+Modern orb-style button featuring smooth hover expansion and icon reveal.
+
+## Props
+
+| Prop           | Type            | Default        | Description                                                       |
+| -------------- | --------------- | -------------- | ------------------------------------------------------------------|
+| `size`         | `string`        | `default`      | Controls button height, padding, and orb expansion size on hover. |
+| `Icon`         | `component`     | `ChevronRight` | Icon component rendered inside the expanding orb.                 |
+| `icon`         | `node`          | —              | Custom icon element rendered inside the orb if `Icon` is absent.  |
+| `dotClassName` | `string`        | —              | Additional classes applied to the circular orb element.           |
+| `className`    | `string`        | —              | Custom CSS classes applied to the root button element.            |
+| `children`     | `node`          | —              | Button label or content displayed next to the orb.                |
+| `...props`     | `button props`  | —              | Supports native button attributes and events.                     |
