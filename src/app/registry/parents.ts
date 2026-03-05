@@ -86,6 +86,7 @@ export const parentComponents = [
   'morphotextflip',
   'morphy-button',
   'not-found',
+  'orb-button',
   'navbar-flow',
   'pagination',
   'parallaxcards',
