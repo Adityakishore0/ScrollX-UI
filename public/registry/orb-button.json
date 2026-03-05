@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "orb-button",
+  "type": "registry:ui",
+  "title": "Orb Button",
+  "description": "Modern orb-style button featuring smooth hover expansion and icon reveal.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "registryDependencies": [],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:ui",
+      "path": "components/ui/orb-button.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { ChevronRight } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\nconst OrbButtonVariants = cva(\n  'group relative inline-flex items-center whitespace-nowrap font-bold transition-all duration-500 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 overflow-hidden rounded-full border border-black/30 dark:border-white/30 hover:border-black/60 dark:hover:border-white/60 data-[touched=true]:border-black/60 dark:data-[touched=true]:border-white/60 bg-transparent',\n  {\n    variants: {\n      size: {\n        default: 'h-11 text-sm pl-4 pr-4 gap-3 hover:pl-1.5 hover:gap-2 data-[touched=true]:pl-1.5 data-[touched=true]:gap-2',\n        sm: 'h-9 text-xs pl-4 pr-4 gap-3 hover:pl-1.5 hover:gap-2 data-[touched=true]:pl-1.5 data-[touched=true]:gap-2',\n        lg: 'h-13 text-base pl-5 pr-5 gap-3 hover:pl-2 hover:gap-2 data-[touched=true]:pl-2 data-[touched=true]:gap-2',\n      },\n    },\n    defaultVariants: {\n      size: 'default',\n    },\n  },\n);\n\nexport interface OrbButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof OrbButtonVariants> {\n  Icon?: React.ComponentType<{ className?: string }>;\n  icon?: React.ReactNode;\n  dotClassName?: string;\n}\n\nconst OrbButton = React.forwardRef<HTMLButtonElement, OrbButtonProps>(\n  ({ className, size, children, Icon, icon, dotClassName, ...props }, ref) => {\n    const buttonSize = size ?? 'default';\n    const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);\n    const buttonRef = React.useRef<HTMLButtonElement | null>(null);\n\n    const dotExpanded = {\n      sm: 'group-hover:w-6 group-hover:h-6 group-data-[touched=true]:w-6 group-data-[touched=true]:h-6',\n      default: 'group-hover:w-8 group-hover:h-8 group-data-[touched=true]:w-8 group-data-[touched=true]:h-8',\n      lg: 'group-hover:w-9 group-hover:h-9 group-data-[touched=true]:w-9 group-data-[touched=true]:h-9',\n    }[buttonSize];\n\n    const handleTouchStart = () => {\n      if (buttonRef.current) buttonRef.current.dataset.touched = 'true';\n      if (timeoutRef.current) clearTimeout(timeoutRef.current);\n      timeoutRef.current = setTimeout(() => {\n        if (buttonRef.current) buttonRef.current.dataset.touched = 'false';\n      }, 1500);\n    };\n\n    React.useEffect(() => {\n      return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };\n    }, []);\n\n    const resolvedIcon = Icon\n      ? <Icon className=\"w-3 h-3\" />\n      : icon\n      ? icon\n      : <ChevronRight className=\"w-3 h-3\" />;\n\n    return (\n      <button\n        ref={(node) => {\n          buttonRef.current = node;\n          if (typeof ref === 'function') ref(node);\n          else if (ref) ref.current = node;\n        }}\n        onTouchStart={handleTouchStart}\n        className={cn(OrbButtonVariants({ size }), className)}\n        {...props}\n      >\n        <span className={cn('relative shrink-0 rounded-full flex items-center justify-center bg-black dark:bg-white transition-all duration-500 w-2.5 h-2.5', dotExpanded, dotClassName)}>\n          <span className=\"text-white dark:text-black flex items-center justify-center opacity-0 scale-50 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 group-data-[touched=true]:opacity-100 group-data-[touched=true]:scale-100\">\n            {resolvedIcon}\n          </span>\n        </span>\n        <span className=\"relative z-10 uppercase tracking-widest text-black dark:text-white transition-transform duration-500 group-hover:translate-x-1.25 group-data-[touched=true]:translate-x-1.25\">\n          {children}\n        </span>\n      </button>\n    );\n  },\n);\n\nOrbButton.displayName = 'OrbButton';\n\nexport { OrbButton, OrbButtonVariants };"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
