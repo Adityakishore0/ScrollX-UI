@@ -279,6 +279,11 @@ const navigation: NavItem[] = [
       },
       { title: 'Navbar Flow', href: '/docs/components/navbar-flow' },
       { title: 'Not Found', href: '/docs/components/not-found' },
+      {
+        title: 'Orb Button',
+        href: '/docs/components/orb-button',
+        category: 'New',
+      },
       { title: 'Pagination', href: '/docs/components/pagination' },
       { title: 'Parallax Cards', href: '/docs/components/parallaxcards' },
       {
