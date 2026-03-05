@@ -134,15 +134,8 @@ export default function PricingSwitch({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.4, ease: smoothEase }}
-            className='relative flex items-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full p-1 mt-2'
+            className='flex items-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full px-1 py-1 mt-2 gap-1'
           >
-            <motion.div
-              className='absolute top-1 bottom-1 rounded-full'
-              style={{ background: GRADIENT }}
-              animate={{ x: isYearly ? '100%' : '0%' }}
-              initial={false}
-              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-            />
             {[
               { label: 'Monthly', yearly: false },
               { label: 'Yearly', yearly: true },
@@ -152,27 +145,20 @@ export default function PricingSwitch({
                 <button
                   key={label}
                   onClick={() => setIsYearly(yearly)}
-                  className={cn(
-                    'relative z-10 w-28 py-2 rounded-full text-sm font-semibold transition-colors duration-200 flex items-center justify-center gap-2',
-                  )}
-                  style={{ color: isActive ? '#fff' : undefined }}
+                  className='w-28 py-2 rounded-full text-sm font-semibold transition-colors duration-200 flex items-center justify-center gap-2'
                 >
                   <span
                     className={cn(
-                      !isActive && 'text-zinc-500 dark:text-zinc-400',
+                      'transition-colors duration-200',
+                      isActive
+                        ? 'text-zinc-900 dark:text-white'
+                        : 'text-zinc-400 dark:text-zinc-500',
                     )}
                   >
                     {label}
                   </span>
                   {yearly && (
-                    <span
-                      className={cn(
-                        'inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold',
-                        isActive
-                          ? 'bg-white/25 text-white'
-                          : 'bg-rose-100 text-rose-500 dark:bg-rose-500/20 dark:text-rose-400',
-                      )}
-                    >
+                    <span className='inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-500 dark:bg-rose-500/20 dark:text-rose-400'>
                       -20%
                     </span>
                   )}
