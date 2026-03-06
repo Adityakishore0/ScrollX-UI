@@ -8,6 +8,7 @@ export const blocks = [
     category: 'frequently-asked-questions',
     name: 'frequently-asked-questions-stack',
   },
+  { category: 'hero-sections', name: 'hero-with-cards' },
   { category: 'hero-sections', name: 'hero-with-iphone' },
   { category: 'hero-sections', name: 'hero-with-layers' },
   { category: 'hero-sections', name: 'hero-with-pixelbackground' },
