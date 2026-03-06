@@ -88,7 +88,7 @@ const OrbButton = React.forwardRef<HTMLButtonElement, OrbButtonProps>(
             {resolvedIcon}
           </span>
         </span>
-        <span className='relative z-10 uppercase tracking-widest text-black dark:text-white transition-transform duration-500 group-hover:translate-x-1.25 group-data-[touched=true]:translate-x-1.25'>
+        <span className='relative z-10 tracking-wide text-black dark:text-white transition-transform duration-500 group-hover:translate-x-1.25 group-data-[touched=true]:translate-x-1.25'>
           {children}
         </span>
       </button>

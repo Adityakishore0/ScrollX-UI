@@ -2006,6 +2006,20 @@
       ]
     },
     {
+      "name": "hero-with-cards",
+      "title": "Hero Section with Cards",
+      "description": "A hero section with a fan of photo cards and animated entrance.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/card", "@scrollxui/orb-button"],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/hero-sections/hero-with-cards.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "hero-with-iphone",
       "title": "Hero Section with Iphone",
       "description": "A hero section with an iPhone mockup and animated background.",
