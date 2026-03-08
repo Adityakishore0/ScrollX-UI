@@ -1978,6 +1978,20 @@
       ]
     },
     {
+      "name": "features-with-panel",
+      "title": "Features with Panel",
+      "description": "Interactive feature list with sticky media panel and smooth transitions.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/card"],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/features/features-with-panel.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "frequently-asked-questions-with-accordion",
       "title": "Frequently asked questions with Accordion",
       "description": "Elegant and minimal FAQs with grid, accordions and micro-interactions",
