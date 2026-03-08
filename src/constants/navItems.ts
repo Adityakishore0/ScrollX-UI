@@ -60,6 +60,7 @@ const navigation: NavItem[] = [
         href: '/blocks/cta-sections',
         category: 'New',
       },
+      { title: 'Features', href: '/blocks/features', category: 'New' },
       {
         title: 'Frequently Asked Questions',
         href: '/blocks/frequently-asked-questions',
