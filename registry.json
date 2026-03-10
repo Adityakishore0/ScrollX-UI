@@ -1961,6 +1961,24 @@
       ]
     },
     {
+      "name": "contact-with-globe",
+      "title": "Contact with Globe",
+      "description": "Modern Contact with globe and smooth reveal animations.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@scrollxui/button",
+        "@scrollxui/globe-wireframe",
+        "@scrollxui/seperatorpro"
+      ],
+      "dependencies": ["lucide-react", "motion"],
+      "files": [
+        {
+          "path": "registry/blocks/contact-sections/contact-with-globe.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "cta-section-with-avatars",
       "title": "CTA Section with Avatars",
       "description": "Modern CTA with avatars and smooth reveal animations.",
