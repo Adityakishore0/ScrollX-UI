@@ -1,4 +1,5 @@
 export const blocks = [
+  { category: 'contact-sections', name: 'contact-with-globe' },
   { category: 'cta-sections', name: 'cta-section-with-avatars' },
   { category: 'features', name: 'features-with-panel' },
   {
