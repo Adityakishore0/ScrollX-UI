@@ -56,6 +56,11 @@ const navigation: NavItem[] = [
     href: '',
     children: [
       {
+        title: 'Contact Sections',
+        href: '/blocks/contact-sections',
+        category: 'New',
+      },
+      {
         title: 'CTA Sections',
         href: '/blocks/cta-sections',
         category: 'New',
