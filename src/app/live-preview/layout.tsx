@@ -9,7 +9,7 @@ export default function LivePreviewLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className='relative isolate min-h-screen flex flex-col p-2 sm:p-16'>
+    <main className='relative isolate min-h-screen flex flex-col'>
       <div className='relative z-0'>{children}</div>
 
       <div className='fixed bottom-6 left-1/2 -translate-x-1/2 z-9999'>
