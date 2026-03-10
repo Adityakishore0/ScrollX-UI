@@ -223,16 +223,14 @@ export default function BlocksPreview({
               value='preview'
               className='preview relative min-h-87.5 w-full overflow-hidden'
             >
-              {/* Resizable row: preview pane + hatched zone + floating drag handle */}
               <div
                 ref={outerRef}
                 className='relative flex w-full items-stretch bg-background'
                 style={{ animationPlayState: isInView ? 'running' : 'paused' }}
               >
-                {/* Preview pane — always the true viewport width, no hacks */}
                 <div
                   ref={paneRef}
-                  className='relative flex shrink-0 justify-center p-2 sm:p-10 items-center bg-background'
+                  className='relative flex shrink-0 justify-center items-center bg-background'
                   style={{
                     width:
                       resizedWidth !== null
@@ -265,10 +263,7 @@ export default function BlocksPreview({
                     )}
                   </div>
                 </div>
-
                 <HatchedZone />
-
-                {/* Handle floats at the pane's right edge — always visible */}
                 <DragHandle
                   onMouseDown={onDragHandleMouseDown}
                   left={
