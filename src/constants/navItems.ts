@@ -66,6 +66,7 @@ const navigation: NavItem[] = [
         category: 'New',
       },
       { title: 'Features', href: '/blocks/features', category: 'New' },
+      { title: 'footers', href: '/blocks/footers', category: 'New' },
       {
         title: 'Frequently Asked Questions',
         href: '/blocks/frequently-asked-questions',
