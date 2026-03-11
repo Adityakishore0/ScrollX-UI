@@ -2010,6 +2010,20 @@
       ]
     },
     {
+      "name": "footer-with-newsletter",
+      "title": "Footer with Newsletter",
+      "description": "Interactive footer with newsletter and smooth transitions.",
+      "type": "registry:block",
+      "registryDependencies": [],
+      "dependencies": ["lucide-react", "motion", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/blocks/footers/footer-with-newsletter.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "frequently-asked-questions-with-accordion",
       "title": "Frequently asked questions with Accordion",
       "description": "Elegant and minimal FAQs with grid, accordions and micro-interactions",
