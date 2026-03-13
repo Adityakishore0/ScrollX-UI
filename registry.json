@@ -243,6 +243,20 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "bento-grid",
+      "title": "Bento Grid",
+      "description": "A responsive grid layout for showcasing features in varied card sizes with optional tilt effects.",
+      "type": "registry:ui",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "components/ui/bento-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "bolt-strike",
       "title": "Bolt Strike",
       "description": "lightning bolts burst randomly with sparks and particles, creating a high-energy, reactive background effect.",
@@ -1957,6 +1971,20 @@
         {
           "path": "components/ui/whitestripes.tsx",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bento-with-focus",
+      "title": "Bento with Focus",
+      "description": "Modern Bento Grid with blur and smooth reveal animations.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/bento-grid", "@scrollxui/card-tilt"],
+      "dependencies": ["motion", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/blocks/bento/bento-with-focus.tsx",
+          "type": "registry:component"
         }
       ]
     },
