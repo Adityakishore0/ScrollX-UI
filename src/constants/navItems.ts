@@ -55,6 +55,7 @@ const navigation: NavItem[] = [
     title: 'Blocks',
     href: '',
     children: [
+      { title: 'Bento', href: '/blocks/bento', category: 'New' },
       {
         title: 'Contact Sections',
         href: '/blocks/contact-sections',
@@ -116,6 +117,11 @@ const navigation: NavItem[] = [
       { title: 'Badge', href: '/docs/components/badge' },
       { title: 'BarsWave', href: '/docs/components/barswave' },
       { title: 'Beams Upstream', href: '/docs/components/beams-upstream' },
+      {
+        title: 'Bento Grid',
+        href: '/docs/components/bento-grid',
+        category: 'New',
+      },
       {
         title: 'Bolt Strike',
         href: '/docs/components/bolt-strike',
