@@ -1,0 +1,101 @@
+---
+title: Bento Grid 
+description: A responsive grid layout for showcasing features in varied card sizes with optional tilt effects.
+---
+
+<ComponentPreview
+  name='bentogrid-demo'
+  className=''
+  description=''
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="bento-grid" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='bento-grid' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
+```
+
+```tsx
+<BentoGrid>
+  <BentoGridItem
+    title='The Power of Collaboration'
+    description='Enable real-time collaboration with your team.'
+    containerClassName='md:col-span-2'
+    header={<div className='h-full w-full rounded-xl bg-neutral-100 dark:bg-neutral-800' />}
+    icon={<Users className='h-4 w-4 text-neutral-500' />}
+  />
+  <BentoGridItem
+    title='Smart Automation'
+    description='Automate repetitive tasks and focus on what matters.'
+    containerClassName='md:col-span-1'
+    header={<div className='h-full w-full rounded-xl bg-neutral-100 dark:bg-neutral-800' />}
+    icon={<Zap className='h-4 w-4 text-neutral-500' />}
+  />
+</BentoGrid>
+```
+
+## Examples
+
+---
+
+<Step>Disable Tilt</Step>
+
+<ComponentPreview
+  name='bentogriddisabletilt-demo'
+  className=''
+  description=''
+/>
+
+## API Reference
+
+### Bento Grid 
+
+A responsive grid layout for showcasing features in varied card sizes with optional tilt effects.
+
+## Props
+
+| Prop                 | Type                        | Default | Description                                                                                     |
+| -------------------- | --------------------------- | ------- | ----------------------------------------------------------------------------------------------- |
+| `className`          | `string`                    | —       | Class name for the inner card div. On `BentoGrid`, applies to the grid container.               |
+| `children`           | `React.ReactNode`           | —       | `BentoGridItem` components. Used in: `BentoGrid`.                                               |
+| `title`              | `string \| React.ReactNode` | —       | Title displayed inside the card. Used in: `BentoGridItem`.                                      |
+| `description`        | `string \| React.ReactNode` | —       | Description text displayed below the title. Used in: `BentoGridItem`.                           |
+| `header`             | `React.ReactNode`           | —       | Content rendered at the top of the card, typically an image or skeleton. Used in: `BentoGridItem`. |
+| `icon`               | `React.ReactNode`           | —       | Icon rendered above the title. Used in: `BentoGridItem`.                                        |
+| `containerClassName` | `string`                    | —       | Class name for the outer grid cell. Use for `col-span` and `row-span`. Used in: `BentoGridItem`. |
+| `disableTilt`        | `boolean`                   | `false` | Disables the 3D tilt effect. Used in: `BentoGridItem`.                                          |
