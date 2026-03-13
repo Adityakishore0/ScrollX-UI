@@ -23,6 +23,8 @@ export const demoComponents = [
   'barswave-demo',
   'barswavefilled-demo',
   'beamsupstream-demo',
+  'bentogrid-demo',
+  'bentogriddisabletilt-demo',
   'boltstrike-demo',
   'borderglide-demo',
   'button-demo',
