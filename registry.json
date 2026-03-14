@@ -2007,6 +2007,24 @@
       ]
     },
     {
+      "name": "contact-with-pixelbackground",
+      "title": "Contact with Pixel Background",
+      "description": "Minimal contact section with animated pixel background and stagger button.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@scrollxui/button",
+        "@scrollxui/pixel-background",
+        "@scrollxui/stagger-button"
+      ],
+      "dependencies": ["lucide-react", "motion"],
+      "files": [
+        {
+          "path": "registry/blocks/contact-sections/contact-with-pixelbackground.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "cta-section-with-avatars",
       "title": "CTA Section with Avatars",
       "description": "Modern CTA with avatars and smooth reveal animations.",
