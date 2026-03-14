@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-with-pixelbackground",
+  "type": "registry:block",
+  "title": "Contact with Pixel Background",
+  "description": "Minimal contact section with animated pixel background and stagger button.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "registryDependencies": [
+    "@scrollxui/button",
+    "@scrollxui/pixel-background",
+    "@scrollxui/stagger-button"
+  ],
+  "dependencies": ["lucide-react"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "registry/blocks/contact-sections/contact-with-pixelbackground.tsx",
+      "content": "'use client';\n\nimport PixelBackground from '@/components/ui/pixel-background';\nimport { Button } from '@/components/ui/button';\nimport { StaggerButton } from '@/components/ui/stagger-button';\nimport { Mail, Headphones } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\ninterface ContactWithPixelBackgroundProps {\n  title?: string;\n  description?: string;\n  salesEmail?: string;\n  supportEmail?: string;\n  ctaText?: string;\n  ctaHref?: string;\n  className?: string;\n}\n\nexport default function ContactWithPixelBackground({\n  title = 'Get in Touch',\n  description = \"Have a question, feedback, or need support? We're here to help and will respond as soon as possible.\",\n  salesEmail = 'hello@yourapp.com',\n  supportEmail = 'support@yourapp.com',\n  ctaText = 'Talk to Us',\n  ctaHref = '#',\n  className,\n}: ContactWithPixelBackgroundProps) {\n  return (\n    <div className={cn('max-w-2xl mx-auto px-4 py-16', className)}>\n      <div className='border rounded-xl relative'>\n        <div className='absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 border bg-primary z-10 rounded-xl px-4 py-1 whitespace-nowrap'>\n          <span className='text-background text-sm font-medium'>Contact</span>\n        </div>\n\n        <div\n          className='absolute inset-x-0 top-0 h-1/2 rounded-t-xl overflow-hidden'\n          style={{\n            maskImage: 'linear-gradient(to bottom, black, transparent)',\n            WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)',\n          }}\n        >\n          <PixelBackground\n            gap={6}\n            speed={60}\n            colors='#1a1a1a,#2a2a2a,#333333,#111111,#d4d4d4,#e5e5e5,#c4c4c4,#bababa'\n            opacity={1}\n            direction='top'\n            className='w-full h-full absolute inset-0'\n          />\n        </div>\n\n        <div className='relative flex flex-col items-center gap-6 text-center pt-16 pb-10 px-10'>\n          <div className='flex flex-col items-center gap-3'>\n            <h2 className='text-3xl font-bold tracking-tighter sm:text-5xl'>\n              {title}\n            </h2>\n            <p className='mx-auto max-w-lg text-muted-foreground text-balance'>\n              {description}\n            </p>\n          </div>\n\n          <div className='flex flex-col sm:flex-row items-center gap-3 w-full max-w-sm'>\n            <Button asChild variant='outline' className='w-full min-w-0 gap-2 text-xs'>\n              <a href={`mailto:${salesEmail}`} className='min-w-0'>\n                <Mail className='w-3.5 h-3.5 shrink-0' />\n                <span className='truncate'>{salesEmail}</span>\n              </a>\n            </Button>\n            <Button asChild variant='outline' className='w-full min-w-0 gap-2 text-xs'>\n              <a href={`mailto:${supportEmail}`} className='min-w-0'>\n                <Headphones className='w-3.5 h-3.5 shrink-0' />\n                <span className='truncate'>{supportEmail}</span>\n              </a>\n            </Button>\n          </div>\n\n          <a href={ctaHref}>\n            <StaggerButton\n              text={ctaText}\n              hoverText={ctaText}\n              direction='up'\n            />\n          </a>\n        </div>\n      </div>\n    </div>\n  );\n}"
+    }
+  ]
+}
