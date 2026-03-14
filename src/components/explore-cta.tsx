@@ -28,13 +28,13 @@ const ExploreCta = () => {
             Start Exploring
           </span>
           <span className='relative z-2 block max-w-150 text-base sm:text-lg font-medium leading-tight dark:text-white/80 text-black/80'>
-            Components, Motion, and UI Primitives — All in One Place
+            Blocks, Components, and UI Primitives — All in One Place
           </span>
           <Link
-            href='/docs/components'
+            href='/blocks'
             className='relative z-2 text-base font-medium tracking-tight transition-all'
           >
-            <MorphyButton animate='reverse'>Browse Components</MorphyButton>
+            <MorphyButton animate='reverse'>Browse Blocks</MorphyButton>
           </Link>
         </div>
       </div>
