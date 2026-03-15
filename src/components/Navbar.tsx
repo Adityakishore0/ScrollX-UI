@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Github, Menu, X } from 'lucide-react';
+import { Github, Menu, X, PanelLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ModeToggle } from './mode-toggle';
 import { SearchModal } from '@/components/SearchModal';
 import { NavSheet } from '@/components/navsheet';
 import ScrollXHeading from '@/components/heading';
-import { Kbd, KbdKey, KbdSeparator } from '@/components/ui/kbd';
+import { Kbd, KbdKey } from '@/components/ui/kbd';
 import {
   SideSheet,
   SideSheetTrigger,
@@ -92,6 +92,33 @@ export function Navbar({ className }: NavbarProps) {
       >
         <div className='container flex h-16 max-w-(--breakpoint-2xl) items-center'>
           <div className='flex items-center mr-8'>
+            <SideSheet
+              open={isSidebarOpen}
+              onOpenChange={setIsSidebarOpen}
+              side='left'
+            >
+              <SideSheetTrigger asChild>
+                <Button variant='ghost' size='icon' className='lg:hidden mr-2'>
+                  <PanelLeft className='h-5 w-5' />
+                  <span className='sr-only'>Open sidebar</span>
+                </Button>
+              </SideSheetTrigger>
+
+              <SideSheetContent>
+                <SideSheetHeader className='sticky top-0 z-50 bg-background border-b px-4 py-3'>
+                  <div className='flex items-center justify-between'>
+                    <SideSheetTitle>Menu</SideSheetTitle>
+                    <SideSheetClose asChild>
+                      <button>
+                        <X className='h-5 w-5' />
+                      </button>
+                    </SideSheetClose>
+                  </div>
+                </SideSheetHeader>
+                <Sidebar onNavigate={() => setIsSidebarOpen(false)} />
+              </SideSheetContent>
+            </SideSheet>
+
             <Link href='/' className='flex items-center space-x-2'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -182,51 +209,6 @@ export function Navbar({ className }: NavbarProps) {
           </div>
         </div>
       </header>
-
-      <SideSheet
-        open={isSidebarOpen}
-        onOpenChange={setIsSidebarOpen}
-        side='left'
-      >
-        <SideSheetTrigger asChild>
-          <Button
-            variant='ghost'
-            size='icon'
-            className='lg:hidden fixed top-15 right-4 z-40 shadow-lg bg-background border border-border'
-          >
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='24'
-              height='24'
-              viewBox='0 0 24 24'
-            >
-              <path
-                fill='none'
-                stroke='currentColor'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='1.5'
-                d='M4 9h16M4 15h10'
-              />
-            </svg>
-            <span className='sr-only'>Open sidebar</span>
-          </Button>
-        </SideSheetTrigger>
-
-        <SideSheetContent>
-          <SideSheetHeader className='sticky top-0 z-50 bg-background border-b px-4 py-3'>
-            <div className='flex items-center justify-between'>
-              <SideSheetTitle>Menu</SideSheetTitle>
-              <SideSheetClose asChild>
-                <button>
-                  <X className='h-5 w-5' />
-                </button>
-              </SideSheetClose>
-            </div>
-          </SideSheetHeader>
-          <Sidebar onNavigate={() => setIsSidebarOpen(false)} />
-        </SideSheetContent>
-      </SideSheet>
 
       <SearchModal
         isOpen={isSearchOpen}
