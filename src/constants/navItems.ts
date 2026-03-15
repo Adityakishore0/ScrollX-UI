@@ -1,4 +1,9 @@
+import { LucideIcon } from 'lucide-react';
+import { BookOpen, Rocket, Wrench, LayoutGrid, Component } from 'lucide-react';
+
 export interface NavItem {
+  defaultOpen?: boolean;
+  icon?: LucideIcon;
   title: string;
   href: string;
   category?: string;
@@ -9,6 +14,7 @@ export interface NavItem {
 
 const navigation: NavItem[] = [
   {
+    icon: BookOpen,
     title: 'Sections',
     href: '',
     children: [
@@ -25,6 +31,7 @@ const navigation: NavItem[] = [
   },
 
   {
+    icon: Rocket,
     title: 'Getting Started',
     href: '',
     children: [
@@ -33,6 +40,7 @@ const navigation: NavItem[] = [
     ],
   },
   {
+    icon: Wrench,
     title: 'Installation Guide',
     href: '',
     children: [
@@ -52,6 +60,7 @@ const navigation: NavItem[] = [
     ],
   },
   {
+    icon: LayoutGrid,
     title: 'Blocks',
     href: '',
     children: [
@@ -83,6 +92,7 @@ const navigation: NavItem[] = [
     ],
   },
   {
+    icon: Component,
     title: 'Components',
     href: '',
     children: [
