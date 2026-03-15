@@ -241,16 +241,14 @@ export default function BlocksPreview({
                   <div
                     ref={previewContentRef}
                     className={twMerge(
-                      'w-full transition-all duration-300 not-prose',
+                      'w-full min-h-96 flex items-center justify-center transition-all duration-300 not-prose',
                       className,
                     )}
                   >
                     {!hasLoaded ? (
-                      <div className='flex items-center justify-center w-full min-h-96'>
-                        <BlocksLoader />
-                      </div>
+                      <BlocksLoader />
                     ) : (
-                      <>
+                      <div className='w-full'>
                         <LoadedNotification name={name} />
                         {Block ? (
                           <Block key={refreshKey} />
@@ -259,7 +257,7 @@ export default function BlocksPreview({
                         ) : (
                           <p>Block &quot;{name}&quot; not found in registry</p>
                         )}
-                      </>
+                      </div>
                     )}
                   </div>
                 </div>
