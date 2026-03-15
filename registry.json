@@ -2056,6 +2056,20 @@
       ]
     },
     {
+      "name": "features-with-spotlight",
+      "title": "Features with Spotlight",
+      "description": "Interactive feature list with animated spotlight panel and smooth transitions.",
+      "type": "registry:block",
+      "registryDependencies": [],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/features/features-with-spotlight.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "footer-with-newsletter",
       "title": "Footer with Newsletter",
       "description": "Interactive footer with newsletter and smooth transitions.",

@@ -1,0 +1,48 @@
+---
+title: Features with Spotlight
+description: Interactive feature list with animated spotlight panel and smooth transitions.
+---
+
+<BlocksPreview
+  name='features-with-spotlight'
+  className=''
+  description=''
+/>
+
+<BlockTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/features/features-with-spotlight
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash value="deps"
+npm install motion clsx tailwind-merge
+```
+
+<Step>Add util file</Step>
+
+```ts filename="lib/utils.ts"
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+</TabsContent>
+</BlockTabs>
