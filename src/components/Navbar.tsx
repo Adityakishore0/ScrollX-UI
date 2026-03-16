@@ -152,7 +152,7 @@ export function Navbar({ className }: NavbarProps) {
           <div className='flex flex-1 items-center justify-end space-x-4'>
             <button
               onClick={handleSearchOpen}
-              className='flex relative justify-start items-center text-sm text-muted-foreground dark:text-white py-2 w-fit border border-transparent shadow-md dark:shadow-none px-4 rounded-xl bg-white dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition'
+              className='flex relative justify-start sm:gap-2 items-center text-sm text-muted-foreground dark:text-white py-2 w-fit border border-transparent shadow-md dark:shadow-none px-2 sm:px-4 rounded-xl bg-white dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition'
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -169,7 +169,7 @@ export function Navbar({ className }: NavbarProps) {
                 <path d='M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0'></path>
                 <path d='M21 21l-6 -6'></path>
               </svg>
-              <span className='transition-colors hover:text-foreground/80 text-foreground/60 dark:text-neutral-200 text-xs sm:text-sm font-medium pl-2 pr-4'>
+              <span className='transition-colors hover:text-foreground/80 text-foreground/60 dark:text-neutral-200 text-xs sm:text-sm font-medium pl-2 pr-0 sm:pr-4'>
                 Search{' '}
                 <span className='hidden xl:inline-block'>Components</span>
               </span>
