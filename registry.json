@@ -2070,6 +2070,34 @@
       ]
     },
     {
+      "name": "footer-with-faded-brand",
+      "title": "Footer with Faded Brand",
+      "description": "Modern footer with oversized faded brand name and smooth transitions.",
+      "type": "registry:block",
+      "registryDependencies": [],
+      "dependencies": ["lucide-react", "motion", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/blocks/footers/footer-with-faded-brand.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "footer-with-minimal-outline",
+      "title": "Footer with Minimal Outline",
+      "description": "Clean footer with minimal outlined brand text and smooth animations.",
+      "type": "registry:block",
+      "registryDependencies": [],
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/blocks/footers/footer-with-minimal-outline.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "footer-with-newsletter",
       "title": "Footer with Newsletter",
       "description": "Interactive footer with newsletter and smooth transitions.",

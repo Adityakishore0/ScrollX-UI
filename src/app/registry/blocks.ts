@@ -5,6 +5,8 @@ export const blocks = [
   { category: 'cta-sections', name: 'cta-section-with-avatars' },
   { category: 'features', name: 'features-with-panel' },
   { category: 'features', name: 'features-with-spotlight' },
+  { category: 'footers', name: 'footer-with-minimal-outline' },
+  { category: 'footers', name: 'footer-with-faded-brand' },
   { category: 'footers', name: 'footer-with-newsletter' },
   {
     category: 'frequently-asked-questions',
