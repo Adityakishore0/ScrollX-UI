@@ -17,11 +17,11 @@ interface LogoCloudMarqueeProps {
 }
 
 const defaultLogos: Logo[] = [
-  { image: '/assets/logos/phoenix.svg', name: 'Phoenix' },
-  { image: '/assets/logos/oslo.svg', name: 'Oslo' },
-  { image: '/assets/logos/theo.svg', name: 'Theo' },
-  { image: '/assets/logos/kansas.svg', name: 'Kansas' },
-  { image: '/assets/logos/cairo.svg', name: 'Cairo' },
+  { image: 'https://scrollxui.dev/assets/logos/phoenix.svg', name: 'Phoenix' },
+  { image: 'https://scrollxui.dev/assets/logos/oslo.svg', name: 'Oslo' },
+  { image: 'https://scrollxui.dev/assets/logos/theo.svg', name: 'Theo' },
+  { image: 'https://scrollxui.dev/assets/logos/kansas.svg', name: 'Kansas' },
+  { image: 'https://scrollxui.dev/assets/logos/cairo.svg', name: 'Cairo' },
 ];
 
 export default function LogoCloudMarquee({
