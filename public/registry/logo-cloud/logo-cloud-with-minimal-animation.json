@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-cloud-with-minimal-animation",
+  "type": "registry:block",
+  "title": "Logo Cloud with Minimal Animation",
+  "description": "A clean logo cloud with smooth blur and fade-in animations.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "registryDependencies": [],
+  "dependencies": ["clsx", "motion", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "registry/blocks/logo-cloud/logo-cloud-with-minimal-animation.tsx",
+      "content": "'use client';\n\nimport { motion } from 'motion/react';\nimport { cn } from '@/lib/utils';\n\ninterface Logo {\n  name: string;\n  image: string;\n}\n\ninterface LogoCloudWithMinimalAnimationProps {\n  title?: string;\n  description?: string;\n  logos?: Logo[];\n  className?: string;\n}\n\nconst defaultLogos: Logo[] = [\n  { image: 'https://scrollxui.dev/assets/logos/phoenix.svg', name: 'Phoenix' },\n  { image: 'https://scrollxui.dev/assets/logos/oslo.svg', name: 'Oslo' },\n  { image: 'https://scrollxui.dev/assets/logos/theo.svg', name: 'Theo' },\n  { image: 'https://scrollxui.dev/assets/logos/kansas.svg', name: 'Kansas' },\n  { image: 'https://scrollxui.dev/assets/logos/cairo.svg', name: 'Cairo' },\n];\n\nexport default function LogoCloudWithMinimalAnimation({\n  title = 'Trusted by the best companies',\n  description = 'Companies that have been using our product from the very start.',\n  logos = defaultLogos,\n  className,\n}: LogoCloudWithMinimalAnimationProps) {\n  const words = title.split(' ');\n\n  return (\n    <section\n      className={cn(\n        'relative w-full overflow-hidden py-20',\n        className\n      )}\n    >\n      <div\n        className=\"pointer-events-none absolute inset-0 opacity-[0.025] dark:opacity-[0.05]\"\n      />\n\n      <div className=\"relative mx-auto max-w-5xl px-6\">\n        <div className=\"text-center mb-12\">\n          <h2 className=\"relative z-10 mx-auto max-w-3xl text-4xl font-bold leading-tight tracking-tight text-zinc-900 dark:text-zinc-100 md:text-5xl lg:text-6xl\">\n            {words.map((word, index) => (\n              <motion.span\n                key={`${word}-${index}`}\n                initial={{ opacity: 0, filter: 'blur(4px)', y: 10 }}\n                animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}\n                transition={{\n                  duration: 0.3,\n                  delay: index * 0.05,\n                  ease: 'easeInOut',\n                }}\n                className=\"mr-[0.25em] inline-block\"\n              >\n                {word}\n              </motion.span>\n            ))}\n          </h2>\n          \n          <motion.p\n            initial={{ opacity: 0, y: 10 }}\n            animate={{ opacity: 1, y: 0 }}\n            transition={{ duration: 0.4, delay: 0.4 }}\n            className=\"mt-4 text-base md:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto\"\n          >\n            {description}\n          </motion.p>\n        </div>\n\n        <motion.div\n          initial={{ opacity: 0 }}\n          animate={{ opacity: 1 }}\n          transition={{ duration: 0.4, delay: 0.6 }}\n          className=\"mt-10\"\n        >\n          <div className=\"flex flex-wrap items-center justify-center gap-8 md:gap-12\">\n            {logos.map((logo, index) => (\n              <motion.div\n                key={index}\n                initial={{ opacity: 0, filter: 'blur(6px)', scale: 0.96 }}\n                animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}\n                transition={{\n                  duration: 0.4,\n                  delay: 0.65 + index * 0.08,\n                  ease: 'easeOut',\n                }}\n                className=\"flex items-center justify-center h-16 w-24 md:h-20 md:w-32\"\n              >\n                <img\n                  src={logo.image}\n                  alt={logo.name}\n                  className=\"h-8 w-auto object-contain md:h-10 transition-transform duration-200 hover:scale-110\"\n                />\n              </motion.div>\n            ))}\n          </div>\n        </motion.div>\n      </div>\n    </section>\n  );\n}"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
