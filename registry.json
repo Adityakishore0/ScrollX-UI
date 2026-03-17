@@ -2042,6 +2042,20 @@
       ]
     },
     {
+      "name": "cta-section-with-floating-gallery",
+      "title": "CTA Section With Floating Gallery",
+      "description": "CTA section with staggered image gallery.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/orb-button"],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/cta-sections/cta-section-with-floating-gallery.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "features-with-panel",
       "title": "Features with Panel",
       "description": "Interactive feature list with sticky media panel and smooth transitions.",
@@ -2229,6 +2243,20 @@
       "files": [
         {
           "path": "registry/blocks/logo-cloud/logo-cloud-marquee.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "logo-cloud-with-minimal-animation",
+      "title": "Logo Cloud with Minimal Animation",
+      "description": "A clean logo cloud with smooth blur and fade-in animations.",
+      "type": "registry:block",
+      "registryDependencies": [],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/logo-cloud/logo-cloud-with-minimal-animation.tsx",
           "type": "registry:component"
         }
       ]
