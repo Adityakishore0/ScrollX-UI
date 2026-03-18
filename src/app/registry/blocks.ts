@@ -29,6 +29,8 @@ export const blocks = [
   { category: 'testimonials', name: 'testimonials-with-carousel' },
   { category: 'testimonials', name: 'testimonials-with-marquee' },
   { category: 'testimonials', name: 'testimonials-with-verticalmarquee' },
+  { category: 'waitlist-sections', name: 'waitlist-with-iphone' },
+  { category: 'waitlist-sections', name: 'waitlist-with-layers' },
 ] as const;
 
 export type BlockEntry = (typeof blocks)[number];
