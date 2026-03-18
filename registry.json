@@ -2339,6 +2339,34 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "waitlist-with-iphone",
+      "title": "Waitlist Section with Iphone",
+      "description": "A waitlist section with an iPhone mockup.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/iphone"],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/waitlist-sections/waitlist-with-iphone.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "waitlist-with-layers",
+      "title": "Waitlist Section with Layers",
+      "description": "Waitlist section with a draggable stack of layered image cards.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/layer-stack", "@scrollxui/progress"],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/waitlist-sections/waitlist-with-layers.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
