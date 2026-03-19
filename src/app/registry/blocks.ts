@@ -4,6 +4,7 @@ export const blocks = [
   { category: 'contact-sections', name: 'contact-with-globe' },
   { category: 'cta-sections', name: 'cta-section-with-avatars' },
   { category: 'cta-sections', name: 'cta-section-with-floating-gallery' },
+  { category: 'download-sections', name: 'download-with-iphone' },
   { category: 'features', name: 'features-with-panel' },
   { category: 'features', name: 'features-with-spotlight' },
   { category: 'footers', name: 'footer-with-minimal-outline' },
