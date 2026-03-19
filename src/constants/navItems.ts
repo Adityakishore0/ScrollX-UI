@@ -75,6 +75,11 @@ const navigation: NavItem[] = [
         href: '/blocks/cta-sections',
         category: 'New',
       },
+      {
+        title: 'Download Sections',
+        href: '/blocks/download-sections',
+        category: 'New',
+      },
       { title: 'Features', href: '/blocks/features', category: 'New' },
       { title: 'Footers', href: '/blocks/footers', category: 'New' },
       {
