@@ -2056,6 +2056,20 @@
       ]
     },
     {
+      "name": "download-with-iphone",
+      "title": "Download Section with Iphone",
+      "description": "A download section with an iPhone mockup.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/iphone"],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/download-sections/download-with-iphone.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "features-with-panel",
       "title": "Features with Panel",
       "description": "Interactive feature list with sticky media panel and smooth transitions.",
