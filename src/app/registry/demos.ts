@@ -175,6 +175,8 @@ export const demoComponents = [
   'radialflow-demo',
   'radiogroup-demo',
   'radialsocials-demo',
+  'reel-demo',
+  'reelpauseonhover-demo',
   'revealtext-demo',
   'revealtextmanual-demo',
   'revealtextup-demo',
