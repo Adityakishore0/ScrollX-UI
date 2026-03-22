@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-with-reel",
+  "type": "registry:block",
+  "title": "Hero Section with Reel",
+  "description": "A hero section with an animated image reel and motion entrance.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "registryDependencies": [
+    "@scrollxui/card",
+    "@scrollxui/orb-button",
+    "@scrollxui/reel"
+  ],
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "registry/blocks/hero-sections/hero-with-reel.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { motion } from 'motion/react';\nimport { Reel, ReelItem } from '@/components/ui/reel';\nimport { OrbButton } from '@/components/ui/orb-button';\n\nconst reelItems: ReelItem[] = [\n  { id: 'reel-0', type: 'image', src: 'https://scrollxui.dev/assets/blocks/hero-sections.png' },\n  { id: 'reel-1', type: 'image', src: 'https://scrollxui.dev/assets/blocks/footers.png' },\n  { id: 'reel-2', type: 'image', src: 'https://scrollxui.dev/assets/blocks/bento.png' },\n  { id: 'reel-3', type: 'image', src: 'https://scrollxui.dev/assets/blocks/pricing-sections.png' },\n  { id: 'reel-4', type: 'image', src: 'https://scrollxui.dev/assets/blocks/contact-sections.png' },\n  { id: 'reel-5', type: 'image', src: 'https://scrollxui.dev/assets/blocks/testimonials.png' },\n];\n\nfunction Navbar() {\n  return (\n    <nav className='flex w-full items-center justify-between border-t border-b border-zinc-200 px-4 py-4 dark:border-zinc-800'>\n      <div className='flex items-center gap-2'>\n        <div className='size-7 rounded-lg bg-zinc-950 dark:bg-zinc-50' />\n        <h1 className='text-base font-bold md:text-2xl text-zinc-900 dark:text-white'>\n          ScrollX UI\n        </h1>\n      </div>\n      <OrbButton size='sm'>Get Started</OrbButton>\n    </nav>\n  );\n}\n\nexport default function HeroWithReel() {\n  return (\n    <div className='min-h-screen w-full bg-zinc-50 dark:bg-zinc-950 flex flex-col overflow-hidden transition-colors duration-500'>\n      <Navbar />\n\n      <div className='flex-1 flex flex-col items-center pt-10 pb-16 text-center px-4'>\n        <motion.h1\n          initial={{ opacity: 0, y: 24 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}\n          className='text-4xl md:text-6xl font-bold text-zinc-900 dark:text-white max-w-2xl leading-tight tracking-tight'\n        >\n          Launch Faster with{' '}\n          <em className='font-bold italic text-zinc-700 dark:text-zinc-300'>\n            Production-Ready\n          </em>\n          <br />\n          UI Blocks\n        </motion.h1>\n\n        <motion.p\n          initial={{ opacity: 0, y: 16 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ duration: 0.5, delay: 0.38, ease: 'easeOut' }}\n          className='mt-5 text-base text-zinc-500 dark:text-zinc-400 max-w-sm leading-relaxed'\n        >\n          Ship polished landing pages in hours. Pick a block, customize it, and move from idea to release without rebuilding layout primitives.\n        </motion.p>\n\n        <motion.div\n          initial={{ opacity: 0, y: 12 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ duration: 0.4, delay: 0.52 }}\n          className='mt-8'\n        >\n          <OrbButton>Try it Free</OrbButton>\n        </motion.div>\n\n        <motion.div\n          initial={{ opacity: 0, y: 32 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}\n          className='mt-12 w-full'\n        >\n          <Reel\n            items={reelItems}\n            rows={2}\n            pauseOnHover={false}\n            direction='alternate'\n          />\n        </motion.div>\n      </div>\n    </div>\n  );\n}"
+    }
+  ]
+}
