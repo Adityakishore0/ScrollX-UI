@@ -1,0 +1,89 @@
+---
+title: Reel
+description: A scrolling media strip that displays images and videos in flowing rows.
+---
+
+<ComponentPreview name='reel-demo' className='' description='' />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <PkgOptions name="reel" />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='reel' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Reel, ReelItem } from "@/components/ui/reel";
+```
+
+```tsx
+const items: ReelItem[] = [
+  { id: '1', type: 'image', src: '/photo.jpg' },
+  { id: '2', type: 'video', src: '/clip.mp4' },
+];
+
+<Reel items={items} />
+```
+
+## Examples
+
+---
+
+<Step>Pause On Hover</Step>
+
+<ComponentPreview
+  name='reelpauseonhover-demo'
+  className=''
+  description=''
+/>
+
+## API Reference
+
+### Reel 
+
+A scrolling media strip that displays images and videos in flowing rows.
+
+## Props
+
+| Prop           | Type                                    | Default       | Description                                         |
+| -------------- | --------------------------------------- | ------------- | --------------------------------------------------- |
+| `items`        | `ReelItem[]`                            | —             | Array of media items to display.                    |
+| `rows`         | `number`                                | `3`           | Number of scrolling rows.                           |
+| `repeat`       | `number`                                | `9`           | Times items duplicate per row for seamless looping. |
+| `pauseOnHover` | `boolean`                               | `true`        | Pauses scrolling when hovered.                      |
+| `applyMask`    | `boolean`                               | `true`        | Fades out left and right edges.                     |
+| `duration`     | `number`                                | `30`          | Scroll speed in seconds.                            |
+| `direction`    | `alternate` \| `forward` \| `reverse`   | `alternate`   | Scroll direction across rows.                       |
+| `className`    | `string`                                | —             | Custom styles on the wrapper.                       |
+| `id`           | `string`                                | —             | Unique identifier for each item.                    |
+| `type`         | `image` \| `video`                      | —             | Media type of the item.                             |
+| `src`          | `string`                                | —             | URL of the media file.                              |

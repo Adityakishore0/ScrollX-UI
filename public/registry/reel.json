@@ -1,0 +1,62 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reel",
+  "type": "registry:ui",
+  "title": "Reel",
+  "description": "A scrolling media strip that displays images and videos in flowing rows.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "registryDependencies": ["@scrollxui/card"],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "css": {
+    "@layer utilities": {
+      ".animate-canopy-horizontal": {
+        "animation": "canopy-x var(--duration) infinite linear"
+      },
+      ".animate-canopy-vertical": {
+        "animation": "canopy-y var(--duration) linear infinite"
+      },
+      ".direction-reverse.animate-canopy-horizontal": {
+        "animation-direction": "reverse"
+      },
+      ".direction-reverse.animate-canopy-vertical": {
+        "animation-direction": "reverse"
+      },
+      ".group:hover .group-hover\\:paused": {
+        "animation-play-state": "paused"
+      }
+    },
+    "@keyframes canopy-x": {
+      "from": {
+        "transform": "translateX(0)"
+      },
+      "to": {
+        "transform": "translateX(calc(-100% - var(--gap)))"
+      }
+    },
+    "@keyframes canopy-y": {
+      "from": {
+        "transform": "translateY(0)"
+      },
+      "to": {
+        "transform": "translateY(calc(-100% - var(--gap)))"
+      }
+    }
+  },
+  "files": [
+    {
+      "type": "registry:ui",
+      "path": "components/ui/reel.tsx",
+      "content": "'use client';\nimport { cn } from '@/lib/utils';\nimport { Card, CardContent } from '@/components/ui/card';\n\nexport interface ReelItem {\n  id: string;\n  type: 'image' | 'video';\n  src: string;\n}\n\ninterface FlowProps extends React.HTMLAttributes<HTMLDivElement> {\n  reverse?: boolean;\n  repeat?: number;\n  pauseOnHover?: boolean;\n  applyMask?: boolean;\n  duration?: number;\n}\n\nconst Flow = ({\n  children,\n  repeat = 9,\n  pauseOnHover = false,\n  reverse = false,\n  applyMask = true,\n  duration = 30,\n  className,\n  ...props\n}: FlowProps) => (\n  <div\n    {...props}\n    className={cn(\n      'group relative flex h-full w-full overflow-hidden p-1 [--gap:16px] gap-(--gap) flex-row',\n      className,\n    )}\n    style={{ '--duration': `${duration}s` } as React.CSSProperties}\n  >\n    {Array.from({ length: repeat }).map((_, index) => (\n      <div\n        key={`item-${index}`}\n        className={cn('flex shrink-0 gap-(--gap) animate-canopy-horizontal flex-row', {\n          'group-hover:paused': pauseOnHover,\n          'direction-reverse': reverse,\n        })}\n      >\n        {children}\n      </div>\n    ))}\n    {applyMask && (\n      <div className='pointer-events-none absolute inset-0 z-10 h-full w-full bg-linear-to-r from-background via-transparent to-background' />\n    )}\n  </div>\n);\n\nconst ReelCard = ({\n  src,\n  type,\n}: {\n  src: string;\n  type: 'image' | 'video';\n}) => (\n  <Card className='h-40 w-64 shrink-0 overflow-hidden p-0'>\n    <CardContent className='h-full w-full p-0'>\n      {type === 'image' ? (\n        <img src={src} alt='' className='h-full w-full object-cover' />\n      ) : (\n        <video\n          src={src}\n          muted\n          loop\n          playsInline\n          autoPlay\n          className='h-full w-full object-cover'\n        />\n      )}\n    </CardContent>\n  </Card>\n);\n\nconst Reel = ({\n  items,\n  rows = 3,\n  repeat = 9,\n  pauseOnHover = true,\n  applyMask = true,\n  duration = 30,\n  direction = 'alternate',\n  className,\n}: {\n  items: ReelItem[];\n  rows?: number;\n  repeat?: number;\n  pauseOnHover?: boolean;\n  applyMask?: boolean;\n  duration?: number;\n  direction?: 'alternate' | 'forward' | 'reverse';\n  className?: string;\n}) => (\n  <div className={cn('w-full overflow-hidden', className)}>\n    {Array.from({ length: rows }).map((_, index) => {\n      const reverse =\n        direction === 'forward' ? false :\n        direction === 'reverse' ? true :\n        index % 2 !== 0;\n\n      return (\n        <Flow\n          key={`flow-${index}`}\n          reverse={reverse}\n          repeat={repeat}\n          pauseOnHover={pauseOnHover}\n          applyMask={applyMask}\n          duration={duration}\n        >\n          {items.map((item) => (\n            <ReelCard key={item.id} src={item.src} type={item.type} />\n          ))}\n        </Flow>\n      );\n    })}\n  </div>\n);\n\nexport { Reel };"
+    },
+    {
+      "type": "registry:ui",
+      "path": "components/ui/card.tsx",
+      "content": "import * as React from 'react';\n\nimport { cn } from '@/lib/utils';\n\nfunction Card({ className, ...props }: React.ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot='card'\n      className={cn(\n        'bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-xs',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot='card-header'\n      className={cn(\n        '@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot='card-title'\n      className={cn('leading-none font-semibold', className)}\n      {...props}\n    />\n  );\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot='card-description'\n      className={cn('text-muted-foreground text-sm', className)}\n      {...props}\n    />\n  );\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot='card-action'\n      className={cn(\n        'col-start-2 row-span-2 row-start-1 self-start justify-self-end',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot='card-content'\n      className={cn('px-6', className)}\n      {...props}\n    />\n  );\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot='card-footer'\n      className={cn('flex items-center px-6 [.border-t]:pt-6', className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Card,\n  CardHeader,\n  CardFooter,\n  CardTitle,\n  CardAction,\n  CardDescription,\n  CardContent,\n};\n"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}

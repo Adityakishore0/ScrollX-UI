@@ -1416,6 +1416,20 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "reel",
+      "title": "Reel",
+      "description": "A scrolling media strip that displays images and videos in flowing rows.",
+      "type": "registry:ui",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "components/ui/reel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "reveal-text",
       "title": "Reveal Text",
       "description": "a clean text reveal component providing directional animation and stagger options.",
@@ -2229,6 +2243,24 @@
       "files": [
         {
           "path": "registry/blocks/hero-sections/hero-with-pixelbackground.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "hero-with-reel",
+      "title": "Hero Section with Reel",
+      "description": "A hero section with an animated image reel and motion entrance.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@scrollxui/card",
+        "@scrollxui/orb-button",
+        "@scrollxui/reel"
+      ],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/hero-sections/hero-with-reel.tsx",
           "type": "registry:component"
         }
       ]

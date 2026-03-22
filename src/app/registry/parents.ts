@@ -100,6 +100,7 @@ export const parentComponents = [
   'radialflow',
   'radio-group',
   'radial-socials',
+  'reel',
   'reveal-text',
   'select',
   'sensitive-text',
