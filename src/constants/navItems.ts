@@ -340,6 +340,7 @@ const navigation: NavItem[] = [
         href: '/docs/components/radio-group',
       },
       { title: 'Radial Socials', href: '/docs/components/radial-socials' },
+      { title: 'Reel', href: '/docs/components/reel', category: 'New' },
       {
         title: 'Reveal Text',
         href: '/docs/components/reveal-text',
