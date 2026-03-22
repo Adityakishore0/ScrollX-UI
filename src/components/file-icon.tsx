@@ -16,7 +16,7 @@ export function FileIcon({ name }: { name: string }) {
     : undefined;
 
   return (
-    <code className='inline-flex items-center gap-0.5 rounded font-mono text-xs bg-muted/50 border border-border/50 align-middle px-1'>
+    <code className='inline-flex not-prose items-center gap-0.5 rounded font-mono text-xs bg-muted/50 border border-border/50 align-middle px-1'>
       {maskStyle && (
         <span
           className='inline-block w-4 h-4 bg-current shrink-0'
