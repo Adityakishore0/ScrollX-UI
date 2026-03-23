@@ -13,14 +13,20 @@ description: A button that requires holding down to confirm irreversible or crit
     <TabsTrigger value="manual">Manual</TabsTrigger>
   </TabsList>
   <TabsContent value="cli">
-    <PkgOptions name="hold-toconfirm" />
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/hold-toconfirm
+```
+
   </TabsContent>
   <TabsContent value="manual">
     <Steps>
 
 <Step>Install the following dependencies:</Step>
 
-<DepsOptions name='motion' />
+```bash value="deps"
+npm install motion
+```
 
 <Step>Copy and paste the following code into your project.</Step>
 
