@@ -17,13 +17,19 @@ description: Syntax-highlighted codeblock component built on top of react-syntax
     <TabsTrigger value="manual">Manual</TabsTrigger>
   </TabsList>
   <TabsContent value="cli">
-    <PkgOptions name="codeblock" />
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/codeblock
+```
+
   </TabsContent>
   <TabsContent value="manual">
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name="react-syntax-highlighter @types/react-syntax-highlighter" />
+```bash value="deps"
+npm install react-syntax-highlighter @types/react-syntax-highlighter
+```
 
 <Step>Copy and paste the following code into your project.</Step>
 
