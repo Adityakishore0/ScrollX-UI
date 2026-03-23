@@ -17,12 +17,18 @@ description: An animated text component that creates a smooth, staggered charact
     <TabsTrigger value="manual">Manual</TabsTrigger>
   </TabsList>
   <TabsContent value="cli">
-    <PkgOptions name="stagger-chars" />
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/stagger-chars
+```
+
   </TabsContent>
   <TabsContent value="manual">
     <Steps>
       <Step>Install the following dependencies:</Step>
-      <DepsOptions name="motion" />
+      ```bash value="deps"
+npm install motion
+```
 
       <Step>Copy and paste the following code into your project.</Step>
 
