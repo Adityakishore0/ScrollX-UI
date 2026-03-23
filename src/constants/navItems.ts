@@ -88,6 +88,7 @@ const navigation: NavItem[] = [
       },
       { title: 'Hero Sections', href: '/blocks/hero-sections' },
       { title: 'Logo Cloud', href: '/blocks/logo-cloud' },
+      { title: 'Not Found', href: '/blocks/not-found', category: 'New' },
       {
         title: 'Pricing Sections',
         href: '/blocks/pricing-sections',
