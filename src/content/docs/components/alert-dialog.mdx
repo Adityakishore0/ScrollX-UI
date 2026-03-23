@@ -17,13 +17,19 @@ description: A modal dialog used to convey critical information and require a us
     <TabsTrigger value="manual">Manual</TabsTrigger>
   </TabsList>
   <TabsContent value="cli">
-    <PkgOptions name="alert-dialog" />
+  
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/alert-dialog
+```
+
   </TabsContent>
   <TabsContent value="manual">
     <Steps>
 
 <Step>Install the following dependencies:</Step>
-<DepsOptions name='@radix-ui/react-alert-dialog motion' />
+```bash value="deps"
+npm install @radix-ui/react-alert-dialog motion
+```
 
 <Step>Copy and paste the following code into your project.</Step>
 
