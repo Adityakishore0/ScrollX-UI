@@ -26,6 +26,7 @@ export const blocks = [
   { category: 'logo-cloud', name: 'logo-cloud-flipflow' },
   { category: 'logo-cloud', name: 'logo-cloud-marquee' },
   { category: 'logo-cloud', name: 'logo-cloud-with-minimal-animation' },
+  { category: 'not-found', name: 'not-found-with-glitchytext' },
   { category: 'pricing-sections', name: 'pricing-minimal' },
   { category: 'pricing-sections', name: 'pricing-with-switch' },
   { category: 'testimonials', name: 'testimonials-with-carousel' },

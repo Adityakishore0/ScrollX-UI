@@ -2308,6 +2308,20 @@
       ]
     },
     {
+      "name": "not-found-with-glitchytext",
+      "title": "Not Found with GlitchyText",
+      "description": "A clean 404 page with glitch animation and smooth reveal transitions.",
+      "type": "registry:block",
+      "registryDependencies": [],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/not-found/not-found-with-glitchytext.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "pricing-minimal",
       "title": "Pricing Minimal",
       "description": "A clean three-tier pricing section with a highlighted popular plan.",
