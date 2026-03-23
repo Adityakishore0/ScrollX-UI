@@ -12,6 +12,7 @@ import remarkGfm from 'remark-gfm';
 import ComponentNavigator from '@/components/Navigator';
 import { remarkInlineFileIcons } from '@/lib/remark-icons';
 import OpeninAI from '@/components/open-ai';
+import { remarkInstallBlocks } from '@/utils/remark-install-blocks';
 
 interface DocFrontmatter {
   title: string;
@@ -57,7 +58,11 @@ const getDocBySlug = cache(async (slug: string[]) => {
       options: {
         parseFrontmatter: true,
         mdxOptions: {
-          remarkPlugins: [remarkGfm, remarkInlineFileIcons],
+          remarkPlugins: [
+            remarkGfm,
+            remarkInlineFileIcons,
+            remarkInstallBlocks,
+          ],
           rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
           format: 'mdx',
         },
