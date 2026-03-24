@@ -63,6 +63,16 @@ const viewportConfig: Record<
   },
 };
 
+function transformImports(source: string) {
+  return source.replace(
+    /from\s+['"]@\/app\/registry\/blocks\/[^/]+\/[^/]+\/components\/([^'"]+)['"]/g,
+    (_, path) => {
+      const fileName = path.split('/').pop();
+      return `from "@/components/${fileName}"`;
+    },
+  );
+}
+
 export default function BlocksPreview({
   name,
   className = '',
@@ -86,8 +96,10 @@ export default function BlocksPreview({
     useResizablePreview();
 
   const Block = blocksRegistry[name];
-  const activeSource =
+  const rawSource =
     blockFiles.find((f) => f.relativePath === selectedPath)?.source ?? '';
+
+  const activeSource = transformImports(rawSource);
   const { copied, copyFailed, copy } = useClipboard();
 
   useEffect(() => {
