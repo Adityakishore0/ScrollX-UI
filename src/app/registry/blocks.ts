@@ -29,6 +29,7 @@ export const blocks = [
   { category: 'not-found', name: 'not-found-with-glitchytext' },
   { category: 'pricing-sections', name: 'pricing-minimal' },
   { category: 'pricing-sections', name: 'pricing-with-switch' },
+  { category: 'signup-sections', name: 'signup-minimal', route: true },
   { category: 'testimonials', name: 'testimonials-with-carousel' },
   { category: 'testimonials', name: 'testimonials-with-marquee' },
   { category: 'testimonials', name: 'testimonials-with-verticalmarquee' },

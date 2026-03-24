@@ -302,6 +302,25 @@ function collectBlockFiles(block: BlockEntry): BlockFile[] {
   return [...blockFiles, ...externalDeps];
 }
 
+function transformImports(source: string) {
+  return source
+    .replace(
+      /from\s+['"]@\/app\/registry\/blocks\/[^/]+\/[^/]+\/components\/([^'"]+)['"]/g,
+      (_, p1) => {
+        const fileName = p1.split('/').pop();
+        return `from "@/components/${fileName}"`;
+      },
+    )
+
+    .replace(
+      /from\s+['"]@\/app\/registry\/blocks\/[^/]+\/[^/]+\/ui\/([^'"]+)['"]/g,
+      (_, p1) => {
+        const fileName = p1.split('/').pop();
+        return `from "@/components/ui/${fileName}"`;
+      },
+    );
+}
+
 function buildRegistryFiles(
   block: BlockEntry,
   allFiles: BlockFile[],
@@ -317,7 +336,7 @@ function buildRegistryFiles(
       return {
         type: 'registry:component',
         path: registryPath,
-        content: f.source,
+        content: transformImports(f.source),
       };
     });
 

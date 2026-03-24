@@ -2350,6 +2350,29 @@
       ]
     },
     {
+      "name": "signup-minimal",
+      "title": "SignUp Minimal",
+      "description": "A clean, animated signup form with Google OAuth and email/password fields.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@scrollxui/button",
+        "@scrollxui/label",
+        "@scrollxui/motion-grid"
+      ],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/signup-minimal/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/blocks/signup-sections/signup-minimal/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "testimonials-with-carousel",
       "title": "Testimonials with Carousel",
       "description": "A testimonial carousel with staggered title animations and smooth transitions, showcasing customer feedback in an elegant layout.",

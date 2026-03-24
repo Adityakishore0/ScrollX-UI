@@ -124,25 +124,48 @@ export async function getBlockSourceAction(
 
   const allFiles = [...blockFiles, ...externalDeps];
 
-  allFiles.sort((a, b) => {
-    if (a.relativePath === 'page.tsx') return -1;
-    if (b.relativePath === 'page.tsx') return 1;
-    const aIsUi = a.relativePath.startsWith('ui/');
-    const bIsUi = b.relativePath.startsWith('ui/');
+  const isRoute = 'route' in entry && entry.route === true;
+
+  const transformedFiles = allFiles.map((f) => {
+    if (isRoute) {
+      const isUi = f.relativePath.startsWith('ui/');
+      const isComponent = f.relativePath.startsWith('components/');
+
+      return {
+        ...f,
+        relativePath:
+          isUi || isComponent
+            ? f.relativePath
+            : `${entry.name}/${f.relativePath}`,
+      };
+    }
+
+    if (f.relativePath === 'page.tsx') {
+      return {
+        ...f,
+        relativePath: `${entry.name}.tsx`,
+      };
+    }
+    return f;
+  });
+
+  transformedFiles.sort((a, b) => {
+    if (a.relativePath.endsWith(`${entry.name}.tsx`)) return -1;
+    if (b.relativePath.endsWith(`${entry.name}.tsx`)) return 1;
+
+    if (a.relativePath.endsWith('page.tsx')) return -1;
+    if (b.relativePath.endsWith('page.tsx')) return 1;
+
+    const aIsUi = a.relativePath.includes('ui/');
+    const bIsUi = b.relativePath.includes('ui/');
+
     if (aIsUi && !bIsUi) return 1;
     if (!aIsUi && bIsUi) return -1;
+
     return a.relativePath.localeCompare(b.relativePath);
   });
 
-  const isRoute = 'route' in entry && entry.route === true;
-
   return {
-    files: allFiles.map((f) => ({
-      ...f,
-      relativePath:
-        f.relativePath === 'page.tsx' && !isRoute
-          ? `${entry.name}.tsx`
-          : f.relativePath,
-    })),
+    files: transformedFiles,
   };
 }

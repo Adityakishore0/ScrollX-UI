@@ -1,0 +1,50 @@
+---
+title: SignUp Minimal
+description: A clean, animated signup form with Google OAuth and email/password fields.
+---
+
+<BlocksPreview
+  name='signup-minimal'
+  className=''
+  description=''
+/>
+
+<BlockTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/signup-sections/signup-minimal
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash value="deps"
+npm install motion clsx tailwind-merge @radix-ui/react-slot class-variance-authority
+```
+
+<Step>Add util file</Step>
+
+```ts filename="lib/utils.ts"
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+<Step>Install required UI components: [`Motion Grid`](/docs/components/motion-grid), [`Button`](/docs/components/button), [`Label`](/docs/components/label)</Step>
+
+</Steps>
+</TabsContent>
+</BlockTabs>

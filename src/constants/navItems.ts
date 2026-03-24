@@ -94,6 +94,11 @@ const navigation: NavItem[] = [
         href: '/blocks/pricing-sections',
         category: 'New',
       },
+      {
+        title: 'SignUp Sections',
+        href: '/blocks/signup-sections',
+        category: 'New',
+      },
       { title: 'Testimonials', href: '/blocks/testimonials', category: 'New' },
       {
         title: 'Waitlist Sections',
