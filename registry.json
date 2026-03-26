@@ -2266,6 +2266,29 @@
       ]
     },
     {
+      "name": "login-minimal",
+      "title": "Login Minimal",
+      "description": "A clean, animated login form with Google OAuth and email/password fields.",
+      "type": "registry:block",
+      "registryDependencies": [
+        "@scrollxui/button",
+        "@scrollxui/label",
+        "@scrollxui/motion-grid"
+      ],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/login-minimal/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/blocks/login-sections/login-minimal/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "logo-cloud-flipflow",
       "title": "Logo Cloud Flipflow",
       "description": "A logo-cloud for AI startups with flipflow animation.",

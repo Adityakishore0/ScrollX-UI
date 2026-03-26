@@ -23,6 +23,7 @@ export const blocks = [
   { category: 'hero-sections', name: 'hero-with-layers' },
   { category: 'hero-sections', name: 'hero-with-pixelbackground' },
   { category: 'hero-sections', name: 'hero-with-reel' },
+  { category: 'login-sections', name: 'login-minimal', route: true },
   { category: 'logo-cloud', name: 'logo-cloud-flipflow' },
   { category: 'logo-cloud', name: 'logo-cloud-marquee' },
   { category: 'logo-cloud', name: 'logo-cloud-with-minimal-animation' },
