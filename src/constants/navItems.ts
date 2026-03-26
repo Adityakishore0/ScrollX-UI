@@ -87,6 +87,11 @@ const navigation: NavItem[] = [
         href: '/blocks/frequently-asked-questions',
       },
       { title: 'Hero Sections', href: '/blocks/hero-sections' },
+      {
+        title: 'Login Sections',
+        href: '/blocks/login-sections',
+        category: 'New',
+      },
       { title: 'Logo Cloud', href: '/blocks/logo-cloud' },
       { title: 'Not Found', href: '/blocks/not-found', category: 'New' },
       {
@@ -95,7 +100,7 @@ const navigation: NavItem[] = [
         category: 'New',
       },
       {
-        title: 'SignUp Sections',
+        title: 'Signup Sections',
         href: '/blocks/signup-sections',
         category: 'New',
       },
