@@ -184,6 +184,7 @@ export const demoComponents = [
   'revealtextleft-demo',
   'revealtextright-demo',
   'revealtexttrigger-demo',
+  'searchcell-demo',
   'select-demo',
   'sensitivetext-demo',
   'sensitivetextstretch-demo',
