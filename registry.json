@@ -1444,6 +1444,20 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "search-cell",
+      "title": "Search Cell",
+      "description": "An animated search input illustration that cycles through queries with a typewriter effect and blur-in result rows.",
+      "type": "registry:ui",
+      "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "components/ui/search-cell.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "select",
       "title": "Select",
       "description": "Displays an animated list of options for the user to choose from —smoothly triggered by a button.",

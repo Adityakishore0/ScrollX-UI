@@ -1,0 +1,103 @@
+---
+title: Search Cell
+description: An animated search input illustration that cycles through queries with typewriter effect and blur-in results.
+---
+
+<ComponentPreview name='searchcell-demo' className='' description='' />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/search-cell
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash value="deps"
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='search-cell' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { SearchCell } from '@/components/ui/search-cell';
+```
+
+```tsx
+<SearchCell
+  className="w-full max-w-sm rounded-2xl border border-zinc-200 dark:border-zinc-800"
+  typeSpeed={65}
+  pauseDuration={3000}
+  label="Searching..."
+  queries={[
+    {
+      query: "onboarding docs for new hires",
+      results: [
+        { path: "HR / Docs", title: "New hire onboarding guide", highlight: "onboarding" },
+        { path: "HR / Templates", title: "First week checklist", highlight: "docs" },
+      ],
+    },
+    {
+      query: "How do I request time off",
+      results: [
+        { path: "Policies / Leave", title: "Time off request process", highlight: "time off" },
+      ],
+    },
+  ]}
+/>
+```
+
+## API Reference
+
+### Search Cell
+
+An animated search input illustration that cycles through queries with a typewriter effect and blur-in result rows.
+
+## Props
+
+| Prop            | Type                  | Default         | Description                                                      |
+| --------------- | --------------------- | --------------- | ---------------------------------------------------------------- |
+| `queries`       | `SearchCellQuery[]`   | `DEFAULT_QUERIES` | Array of `{ query, results }` pairs to cycle through.          |
+| `typeSpeed`     | `number`              | `75`            | Milliseconds per character when typing.                          |
+| `eraseSpeed`    | `number`              | `40`            | Milliseconds per character when erasing.                         |
+| `pauseDuration` | `number`              | `2400`          | How long (ms) results stay visible before erasing begins.        |
+| `label`         | `string`              | `"Live search"` | Text shown in the right badge when results are visible.          |
+| `showBadges`    | `boolean`             | `true`          | Toggles the result count and label badges.                       |
+| `query`         | `string`              | —               | The search string to type and erase (inside each queries entry). |
+| `results`       | `SearchCellResult[]`  | —               | Result rows shown when typing completes.                         |
+| `path`          | `string`              | —               | Breadcrumb shown above each result title.                        |
+| `title`         | `string`              | —               | The result title displayed in the dropdown.                      |
+| `highlight`     | `string`              | —               | Substring of `title` to highlight in emerald.                    |
+| `className`     | `string`              | —               | Additional classes forwarded to the root div.                    |
