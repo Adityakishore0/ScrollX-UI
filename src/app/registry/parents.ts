@@ -102,6 +102,7 @@ export const parentComponents = [
   'radial-socials',
   'reel',
   'reveal-text',
+  'search-cell',
   'select',
   'sensitive-text',
   'shiny-button',
