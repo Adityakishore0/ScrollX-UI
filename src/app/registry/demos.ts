@@ -48,6 +48,7 @@ export const demoComponents = [
   'calendarmultimon-demo',
   'calendardisabledays-demo',
   'checkboxpro-demo',
+  'checklistcell-demo',
   'clock-demo',
   'collapsible-demo',
   'cosmicbackground-demo',
