@@ -1,0 +1,92 @@
+---
+title: Checklist Cell
+description: Animated checklist illustration with sliding tasks and progressive completion.
+---
+
+<ComponentPreview name='checklistcell-demo' className='' description='' />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/checklist-cell
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash value="deps"
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='checklist-cell' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { ChecklistCell } from '@/components/ui/checklist-cell';
+```
+
+```tsx
+<ChecklistCell
+      className='w-full max-w-sm rounded-2xl border border-zinc-200 dark:border-zinc-800'
+      initialCompleted={3}
+      finalCompleted={6}
+      stepInterval={700}
+      tasks={[
+        'How it all started',
+        'Our values and approach',
+        'Working together',
+        'Union rules and integration',
+        'Team structure',
+        'Communication norms',
+        'Feedback culture',
+        'Onboarding wrap-up',
+      ]}
+    />
+```
+
+## API Reference
+
+### Checklist Cell
+
+Animated checklist illustration with sliding tasks and progressive completion.
+
+## Props
+
+| Prop               | Type        | Default          | Description                                                                 |
+| ------------------ | ----------- | ---------------- | --------------------------------------------------------------------------- |
+| `tasks`            | `string[]`  | `DEFAULT_TASKS`  | Array of task labels displayed in the checklist animation.                  |
+| `initialCompleted` | `number`    | `3`              | Number of tasks marked as completed at the start of the animation.          |
+| `finalCompleted`   | `number`    | —                | Maximum number of tasks to complete before the animation resets.            |
+| `stepInterval`     | `number`    | `1700`           | Time (ms) between each progression step in the checklist animation.         |
+| `hoverToPlay`      | `boolean`   | `false`          | If `true`, animation starts on hover and resets on mouse leave.             |
+| `className`        | `string`    | —                | Additional classes applied to the root container.                           |
