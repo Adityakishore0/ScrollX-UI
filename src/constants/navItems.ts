@@ -171,6 +171,11 @@ const navigation: NavItem[] = [
       },
       { title: 'Carousel', href: '/docs/components/carousel' },
       { title: 'Checkbox Pro', href: '/docs/components/checkbox-pro' },
+      {
+        title: 'Checklist Cell',
+        href: '/docs/components/checklist-cell',
+        category: 'New',
+      },
       { title: 'Clock', href: '/docs/components/clock' },
       { title: 'CodeBlock', href: '/docs/components/codeblock' },
       { title: 'Collapsible', href: '/docs/components/collapsible' },
