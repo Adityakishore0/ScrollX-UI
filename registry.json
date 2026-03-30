@@ -383,6 +383,20 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "checklist-cell",
+      "title": "Checklist Cell",
+      "description": "Animated checklist illustration with sliding tasks and progressive completion.",
+      "type": "registry:ui",
+      "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "components/ui/checklist-cell.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "clock",
       "title": "Clock",
       "description": "clock component with rotating hands and glowing effects, perfect for CTA sections.",

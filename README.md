@@ -21,6 +21,10 @@
   <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-red.svg"></a>
   <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/CONTRIBUTING.md"><img alt="Open-Source" src="https://img.shields.io/badge/Open-Source-red.svg"></a>
 </div>
+<br />
+<picture>
+  <img src="public/images/ui.png" alt="ScrollX UI OG Image" width="1000">
+ </picture>
 
 ## Documentation
 
@@ -32,7 +36,7 @@ ScrollX UI is a collection of animated, interactive React components & blocks bu
 
 ## Key Features
 
-- 135+ total components (text animations, animations, interactive components, backgrounds), and 11+ blocks growing every week
+- 140+ total components (text animations, animations, interactive components, backgrounds), and 30+ blocks growing every week
 - All components are built with minimal dependencies, and are highly customizable through props
 - You get the code, so you can modify, extend, and personalize every detail
 - Designed to integrate seamlessly with any modern React project

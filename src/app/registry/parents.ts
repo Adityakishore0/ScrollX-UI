@@ -27,6 +27,7 @@ export const parentComponents = [
   'carousel',
   'calendar',
   'checkbox-pro',
+  'checklist-cell',
   'clock',
   'codeblock',
   'collapsible',
