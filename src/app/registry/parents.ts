@@ -125,6 +125,7 @@ export const parentComponents = [
   'seperatorpro',
   'scroll-areapro',
   'social-orbit',
+  'squonk',
   'table',
   'testimonial-carousel',
   'text-highlighter',
