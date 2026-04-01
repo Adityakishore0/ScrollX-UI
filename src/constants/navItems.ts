@@ -73,7 +73,6 @@ const navigation: NavItem[] = [
       {
         title: 'CTA Sections',
         href: '/blocks/cta-sections',
-        category: 'New',
       },
       {
         title: 'Download Sections',
@@ -97,14 +96,13 @@ const navigation: NavItem[] = [
       {
         title: 'Pricing Sections',
         href: '/blocks/pricing-sections',
-        category: 'New',
       },
       {
         title: 'Signup Sections',
         href: '/blocks/signup-sections',
         category: 'New',
       },
-      { title: 'Testimonials', href: '/blocks/testimonials', category: 'New' },
+      { title: 'Testimonials', href: '/blocks/testimonials' },
       {
         title: 'Waitlist Sections',
         href: '/blocks/waitlist-sections',
@@ -271,7 +269,7 @@ const navigation: NavItem[] = [
       },
       { title: 'Iphone', href: '/docs/components/iphone' },
       { title: 'Kbd', href: '/docs/components/kbd' },
-      { title: 'Keyboard', href: '/docs/components/keyboard', category: 'New' },
+      { title: 'Keyboard', href: '/docs/components/keyboard' },
       {
         title: 'Kinetic Testimonials',
         href: '/docs/components/kinetic-testimonials',
@@ -367,7 +365,7 @@ const navigation: NavItem[] = [
         href: '/docs/components/search-cell',
         category: 'New',
       },
-      { title: 'Select', href: '/docs/components/select', category: 'New' },
+      { title: 'Select', href: '/docs/components/select' },
       {
         title: 'Sensitive Text',
         href: '/docs/components/sensitive-text',
@@ -408,6 +406,7 @@ const navigation: NavItem[] = [
         title: 'Striped Grid',
         href: '/docs/components/striped-grid',
       },
+      { title: 'Squonk', href: '/docs/components/squonk', category: 'New' },
       { title: 'Table', href: '/docs/components/table' },
       {
         title: 'Testimonial Carousel',
