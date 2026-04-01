@@ -227,6 +227,7 @@ export const demoComponents = [
   'seperatorprowavy',
   'scrollareapro-demo',
   'scrollareaprohorizontal',
+  'squonk-demo',
   'table-demo',
   'table-datatable-demo',
   'tablescrollable-demo',
