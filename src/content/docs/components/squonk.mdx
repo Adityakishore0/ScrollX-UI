@@ -1,0 +1,90 @@
+---
+title: Squonk
+description: elastic squircles illustration with fall and shrink movement.
+---
+
+<ComponentPreview name='squonk-demo' className='' description='' />
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/squonk
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='squonk' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Squonk, SquonkContent } from '@/components/ui/squonk';
+```
+
+```tsx
+<Squonk size={96} elasticity={1.2} cycleDuration={4000} easing="linear">
+      <SquonkContent index={0} className="bg-indigo-500">
+        <img
+          src="https://cdn.pixabay.com/photo/2023/02/07/10/50/ai-generated-7773822_1280.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </SquonkContent>
+      <SquonkContent index={1} className="bg-violet-400">
+        <img
+          src="https://cdn.pixabay.com/photo/2023/06/27/03/15/ai-generated-8091289_1280.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+      </SquonkContent>
+    </Squonk>
+```
+
+## API Reference
+
+### Squonk
+
+elastic squircles illustration with fall and shrink movement.
+
+## Props
+
+| Prop            | Type                                                                 | Default     | Description                                                                                         |
+| --------------- | -------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| `className`     | `string`                                                             | `-`         | Optional CSS class for styling the outer container.                                                 |
+| `children`      | `React.ReactNode`                                                    | `-`         | Elements rendered as animated squonk layers. Each child acts as a stack item in the animation loop. |
+| `size`          | `number`                                                             | `96`        | Base size (width & height) of each squonk box.                                                      |
+| `radius`        | `number`                                                             | `size * 0.23` | Border radius of each squonk box. Defaults to a proportional value based on size.                 |
+| `cycleDuration` | `number`                                                             | `4000`      | Duration (in ms) for one full animation cycle.                                                      |
+| `elasticity`    | `number`                                                             | `1`         | Controls overall softness and responsiveness of motion (affects squash, stretch, and bounce).       |
+| `bounceHeight`  | `number`                                                             | `size * 0.094` | Height of the rebound after impact.                                                              |
+| `squashAmount`  | `number`                                                             | `size * 0.365` | Amount of vertical compression during impact.                                                    |
+| `stretchAmount` | `number`                                                             | `size * 0.302` | Amount of horizontal stretch during squash.                                                      |
+| `easing`        | `'linear' \| 'bounce' \| 'smooth'`                                   | `'linear'`  | Easing style applied to the animation cycle.                                                        |
