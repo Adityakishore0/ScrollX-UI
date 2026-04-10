@@ -2098,6 +2098,20 @@
       ]
     },
     {
+      "name": "cta-section-with-dashed-border",
+      "title": "CTA Section With Dashed Border",
+      "description": "CTA section with dashed border effects.",
+      "type": "registry:block",
+      "registryDependencies": [],
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/blocks/cta-sections/cta-section-with-dashed-border.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "cta-section-with-floating-gallery",
       "title": "CTA Section With Floating Gallery",
       "description": "CTA section with staggered image gallery.",
