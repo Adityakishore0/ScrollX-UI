@@ -127,6 +127,7 @@ export const demoComponents = [
   'layeredbuttoncustom-demo',
   'layerstack-demo',
   'layeredtext-demo',
+  'leancard-demo',
   'loader-demo',
   'loadermagnetic-dots',
   'loaderdual-ring',
