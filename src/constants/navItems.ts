@@ -288,7 +288,11 @@ const navigation: NavItem[] = [
         title: 'Layered Text',
         href: '/docs/components/layered-text',
       },
-
+      {
+        title: 'Lean Card',
+        href: '/docs/components/lean-card',
+        category: 'New',
+      },
       { title: 'Loader', href: '/docs/components/loader' },
       { title: 'Login Form', href: '/docs/components/loginform' },
       { title: 'Logo Stepper', href: '/docs/components/logo-stepper' },
