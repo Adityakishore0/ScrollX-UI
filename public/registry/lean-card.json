@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lean-card",
+  "type": "registry:ui",
+  "title": "Lean Card",
+  "description": "A card component with a striped back card revealed on hover",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "registryDependencies": [],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:ui",
+      "path": "components/ui/lean-card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction LeanCard({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"lean-card\"\n      className={cn(\"group/lean relative isolate w-fit cursor-pointer p-3\", className)}\n    >\n      <div\n        data-slot=\"lean-card-back\"\n        className={cn(\n          \"absolute inset-3 -z-10 rounded-3xl\",\n          \"ring-1 ring-foreground/10\",\n          \"[background:repeating-linear-gradient(45deg,color-mix(in_oklch,var(--color-muted)_30%,transparent)_0px,color-mix(in_oklch,var(--color-muted)_30%,transparent)_10px,var(--color-border)_10px,var(--color-border)_11px)]\",\n          \"transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]\",\n          \"rotate-0 translate-y-0\",\n          \"group-hover/lean:-rotate-4 group-hover/lean:translate-y-2\"\n        )}\n      />\n      <div {...props} />\n    </div>\n  )\n}\n\nfunction LeanCardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"lean-card-content\"\n      className={cn(\n        \"relative rounded-3xl p-7\",\n        \"bg-card text-card-foreground ring-1 ring-foreground/10\",\n        \"transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]\",\n        \"rotate-0\",\n        \"group-hover/lean:rotate-3\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { LeanCard, LeanCardContent }"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
