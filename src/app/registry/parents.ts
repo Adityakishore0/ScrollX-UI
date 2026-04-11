@@ -73,6 +73,7 @@ export const parentComponents = [
   'layered-button',
   'layer-stack',
   'layered-text',
+  'lean-card',
   'loader',
   'loginform',
   'logo-stepper',
