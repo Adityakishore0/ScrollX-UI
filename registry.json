@@ -1038,6 +1038,20 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "lean-card",
+      "title": "Lean Card",
+      "description": "A card component with a striped back card revealed on hover",
+      "type": "registry:ui",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "components/ui/lean-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "loader",
       "title": "Loader",
       "description": "Animated versatile loader with different variants, customizable size and content.",

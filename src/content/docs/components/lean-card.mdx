@@ -1,0 +1,77 @@
+---
+title: Lean Card
+description: A stacked card that reveals a striped back card on hover.
+---
+
+<ComponentPreview
+  name='leancard-demo'
+  className='sm:[&_.preview>[data-orientation=vertical]]:max-w-[70%]'
+  description='A card component with a striped back card revealed on hover'
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/lean-card
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='lean-card' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { LeanCard, LeanCardContent } from "@/components/ui/lean-card"
+```
+
+```tsx
+<LeanCard>
+  <LeanCardContent>
+    <p>Your content here.</p>
+  </LeanCardContent>
+</LeanCard>
+```
+
+## API Reference
+
+### Lean Card
+
+A card component with a striped back card revealed on hover
+
+## Props
+
+| Prop               | Type                                   | Default | Description                                             |
+| ------------------ | -------------------------------------- | ------- | ------------------------------------------------------- |
+| `className`        | `string`                               | —       | Optional class for custom styling.                      |
+| `...props`         | `React.HTMLAttributes<HTMLDivElement>` | —       | All standard div props.                                 |
+| `LeanCard`         | `React.ReactNode`                      | —       | Root wrapper. Renders the striped back card internally. |
+| `LeanCardContent`  | `React.ReactNode`                      | —       | Front card surface. Rotates on hover.                   |
