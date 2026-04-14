@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "columnlines",
+  "type": "registry:ui",
+  "title": "ColumnLines",
+  "description": "column grid background with radial fade and subtle noise. Great for hero backgrounds.",
+  "author": "Ahdeetai <https://aditya.is-cool.dev>",
+  "registryDependencies": [],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "files": [
+    {
+      "type": "registry:ui",
+      "path": "components/ui/columnlines.tsx",
+      "content": "'use client';\nimport React from 'react';\nimport { cn } from '@/lib/utils';\n\ninterface ColumnLinesProps {\n  columnWidth?: number;\n  columnCount?: number;\n  radialFadeStart?: number;\n  radialFadeEnd?: number;\n  opacity?: number;\n  showNoise?: boolean;\n  noiseOpacity?: number;\n  className?: string;\n  children?: React.ReactNode;\n}\n\nexport function ColumnLines({\n  columnWidth = 80,\n  columnCount = 14,\n  radialFadeStart = 30,\n  radialFadeEnd = 70,\n  opacity = 1,\n  showNoise = true,\n  noiseOpacity = 0.05,\n  className,\n  children,\n}: ColumnLinesProps) {\n  const id = React.useId().replace(/:/g, '');\n  const maskImage = `radial-gradient(circle at center, white 0%, white ${radialFadeStart}%, transparent ${radialFadeEnd}%)`;\n  const noiseMask = `radial-gradient(circle at center, white 0%, transparent 75%)`;\n\n  return (\n    <div className={cn('relative overflow-hidden', className)}>\n      <svg width=\"0\" height=\"0\" className=\"absolute\">\n        <filter id={`noise-${id}`}>\n          <feTurbulence\n            type=\"fractalNoise\"\n            baseFrequency=\"0.65\"\n            numOctaves=\"3\"\n            stitchTiles=\"stitch\"\n          />\n          <feColorMatrix type=\"saturate\" values=\"0\" />\n        </filter>\n      </svg>\n\n      {showNoise && (\n        <div\n          className=\"absolute inset-0 z-0 scale-[1.2]\"\n          style={{\n            opacity: noiseOpacity,\n            filter: `url(#noise-${id})`,\n            WebkitMaskImage: noiseMask,\n            maskImage: noiseMask,\n          }}\n        />\n      )}\n\n      <div\n        className=\"absolute inset-0 z-0 flex\"\n        style={{\n          opacity,\n          WebkitMaskImage: maskImage,\n          maskImage,\n        }}\n      >\n        {Array.from({ length: columnCount }).map((_, i) => (\n          <div\n            key={i}\n            className={cn(\n              'h-full shrink-0',\n              'bg-linear-to-r from-neutral-100 to-white',\n              'shadow-[2px_0px_0px_0px_var(--color-neutral-300)]',\n              'dark:from-neutral-900 dark:to-neutral-950',\n              'dark:shadow-[2px_0px_0px_0px_var(--color-neutral-800)]',\n            )}\n            style={{ width: columnWidth }}\n          />\n        ))}\n      </div>\n\n      {children && <div className=\"relative z-10\">{children}</div>}\n    </div>\n  );\n}"
+    },
+    {
+      "type": "registry:lib",
+      "path": "lib/utils.ts",
+      "content": "import { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}"
+    }
+  ]
+}
