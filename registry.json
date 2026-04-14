@@ -442,6 +442,20 @@
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "columnlines",
+      "title": "ColumnLines",
+      "description": "column grid background with radial fade and subtle noise. Great for hero backgrounds.",
+      "type": "registry:ui",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "components/ui/columnlines.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
       "name": "cosmic-background",
       "title": "Cosmic Background",
       "description": "A modern cosmic background featuring smooth motion and immersive depth effects.",
