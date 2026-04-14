@@ -51,6 +51,7 @@ export const demoComponents = [
   'checklistcell-demo',
   'clock-demo',
   'collapsible-demo',
+  'columnlines-demo',
   'cosmicbackground-demo',
   'cosmicbackgroundneon-demo',
   'cosmicbackgroundaurora-demo',
