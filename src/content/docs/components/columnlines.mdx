@@ -1,0 +1,86 @@
+---
+title: ColumnLines
+description: column grid background with radial fade and subtle noise. Great for hero backgrounds.
+---
+
+<ComponentPreview
+  name='columnlines-demo'
+  className='p-0'
+  description=''
+/>
+
+## Installation
+
+<Tabs defaultValue="cli" className="w-full">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/columnlines
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name='columnlines' />
+
+<Step>Add util file</Step>
+
+`lib/utils.ts`
+
+```tsx
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { ColumnLines } from '@/components/ui/columnLines-background';
+```
+
+```tsx
+<ColumnLines className='relative h-100 w-full flex flex-col items-center justify-center'>
+  <h2 className='bg-clip-text text-transparent text-center bg-linear-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 relative z-20 font-bold tracking-tight'>
+    Moving Lines, <br /> Background.
+  </h2>
+  <p className='max-w-xl mx-auto text-sm md:text-lg text-neutral-700 dark:text-neutral-400 text-center'>
+    flowing right, defining direction.
+  </p>
+</ColumnLines>
+```
+
+
+## API Reference
+
+### ColumnLines
+
+column grid background with radial fade and subtle noise. Great for hero backgrounds.
+
+## Props
+
+| Prop               | Type               | Default | Description                                                                 |
+|--------------------|--------------------|---------|-----------------------------------------------------------------------------|
+| `columnWidth`      | `number`           | `80`    | The **width of each column** in pixels, controlling the spacing and density. |
+| `columnCount`      | `number`           | `14`    | The **total number of columns** rendered across the container.              |
+| `radialFadeStart`  | `number`           | `30`    | The **percentage** where the radial fade starts from the center.            |
+| `radialFadeEnd`    | `number`           | `70`    | The **percentage** where the columns fully fade out.                        |
+| `opacity`          | `number`           | `1`     | The **overall opacity** of the column layer (0 to 1).                       |
+| `showNoise`        | `boolean`          | `true`  | Enables or disables the **noise/grain overlay** for visual texture.         |
+| `noiseOpacity`     | `number`           | `0.05`  | The **intensity of the noise effect** (0 to 1).                             |
+| `className`        | `string`           | —       | Optional **styling** for the outer container (`div`).                       |
+| `children`         | `React.ReactNode`  | —       | The **content rendered above** the column background layer.                 |
