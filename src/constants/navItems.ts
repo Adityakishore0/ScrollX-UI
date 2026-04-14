@@ -178,6 +178,11 @@ const navigation: NavItem[] = [
       { title: 'CodeBlock', href: '/docs/components/codeblock' },
       { title: 'Collapsible', href: '/docs/components/collapsible' },
       {
+        title: 'ColumnLines',
+        href: '/docs/components/columnlines',
+        category: 'New',
+      },
+      {
         title: 'Cosmic Background',
         href: '/docs/components/cosmic-background',
       },

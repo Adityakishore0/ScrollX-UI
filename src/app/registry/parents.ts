@@ -31,6 +31,7 @@ export const parentComponents = [
   'clock',
   'codeblock',
   'collapsible',
+  'columnlines',
   'cosmic-background',
   'cursorimagetrail',
   'cursor-highlight',
