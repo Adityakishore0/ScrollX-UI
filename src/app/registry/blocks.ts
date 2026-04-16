@@ -5,6 +5,7 @@ export const blocks = [
   { category: 'cta-sections', name: 'cta-section-with-avatars' },
   { category: 'cta-sections', name: 'cta-section-with-floating-gallery' },
   { category: 'cta-sections', name: 'cta-section-with-dashed-border' },
+  { category: 'download-sections', name: 'download-with-columnlines' },
   { category: 'download-sections', name: 'download-with-iphone' },
   { category: 'features', name: 'features-with-panel' },
   { category: 'features', name: 'features-with-spotlight' },

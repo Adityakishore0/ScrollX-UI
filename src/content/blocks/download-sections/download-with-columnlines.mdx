@@ -1,0 +1,51 @@
+---
+title: Download Section with ColumnLines
+description: A download section with subtle column lines
+---
+
+<BlocksPreview
+  name='download-with-columnlines'
+  className=''
+  description=''
+/>
+
+
+<BlockTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash value="pkg"
+npx shadcn@latest add @scrollxui/download-sections/download-with-columnlines
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash value="deps"
+npm install motion clsx tailwind-merge
+```
+
+<Step>Add util file</Step>
+
+```ts filename="lib/utils.ts"
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+<Step>Install required UI components: [`ColumnLines`](/docs/components/columnlines)</Step>
+
+</Steps>
+</TabsContent>
+</BlockTabs>
