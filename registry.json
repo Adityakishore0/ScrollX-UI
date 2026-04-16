@@ -2154,6 +2154,20 @@
       ]
     },
     {
+      "name": "download-with-columnlines",
+      "title": "Download Section with ColumnLines",
+      "description": "A download section with subtle column lines.",
+      "type": "registry:block",
+      "registryDependencies": ["@scrollxui/columnlines"],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/blocks/download-sections/download-with-columnlines.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "download-with-iphone",
       "title": "Download Section with Iphone",
       "description": "A download section with an iPhone mockup.",
