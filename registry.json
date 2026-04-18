@@ -2252,6 +2252,20 @@
       ]
     },
     {
+      "name": "footer-with-suite",
+      "title": "Footer with Suite",
+      "description": "Modern footer with oversized split sections.",
+      "type": "registry:block",
+      "registryDependencies": [],
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/blocks/footers/footer-with-suite.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "frequently-asked-questions-with-accordion",
       "title": "Frequently asked questions with Accordion",
       "description": "Elegant and minimal FAQs with grid, accordions and micro-interactions",
