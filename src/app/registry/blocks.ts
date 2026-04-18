@@ -12,6 +12,7 @@ export const blocks = [
   { category: 'footers', name: 'footer-with-minimal-outline' },
   { category: 'footers', name: 'footer-with-faded-brand' },
   { category: 'footers', name: 'footer-with-newsletter' },
+  { category: 'footers', name: 'footer-with-suite' },
   {
     category: 'frequently-asked-questions',
     name: 'frequently-asked-questions-with-accordion',
