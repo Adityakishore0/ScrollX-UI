@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ['192.168.31.18'],
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -53,6 +54,24 @@ const nextConfig: NextConfig = {
       {
         source: '/registry',
         destination: '/registry/registry.json',
+      },
+      {
+        source: '/docs/:path*.mdx',
+        destination: '/docs/:path*.md',
+      },
+    ];
+  },
+
+  async headers() {
+    return [
+      {
+        source: '/docs/:path*.md',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain; charset=utf-8',
+          },
+        ],
       },
     ];
   },

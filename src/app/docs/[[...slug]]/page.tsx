@@ -141,7 +141,7 @@ export default async function DocsPage({ params }: PageProps) {
             )}
           </div>
           <div className='mt-3 sm:mt-1 shrink-0'>
-            <OpeninAI docUrl={docUrl} />
+            <OpeninAI docUrl={docUrl} mdUrl={`/docs/${slug.join('/')}.md`} />
           </div>
         </div>
       </div>
