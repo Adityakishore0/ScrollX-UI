@@ -4,20 +4,24 @@ import { useEffect } from 'react';
 import { useTheme } from 'next-themes';
 
 export function useThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement | null;
+
       if (target) {
         const tag = target.tagName;
-        const isTypingField =
+
+        const isTyping =
           tag === 'INPUT' ||
           tag === 'TEXTAREA' ||
           tag === 'SELECT' ||
-          target.isContentEditable;
+          target.isContentEditable ||
+          target.closest('[contenteditable="true"]') !== null ||
+          target.closest('[role="textbox"]') !== null;
 
-        if (isTypingField) return;
+        if (isTyping) return;
       }
 
       if (
@@ -28,14 +32,11 @@ export function useThemeToggle() {
         !event.shiftKey
       ) {
         event.preventDefault();
-        setTheme(theme === 'dark' ? 'light' : 'dark');
+        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
       }
     };
 
     window.addEventListener('keydown', handleKeyPress);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [theme, setTheme]);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [resolvedTheme, setTheme]);
 }
