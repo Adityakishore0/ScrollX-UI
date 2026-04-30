@@ -8,6 +8,18 @@ export function useThemeToggle() {
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target) {
+        const tag = target.tagName;
+        const isTypingField =
+          tag === 'INPUT' ||
+          tag === 'TEXTAREA' ||
+          tag === 'SELECT' ||
+          target.isContentEditable;
+
+        if (isTypingField) return;
+      }
+
       if (
         (event.key === 'd' || event.key === 'D') &&
         !event.ctrlKey &&
