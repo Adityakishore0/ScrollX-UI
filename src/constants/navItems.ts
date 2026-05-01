@@ -1,5 +1,12 @@
 import { LucideIcon } from 'lucide-react';
-import { BookOpen, Rocket, Wrench, LayoutGrid, Component } from 'lucide-react';
+import {
+  BookOpen,
+  Rocket,
+  Wrench,
+  LayoutGrid,
+  Component,
+  LayoutTemplate,
+} from 'lucide-react';
 
 export interface NavItem {
   defaultOpen?: boolean;
@@ -57,6 +64,23 @@ const navigation: NavItem[] = [
         href: '/docs/installation/install-tailwindcss',
       },
       { title: 'Dark Mode', href: '/docs/installation/dark-mode' },
+    ],
+  },
+  {
+    icon: LayoutTemplate,
+    title: 'Templates',
+    href: '',
+    children: [
+      {
+        title: 'Developer Portfolio Template',
+        href: '/templates#developer-portfolio-template',
+        category: 'New',
+      },
+      {
+        title: 'AI SaaS Template',
+        href: '/templates#ai-saas-template',
+        category: 'New',
+      },
     ],
   },
   {

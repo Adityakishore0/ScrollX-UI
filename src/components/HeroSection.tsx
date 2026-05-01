@@ -70,7 +70,7 @@ export function HeroSection() {
                 lustre
                 className='flex items-center gap-2 text-[10px] sm:text-xs truncate'
               >
-                📢 Components & New Blocks
+                📢 Templates, Blocks & more..
                 <ArrowUpRightIcon
                   size={14}
                   className='transition-transform group-hover:translate-x-1 group-hover:-translate-y-1'

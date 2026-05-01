@@ -52,6 +52,15 @@ function AnimatedChildren({
   );
 }
 
+const MAX_LENGTH = 21;
+
+const getDisplayTitle = (title: string, category?: string) => {
+  const extra = category ? category.length + 1 : 0;
+  const allowed = MAX_LENGTH - extra;
+  if (title.length <= allowed) return title;
+  return title.slice(0, Math.max(0, allowed - 1)) + '…';
+};
+
 export default function Sidebar({ onNavigate }: SidebarProps) {
   const pathname = usePathname();
 
@@ -180,9 +189,12 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
                               margin: '0.15rem 0',
                             }}
                           >
-                            <div className='flex items-center gap-1 whitespace-nowrap overflow-hidden'>
-                              <span className='truncate'>
-                                {typedChild.title}
+                            <div className='flex items-center gap-1 min-w-0'>
+                              <span className='truncate flex-1'>
+                                {getDisplayTitle(
+                                  typedChild.title,
+                                  typedChild.category,
+                                )}
                               </span>
                               {typedChild.category && (
                                 <Status
