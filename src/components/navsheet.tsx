@@ -11,6 +11,7 @@ const navigationItems = [
   { href: '/docs', label: 'Docs' },
   { href: '/docs/components', label: 'Components' },
   { href: '/blocks', label: 'Blocks' },
+  { href: '/templates', label: 'Templates' },
   { href: '/showcase', label: 'Showcase' },
 ];
 
