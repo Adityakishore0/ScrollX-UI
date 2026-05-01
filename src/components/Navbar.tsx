@@ -74,6 +74,11 @@ export function Navbar({ className }: NavbarProps) {
       active: pathname === '/blocks',
     },
     { href: '/docs', label: 'Docs', active: pathname === '/docs' },
+    {
+      href: '/templates',
+      label: 'Templates',
+      active: pathname === '/templates',
+    },
     { href: '/showcase', label: 'Showcase', active: pathname === '/showcase' },
   ];
 
