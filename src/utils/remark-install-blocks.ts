@@ -41,6 +41,14 @@ function extractDepsName(code: string): string | null {
   return match ? match[1].trim() : null;
 }
 
+function extractRawCommand(code: string): string | null {
+  const trimmed = code.trim().split('\n')[0];
+  if (/^(npx|pnpm|yarn|bunx|bun)\s/.test(trimmed)) {
+    return trimmed;
+  }
+  return null;
+}
+
 function jsxNode(
   name: string,
   props: Record<string, string>,
@@ -84,6 +92,16 @@ export function remarkInstallBlocks() {
           1,
           jsxNode('DepsOptions', { name: packages }),
         );
+      } else if (!value) {
+        const command = extractRawCommand(node.value);
+        if (command) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (parent.children as any[]).splice(
+            index,
+            1,
+            jsxNode('PkgOptions', { command }),
+          );
+        }
       }
     });
   };
