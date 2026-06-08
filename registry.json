@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "scrollxui",
   "homepage": "https://github.com/Adityakishore0/ScrollX-UI",
@@ -24,7 +24,7 @@
       "title": "Accordion",
       "description": "A collapsible component for showing and hiding content sections.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "@radix-ui/react-accordion",
         "lucide-react",
@@ -34,7 +34,8 @@
       "files": [
         {
           "path": "src/components/ui/accordion.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/accordion.tsx"
         }
       ],
       "cssVars": {
@@ -104,7 +105,10 @@
       "title": "Alert Dialog",
       "description": "A modal dialog used to convey critical information and require a user response before proceeding..",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/button"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/button",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": [
         "@radix-ui/react-alert-dialog",
         "motion",
@@ -117,7 +121,8 @@
       "files": [
         {
           "path": "src/components/ui/alert-dialog.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/alert-dialog.tsx"
         }
       ]
     },
@@ -127,7 +132,7 @@
       "title": "Animated Button",
       "description": "AnimatedButton is a highly customizable animated button component with shimmer effects, glow, and visual styling options.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "@radix-ui/react-slot",
         "class-variance-authority",
@@ -137,7 +142,8 @@
       "files": [
         {
           "path": "src/components/ui/animated-button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/animated-button.tsx"
         }
       ]
     },
@@ -152,7 +158,8 @@
       "files": [
         {
           "path": "src/components/ui/animated-tabs.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/animated-tabs.tsx"
         }
       ]
     },
@@ -162,12 +169,13 @@
       "title": "Animated Testimonials",
       "description": "Minimal testimonials with image and quote for clean, modern design.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/animated-testimonials.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/animated-testimonials.tsx"
         }
       ],
       "css": {
@@ -212,12 +220,13 @@
       "title": "Animated TextGenerate",
       "description": "Generates animated text word-by-word with blur, highlights, links, and smooth effects.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/animated-textgenerate.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/animated-textgenerate.tsx"
         }
       ]
     },
@@ -229,7 +238,8 @@
       "type": "registry:ui",
       "registryDependencies": [
         "Adityakishore0/ScrollX-UI/badge",
-        "Adityakishore0/ScrollX-UI/lustretext"
+        "Adityakishore0/ScrollX-UI/lustretext",
+        "Adityakishore0/ScrollX-UI/utils"
       ],
       "dependencies": [
         "motion",
@@ -241,7 +251,8 @@
       "files": [
         {
           "path": "src/components/ui/announcement.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/announcement.tsx"
         }
       ]
     },
@@ -256,7 +267,8 @@
       "files": [
         {
           "path": "src/components/ui/aspect-ratio.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/aspect-ratio.tsx"
         }
       ]
     },
@@ -266,12 +278,13 @@
       "title": "Avatar",
       "description": "Customizable Avatar component with animated borders for status indicators like \"close friends\" or \"normal story\".",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["@radix-ui/react-avatar", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/avatar.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/avatar.tsx"
         }
       ]
     },
@@ -281,12 +294,13 @@
       "title": "Avatar Group",
       "description": "Overlapping avatar circles that expand smoothly to reveal each user's name on hover.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/avatar-group.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/avatar-group.tsx"
         }
       ]
     },
@@ -296,12 +310,13 @@
       "title": "Aurora Dots",
       "description": "A captivating background effect featuring softly glowing, animated dots that mimic the ethereal beauty of the aurora borealis.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/aurora-dots.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/aurora-dots.tsx"
         }
       ]
     },
@@ -316,7 +331,8 @@
       "files": [
         {
           "path": "src/components/ui/backgroundmeteors.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/backgroundmeteors.tsx"
         }
       ]
     },
@@ -326,12 +342,13 @@
       "title": "Background Paths",
       "description": "A set of SVG paths that animate as if being drawn. Great for tech hero backgrounds.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/background-paths.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/background-paths.tsx"
         }
       ]
     },
@@ -341,12 +358,13 @@
       "title": "Badge",
       "description": "A small badge component with customizable variants and shiny animation effects.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/badge.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/badge.tsx"
         }
       ],
       "css": {
@@ -371,12 +389,13 @@
       "title": "BarsWave",
       "description": "Vertical wave bars animate in symmetry, forming a subtle motion-driven background layer.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/barswave.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/barswave.tsx"
         }
       ]
     },
@@ -386,12 +405,13 @@
       "title": "Beams Upstream",
       "description": "Multiple background beams travel upstream, forming a hero section background.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/beams-upstream.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/beams-upstream.tsx"
         }
       ]
     },
@@ -401,12 +421,16 @@
       "title": "Bento Grid",
       "description": "A responsive grid layout for showcasing features in varied card sizes with optional tilt effects.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/card-tilt"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/card-tilt",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/bento-grid.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/bento-grid.tsx"
         }
       ]
     },
@@ -416,12 +440,13 @@
       "title": "Bolt Strike",
       "description": "lightning bolts burst randomly with sparks and particles, creating a high-energy, reactive background effect.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/bolt-strike.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/bolt-strike.tsx"
         }
       ]
     },
@@ -431,12 +456,16 @@
       "title": "Border Glide",
       "description": "Modern UI cards with a moving border and smooth transitions.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/card"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/card",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/border-glide.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/border-glide.tsx"
         }
       ]
     },
@@ -446,7 +475,7 @@
       "title": "Button",
       "description": "Reusable button component with multiple variants and sizes.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "@radix-ui/react-slot",
         "class-variance-authority",
@@ -456,7 +485,8 @@
       "files": [
         {
           "path": "src/components/ui/button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
         }
       ]
     },
@@ -466,12 +496,13 @@
       "title": "Card",
       "description": "Renders a card component comprising a header, content section, and footer...",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/card.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/card.tsx"
         }
       ]
     },
@@ -481,12 +512,13 @@
       "title": "Card Flip",
       "description": "Renders a card component with flip animation, supporting front/back content.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/card-flip.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/card-flip.tsx"
         }
       ]
     },
@@ -496,12 +528,13 @@
       "title": "Card Tilt",
       "description": "smooth card tilt that responds naturally to your cursor, giving the card a more polished, modern look.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/card-tilt.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/card-tilt.tsx"
         }
       ]
     },
@@ -511,7 +544,10 @@
       "title": "Carousel",
       "description": "A carousel component with card stack visualization for cycling through content.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/button"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/button",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": [
         "lucide-react",
         "@radix-ui/react-slot",
@@ -522,7 +558,8 @@
       "files": [
         {
           "path": "src/components/ui/carousel.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/carousel.tsx"
         }
       ]
     },
@@ -532,7 +569,10 @@
       "title": "Calendar",
       "description": "A date field component that enables users to choose and edit a date.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/button"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/button",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": [
         "@radix-ui/react-slot",
         "class-variance-authority",
@@ -543,7 +583,8 @@
       "files": [
         {
           "path": "src/components/ui/calendar.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/calendar.tsx"
         }
       ]
     },
@@ -553,12 +594,13 @@
       "title": "Checkbox Pro",
       "description": "A customizable checkbox component with animated checkmark and indeterminate states.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/checkbox-pro.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/checkbox-pro.tsx"
         }
       ]
     },
@@ -568,12 +610,13 @@
       "title": "Checklist Cell",
       "description": "Animated checklist illustration with sliding tasks and progressive completion.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/checklist-cell.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/checklist-cell.tsx"
         }
       ]
     },
@@ -583,12 +626,13 @@
       "title": "Clock",
       "description": "clock component with rotating hands and glowing effects, perfect for CTA sections.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/clock.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/clock.tsx"
         }
       ]
     },
@@ -607,7 +651,8 @@
       "files": [
         {
           "path": "src/components/ui/codeblock.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/codeblock.tsx"
         }
       ]
     },
@@ -622,7 +667,8 @@
       "files": [
         {
           "path": "src/components/ui/collapsible.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/collapsible.tsx"
         }
       ]
     },
@@ -632,12 +678,13 @@
       "title": "ColumnLines",
       "description": "column grid background with radial fade and subtle noise. Great for hero backgrounds.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/columnlines.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/columnlines.tsx"
         }
       ]
     },
@@ -652,7 +699,8 @@
       "files": [
         {
           "path": "src/components/ui/cosmic-background.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/cosmic-background.tsx"
         }
       ]
     },
@@ -662,12 +710,13 @@
       "title": "Cursor Highlight",
       "description": "Text is revealed on scroll with pointer, gradient, and border effects.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/cursor-highlight.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/cursor-highlight.tsx"
         }
       ]
     },
@@ -682,7 +731,8 @@
       "files": [
         {
           "path": "src/components/ui/cursorimagetrail.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/cursorimagetrail.tsx"
         }
       ]
     },
@@ -692,12 +742,13 @@
       "title": "Decorated Text",
       "description": "decorative text frame with corner accents and a compact entrance effect.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/decorated-text.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/decorated-text.tsx"
         }
       ]
     },
@@ -707,12 +758,13 @@
       "title": "Dot Wave",
       "description": "Dot-based waves ripple outward in symmetry, creating a subtle, motion-driven background layer",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/dot-wave.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/dot-wave.tsx"
         }
       ]
     },
@@ -727,7 +779,8 @@
       "files": [
         {
           "path": "src/components/ui/draggable-avatar.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/draggable-avatar.tsx"
         }
       ]
     },
@@ -737,12 +790,13 @@
       "title": "Drift Card",
       "description": "An interactive card with a drift hover effect that visually highlights content.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/drift-card.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/drift-card.tsx"
         }
       ]
     },
@@ -752,7 +806,7 @@
       "title": "Dropdown Menu",
       "description": "Animated Dropdown Menu Reveals a menu of options or actions when activated by a button.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "motion",
         "lucide-react",
@@ -763,7 +817,8 @@
       "files": [
         {
           "path": "src/components/ui/dropdown-menu.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/dropdown-menu.tsx"
         }
       ]
     },
@@ -773,12 +828,13 @@
       "title": "Dual Sparks",
       "description": "Corner-based spark waves that radiate inward and outward with smooth motion.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/dualsparks.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/dualsparks.tsx"
         }
       ]
     },
@@ -788,12 +844,13 @@
       "title": "Electric Text",
       "description": "Animated electric text with glowing, distorted outline-solid for dynamic neon effects.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/electric-text.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/electric-text.tsx"
         }
       ]
     },
@@ -803,12 +860,13 @@
       "title": "Expandable Cards",
       "description": "Interactive card layout where hovered cards expand smoothly for focused content viewing.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/expandable-cards.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/expandable-cards.tsx"
         }
       ]
     },
@@ -818,12 +876,13 @@
       "title": "Expandable Dock",
       "description": "A customizable expandable dock component.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/expandable-dock.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/expandable-dock.tsx"
         }
       ]
     },
@@ -835,7 +894,8 @@
       "type": "registry:ui",
       "registryDependencies": [
         "Adityakishore0/ScrollX-UI/avatar",
-        "Adityakishore0/ScrollX-UI/tooltip"
+        "Adityakishore0/ScrollX-UI/tooltip",
+        "Adityakishore0/ScrollX-UI/utils"
       ],
       "dependencies": [
         "@radix-ui/react-avatar",
@@ -847,7 +907,8 @@
       "files": [
         {
           "path": "src/components/ui/facescape.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/facescape.tsx"
         }
       ]
     },
@@ -857,12 +918,13 @@
       "title": "Fancy Text",
       "description": "A refined text reveal animation with smooth character motion and a clean, modern visual flow.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/fancy-text.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/fancy-text.tsx"
         }
       ]
     },
@@ -872,12 +934,13 @@
       "title": "Flashy Card",
       "description": "Interactive card with smooth animated activation and visual effects.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/flashy-card.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/flashy-card.tsx"
         }
       ]
     },
@@ -887,7 +950,10 @@
       "title": "Flex Navbar",
       "description": "A modern navbar with smooth expansion, media panels, and theme controls.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/theme-switch"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/theme-switch",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": [
         "motion",
         "clsx",
@@ -898,7 +964,8 @@
       "files": [
         {
           "path": "src/components/ui/flex-navbar.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/flex-navbar.tsx"
         }
       ]
     },
@@ -908,12 +975,13 @@
       "title": "FlipFlow",
       "description": "A looping flow of flip cards with smooth motion and subtle interactive effects.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/flipflow.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/flipflow.tsx"
         }
       ],
       "css": {
@@ -958,12 +1026,16 @@
       "title": "FlipStack",
       "description": "A stylish and animated card stack UI for showcasing content in layered views.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/card"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/card",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/flipstack.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/flipstack.tsx"
         }
       ]
     },
@@ -973,12 +1045,13 @@
       "title": "Flowing Logos",
       "description": "Flowing logo showcase with smooth animations, hover effects, and modern UI.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/flowing-logos.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/flowing-logos.tsx"
         }
       ],
       "css": {
@@ -1023,12 +1096,13 @@
       "title": "Folder",
       "description": "Interactive 3D Folder UI component with hover & click animations for modern apps.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/folder.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/folder.tsx"
         }
       ]
     },
@@ -1038,12 +1112,13 @@
       "title": "Folder Tree",
       "description": "A customizable folder tree component for displaying hierarchical data with expandable nodes.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/folder-tree.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/folder-tree.tsx"
         }
       ]
     },
@@ -1058,7 +1133,8 @@
       "files": [
         {
           "path": "src/components/ui/followcursor.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/followcursor.tsx"
         }
       ]
     },
@@ -1068,12 +1144,13 @@
       "title": "Glass",
       "description": "glass surface with interactive ripple and dynamic cursor effects.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/glass.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/glass.tsx"
         }
       ]
     },
@@ -1083,12 +1160,13 @@
       "title": "Glowing Border Card",
       "description": "A customizable card with a glowing border effect that changes colors based on light and dark modes.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/glowingbordercard.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/glowingbordercard.tsx"
         }
       ]
     },
@@ -1103,7 +1181,8 @@
       "files": [
         {
           "path": "src/components/ui/globe.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/globe.tsx"
         }
       ]
     },
@@ -1124,7 +1203,8 @@
       "files": [
         {
           "path": "src/components/ui/globe-wireframe.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/globe-wireframe.tsx"
         }
       ]
     },
@@ -1134,12 +1214,13 @@
       "title": "Gravity",
       "description": "Gravity pulls objects as they launch, soar, and fall inside a container.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/gravity.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/gravity.tsx"
         }
       ],
       "css": {
@@ -1178,7 +1259,8 @@
         "Adityakishore0/ScrollX-UI/badge",
         "Adityakishore0/ScrollX-UI/button",
         "Adityakishore0/ScrollX-UI/globe",
-        "Adityakishore0/ScrollX-UI/lustretext"
+        "Adityakishore0/ScrollX-UI/lustretext",
+        "Adityakishore0/ScrollX-UI/utils"
       ],
       "dependencies": [
         "motion",
@@ -1193,7 +1275,8 @@
       "files": [
         {
           "path": "src/components/ui/heroui.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/heroui.tsx"
         }
       ]
     },
@@ -1203,7 +1286,10 @@
       "title": "Hold ToConfirm",
       "description": "A button that requires holding down to confirm irreversible or critical actions.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/button"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/button",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": [
         "motion",
         "@radix-ui/react-slot",
@@ -1214,7 +1300,8 @@
       "files": [
         {
           "path": "src/components/ui/hold-toconfirm.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/hold-toconfirm.tsx"
         }
       ]
     },
@@ -1224,12 +1311,13 @@
       "title": "Hyperlink",
       "description": "hyperlink component with animated underline, smooth hover & customizable style.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/hyperlink.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/hyperlink.tsx"
         }
       ]
     },
@@ -1239,12 +1327,13 @@
       "title": "Infinite Canvas",
       "description": "Infinite draggable canvas with zoomable, repeating cards and touch/mouse controls.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/infinite-canvas.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/infinite-canvas.tsx"
         }
       ]
     },
@@ -1259,7 +1348,8 @@
       "files": [
         {
           "path": "src/components/ui/iphone.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/iphone.tsx"
         }
       ]
     },
@@ -1269,12 +1359,13 @@
       "title": "Input Otp",
       "description": "A flexible Accessible one-time password component",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/input-otp.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/input-otp.tsx"
         }
       ]
     },
@@ -1284,7 +1375,7 @@
       "title": "Interactive input",
       "description": "A highly customizable interactive input component with shimmer effects, glow, and visual styling options.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "@radix-ui/react-slot",
         "class-variance-authority",
@@ -1294,7 +1385,8 @@
       "files": [
         {
           "path": "src/components/ui/interactive-input.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/interactive-input.tsx"
         }
       ]
     },
@@ -1304,12 +1396,13 @@
       "title": "Kbd",
       "description": "A component for displaying keyboard shortcuts and key combinations.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/kbd.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/kbd.tsx"
         }
       ]
     },
@@ -1319,12 +1412,13 @@
       "title": "Keyboard",
       "description": "Interactive keyboard component with customizable key styling and a beautifully minimal interface.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/keyboard.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/keyboard.tsx"
         }
       ]
     },
@@ -1336,13 +1430,15 @@
       "type": "registry:ui",
       "registryDependencies": [
         "Adityakishore0/ScrollX-UI/avatar",
-        "Adityakishore0/ScrollX-UI/card"
+        "Adityakishore0/ScrollX-UI/card",
+        "Adityakishore0/ScrollX-UI/utils"
       ],
       "dependencies": ["@radix-ui/react-avatar", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/kinetic-testimonials.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/kinetic-testimonials.tsx"
         }
       ],
       "css": {
@@ -1378,7 +1474,7 @@
       "title": "Label",
       "description": "Displays an accessible label associated with controls.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "motion",
         "@radix-ui/react-label",
@@ -1388,7 +1484,8 @@
       "files": [
         {
           "path": "src/components/ui/label.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/label.tsx"
         }
       ]
     },
@@ -1403,7 +1500,8 @@
       "files": [
         {
           "path": "src/components/ui/lamphome.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/lamphome.tsx"
         }
       ]
     },
@@ -1413,7 +1511,7 @@
       "title": "Layered Button",
       "description": "A layered button with a radial expand effect and smooth sliding hover label animation.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "@radix-ui/react-slot",
         "class-variance-authority",
@@ -1423,7 +1521,8 @@
       "files": [
         {
           "path": "src/components/ui/layered-button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/layered-button.tsx"
         }
       ]
     },
@@ -1433,7 +1532,10 @@
       "title": "Layer Stack",
       "description": "Interactive stacked card layout with drag and scroll momentum.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/progress"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/progress",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": [
         "motion",
         "@radix-ui/react-progress",
@@ -1443,7 +1545,8 @@
       "files": [
         {
           "path": "src/components/ui/layer-stack.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/layer-stack.tsx"
         }
       ]
     },
@@ -1453,12 +1556,13 @@
       "title": "Layered Text",
       "description": "Layered text effect with offset shadows, customizable styling, and animations.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/layered-text.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/layered-text.tsx"
         }
       ]
     },
@@ -1468,12 +1572,13 @@
       "title": "Lean Card",
       "description": "A card component with a striped back card revealed on hover",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/lean-card.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/lean-card.tsx"
         }
       ]
     },
@@ -1483,12 +1588,13 @@
       "title": "Loader",
       "description": "Animated versatile loader with different variants, customizable size and content.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/loader.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/loader.tsx"
         }
       ]
     },
@@ -1502,7 +1608,8 @@
         "Adityakishore0/ScrollX-UI/button",
         "Adityakishore0/ScrollX-UI/card",
         "Adityakishore0/ScrollX-UI/label",
-        "Adityakishore0/ScrollX-UI/transition"
+        "Adityakishore0/ScrollX-UI/transition",
+        "Adityakishore0/ScrollX-UI/utils"
       ],
       "dependencies": [
         "motion",
@@ -1515,7 +1622,8 @@
       "files": [
         {
           "path": "src/components/ui/loginform.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/loginform.tsx"
         }
       ]
     },
@@ -1525,12 +1633,13 @@
       "title": "Logo Stepper",
       "description": "logo showcase with names, smooth animations, hover effects, and modern UI.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/logo-stepper.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/logo-stepper.tsx"
         }
       ]
     },
@@ -1545,7 +1654,8 @@
       "files": [
         {
           "path": "src/components/ui/lustretext.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/lustretext.tsx"
         }
       ],
       "css": {
@@ -1590,7 +1700,8 @@
       "files": [
         {
           "path": "src/components/ui/magicdock.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/magicdock.tsx"
         }
       ]
     },
@@ -1600,12 +1711,13 @@
       "title": "Media Card",
       "description": "An Interactive media cards with a fluid cursor and a polished, modern aesthetic.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/media-card.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/media-card.tsx"
         }
       ]
     },
@@ -1615,12 +1727,13 @@
       "title": "Meteor Orbit",
       "description": "orbit system featuring rotating meteors and gracefully animated icons.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/meteor-orbit.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/meteor-orbit.tsx"
         }
       ]
     },
@@ -1630,7 +1743,10 @@
       "title": "Modern Loader",
       "description": "A modern, dynamic code loader designed for AI-powered coding environments.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/typeanimation"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/typeanimation",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": [
         "motion",
         "react-type-animation",
@@ -1640,7 +1756,8 @@
       "files": [
         {
           "path": "src/components/ui/modern-loader.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/modern-loader.tsx"
         }
       ]
     },
@@ -1650,12 +1767,13 @@
       "title": "MovingLines Background",
       "description": "A set of diagonal lines that move continuously. Great for hero backgrounds.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/movinglines-background.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/movinglines-background.tsx"
         }
       ]
     },
@@ -1670,7 +1788,8 @@
       "files": [
         {
           "path": "src/components/ui/motioncards.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/motioncards.tsx"
         }
       ]
     },
@@ -1680,12 +1799,13 @@
       "title": "Motion Grid",
       "description": "A set of diagonal lines that move continuously with gradientglow.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/motion-grid.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/motion-grid.tsx"
         }
       ]
     },
@@ -1695,12 +1815,13 @@
       "title": "Motion Navbar",
       "description": "modern react navbar with smooth animations, dropdown menus, and mobile-friendly design.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "lucide-react"],
       "files": [
         {
           "path": "src/components/ui/motion-navbar.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/motion-navbar.tsx"
         }
       ]
     },
@@ -1710,12 +1831,13 @@
       "title": "MorphoText Flip",
       "description": "Animated text component that flips between words with smooth transitions.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/morphotextflip.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/morphotextflip.tsx"
         }
       ]
     },
@@ -1725,7 +1847,7 @@
       "title": "Morphy Button",
       "description": "Morphing button with dynamic dot motion, reversible animation.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "@radix-ui/react-slot",
         "class-variance-authority",
@@ -1735,7 +1857,8 @@
       "files": [
         {
           "path": "src/components/ui/morphy-button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/morphy-button.tsx"
         }
       ]
     },
@@ -1750,7 +1873,8 @@
       "files": [
         {
           "path": "src/components/ui/navbar-flow.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/navbar-flow.tsx"
         }
       ]
     },
@@ -1762,7 +1886,8 @@
       "type": "registry:ui",
       "registryDependencies": [
         "Adityakishore0/ScrollX-UI/button",
-        "Adityakishore0/ScrollX-UI/particles"
+        "Adityakishore0/ScrollX-UI/particles",
+        "Adityakishore0/ScrollX-UI/utils"
       ],
       "dependencies": [
         "@radix-ui/react-slot",
@@ -1775,7 +1900,8 @@
       "files": [
         {
           "path": "src/components/ui/not-found.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/not-found.tsx"
         }
       ]
     },
@@ -1785,7 +1911,7 @@
       "title": "Orb Button",
       "description": "Modern orb-style button featuring smooth hover expansion and icon reveal.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "clsx",
         "tailwind-merge",
@@ -1795,7 +1921,8 @@
       "files": [
         {
           "path": "src/components/ui/orb-button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/orb-button.tsx"
         }
       ]
     },
@@ -1807,7 +1934,8 @@
       "type": "registry:ui",
       "registryDependencies": [
         "Adityakishore0/ScrollX-UI/badge",
-        "Adityakishore0/ScrollX-UI/button"
+        "Adityakishore0/ScrollX-UI/button",
+        "Adityakishore0/ScrollX-UI/utils"
       ],
       "dependencies": [
         "motion",
@@ -1820,7 +1948,8 @@
       "files": [
         {
           "path": "src/components/ui/pagination.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/pagination.tsx"
         }
       ]
     },
@@ -1835,7 +1964,8 @@
       "files": [
         {
           "path": "src/components/ui/particles.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/particles.tsx"
         }
       ]
     },
@@ -1845,12 +1975,16 @@
       "title": "Parallax Cards",
       "description": "A vertical sticky-scroll component that displays stacked cards with parallax behavior.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/card"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/card",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/parallaxcards.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/parallaxcards.tsx"
         }
       ]
     },
@@ -1864,7 +1998,8 @@
       "files": [
         {
           "path": "src/components/ui/pixel-background.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/pixel-background.tsx"
         }
       ]
     },
@@ -1874,12 +2009,13 @@
       "title": "Pixel Highlight",
       "description": "Animated pixel-based text reveal with directional shimmer using canvas-rendered particles.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/pixel-highlight.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/pixel-highlight.tsx"
         }
       ]
     },
@@ -1889,7 +2025,7 @@
       "title": "Popover",
       "description": "Displays rich content in a animated portal, triggered by a button.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "motion",
         "@radix-ui/react-popover",
@@ -1899,7 +2035,8 @@
       "files": [
         {
           "path": "src/components/ui/popover.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/popover.tsx"
         }
       ]
     },
@@ -1914,7 +2051,8 @@
       "files": [
         {
           "path": "src/components/ui/profilecard.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/profilecard.tsx"
         }
       ]
     },
@@ -1924,12 +2062,13 @@
       "title": "Progress",
       "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["@radix-ui/react-progress", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/progress.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/progress.tsx"
         }
       ]
     },
@@ -1939,7 +2078,10 @@
       "title": "Radial Flow",
       "description": "Dynamic radial graph for visualizing networks & hierarchies with animated nodes.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/badge"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/badge",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": [
         "motion",
         "class-variance-authority",
@@ -1949,7 +2091,8 @@
       "files": [
         {
           "path": "src/components/ui/radialflow.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/radialflow.tsx"
         }
       ]
     },
@@ -1959,7 +2102,7 @@
       "title": "Radio Group",
       "description": "A group of radio buttons that lets you pick only one option at a time.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "motion",
         "lucide-react",
@@ -1970,7 +2113,8 @@
       "files": [
         {
           "path": "src/components/ui/radio-group.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/radio-group.tsx"
         }
       ]
     },
@@ -1980,12 +2124,13 @@
       "title": "Radial Socials",
       "description": "radial social icons arranged in circles, with smooth expansion and rotation",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/radial-socials.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/radial-socials.tsx"
         }
       ]
     },
@@ -1995,12 +2140,16 @@
       "title": "Reel",
       "description": "A scrolling media strip that displays images and videos in flowing rows.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/card"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/card",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/reel.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/reel.tsx"
         }
       ],
       "css": {
@@ -2045,12 +2194,13 @@
       "title": "Reveal Text",
       "description": "a clean text reveal component providing directional animation and stagger options.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/reveal-text.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/reveal-text.tsx"
         }
       ]
     },
@@ -2060,12 +2210,13 @@
       "title": "Search Cell",
       "description": "An animated search input illustration that cycles through queries with a typewriter effect and blur-in result rows.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/search-cell.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/search-cell.tsx"
         }
       ]
     },
@@ -2075,12 +2226,13 @@
       "title": "Select",
       "description": "Displays an animated list of options for the user to choose from â€”smoothly triggered by a button.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "radix-ui", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/select.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/select.tsx"
         }
       ]
     },
@@ -2090,12 +2242,13 @@
       "title": "Sensitive Text",
       "description": "Interactive text that subtly compresses or stretches characters based on cursor proximity.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/sensitive-text.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/sensitive-text.tsx"
         }
       ]
     },
@@ -2105,7 +2258,7 @@
       "title": "Shiny Button",
       "description": "Interactive button with spotlight effect that follows mouse cursor and highlights borders on hover.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "motion",
         "@radix-ui/react-slot",
@@ -2116,7 +2269,8 @@
       "files": [
         {
           "path": "src/components/ui/shiny-button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/shiny-button.tsx"
         }
       ]
     },
@@ -2126,12 +2280,13 @@
       "title": "Showcase",
       "description": "An interactive showcase component with smooth content and image transitions.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/showcase.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/showcase.tsx"
         }
       ]
     },
@@ -2141,12 +2296,13 @@
       "title": "Side Sheet",
       "description": "A customizable sheet component for creating elegant slide-out interfaces.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/side-sheet.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/side-sheet.tsx"
         }
       ]
     },
@@ -2160,7 +2316,8 @@
         "Adityakishore0/ScrollX-UI/button",
         "Adityakishore0/ScrollX-UI/card",
         "Adityakishore0/ScrollX-UI/label",
-        "Adityakishore0/ScrollX-UI/transition"
+        "Adityakishore0/ScrollX-UI/transition",
+        "Adityakishore0/ScrollX-UI/utils"
       ],
       "dependencies": [
         "motion",
@@ -2173,7 +2330,8 @@
       "files": [
         {
           "path": "src/components/ui/signupform.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/signupform.tsx"
         }
       ]
     },
@@ -2183,12 +2341,13 @@
       "title": "Slider",
       "description": "An interactive slider with glass effects for selecting values smoothly within a range.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["@radix-ui/react-slider", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/slider.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/slider.tsx"
         }
       ]
     },
@@ -2197,12 +2356,13 @@
       "name": "slide-text",
       "title": "Slide Text",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/slide-text.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/slide-text.tsx"
         }
       ]
     },
@@ -2212,12 +2372,13 @@
       "title": "Status",
       "description": "A small status component with customizable variants, indicator and shiny animation effects.",
       "type": "registry:ui",
-      "registryDependencies": ["badge"],
+      "registryDependencies": ["badge", "Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/status.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/status.tsx"
         }
       ],
       "css": {
@@ -2242,12 +2403,13 @@
       "title": "StatsCount",
       "description": "Animated statistics counter with responsive layout and scroll triggers.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/statscount.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/statscount.tsx"
         }
       ]
     },
@@ -2257,7 +2419,7 @@
       "title": "Stagger Button",
       "description": "Interactive button with animated stagger text and customizable styles for modern uis.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "motion",
         "@radix-ui/react-slot",
@@ -2268,7 +2430,8 @@
       "files": [
         {
           "path": "src/components/ui/stagger-button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/stagger-button.tsx"
         }
       ]
     },
@@ -2278,12 +2441,13 @@
       "title": "Stagger Chars",
       "description": "An animated text component that creates a smooth, staggered character animation effect when hovered",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/stagger-chars.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/stagger-chars.tsx"
         }
       ]
     },
@@ -2298,7 +2462,8 @@
       "files": [
         {
           "path": "src/components/ui/statscarousel.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/statscarousel.tsx"
         }
       ]
     },
@@ -2308,12 +2473,13 @@
       "title": "Stripe Button",
       "description": "Smooth animated button crafted with refined glow and modern motion.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/stripe-button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/stripe-button.tsx"
         }
       ]
     },
@@ -2323,12 +2489,13 @@
       "title": "Striped Grid",
       "description": "Animated diagonal stripes with optional base grid, creating a dynamic textured background.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/striped-grid.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/striped-grid.tsx"
         }
       ]
     },
@@ -2338,12 +2505,13 @@
       "title": "Spark Waves",
       "description": "Vertical wave bars animate in symmetry, forming a subtle motion-driven background layer.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/spark-waves.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/spark-waves.tsx"
         }
       ]
     },
@@ -2353,12 +2521,13 @@
       "title": "Splitter",
       "description": "A customizable splitter component with collapsible panels and smooth animations.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/splitter.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/splitter.tsx"
         }
       ]
     },
@@ -2368,12 +2537,16 @@
       "title": "Spotlight Card",
       "description": "An interactive card with a spotlight hover effect that highlights content and enhances user engagement visually.",
       "type": "registry:ui",
-      "registryDependencies": ["Adityakishore0/ScrollX-UI/card"],
+      "registryDependencies": [
+        "Adityakishore0/ScrollX-UI/card",
+        "Adityakishore0/ScrollX-UI/utils"
+      ],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/spotlightcard.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/spotlightcard.tsx"
         }
       ]
     },
@@ -2383,12 +2556,13 @@
       "title": "Seperator Pro",
       "description": "Separates layout sections with customizable styles and orientations.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["@radix-ui/react-separator", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/seperatorpro.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/seperatorpro.tsx"
         }
       ]
     },
@@ -2398,7 +2572,7 @@
       "title": "ScrollArea Pro",
       "description": "advanced scrollarea with auto-hide scrollbars, progress bars, and cross-axis scroll.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "@radix-ui/react-scroll-area",
         "motion",
@@ -2408,7 +2582,8 @@
       "files": [
         {
           "path": "src/components/ui/scroll-areapro.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/scroll-areapro.tsx"
         }
       ]
     },
@@ -2418,12 +2593,13 @@
       "title": "Social Orbit",
       "description": "orbits your socials in smooth motion where icons spin, ripple, and glow with purpose.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/social-orbit.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/social-orbit.tsx"
         }
       ]
     },
@@ -2433,12 +2609,13 @@
       "title": "Squonk",
       "description": "elastic squircles illustration with fall and shrink movement.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/squonk.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/squonk.tsx"
         }
       ]
     },
@@ -2450,7 +2627,8 @@
       "type": "registry:ui",
       "registryDependencies": [
         "Adityakishore0/ScrollX-UI/button",
-        "Adityakishore0/ScrollX-UI/dropdown-menu"
+        "Adityakishore0/ScrollX-UI/dropdown-menu",
+        "Adityakishore0/ScrollX-UI/utils"
       ],
       "dependencies": [
         "motion",
@@ -2465,7 +2643,8 @@
       "files": [
         {
           "path": "src/components/ui/table.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/table.tsx"
         }
       ]
     },
@@ -2478,7 +2657,8 @@
       "registryDependencies": [
         "Adityakishore0/ScrollX-UI/avatar",
         "Adityakishore0/ScrollX-UI/button",
-        "Adityakishore0/ScrollX-UI/card"
+        "Adityakishore0/ScrollX-UI/card",
+        "Adityakishore0/ScrollX-UI/utils"
       ],
       "dependencies": [
         "embla-carousel-react",
@@ -2492,7 +2672,8 @@
       "files": [
         {
           "path": "src/components/ui/testimonial-carousel.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/testimonial-carousel.tsx"
         }
       ]
     },
@@ -2502,12 +2683,13 @@
       "title": "Text Highlighter",
       "description": "A customizable text highlighter with smooth animated highlights to emphasize key text.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/text-highlighter.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/text-highlighter.tsx"
         }
       ]
     },
@@ -2522,7 +2704,8 @@
       "files": [
         {
           "path": "src/components/ui/text-modifier.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/text-modifier.tsx"
         }
       ]
     },
@@ -2532,12 +2715,13 @@
       "title": "Text Spotlight",
       "description": "spotlight text effect with hover and mobile reveal, customizable size and color.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/text-spotlight.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/text-spotlight.tsx"
         }
       ]
     },
@@ -2547,12 +2731,13 @@
       "title": "Theme Switch",
       "description": "A flexible and accessible theme mode switcher component for Next.js projects using next-themes. ",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["lucide-react", "clsx", "tailwind-merge", "next-themes"],
       "files": [
         {
           "path": "src/components/ui/theme-switch.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/theme-switch.tsx"
         }
       ]
     },
@@ -2562,7 +2747,7 @@
       "title": "Thunder Loader",
       "description": "Animated thunderbolt loader with glow and shimmer effects, customizable sizes and colors.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "motion",
         "class-variance-authority",
@@ -2572,7 +2757,8 @@
       "files": [
         {
           "path": "src/components/ui/thunder-loader.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/thunder-loader.tsx"
         }
       ]
     },
@@ -2582,12 +2768,13 @@
       "title": "Timeline",
       "description": "Smoothly animated timeline slider with resizable handles for interactive use.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/timeline.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/timeline.tsx"
         }
       ]
     },
@@ -2597,12 +2784,13 @@
       "title": "Top Sheet",
       "description": "A customizable component for creating elegant, slide-out panels from the top of the screen.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/top-sheet.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/top-sheet.tsx"
         }
       ]
     },
@@ -2617,7 +2805,8 @@
       "files": [
         {
           "path": "src/components/ui/toast.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/toast.tsx"
         }
       ]
     },
@@ -2632,7 +2821,8 @@
       "files": [
         {
           "path": "src/components/ui/toggle-vault.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/toggle-vault.tsx"
         }
       ]
     },
@@ -2642,7 +2832,7 @@
       "title": "Tooltip",
       "description": "An interactive, animated popup that displays information related to an element when it receives keyboard focus or when the mouse hovers over it.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "motion",
         "@radix-ui/react-tooltip",
@@ -2652,7 +2842,8 @@
       "files": [
         {
           "path": "src/components/ui/tooltip.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/tooltip.tsx"
         }
       ]
     },
@@ -2667,7 +2858,8 @@
       "files": [
         {
           "path": "src/components/ui/transition.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/transition.tsx"
         }
       ]
     },
@@ -2677,7 +2869,7 @@
       "title": "Type Animation",
       "description": "Displays an animated typing effect.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "motion",
         "react-type-animation",
@@ -2687,7 +2879,8 @@
       "files": [
         {
           "path": "src/components/ui/typeanimation.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/typeanimation.tsx"
         }
       ]
     },
@@ -2701,7 +2894,8 @@
       "files": [
         {
           "path": "src/components/ui/venom-beam.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/venom-beam.tsx"
         }
       ]
     },
@@ -2711,12 +2905,13 @@
       "title": "Vercel Card",
       "description": "A smooth interactive vercel inspired card.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["motion", "clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/components/ui/vercel-card.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/vercel-card.tsx"
         }
       ]
     },
@@ -2726,7 +2921,7 @@
       "title": "Wavy Button",
       "description": "Interactive wavybutton with animated text and customizable styles for modern uis.",
       "type": "registry:ui",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": [
         "motion",
         "@radix-ui/react-slot",
@@ -2737,7 +2932,8 @@
       "files": [
         {
           "path": "src/components/ui/wavy-button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/wavy-button.tsx"
         }
       ]
     },
@@ -2752,7 +2948,8 @@
       "files": [
         {
           "path": "src/components/ui/whitestripes.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/whitestripes.tsx"
         }
       ]
     },
@@ -2769,7 +2966,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/bento/bento-with-focus/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/bento-with-focus.tsx"
         }
       ]
     },
@@ -2787,7 +2985,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/contact-sections/contact-with-globe/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/contact-with-globe.tsx"
         }
       ]
     },
@@ -2805,7 +3004,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/contact-sections/contact-with-pixelbackground/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/contact-with-pixelbackground.tsx"
         }
       ]
     },
@@ -2822,7 +3022,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/cta-sections/cta-section-with-avatars/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/cta-section-with-avatars.tsx"
         }
       ]
     },
@@ -2831,12 +3032,13 @@
       "title": "CTA Section With Dashed Border",
       "description": "CTA section with dashed border effects.",
       "type": "registry:block",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "lucide-react", "tailwind-merge"],
       "files": [
         {
           "path": "src/app/registry/blocks/cta-sections/cta-section-with-dashed-border/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/cta-section-with-dashed-border.tsx"
         }
       ]
     },
@@ -2850,7 +3052,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/cta-sections/cta-section-with-floating-gallery/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/cta-section-with-floating-gallery.tsx"
         }
       ]
     },
@@ -2864,7 +3067,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/download-sections/download-with-columnlines/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/download-with-columnlines.tsx"
         }
       ]
     },
@@ -2878,7 +3082,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/download-sections/download-with-iphone/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/download-with-iphone.tsx"
         }
       ]
     },
@@ -2892,7 +3097,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/features/features-with-panel/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/features-with-panel.tsx"
         }
       ]
     },
@@ -2901,12 +3107,13 @@
       "title": "Features with Spotlight",
       "description": "Interactive feature list with animated spotlight panel and smooth transitions.",
       "type": "registry:block",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "motion", "tailwind-merge"],
       "files": [
         {
           "path": "src/app/registry/blocks/features/features-with-spotlight/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/features-with-spotlight.tsx"
         }
       ]
     },
@@ -2915,12 +3122,13 @@
       "title": "Footer with Faded Brand",
       "description": "Modern footer with oversized faded brand name and smooth transitions.",
       "type": "registry:block",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "lucide-react", "motion", "tailwind-merge"],
       "files": [
         {
           "path": "src/app/registry/blocks/footers/footer-with-faded-brand/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/footer-with-faded-brand.tsx"
         }
       ]
     },
@@ -2929,12 +3137,13 @@
       "title": "Footer with Minimal Outline",
       "description": "Clean footer with minimal outlined brand text and smooth animations.",
       "type": "registry:block",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "motion", "tailwind-merge"],
       "files": [
         {
           "path": "src/app/registry/blocks/footers/footer-with-minimal-outline/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/footer-with-minimal-outline.tsx"
         }
       ]
     },
@@ -2943,12 +3152,13 @@
       "title": "Footer with Newsletter",
       "description": "Interactive footer with newsletter and smooth transitions.",
       "type": "registry:block",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "lucide-react", "motion", "tailwind-merge"],
       "files": [
         {
           "path": "src/app/registry/blocks/footers/footer-with-newsletter/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/footer-with-newsletter.tsx"
         }
       ]
     },
@@ -2957,12 +3167,13 @@
       "title": "Footer with Suite",
       "description": "Modern footer with oversized split sections.",
       "type": "registry:block",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "src/app/registry/blocks/footers/footer-with-suite/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/footer-with-suite.tsx"
         }
       ]
     },
@@ -2976,7 +3187,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/frequently-asked-questions/frequently-asked-questions-with-accordion/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/frequently-asked-questions-with-accordion.tsx"
         }
       ]
     },
@@ -2992,7 +3204,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/frequently-asked-questions/frequently-asked-questions-stack/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/frequently-asked-questions-stack.tsx"
         }
       ]
     },
@@ -3009,7 +3222,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/hero-sections/hero-with-cards/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/hero-with-cards.tsx"
         }
       ]
     },
@@ -3025,7 +3239,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/hero-sections/hero-with-iphone/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/hero-with-iphone.tsx"
         }
       ]
     },
@@ -3042,7 +3257,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/hero-sections/hero-with-layers/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/hero-with-layers.tsx"
         }
       ]
     },
@@ -3058,7 +3274,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/hero-sections/hero-with-pixelbackground/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/hero-with-pixelbackground.tsx"
         }
       ]
     },
@@ -3076,7 +3293,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/hero-sections/hero-with-reel/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/hero-with-reel.tsx"
         }
       ]
     },
@@ -3093,13 +3311,14 @@
       "dependencies": ["motion"],
       "files": [
         {
-          "path": "src/app/registry/blocks/login-minimal/page.tsx",
+          "path": "src/app/registry/blocks/login-sections/login-minimal/page.tsx",
           "type": "registry:page",
           "target": "app/login/page.tsx"
         },
         {
-          "path": "src/app/registry/blocks/login-sections/login-minimal/components/login-form/page.tsx",
-          "type": "registry:component"
+          "path": "src/app/registry/blocks/login-sections/login-minimal/components/login-form.tsx",
+          "type": "registry:component",
+          "target": "components/login-minimal.tsx"
         }
       ]
     },
@@ -3112,7 +3331,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/logo-cloud/logo-cloud-flipflow/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/logo-cloud-flipflow.tsx"
         }
       ]
     },
@@ -3126,7 +3346,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/logo-cloud/logo-cloud-marquee/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/logo-cloud-marquee.tsx"
         }
       ]
     },
@@ -3135,12 +3356,13 @@
       "title": "Logo Cloud with Minimal Animation",
       "description": "A clean logo cloud with smooth blur and fade-in animations.",
       "type": "registry:block",
-      "registryDependencies": [],
+      "registryDependencies": ["Adityakishore0/ScrollX-UI/utils"],
       "dependencies": ["clsx", "motion", "tailwind-merge"],
       "files": [
         {
           "path": "src/app/registry/blocks/logo-cloud/logo-cloud-with-minimal-animation/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/logo-cloud-with-minimal-animation.tsx"
         }
       ]
     },
@@ -3154,7 +3376,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/not-found/not-found-with-glitchytext/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/not-found-with-glitchytext.tsx"
         }
       ]
     },
@@ -3171,7 +3394,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/pricing-sections/pricing-minimal/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/pricing-minimal.tsx"
         }
       ]
     },
@@ -3188,7 +3412,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/pricing-sections/pricing-with-switch/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/pricing-with-switch.tsx"
         }
       ]
     },
@@ -3205,13 +3430,14 @@
       "dependencies": ["motion"],
       "files": [
         {
-          "path": "src/app/registry/blocks/signup-minimal/page.tsx",
+          "path": "src/app/registry/blocks/signup-sections/signup-minimal/page.tsx",
           "type": "registry:page",
           "target": "app/signup/page.tsx"
         },
         {
-          "path": "src/app/registry/blocks/signup-sections/signup-minimal/components/signup-form/page.tsx",
-          "type": "registry:component"
+          "path": "src/app/registry/blocks/signup-sections/signup-minimal/components/signup-form.tsx",
+          "type": "registry:component",
+          "target": "components/signup-minimal.tsx"
         }
       ]
     },
@@ -3230,7 +3456,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/testimonials/testimonials-with-carousel/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/testimonials-with-carousel.tsx"
         }
       ]
     },
@@ -3248,7 +3475,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/testimonials/testimonials-with-verticalmarquee/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/testimonials-with-verticalmarquee.tsx"
         }
       ]
     },
@@ -3264,7 +3492,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/testimonials/testimonials-with-marquee/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/testimonials-with-marquee.tsx"
         }
       ]
     },
@@ -3278,7 +3507,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/waitlist-sections/waitlist-with-iphone/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/waitlist-with-iphone.tsx"
         }
       ]
     },
@@ -3295,7 +3525,8 @@
       "files": [
         {
           "path": "src/app/registry/blocks/waitlist-sections/waitlist-with-layers/page.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/waitlist-with-layers.tsx"
         }
       ]
     }
