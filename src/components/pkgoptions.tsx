@@ -10,23 +10,70 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 interface PkgOptionsProps {
-  name: string;
+  name?: string;
+  command?: string;
 }
 
-export default function PkgOptions({ name }: PkgOptionsProps) {
+export default function PkgOptions({ name, command }: PkgOptionsProps) {
+  const isCommandMode = !!command && !name;
+  const isGitHubRegistry =
+    !isCommandMode && /^[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+\//.test(name || '');
+
   const [selected, setSelected] = useState<'npm' | 'pnpm' | 'yarn' | 'bun'>(
     'npm',
   );
   const [useShadcnAlias, setUseShadcnAlias] = useState(true);
+  const [useGitHubRegistry, setUseGitHubRegistry] = useState(false);
   const [copied, setCopied] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [copyFailed, setCopyFailed] = useState(false);
   const [hovered, setHovered] = useState(false);
 
+  const convertToGitHubRegistry = (pkg: string): string => {
+    const itemName = pkg.split('/').pop() || pkg;
+    return `Adityakishore0/ScrollX-UI/${itemName}`;
+  };
+
+  const transformCommand = (
+    baseCommand: string,
+    pkgManager: typeof selected,
+  ): string => {
+    const commandWithoutPrefix = baseCommand
+      .replace(/^npx\s/, '')
+      .replace(/^pnpm\s+dlx\s/, '')
+      .replace(/^yarn\s/, '')
+      .replace(/^bunx\s+--bun\s/, '')
+      .replace(/^bun\s+x\s+--bun\s/, '')
+      .replace(/^bun\s+x\s/, '');
+
+    switch (pkgManager) {
+      case 'pnpm':
+        return `pnpm dlx ${commandWithoutPrefix}`;
+      case 'yarn':
+        return `npx ${commandWithoutPrefix}`;
+      case 'bun':
+        return `bunx --bun ${commandWithoutPrefix}`;
+      default:
+        return `npx ${commandWithoutPrefix}`;
+    }
+  };
+
   const getInstallCommand = (pkgManager: typeof selected): string => {
-    const target = useShadcnAlias
-      ? `@scrollxui/${name}`
-      : `https://scrollxui.dev/registry/${name}.json`;
+    if (isCommandMode) {
+      return transformCommand(command!, pkgManager);
+    }
+
+    let target: string;
+
+    if (isGitHubRegistry) {
+      target = name!;
+    } else if (useGitHubRegistry) {
+      target = convertToGitHubRegistry(name!);
+    } else if (useShadcnAlias) {
+      target = `@scrollxui/${name}`;
+    } else {
+      target = `https://scrollxui.dev/registry/${name}.json`;
+    }
 
     switch (pkgManager) {
       case 'pnpm':
@@ -41,7 +88,7 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
   };
 
   const installCommand = getInstallCommand(selected);
-  const packageManagers: (typeof selected)[] = ['pnpm', 'npm', 'yarn', 'bun'];
+  const packageManagers: (typeof selected)[] = ['npm', 'pnpm', 'yarn', 'bun'];
 
   const isClipboardSupported = (): boolean => {
     try {
@@ -157,36 +204,55 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
                 {pkg}
               </button>
             ))}
-            <DropdownMenu animate={true}>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className='border-b-2 border-transparent hover:text-foreground/70 whitespace-nowrap flex items-center shrink-0'
-                  onMouseEnter={() => setHovered(true)}
-                  onMouseLeave={() => setHovered(false)}
-                >
-                  <span>shadcn cli</span>
-                  <ChevronDown
-                    className={`h-3 w-3 ml-1 transition-opacity ${hovered ? 'opacity-100' : 'opacity-0'}`}
-                  />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className='w-44'>
-                <DropdownMenuItem
-                  onClick={() => setUseShadcnAlias(false)}
-                  className='flex items-center justify-between'
-                >
-                  <span>CLI v2 (legacy)</span>
-                  {!useShadcnAlias && <Check className='h-4 w-4' />}
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setUseShadcnAlias(true)}
-                  className='flex items-center justify-between'
-                >
-                  <span>CLI v3 (recommended)</span>
-                  {useShadcnAlias && <Check className='h-4 w-4' />}
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {!isGitHubRegistry && !isCommandMode && (
+              <DropdownMenu animate={true}>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    className='border-b-2 border-transparent hover:text-foreground/70 whitespace-nowrap flex items-center shrink-0'
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                  >
+                    <span>shadcn cli</span>
+                    <ChevronDown
+                      className={`h-3 w-3 ml-1 transition-opacity ${hovered ? 'opacity-100' : 'opacity-0'}`}
+                    />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className='w-44'>
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setUseShadcnAlias(false);
+                      setUseGitHubRegistry(false);
+                    }}
+                    className='flex items-center justify-between'
+                  >
+                    <span>CLI v2 (legacy)</span>
+                    {!useShadcnAlias && !useGitHubRegistry && (
+                      <Check className='h-4 w-4' />
+                    )}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setUseShadcnAlias(true);
+                      setUseGitHubRegistry(false);
+                    }}
+                    className='flex items-center justify-between'
+                  >
+                    <span>CLI v3 (recommended)</span>
+                    {useShadcnAlias && !useGitHubRegistry && (
+                      <Check className='h-4 w-4' />
+                    )}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => setUseGitHubRegistry(true)}
+                    className='flex items-center justify-between'
+                  >
+                    <span>GitHub registry</span>
+                    {useGitHubRegistry && <Check className='h-4 w-4' />}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </div>
         </div>
 
@@ -268,6 +334,8 @@ export default function PkgOptions({ name }: PkgOptionsProps) {
             } else if (part.startsWith('https://')) {
               colorClass = 'text-amber-600 dark:text-yellow-400';
             } else if (part.startsWith('@scrollxui/')) {
+              colorClass = 'text-amber-600 dark:text-yellow-400';
+            } else if ((part.match(/\//g) || []).length >= 2) {
               colorClass = 'text-amber-600 dark:text-yellow-400';
             }
 
