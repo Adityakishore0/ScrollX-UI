@@ -1,4 +1,4 @@
-import { SignupForm } from '@/app/registry/blocks/signup-sections/signup-minimal/components/signup-form';
+import { SignupForm } from '@/components/signup-form';
 import { MotionGrid } from '@/components/ui/motion-grid';
 
 export default function SignupPage() {
