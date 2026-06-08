@@ -17,10 +17,27 @@
 <br />
 
 <div align="center">
-  <a href="https://github.com/Adityakishore0/ScrollX-UI/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Adityakishore0/ScrollX-UI"></a>
-  <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-red.svg"></a>
-  <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/CONTRIBUTING.md"><img alt="Open-Source" src="https://img.shields.io/badge/Open-Source-red.svg"></a>
+  <a href="https://github.com/Adityakishore0/ScrollX-UI/stargazers">
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Adityakishore0/ScrollX-UI">
+  </a>
+  <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/LICENSE.md">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-red.svg">
+  </a>
+  <a href="https://github.com/Adityakishore0/ScrollX-UI/blob/main/CONTRIBUTING.md">
+    <img alt="Open Source" src="https://img.shields.io/badge/Open%20Source-Yes-red.svg">
+  </a>
 </div>
+
+<br />
+
+<div align="center">
+  <img alt="Components" src="https://img.shields.io/badge/Components-140%2B-blue">
+  <img alt="Blocks" src="https://img.shields.io/badge/Blocks-30%2B-blue">
+  <img alt="Templates" src="https://img.shields.io/badge/Templates-2%2B-blue">
+  <img alt="GitHub Registry" src="https://img.shields.io/badge/GitHub-Registry-black">
+  <img alt="MCP Support" src="https://img.shields.io/badge/MCP-Supported-green">
+</div>
+
 <br />
 <picture>
   <img src="public/images/ui.png" alt="ScrollX UI OG Image" width="1000">
@@ -36,16 +53,18 @@ ScrollX UI is a collection of animated, interactive React components & blocks bu
 
 ## Key Features
 
-- 140+ total components (text animations, animations, interactive components, backgrounds), and 30+ blocks growing every week
+- 140+ total components (text animations, animations, interactive components, backgrounds), 30+ blocks and 2+ templates growing every week
+- Supports ShadCN registries, GitHub registries, and MCP integration
 - All components are built with minimal dependencies, and are highly customizable through props
 - You get the code, so you can modify, extend, and personalize every detail
 - Designed to integrate seamlessly with any modern React project
-- omponents come in one clean format: TypeScript + Tailwind for everyone
+- Components come in one clean format: TypeScript + Tailwind for everyone
 
 ## Installing Components Via CLI
 
 ScrollX UI supports [shadcn](https://ui.shadcn.com/) for quick installs. </br>
 Each component demo provides CLI commands, ready for you to copy and run. Detailed instructions can also be found [here](https://scrollxui.dev/docs/installation/cli).
+If the documentation website is unavailable, you can view the same guide on GitHub [here](https://github.com/Adityakishore0/ScrollX-UI/blob/main/src/content/docs/installation/cli.mdx).
 
 ## How To Contribute?
 
