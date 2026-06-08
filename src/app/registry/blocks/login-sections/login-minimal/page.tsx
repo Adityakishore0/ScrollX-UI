@@ -1,4 +1,4 @@
-import { LoginForm } from '@/app/registry/blocks/login-sections/login-minimal/components/login-form';
+import { LoginForm } from '@/components/login-form';
 import { MotionGrid } from '@/components/ui/motion-grid';
 
 export default function LoginPage() {
