@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/login-form": [
+        "./src/app/registry/blocks/login-sections/login-minimal/components/login-form"
+      ],
+      "@/components/signup-form": [
+        "./src/app/registry/blocks/signup-sections/signup-minimal/components/signup-form"
+      ]
+    }
+  }
+}
